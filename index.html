@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
+    <script class="remove">
+      var respecConfig = {
+      // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
+      specStatus: "ED",
+
+      // the specification's short name, as in https://www.w3.org/TR/short-name/
+      shortName: "dapt",
+
+      // if there a publicly available Editor's Draft, this is the link
+      edDraftURI: "https://w3c.github.io/dapt/",
+
+      // editors, add as many as you like
+      // only "name" is required
+      editors:  [
+        { name: "Cyril Concolato", mailto: "cconcolato@netflix.com", url: "", company: "Netflix", companyURL: "https://www.netflix.com/"},
+      ],
+
+      // name of the WG
+      group: "wg/timed-text",
+
+      scheme: "https",
+
+      otherLinks: [{
+      key: 'Repository',
+      data: [{
+          value: 'We are on GitHub',
+          href: 'https://github.com/w3c/dapt/'
+        }, {
+          value: 'File a bug',
+          href: 'https://github.com/w3c/dapt/issues'
+        }, {
+          value: 'Commit history',
+          href: 'https://github.com/w3c/dapt/commits/main/index.html'
+        }]
+      },{
+        key: 'Mailing list',
+        data: [{
+          value: 'public-tt@w3.org',
+          href: 'https://lists.w3.org/Archives/Public/public-tt/'
+        }]
+      }],
+
+      };
+    </script>
+  <style>
+table.coldividers td + td { border-left:1px solid gray; }
+  table.syntax { border: 0px solid black; width: 85%; border-collapse: collapse }
+  table.syntax caption { font-weight: bold; text-align: left; padding-bottom: 0.5em }
+  table.syntax th { border: 0px solid black; text-align: left }
+  table.syntax td { border: 0px solid black }
+  table.syntax div { background-color: #ffffc8 }
+  div.exampleInner { background-color: #d5dee3;
+                   border-top-width: 4px;
+                   border-top-style: double;
+                   border-top-color: #d3d3d3;
+                   border-bottom-width: 4px;
+                   border-bottom-style: double;
+                   border-bottom-color: #d3d3d3;
+                   padding: 4px; margin: 0em }
+  ul.short-list { margin: 0; padding-left: 0; list-style-position: inside;}
+  .note {font-size:small}
+  .equation {text-indent: 10%;}
+  .example {font-size: small}
+  .inline-note {font-size: small}
+  .deprecation {background-color: #EBEBFE; border: 3px double; margin: 2px;}
+  .deprecation::before {content: "\26A0"; margin:0.2em; font-size:2em; float:left;}
+  body {
+    font-family: sans-serif;
+    line-height: 24px;
+  }
+  span.label {
+    display: inline-block;
+    border-radius: 3px;
+  }
+  span.permitted::before {
+    content: "\00A0\2713\00A0"
+  }
+  span.prohibited::before {
+    content: "\00A0\2718\00A0"
+  }
+  span.permitted-deprecated::before {
+    font-weight: bold;
+    content: "\00A0!\00A0"
+  }
+  span.label::after {
+    content: "\00A0";
+  }
+  span.permitted {
+    color: black;
+    background-color: #50FF50;
+  }
+  span.prohibited {
+    color: black;
+    background-color: #FF5F5F;
+  }
+  span.permitted-deprecated {
+    color: black;
+    background-color: #FFC000;
+  }
+  </style>
+  </head>
+  <body>
+    <h1 id="title">Dubbing and Audio description Profiles of TTML2</h1>
+    
+    <section id="abstract">
+      This specification defines <abbr title="Dubbing and Audio description Profiles of TTML2">DAPT</abbr>, a <abbr title="Timed Text Markup Language">TTML</abbr>-based file format for the exchange of timed text content in dubbing and audio description workflows.
+    </section>
+
+    <section id="sotd">
+    </section>
+
+    <section id="scope">
+      <h2>Scope</h2>
+      <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]] based on [[ttml-imsc1.1]]. This profile is intended to support dubbing and audio description workflows worldwide.
+    </section>
+
+    <section class='informative' id="introduction">
+      <h2>Introduction</h2>
+      <p>Creating a dub is a complex, multi-step process that involves:
+        <ul>
+          <li>Transcribing and timing the dialogue in the original language from a completed show to create a source transcription text</li>
+          <li>Notating dialogue events with character information and other annotations</li>
+          <li>Generating localization notes to guide further adaptation</li>
+          <li>Translating the dialogue to a target language</li>
+          <li>Adapting the translation to the dubbing and subtitling specifications; ex. matching the actor’s lip movements in the case of dubs and considering reading speeds and shot changes.</li>
+        </ul>
+      </p>
+      <p>Creating audio description content is also a complex process with similar steps.</p> 
+      <p class="issue">Improve introduction to describe audio description steps and how it relates to dubbing. Maybe reuse the diagrams from the requirements document, or link the requirements doc.</p>
+      <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and audio description pipeline. A DAPT file is designed to carry pertinent information for dubbing or audio description such as type of script, dialogues, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations. This specification first defines the data model (see [[[#data-model]]]) for DAPT scripts and then its representation as a TTML document with restrictions (see [[[#ttml-format]]]).</p>
+    </section>
+
+  <section id="conformance"></section>
+
+  <section id="data-model">
+      <h2>DAPT Data Model</h2>
+      <p>This section specifies the data model for DAPT.</p>
+      <section>
+        <h3>DAPT Script</h3>
+        <p>A <dfn>DAPT Script</dfn> is a document resulting from an authoring workflow with the following properties: 
+        </p>
+        <table class='simple coldividers'>
+          <thead>
+            <tr>
+              <th>Property Name</th>
+              <th>Description</th>
+              <th>Applicability (Dubbing Scripts, Audio Description Scripts, All)</th>
+              <th>Mandatory/Optional</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><dfn>Script Type</dfn></td>
+              <td>
+                <ul>
+                  <li><dfn>Original Language Dialogue List</dfn>: (Dubbing Script) Literal transcription of the dialogues and on-screen text in their original spoken/written language(s).
+                  <aside class="example">If a movie contains dialogues in English and Hebrew, the <a>Original Language Dialogue List</a> will contain some <a>Events</a> in English and some in Hebrew. None of the events are translated.</aside>
+                  </li>
+                  <li><dfn>Translated Dialogue List</dfn>: (Dubbing Script) Translation of the dialogues or on-screen text in a common language. It is meant to be adapted to produce a <a>Pre-Recording Dub Script</a>. It may contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context, to assist in the adaption process.
+                  <aside class="example">If a movie contains dialogues in English and Hebrew, the French <a>Translated Dialogue List</a> will contain at least the translation in French of all <a>Events</a>. It may still retain <a>Events</a> in Hebrew and English to assist further processing.</aside>
+                  </li>
+                  <li><dfn>Pre-recording Dub Script</dfn>: (Dubbing Script) Result of the adaptation of a <a>Translated Dialogue List</a> for better lip-sync. It may also contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context, to assist further processing.</li>
+                  <li><dfn>As-recorded Dub Script</dfn>: (Dubbing Script) Represents a transcription of the output of the dubbing workflow. It may also contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context and quality verifications.</li>
+                </ul>
+                <p class="issue">Add script type(s) for audio description workflows. Should the pre-recording/as-recorded scripts be generic?</p>
+              </td>
+              <td>All</td>
+              <td>Mandatory</td>
+            </tr>
+            <tr>
+              <td><dfn>Primary Language</dfn></td>
+              <td>Default language for the <a>Text</a> content of <a>Events</a>. 
+                <p class="note">When multiple languages are used in a script, it can correspond to the language of the majority of events, to the language being spoken for the longest duration, or to the language arbitrarily chosen by the author.</p></td>
+              <td>All</td>
+              <td>Mandatory</td>
+            </tr>
+            <tr>
+              <td><a>Events</a></td>
+              <td>List of timed text events corresponding to dialogues, on screen text, or descriptions.</td>
+              <td>All</td>
+              <td>Mandatory</td>
+            </tr>
+            <tr>
+              <td><a>Characters</a></td>
+              <td>List of characters referenced in the events</td>
+              <td>Dubbing Scripts</td>
+              <td>Mandatory (for Dubbing Scripts)</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <h3>Character</h3>
+        <p>A <dfn>Character</dfn> has the following properties: 
+        </p>
+        <table class='simple coldividers'>
+          <thead>
+            <tr>
+              <th>Property Name</th>
+              <th>Description</th>
+              <th>Applicability (Dubbing Scripts, Audio Description Scripts, All)</th>
+              <th>Mandatory/Optional</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><dfn data-lt="Character Identifier">Identifier</dfn></td>
+              <td>A unique identifier for the <a>Character</a></td>
+              <td>Dubbing Scripts</td>
+              <td>Mandatory</td>
+            </tr>
+            <tr>
+              <td><dfn data-lt="Character Name">Name</dfn></td>
+              <td>This is the name of the character used in <a>Events</a></td>
+              <td>Dubbing Scripts</td>
+              <td>Mandatory</td>
+            </tr>
+            <tr>
+              <td><dfn data-lt="Character Talent Name">Talent Name</dfn></td>
+              <td>This is the name of the actor speaking dialogues for this <a>Character</a></td>
+              <td>Dubbing Scripts</td>
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td><dfn data-lt="Character Style">Style</dfn></td>
+              <td>This is a set of styles for <a>Events</a> associated with this <a>Character</a>.
+                <p class="issue">Do they override event-level styles or the opposite?</p></td>
+              <td>Dubbing Scripts</td>
+              <td>Optional</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section>
+        <h3>Event</h3>
+        <p>An <dfn>Event</dfn> has the following properties: 
+        </p>
+        <table class='simple coldividers'>
+          <thead>
+            <tr>
+              <th>Property Name</th>
+              <th>Description</th>
+              <th>Applicability (Dubbing Scripts, Audio Description Scripts, All)</th>
+              <th>Mandatory/Optional</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><dfn>Event Identifier</dfn></td>
+              <td>Unique identifier for the <a>Event</a></td>
+              <td>All</td>
+              <td>Mandatory</td>
+            </tr>
+            <tr>
+              <td><dfn>Event Type</dfn></td>
+              <td>Used to identify if the <a>Event</a> represents spoken text or on screen text, and in the later case, the type of on-screen text (title, credit, location, ...).</p>
+              </td>
+              <td>Dubbing Scripts</td>
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td>Character Identifier</td>
+              <td>One ore more identifiers of <a>Character</a> involved in this <a>Event</a>.
+                <p class="note">While typically, an <a>Event</a> corresponds to one single character, there are cases where multiple characters can speak the same text at the same time.</p>
+              </td>
+              <td>Dubbing Scripts</td>
+              <td>Mandatory for Dubbing Scripts</td>
+            </tr>
+            <tr>
+              <td><dfn>Start</dfn></td>
+              <td>Start of the event</td>
+              <td>All</td>
+              <td>Mandatory</td>
+            </tr>
+            <tr>
+              <td><dfn>End</dfn></td>
+              <td>End of the event. 
+                <p class="note">Typically <a>Events</a> do not overlap in time. However, there may be cases where they do, e.g. when different <a>Characters</a> speak different text at the same time.</p></td>
+              <td>All</td>
+              <td>Mandatory</td>
+            </tr>
+            <tr>
+              <td><dfn>Text</dfn></td>
+              <td>Main text content for this <a>Event</a>.</td>
+              <td>All</td>
+              <td>Mandatory</td>
+            </tr>
+            <tr>
+              <td><dfn>Text Styles</dfn></td>
+              <td>Styles associated with the <a>Text</a> of this <a>Event</a>.</td>
+              <td>All</td>
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td><dfn>Text Language</dfn></td>
+              <td>Language of the <a>Text</a> content.<br>If not present, the <a>Text</a> is assumed to be in the Script <a>Primary Language</a>.
+                <div class="note">In <a>Original Language Dialogue List</a>, <a>Events</a> may be in different languages.</div>
+              </td>
+              <td>All</td>
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td><dfn>Contextual Text</dfn></td>
+              <td>Representation of the <a>Text</a> in a different language. It may be used to assist in the processing of the <a>Text</a>.
+                <div class="note">For example, when a <a>Pre-Recording Dub Script</a> needs to be adjusted, having this additional text in the original language(s) could be useful.</div>
+              </td>
+              <td>Dubbing Scripts</td>
+              <td>
+                <ul>
+                  <li>Not present in <a>Original Language Dialogue List</a>.</li>
+                  <li>Optional in other types of Dubbing Scripts.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><dfn>Contextual Text Styles</dfn></td>
+              <td>Styles associated with the <a>Contextual Text</a> of this <a>Event</a>.</td>
+              <td>All</td>
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td><dfn>Contextual Text Language</dfn></td>
+              <td>Language of the <a>Contextual Text</a> content.</td>
+              <td>Dubbing Scripts</td>
+              <td>Mandatory if <a>Contextual Text</a> is present</td>
+            </tr>
+            <tr>
+              <td><dfn>Description</dfn></td>
+              <td>A human-readable description of the <a>Event</a>.
+                <p class="issue">Should we rename it to avoid confusion with the "audio description" text or clarify that the "audio description" text (to be spoken) is stored in the "Text" property?</p></td>
+              <div class="note">It does not have to be unique for this <a>Event</a>. It may be used to identify in a human-readable way one or more <a>Events</a> that need to be processed together, e.g. in a batch recording.</div></td>
+              <td>All</td>
+              <td>Optional</td>
+            </tr>
+            <tr>
+              <td><dfn>On Screen</dfn></td>
+              <td>An annotation indicating the position of the <a>character</a> during the <a>Event</a>:
+                <ul>
+                  <li>ON - the <a>character</a> is on screen for the entire duration</li>
+                  <li>OFF - the <a>character</a> is off screen for the entire duration</li>
+                  <li>ON_OFF - the <a>character</a> starts on screen, but goes off screen at some point</li>
+                  <li>OFF_ON - the <a>character</a> starts off screen, but goes on screen at some point</li>
+                </ul>
+              </td>
+              <td>Dubbing Script</td>
+              <td>Optional</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+  <section id="ttml-format">
+      <h4>TTML Format</h4>
+      <p>This section defines the TTML format based on the data model defined in [[[#data-model]]].</p>
+      <section>
+        <h4>Identification and Profile Signaling</h4>
+        <p>TTML documents representing DAPT Scripts shall be compliant with the Text Profile defined in [[!ttml-imsc1.1]] with the additional constraints defined in this specification.</p>
+        <p>TTML documents representing DAPT Scripts shall specify a <code>ttp:contentProfiles</code> attribute on the <code>tt</code> element with one value equal to <code>http://www.w3.org/ns/ttml/profile/dapt</code>. Other values such as the text profile designator [[!ttml-imsc1.1]] of may be present.</p>
+      </section>
+      <section>
+        <h4>DAPT Namespace</h4>
+        <p>This specification defines the following namespaces:</p>
+        <table class='simple'>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Prefix</th>
+              <th>Value</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>DAPT</td>
+              <td><code>dapt</code></td>
+              <td><code>http://www.w3.org/ns/ttml/profile/dapt#metadata</code></td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The namespaces defined by this specification are mutable [[namespaceState]]; all undefined names in these namespaces are reserved for future standardization by the W3C.</p>
+        <p>The namespace prefix values defined above are for convenience and Document Instances MAY use any prefix value that conforms to [[!xml-names]].</p>
+        <p>Other namespaces may be present, as needed and permitted by XML and TTML, use for either specific TTML attributes or elements, or for elements and attributes from other standards or proprietary languages.</p>
+        <p>Implementations shall ignore elements and attributes in the DAPT namespaces that they do not recognize.</p>
+        <p>Implementations shall ignore elements and attributes in non TTML-namespaces that they do not recognize.</p>
+      </section>
+      <section>
+        <h4>Proprietary Metadata</h4>
+        <p>Many dubbing and audio description workflows may need to annotate events or documents with proprietary metadata. This SHOULD be done, as permitted by [[!ttml-imsc1.1]], using foreign elements and attributes, in vendor-specific namespaces.</p>
+        <p class="issue">It may be useful to provide guidance on how to add popular metadata, e.g. title, episode information (title, season, number), ...</p> 
+      </section>
+      <section>
+        <h4>Document structure</h4>
+        <p>A <a>DAPT script</a> object is represented by a TTML document with the following constraints:
+          <ul>
+            <li>the <code>xml:lang</code> attribute shall be present on the <code>tt</code> element and its value shall not be empty. It describes the <a>primary language</a> of the script.</li>
+            <li>The <code>head</code> element shall be present and a <code>metadata</code> element shall be present in the <code>head</code> element to provide some <a>DAPT Script</a> properties as follows: 
+              <ul>
+                <li>A <code>ttm:role</code> attribute shall be present with one of the following values representing the <a>Script Type</a>:
+                  <ul>
+                    <li><code>x-DUBBING_ORIGINAL_DIALOGUE_LIST</code> for <a>Original Language Dialogue List</a></li>
+                    <li><code>x-DUBBING_TRANSLATED_DIALOGUE_LIST</code> for <a>Translated Dialogue List</a></li>
+                    <li><code>x-DUBBING_PRE_RECORDING</code> for <a>Pre-recording Dub Script</a></li>
+                    <li><code>x-DUBBING_AS_RECORDED</code> for <a>As-recorded Dub Script</a></li>
+                  </ul>
+                  <p class="issue">Should these values be defined in this specification? Or should we reuse/extend existing specifications?</p>
+                  <p class="issue">We need to define values for Audio Description script type(s).</p>
+                </li>
+              </ul>
+              <pre class="example">
+&lt;tt xmlns=&quot;http://www.w3.org/ns/ttml&quot; 
+    xmlns:ttp=&quot;http://www.w3.org/ns/ttml#parameter&quot; 
+    xmlns:tts=&quot;http://www.w3.org/ns/ttml#styling&quot; 
+    xmlns:ttm=&quot;http://www.w3.org/ns/ttml#metadata&quot; 
+    xmlns:dapt=&quot;http://www.w3.org/ns/ttml/profile/dapt&quot; 
+    xml:lang=&quot;en&quot; 
+    ttp:contentProfiles=&quot;http://www.w3.org/ns/ttml/profile/dapt&quot;&gt;
+  &lt;head&gt;
+    &lt;metadata ttm:role=&quot;x-DUBBING_DIALOGUE_LIST&quot;/&gt;
+  &lt;/head&gt;
+  ...
+&lt;/tt&gt;          
+              </pre>
+        </p>
+
+        <p>For each <a>Character</a>, the following constraints apply:
+          <ul>
+            <li>There shall be a <code>ttm:agent</code> element, child of the <code>metadata</code> element, with the following constraints:
+              <ul>
+                <li>The <code>type</code> attribute shall be set to <code>character</code>.</li>
+                <li>The <code>id</code> attribute shall be present and set to the <a>Character Identifier</a>.</li>
+                <li>It shall contain a <code>ttm:name</code> element with its <code>type</code> attribute set to <code>alias</code> and its content set to the <a>Character Name</a>.</li>
+                <li>If the <a>Character</a> has a <a>Talent Name</a> property, the following applies:
+                  <ul>
+                    <li>Another <code>ttm:agent</code> shall be added to the <code>metadata</code> element, with the following:
+                      <ul>
+                        <li>its <code>type</code> attribute shall be set to <code>person</code></li>
+                        <li>its <code>xml:id</code> attribute shall be set. Its value SHOULD be derived from the <a>Character Identifier</a></li>
+                        <li>it shall have a <code>ttm:name</code> child element whose <code>type</code> shall be set to <code>full</code> and its content set to the <a>Talent Name</a></li>
+                      </ul>
+                    </li>
+                    <li>the first <code>ttm:agent</code> shall have a <code>ttm:actor</code> child, with its <code>agent</code> attribute set to the <code>xml:id</code> of the first <code>ttm:agent</code>.</li>
+                  </ul>
+                  <pre class="example">
+&lt;medadata&gt;
+  &lt;ttm:agent type=&quot;character&quot; xml:id=&quot;character_b89ea6a2-bcfa-46b4-a835-fc13081672e7&quot;&gt;
+    &lt;ttm:name type=&quot;alias&quot;&gt;BOOKER&lt;/ttm:name&gt;
+    &lt;ttm:actor agent=&quot;actor_b89ea6a2-bcfa-46b4-a835-fc13081672e7&quot;/&gt;
+  &lt;/ttm:agent&gt;
+  &lt;ttm:agent type=&quot;person&quot; xml:id=&quot;actor_b89ea6a2-bcfa-46b4-a835-fc13081672e7&quot;&gt;
+    &lt;ttm:name type=&quot;full&quot;&gt;Matthias Schoenaerts&lt;/ttm:name&gt;
+  &lt;/ttm:agent&gt;
+  &lt;ttm:agent type=&quot;character&quot; xml:id=&quot;character_dc56a9b2-81d6-4415-8d87-ec06450c5313&quot;&gt;
+    &lt;ttm:name type=&quot;alias&quot;&gt;DESK CLERK&lt;/ttm:name&gt;
+  &lt;/ttm:agent&gt;
+&lt;/medadata&gt;
+                  </pre>
+                </li>
+              </ul>
+            </li>
+            <li>There may be a <code>style</code> element in the <code>styling</code> element providing the styles applicable to <a>Events</a> from this <a>Character</a>. The <code>xml:id</code> shall be present and represents the <a>Character Identifier</a>. Any style attribute from [[ttml-imsc1.1]] may be present. A <code>ttm:agent</code> attribute may be present to link the <code>ttm:agent</code> element representing the <a>Character</a>.
+            <pre class="example">
+&lt;styling&gt;
+  &lt;style xml:id=&quot;style_0085df18-5020-4473-a312-fe4b233bad65&quot;
+         ttm:agent=&quot;character_0085df18-5020-4473-a312-fe4b233bad65&quot;
+         tts:color=&quot;#FFFFFF&quot; tts:backgroundColor=&quot;#8F42AD&quot;/&gt;         
+&lt;/styling&gt;     
+            </pre>
+            </li>
+          </ul>
+        </p>
+
+        <p>For each <a>Event</a>, the following constraints apply. There shall be one <code>div</code> element, with the following constraints:
+          <ul>
+            <li>The <code>xml:id</code> attribute shall be present containing the <a>Event Identifier</a>.</li>
+            <li>The <code>style</code> attribute may be present. If present, it may contain a reference to the <code>style</code> defining the <a>Character Style</a>. Additional style references or inline styles may be used.</li>
+            <li>The <code>begin</code> and <code>end</code> attributes shall be present and correspond to the <a>Start</a> and <a>End</a> of the <a>Event</a>.</li>
+            <li>The <code>ttm:agent</code> attribute may be present and if present, shall contain a reference to the <code>ttm:agent</code> representing the <a>Character</a>.</li>
+            <li>It may contain a <code>metadata</code> element with the following constraints:
+              <ul>
+                <li>The following attribute corresponding to the <a>On Screen</a> <a>Event</a> property may be present:
+                  <div class="exampleInner">
+                    <pre class="nohighlight">
+dapt:onScreen
+  : "ON" 
+  | "OFF"
+  | "ON_OFF"
+  | "OFF_ON"
+                    </pre>
+                  </div>
+                  <p class="issue">Should we use a ttm:role attribute for that instead?</p>
+                </li>
+                <li>A <code>ttm:desc</code> element may be present representing the <a>Event</a> <a>Description</a>.</li>
+                <p class="issue">How to add <a>Event type</a> information? ttm:role? What if already used by the onscreen annotation?</p>
+              </ul>
+            </li>
+            <li>It shall contain one <code>p</code> element whose text content is the <a>Text</a> of the <a>Event</a> and shall have an <code>xml:lang</code> attribute corresponding to the <a>Event</a> <a>Text Language</a>. The text content may use TTML markup to represent the <a>Text Style</a>.</li>
+            <li>It may contain one <code>p</code> element whose text content is the <a>Contextual Text</a> of the <a>Event</a>. If present, it shall have an <code>xml:lang</code> attribute corresponding to the <a>Event</a> <a>Contextual Text Language</a>. It shall also have a <code>ttm:role</code> attribute whose value is <code>x-context</code>. The text content may use TTML markup to represent the <a>Contextual Text Style</a>.</li>
+            <div class="note">The text content of the paragraph may contain TTML elements such as <code>span</code> or TTML attributes such as <code>tts:ruby</code> used to alter the layout or styling of each paragraph</div>
+          </ul>
+          <pre class="example">
+&lt;div xml:id=&quot;event_0130df43-5443-4206-b1d9-d331e42b5a86&quot;
+     begin=&quot;9663f&quot; end=&quot;9682f&quot; 
+     style=&quot;style_bb89e9c6-4453-4402-a376-5a496cfb9839&quot;
+     ttm:agent=&quot;character_bb89e9c6-4453-4402-a376-5a496cfb9839&quot;
+  &lt;metadata dapt:onScreen=&quot;ON&quot;&gt;
+    &lt;desc&gt;Scene 1&lt;/desc&gt;
+  &lt;/metadata&gt;
+  &lt;p xml:lang=&quot;pt-BR&quot; &gt;Voc&#xea; vai ter.&lt;/p&gt;
+  &lt;p xml:lang=&quot;fr&quot; ttm:role=&quot;x-context&quot;&gt;Bah, il arrive.&lt;/p&gt;
+&lt;/div&gt;
+          </pre>
+        </p>
+      </section>
+      <section>
+        <h4>Layout</h4>
+        <p>This specification does not put additional constraints on the layout and rendering features defined in [[!ttml-imsc1.1]].</p>
+        <div class="note">Layout of the paragraphs may rely on the default TTML region (i.e. if no <code>layout</code> is used in the <code>head</code> element) or may be explicit by the use of the <code>region</code> attribute, if a <code>region</code> element is defined in a <code>layout</code> element in the <code>head</code> element.</div>
+      </section>
+  </section>
+
+  <section id="acknowledgements">
+      <h2>Acknowledgments</h2>
+      The editors would like to thank XXX for their contributions to this specification.
+  </section>
+
+  <section id="examples" class="appendix">
+      <h2>Examples</h2>
+      <section>
+        <h3>Dubbing - Original Language Dialogue List</h3>
+        <pre>
+&lt;?xml version=&quot;1.1&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
+&lt;tt ttp:contentProfiles=&quot;http://www.w3.org/ns/ttml/profile/dapt&quot; ttp:frameRate=&quot;24&quot; xml:lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/ns/ttml&quot; xmlns:nttm=&quot;http://www.netflix.com/ns/ttml#metadata&quot; xmlns:dapt=&quot;http://www.w3.org/ns/ttml/profile/dapt&quot; xmlns:ttm=&quot;http://www.w3.org/ns/ttml#metadata&quot; xmlns:ttp=&quot;http://www.w3.org/ns/ttml#parameter&quot; xmlns:tts=&quot;http://www.w3.org/ns/ttml#styling&quot;&gt;
+  &lt;head&gt;
+    &lt;metadata ttm:role=&quot;x-DIALOGUE_LIST&quot;&gt;
+      &lt;ttm:agent type=&quot;character&quot; xml:id=&quot;character_d6407d8d-4ce7-4b8c-8709-edccbf493283&quot;&gt;
+        &lt;ttm:name type=&quot;alias&quot;&gt;TOKIO&lt;/ttm:name&gt;
+      &lt;/ttm:agent&gt;
+    &lt;/metadata&gt;
+    &lt;styling&gt;
+      &lt;style xml:id=&quot;style_d6407d8d-4ce7-4b8c-8709-edccbf493283&quot;/&gt;
+    &lt;/styling&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;div&gt;
+      &lt;p begin=&quot;51422f&quot; end=&quot;51677f&quot; style=&quot;style_d6407d8d-4ce7-4b8c-8709-edccbf493283&quot; ttm:agent=&quot;character_d6407d8d-4ce7-4b8c-8709-edccbf493283f&quot; xml:id=&quot;event_007b6128-1ba8-4f47-ad25-2719c8685de1&quot;&gt;Like all those people lacking a sense of rhythm, the Professor sat at the table, while he was thinking, what&#039;s heavier: love or death?&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/body&gt;
+&lt;/tt&gt;
+        </pre>
+      </section>
+      <section>
+        <h3>Dubbing - Translated Dialogue List</h3>
+      </section>
+      <section>
+        <h3>Dubbing - Pre-Recording Script / As-Recorded Script</h3>
+      </section>
+      <section>
+        <h3>Audio Description Script</h3>
+      </section>
+  </section>
+
+  </body>
+</html>
