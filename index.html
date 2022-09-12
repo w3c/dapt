@@ -97,7 +97,8 @@ table.coldividers td + td { border-left:1px solid gray; }
 
     <section id="scope">
       <h2>Scope</h2>
-      <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]] based on [[ttml-imsc1.1]]. This profile is intended to support dubbing and audio description workflows worldwide.
+      <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]] based on [[ttml-imsc1.1]]. This profile is intended to support dubbing and audio description workflows worldwide.</p>
+      <p class="issue" data-number="5"></p>
     </section>
 
     <section class='informative' id="introduction">
@@ -114,6 +115,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       <p>Creating audio description content is also a complex process with similar steps.</p> 
       <p class="issue" data-number="28"></p>
       <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and audio description pipeline. A DAPT file is designed to carry pertinent information for dubbing or audio description such as type of script, dialogues, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations. This specification first defines the data model (see [[[#data-model]]]) for DAPT scripts and then its representation as a TTML document with restrictions (see [[[#ttml-format]]]).</p>
+      <p class="issue" data-number="7"></p>
     </section>
 
   <section id="conformance"></section>
@@ -121,10 +123,12 @@ table.coldividers td + td { border-left:1px solid gray; }
   <section id="data-model">
       <h2>DAPT Data Model</h2>
       <p>This section specifies the data model for DAPT.</p>
+      <p class="issue" data-number="27"></p>
       <section>
         <h3>DAPT Script</h3>
         <p>A <dfn>DAPT Script</dfn> is a document resulting from an authoring workflow with the following properties: 
         </p>
+        <p class="issue" data-number="12"></p>
         <table class='simple coldividers'>
           <thead>
             <tr>
@@ -149,6 +153,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                   <li><dfn>As-recorded Dub Script</dfn>: (Dubbing Script) Represents a transcription of the output of the dubbing workflow. It may also contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context and quality verifications.</li>
                 </ul>
                 <p class="issue" data-number="11"></p>
+                <p class="issue" data-number="13"></p>
               </td>
               <td>All</td>
               <td>Mandatory</td>
@@ -174,6 +179,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             </tr>
           </tbody>
         </table>
+        <p class="issue" data-number="14"></p>
       </section>
       <section>
         <h3>Character</h3>
@@ -210,7 +216,9 @@ table.coldividers td + td { border-left:1px solid gray; }
             <tr>
               <td><dfn data-lt="Character Style">Style</dfn></td>
               <td>This is a set of styles for <a>Events</a> associated with this <a>Character</a>.
-                <p class="issue" data-number="29"></p></td>
+                <p class="issue" data-number="29"></p>
+                <p class="issue" data-number="15"></p>
+              </td>
               <td>Dubbing Scripts</td>
               <td>Optional</td>
             </tr>
@@ -266,14 +274,17 @@ table.coldividers td + td { border-left:1px solid gray; }
               <td>Mandatory</td>
             </tr>
             <tr>
-              <td><dfn>Text</dfn></td>
+              <td><dfn>Text</dfn>
+                <p class="issue" data-number="16"></p>
+              </td>
               <td>Main text content for this <a>Event</a>.</td>
               <td>All</td>
               <td>Mandatory</td>
             </tr>
             <tr>
               <td><dfn>Text Styles</dfn></td>
-              <td>Styles associated with the <a>Text</a> of this <a>Event</a>.</td>
+              <td>Styles associated with the <a>Text</a> of this <a>Event</a>.
+              <p class="issue" data-number="15"></p></td>
               <td>All</td>
               <td>Optional</td>
             </tr>
@@ -286,7 +297,10 @@ table.coldividers td + td { border-left:1px solid gray; }
               <td>Optional</td>
             </tr>
             <tr>
-              <td><dfn>Contextual Text</dfn></td>
+              <td><dfn>Contextual Text</dfn>
+                <p class="issue" data-number="16"></p>
+                <p class="issue" data-number="21"></p>
+              </td>
               <td>Representation of the <a>Text</a> in a different language. It may be used to assist in the processing of the <a>Text</a>.
                 <div class="note">For example, when a <a>Pre-Recording Dub Script</a> needs to be adjusted, having this additional text in the original language(s) could be useful.</div>
               </td>
@@ -300,7 +314,9 @@ table.coldividers td + td { border-left:1px solid gray; }
             </tr>
             <tr>
               <td><dfn>Contextual Text Styles</dfn></td>
-              <td>Styles associated with the <a>Contextual Text</a> of this <a>Event</a>.</td>
+              <td>Styles associated with the <a>Contextual Text</a> of this <a>Event</a>.
+                <p class="issue" data-number="15"></p>
+              </td>
               <td>All</td>
               <td>Optional</td>
             </tr>
@@ -314,7 +330,9 @@ table.coldividers td + td { border-left:1px solid gray; }
               <td><dfn>Description</dfn></td>
               <td>A human-readable description of the <a>Event</a>.
                 <p class="issue" data-number="30"></p></td>
-              <div class="note">It does not have to be unique for this <a>Event</a>. It may be used to identify in a human-readable way one or more <a>Events</a> that need to be processed together, e.g. in a batch recording.</div></td>
+              <p class="note">It does not have to be unique for this <a>Event</a>. It may be used to identify in a human-readable way one or more <a>Events</a> that need to be processed together, e.g. in a batch recording.</p>
+              <p class="issue" data-number="20"></p>
+            </td>
               <td>All</td>
               <td>Optional</td>
             </tr>
@@ -338,6 +356,7 @@ table.coldividers td + td { border-left:1px solid gray; }
   <section id="ttml-format">
       <h4>TTML Format</h4>
       <p>This section defines the TTML format based on the data model defined in [[[#data-model]]].</p>
+      <p class="issue" data-number="25"></p>
       <section>
         <h4>Identification and Profile Signaling</h4>
         <p>TTML documents representing DAPT Scripts shall be compliant with the Text Profile defined in [[!ttml-imsc1.1]] with the additional constraints defined in this specification.</p>
@@ -362,12 +381,14 @@ table.coldividers td + td { border-left:1px solid gray; }
               <td><code>http://www.w3.org/ns/ttml/profile/dapt#metadata</code></td>
             </tr>
           </tbody>
+          <p class="issue" data-number="22"></p>
         </table>
         <p>The namespaces defined by this specification are mutable [[namespaceState]]; all undefined names in these namespaces are reserved for future standardization by the W3C.</p>
         <p>The namespace prefix values defined above are for convenience and Document Instances MAY use any prefix value that conforms to [[!xml-names]].</p>
         <p>Other namespaces may be present, as needed and permitted by XML and TTML, use for either specific TTML attributes or elements, or for elements and attributes from other standards or proprietary languages.</p>
         <p>Implementations shall ignore elements and attributes in the DAPT namespaces that they do not recognize.</p>
         <p>Implementations shall ignore elements and attributes in non TTML-namespaces that they do not recognize.</p>
+        <p class="isssue" data-number="23"></p>
       </section>
       <section>
         <h4>Proprietary Metadata</h4>
@@ -388,6 +409,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                     <li><code>x-DUBBING_PRE_RECORDING</code> for <a>Pre-recording Dub Script</a></li>
                     <li><code>x-DUBBING_AS_RECORDED</code> for <a>As-recorded Dub Script</a></li>
                   </ul>
+                  <p class="issue" data-number="24"></p>
                   <p class="issue" data-number="32"></p>
                   <p class="issue" data-number="33"></p>
                 </li>
