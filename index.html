@@ -112,7 +112,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         </ul>
       </p>
       <p>Creating audio description content is also a complex process with similar steps.</p> 
-      <p class="issue">Improve introduction to describe audio description steps and how it relates to dubbing. Maybe reuse the diagrams from the requirements document, or link the requirements doc.</p>
+      <p class="issue" data-number="28"></p>
       <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and audio description pipeline. A DAPT file is designed to carry pertinent information for dubbing or audio description such as type of script, dialogues, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations. This specification first defines the data model (see [[[#data-model]]]) for DAPT scripts and then its representation as a TTML document with restrictions (see [[[#ttml-format]]]).</p>
     </section>
 
@@ -148,7 +148,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                   <li><dfn>Pre-recording Dub Script</dfn>: (Dubbing Script) Result of the adaptation of a <a>Translated Dialogue List</a> for better lip-sync. It may also contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context, to assist further processing.</li>
                   <li><dfn>As-recorded Dub Script</dfn>: (Dubbing Script) Represents a transcription of the output of the dubbing workflow. It may also contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context and quality verifications.</li>
                 </ul>
-                <p class="issue">Add script type(s) for audio description workflows. Should the pre-recording/as-recorded scripts be generic?</p>
+                <p class="issue" data-number="11"></p>
               </td>
               <td>All</td>
               <td>Mandatory</td>
@@ -210,7 +210,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             <tr>
               <td><dfn data-lt="Character Style">Style</dfn></td>
               <td>This is a set of styles for <a>Events</a> associated with this <a>Character</a>.
-                <p class="issue">Do they override event-level styles or the opposite?</p></td>
+                <p class="issue" data-number="29"></p></td>
               <td>Dubbing Scripts</td>
               <td>Optional</td>
             </tr>
@@ -313,7 +313,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             <tr>
               <td><dfn>Description</dfn></td>
               <td>A human-readable description of the <a>Event</a>.
-                <p class="issue">Should we rename it to avoid confusion with the "audio description" text or clarify that the "audio description" text (to be spoken) is stored in the "Text" property?</p></td>
+                <p class="issue" data-number="30"></p></td>
               <div class="note">It does not have to be unique for this <a>Event</a>. It may be used to identify in a human-readable way one or more <a>Events</a> that need to be processed together, e.g. in a batch recording.</div></td>
               <td>All</td>
               <td>Optional</td>
@@ -372,7 +372,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       <section>
         <h4>Proprietary Metadata</h4>
         <p>Many dubbing and audio description workflows may need to annotate events or documents with proprietary metadata. This SHOULD be done, as permitted by [[!ttml-imsc1.1]], using foreign elements and attributes, in vendor-specific namespaces.</p>
-        <p class="issue">It may be useful to provide guidance on how to add popular metadata, e.g. title, episode information (title, season, number), ...</p> 
+        <p class="issue" data-number="31"></p> 
       </section>
       <section>
         <h4>Document structure</h4>
@@ -388,8 +388,8 @@ table.coldividers td + td { border-left:1px solid gray; }
                     <li><code>x-DUBBING_PRE_RECORDING</code> for <a>Pre-recording Dub Script</a></li>
                     <li><code>x-DUBBING_AS_RECORDED</code> for <a>As-recorded Dub Script</a></li>
                   </ul>
-                  <p class="issue">Should these values be defined in this specification? Or should we reuse/extend existing specifications?</p>
-                  <p class="issue">We need to define values for Audio Description script type(s).</p>
+                  <p class="issue" data-number="32"></p>
+                  <p class="issue" data-number="33"></p>
                 </li>
               </ul>
               <pre class="example">
@@ -473,10 +473,12 @@ dapt:onScreen
   | "OFF_ON"
                     </pre>
                   </div>
-                  <p class="issue">Should we use a ttm:role attribute for that instead?</p>
+                  <p class="issue" data-number="34"></p>
                 </li>
                 <li>A <code>ttm:desc</code> element may be present representing the <a>Event</a> <a>Description</a>.</li>
-                <p class="issue">How to add <a>Event type</a> information? ttm:role? What if already used by the onscreen annotation?</p>
+                <li><a>Event Type</a>
+                  <p class="issue" data-number="35"></p>
+                </li>
               </ul>
             </li>
             <li>It shall contain one <code>p</code> element whose text content is the <a>Text</a> of the <a>Event</a> and shall have an <code>xml:lang</code> attribute corresponding to the <a>Event</a> <a>Text Language</a>. The text content may use TTML markup to represent the <a>Text Style</a>.</li>
