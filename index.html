@@ -125,25 +125,13 @@ table.coldividers td + td { border-left:1px solid gray; }
   <section id="data-model">
       <h2>DAPT Data Model</h2>
       <p>This section specifies the data model for DAPT.</p>
-      <p class="issue" data-number="27"></p>
+      <p class="issue" data-number="12"></p>
       <section>
         <h3>DAPT Script</h3>
-        <p>A <dfn>DAPT Script</dfn> is a document resulting from an authoring workflow with the following properties: 
-        </p>
-        <p class="issue" data-number="12"></p>
-        <table class='simple coldividers'>
-          <thead>
-            <tr>
-              <th>Property Name</th>
-              <th>Description</th>
-              <th>Applicability (Dubbing Scripts, Audio Description Scripts, All)</th>
-              <th>Mandatory/Optional</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><dfn>Script Type</dfn></td>
-              <td>
+          <p>A <dfn>DAPT Script</dfn> is a document resulting from an authoring workflow with the following properties.</p>
+          <section>
+            <h4>Script Type</h4>
+            <p>The <dfn>Script Type</dfn> describes the type of document with one of the following values:
                 <ul>
                   <li><dfn>Original Language Dialogue List</dfn>: (Dubbing Script) Literal transcription of the dialogues and on-screen text in their original spoken/written language(s).
                   <aside class="example">If a movie contains dialogues in English and Hebrew, the <a>Original Language Dialogue List</a> will contain some <a>Events</a> in English and some in Hebrew. None of the events are translated.</aside>
@@ -154,207 +142,133 @@ table.coldividers td + td { border-left:1px solid gray; }
                   <li><dfn>Pre-recording Dub Script</dfn>: (Dubbing Script) Result of the adaptation of a <a>Translated Dialogue List</a> for better lip-sync. It may also contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context, to assist further processing.</li>
                   <li><dfn>As-recorded Dub Script</dfn>: (Dubbing Script) Represents a transcription of the output of the dubbing workflow. It may also contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context and quality verifications.</li>
                 </ul>
-                <p class="issue" data-number="11"></p>
-                <p class="issue" data-number="13"></p>
-              </td>
-              <td>All</td>
-              <td>Mandatory</td>
-            </tr>
-            <tr>
-              <td><dfn>Primary Language</dfn></td>
-              <td>Default language for the <a>Text</a> content of <a>Events</a>. 
-                <p class="note">When multiple languages are used in a script, it can correspond to the language of the majority of events, to the language being spoken for the longest duration, or to the language arbitrarily chosen by the author.</p></td>
-              <td>All</td>
-              <td>Mandatory</td>
-            </tr>
-            <tr>
-              <td><a>Events</a></td>
-              <td>List of timed text events corresponding to dialogues, on screen text, or descriptions.</td>
-              <td>All</td>
-              <td>Mandatory</td>
-            </tr>
-            <tr>
-              <td><a>Characters</a></td>
-              <td>List of characters referenced in the events</td>
-              <td>Dubbing Scripts</td>
-              <td>Mandatory (for Dubbing Scripts)</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="issue" data-number="14"></p>
+              </p>
+              <p>A <a>DAPT script</a> MUST specify a <a>Script Type</a>.</p>
+              <p class="issue" data-number="11"></p>
+              <p class="issue" data-number="13"></p>
+          </section>
+          <section>
+            <h4>Primary Language</h4>
+            <p>The <dfn>Primary Language</dfn> represents the default language for the <a>Text</a> content of <a>Events</a>.</p>
+            <p class="note">When multiple languages are used in a script, it can correspond to the language of the majority of events, to the language being spoken for the longest duration, or to the language arbitrarily chosen by the author.</p>
+            <p>A DAPT script MUST specify a <a>Primary Language</a>.</p>
+          </section>
+
+          <section>
+            <h4>Events</h4>
+            <p>The <dfn>Events</dfn> part of the model provides the list of timed text events corresponding to dialogues, on screen text, or descriptions. to  the default language for the <a>Text</a> content of <a>Events</a>.</p>
+            <p>A DAPT script MUST specify an <a>Events</a> list.</p>
+          </section>
+
+          <section>
+            <h4>Characters</h4>
+            <p>The <dfn>Characters</dfn> part of the model provides the list of characters referenced in the <a>Events</a>.</p>
+            <p>Dubbing scripts MUST specify a <a>Characters</a> list.</p>
+          </section>
+
+          <p class="issue" data-number="14"></p>
       </section>
       <section>
         <h3>Character</h3>
-        <p>A <dfn>Character</dfn> has the following properties: 
-        </p>
-        <table class='simple coldividers'>
-          <thead>
-            <tr>
-              <th>Property Name</th>
-              <th>Description</th>
-              <th>Applicability (Dubbing Scripts, Audio Description Scripts, All)</th>
-              <th>Mandatory/Optional</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><dfn data-lt="Character Identifier">Identifier</dfn></td>
-              <td>A unique identifier for the <a>Character</a></td>
-              <td>Dubbing Scripts</td>
-              <td>Mandatory</td>
-            </tr>
-            <tr>
-              <td><dfn data-lt="Character Name">Name</dfn></td>
-              <td>This is the name of the character used in <a>Events</a></td>
-              <td>Dubbing Scripts</td>
-              <td>Mandatory</td>
-            </tr>
-            <tr>
-              <td><dfn data-lt="Character Talent Name">Talent Name</dfn></td>
-              <td>This is the name of the actor speaking dialogues for this <a>Character</a></td>
-              <td>Dubbing Scripts</td>
-              <td>Optional</td>
-            </tr>
-            <tr>
-              <td><dfn data-lt="Character Style">Style</dfn></td>
-              <td>This is a set of styles for <a>Events</a> associated with this <a>Character</a>.
-                <p class="issue" data-number="29"></p>
-                <p class="issue" data-number="15"></p>
-              </td>
-              <td>Dubbing Scripts</td>
-              <td>Optional</td>
-            </tr>
-          </tbody>
-        </table>
+        <p>A <dfn>Character</dfn> has the following properties.</p>
+
+        <section>
+          <h4>Character Identifier</h4>
+          <p>Each <a>Character</a> in a Dubbing Script MUST have an <dfn data-lt="Character Identifier">Identifier</dfn>.</p>
+        </section>
+
+        <section>
+          <h4>Character Name</h4>
+          <p>Each <a>Character</a> in a Dubbing Script MUST have a <dfn data-lt="Character Name">Name</dfn>. This is the name of the character used in <a>Events</a>.</p>
+        </section>
+
+        <section>
+          <h4>Talent Name</h4>
+          <p>Each <a>Character</a> in a Dubbing Script MAY have at most one <dfn data-lt="Character Talent Name">Talent Name</dfn>. This is the name of the actor speaking dialogues for this <a>Character</a>.</p>
+        </section>
+
+        <section>
+          <h4>Character Style</h4>
+          <p>Each <a>Character</a> in a Dubbing Script MAY have at most one <dfn data-lt="Character Style">Style</dfn>. This is a set of styles for <a>Events</a> associated with this <a>Character</a>.</p>
+          <p class="issue" data-number="29"></p>
+          <p class="issue" data-number="15"></p>
+        </section>
+
       </section>
+
       <section>
         <h3>Event</h3>
-        <p>An <dfn>Event</dfn> has the following properties: 
-        </p>
-        <table class='simple coldividers'>
-          <thead>
-            <tr>
-              <th>Property Name</th>
-              <th>Description</th>
-              <th>Applicability (Dubbing Scripts, Audio Description Scripts, All)</th>
-              <th>Mandatory/Optional</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><dfn>Event Identifier</dfn></td>
-              <td>Unique identifier for the <a>Event</a></td>
-              <td>All</td>
-              <td>Mandatory</td>
-            </tr>
-            <tr>
-              <td><dfn>Event Type</dfn></td>
-              <td>Used to identify if the <a>Event</a> represents spoken text or on screen text, and in the later case, the type of on-screen text (title, credit, location, ...).</p>
-              </td>
-              <td>Dubbing Scripts</td>
-              <td>Optional</td>
-            </tr>
-            <tr>
-              <td>Character Identifier</td>
-              <td>One ore more identifiers of <a>Character</a> involved in this <a>Event</a>.
-                <p class="note">While typically, an <a>Event</a> corresponds to one single character, there are cases where multiple characters can speak the same text at the same time.</p>
-              </td>
-              <td>Dubbing Scripts</td>
-              <td>Mandatory for Dubbing Scripts</td>
-            </tr>
-            <tr>
-              <td><dfn>Start</dfn></td>
-              <td>Start of the event</td>
-              <td>All</td>
-              <td>Mandatory</td>
-            </tr>
-            <tr>
-              <td><dfn>End</dfn></td>
-              <td>End of the event. 
-                <p class="note">Typically <a>Events</a> do not overlap in time. However, there may be cases where they do, e.g. when different <a>Characters</a> speak different text at the same time.</p></td>
-              <td>All</td>
-              <td>Mandatory</td>
-            </tr>
-            <tr>
-              <td><dfn>Text</dfn>
-                <p class="issue" data-number="16"></p>
-              </td>
-              <td>Main text content for this <a>Event</a>.</td>
-              <td>All</td>
-              <td>Mandatory</td>
-            </tr>
-            <tr>
-              <td><dfn>Text Styles</dfn></td>
-              <td>Styles associated with the <a>Text</a> of this <a>Event</a>.
-              <p class="issue" data-number="15"></p></td>
-              <td>All</td>
-              <td>Optional</td>
-            </tr>
-            <tr>
-              <td><dfn>Text Language</dfn></td>
-              <td>Language of the <a>Text</a> content.<br>If not present, the <a>Text</a> is assumed to be in the Script <a>Primary Language</a>.
-                <div class="note">In <a>Original Language Dialogue List</a>, <a>Events</a> may be in different languages.</div>
-              </td>
-              <td>All</td>
-              <td>Optional</td>
-            </tr>
-            <tr>
-              <td><dfn>Contextual Text</dfn>
-                <p class="issue" data-number="16"></p>
-                <p class="issue" data-number="21"></p>
-              </td>
-              <td>Representation of the <a>Text</a> in a different language. It may be used to assist in the processing of the <a>Text</a>.
-                <div class="note">For example, when a <a>Pre-Recording Dub Script</a> needs to be adjusted, having this additional text in the original language(s) could be useful.</div>
-              </td>
-              <td>Dubbing Scripts</td>
-              <td>
-                <ul>
-                  <li>Not present in <a>Original Language Dialogue List</a>.</li>
-                  <li>Optional in other types of Dubbing Scripts.</li>
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td><dfn>Contextual Text Styles</dfn></td>
-              <td>Styles associated with the <a>Contextual Text</a> of this <a>Event</a>.
-                <p class="issue" data-number="15"></p>
-              </td>
-              <td>All</td>
-              <td>Optional</td>
-            </tr>
-            <tr>
-              <td><dfn>Contextual Text Language</dfn></td>
-              <td>Language of the <a>Contextual Text</a> content.</td>
-              <td>Dubbing Scripts</td>
-              <td>Mandatory if <a>Contextual Text</a> is present</td>
-            </tr>
-            <tr>
-              <td><dfn>Description</dfn></td>
-              <td>A human-readable description of the <a>Event</a>.
-                <p class="issue" data-number="30"></p></td>
-              <p class="note">It does not have to be unique for this <a>Event</a>. It may be used to identify in a human-readable way one or more <a>Events</a> that need to be processed together, e.g. in a batch recording.</p>
-              <p class="issue" data-number="20"></p>
-            </td>
-              <td>All</td>
-              <td>Optional</td>
-            </tr>
-            <tr>
-              <td><dfn>On Screen</dfn></td>
-              <td>An annotation indicating the position of the <a>character</a> during the <a>Event</a>:
-                <ul>
-                  <li>ON - the <a>character</a> is on screen for the entire duration</li>
-                  <li>OFF - the <a>character</a> is off screen for the entire duration</li>
-                  <li>ON_OFF - the <a>character</a> starts on screen, but goes off screen at some point</li>
-                  <li>OFF_ON - the <a>character</a> starts off screen, but goes on screen at some point</li>
-                </ul>
-              </td>
-              <td>Dubbing Script</td>
-              <td>Optional</td>
-            </tr>
-          </tbody>
-        </table>
+        <p>An <dfn>Event</dfn> has the following properties.</p>
+
+        <section>
+          <h4>Event Identifier</h4>
+          <p>Each <a>Event</a> MUST have a unique <dfn>Event Identifier</dfn>.</p>
+        </section>
+
+        <section>
+          <h4>Event Type</h4>
+          <p>Each <a>Event</a> in a Dubbing Script MAY have at most one <dfn>Event Type</dfn> used to identify if the <a>Event</a> represents spoken text or on screen text, and in the later case, the type of on-screen text (title, credit, location, ...).</p>
+        </section>
+
+        <section>
+          <h4>Character Identifier</h4>
+          <p>Each <a>Event</a> in a Dubbing Script MUST have one or more identifiers of <a>Character</a> involved in this <a>Event</a>.</p>
+          <p class="note">While typically, an <a>Event</a> corresponds to one single character, there are cases where multiple characters can speak the same text at the same time.</p>
+        </section>
+
+        <section>
+          <h4>Start</h4>
+          <p>Each <a>Event</a> MUST have a <dfn>Start</dfn> property.</p>
+        </section>
+
+        <section>
+          <h4>End</h4>
+          <p>Each <a>Event</a> MUST have a <dfn>End</dfn> property.</p>
+          <p class="note">Typically <a>Events</a> do not overlap in time. However, there may be cases where they do, e.g. when different <a>Characters</a> speak different text at the same time.</p>
+        </section>
+
+        <section>
+          <h4>Text</h4>
+          <p>Each <a>Event</a> MUST have a <dfn>Text</dfn> property, which provides the main text content for this <a>Event</a>.</p>
+          <p>It MAY have a <dfn>Text Styles</dfn> property, which provides styles associated with the <a>Text</a> of this <a>Event</a>.</p>
+          <p class="issue" data-number="15"></p>
+          <p>It MAY have a <dfn>Text Language</dfn> property. If not present, the <a>Text</a> is assumed to be in the Script <a>Primary Language</a>.</p>
+          <p class="note">In <a>Original Language Dialogue List</a>, <a>Events</a> may be in different languages.</p>
+        </section>
+
+        <section>
+          <h4>Contextual Text</h4>
+          <p>Each <a>Event</a> MAY have a <dfn>Contextual Text</dfn> property, which is a representation of the <a>Text</a> in a different language. It may be used to assist in the processing of the <a>Text</a>.
+          <p class="note">For example, when a <a>Pre-Recording Dub Script</a> needs to be adjusted, having this additional text in the original language(s) could be useful.</p>
+          <p class="issue" data-number="16"></p>
+          <p class="issue" data-number="21"></p>
+          <p>It MAY have a <dfn>Contextual Text Styles</dfn> property, which provides styles associated with the <a>Contextual Text</a> of this <a>Event</a>.</p>
+          <p class="issue" data-number="15"></p>
+          <p>It MAY have a <dfn>Contextual Text Language</dfn> property, representing the language of the <a>Contextual Text</a> content.</p>
+        </section>
+
+        <section>
+          <h4>Description</h4>
+          <p>Each <a>Event</a> MAY have a <dfn>Description</dfn> property, as a human-readable description of the <a>Event</a>. </p>
+          <p class="issue" data-number="30"></p>
+          <p class="note">It does not have to be unique for this <a>Event</a>. It may be used to identify in a human-readable way one or more <a>Events</a> that need to be processed together, e.g. in a batch recording.</p>
+          <p class="issue" data-number="20"></p>
+        </section>
+
+        <section>
+          <h4>On Screen</h4>
+          <p>Each <a>Event</a> MAY have a <dfn>On Screen</dfn> property, which is an annotation indicating the position of the <a>character</a> during the <a>Event</a>:
+            <ul>
+              <li>ON - the <a>character</a> is on screen for the entire duration</li>
+              <li>OFF - the <a>character</a> is off screen for the entire duration</li>
+              <li>ON_OFF - the <a>character</a> starts on screen, but goes off screen at some point</li>
+              <li>OFF_ON - the <a>character</a> starts off screen, but goes on screen at some point</li>
+            </ul>as a human-readable description of the <a>Event</a>. 
+          </p>
+        </section>
       </section>
     </section>
+
   <section id="ttml-format">
       <h4>TTML Format</h4>
       <p>This section defines the TTML format based on the data model defined in [[[#data-model]]].</p>
