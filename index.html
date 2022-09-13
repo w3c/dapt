@@ -108,7 +108,8 @@ table.coldividers td + td { border-left:1px solid gray; }
       <h2>Scope</h2>
       <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]] based on [[ttml-imsc1.1]].
         This profile is intended to support dubbing and audio description workflows worldwide,
-        and to meet the requirements defined in [[[?DAPT-REQS]]].
+        to meet the requirements defined in [[[?DAPT-REQS]]], and to permit the visual presentation
+        features within [[ttml-imsc1.1]].
       <p class="issue" data-number="5"></p>
     </section>
 
@@ -159,7 +160,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         <dfn>Audio description</dfn>	An audio rendition of a <a>Description</a> or a set of <a>Descriptions</a>.
       </p>
       <p>
-        <dfn data-lt="Description|Descriptions">Description</dfn>  A set of words that describe an aspect of the programme presentation, suitable for rendering into audio by means of vocalisation and recording or used as a <a>Text Alternative</a> source for speech to text translation.
+        <dfn data-lt="Description|Descriptions">Description</dfn>  A set of words that describe an aspect of the programme presentation, suitable for rendering into audio by means of vocalisation and recording or used as a <a>Text Alternative</a> source for text to speech translation.
       </p>
       <p>
         <dfn data-cite="ttml2#terms-default-region">Default Region</dfn> See Section 11.3.1.1 at [][TTML2]].
@@ -434,18 +435,19 @@ table.coldividers td + td { border-left:1px solid gray; }
       <section id="foreign-elements-and-attributes">
         <h3>Foreign Element and Attributes</h3>
         <p>
-          A Document Instance MAY contain elements and attributes that are neither specifically permitted nor forbidden by a profile.
-        </p>
-        <p>
-          A transformation processor SHOULD preserve such elements or attributes whenever possible.
+          A <a>Document Instance</a> MAY contain elements and attributes that are neither specifically permitted nor forbidden by a profile.
         </p>
         <p class ="note">
-          Document Instances remain subject to the content conformance requirements specified at Section 3.1 of [[TTML2]].
+          <a>Document Instances</a> remain subject to the content conformance requirements specified at Section 3.1 of [[TTML2]].
           In particular, a Document Instance can contain elements and attributes not in any TT namespace, i.e. in foreign namespaces, since such elements and attributes are pruned by the algorithm at Section 4 of [[TTML2]] prior to evaluating content conformance.
         </p>
         <p class ="note">
           For validation purposes it is good practice to define and use a content specification for all foreign namespace elements and attributes used within a Document Instance.
         </p>
+        <p>
+          A <a>transformation processor</a> SHOULD preserve such elements or attributes whenever possible.
+        </p>
+        <p class="ednote">Do we need to say that a presentation processor may ignore foreign vocab?</p>
       </section>
       <section id="namespaces">
         <h3>Namespaces</h3>
@@ -510,16 +512,21 @@ table.coldividers td + td { border-left:1px solid gray; }
       <section id="related-video-object-section">
         <h3>Related Video Object</h3>
         <p>
-          A Document Instance MAY be associated with a <a>Related Video Object</a>.
+          A <a>Document Instance</a> MAY be associated with a <a>Related Video Object</a>.
         </p>
         <p class="note">
-          While this specification contains specific provisions when a Document Instance is associated with a <a>Related Video Object</a>, it does not prevent the use of a Document Instance with other kinds of Related Media Object, e.g. an audio only object.
+          While this specification contains specific provisions when a <a>Document Instance</a> is associated with a <a>Related Video Object</a>, it does not prevent the use of a Document Instance with other kinds of Related Media Object, e.g. an audio only object.
         </p>
       </section>
       <section id="synchronization-section">
         <h3>Synchronization</h3>
+        <p class="ednote">Check if we need this, and if we do, rework for audio - e.g. relate to audio sample, or other quantisation units?</p>
         <p>
-          Each intermediate synchronic document of the Document Instance is intended to be presented (audible) starting on a specific frame and removed (inaudible) by a specific frame of the Related Video Object.
+          Each intermediate synchronic document of the Document Instance is intended to be rendered starting on a specific frame and removed by a specific frame of the Related Video Object.
+        </p>
+        <p class="note">In the context of this specification rendering could be visual presentation of text,
+          for example to show an actor what words to speak, or could be audible playback of an audio resource,
+          or could be physical or haptic, such as a Braille display.
         </p>
         <p>
           When mapping a media time expression M to a frame F of a Related Video Object (or Related Media Object), e.g. for the purpose of mixing audio sources signalled by a Document Instance into the main program audio of the <a>Related Video Object</a>, the presentation processor MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
@@ -536,9 +543,6 @@ table.coldividers td + td { border-left:1px solid gray; }
       </section>
       <section id="profile-signaling-section">
         <h3>Profile Signaling</h3>
-        <p>
-          The <code>ttp:profile</code> attribute SHOULD be present on the <code>tt</code> element and equal to the designator of the DAPT 1.0 profile to which the Document Instance conforms.
-        </p>
         <p>TTML documents representing DAPT Scripts MUST specify a <code>ttp:contentProfiles</code> attribute
           on the <code>tt</code> element with one value equal to the designator of the <a>DAPT 1.0</a> profile
           to which the Document Instance conforms.
@@ -570,6 +574,11 @@ table.coldividers td + td { border-left:1px solid gray; }
         <p>
           See <a href="#conformance" class="sec-ref">Conformance</a> for a definition of <em>permitted</em>, <em>prohibited</em> and <em>optional</em>.
         </p>
+        <p class="ednote">Intent is to make it as easy as possible to transform a Document Instance into
+          IMSC, so we need to check that there are no IMSC permitted features that we prohibit, or if there
+          are, then we can explain the reason.
+        </p>
+        <p class="ednote">Editorial task: go through this list of features and check the disposition of each. IMSC-only features should be optional.</p>
         <table class="simple">
           <tbody>
             <tr>
@@ -1145,7 +1154,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <li>The following attribute corresponding to the <a>On Screen</a> <a>Event</a> property may be present:
                   <div class="exampleInner">
                     <pre class="nohighlight">
-dapt:onScreen
+daptm:onScreen
   : "ON" 
   | "OFF"
   | "ON_OFF"
@@ -1169,7 +1178,7 @@ dapt:onScreen
      begin=&quot;9663f&quot; end=&quot;9682f&quot; 
      style=&quot;style_bb89e9c6-4453-4402-a376-5a496cfb9839&quot;
      ttm:agent=&quot;character_bb89e9c6-4453-4402-a376-5a496cfb9839&quot;
-  &lt;metadata dapt:onScreen=&quot;ON&quot;&gt;
+  &lt;metadata daptm:onScreen=&quot;ON&quot;&gt;
     &lt;desc&gt;Scene 1&lt;/desc&gt;
   &lt;/metadata&gt;
   &lt;p xml:lang=&quot;pt-BR&quot; &gt;Voc&#xea; vai ter.&lt;/p&gt;
