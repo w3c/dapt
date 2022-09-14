@@ -124,9 +124,21 @@ table.coldividers td + td { border-left:1px solid gray; }
           <li>Adapting the translation to the dubbing and subtitling specifications; ex. matching the actor’s lip movements in the case of dubs and considering reading speeds and shot changes.</li>
         </ul>
       </p>
+      <p>The result of creating a dubbing script can be useful as a starting point for creation of subtitles or closed captions in alternate languages;
+        This specification is designed to facilitate conversion to [[ttml-imsc1.1]] documents,
+        for example by permitting IMSC styling syntax to be carried in DAPT documents.
+      </p>
       <p>Creating audio description content is also a complex process with similar steps.</p> 
+      <p>
+        <a>Audio Description</a>, also known as Video Description, is an audio service to assist viewers who can not fully see a visual presentation
+        to understand the content, usually achieved by mixing a ‘<a>description</a>’ audio track
+        with the <a>main programme audio</a>, at moments when this does not clash with dialogue, to deliver an <a>audio description mixed audio track</a>.
+        More information about what <a>Audio Description</a> is and how it works can be found at [[WHP051]].
+      </p>
       <p class="issue" data-number="28"></p>
-      <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and audio description pipeline. A DAPT file is designed to carry pertinent information for dubbing or audio description such as type of script, dialogues, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations. This specification first defines the data model (see [[[#data-model]]]) for DAPT scripts and then its representation as a TTML document with restrictions (see [[[#ttml-format]]]).</p>
+      <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and audio description pipeline.
+        A DAPT file is designed to carry pertinent information for dubbing or audio description such as type of script, dialogues, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations.
+        This specification first defines the data model (see [[[#data-model]]]) for DAPT scripts and then its representation as a TTML document with restrictions (see [[[#ttml-format]]]).</p>
       <p class="issue" data-number="7"></p>
     </section>
 
@@ -161,9 +173,6 @@ table.coldividers td + td { border-left:1px solid gray; }
       </p>
       <p>
         <dfn data-lt="Description|Descriptions">Description</dfn>  A set of words that describe an aspect of the programme presentation, suitable for rendering into audio by means of vocalisation and recording or used as a <a>Text Alternative</a> source for text to speech translation.
-      </p>
-      <p>
-        <dfn data-cite="ttml2#terms-default-region">Default Region</dfn> See Section 11.3.1.1 at [][TTML2]].
       </p>
       <p>
         <dfn data-lt="Document Instance|Document Instances" data-cite="ttml2#terms-document-instance">Document Instance</dfn> As defined by [[TTML2]].
