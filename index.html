@@ -172,6 +172,9 @@ table.coldividers td + td { border-left:1px solid gray; }
         <dfn>Audio description</dfn>	An audio rendition of a <a>Description</a> or a set of <a>Descriptions</a>.
       </p>
       <p>
+        <dfn>Audio description mixed audio track</dfn>  The output of an audio mixer incorporating the main programme audio and the audio description.
+      </p>
+      <p>
         <dfn data-lt="Description|Descriptions">Description</dfn>  A set of words that describe an aspect of the programme presentation, suitable for rendering into audio by means of vocalisation and recording or used as a <a>Text Alternative</a> source for text to speech translation.
       </p>
       <p>
@@ -191,6 +194,9 @@ table.coldividers td + td { border-left:1px solid gray; }
       </p>
       <p>
         <dfn data-cite="ttml2#style-value-lwsp">Linear White-Space</dfn> See Section 2.3 at [[TTML2]].
+      </p>
+      <p>
+        <dfn>Main programme audio</dfn> The audio associated with the programme prior to any mixing with audio description.
       </p>
       <p>
         <dfn data-cite="ttml2#terms-presentation-processor">Presentation processor</dfn> See Section 2.2 at [[TTML2]].
@@ -388,8 +394,8 @@ table.coldividers td + td { border-left:1px solid gray; }
         </section>
 
         <section>
-          <h4>Description</h4>
-          <p>Each <a>Event</a> MAY have a <dfn>Description</dfn> property, as a human-readable description of the <a>Event</a>. </p>
+          <h4>Event Description</h4>
+          <p>Each <a>Event</a> MAY have an <dfn>Event Description</dfn> property, as a human-readable description of the <a>Event</a>. </p>
           <p class="issue" data-number="30"></p>
           <p class="note">It does not have to be unique for this <a>Event</a>. It may be used to identify in a human-readable way one or more <a>Events</a> that need to be processed together, e.g. in a batch recording.</p>
           <p class="issue" data-number="20"></p>
