@@ -26,7 +26,16 @@
       github: "w3c/dapt",
       wgPublicList: "public-tt",
 
-      };
+      // local bibliography
+      localBiblio: {
+          "WHP051": {
+            title: "BBC R&D White Paper WHP 051. Audio Description: what it is and how it works",
+            publisher: " N.E. Tanton, T. Ware and M. Armstrong",
+            status: "October 2002 (revised July 2004)",
+            href: "http://www.bbc.co.uk/rd/publications/whitepaper051",
+          },
+      },
+    };
     </script>
   <style>
 table.coldividers td + td { border-left:1px solid gray; }
@@ -99,7 +108,8 @@ table.coldividers td + td { border-left:1px solid gray; }
       <h2>Scope</h2>
       <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]] based on [[ttml-imsc1.1]].
         This profile is intended to support dubbing and audio description workflows worldwide,
-        and to meet the requirements defined in [[[?DAPT-REQS]]].
+        to meet the requirements defined in [[[?DAPT-REQS]]], and to permit the visual presentation
+        features within [[ttml-imsc1.1]].
       <p class="issue" data-number="5"></p>
     </section>
 
@@ -114,13 +124,149 @@ table.coldividers td + td { border-left:1px solid gray; }
           <li>Adapting the translation to the dubbing and subtitling specifications; ex. matching the actor’s lip movements in the case of dubs and considering reading speeds and shot changes.</li>
         </ul>
       </p>
+      <p>The result of creating a dubbing script can be useful as a starting point for creation of subtitles or closed captions in alternate languages;
+        This specification is designed to facilitate conversion to [[ttml-imsc1.1]] documents,
+        for example by permitting IMSC styling syntax to be carried in DAPT documents.
+      </p>
       <p>Creating audio description content is also a complex process with similar steps.</p> 
+      <p>
+        <a>Audio Description</a>, also known as Video Description, is an audio service to assist viewers who can not fully see a visual presentation
+        to understand the content, usually achieved by mixing a ‘<a>description</a>’ audio track
+        with the <a>main programme audio</a>, at moments when this does not clash with dialogue, to deliver an <a>audio description mixed audio track</a>.
+        More information about what <a>Audio Description</a> is and how it works can be found at [[WHP051]].
+      </p>
       <p class="issue" data-number="28"></p>
-      <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and audio description pipeline. A DAPT file is designed to carry pertinent information for dubbing or audio description such as type of script, dialogues, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations. This specification first defines the data model (see [[[#data-model]]]) for DAPT scripts and then its representation as a TTML document with restrictions (see [[[#ttml-format]]]).</p>
+      <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and audio description pipeline.
+        A DAPT file is designed to carry pertinent information for dubbing or audio description such as type of script, dialogues, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations.
+        This specification first defines the data model (see [[[#data-model]]]) for DAPT scripts and then its representation as a TTML document with restrictions (see [[[#ttml-format]]]).</p>
       <p class="issue" data-number="7"></p>
     </section>
 
-  <section id="conformance"></section>
+    <section id="conventions">
+      <h2>Documentation Conventions</h2>
+      <p>
+        This document uses the same conventions as [[TTML2]] for the specification of parameter attributes, styling attributes and metadata elements. In particular:
+      </p>
+      <p>
+        Section 2.3 of [[TTML2]] specifies conventions used in the [[XML]] representation of elements; and
+        Sections 6.2 and 8.2 of [[TTML2]] specify conventions used when specifying the syntax of attribute values.
+      </p>
+      <p>
+        All content of this specification that is not explicitly marked as non-normative is considered to be normative.
+        If a section or appendix header contains the expression "non-normative", then the entirety of the section or appendix is considered non-normative.
+      </p>
+      <p>
+        This specification uses Feature designations as defined in Appendices E at [[TTML2]]:
+        when making reference to content conformance, these designations refer to the syntactic expression or the semantic capability associated with each designated Feature; and
+        when making reference to processor conformance, these designations refer to processing requirements associated with each designated Feature.
+        If the name of an element referenced in this specification is not namespace qualified, then the TT namespace applies (see <a href="#namespaces">9.3 Namespaces</a>.)
+      </p>
+    </section>
+
+    <section id="definitions">
+      <h2>Definitions</h2>
+      <p>
+        The following terms are used in this proposal:
+      </p>
+      <p>
+        <dfn>Audio description</dfn>	An audio rendition of a <a>Description</a> or a set of <a>Descriptions</a>.
+      </p>
+      <p>
+        <dfn>Audio description mixed audio track</dfn>  The output of an audio mixer incorporating the main programme audio and the audio description.
+      </p>
+      <p>
+        <dfn data-lt="Description|Descriptions">Description</dfn>  A set of words that describe an aspect of the programme presentation, suitable for rendering into audio by means of vocalisation and recording or used as a <a>Text Alternative</a> source for text to speech translation.
+      </p>
+      <p>
+        <dfn data-lt="Document Instance|Document Instances" data-cite="ttml2#terms-document-instance">Document Instance</dfn> As defined by [[TTML2]].
+      </p>
+      <p>
+        <dfn data-cite="ttml2#terms-document-interchange-context">Document Interchange Context</dfn> As defined by [[TTML2]].
+      </p>
+      <p>
+        <dfn data-cite="ttml2#terms-document-processing-context">Document Processing Context</dfn>  See Section 2.2 at [[TTML2]].
+      </p>
+      <p>
+        <dfn data-cite="ttml2#terms-feature">Feature</dfn>  See Section 2.2 at [[TTML2]].
+      </p>
+      <p>
+        <dfn data-cite="ttml2#terms-intermediate-synchronic-document">Intermediate Synchronic Document</dfn> See Section 11.3.1.3 at [[TTML2]].
+      </p>
+      <p>
+        <dfn data-cite="ttml2#style-value-lwsp">Linear White-Space</dfn> See Section 2.3 at [[TTML2]].
+      </p>
+      <p>
+        <dfn>Main programme audio</dfn> The audio associated with the programme prior to any mixing with audio description.
+      </p>
+      <p>
+        <dfn data-cite="ttml2#terms-presentation-processor">Presentation processor</dfn> See Section 2.2 at [[TTML2]].
+      </p>
+      <p>
+        <dfn data-cite="ttml2#terms-processor">Processor</dfn>  Either a Presentation processor or a Transformation processor.
+      </p>
+      <p>
+        <dfn data-cite="ttml2#terms-profile">Profile</dfn>  A TTML profile specification is a document that lists all the features of TTML that are required / optional / prohibited within “document instances” (files) and “processors” (things that process the files), and any extensions or constraints.
+      </p>
+      <p>
+        <dfn data-cite="ttml2#terms-related-media-object">Related Media Object</dfn> See Section 2.2 at [[TTML2]].
+      </p>
+      <p>
+        <dfn>Related Video Object</dfn> A <a>Related Media Object</a> that consists of a sequence of image frames, each a rectangular array of pixels.
+      </p>
+      <p>
+        <dfn data-cite="ttml2#terms-root-container-region">Root Container Region</dfn>  See Section 2.2 at [[TTML2]].
+      </p>
+      <p>
+        <dfn>Text Alternative</dfn> As defined in [[WCAG20]].
+      </p>
+      <p>
+        <dfn data-cite="ttml2#terms-transformation-processor">Transformation processor</dfn> See Section 2.2 at [[TTML2]].
+      </p>
+    </section>
+
+  <section id="conformance">
+    <p>
+      A <a>Document Instance</a> that conforms to the profile defined herein:
+    </p>
+    <ul style="list-style-type:disc">
+      <li>MUST satisfy all normative provisions specified by the profile;</li>
+      <li>MAY include any vocabulary, syntax or attribute value associated with a Feature whose disposition is permitted or optional in the profile;</li>
+      <li>MUST include any vocabulary, syntax or attribute value associated with a Feature whose disposition is required in the profile.</li>
+      <li>MUST NOT include any vocabulary, syntax or attribute value associated with a Feature whose disposition is prohibited in the profile.</li>
+    </ul>
+    <p class="note">
+      A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]], and hence a Document Instance that conforms to a profile defined herein is also a conforming TTML2 Document Instance.
+    </p>
+    <p>
+      A <a>presentation processor</a> that conforms to the profile defined in this specification:
+    </p>
+    <ul style="list-style-type:disc">
+      <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]]</li>
+      <li>MUST satisfy all normative provisions specified by the profile; and</li>
+      <li>MUST implement presentation semantic support for every Feature designated as permitted or required by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
+      <li>MAY implement presentation semantic support for every Feature designated as optional by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
+    </ul>
+    <p>
+      A <a>transformation processor</a> that conforms to the profile defined in this specification:
+    </p>
+    <ul style="list-style-type:disc">
+      <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]];</li>
+      <li>MUST satisfy all normative provisions specified by the profile; and</li>
+      <li>MUST implement transformation semantic support for every Feature designated as permitted or required by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
+      <li>MAY implement transformation semantic support for every Feature designated as optional by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
+    </ul>
+    <p class="note">
+      The use of the terms <a>presentation processor</a> 
+      and <a>transformation processor</a> within this document does not imply conformance <i>per se</i> to any of the Standard Profiles defined in [[TTML2]].
+      In other words, it is not considered an error for a <a>presentation processor</a> or <a>transformation processor</a> to conform to the profile defined in this document without also conforming to the TTML2  Presentation Profile or the TTML2 Transformation Profile.
+    </p>
+    <p class="note">
+      This document does not specify presentation processor or transformation processor behavior when processing or transforming a non-conformant Document Instance.
+    </p>
+    <p class="note">
+      The permitted and prohibited dispositions do not refer to the specification of a ttp:feature or ttp:extension element as being permitted or prohibited within a ttp:profile element.
+    </p>
+  </section>
 
   <section id="data-model">
       <h2>DAPT Data Model</h2>
@@ -248,8 +394,8 @@ table.coldividers td + td { border-left:1px solid gray; }
         </section>
 
         <section>
-          <h4>Description</h4>
-          <p>Each <a>Event</a> MAY have a <dfn>Description</dfn> property, as a human-readable description of the <a>Event</a>. </p>
+          <h4>Event Description</h4>
+          <p>Each <a>Event</a> MAY have an <dfn>Event Description</dfn> property, as a human-readable description of the <a>Event</a>. </p>
           <p class="issue" data-number="30"></p>
           <p class="note">It does not have to be unique for this <a>Event</a>. It may be used to identify in a human-readable way one or more <a>Events</a> that need to be processed together, e.g. in a batch recording.</p>
           <p class="issue" data-number="20"></p>
@@ -278,47 +424,665 @@ table.coldividers td + td { border-left:1px solid gray; }
         <p>TTML documents representing DAPT Scripts shall be compliant with the Text Profile defined in [[!ttml-imsc1.1]] with the additional constraints defined in this specification.</p>
         <p>TTML documents representing DAPT Scripts shall specify a <code>ttp:contentProfiles</code> attribute on the <code>tt</code> element with one value equal to <code>http://www.w3.org/ns/ttml/profile/dapt</code>. Other values such as the text profile designator [[!ttml-imsc1.1]] of may be present.</p>
       </section>
-      <section>
-        <h4>DAPT Namespace</h4>
-        <p>This specification defines the following namespaces:</p>
-        <table class='simple'>
+      <section id="profile-resolution-semantics">
+        <h3>Profile Resolution Semantics</h3>
+        <p>
+          For the purpose of content processing, the determination of the resolved profile SHOULD take into account both the signaled profile, as defined in <a href="#profile-signaling-section"></a>, and profile metadata, as designated by either (or both) the Document Interchange Context or (and) the Document Processing Context, which MAY entail inspecting document content.
+        </p>
+        <p>
+          If the resolved profile is not the Profile supported by the Processor but is feasibly interoperable with the Profile, then the resolved profile is the Profile.
+          If the resolved profile is undetermined or not supported by the Processor, then the Processor SHOULD nevertheless process the Document Instance using the Profile; otherwise, processing MAY be aborted.
+          If the resolved profile is not the proposed Profile, processing is outside the scope of this specification.
+        </p>
+        <p>
+          If the resolved profile is the profile supported by the Processor, then the Processor SHOULD process the Document Instance according to the Profile.
+        </p>
+      </section>
+    </section>
+    <section id="profile-constraints">
+      <h2>Constraints</h2>
+      <section id="Document Encoding">
+        <h3>Document Encoding</h3>
+        <p>
+          A Document Instance MUST use UTF-8 character encoding as specified in [[UNICODE]].
+        </p>
+      </section>
+      <section id="foreign-elements-and-attributes">
+        <h3>Foreign Element and Attributes</h3>
+        <p>
+          A <a>Document Instance</a> MAY contain elements and attributes that are neither specifically permitted nor forbidden by a profile.
+        </p>
+        <p class ="note">
+          <a>Document Instances</a> remain subject to the content conformance requirements specified at Section 3.1 of [[TTML2]].
+          In particular, a Document Instance can contain elements and attributes not in any TT namespace, i.e. in foreign namespaces, since such elements and attributes are pruned by the algorithm at Section 4 of [[TTML2]] prior to evaluating content conformance.
+        </p>
+        <p class ="note">
+          For validation purposes it is good practice to define and use a content specification for all foreign namespace elements and attributes used within a Document Instance.
+        </p>
+        <p>
+          A <a>transformation processor</a> SHOULD preserve such elements or attributes whenever possible.
+        </p>
+        <p class="ednote">Do we need to say that a presentation processor may ignore foreign vocab?</p>
+      </section>
+      <section id="namespaces">
+        <h3>Namespaces</h3>
+        <p>
+          The following namespaces (see [[xml-names]]) are used in this specification:
+        </p>
+        <table class="simple">
           <thead>
             <tr>
               <th>Name</th>
               <th>Prefix</th>
               <th>Value</th>
+              <th>Defining Specification</th>
             </tr>
           </thead>
-
           <tbody>
             <tr>
-              <td>DAPT</td>
-              <td><code>dapt</code></td>
+              <td>XML</td>
+              <td><code>xml</code></td>
+              <td><code>http://www.w3.org/XML/1998/namespace</code></td>
+              <td>[[xml-names]]</td>
+            </tr>
+            <tr>
+              <td>TT</td>
+              <td><code>tt</code></td>
+              <td><code>http://www.w3.org/ns/ttml</code></td>
+              <td>[[TTML2]]</td>
+            </tr>
+            <tr>
+              <td>TT Parameter</td>
+              <td><code>ttp</code></td>
+              <td><code>http://www.w3.org/ns/ttml#parameter</code></td>
+              <td>[[TTML2]]</td>
+            </tr>
+            <tr>
+              <td>TT Feature</td>
+              <td><em>none</em></td>
+              <td><code>http://www.w3.org/ns/ttml/feature/</code></td>
+              <td>[[TTML2]]</td>
+            </tr>
+            <tr>
+              <td>TT Audio Style</td>
+              <td><em>tta:</em></td>
+              <td><code>http://www.w3.org/ns/ttml#audio</code></td>
+              <td>[[TTML2]]</td>
+            </tr>
+            <tr>
+              <td>DAPT Metadata</td>
+              <td><code>daptm</code></td>
               <td><code>http://www.w3.org/ns/ttml/profile/dapt#metadata</code></td>
+              <td><em>This specification</em></td>
             </tr>
           </tbody>
-          <p class="issue" data-number="22"></p>
         </table>
-        <p>The namespaces defined by this specification are mutable [[namespaceState]]; all undefined names in these namespaces are reserved for future standardization by the W3C.</p>
-        <p>The namespace prefix values defined above are for convenience and Document Instances MAY use any prefix value that conforms to [[!xml-names]].</p>
-        <p>Other namespaces may be present, as needed and permitted by XML and TTML, use for either specific TTML attributes or elements, or for elements and attributes from other standards or proprietary languages.</p>
-        <p>Implementations shall ignore elements and attributes in the DAPT namespaces that they do not recognize.</p>
-        <p>Implementations shall ignore elements and attributes in non TTML-namespaces that they do not recognize.</p>
-        <p class="issue" data-number="23"></p>
+        <p>
+          The namespace prefix values defined above are for convenience and Document Instances MAY use any prefix value that conforms to [[xml-names]].
+        </p>
+        <p>
+          The namespaces defined by this proposal document are mutable [[namespaceState]]; all undefined names in these namespaces are reserved for future standardization by the W3C.
+        </p>
       </section>
+      <section id="related-video-object-section">
+        <h3>Related Video Object</h3>
+        <p>
+          A <a>Document Instance</a> MAY be associated with a <a>Related Video Object</a>.
+        </p>
+        <p class="note">
+          While this specification contains specific provisions when a <a>Document Instance</a> is associated with a <a>Related Video Object</a>, it does not prevent the use of a Document Instance with other kinds of Related Media Object, e.g. an audio only object.
+        </p>
+      </section>
+      <section id="synchronization-section">
+        <h3>Synchronization</h3>
+        <p class="ednote">Check if we need this, and if we do, rework for audio - e.g. relate to audio sample, or other quantisation units?</p>
+        <p>
+          Each intermediate synchronic document of the Document Instance is intended to be rendered starting on a specific frame and removed by a specific frame of the Related Video Object.
+        </p>
+        <p class="note">In the context of this specification rendering could be visual presentation of text,
+          for example to show an actor what words to speak, or could be audible playback of an audio resource,
+          or could be physical or haptic, such as a Braille display.
+        </p>
+        <p>
+          When mapping a media time expression M to a frame F of a Related Video Object (or Related Media Object), e.g. for the purpose of mixing audio sources signalled by a Document Instance into the main program audio of the <a>Related Video Object</a>, the presentation processor MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
+        </p>
+        <p>
+          EXAMPLE 1
+          A media time expression of 00:00:05.1 corresponds to frame ceiling( 5.1 × ( 1000 / 1001 × 30) ) = 153 of a <a>Related Video Object</a> with a frame rate of 1000 / 1001 × 30 ≈ 29.97.
+        </p>
+        <p class="note">
+          In typical scenario, the same video program (the <a>Related Video Object</a>) will be used for Document Instance authoring, delivery and user playback.
+          The mapping from media time expression to <a>Related Video Object</a> above allows the author to precisely associate <a>audio description</a> content with video frames, e.g. around existing audio dialogue and sound effects.
+          In circumstances where the video program is downsampled during delivery, the application can specify that, at playback, the relative video object be considered the delivered video program upsampled to is original rate, thereby allowing audio content to be presented at the same temporal locations it was authored.
+        </p>
+      </section>
+      <section id="profile-signaling-section">
+        <h3>Profile Signaling</h3>
+        <p>TTML documents representing DAPT Scripts MUST specify a <code>ttp:contentProfiles</code> attribute
+          on the <code>tt</code> element with one value equal to the designator of the <a>DAPT 1.0</a> profile
+          to which the Document Instance conforms.
+          Other values MAY be present to declare conformance to other profiles of [[TTML2]].</p>
+        <section id="profile-designator">
+          <h4>Profile Designator</h4>
+          <p>This profile is associated with the following profile designator:</p>
+          <table class="simple">
+            <thead>
+              <tr>
+                <th>Profile Name</th>
+    
+                <th>Profile Designator</th>
+              </tr>
+            </thead>
+    
+            <tbody>
+              <tr>
+                <td><dfn data-dfn-type="dfn" id="dfn-dapt-1-0">DAPT 1.0</dfn></td>
+    
+                <td><code>http://www.w3.org/ns/ttml/profile/dapt</code></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </section>
+      <section id="features-section">
+        <h3>Features</h3>
+        <p>
+          See <a href="#conformance" class="sec-ref">Conformance</a> for a definition of <em>permitted</em>, <em>prohibited</em> and <em>optional</em>.
+        </p>
+        <p class="ednote">Intent is to make it as easy as possible to transform a Document Instance into
+          IMSC, so we need to check that there are no IMSC permitted features that we prohibit, or if there
+          are, then we can explain the reason.
+        </p>
+        <p class="ednote">Editorial task: go through this list of features and check the disposition of each. IMSC-only features should be optional.</p>
+        <table class="simple">
+          <tbody>
+            <tr>
+              <th style="width:20%" style="text-align:center">Feature</th>
+              <th style="width:10%" style="text-align:center">Disposition</th>
+              <th style="text-align:center">Additional provision</th>
+            </tr>
+            <tr>
+              <td colspan="3" style="text-align:center"><em>Relative to the TT Feature namespace</em></td>
+            </tr>
+            <tr>
+              <td><code>#animation-version-2</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#audio</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#audio-description</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#audio-speech</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#backgroundColor-block</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#backgroundColor-region</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#cellResolution</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#chunk</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#clockMode</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#clockMode-gps</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#clockMode-local</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#clockMode-utc</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#content</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#contentProfiles</code></td>
+              <td>required</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#core</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#data</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#display-block</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#display-inline</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#display-region</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#display</code></td>
+              <td>prohibited<p class="ednote">Consider display="none" in relation to AD content</p></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#dropMode</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#dropMode-dropNTSC</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#dropMode-dropPAL</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#dropMode-nonDrop</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#embedded-audio</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#embedded-data</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#extent-root</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#extent</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#frameRate</code></td>
+              <td>permitted</td>
+              <td>
+                If the <a href="#dfn-document-instance" class="internalDFN" data-link-type="dfn">Document Instance</a> includes any time expression that uses the <code>frames</code> term or any
+                offset time expression that uses the <code>f</code> metric, the <code>ttp:frameRate</code> attribute <em class="rfc2119" title="MUST">MUST</em> be present
+                on the <code>tt</code> element.
+              </td>
+            </tr>
+            <tr>
+              <td><code>#frameRateMultiplier</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#gain</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#layout</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#length-cell</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#length-integer</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#length-negative</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#length-percentage</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#length-pixel</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#length-positive</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#length-real</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#length</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#markerMode</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#markerMode-continuous</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#markerMode-discontinuous</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#metadata</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#opacity</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#origin</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#overflow</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#overflow-visible</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#pan</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#pitch</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#pixelAspectRatio</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#presentation</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#processorProfiles</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td id="profile-constraints"><code>#profile</code></td>
+              <td>permitted</td>
+              <td>
+                See <a href="#profile-signaling-section" class="sec-ref"></a>.
+              </td>
+            </tr>
+            <tr>
+              <td><code>#region-timing</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#resources</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#showBackground</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#source</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#speak</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#speech</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#structure</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#styling</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#styling-chained</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#styling-inheritance-content</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#styling-inheritance-region</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#styling-inline</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#styling-nested</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#styling-referential</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#subFrameRate</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#tickRate</code></td>
+              <td>permitted</td>
+              <td><code>ttp:tickRate</code> <em class="rfc2119" title="MUST">MUST</em> be present on the <code>tt</code> element if the document contains any time
+              expression that uses the <code>t</code> metric.</td>
+            </tr>
+            <tr>
+              <td><code>#timeBase-clock</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#timeBase-media</code></td>
+              <td>permitted</td>
+              <td>
+                <p class="inline-note">NOTE: [[TTML1]] specifies that the default timebase is <code>"media"</code> if
+                <code>ttp:timeBase</code> is not specified on <code>tt</code>.</p>
+              </td>
+            </tr>
+            <tr>
+              <td><code>#timeBase-smpte</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#time-clock-with-frames</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#time-clock</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#time-offset-with-frames</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#time-offset-with-ticks</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#time-offset</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#timeContainer</code></td>
+              <td>permitted</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#timing</code></td>
+              <td>permitted</td>
+              <td>
+                <ul class="short-list">
+                  <li>All time expressions within a <a href="#dfn-document-instance" class="internalDFN" data-link-type="dfn">Document Instance</a> <em class="rfc2119" title="SHOULD">SHOULD</em> use the same syntax, either
+                  <code>clock-time</code> or <code>offset-time</code>.
+                  </li>
+                  <li>For any content element that contains <code>br</code> elements or text nodes or a
+                  <code>smpte:backgroundImage</code> attribute, both the <code>begin</code> attribute and one of either the
+                  <code>end</code> or <code>dur</code> attributes <em class="rfc2119" title="SHOULD">SHOULD</em> be specified on the content element or at least one of its
+                  ancestors.</li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <td><code>#transformation</code></td>
+              <td>permitted</td>
+              <td>
+                See constraints at <a href="#profile-constraints">#profile</a>.
+              </td>
+            </tr>
+            <tr>
+              <td><code>#visibility-block</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#visibility-region</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#writingMode-horizontal-lr</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#writingMode-horizontal-rl</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#writingMode-horizontal</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td><code>#zIndex</code></td>
+              <td>prohibited</td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </section>
+
+  <section id="ttml-format">
+      <h4>TTML Format</h4>
+      <p>This section defines the TTML format based on the data model defined in [[[#data-model]]].</p>
+      <p class="issue" data-number="25"></p>
       <section>
         <h4>Proprietary Metadata</h4>
-        <p>Many dubbing and audio description workflows may need to annotate events or documents with proprietary metadata. This SHOULD be done, as permitted by [[!ttml-imsc1.1]], using foreign elements and attributes, in vendor-specific namespaces.</p>
+        <p>Many dubbing and <a>audio description</a> workflows may need to annotate events or documents with proprietary metadata. This SHOULD be done, as permitted by [[!ttml-imsc1.1]], using foreign elements and attributes, in vendor-specific namespaces.</p>
         <p class="issue" data-number="31"></p> 
       </section>
       <section>
         <h4>Document structure</h4>
         <p>A <a>DAPT script</a> object is represented by a TTML document with the following constraints:
           <ul>
-            <li>the <code>xml:lang</code> attribute shall be present on the <code>tt</code> element and its value shall not be empty. It describes the <a>primary language</a> of the script.</li>
-            <li>The <code>head</code> element shall be present and a <code>metadata</code> element shall be present in the <code>head</code> element to provide some <a>DAPT Script</a> properties as follows: 
+            <li>the <code>xml:lang</code> attribute MUST be present on the <code>tt</code> element and its value MUST not be empty. It describes the <a>primary language</a> of the script.</li>
+            <li>The <code>head</code> element MUST be present and a <code>metadata</code> element MUST be present in the <code>head</code> element to provide some <a>DAPT Script</a> properties as follows: 
               <ul>
-                <li>A <code>ttm:role</code> attribute shall be present with one of the following values representing the <a>Script Type</a>:
+                <li>A <code>ttm:role</code> attribute MUST be present with one of the following values representing the <a>Script Type</a>:
                   <ul>
                     <li><code>x-DUBBING_ORIGINAL_DIALOGUE_LIST</code> for <a>Original Language Dialogue List</a></li>
                     <li><code>x-DUBBING_TRANSLATED_DIALOGUE_LIST</code> for <a>Translated Dialogue List</a></li>
@@ -349,21 +1113,21 @@ table.coldividers td + td { border-left:1px solid gray; }
 
         <p>For each <a>Character</a>, the following constraints apply:
           <ul>
-            <li>There shall be a <code>ttm:agent</code> element, child of the <code>metadata</code> element, with the following constraints:
+            <li>There MUST be a <code>ttm:agent</code> element, child of the <code>metadata</code> element, with the following constraints:
               <ul>
-                <li>The <code>type</code> attribute shall be set to <code>character</code>.</li>
-                <li>The <code>id</code> attribute shall be present and set to the <a>Character Identifier</a>.</li>
-                <li>It shall contain a <code>ttm:name</code> element with its <code>type</code> attribute set to <code>alias</code> and its content set to the <a>Character Name</a>.</li>
+                <li>The <code>type</code> attribute MUST be set to <code>character</code>.</li>
+                <li>The <code>id</code> attribute MUST be present and set to the <a>Character Identifier</a>.</li>
+                <li>It MUST contain a <code>ttm:name</code> element with its <code>type</code> attribute set to <code>alias</code> and its content set to the <a>Character Name</a>.</li>
                 <li>If the <a>Character</a> has a <a>Talent Name</a> property, the following applies:
                   <ul>
-                    <li>Another <code>ttm:agent</code> shall be added to the <code>metadata</code> element, with the following:
+                    <li>Another <code>ttm:agent</code> MUST be added to the <code>metadata</code> element, with the following:
                       <ul>
-                        <li>its <code>type</code> attribute shall be set to <code>person</code></li>
-                        <li>its <code>xml:id</code> attribute shall be set. Its value SHOULD be derived from the <a>Character Identifier</a></li>
-                        <li>it shall have a <code>ttm:name</code> child element whose <code>type</code> shall be set to <code>full</code> and its content set to the <a>Talent Name</a></li>
+                        <li>its <code>type</code> attribute MUST be set to <code>person</code></li>
+                        <li>its <code>xml:id</code> attribute MUST be set. Its value SHOULD be derived from the <a>Character Identifier</a></li>
+                        <li>it MUST have a <code>ttm:name</code> child element whose <code>type</code> MUST be set to <code>full</code> and its content set to the <a>Talent Name</a></li>
                       </ul>
                     </li>
-                    <li>the first <code>ttm:agent</code> shall have a <code>ttm:actor</code> child, with its <code>agent</code> attribute set to the <code>xml:id</code> of the first <code>ttm:agent</code>.</li>
+                    <li>the first <code>ttm:agent</code> MUST have a <code>ttm:actor</code> child, with its <code>agent</code> attribute set to the <code>xml:id</code> of the first <code>ttm:agent</code>.</li>
                   </ul>
                   <pre class="example">
 &lt;medadata&gt;
@@ -382,7 +1146,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 </li>
               </ul>
             </li>
-            <li>There may be a <code>style</code> element in the <code>styling</code> element providing the styles applicable to <a>Events</a> from this <a>Character</a>. The <code>xml:id</code> shall be present and represents the <a>Character Identifier</a>. Any style attribute from [[ttml-imsc1.1]] may be present. A <code>ttm:agent</code> attribute may be present to link the <code>ttm:agent</code> element representing the <a>Character</a>.
+            <li>There may be a <code>style</code> element in the <code>styling</code> element providing the styles applicable to <a>Events</a> from this <a>Character</a>. The <code>xml:id</code> MUST be present and represents the <a>Character Identifier</a>. Any style attribute from [[ttml-imsc1.1]] may be present. A <code>ttm:agent</code> attribute may be present to link the <code>ttm:agent</code> element representing the <a>Character</a>.
             <pre class="example">
 &lt;styling&gt;
   &lt;style xml:id=&quot;style_0085df18-5020-4473-a312-fe4b233bad65&quot;
@@ -394,18 +1158,18 @@ table.coldividers td + td { border-left:1px solid gray; }
           </ul>
         </p>
 
-        <p>For each <a>Event</a>, the following constraints apply. There shall be one <code>div</code> element, with the following constraints:
+        <p>For each <a>Event</a>, the following constraints apply. There MUST be one <code>div</code> element, with the following constraints:
           <ul>
-            <li>The <code>xml:id</code> attribute shall be present containing the <a>Event Identifier</a>.</li>
+            <li>The <code>xml:id</code> attribute MUST be present containing the <a>Event Identifier</a>.</li>
             <li>The <code>style</code> attribute may be present. If present, it may contain a reference to the <code>style</code> defining the <a>Character Style</a>. Additional style references or inline styles may be used.</li>
-            <li>The <code>begin</code> and <code>end</code> attributes shall be present and correspond to the <a>Start</a> and <a>End</a> of the <a>Event</a>.</li>
-            <li>The <code>ttm:agent</code> attribute may be present and if present, shall contain a reference to the <code>ttm:agent</code> representing the <a>Character</a>.</li>
+            <li>The <code>begin</code> and <code>end</code> attributes MUST be present and correspond to the <a>Start</a> and <a>End</a> of the <a>Event</a>.</li>
+            <li>The <code>ttm:agent</code> attribute may be present and if present, MUST contain a reference to the <code>ttm:agent</code> representing the <a>Character</a>.</li>
             <li>It may contain a <code>metadata</code> element with the following constraints:
               <ul>
                 <li>The following attribute corresponding to the <a>On Screen</a> <a>Event</a> property may be present:
                   <div class="exampleInner">
                     <pre class="nohighlight">
-dapt:onScreen
+daptm:onScreen
   : "ON" 
   | "OFF"
   | "ON_OFF"
@@ -414,14 +1178,14 @@ dapt:onScreen
                   </div>
                   <p class="issue" data-number="34"></p>
                 </li>
-                <li>A <code>ttm:desc</code> element may be present representing the <a>Event</a> <a>Description</a>.</li>
+                <li>A <code>ttm:desc</code> element may be present representing the <a>Event Description</a>.</li>
                 <li><a>Event Type</a>
                   <p class="issue" data-number="35"></p>
                 </li>
               </ul>
             </li>
-            <li>It shall contain one <code>p</code> element whose text content is the <a>Text</a> of the <a>Event</a> and shall have an <code>xml:lang</code> attribute corresponding to the <a>Event</a> <a>Text Language</a>. The text content may use TTML markup to represent the <a>Text Style</a>.</li>
-            <li>It may contain one <code>p</code> element whose text content is the <a>Contextual Text</a> of the <a>Event</a>. If present, it shall have an <code>xml:lang</code> attribute corresponding to the <a>Event</a> <a>Contextual Text Language</a>. It shall also have a <code>ttm:role</code> attribute whose value is <code>x-context</code>. The text content may use TTML markup to represent the <a>Contextual Text Style</a>.</li>
+            <li>It MUST contain one <code>p</code> element whose text content is the <a>Text</a> of the <a>Event</a> and MUST have an <code>xml:lang</code> attribute corresponding to the <a>Event</a> <a>Text Language</a>. The text content may use TTML markup to represent the <a>Text Style</a>.</li>
+            <li>It may contain one <code>p</code> element whose text content is the <a>Contextual Text</a> of the <a>Event</a>. If present, it MUST have an <code>xml:lang</code> attribute corresponding to the <a>Event</a> <a>Contextual Text Language</a>. It MUST also have a <code>ttm:role</code> attribute whose value is <code>x-context</code>. The text content may use TTML markup to represent the <a>Contextual Text Style</a>.</li>
             <div class="note">The text content of the paragraph may contain TTML elements such as <code>span</code> or TTML attributes such as <code>tts:ruby</code> used to alter the layout or styling of each paragraph</div>
           </ul>
           <pre class="example">
@@ -429,7 +1193,7 @@ dapt:onScreen
      begin=&quot;9663f&quot; end=&quot;9682f&quot; 
      style=&quot;style_bb89e9c6-4453-4402-a376-5a496cfb9839&quot;
      ttm:agent=&quot;character_bb89e9c6-4453-4402-a376-5a496cfb9839&quot;
-  &lt;metadata dapt:onScreen=&quot;ON&quot;&gt;
+  &lt;metadata daptm:onScreen=&quot;ON&quot;&gt;
     &lt;desc&gt;Scene 1&lt;/desc&gt;
   &lt;/metadata&gt;
   &lt;p xml:lang=&quot;pt-BR&quot; &gt;Voc&#xea; vai ter.&lt;/p&gt;
