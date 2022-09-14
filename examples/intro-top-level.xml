@@ -1,0 +1,20 @@
+<tt xmlns="http://www.w3.org/ns/ttml" 
+    xmlns:ttm="http://www.w3.org/ns/ttml#metadata" 
+    xml:lang="en" 
+    ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt">
+  <head>
+    <metadata ttm:role="x-DUBBING_DIALOGUE_LIST">
+      <!-- Additional metadata may be placed here -->
+      <!-- Any characters must be defined here as a set of ttm:agent elements -->
+    </metadata>
+    <styling>
+      <!-- Styling is optional and consists of a set of style elements -->
+    </styling>
+    <layout>
+      <!-- Layout is optional and consists of a set of region elements -->
+    </layout>
+  </head>
+  <body>
+    <!-- Content goes here -->
+  </body>
+</tt>
