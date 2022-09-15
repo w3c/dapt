@@ -269,35 +269,55 @@ table.coldividers td + td { border-left:1px solid gray; }
   </section>
 
   <section id="data-model">
-      <h2>DAPT Data Model</h2>
-      <p>This section specifies the data model for DAPT.</p>
+      <h2>DAPT Data Model and corresponding TTML syntax</h2>
+      <p>This section specifies the data model for DAPT and its corresponding TTML syntax.</p>
       <p class="issue" data-number="12"></p>
       <section>
         <h3>DAPT Script</h3>
-          <p>A <dfn>DAPT Script</dfn> is a document resulting from an authoring workflow with the following properties.</p>
+          <p>A <dfn>DAPT Script</dfn> is a document resulting from an authoring workflow with the properties defined in the following sections. It is represented as a TTML document with the structure and constraints also defined in the following sections.</p>
           <section>
             <h4>Script Type</h4>
-            <p>The <dfn>Script Type</dfn> describes the type of document with one of the following values:
-                <ul>
-                  <li><dfn>Original Language Dialogue List</dfn>: (Dubbing Script) Literal transcription of the dialogues and on-screen text in their original spoken/written language(s).
-                  <aside class="example">If a movie contains dialogues in English and Hebrew, the <a>Original Language Dialogue List</a> will contain some <a>Events</a> in English and some in Hebrew. None of the events are translated.</aside>
-                  </li>
-                  <li><dfn>Translated Dialogue List</dfn>: (Dubbing Script) Translation of the dialogues or on-screen text in a common language. It is meant to be adapted to produce a <a>Pre-Recording Dub Script</a>. It may contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context, to assist in the adaption process.
-                  <aside class="example">If a movie contains dialogues in English and Hebrew, the French <a>Translated Dialogue List</a> will contain at least the translation in French of all <a>Events</a>. It may still retain <a>Events</a> in Hebrew and English to assist further processing.</aside>
-                  </li>
-                  <li><dfn>Pre-recording Dub Script</dfn>: (Dubbing Script) Result of the adaptation of a <a>Translated Dialogue List</a> for better lip-sync. It may also contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context, to assist further processing.</li>
-                  <li><dfn>As-recorded Dub Script</dfn>: (Dubbing Script) Represents a transcription of the output of the dubbing workflow. It may also contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context and quality verifications.</li>
-                  <li><dfn>Audio Description Script</dfn>: (Audio Description Script) Script describing as recorded text script, times, optional links to audio and mixing instructions.</li>
-                </ul>
-              </p>
-              <p>A <a>DAPT script</a> MUST specify a <a>Script Type</a>.</p>
-              <p class="issue" data-number="13"></p>
+            <p>The <dfn>Script Type</dfn> property describes the type of documents used Dubbing and Audio Description workflows, among the following: <a>Original Language Dialogue List</a>, <a>Translated Dialogue List</a>, <a>Pre-recording Dub Script</a>, <a>As-recorded Dub Script</a>, and <a>Audio Description Script</a>.</p>
+            <p>To represent this property, the following TTML structure and constraints apply:
+              <ul>
+                <li>The <code>head</code> element MUST be present</li>
+                <li>A single <code>metadata</code> element MUST be present in the <code>head</code> element with the <code>ttm:role</code> attribute set to one of the values defined below.</li>
+              </ul>
+            </p>
+            <p class="issue" data-number="24"></p>
+            <p class="issue" data-number="32"></p>
+            <p class="issue" data-number="33"></p>
+            <p>The definitions of the types of documents and the corresponding <code>ttm:role</code> values are:
+              <ul>
+                <li><dfn>Original Language Dialogue List</dfn>: When the <code>ttm:role</code> value is <code>x-DUBBING_ORIGINAL_DIALOGUE_LIST</code>, the document represents a literal transcription of the dialogues and on-screen text in their original spoken/written language(s).
+                <aside class="example">If a movie contains dialogues in English and Hebrew, the <a>Original Language Dialogue List</a> will contain some <a>Events</a> in English and some in Hebrew. None of the events are translated.</aside>
+                </li>
+                <li><dfn>Translated Dialogue List</dfn>: When the <code>ttm:role</code> value is <code>x-DUBBING_TRANSLATED_DIALOGUE_LIST</code>, the document represents a translation of the dialogues or on-screen text in a common language. It is meant to be adapted to produce a <a>Pre-Recording Dub Script</a>. It may contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context, to assist in the adaption process.
+                <aside class="example">If a movie contains dialogues in English and Hebrew, the French <a>Translated Dialogue List</a> will contain at least the translation in French of all <a>Events</a>. It may still retain text content in Hebrew and English to assist further processing.</aside>
+                </li>
+                <li><dfn>Pre-recording Dub Script</dfn>: When the <code>ttm:role</code> value is <code>x-DUBBING_PRE_RECORDING</code>, the document represents the result of the adaptation of a <a>Translated Dialogue List</a> for dubbing, e.g. for better lip-sync. It may also contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context, to assist further processing.</li>
+                <li><dfn>As-recorded Dub Script</dfn>: When the <code>ttm:role</code> value is <code>x-DUBBING_AS_RECORDED</code>, the document represents a transcription of the output of the dubbing workflow. It may also contain <a>Events</a> from the <a>Original Language Dialogue List</a> for context and quality verifications.</li>
+                <li><dfn>Audio Description Script</dfn>: When the <code>ttm:role</code> value is <code>x-AUDIO_DESCRIPTION</code>, the document represents text script, times, optional links to audio and mixing instructions for the purpose of producing an audio description audio track.</li>
+              </ul>
+            </p>
+            <pre class="example">
+...
+  &lt;head&gt;
+    &lt;metadata ttm:role=&quot;x-DUBBING_DIALOGUE_LIST&quot;/&gt;
+  &lt;/head&gt;
+...
+            </pre>
+            <p class="issue" data-number="11"></p>
+            <p class="issue" data-number="13"></p>
           </section>
           <section>
             <h4>Primary Language</h4>
-            <p>The <dfn>Primary Language</dfn> represents the default language for the <a>Text</a> content of <a>Events</a>.</p>
-            <p class="note">When multiple languages are used in a script, it can correspond to the language of the majority of events, to the language being spoken for the longest duration, or to the language arbitrarily chosen by the author.</p>
-            <p>A DAPT script MUST specify a <a>Primary Language</a>.</p>
+            <p>The <dfn>Primary Language</dfn> represents the default language for the <a>Text</a> content of <a>Events</a>. It is represented in TTML with the following structure and constraints:
+              <ul>
+                <li>the <code>xml:lang</code> attribute shall be present on the <code>tt</code> element and its value shall not be empty.</li>
+              </ul>
+            </p>
+            <p class="note">When multiple languages are used in a script, the <a>Primary Language</a> can correspond to the language of the majority of events, to the language being spoken for the longest duration, or to the language arbitrarily chosen by the author.</p>
           </section>
 
           <section>
@@ -1077,40 +1097,6 @@ table.coldividers td + td { border-left:1px solid gray; }
       </section>
       <section>
         <h4>Document structure</h4>
-        <p>A <a>DAPT script</a> object is represented by a TTML document with the following constraints:
-          <ul>
-            <li>the <code>xml:lang</code> attribute MUST be present on the <code>tt</code> element and its value MUST not be empty. It describes the <a>primary language</a> of the script.</li>
-            <li>The <code>head</code> element MUST be present and a <code>metadata</code> element MUST be present in the <code>head</code> element to provide some <a>DAPT Script</a> properties as follows: 
-              <ul>
-                <li>A <code>ttm:role</code> attribute MUST be present with one of the following values representing the <a>Script Type</a>:
-                  <ul>
-                    <li><code>x-DUBBING_ORIGINAL_DIALOGUE_LIST</code> for <a>Original Language Dialogue List</a></li>
-                    <li><code>x-DUBBING_TRANSLATED_DIALOGUE_LIST</code> for <a>Translated Dialogue List</a></li>
-                    <li><code>x-DUBBING_PRE_RECORDING</code> for <a>Pre-recording Dub Script</a></li>
-                    <li><code>x-DUBBING_AS_RECORDED</code> for <a>As-recorded Dub Script</a></li>
-                    <li><code>x-AUDIO_DESCRIPTION</code> for <a>Audio Description Script</a></li>
-                  </ul>
-                  <p class="issue" data-number="24"></p>
-                  <p class="issue" data-number="32"></p>
-                  <p class="issue" data-number="33"></p>
-                </li>
-              </ul>
-              <pre class="example">
-&lt;tt xmlns=&quot;http://www.w3.org/ns/ttml&quot; 
-    xmlns:ttp=&quot;http://www.w3.org/ns/ttml#parameter&quot; 
-    xmlns:tts=&quot;http://www.w3.org/ns/ttml#styling&quot; 
-    xmlns:ttm=&quot;http://www.w3.org/ns/ttml#metadata&quot; 
-    xmlns:dapt=&quot;http://www.w3.org/ns/ttml/profile/dapt&quot; 
-    xml:lang=&quot;en&quot; 
-    ttp:contentProfiles=&quot;http://www.w3.org/ns/ttml/profile/dapt&quot;&gt;
-  &lt;head&gt;
-    &lt;metadata ttm:role=&quot;x-DUBBING_DIALOGUE_LIST&quot;/&gt;
-  &lt;/head&gt;
-  ...
-&lt;/tt&gt;          
-              </pre>
-        </p>
-
         <p>For each <a>Character</a>, the following constraints apply:
           <ul>
             <li>There MUST be a <code>ttm:agent</code> element, child of the <code>metadata</code> element, with the following constraints:
