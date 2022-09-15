@@ -139,7 +139,67 @@ table.coldividers td + td { border-left:1px solid gray; }
       <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and audio description pipeline.
         A DAPT file is designed to carry pertinent information for dubbing or audio description such as type of script, dialogues, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations.
         This specification first defines the data model (see [[[#data-model]]]) for DAPT scripts and then its representation as a TTML document with restrictions (see [[[#ttml-format]]]).</p>
-      <p class="issue" data-number="7"></p>
+
+      <section id="intro-example">
+        <h3>Example documents</h3>
+        <p class="ednote">Do we need examples with metadata e.g. script type?</p>
+        <p class="issue" data-number="48"></p>
+        <p>The top level structure of a document is as follows:</p>
+        <pre class="example"
+          data-include="examples/intro-top-level.xml"
+          data-include-format="text">
+        </pre>
+        <p>The following examples correspond to the timed text scripts produced
+          at each stage of the workflow described in [[DAPT-REQS]].</p>
+        <p>The first example shows a script where timed opportunities for descriptions
+          or transcriptions have been identified but no text has been written:</p>
+        <pre class="example"
+          data-include="examples/intro-times-only.xml"
+          data-include-format="text">
+        </pre>
+        <p>When descriptions or transcriptions are added this becomes a Pre Recording Script: Text with times, or Original language Text with times:</p>
+        <pre class="example"
+          data-include="examples/intro-times-and-text.xml"
+          data-include-format="text">
+        </pre>
+        <p>After translating the text, this becomes Text in original language and dub language with times:</p>
+        <pre class="example"
+          data-include="examples/intro-original-language-with-dub-language.xml"
+          data-include-format="text">
+        </pre>
+        <p>After creating audio recordings, if not using text to speech, instructions for playback
+          mixing can be inserted. For example, The gain of "received" audio can be changed before mixing in
+          the audio played from inside the <code>span</code>, smoothly
+          animating the value on the way in and returning it on the way out:</p>
+        </p>
+        <pre class="example"
+          data-include="examples/intro-script-with-gain.xml"
+          data-include-format="text">
+        </pre>
+        <p>In the above example, the <code>div</code> element's
+          <code>begin</code> time becomes the "syncbase" for its child, 
+          so the times on the <code>animate</code> and <code>span</code> 
+          elements are relative to 25s here.
+          The first <code>animate</code> element drops the gain from 1
+          to 0.39 over 0.3s, freezing that value after it ends,
+          and the second one raises it back in the
+          final 0.3s of this description. Then the <code>span</code> is
+          timed to begin only after the first audio dip has finished.</p>
+        <p>If the audio recording is long and just a snippet needs to be played,
+        that can be done using <code>clipBegin</code> and <code>clipEnd</code>.
+        If we just want to play the part of the audio from file from 5s to
+        8s it would look like:</p>
+        <pre class="example"
+          data-include="examples/intro-script-with-audio-clipped.xml"
+          data-include-format="text">
+        </pre>
+        <p>Or audio attributes can be added to trigger the text to be spoken:
+        </p>
+        <pre class="example"
+          data-include="examples/intro-script-with-speak.xml"
+          data-include-format="text">
+        </pre>
+      </section>
     </section>
 
     <section id="conventions">
