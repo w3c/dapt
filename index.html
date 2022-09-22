@@ -376,7 +376,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             <h4>Primary Language</h4>
             <p>The <dfn>Primary Language</dfn> represents the default language for the <a>Text</a> content of <a>Script Events</a>. It is represented in TTML with the following structure and constraints:
               <ul>
-                <li>the <code>xml:lang</code> attribute shall be present on the <code>tt</code> element and its value shall not be empty.</li>
+                <li>the <code>xml:lang</code> attribute MUST be present on the <code>tt</code> element and its value MUST NOT be empty.</li>
               </ul>
             </p>
             <p class="note">When multiple languages are used in a script, the <a>Primary Language</a> can correspond to the language of the majority of <a>Script Events</a>, to the language being spoken for the longest duration, or to the language arbitrarily chosen by the author.</p>
@@ -595,8 +595,8 @@ daptm:onScreen
       <p class="issue" data-number="25"></p>
       <section>
         <h4>Identification and Profile Signaling</h4>
-        <p>TTML documents representing <a>DAPT Scripts</a> shall be compliant with the Text Profile defined in [[!ttml-imsc1.1]] with the additional constraints defined in this specification.</p>
-        <p>TTML documents representing <a>DAPT Scripts</a> shall specify a <code>ttp:contentProfiles</code> attribute on the <code>tt</code> element with one value equal to <code>http://www.w3.org/ns/ttml/profile/dapt</code>. Other values such as the text profile designator [[!ttml-imsc1.1]] of MAY be present.</p>
+        <p>TTML documents representing <a>DAPT Scripts</a> MUST be compliant with the Text Profile defined in [[!ttml-imsc1.1]] with the additional constraints defined in this specification.</p>
+        <p>TTML documents representing <a>DAPT Scripts</a> MUST specify a <code>ttp:contentProfiles</code> attribute on the <code>tt</code> element with one value equal to <code>http://www.w3.org/ns/ttml/profile/dapt</code>. Other values such as the text profile designator [[!ttml-imsc1.1]] of MAY be present.</p>
       </section>
       <section id="profile-resolution-semantics">
         <h3>Profile Resolution Semantics</h3>
