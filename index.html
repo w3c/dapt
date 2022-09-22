@@ -544,7 +544,9 @@ table.coldividers td + td { border-left:1px solid gray; }
               <li>The text content of the <code>p</code> is the <a>Text</a> of the <a>Script Event</a>. It MAY also use TTML markup to represent styles.
                 <div class="note">The text content of the paragraph may contain TTML elements such as <code>span</code> or TTML attributes such as <code>tts:ruby</code> used to alter the layout or styling of each paragraph</div>
               </li>
-              <li>The <code>p</code> element MUST have an <code>xml:lang</code> attribute corresponding to the language of the <a>Text</a> object.</li>
+              <li>The <code>p</code> element MUST have an <code>xml:lang</code> attribute corresponding to the language of the <a>Text</a> object.
+              <div class="note">Within a <code>div</code> representing a <a>Script Event</a>, the order of <code>p</code> is one relevant. The <code>xml:lang</code> value can be used to determine which paragraph corresponds to the <a>Main Text</a> and which one corresponds to the <a>Contextual Text</a>. Text content in a language that does not match the <a>Primary Language</a> of the <a>DAPT Script</a> are <a>Contextual Text</a>.</div>
+              </li>
           <pre class="example">
 &lt;div xml:id=&quot;event_0130df43-5443-4206-b1d9-d331e42b5a86&quot;
      begin=&quot;9663f&quot; end=&quot;9682f&quot; 
