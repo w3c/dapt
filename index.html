@@ -124,7 +124,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           <li>Adapting the translation to the dubbing and subtitling specifications; ex. matching the actor’s lip movements in the case of dubs and considering reading speeds and shot changes.</li>
         </ul>
       </p>
-      <p>The result of creating a dubbing script can be useful as a starting point for creation of subtitles or closed captions in alternate languages;
+      <p>The result of creating a <a>dubbing script</a> can be useful as a starting point for creation of subtitles or closed captions in alternate languages;
         This specification is designed to facilitate conversion to [[ttml-imsc1.1]] documents,
         for example by permitting IMSC styling syntax to be carried in DAPT documents.
       </p>
@@ -334,11 +334,11 @@ table.coldividers td + td { border-left:1px solid gray; }
       <p class="issue" data-number="12"></p>
       <section>
         <h3>DAPT Script</h3>
-          <p>A <dfn>DAPT Script</dfn> corresponds to a document processed within an authoring workflow or processed by a client. It has properties defined in the following sections: <a>Script Type</a>, <a>Primary Language</a>, <a>Script Events</a> and, for Dubbing Scripts, <a>Characters</a>.</p>
+          <p>A <dfn>DAPT Script</dfn> corresponds to a document processed within an authoring workflow or processed by a client. It has properties defined in the following sections: <a>Script Type</a>, <a>Primary Language</a>, <a>Script Events</a> and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
           <p>A <a>DAPT Script</a> is represented as a TTML document with the structure and constraints also defined in the following sections.</p>
           <section>
             <h4>Script Type</h4>
-            <p>The <dfn>Script Type</dfn> property describes the type of documents used in Dubbing and Audio Description workflows, among the following: <a>Original Language Dialogue List</a>, <a>Translated Dialogue List</a>, <a>Pre-recording Dub Script</a>, <a>As-recorded Dub Script</a>, and <a>Audio Description Script</a>.</p>
+            <p>The <dfn>Script Type</dfn> property describes the type of documents used in Dubbing and Audio Description workflows, among the following: <a>Original Language Dialogue List</a>, <a>Translated Dialogue List</a>, <a>Pre-recording Dub Script</a>, <a>As-recorded Dub Script</a>, and <a>Audio Description Script</a>. <a>Original Language Dialogue List</a>, <a>Translated Dialogue List</a>, <a>Pre-recording Dub Script</a>, <a>As-recorded Dub Script</a> are referred to as <dfn>Dubbing Scripts</dfn>.</p>
             <p>To represent this property, the following TTML structure and constraints apply:
               <ul>
                 <li>The <code>head</code> element MUST be present, as the first child of the <code>tt</code> element</li>
@@ -391,7 +391,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           <section>
             <h4>Characters</h4>
             <p>The <dfn>Characters</dfn> part of the model provides the list of characters referenced in the <a>Script Events</a>.</p>
-            <p>Dubbing scripts MUST specify a <a>Characters</a> list.</p>
+            <p><a>Dubbing scripts</a> MUST specify a <a>Characters</a> list.</p>
           </section>
 
           <p class="issue" data-number="14"></p>
@@ -399,7 +399,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       <section>
         <h3>Character</h3>
 
-        <p>In Dubbing Scripts, it MAY be necessary to identify each character in the programme. This is done with a <dfn>Character</dfn> object which has the following properties: 
+        <p>In <a>Dubbing Scripts</a>, it is necessary to identify each character in the programme. This is done with a <dfn>Character</dfn> object which has the following properties: 
           <ul>
             <li><dfn data-lt="Character Identifier">Identifier</dfn> which is a unique identifier to indicate when a <a>Character</a> participates in a <a>Script Event</a></li>
             <li><dfn data-lt="Character Name">Name</dfn> which is the name of the <a>Character</a> in the programme</li>
@@ -483,9 +483,9 @@ table.coldividers td + td { border-left:1px solid gray; }
           <ul>
             <li>An <dfn>Script Event Identifier</dfn> which is unique in the script</li>
             <li><dfn>Start</dfn> and <dfn>End</dfn> properties providing the <a>Script Event</a> time interval in the programme timeline
-              <p class="note">Typically <a>Script Events</a> do not overlap in time. However, there can be cases where they do, e.g. in Dubbing Scripts when different <a>Characters</a> speak different text at the same time.</p>
+              <p class="note">Typically <a>Script Events</a> do not overlap in time. However, there can be cases where they do, e.g. in <a>Dubbing Scripts</a> when different <a>Characters</a> speak different text at the same time.</p>
             </li>
-            <li>An optional <dfn>Script Event Type</dfn> used to identify in Dubbing Scripts if the <a>Script Event</a> represents spoken text, or on screen text, and in the later case, the type of on-screen text (title, credit, location, ...).</li>
+            <li>An optional <dfn>Script Event Type</dfn> used to identify in <a>Dubbing Scripts</a> if the <a>Script Event</a> represents spoken text, or on screen text, and in the later case, the type of on-screen text (title, credit, location, ...).</li>
             <li>One or more <a>Character Identifiers</a> indicating the <a>Characters</a> involved in this <a>Script Event</a>.
               <p class="note">While typically, an <a>Script Event</a> corresponds to one single character, there are cases where multiple characters can speak the same text at the same time.</p>
             </li>
