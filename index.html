@@ -420,7 +420,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         <pre class="example">
 ...
 &lt;medadata&gt;
-  &lt;ttm:agent type=&quot;character&quot; xml:id=&quot;character_dc56a9b2-81d6-4415-8d87-ec06450c5313&quot;&gt;
+  &lt;ttm:agent type=&quot;character&quot; xml:id=&quot;character_1&quot;&gt;
     &lt;ttm:name type=&quot;alias&quot;&gt;DESK CLERK&lt;/ttm:name&gt;
   &lt;/ttm:agent&gt;
 &lt;/medadata&gt;
@@ -443,11 +443,11 @@ table.coldividers td + td { border-left:1px solid gray; }
         <pre class="example">
 ...
 &lt;medadata&gt;
-  &lt;ttm:agent type=&quot;character&quot; xml:id=&quot;character_b89ea6a2-bcfa-46b4-a835-fc13081672e7&quot;&gt;
+  &lt;ttm:agent type=&quot;character&quot; xml:id=&quot;character_2&quot;&gt;
     &lt;ttm:name type=&quot;alias&quot;&gt;BOOKER&lt;/ttm:name&gt;
-    &lt;ttm:actor agent=&quot;actor_b89ea6a2-bcfa-46b4-a835-fc13081672e7&quot;/&gt;
+    &lt;ttm:actor agent=&quot;actor_A&quot;/&gt;
   &lt;/ttm:agent&gt;
-  &lt;ttm:agent type=&quot;person&quot; xml:id=&quot;actor_b89ea6a2-bcfa-46b4-a835-fc13081672e7&quot;&gt;
+  &lt;ttm:agent type=&quot;person&quot; xml:id=&quot;actor_A&quot;&gt;
     &lt;ttm:name type=&quot;full&quot;&gt;Matthias Schoenaerts&lt;/ttm:name&gt;
   &lt;/ttm:agent&gt;
 &lt;/medadata&gt;
@@ -463,8 +463,8 @@ table.coldividers td + td { border-left:1px solid gray; }
         <pre class="example">
 ...
 &lt;styling&gt;
-  &lt;style xml:id=&quot;style_0085df18-5020-4473-a312-fe4b233bad65&quot;
-         ttm:agent=&quot;character_0085df18-5020-4473-a312-fe4b233bad65&quot;
+  &lt;style xml:id=&quot;style_a&quot;
+         ttm:agent=&quot;character_3&quot;
          tts:color=&quot;#FFFFFF&quot; tts:backgroundColor=&quot;#8F42AD&quot;/&gt;         
 &lt;/styling&gt;     
 ...
@@ -508,9 +508,9 @@ table.coldividers td + td { border-left:1px solid gray; }
               <li>The <code>ttm:agent</code> attribute MAY be present and if present, MUST contain a reference to the <code>ttm:agent</code> representing the <a>Character</a>.</li>
           <pre class="example">
 ...
-&lt;div xml:id=&quot;event_0130df43-5443-4206-b1d9-d331e42b5a86&quot;
+&lt;div xml:id=&quot;event_1&quot;
      begin=&quot;9663f&quot; end=&quot;9682f&quot; 
-     ttm:agent=&quot;character_bb89e9c6-4453-4402-a376-5a496cfb9839&quot;&gt;
+     ttm:agent=&quot;character_4&quot;&gt;
 ...
 &lt;/div&gt;
 ...
@@ -521,9 +521,9 @@ table.coldividers td + td { border-left:1px solid gray; }
               <li>It MAY contain a <code>metadata</code> element representing the <a>On Screen</a> property.</li>
           <pre class="example">
 ...
-&lt;div xml:id=&quot;event_0130df43-5443-4206-b1d9-d331e42b5a86&quot;
+&lt;div xml:id=&quot;event_2&quot;
      begin=&quot;9663f&quot; end=&quot;9682f&quot; 
-     ttm:agent=&quot;character_bb89e9c6-4453-4402-a376-5a496cfb9839&quot;&gt;
+     ttm:agent=&quot;character_4&quot;&gt;
 ...
 &lt;/div&gt;
 ...
@@ -546,10 +546,10 @@ table.coldividers td + td { border-left:1px solid gray; }
               <div class="note">Within a <code>div</code> representing a <a>Script Event</a>, the order of <code>p</code> is one relevant. The <code>xml:lang</code> value can be used to determine which paragraph corresponds to the <a>Main Text</a> and which one corresponds to the <a>Contextual Text</a>. Text content in a language that does not match the <a>Primary Language</a> of the <a>DAPT Script</a> are <a>Contextual Text</a>.</div>
               </li>
           <pre class="example">
-&lt;div xml:id=&quot;event_0130df43-5443-4206-b1d9-d331e42b5a86&quot;
+&lt;div xml:id=&quot;event_3&quot;
      begin=&quot;9663f&quot; end=&quot;9682f&quot; 
-     style=&quot;style_bb89e9c6-4453-4402-a376-5a496cfb9839&quot;
-     ttm:agent=&quot;character_bb89e9c6-4453-4402-a376-5a496cfb9839&quot;&gt;
+     style=&quot;style_a&quot;
+     ttm:agent=&quot;character_3&quot;&gt;
   &lt;p xml:lang=&quot;pt-BR&quot; &gt;Voc&#xea; vai ter.&lt;/p&gt;
   &lt;p xml:lang=&quot;fr&quot; ttm:role=&quot;x-context&quot;&gt;Bah, il arrive.&lt;/p&gt;
 &lt;/div&gt;
