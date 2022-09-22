@@ -334,7 +334,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       <p class="issue" data-number="12"></p>
       <section>
         <h3>DAPT Script</h3>
-          <p>A <dfn>DAPT Script</dfn> corresponds to a document processed within an authoring workflow or processed by a client. It has properties defined in the following sections: <a>Script Type</a>, <a>Primary Language</a>, <a>Script Events</a> and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
+          <p>A <dfn>DAPT Script</dfn> corresponds to a document processed within an authoring workflow or processed by a client. It has properties and objects defined in the following sections: <a>Script Type</a>, <a>Primary Language</a>, <a>Script Events</a> and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
           <p>A <a>DAPT Script</a> is represented as a TTML document with the structure and constraints also defined in the following sections.</p>
           <section>
             <h4>Script Type</h4>
@@ -536,7 +536,7 @@ table.coldividers td + td { border-left:1px solid gray; }
 
         <section>
           <h4>Text</h4>
-          <p>The <dfn>Text</dfn> object is used in the <a>Main Text</a> property or the <a>Contextual Text</a> property of an <a>Script Event</a> object to provide text content in a single language, to document this language and provide optional styling for the text content.</p>
+          <p>The <dfn>Text</dfn> object contains text content in a single language, and may be styled and associated with a <a>Character</a>. The <a>Main Text</a> and <a>Contextual Text</a> objects of <a>Script Events</a> are <a>Text</a> objects.</p>
           <p class="issue" data-number="15"></p>
           <p>A <a>Text</a> object is represented with a <code>p</code> element with the following constraints:
             <ul>
