@@ -490,10 +490,10 @@ table.coldividers td + td { border-left:1px solid gray; }
             </li>
             <li>a mandatory <dfn>Main Text</dfn> property, which provides the main text content for this <a>Script Event</a> in the form of a <a>Text</a> object</li>
             <li>an optional <dfn>Contextual Text</dfn> property, which provides a representation of the <a>Main Text</a> content in a different language, in the form of a <a>Text</a> object. It can be used to assist in the processing of the main text content.</li>
-            <li>an <dfn>Script Event Description</dfn> property, as a human-readable description of the <a>Script Event</a>.
-              <p class="issue" data-number="30"></p>
-              <p class="note">It does not have to be unique for this <a>Script Event</a>. It can be used to identify in a human-readable way one or more <a>Script Events</a> that need to be processed together, e.g. in a batch recording.</p>
-              <p class="issue" data-number="20"></p>
+            <li>a <dfn>Script Event Description</dfn> property, as a human-readable description of the <a>Script Event</a>.
+              <p class="note">The <a>Script Event Description</a> does not need to be unique, i.e. it does not need to have a different value for each <a>Script Event</a>. 
+                For example a particular value could be re-used to identify in a human-readable way one or more <a>Script Events</a> that are intended to be processed together,
+                e.g. in a batch recording.</p>
             </li>
             <li>an optional <a>On Screen</a> property, which is an annotation indicating the position of the <a>character</a> during the <a>Script Event</a></li>
           </ul>
