@@ -106,11 +106,10 @@ table.coldividers td + td { border-left:1px solid gray; }
 
     <section id="scope">
       <h2>Scope</h2>
-      <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]] based on [[ttml-imsc1.1]].
-        This profile is intended to support dubbing and audio description workflows worldwide,
-        to meet the requirements defined in [[[?DAPT-REQS]]], and to permit the visual presentation
-        features within [[ttml-imsc1.1]].
-      <p class="issue" data-number="5"></p>
+      <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]]
+        intended to support dubbing and audio description workflows worldwide,
+        to meet the requirements defined in [[[?DAPT-REQS]]], and to permit usage of visual presentation
+        features within [[TTML2]] and its profiles, for example those in [[ttml-imsc1.2]].
     </section>
 
     <section class='informative' id="introduction">
@@ -124,9 +123,11 @@ table.coldividers td + td { border-left:1px solid gray; }
           <li>Adapting the translation to the dubbing and subtitling specifications; ex. matching the actor’s lip movements in the case of dubs and considering reading speeds and shot changes.</li>
         </ul>
       </p>
-      <p>The result of creating a <a>dubbing script</a> can be useful as a starting point for creation of subtitles or closed captions in alternate languages;
-        This specification is designed to facilitate conversion to [[ttml-imsc1.1]] documents,
-        for example by permitting IMSC styling syntax to be carried in DAPT documents.
+      <p>The result of creating a <a>dubbing script</a> can be useful as a starting point for creation of subtitles or closed captions in alternate languages.
+        This specification is designed to facilitate the addition of, and conversion to,
+        subtitle and caption documents in other profiles of TTML, such as [[ttml-imsc1.2]],
+        for example by permitting subtitle styling syntax to be carried in DAPT documents.
+        Alternatively, styling can be applied to assist voice artists when recording scripted dialogue or audio descriptions.
       </p>
       <p>Creating audio description content is also a complex process with similar steps.</p> 
       <p>
@@ -455,7 +456,11 @@ table.coldividers td + td { border-left:1px solid gray; }
 
             <li>If the <a>Character</a> has a <a>Style</a>, the following TTML constraints apply:
               <ul>
-                <li>There MAY be a <code>style</code> element in the <code>styling</code> element providing the styles applicable to <a>Script Events</a> from this <a>Character</a>. The <code>xml:id</code> MUST be present. Any style attribute from [[ttml-imsc1.1]] may be present. A <code>ttm:agent</code> attribute MAY be present to link the <code>ttm:agent</code> element representing the <a>Character</a>.</li>
+                <li>There MAY be a <code>style</code> element in the <code>styling</code> element providing the styles applicable to <a>Script Events</a> from this <a>Character</a>.
+                  The <code>xml:id</code> MUST be present.
+                  Any style attribute permitted in [[ttml-imsc1.2]] may be present.
+                  A <code>ttm:agent</code> attribute MAY be present to link the <code>ttm:agent</code> element representing the <a>Character</a>.
+                </li>
               </ul>
             </li>
 
@@ -749,7 +754,7 @@ daptm:onScreen
           See <a href="#conformance" class="sec-ref">Conformance</a> for a definition of <em>permitted</em>, <em>prohibited</em> and <em>optional</em>.
         </p>
         <p class="ednote">Intent is to make it as easy as possible to transform a Document Instance into
-          IMSC, so we need to check that there are no IMSC permitted features that we prohibit, or if there
+          IMSC ([[ttml-imsc1.2]]), so we need to check that there are no IMSC permitted features that we prohibit, or if there
           are, then we can explain the reason.
         </p>
         <p class="ednote">Editorial task: go through this list of features and check the disposition of each. IMSC-only features should be optional.</p>
@@ -1231,12 +1236,13 @@ daptm:onScreen
       <p class="issue" data-number="25"></p>
       <section>
         <h4>Proprietary Metadata</h4>
-        <p>Many dubbing and <a>audio description</a> workflows may need to annotate <a>Script Events</a> or documents with proprietary metadata. This SHOULD be done, as permitted by [[!ttml-imsc1.1]], using foreign elements and attributes, in vendor-specific namespaces.</p>
+        <p>Many dubbing and <a>audio description</a> workflows permit annotation of <a>Script Events</a> or documents with proprietary metadata.
+          Additional vocabulary MAY be included if it is in namespaces not defined by this specification, [[TTML2]] or [[ttml-imsc1.2]].</p>
         <p class="issue" data-number="31"></p> 
       </section>
       <section>
         <h4>Layout</h4>
-        <p>This specification does not put additional constraints on the layout and rendering features defined in [[!ttml-imsc1.1]].</p>
+        <p>This specification does not put additional constraints on the layout and rendering features defined in [[!ttml-imsc1.2]].</p>
         <div class="note">Layout of the paragraphs may rely on the default TTML region (i.e. if no <code>layout</code> is used in the <code>head</code> element) or may be explicit by the use of the <code>region</code> attribute, if a <code>region</code> element is defined in a <code>layout</code> element in the <code>head</code> element.</div>
       </section>
   </section>
