@@ -352,17 +352,64 @@ table.coldividers td + td { border-left:1px solid gray; }
             <p class="issue" data-number="33"></p>
             <p>The definitions of the types of documents and the corresponding <code>ttm:role</code> values are:
               <ul>
-                <li><dfn>Original Language Dialogue List</dfn>: When the <code>ttm:role</code> value is <code>x-DUBBING_ORIGINAL_DIALOGUE_LIST</code>, the document represents a literal transcription of the dialogue and on-screen text in their original spoken/written language(s).
-                <aside class="example">If a movie contains dialogue in English and Hebrew, the <a>Original Language Dialogue List</a> will contain some <a>Script Events</a> in English and some in Hebrew. None of the <a>Script Events</a> is translated.</aside>
+                <li>
+                  <dfn>Original Language Dialogue List</dfn>:
+                  When the <code>ttm:role</code> value is <code>x-DUBBING_ORIGINAL_DIALOGUE_LIST</code>,
+                  the document represents a literal transcription of the dialogue and on-screen text in their original spoken/written language(s).
+                <aside class="note"><a>Text</a> objects in the Original Language Dialogue List have their <a>Text Language Source</a> set to <a>Original</a>.</aside>
+                <aside class="example">If a movie contains dialogue in English and Hebrew,
+                  the <a>Original Language Dialogue List</a> will contain some <a>Script Events</a> in English and some in Hebrew,
+                  all marked as <a>Original</a> <a>Text Language Source</a>.
+                  None of the <a>Script Events</a> is marked as <a>Translation</a>.</aside>
                 </li>
-                <li><dfn>Translated Dialogue List</dfn>: When the <code>ttm:role</code> value is <code>x-DUBBING_TRANSLATED_DIALOGUE_LIST</code>, the document represents a translation of the dialogue or on-screen text in a common language. It is meant to be adapted to produce a <a>Pre-Recording Dub Script</a>. 
-                <aside class="note">A script can contain additional <a>Script Events</a> from the <a>Original Language Dialogue List</a> for context, to assist in the adaption process.</aside>
-                <aside class="example">If a movie contains dialogue in English and Hebrew, the French <a>Translated Dialogue List</a> will contain at least the translation in French of all <a>Script Events</a>. It may still retain text content in Hebrew and English to assist further processing.</aside>
+                <li>
+                  <dfn>Translated Dialogue List</dfn>:
+                  When the <code>ttm:role</code> value is <code>x-DUBBING_TRANSLATED_DIALOGUE_LIST</code>,
+                  the document represents a translation of the dialogue or on-screen text in a common language.
+                  It is meant to be adapted to produce a <a>Pre-Recording Dub Script</a>. 
+                <aside class="note">Translated <a>Script Events</a> contain <a>Text</a> objects whose
+                  <a>Text Language Source</a> is set to <a>Translation</a>.
+                  They can also contain <a>Original</a> language <a>Text</a>.</aside>
+                <aside class="note">A <a>Script Event</a> can contain <a>Translation</a> <a>Text</a> objects in more than one language, for context,
+                  to assist in the adaption process.</aside>
+                <aside class="example">If a movie contains dialogue in English and Hebrew,
+                  the French <a>Translated Dialogue List</a> will contain at least the translation in French of all <a>Script Events</a>.
+                  It may still retain text content in Hebrew and English to assist further processing.</aside>
                 </li>
-                <li><dfn>Pre-recording Dub Script</dfn>: When the <code>ttm:role</code> value is <code>x-DUBBING_PRE_RECORDING</code>, the document represents the result of the adaptation of a <a>Translated Dialogue List</a> for dubbing, e.g. for better lip-sync. It may also contain <a>Script Events</a> from the <a>Original Language Dialogue List</a> for context, to assist further processing.
-                <aside class="note">The <a>Script Type</a> of a <a>DAPT Script</a> cannot necessarily be detected by inspecting the text content of the document. For example, the adaptation of a <a>Translated Dialogue List</a> into a <a>Pre-recording Dub Script</a> can consist in replacing some words in the text content of a <a>Script Event</a> without altering the rest of the document.</aside></li>
-                <li><dfn>As-recorded Dub Script</dfn>: When the <code>ttm:role</code> value is <code>x-DUBBING_AS_RECORDED</code>, the document represents a transcription of the output of the dubbing workflow. It may also contain <a>Script Events</a> from the <a>Original Language Dialogue List</a> for context and quality verifications.</li>
-                <li><dfn>Audio Description Script</dfn>: When the <code>ttm:role</code> value is <code>x-AUDIO_DESCRIPTION</code>, the document represents text script, times, optional links to audio and mixing instructions for the purpose of producing an audio description audio track.</li>
+                <li>
+                  <dfn>Pre-recording Dub Script</dfn>:
+                  When the <code>ttm:role</code> value is <code>x-DUBBING_PRE_RECORDING</code>,
+                  the document represents the result of the adaptation of a <a>Translated Dialogue List</a> for dubbing,
+                  e.g. for better lip-sync.
+                  Its <a>Script Events</a> may also contain <a>Original</a> <a>Text</a> objects from the <a>Original Language Dialogue List</a> for context,
+                  to assist further processing.
+                <aside class="note">The <a>Script Type</a> of a <a>DAPT Script</a> cannot necessarily be detected by inspecting the text content of the document.
+                  For example, the adaptation of a <a>Translated Dialogue List</a> into a <a>Pre-recording Dub Script</a>
+                  can consist in replacing some words in the text content of a <a>Script Event</a> without altering the rest of the document.
+                  In either case, <a>Text</a> objects that are translations have <a>Text Language Source</a> properties set to <a>Translation</a>.</aside>
+                </li>
+                <li>
+                  <dfn>As-recorded Dub Script</dfn>:
+                  When the <code>ttm:role</code> value is <code>x-DUBBING_AS_RECORDED</code>,
+                  the document represents a transcription of the output of the dubbing workflow.
+                  It may also contain <a>Script Events</a> from the <a>Original Language Dialogue List</a> for context and quality verifications.
+                  <aside class="note">Even though the output of the dubbing workflow is in the same language as those
+                    <a>Text</a> objects with the matching language,
+                    the <a>Text Language Source</a> of those Text objects remains <a>Translation</a>
+                    since they differ from the original language of the dialogue.</aside>
+                </li>
+                <li>
+                  <dfn>Audio Description Script</dfn>:
+                  When the <code>ttm:role</code> value is <code>x-AUDIO_DESCRIPTION</code>,
+                  the document represents text script, times, optional links to audio and mixing instructions
+                  for the purpose of producing an audio description audio track.
+                  <aside class="note">The <a>Text</a> objects in Audio Description <a>Script Events</a> are each expected to have
+                    a <a>Text Language Source</a> property of <a>Original</a> if their language is the <a>Primary Language</a>
+                    or, when representing in-image text,
+                    if they are in the same language as that text.
+                    If audio description scripts are translated,
+                    their translations would be marked as <a>Translation</a>.</aside>
+                </li>
               </ul>
             </p>
             <pre class="example">
@@ -375,12 +422,27 @@ table.coldividers td + td { border-left:1px solid gray; }
           </section>
           <section>
             <h4>Primary Language</h4>
-            <p>The <dfn>Primary Language</dfn> is a mandatory property of a <a>DAPT Script</a> which represents the default language for the <a>Text</a> content of <a>Script Events</a>. It is represented in TTML with the following structure and constraints:
+            <p>The <dfn>Primary Language</dfn> is a mandatory property of a <a>DAPT Script</a>
+              which represents the default language for the <a>Text</a> content of <a>Script Events</a>.
+              It is represented in TTML with the following structure and constraints:
               <ul>
                 <li>the <code>xml:lang</code> attribute MUST be present on the <code>tt</code> element and its value MUST NOT be empty.</li>
               </ul>
             </p>
-            <p class="note">All text content in a <a>DAPT Script</a> identify their corresponding language. When multiple languages are used, the <a>Primary Language</a> can correspond to the language of the majority of <a>Script Events</a>, to the language being spoken for the longest duration, or to the language arbitrarily chosen by the author. </p>
+            <p class="note">All text content in a <a>DAPT Script</a> has a specified language.
+              When multiple languages are used, the <a>Primary Language</a> can correspond to the language of the majority of <a>Script Events</a>,
+              to the language being spoken for the longest duration, or to the language arbitrarily chosen by the author.</p>
+            <p class="note">Text content is marked either as being either in the <a>Original</a> language or
+              as being a <a>Translation</a> independently of the <a>Primary Language</a>, using the <a>Text Language Source</a> property.</p>
+            <aside class="example">An <a>Original Language Dialogue List</a> script is prepared for a video
+              containing dialogue in Danish and Swedish.
+              The <a>Primary Language</a> is set to Danish by setting <code>xml:lang="da"</code> on the <code>&lt;tt&gt;</code> element.
+              <a>Script Events</a> that contain Swedish <a>Text</a> override this by setting
+              <code>xml:lang="sv"</code> on the <code>&lt;p&gt;</code> element.
+              Script Events that contain Danish <a>Text</a> can set the <code>xml:lang</code> attribute
+              or omit it, since the inherited language is the <a>Primary Language</a> of the document.
+              In both cases the Script Events' <a>Text</a> objects are <code>&lt;p&gt;</code> elements that represent original language text
+              and therefore set their <a>Text Language Source</a> to Original by setting <code>daptm:tls="original"</code>.</aside>
           </section>
 
           <section>
@@ -520,8 +582,8 @@ table.coldividers td + td { border-left:1px solid gray; }
             <li>Zero or more <a>Character Identifiers</a> indicating the <a>Characters</a> involved in this <a>Script Event</a>.
               <p class="note">While typically, a <a>Script Event</a> corresponds to one single <a>Character</a>, there are cases where multiple <a>characters</a> can be associated with a <a>Script Event</a>. This is when all <a>Characters</a> speak the same text at the same time.</p>
             </li>
-            <li>a mandatory <dfn>Main Text</dfn> property, which provides the main text content for this <a>Script Event</a> in the form of a <a>Text</a> object</li>
-            <li>an optional <dfn>Contextual Text</dfn> property, which provides a representation of the <a>Main Text</a> content in a different language, in the form of a <a>Text</a> object. It can be used to assist in the processing of the main text content.</li>
+            <li>Zero or more <a>Text</a> objects, each representing either the <a>Original</a> language script or
+              <a>Translations</a> of the original language script in other languages.</li>
             <li>an optional <dfn>Script Event Description</dfn> property, as a human-readable description of the <a>Script Event</a>.
               <p class="note">The <a>Script Event Description</a> does not need to be unique, i.e. it does not need to have a different value for each <a>Script Event</a>. 
                 For example a particular value could be re-used to identify in a human-readable way one or more <a>Script Events</a> that are intended to be processed together,
@@ -548,8 +610,7 @@ table.coldividers td + td { border-left:1px solid gray; }
 &lt;/div&gt;
 ...
           </pre>
-              <li>It MUST contain one <code>p</code> element representing the <a>Main Text</a>.</li>
-              <li>It MAY contain another <code>p</code> element representing the <a>Contextual Text</a></li>
+              <li>It MAY contain zero or more <code>p</code> elements representing each <a>Text</a> object.</li>
               <li>The <code>style</code> attribute MAY be present. If present, it MAY contain a reference to the <code>&lt;style&gt;</code> defining the <a>Character Style</a>. Additional style references or inline styles MAY be used.</li>
               <li>It MAY contain a <code>metadata</code> element representing the <a>On Screen</a> property.</li>
             </ul>
@@ -560,7 +621,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         <section>
           <h4>Text</h4>
           <p>The <dfn>Text</dfn> object contains text content in a single language, and may be styled and associated with a <a>Character</a>.
-            The <a>Main Text</a> and <a>Contextual Text</a> objects of <a>Script Events</a> are <a>Text</a> objects.</p>
+            It indicates whether it is in the <a>Original</a> language or if it is a <a>Translation</a>, as well as its language.</p>
           <p class="issue" data-number="15"></p>
           <p>A <a>Text</a> object is represented with a <code>p</code> element with the following constraints:</p>
             <ul>
@@ -576,11 +637,16 @@ table.coldividers td + td { border-left:1px solid gray; }
                 If present, it MAY contain a reference to the <code>&lt;style&gt;</code> that defines the relevant <a>Character Style</a>.
                 Additional style references or inline styles MAY be used as defined in [[TTML2]],
                 and MAY be applied to sub-sections of the text defined by <code>&lt;span&gt;</code> elements.</li>
-              <li>The <code>p</code> element MUST have an <code>xml:lang</code> attribute corresponding to the language of the <a>Text</a> object.
-              <div class="note">Within a <code>&lt;div&gt;</code> representing a <a>Script Event</a>
-                 the order of <code>&lt;p&gt;</code> children is significant.
-                 The <code>xml:lang</code> value can be used to determine which paragraph corresponds to the <a>Main Text</a> and which one corresponds to the <a>Contextual Text</a>.
-                 Text content in a language that does not match the <a>Primary Language</a> of the <a>DAPT Script</a> are <a>Contextual Text</a>.</div>
+              <li>The <code>&lt;p&gt;</code> element MUST have one <a>Text Language Source</a> property.</li>
+              <li>The <code>&lt;p&gt;</code> element SHOULD have an <code>xml:lang</code> attribute corresponding to the language of the <a>Text</a> object.
+                <p class="note">If a <code>&lt;p&gt;</code> element omits the <code>xml:lang</code> attribute then its computed language
+                is derived by inheritance from its parent element, and so forth up to the root <code>&lt;tt&gt;</code> element,
+                which is required to set the <a>Primary Language</a> via its <code>xml:lang</code> attribute.
+                Care should be taken if changing the <a>Primary Language</a> of a <a>Document Instance</a> in case
+                doing so affects descendant elements unexpectedly.
+                Authors can mitigate this risk by explicitly setting <code>xml:lang</code> on all <code>&lt;p&gt;</code> elements.</p>
+                <p class="note">Within a <code>&lt;div&gt;</code> representing a <a>Script Event</a>
+                  the order of <code>&lt;p&gt;</code> children is significant.</p>
               </li>
             </ul>
           <pre class="example">
@@ -588,10 +654,41 @@ table.coldividers td + td { border-left:1px solid gray; }
      begin=&quot;9663f&quot; end=&quot;9682f&quot; 
      style=&quot;style_a&quot;
      ttm:agent=&quot;character_3&quot;&gt;
-  &lt;p xml:lang=&quot;pt-BR&quot; &gt;Voc&#xea; vai ter.&lt;/p&gt;
-  &lt;p xml:lang=&quot;fr&quot; ttm:role=&quot;x-context&quot;&gt;Bah, il arrive.&lt;/p&gt;
+  &lt;p xml:lang=&quot;pt-BR&quot; daptm:tls=&quot;original&quot; &gt;Voc&#xea; vai ter.&lt;/p&gt;
+  &lt;p xml:lang=&quot;fr&quot; daptm:tls=&quot;translation&quot; &gt;Bah, il arrive.&lt;/p&gt;
 &lt;/div&gt;
           </pre>
+        </section>
+
+        <section>
+          <h4>Text Language Source</h4>
+          <p>The <dfn>Text Language Source</dfn> property is an annotation indicating whether a <a>Text</a> object is
+            in the same language as the relevant part of the <a>Related Media Object</a>'s
+            language (original), or if it is a representation in another language (translation):</p>
+          <ul>
+            <li><dfn>Original</dfn> - the <a>Text</a> is in the same language as the dialogue that it represents in the original programme audio,
+              or it represents non-dialogue sound and is in the <a>Primary Language</a> of the <a>Document Instance</a>.</li>
+            <li><dfn>Translation</dfn> - the <a>Text</a> is a representation of the Original language text in a different language.</li>
+          </ul>
+          <aside class="note">The language of a <a>Text</a> object whose <a>Text Language Source</a> is <a>Original</a>
+            can be different to the document's <a>Primary Language</a>.
+            For example a transcript of a short piece of dialogue spoken in a different language to the majority of the dialogue would be annotated
+            with both a different <code>xml:lang</code> value and as being <a>Original</a>.</aside>
+          <aside class="note"><a>Original</a> text is known as "Main",
+            and <a>Translation</a> text as "Contextual", in some workflows.</aside>
+          <p>The <a>Text Language Source</a> property is represented as a <code>daptm:tls</code> attribute with the following constraints:</p>
+          <p class="ednote">Should we use an abbreviated attribute name?</p>
+          <p class="ednote">Initial design is to use an abbreviated name and <code>original|translation</code>,
+            though I considered using an abbreviated value too, since this attribute will appear on every <code>&lt;p&gt;</code> element.
+            Abbreviating O for Original is probably a bad idea because the letter O and the number 0 can easily be confused.
+            I also considered P for Primary but that caused potential confusion between Primary Language and Primary Text Language Source.</p>
+          <div class="exampleInner">
+            <pre class="nohighlight">
+daptm:tls
+  : "original"
+  | "translation"
+            </pre>
+          </div>
         </section>
 
         <section>
@@ -1297,6 +1394,7 @@ daptm:onScreen
 
   <section id="examples" class="appendix">
       <h2>Examples</h2>
+      <p class="ednote">The examples need to be checked for conformance.</p>
       <section>
         <h3>Dubbing - Original Language Dialogue List</h3>
         <pre>

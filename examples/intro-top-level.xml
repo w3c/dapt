@@ -3,7 +3,7 @@
     xml:lang="en" 
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt">
   <head>
-    <metadata ttm:role="x-DUBBING_DIALOGUE_LIST">
+    <metadata ttm:role="x-DUBBING_ORIGINAL_DIALOGUE_LIST">
       <!-- Additional metadata may be placed here -->
       <!-- Any characters must be defined here as a set of ttm:agent elements -->
     </metadata>
