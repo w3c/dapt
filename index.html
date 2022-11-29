@@ -404,7 +404,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             <li><dfn data-lt="Character Identifier">Identifier</dfn> which is a unique identifier to indicate when a <a>Character</a> participates in a <a>Script Event</a></li>
             <li><dfn data-lt="Character Name">Name</dfn> which is the name of the <a>Character</a> in the programme</li>
             <li>an optional <dfn data-lt="Character Talent Name">Talent Name</dfn>, which is the name of the actor speaking dialogue for this <a>Character</a></li>
-            <li>one or more optional <dfn data-lt="Character Style">Character Style</dfn> objects
+            <li>zero or more <dfn data-lt="Character Style">Character Style</dfn> objects
               which can be applied to control the visual appearance of <a>Script Events</a> spoken by the <a>Character</a>,
               for example during recording by an actor or when transforming the script into subtitles.</li>
           </ul>
@@ -457,7 +457,7 @@ table.coldividers td + td { border-left:1px solid gray; }
 ...
         </pre>
 
-            <li>If the <a>Character</a> has one or more <a>Character Styles</a>, the following TTML constraints apply:
+            <li>A <a>Character Style</a> is represented in TTML with the following structure and constraints:
               <ul>
                 <li>Each <a>Character Style</a> is represented by one or more <code>&lt;style&gt;</code> element children of the <code>&lt;styling&gt;</code> element.</li>
                 <li>Each such <code>&lt;style&gt;</code> element is associated with the <a>Character</a> by having a <code>ttm:agent</code> attribute
@@ -473,7 +473,8 @@ table.coldividers td + td { border-left:1px solid gray; }
 
             <p class="note">Any style attribute defined in [[TTML2]] or [[ttml-imsc1.2]]
               (or other profiles using non-W3C namespaces) can be present on the <code>&lt;style&gt;</code> element.</p>
-            <p>A <code>&lt;style&gt;</code> element MAY omit the <code>ttm:agent</code> attribute.</p>
+            <p>A <code>&lt;style&gt;</code> element MAY omit the <code>ttm:agent</code> attribute if it is not associated with a <a>Character</a>.
+              Such styles MAY be applied in the same way as any other style, via a reference in the <code>style</code> attribute.</p>
             <p>Character Styles are applied to <a>Script Events</a> and <a>Text</a> by using the <code>style</code> attribute to specify the set of applicable styles.
               Presentation Processors MUST NOT apply character styles to text if they are not specified using the <code>style</code> attribute.
             </p>
