@@ -509,7 +509,9 @@ table.coldividers td + td { border-left:1px solid gray; }
             <ul>
               <li>The <code>xml:id</code> attribute MUST be present containing the <a>Script Event Identifier</a>.</li>
               <li>The <code>begin</code> and <code>end</code> attributes MUST be present and correspond to the <a>Begin</a> and <a>End</a> of the <a>Script Event</a>.</li>
-              <li>The <code>ttm:agent</code> attribute MAY be present and if present, MUST contain a reference to the <code>ttm:agent</code> representing the <a>Character</a>.</li>
+              <li>The <code>ttm:agent</code> attribute MAY be present and if present,
+                MUST contain a reference to each <code>ttm:agent</code> that represents an associated <a>Character</a>.
+              <aside class="note">Multiple references are specified using a space-separated list.</aside></li>
           <pre class="example">
 ...
 &lt;div xml:id=&quot;event_1&quot;
