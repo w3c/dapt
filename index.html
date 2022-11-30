@@ -1432,9 +1432,28 @@ daptm:onScreen
       <p class="issue" data-number="25"></p>
       <section>
         <h4>Proprietary Metadata</h4>
-        <p>Many dubbing and <a>audio description</a> workflows permit annotation of <a>Script Events</a> or documents with proprietary metadata.
-          Additional vocabulary MAY be included if it is in namespaces not defined by this specification, [[TTML2]] or [[ttml-imsc1.2]].</p>
-        <p class="issue" data-number="31"></p> 
+        <p>Many dubbing and <a>audio description</a> workflows permit annotation of <a>Script Events</a> or documents with proprietary metadata. Exsiting metadata vocabulary from [[TTML2]] MAY be included. Additional vocabulary in proprietary namespaces MAY also be included.</p>
+        <p class="note">It is possible to add information such as the title of the programme using [[TTML2]] constructs.
+        <pre class="example">
+...
+&lt;medadata&gt;
+  &lt;ttm:title&gt;A example title&lt;/ttm:title&gt;
+&lt;/medadata&gt;
+...
+        </pre>
+        <p class="note">It is possible to add workflow-specific information using a foreign namespace. In the following example, a fictitious namespace <code>vendorm</code> from an "example vendor" is used to provide document-level information not defined by DAPT.
+        <pre class="example">
+...
+&lt;medadata xmlns:vendorm=&quot;http://www.example-vendor.com/ns/ttml#metadata&quot;&gt;
+  &lt;vendorm:programType&gt;Episode&lt;/vendorm:programType&gt;
+  &lt;vendorm:episodeSeason&gt;5&lt;/vendorm:episodeSeason&gt;
+  &lt;vendorm:episodeNumber&gt;8&lt;/vendorm:episodeNumber&gt;
+  &lt;vendorm:internalId&gt;15734&lt;/vendorm:internalId&gt;
+  &lt;vendorm:information&gt;Some proprietary information&lt;/vendorm:information&gt;
+&lt;/medadata&gt;
+...
+        </pre>
+        </p>
       </section>
       <section>
         <h4>Layout</h4>
