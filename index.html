@@ -762,8 +762,13 @@ daptm:onScreen
                 <p class="issue" data-number="34"></p>
               </li>
               <li>A <code>ttm:desc</code> element may be present representing the <a>Script Event Description</a>.</li>
-              <li><a>Script Event Type</a>
-                <p class="issue" data-number="35"></p>
+              <li>The <a>Script Event Type</a> is represented by the following attribute:
+                <div class="exampleInner">
+                  <pre class="nohighlight">
+daptm:type = string
+                  </pre>
+                </div>
+                <p class="ednote">Do we want to define an enum here, use a registry, refer to existing values defined elsewhere or leave it free to use.</p>
               </li>
             </ul>
           </p>
