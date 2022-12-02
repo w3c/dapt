@@ -605,17 +605,13 @@ table.coldividers td + td { border-left:1px solid gray; }
             <li>A mandatory <dfn>Begin</dfn> property and a mandatory <dfn>End</dfn> property that together define the <a>Script Event</a>'s time interval in the programme timeline
               <p class="note">Typically <a>Script Events</a> do not overlap in time. However, there can be cases where they do, e.g. in <a>Dubbing Scripts</a> when different <a>Characters</a> speak different text at the same time.</p>
             </li>
-            <li>An optional <dfn>Script Event Type</dfn> used to identify in <a>Dubbing Scripts</a> if the <a>Script Event</a> represents spoken text, or on screen text, and in the later case, the type of on-screen text (title, credit, location, ...).</li>
+            <li>An optional <a>Script Event Type</a> used to identify the type of event (e.g. dialogue, on screen text) in <a>Dubbing Scripts</a>.</li>
             <li>Zero or more <a>Character Identifiers</a> indicating the <a>Characters</a> involved in this <a>Script Event</a>.
               <p class="note">While typically, a <a>Script Event</a> corresponds to one single <a>Character</a>, there are cases where multiple <a>characters</a> can be associated with a <a>Script Event</a>. This is when all <a>Characters</a> speak the same text at the same time.</p>
             </li>
             <li>Zero or more <a>Text</a> objects, each representing either the <a>Original</a> language script or
               <a>Translations</a> of the original language script in other languages.</li>
-            <li>an optional <dfn>Script Event Description</dfn> property, as a human-readable description of the <a>Script Event</a>.
-              <p class="note">The <a>Script Event Description</a> does not need to be unique, i.e. it does not need to have a different value for each <a>Script Event</a>. 
-                For example a particular value could be re-used to identify in a human-readable way one or more <a>Script Events</a> that are intended to be processed together,
-                e.g. in a batch recording.</p>
-            </li>
+            <li>an optional <a>Script Event Description</a> property, as a human-readable description of the <a>Script Event</a>.</li>
             <li>an optional <a>On Screen</a> property, which is an annotation indicating the position of the <a>character</a> during the <a>Script Event</a></li>
           </ul>
         </p>
@@ -744,18 +740,53 @@ daptm:onScreen
   | "OFF_ON"
                   </pre>
                 </div>
-                <p class="issue" data-number="34"></p>
-              </li>
-              <li>A <code>ttm:desc</code> element may be present representing the <a>Script Event Description</a>.</li>
-              <li>The <a>Script Event Type</a> is represented by the following attribute:
-                <div class="exampleInner">
-                  <pre class="nohighlight">
-daptm:type = string
-                  </pre>
-                </div>
-                <p class="ednote">Do we want to define an enum here, use a registry, refer to existing values defined elsewhere or leave it free to use.</p>
               </li>
             </ul>
+          </p>
+        </section>
+        <section>
+          <h4>Script Event Description</h4>
+          <p>The <dfn>Script Event Description</dfn> property is an annotation providing a human-readable description of a <a>Script Event</a>.
+          <p>The <a>Script Event Description</a> property is represented in TTML as <code>ttm:desc</code> element added to a <code>metadata</code> element at the <code>div</code> level.</p>
+          <p class="note">The <a>Script Event Description</a> does not need to be unique, i.e. it does not need to have a different value for each <a>Script Event</a>. 
+            For example a particular value could be re-used to identify in a human-readable way one or more <a>Script Events</a> that are intended to be processed together,
+            e.g. in a batch recording.</p>
+        <pre class="example"
+          data-include="examples/event-desc.xml"
+          data-include-format="text">
+        </pre>
+          <p>The <code>ttm:desc</code> element MAY have a <code>daptm:descType</code> attribute specified to indicate the type of description. The <code>daptm:descType</code> attribute is defined below. Its possible values are as indicated in the registry at YYY.</p>
+          <p class="ednote">Registry to be defined.</p>
+          <div class="exampleInner">
+            <pre class="nohighlight">
+daptm:eventType = string
+            </pre>
+          </div>
+          <pre class="example"
+            data-include="examples/event-desc-descType.xml"
+            data-include-format="text">
+          </pre>
+        </section>
+        <section>
+          <h4>Script Event Type</h4>
+          <p>The <dfn>Script Event Type</dfn> property provides one or more space-separated keywords representing the type of the <a>Script Event</a>, i.e. spoken text, or on-screen text, and in the latter case, the type of on-screen text (title, credit, location, ...). The possible keywords are indicated in the registry at XXXX.
+          <p class="ednote">Registry to be defined.</p>
+          <p>The <a>Script Event Type</a> is represented in TTML by the following attribute:
+            <div class="exampleInner">
+              <pre class="nohighlight">
+daptm:eventType = string
+              </pre>
+            </div>
+            <pre class="example">
+...
+&lt;div xml:id=&quot;event_1&quot;
+     begin=&quot;9663f&quot; end=&quot;9682f&quot; 
+     ttm:agent=&quot;character_4&quot;&gt;
+     daptm:eventType=&quot;dialogue&quot;
+...
+&lt;/div&gt;
+...
+            </pre>
           </p>
         </section>
       </section>
