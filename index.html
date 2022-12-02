@@ -333,14 +333,13 @@ table.coldividers td + td { border-left:1px solid gray; }
   <section id="data-model">
       <h2>DAPT Data Model and corresponding TTML syntax</h2>
       <p>This section specifies the data model for DAPT and its corresponding TTML syntax. In the model, there are objects which can have properties and be associated with other objects. In the TTML syntax, these objects and properties are expressed as elements and attributes.</p>
-      <p class="issue" data-number="12"></p>
       <section>
         <h3>DAPT Script</h3>
           <p>A <dfn>DAPT Script</dfn> corresponds to a document processed within an authoring workflow or processed by a client. It has properties and objects defined in the following sections: <a>Script Type</a>, <a>Primary Language</a>, <a>Script Events</a> and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
           <p>A <a>DAPT Script</a> is represented as a TTML document with the structure and constraints also defined in the following sections.</p>
           <section>
             <h4>Script Type</h4>
-            <p>The <dfn>Script Type</dfn> property describes the type of documents used in Dubbing and Audio Description workflows, among the following: <a>Original Language Dialogue List</a>, <a>Translated Dialogue List</a>, <a>Pre-recording Dub Script</a>, <a>As-recorded Dub Script</a>, and <a>Audio Description Script</a>. <a>Original Language Dialogue List</a>, <a>Translated Dialogue List</a>, <a>Pre-recording Dub Script</a>, <a>As-recorded Dub Script</a> are referred to as <dfn>Dubbing Scripts</dfn>.</p>
+            <p>The <dfn>Script Type</dfn> property is a mandatory property of a <a>DAPT Script</a> which describes the type of documents used in Dubbing and Audio Description workflows, among the following: <a>Original Language Dialogue List</a>, <a>Translated Dialogue List</a>, <a>Pre-recording Dub Script</a>, <a>As-recorded Dub Script</a>, and <a>Audio Description Script</a>. <a>Original Language Dialogue List</a>, <a>Translated Dialogue List</a>, <a>Pre-recording Dub Script</a>, <a>As-recorded Dub Script</a> are referred to as <dfn>Dubbing Scripts</dfn>.</p>
             <p>To represent this property, the following TTML structure and constraints apply:
               <ul>
                 <li>The <code>head</code> element MUST be present, as the first child of the <code>tt</code> element</li>
@@ -376,7 +375,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           </section>
           <section>
             <h4>Primary Language</h4>
-            <p>The <dfn>Primary Language</dfn> represents the default language for the <a>Text</a> content of <a>Script Events</a>. It is represented in TTML with the following structure and constraints:
+            <p>The <dfn>Primary Language</dfn> is a mandatory property of a <a>DAPT Script</a> which represents the default language for the <a>Text</a> content of <a>Script Events</a>. It is represented in TTML with the following structure and constraints:
               <ul>
                 <li>the <code>xml:lang</code> attribute MUST be present on the <code>tt</code> element and its value MUST NOT be empty.</li>
               </ul>
@@ -386,23 +385,24 @@ table.coldividers td + td { border-left:1px solid gray; }
 
           <section>
             <h4>Script Events</h4>
-            <p>The <dfn>Script Events</dfn> part of the model provides the list of intervals corresponding to dialogue, on screen text, or descriptions.</p>
+            <p>A <a>DAPT Script</a> MAY contain zero or more <a>Script Event</a> objects, each corresponding to dialogue, on screen text, or descriptions for a given time interval.</p>
           </section>
 
           <section>
             <h4>Characters</h4>
-            <p>The <dfn>Characters</dfn> part of the model provides the list of characters referenced in the <a>Script Events</a>.</p>
+            <p>A <a>DAPT Script</a> MAY contain zero or more <a>Character</a> objects, each describing a character that can be referenced by a <a>Script Event</a>.</p>
           </section>
-
-          <p class="issue" data-number="14"></p>
       </section>
       <section>
         <h3>Character</h3>
 
         <p>In <a>Dubbing Scripts</a>, it is necessary to identify each character in the programme. This is done with a <dfn>Character</dfn> object which has the following properties: 
           <ul>
-            <li><dfn data-lt="Character Identifier">Identifier</dfn> which is a unique identifier to indicate when a <a>Character</a> participates in a <a>Script Event</a></li>
-            <li><dfn data-lt="Character Name">Name</dfn> which is the name of the <a>Character</a> in the programme</li>
+            <li>a mandatory <dfn data-lt="Character Identifier">Identifier</dfn>
+            which is a unique identifier used to reference the character from elsewhere in the document,
+            for example to indicate when a <a>Character</a> participates in a <a>Script Event</a>,
+            or to link a <a>Character Style</a> to its <a>Character</a>.</li>
+            <li>a mandatory <dfn data-lt="Character Name">Name</dfn> which is the name of the <a>Character</a> in the programme</li>
             <li>an optional <dfn data-lt="Character Talent Name">Talent Name</dfn>, which is the name of the actor speaking dialogue for this <a>Character</a></li>
             <li>zero or more <dfn data-lt="Character Style">Character Style</dfn> objects
               which can be applied to control the visual appearance of <a>Script Events</a> spoken by the <a>Character</a>,
@@ -512,17 +512,17 @@ table.coldividers td + td { border-left:1px solid gray; }
         <h3>Script Event</h3>
         <p>An <dfn>Script Event</dfn> object represents dialogue, on screen text or audio descriptions to be spoken and has the following properties:
           <ul>
-            <li>An <dfn>Script Event Identifier</dfn> which is unique in the script</li>
-            <li><dfn>Begin</dfn> and <dfn>End</dfn> properties providing the <a>Script Event</a> time interval in the programme timeline
+            <li>A mandatory <dfn>Script Event Identifier</dfn> which is unique in the script</li>
+            <li>A mandatory <dfn>Begin</dfn> property and a mandatory <dfn>End</dfn> property that together define the <a>Script Event</a>'s time interval in the programme timeline
               <p class="note">Typically <a>Script Events</a> do not overlap in time. However, there can be cases where they do, e.g. in <a>Dubbing Scripts</a> when different <a>Characters</a> speak different text at the same time.</p>
             </li>
             <li>An optional <dfn>Script Event Type</dfn> used to identify in <a>Dubbing Scripts</a> if the <a>Script Event</a> represents spoken text, or on screen text, and in the later case, the type of on-screen text (title, credit, location, ...).</li>
-            <li>One or more <a>Character Identifiers</a> indicating the <a>Characters</a> involved in this <a>Script Event</a>.
+            <li>Zero or more <a>Character Identifiers</a> indicating the <a>Characters</a> involved in this <a>Script Event</a>.
               <p class="note">While typically, a <a>Script Event</a> corresponds to one single <a>Character</a>, there are cases where multiple <a>characters</a> can be associated with a <a>Script Event</a>. This is when all <a>Characters</a> speak the same text at the same time.</p>
             </li>
             <li>a mandatory <dfn>Main Text</dfn> property, which provides the main text content for this <a>Script Event</a> in the form of a <a>Text</a> object</li>
             <li>an optional <dfn>Contextual Text</dfn> property, which provides a representation of the <a>Main Text</a> content in a different language, in the form of a <a>Text</a> object. It can be used to assist in the processing of the main text content.</li>
-            <li>a <dfn>Script Event Description</dfn> property, as a human-readable description of the <a>Script Event</a>.
+            <li>an optional <dfn>Script Event Description</dfn> property, as a human-readable description of the <a>Script Event</a>.
               <p class="note">The <a>Script Event Description</a> does not need to be unique, i.e. it does not need to have a different value for each <a>Script Event</a>. 
                 For example a particular value could be re-used to identify in a human-readable way one or more <a>Script Events</a> that are intended to be processed together,
                 e.g. in a batch recording.</p>
