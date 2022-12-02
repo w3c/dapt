@@ -789,10 +789,20 @@ daptm:onScreen
             <li><em>entity references</em> other than to <em>predefined entities</em>.</li>
           </ul>
     
-          <p class="note">The resulting [[xml]] document can contain
+          <div class="note">
+            <p>The resulting [[xml]] document can contain
             <dfn data-cite="xml#dt-charref">character references</dfn>,
             and <dfn data-cite="xml#dt-entref">entity referencess</dfn> to
             <dfn data-cite="xml#sec-predefined-ent">predefined entities</dfn>.</p>
+            <p>The predefined entities are (including the leading ampersand and trailing semicolon):</p>
+            <ul>
+              <li><code>&amp;amp;</code> for an ampersand &amp;</li>
+              <li><code>&amp;apos;</code> for an apostrophe &apos;</li>
+              <li><code>&amp;gt;</code> for a greater than sign &gt;</li>
+              <li><code>&amp;lt;</code> for a less than sign &lt;</li>
+              <li><code>&amp;quot;</code> for a quote symbol &quot;</li>
+            </ul>
+          </div>
       </section>
       <section id="foreign-elements-and-attributes">
         <h3>Foreign Element and Attributes</h3>
