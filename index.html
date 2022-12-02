@@ -397,7 +397,10 @@ table.coldividers td + td { border-left:1px solid gray; }
 
         <p>In <a>Dubbing Scripts</a>, it is necessary to identify each character in the programme. This is done with a <dfn>Character</dfn> object which has the following properties: 
           <ul>
-            <li>a mandatory <dfn data-lt="Character Identifier">Identifier</dfn> which is a unique identifier to indicate when a <a>Character</a> participates in a <a>Script Event</a></li>
+            <li>a mandatory <dfn data-lt="Character Identifier">Identifier</dfn>
+            which is a unique identifier used to reference the character from elsewhere in the document,
+            for example to indicate when a <a>Character</a> participates in a <a>Script Event</a>,
+            or to link a <a>Character Style</a> to its <a>Character</a>.</li>
             <li>a mandatory <dfn data-lt="Character Name">Name</dfn> which is the name of the <a>Character</a> in the programme</li>
             <li>an optional <dfn data-lt="Character Talent Name">Talent Name</dfn>, which is the name of the actor speaking dialogue for this <a>Character</a></li>
             <li>an optional <dfn data-lt="Character Style">Style</dfn> object which can be used to control the style when displaying the <a>Script Event</a> for example during recording by an actor</li>
