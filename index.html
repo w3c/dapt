@@ -346,21 +346,23 @@ table.coldividers td + td { border-left:1px solid gray; }
           <section>
             <h4>Script Type</h4>
             <p>The <dfn>Script Type</dfn> property is a mandatory property of a <a>DAPT Script</a> which describes the type of documents used in Dubbing and Audio Description workflows, among the following: <a>Original Language Dialogue List</a>, <a>Translated Dialogue List</a>, <a>Pre-recording Dub Script</a>, <a>As-recorded Dub Script</a>, and <a>Audio Description Script</a>. <a>Original Language Dialogue List</a>, <a>Translated Dialogue List</a>, <a>Pre-recording Dub Script</a>, <a>As-recorded Dub Script</a> are referred to as <dfn>Dubbing Scripts</dfn>.</p>
-            <p>To represent this property, the following TTML structure and constraints apply:
-              <ul>
-                <li>The <code>head</code> element MUST be present, as the first child of the <code>tt</code> element</li>
-                <li>A single <code>metadata</code> element MUST be present in the <code>head</code> element with the <code>ttm:role</code> attribute set to one of the values defined below.
-                </li>
-              </ul>
+            <p>To represent this property, the following TTML attribute MUST be present on the <code>tt</code> element:</p>
+            <div class="exampleInner">
+              <pre class="nohighlight">
+  daptm:scriptType
+    : "DUBBING_ORIGINAL_DIALOGUE_LIST"
+    | "DUBBING_TRANSLATED_DIALOGUE_LIST"
+    | "DUBBING_PRE_RECORDING"
+    | "DUBBING_AS_RECORDED"
+    | "AUDIO_DESCRIPTION"
+              </pre>
+            </div>
             </p>
-            <p class="issue" data-number="24"></p>
-            <p class="issue" data-number="32"></p>
-            <p class="issue" data-number="33"></p>
-            <p>The definitions of the types of documents and the corresponding <code>ttm:role</code> values are:
+            <p>The definitions of the types of documents and the corresponding <code>daptm:scriptType</code> values are:
               <ul>
                 <li>
                   <dfn>Original Language Dialogue List</dfn>:
-                  <p>When the <code>ttm:role</code> value is <code>x-DUBBING_ORIGINAL_DIALOGUE_LIST</code>,
+                  <p>When the <code>daptm:scriptType</code> value is <code>DUBBING_ORIGINAL_DIALOGUE_LIST</code>,
                   the document is a literal transcription of the dialogue and on-screen text in their original spoken/written language(s).</p>
                   <p><a>Script Events</a> in this type of script SHOULD contain <a>Text</a> objects whose
                     <a>Text Language Source</a> is set to <a>Original</a>
@@ -373,7 +375,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 </li>
                 <li>
                   <dfn>Translated Dialogue List</dfn>:
-                  <p>When the <code>ttm:role</code> value is <code>x-DUBBING_TRANSLATED_DIALOGUE_LIST</code>,
+                  <p>When the <code>daptm:scriptType</code> value is <code>DUBBING_TRANSLATED_DIALOGUE_LIST</code>,
                   the document represents a translation of the <a>Original Language Dialogue List</a> in a common language.</p>
                   <p>It can be adapted to produce a <a>Pre-Recording Dub Script</a>,
                   and/or used as the basis for producing translation subtitles,
@@ -394,7 +396,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 </li>
                 <li>
                   <dfn>Pre-recording Dub Script</dfn>:
-                  <p>When the <code>ttm:role</code> value is <code>x-DUBBING_PRE_RECORDING</code>,
+                  <p>When the <code>daptm:scriptType</code> value is <code>DUBBING_PRE_RECORDING</code>,
                   the document represents the result of the adaptation of a <a>Translated Dialogue List</a> for dubbing,
                   e.g. for better lip-sync.</p>
                   <p><a>Script Events</a> in this type of script SHOULD contain <a>Translation</a> <a>Text</a> objects
@@ -409,7 +411,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 </li>
                 <li>
                   <dfn>As-recorded Dub Script</dfn>:
-                  <p>When the <code>ttm:role</code> value is <code>x-DUBBING_AS_RECORDED</code>,
+                  <p>When the <code>daptm:scriptType</code> value is <code>DUBBING_AS_RECORDED</code>,
                   the document represents a transcription of the output of the dubbing workflow.</p>
                   <p><a>Script Events</a> in this type of script SHOULD contain <a>Translation</a> <a>Text</a> objects
                   in the <a>Target Recording Language</a>
@@ -422,7 +424,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 </li>
                 <li>
                   <dfn>Audio Description Script</dfn>:
-                  <p>When the <code>ttm:role</code> value is <code>x-AUDIO_DESCRIPTION</code>,
+                  <p>When the <code>daptm:scriptType</code> value is <code>AUDIO_DESCRIPTION</code>,
                     the document represents text script, times, optional links to audio and mixing instructions
                     for the purpose of producing an audio description audio track.</p>
                   <p><a>Script Events</a> in this type of script SHOULD contain <a>Original</a> <a>Text</a> objects
@@ -440,11 +442,9 @@ table.coldividers td + td { border-left:1px solid gray; }
               </ul>
             </p>
             <pre class="example">
+&lt;tt daptm:scriptType=&quot;DUBBING_DIALOGUE_LIST&quot;&gt;
 ...
-  &lt;head&gt;
-    &lt;metadata ttm:role=&quot;x-DUBBING_DIALOGUE_LIST&quot;/&gt;
-  &lt;/head&gt;
-...
+&lt;/tt&gt;
             </pre>
           </section>
           <section>
