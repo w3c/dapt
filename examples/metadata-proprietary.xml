@@ -1,0 +1,9 @@
+...
+  <metadata xmlns:vendorm="http://www.example-vendor.com/ns/ttml#metadata">
+    <vendorm:programType>Episode</vendorm:programType>
+    <vendorm:episodeSeason>5</vendorm:episodeSeason>
+    <vendorm:episodeNumber>8</vendorm:episodeNumber>
+    <vendorm:internalId>15734</vendorm:internalId>
+    <vendorm:information>Some proprietary information</vendorm:information>
+  </metadata>
+...

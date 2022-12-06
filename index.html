@@ -510,11 +510,11 @@ table.coldividers td + td { border-left:1px solid gray; }
 
         <pre class="example">
 ...
-&lt;medadata&gt;
+&lt;metadata&gt;
   &lt;ttm:agent type=&quot;character&quot; xml:id=&quot;character_1&quot;&gt;
     &lt;ttm:name type=&quot;alias&quot;&gt;DESK CLERK&lt;/ttm:name&gt;
   &lt;/ttm:agent&gt;
-&lt;/medadata&gt;
+&lt;/metadata&gt;
 ...
         </pre>
 
@@ -534,7 +534,7 @@ table.coldividers td + td { border-left:1px solid gray; }
 
         <pre class="example">
 ...
-&lt;medadata&gt;
+&lt;metadata&gt;
   &lt;ttm:agent type=&quot;character&quot; xml:id=&quot;character_2&quot;&gt;
     &lt;ttm:name type=&quot;alias&quot;&gt;BOOKER&lt;/ttm:name&gt;
     &lt;ttm:actor agent=&quot;actor_A&quot;/&gt;
@@ -542,7 +542,7 @@ table.coldividers td + td { border-left:1px solid gray; }
   &lt;ttm:agent type=&quot;person&quot; xml:id=&quot;actor_A&quot;&gt;
     &lt;ttm:name type=&quot;full&quot;&gt;Matthias Schoenaerts&lt;/ttm:name&gt;
   &lt;/ttm:agent&gt;
-&lt;/medadata&gt;
+&lt;/metadata&gt;
 ...
         </pre>
 
@@ -1432,9 +1432,21 @@ daptm:onScreen
       <p class="issue" data-number="25"></p>
       <section>
         <h4>Proprietary Metadata</h4>
-        <p>Many dubbing and <a>audio description</a> workflows permit annotation of <a>Script Events</a> or documents with proprietary metadata.
-          Additional vocabulary MAY be included if it is in namespaces not defined by this specification, [[TTML2]] or [[ttml-imsc1.2]].</p>
-        <p class="issue" data-number="31"></p> 
+        <p>Many dubbing and <a>audio description</a> workflows permit annotation of <a>Script Events</a> or documents with proprietary metadata. Existing metadata vocabulary from [[TTML2]] MAY be included. Additional vocabulary in proprietary namespaces MAY also be included.</p>
+        <p class="note">It is possible to add information such as the title of the programme using [[TTML2]] constructs.
+        <pre class="example">
+...
+&lt;metadata&gt;
+  &lt;ttm:title&gt;A example title&lt;/ttm:title&gt;
+&lt;/metadata&gt;
+...
+        </pre>
+        <p class="note">It is possible to add workflow-specific information using a foreign namespace. In the following example, a fictitious namespace <code>vendorm</code> from an "example vendor" is used to provide document-level information not defined by DAPT.
+        <pre class="example"
+          data-include="examples/metadata-proprietary.xml"
+          data-include-format="text">
+        </pre>
+        </p>
       </section>
       <section>
         <h4>Layout</h4>
