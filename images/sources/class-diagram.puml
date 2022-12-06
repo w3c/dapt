@@ -1,0 +1,53 @@
+@startuml
+!theme plain
+skinparam linetype ortho
+
+together {
+    Class "DAPT Script" {
+        Script Type
+        Primary Language
+    }
+
+    Class "Script Event" {
+        Script Event Identifier
+        Begin
+        End
+        {field} (optional) Script Event Type
+        {field} (optional) Script Event Description
+        {field} (optional) On Screen
+    }
+
+    Class "Text" {
+        Text content
+        Text Language Source
+        {field} (optional) Language
+    }
+}
+
+together {
+    Class "Character" {
+        Character Identifier
+        Name
+        {field} (optional) Talent Name
+    }
+
+    Class "Style" {
+        Style Identifier
+        {field} (optional) Character Identifier
+        Style Attributes
+    }
+}
+
+"DAPT Script" "0" *-- "many" "Script Event" : contains
+"DAPT Script" "0" *-- "many" "Character" : contains
+"DAPT Script" "0" *-- "many" "Style" : contains
+"Character" "0" .. "many" "Style" : Character Style
+"Script Event" "0" .. "many" "Style" : Character Style
+"Text" "0" .. "many" "Style" : Character Style
+"Text" "0" .. "many" "Style" : Other Style
+"Script Event" "0" *-- "many" "Text" : contains
+"Script Event" "0" .. "many" "Character"
+
+hide empty members
+hide circle
+@enduml
