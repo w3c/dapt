@@ -236,12 +236,6 @@ table.coldividers td + td { border-left:1px solid gray; }
         The following terms are used in this proposal:
       </p>
       <p>
-        <dfn data-cite="ttml2#terms-related-media-object">Related Media Object</dfn> See Section 2.2 at [[TTML2]].
-      </p>
-      <p>
-        <dfn>Related Video Object</dfn> A <a>Related Media Object</a> that consists of a sequence of image frames, each a rectangular array of pixels.
-      </p>
-      <p>
         <dfn data-cite="ttml2#terms-root-container-region">Root Container Region</dfn>  See Section 2.2 at [[TTML2]].
       </p>
       <p>
@@ -869,10 +863,12 @@ daptm:onScreen
       <section id="related-video-object-section">
         <h3>Related Video Object</h3>
         <p>
-          A <a>Document Instance</a> MAY be associated with a <a>Related Video Object</a>.
+          A <a>Document Instance</a> MAY be associated with a <dfn>Related Video Object</dfn>, i.e. a <dfn data-cite="ttml2#terms-related-media-object">Related Media Object</dfn> that consists of a sequence of image frames, each a rectangular array of pixels.
+      </p>
+
         </p>
         <p class="note">
-          While this specification contains specific provisions when a <a>Document Instance</a> is associated with a <a>Related Video Object</a>, it does not prevent the use of a <a>Document Instance</a> with other kinds of Related Media Object, e.g. an audio only object.
+          While this specification contains specific provisions when a <a>Document Instance</a> is associated with a <a>Related Video Object</a>, it does not prevent the use of a <a>Document Instance</a> with other kinds of <a>Related Media Object</a>, e.g. an audio only object.
         </p>
       </section>
       <section id="synchronization-section">
@@ -886,7 +882,7 @@ daptm:onScreen
           or could be physical or haptic, such as a Braille display.
         </p>
         <p>
-          When mapping a media time expression M to a frame F of a Related Video Object (or Related Media Object), e.g. for the purpose of mixing audio sources signalled by a <a>Document Instance</a> into the main programme audio of the <a>Related Video Object</a>, the <a>presentation processor</a> MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
+          When mapping a media time expression M to a frame F of a <a>Related Video Object</a> (or <a>Related Media Object</a>), e.g. for the purpose of mixing audio sources signalled by a <a>Document Instance</a> into the main programme audio of the <a>Related Video Object</a>, the <a>presentation processor</a> MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
         </p>
         <p>
           EXAMPLE 1
