@@ -108,7 +108,7 @@ table.coldividers td + td { border-left:1px solid gray; }
     <section id="scope">
       <h2>Scope</h2>
       <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]]
-        intended to support dubbing and audio description workflows worldwide,
+        intended to support dubbing and <a>audio description</a> workflows worldwide,
         to meet the requirements defined in [[[?DAPT-REQS]]], and to permit usage of visual presentation
         features within [[TTML2]] and its profiles, for example those in [[ttml-imsc1.2]].</p>
     </section>
@@ -128,18 +128,23 @@ table.coldividers td + td { border-left:1px solid gray; }
         This specification is designed to facilitate the addition of, and conversion to,
         subtitle and caption documents in other profiles of TTML, such as [[ttml-imsc1.2]],
         for example by permitting subtitle styling syntax to be carried in DAPT documents.
-        Alternatively, styling can be applied to assist voice artists when recording scripted dialogue or audio descriptions.
+        Alternatively, styling can be applied to assist voice artists when recording scripted dialogue or <a>audio descriptions</a>.
       </p>
-      <p>Creating audio description content is also a complex process with similar steps.</p> 
-      <p>
-        <a>Audio Description</a>, also known as Video Description, is an audio service to assist viewers who can not fully see a visual presentation
-        to understand the content, usually achieved by mixing a ‘<a>description</a>’ audio track
-        with the <a>main programme audio</a>, at moments when this does not clash with dialogue, to deliver an <a>audio description mixed audio track</a>.
-        More information about what <a>Audio Description</a> is and how it works can be found at [[WHP051]].
+      <p>Creating audio description content is also a complex process with similar steps.
+        An <dfn>audio description</dfn>, also known as video description, is an audio service
+        to assist viewers who can not fully see a visual presentation to understand the content.
+        It is the result of the audio rendition of one or more <a>descriptions</a>
+        mixed with the audio associated with the programme prior to any mixing with audio description
+        (sometimes referred to as <dfn>main programme audio</dfn>),
+        at moments when this does not clash with dialogue, to deliver an <dfn>audio description mixed audio track</dfn>.
+        A <dfn>description</dfn> is a set of words that describe an aspect of the programme presentation,
+        suitable for rendering into audio by means of vocalisation and recording
+        or used as a text alternative source for text to speech translation, as defined in [[WCAG20]].
+        More information about what <a>audio description</a> is and how it works can be found at [[WHP051]].
       </p>
       <p class="issue" data-number="28"></p>
-      <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and audio description pipeline.
-        A DAPT file is designed to carry pertinent information for dubbing or audio description such as type of script, dialogue, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations.
+      <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and <a>audio description</a> pipeline.
+        A DAPT file is designed to carry pertinent information for dubbing or <a>audio description</a> such as type of script, dialogue, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations.
         This specification first defines the data model (see [[[#data-model]]]) for DAPT scripts and then its representation as a TTML document with restrictions (see [[[#ttml-format]]]).</p>
 
       <section id="intro-example">
@@ -231,15 +236,6 @@ table.coldividers td + td { border-left:1px solid gray; }
         The following terms are used in this proposal:
       </p>
       <p>
-        <dfn>Audio description</dfn>	An audio rendition of a <a>Description</a> or a set of <a>Descriptions</a>.
-      </p>
-      <p>
-        <dfn>Audio description mixed audio track</dfn>  The output of an audio mixer incorporating the main programme audio and the audio description.
-      </p>
-      <p>
-        <dfn data-lt="Description|Descriptions">Description</dfn>  A set of words that describe an aspect of the programme presentation, suitable for rendering into audio by means of vocalisation and recording or used as a <a>Text Alternative</a> source for text to speech translation.
-      </p>
-      <p>
         <dfn data-lt="Document Instance|Document Instances" data-cite="ttml2#terms-document-instance">Document Instance</dfn> As defined by [[TTML2]].
       </p>
       <p>
@@ -283,9 +279,6 @@ table.coldividers td + td { border-left:1px solid gray; }
         The eventual language for which a dubbing or audio description script is being prepared.
         <aside class="note">In some workflows a translation script is prepared in an intermediate, or pivot,
           language prior to translation into the Target Recording Language.</aside>
-      </p>
-      <p>
-        <dfn>Text Alternative</dfn> As defined in [[WCAG20]].
       </p>
       <p>
         <dfn data-cite="ttml2#terms-transformation-processor">Transformation processor</dfn> See Section 2.2 at [[TTML2]].
