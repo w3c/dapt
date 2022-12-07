@@ -142,6 +142,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         or used as a text alternative source for text to speech translation, as defined in [[WCAG20]].
         More information about what <a>audio description</a> is and how it works can be found at [[WHP051]].
       </p>
+
       <p class="issue" data-number="28"></p>
       <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and <a>audio description</a> pipeline.
         A DAPT file is designed to carry pertinent information for dubbing or <a>audio description</a> such as type of script, dialogue, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations.
@@ -234,12 +235,6 @@ table.coldividers td + td { border-left:1px solid gray; }
       <h2>Definitions</h2>
       <p>
         The following terms are used in this proposal:
-      </p>
-      <p>
-        <dfn>Target Recording Language</dfn>
-        The eventual language for which a dubbing or audio description script is being prepared.
-        <aside class="note">In some workflows a translation script is prepared in an intermediate, or pivot,
-          language prior to translation into the Target Recording Language.</aside>
       </p>
       <p>
         <dfn data-cite="ttml2#terms-transformation-processor">Transformation processor</dfn> See Section 2.2 at [[TTML2]].
@@ -621,6 +616,11 @@ table.coldividers td + td { border-left:1px solid gray; }
           <h4>Text</h4>
           <p>The <dfn>Text</dfn> object contains text content in a single language, and may be styled and associated with a <a>Character</a>.
             It indicates whether it is in the <a>Original</a> language or if it is a <a>Translation</a>, as well as its language.</p>
+          <p>
+            The language for which a dubbing or audio description script is being prepared is called <dfn>Target Recording Language</dfn>.
+            <aside class="note">In some workflows a translation script is prepared in an intermediate, or pivot,
+              language prior to translation into the Target Recording Language.</aside>
+          </p>
           <p class="issue" data-number="15"></p>
           <p>A <a>Text</a> object is represented with a <code>p</code> element with the following constraints:</p>
             <ul>
