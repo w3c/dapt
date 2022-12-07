@@ -236,9 +236,6 @@ table.coldividers td + td { border-left:1px solid gray; }
         The following terms are used in this proposal:
       </p>
       <p>
-        <dfn data-cite="ttml2#terms-intermediate-synchronic-document">Intermediate Synchronic Document</dfn> See Section 11.3.1.3 at [[TTML2]].
-      </p>
-      <p>
         <dfn data-cite="ttml2#style-value-lwsp">Linear White-Space</dfn> See Section 2.3 at [[TTML2]].
       </p>
       <p>
@@ -891,7 +888,7 @@ daptm:onScreen
         <h3>Synchronization</h3>
         <p class="ednote">Check if we need this, and if we do, rework for audio - e.g. relate to audio sample, or other quantisation units?</p>
         <p>
-          Each intermediate synchronic document of the <a>Document Instance</a> is intended to be rendered starting on a specific frame and removed by a specific frame of the Related Video Object.
+          Each <dfn data-cite="ttml2#terms-intermediate-synchronic-document">Intermediate Synchronic Document</dfn> of the <a>Document Instance</a> is intended to be rendered starting on a specific frame and removed by a specific frame of the Related Video Object.
         </p>
         <p class="note">In the context of this specification rendering could be visual presentation of text,
           for example to show an actor what words to speak, or could be audible playback of an audio resource,
