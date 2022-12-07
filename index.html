@@ -236,9 +236,6 @@ table.coldividers td + td { border-left:1px solid gray; }
         The following terms are used in this proposal:
       </p>
       <p>
-        <dfn data-lt="Document Instance|Document Instances" data-cite="ttml2#terms-document-instance">Document Instance</dfn> As defined by [[TTML2]].
-      </p>
-      <p>
         <dfn data-cite="ttml2#terms-document-interchange-context">Document Interchange Context</dfn> As defined by [[TTML2]].
       </p>
       <p>
@@ -287,7 +284,7 @@ table.coldividers td + td { border-left:1px solid gray; }
 
   <section id="conformance">
     <p>
-      A <a>Document Instance</a> that conforms to the profile defined herein:
+      A <dfn data-lt="Document Instance|Document Instances" data-cite="ttml2#terms-document-instance">Document Instance</dfn> that conforms to the profile defined herein:
     </p>
     <ul style="list-style-type:disc">
       <li>MUST satisfy all normative provisions specified by the profile;</li>
@@ -296,7 +293,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       <li>MUST NOT include any vocabulary, syntax or attribute value associated with a Feature whose disposition is prohibited in the profile.</li>
     </ul>
     <p class="note">
-      A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]], and hence a Document Instance that conforms to a profile defined herein is also a conforming TTML2 Document Instance.
+      A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]], and hence a <a>Document Instance</a> that conforms to a profile defined herein is also a conforming TTML2 Document Instance.
     </p>
     <p>
       A <a>presentation processor</a> that conforms to the profile defined in this specification:
@@ -322,7 +319,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       In other words, it is not considered an error for a <a>presentation processor</a> or <a>transformation processor</a> to conform to the profile defined in this document without also conforming to the TTML2  Presentation Profile or the TTML2 Transformation Profile.
     </p>
     <p class="note">
-      This document does not specify presentation processor or transformation processor behavior when processing or transforming a non-conformant Document Instance.
+      This document does not specify presentation processor or transformation processor behavior when processing or transforming a non-conformant <a>Document Instance</a>.
     </p>
     <p class="note">
       The permitted and prohibited dispositions do not refer to the specification of a ttp:feature or ttp:extension element as being permitted or prohibited within a ttp:profile element.
@@ -806,7 +803,7 @@ daptm:onScreen
           In particular, a Document Instance can contain elements and attributes not in any TT namespace, i.e. in foreign namespaces, since such elements and attributes are pruned by the algorithm at Section 4 of [[TTML2]] prior to evaluating content conformance.
         </p>
         <p class ="note">
-          For validation purposes it is good practice to define and use a content specification for all foreign namespace elements and attributes used within a Document Instance.
+          For validation purposes it is good practice to define and use a content specification for all foreign namespace elements and attributes used within a <a>Document Instance</a>.
         </p>
         <p>
           A <a>transformation processor</a> SHOULD preserve such elements or attributes whenever possible.
@@ -887,7 +884,7 @@ daptm:onScreen
           </tbody>
         </table>
         <p>
-          The namespace prefix values defined above are for convenience and Document Instances MAY use any prefix value that conforms to [[xml-names]].
+          The namespace prefix values defined above are for convenience and <a>Document Instances</a> MAY use any prefix value that conforms to [[xml-names]].
         </p>
         <p>
           The namespaces defined by this proposal document are mutable [[namespaceState]]; all undefined names in these namespaces are reserved for future standardization by the W3C.
@@ -899,28 +896,28 @@ daptm:onScreen
           A <a>Document Instance</a> MAY be associated with a <a>Related Video Object</a>.
         </p>
         <p class="note">
-          While this specification contains specific provisions when a <a>Document Instance</a> is associated with a <a>Related Video Object</a>, it does not prevent the use of a Document Instance with other kinds of Related Media Object, e.g. an audio only object.
+          While this specification contains specific provisions when a <a>Document Instance</a> is associated with a <a>Related Video Object</a>, it does not prevent the use of a <a>Document Instance</a> with other kinds of Related Media Object, e.g. an audio only object.
         </p>
       </section>
       <section id="synchronization-section">
         <h3>Synchronization</h3>
         <p class="ednote">Check if we need this, and if we do, rework for audio - e.g. relate to audio sample, or other quantisation units?</p>
         <p>
-          Each intermediate synchronic document of the Document Instance is intended to be rendered starting on a specific frame and removed by a specific frame of the Related Video Object.
+          Each intermediate synchronic document of the <a>Document Instance</a> is intended to be rendered starting on a specific frame and removed by a specific frame of the Related Video Object.
         </p>
         <p class="note">In the context of this specification rendering could be visual presentation of text,
           for example to show an actor what words to speak, or could be audible playback of an audio resource,
           or could be physical or haptic, such as a Braille display.
         </p>
         <p>
-          When mapping a media time expression M to a frame F of a Related Video Object (or Related Media Object), e.g. for the purpose of mixing audio sources signalled by a Document Instance into the main program audio of the <a>Related Video Object</a>, the presentation processor MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
+          When mapping a media time expression M to a frame F of a Related Video Object (or Related Media Object), e.g. for the purpose of mixing audio sources signalled by a <a>Document Instance</a> into the main program audio of the <a>Related Video Object</a>, the presentation processor MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
         </p>
         <p>
           EXAMPLE 1
           A media time expression of 00:00:05.1 corresponds to frame ceiling( 5.1 × ( 1000 / 1001 × 30) ) = 153 of a <a>Related Video Object</a> with a frame rate of 1000 / 1001 × 30 ≈ 29.97.
         </p>
         <p class="note">
-          In typical scenario, the same video program (the <a>Related Video Object</a>) will be used for Document Instance authoring, delivery and user playback.
+          In typical scenario, the same video program (the <a>Related Video Object</a>) will be used for <a>Document Instance</a> authoring, delivery and user playback.
           The mapping from media time expression to <a>Related Video Object</a> above allows the author to precisely associate <a>audio description</a> content with video frames, e.g. around existing audio dialogue and sound effects.
           In circumstances where the video program is downsampled during delivery, the application can specify that, at playback, the relative video object be considered the delivered video program upsampled to is original rate, thereby allowing audio content to be presented at the same temporal locations it was authored.
         </p>
@@ -929,7 +926,7 @@ daptm:onScreen
         <h3>Profile Signaling</h3>
         <p>TTML documents representing DAPT Scripts MUST specify a <code>ttp:contentProfiles</code> attribute
           on the <code>tt</code> element with one value equal to the designator of the <a>DAPT 1.0</a> profile
-          to which the Document Instance conforms.
+          to which the <a>Document Instance</a> conforms.
           Other values MAY be present to declare conformance to other profiles of [[TTML2]].</p>
         <section id="profile-designator">
           <h4>Profile Designator</h4>
@@ -958,7 +955,7 @@ daptm:onScreen
         <p>
           See <a href="#conformance" class="sec-ref">Conformance</a> for a definition of <em>permitted</em>, <em>prohibited</em> and <em>optional</em>.
         </p>
-        <p class="ednote">Intent is to make it as easy as possible to transform a Document Instance into
+        <p class="ednote">Intent is to make it as easy as possible to transform a <a>Document Instance</a> into
           IMSC ([[ttml-imsc1.2]]), so we need to check that there are no IMSC permitted features that we prohibit, or if there
           are, then we can explain the reason.
         </p>
@@ -1383,7 +1380,7 @@ daptm:onScreen
               <td>permitted</td>
               <td>
                 <ul class="short-list">
-                  <li>All time expressions within a <a href="#dfn-document-instance" class="internalDFN" data-link-type="dfn">Document Instance</a> <em class="rfc2119" title="SHOULD">SHOULD</em> use the same syntax, either
+                  <li>All time expressions within a <a>Document Instance</a> <em class="rfc2119" title="SHOULD">SHOULD</em> use the same syntax, either
                   <code>clock-time</code> or <code>offset-time</code>.
                   </li>
                   <li>For any content element that contains <code>br</code> elements or text nodes or a
