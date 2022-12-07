@@ -1,16 +1,22 @@
 @startuml
 !theme plain
+!pragma ratio 1.3
 skinparam linetype ortho
 skinparam DefaultFontName sans-serif
 skinparam DefaultFontSize 16
+skinparam ArrowFontSize 14
+skinparam ArrowMessageAlignment direction
+skinparam Padding 4
+skinparam Nodesep 2
+skinparam Ranksep 0
 
 together {
-    Class "<b>DAPT Script</b>" [[#dapt-script]] {
+    Class DAPTScript as "**DAPT Script**" [[#dapt-script]] {
         Script Type [[[#script-type]]]
         Primary Language [[[#primary-language]]]
     }
 
-    Class "<b>Script Event</b>" [[#script-event]] {
+    Class ScriptEvent as "**Script Event**" [[#script-event]] {
         Script Event Identifier [[[#dfn-script-event-identifier]]]
         Begin [[[#dfn-begin]]]
         End [[[#dfn-end]]]
@@ -19,36 +25,39 @@ together {
         {field} (optional) On Screen [[[#on-screen]]]
     }
 
-    Class "<b>Text</b>" [[#text]] {
+    Class Text as "**Text**" [[#text]] {
         Text content [[[#dfn-text]]]
         Text Language Source [[[#text-language-source]]]
         {field} (optional) Language
+        ' {field} (optional) Inline Style Attributes
     }
 }
 
-together {
-    Class "<b>Character</b>" [[#character]] {
-        Character Identifier [[[#dfn-character-identifier]]]
-        Name [[[#dfn-character-name]]]
-        {field} (optional) Talent Name [[[#dfn-character-talent-name]]]
-    }
-
-    Class "<b>Style</b>" {
-        Style Identifier
-        {field} (optional) Character Identifier [[[#dfn-character-identifier]]]
-        Style Attributes
-    }
+Class Character as "**Character**" [[#character]] {
+    Character Identifier [[[#dfn-character-identifier]]]
+    Name [[[#dfn-character-name]]]
+    {field} (optional) Talent Name [[[#dfn-character-talent-name]]]
 }
 
-"<b>DAPT Script</b>" "0" *-- "many" "<b>Script Event</b>" : contains
-"<b>DAPT Script</b>" "0" *-- "many" "<b>Character</b>" : contains
-"<b>DAPT Script</b>" "0" *-- "many" "<b>Style</b>" : contains
-"<b>Character</b>" "0" <.. "many" "<b>Style</b>" [[#dfn-character-style]] : Character Style
-"<b>Script Event</b>" "0" ..> "many" "<b>Style</b>" [[#dfn-character-style]] : Character Style
-"<b>Text</b>" "0" ..> "many" "<b>Style</b>" [[#dfn-character-style]] : Character Style
-"<b>Text</b>" "0" ..> "many" "<b>Style</b>" : Other Style
-"<b>Script Event</b>" "0" *-- "many" "<b>Text</b>" : contains
-"<b>Script Event</b>" "0" ..> "many" "<b>Character</b>"
+Class Style as "**Style**" {
+    Style Identifier
+    {field} (optional) Character Identifier [[[#dfn-character-identifier]]]
+    Style Attributes
+}
+
+DAPTScript *-down- "0..*" ScriptEvent : contains
+DAPTScript *-right- "0..*" Character : contains
+DAPTScript *-right- "0..*" Style : contains
+Character "0..1" <.down. "0..*" Style [[#dfn-character-style]] : Character Style
+ScriptEvent "0..*" .right.> "0..*" Style [[#dfn-character-style]] : Character Style
+Text "0..*" .right.> "0..*" Style [[#dfn-character-style]] : Character Style
+Text "0..*" .right.> "0..*" Style : Other Style
+ScriptEvent *-down- "0..*" Text : contains
+ScriptEvent "0..*" ..> "0..*" Character
+
+' Hidden links to persuade the layout to look nicer
+DAPTScript -[hidden]r- Style
+' Text -[hidden]d- Style
 
 hide empty members
 hide circle
