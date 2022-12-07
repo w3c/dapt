@@ -1,0 +1,55 @@
+@startuml
+!theme plain
+skinparam linetype ortho
+skinparam DefaultFontName sans-serif
+skinparam DefaultFontSize 16
+
+together {
+    Class "DAPT Script" [[#dapt-script]] {
+        Script Type [[[#script-type]]]
+        Primary Language [[[#primary-language]]]
+    }
+
+    Class "Script Event" [[#script-event]] {
+        Script Event Identifier [[[#dfn-script-event-identifier]]]
+        Begin [[[#dfn-begin]]]
+        End [[[#dfn-end]]]
+        {field} (optional) Script Event Type [[[#dfn-script-event-type]]]
+        {field} (optional) Script Event Description [[[#dfn-script-event-description]]]
+        {field} (optional) On Screen [[[#on-screen]]]
+    }
+
+    Class "Text" [[#text]] {
+        Text content [[[#dfn-text]]]
+        Text Language Source [[[#text-language-source]]]
+        {field} (optional) Language
+    }
+}
+
+together {
+    Class "Character" [[#character]] {
+        Character Identifier [[[#dfn-character-identifier]]]
+        Name [[[#dfn-character-name]]]
+        {field} (optional) Talent Name [[[#dfn-character-talent-name]]]
+    }
+
+    Class "Style" {
+        Style Identifier
+        {field} (optional) Character Identifier [[[#dfn-character-identifier]]]
+        Style Attributes
+    }
+}
+
+"DAPT Script" "0" *-- "many" "Script Event" : contains
+"DAPT Script" "0" *-- "many" "Character" : contains
+"DAPT Script" "0" *-- "many" "Style" : contains
+"Character" "0" .. "many" "Style" [[#dfn-character-style]] : Character Style
+"Script Event" "0" .. "many" "Style" [[#dfn-character-style]] : Character Style
+"Text" "0" .. "many" "Style" [[#dfn-character-style]] : Character Style
+"Text" "0" .. "many" "Style" : Other Style
+"Script Event" "0" *-- "many" "Text" : contains
+"Script Event" "0" .. "many" "Character"
+
+hide empty members
+hide circle
+@enduml

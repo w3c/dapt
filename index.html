@@ -251,6 +251,12 @@ table.coldividers td + td { border-left:1px solid gray; }
   <section id="data-model">
       <h2>DAPT Data Model and corresponding TTML syntax</h2>
       <p>This section specifies the data model for DAPT and its corresponding TTML syntax. In the model, there are objects which can have properties and be associated with other objects. In the TTML syntax, these objects and properties are expressed as elements and attributes.</p>
+      <figure id='fig-class-diagram'>
+        <div data-include="figures/class-diagram.svg"></div>
+        <figcaption>
+            Class diagram showing main entities in the DAPT data model.
+        </figcaption>
+    </figure>
       <section>
         <h3>DAPT Script</h3>
           <p>A <dfn>DAPT Script</dfn> corresponds to a document processed within an authoring workflow or processed by a client. It has properties and objects defined in the following sections: <a>Script Type</a>, <a>Primary Language</a>, <a>Script Events</a> and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
