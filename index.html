@@ -334,7 +334,22 @@ table.coldividers td + td { border-left:1px solid gray; }
     <p class="note">
       The permitted and prohibited dispositions do not refer to the specification of a ttp:feature or ttp:extension element as being permitted or prohibited within a ttp:profile element.
     </p>
-  </section>
+
+    <section id="profile-resolution-semantics">
+      <h3>Profile Resolution Semantics</h3>
+      <p>The Profile Semantics specified in [[ttml2]] apply.</p>
+      <p class="note">Since <a href="#profile-signaling-section"></a> imposes constraints on profile signalling,
+        by requiring the presence of the <code>ttp:contentProfiles</code> attribute,
+        the algorithm for profile resolution can be simplified.</p>
+      <p>
+        For the purpose of content processing,
+        the determination of the resolved profile SHOULD take into account both the signaled profile,
+        as defined in <a href="#profile-signaling-section"></a>, and profile metadata,
+        as designated by either (or both) the Document Interchange Context or (and) the Document Processing Context,
+        which MAY entail inspecting document content.
+      </p>
+    </section> <!-- Profile resolution -->
+  </section> <!-- conformance -->
 
   <section id="data-model">
       <h2>DAPT Data Model and corresponding TTML syntax</h2>
@@ -357,7 +372,7 @@ table.coldividers td + td { border-left:1px solid gray; }
     | "AUDIO_DESCRIPTION"
               </pre>
             </div>
-            </p>
+
             <p>The definitions of the types of documents and the corresponding <code>daptm:scriptType</code> values are:
               <ul>
                 <li>
@@ -755,25 +770,6 @@ daptm:onScreen
         </section>
       </section>
 
-  <section id="ttml-format">
-      <h4>TTML Format</h4>
-      <p>This section defines the TTML format based on the data model defined in [[[#data-model]]].</p>
-      <p class="issue" data-number="25"></p>
-      <section id="profile-resolution-semantics">
-        <h3>Profile Resolution Semantics</h3>
-        <p>
-          For the purpose of content processing, the determination of the resolved profile SHOULD take into account both the signaled profile, as defined in <a href="#profile-signaling-section"></a>, and profile metadata, as designated by either (or both) the Document Interchange Context or (and) the Document Processing Context, which MAY entail inspecting document content.
-        </p>
-        <p>
-          If the resolved profile is not the Profile supported by the Processor but is feasibly interoperable with the Profile, then the resolved profile is the Profile.
-          If the resolved profile is undetermined or not supported by the Processor, then the Processor SHOULD nevertheless process the Document Instance using the Profile; otherwise, processing MAY be aborted.
-          If the resolved profile is not the proposed Profile, processing is outside the scope of this specification.
-        </p>
-        <p>
-          If the resolved profile is the profile supported by the Processor, then the Processor SHOULD process the Document Instance according to the Profile.
-        </p>
-      </section>
-    </section>
     <section id="profile-constraints">
       <h2>Constraints</h2>
       <section id="Document Encoding">
@@ -808,7 +804,7 @@ daptm:onScreen
             for processing, in which case the serialisation requirements do not apply.</p>
       </section>
       <section id="foreign-elements-and-attributes">
-        <h3>Foreign Element and Attributes</h3>
+        <h3>Foreign Elements and Attributes</h3>
         <p>
           A <a>Document Instance</a> MAY contain elements and attributes that are neither specifically permitted nor forbidden by a profile.
         </p>
@@ -823,6 +819,26 @@ daptm:onScreen
           A <a>transformation processor</a> SHOULD preserve such elements or attributes whenever possible.
         </p>
         <p class="ednote">Do we need to say that a presentation processor may ignore foreign vocab?</p>
+
+        <section>
+          <h4>Proprietary Metadata</h4>
+          <p>Many dubbing and <a>audio description</a> workflows permit annotation of <a>Script Events</a> or documents with proprietary metadata.
+            Metadata vocabulary defined in this specification or in [[TTML2]] MAY be included.
+            Additional vocabulary in other namespaces MAY also be included.</p>
+          <p class="note">It is possible to add information such as the title of the programme using [[TTML2]] constructs.</p>
+          <pre class="example"
+            data-include="examples/metadata-ttml2.xml"
+            data-include-format="text">
+          </pre>
+          <p class="note">It is possible to add workflow-specific information using a foreign namespace.
+            In the following example, a fictitious namespace <code>vendorm</code> from an "example vendor" is used
+            to provide document-level information not defined by DAPT.</p>
+          <pre class="example"
+            data-include="examples/metadata-proprietary.xml"
+            data-include-format="text">
+          </pre>
+        </section> <!-- Proprietary Metadata -->
+  
       </section>
       <section id="namespaces">
         <h3>Namespaces</h3>
@@ -1423,37 +1439,15 @@ daptm:onScreen
             </tr>
           </tbody>
         </table>
-      </section>
-    </section>
+      </section> <!-- features -->
 
-  <section id="ttml-format-to-remove">
-      <h4>TTML Format</h4>
-      <p>This section defines the TTML format based on the data model defined in [[[#data-model]]].</p>
-      <p class="issue" data-number="25"></p>
-      <section>
-        <h4>Proprietary Metadata</h4>
-        <p>Many dubbing and <a>audio description</a> workflows permit annotation of <a>Script Events</a> or documents with proprietary metadata. Existing metadata vocabulary from [[TTML2]] MAY be included. Additional vocabulary in proprietary namespaces MAY also be included.</p>
-        <p class="note">It is possible to add information such as the title of the programme using [[TTML2]] constructs.
-        <pre class="example">
-...
-&lt;metadata&gt;
-  &lt;ttm:title&gt;A example title&lt;/ttm:title&gt;
-&lt;/metadata&gt;
-...
-        </pre>
-        <p class="note">It is possible to add workflow-specific information using a foreign namespace. In the following example, a fictitious namespace <code>vendorm</code> from an "example vendor" is used to provide document-level information not defined by DAPT.
-        <pre class="example"
-          data-include="examples/metadata-proprietary.xml"
-          data-include-format="text">
-        </pre>
-        </p>
-      </section>
       <section>
         <h4>Layout</h4>
         <p>This specification does not put additional constraints on the layout and rendering features defined in [[!ttml-imsc1.2]].</p>
         <div class="note">Layout of the paragraphs may rely on the default TTML region (i.e. if no <code>layout</code> is used in the <code>head</code> element) or may be explicit by the use of the <code>region</code> attribute, if a <code>region</code> element is defined in a <code>layout</code> element in the <code>head</code> element.</div>
-      </section>
-  </section>
+      </section>  <!-- Layout -->
+
+    </section> <!-- Profile Constraints -->
 
   <section id="acknowledgements">
       <h2>Acknowledgments</h2>
