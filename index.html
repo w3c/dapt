@@ -223,9 +223,9 @@ table.coldividers td + td { border-left:1px solid gray; }
         If a section or appendix header contains the expression "non-normative", then the entirety of the section or appendix is considered non-normative.
       </p>
       <p>
-        This specification uses Feature designations as defined in Appendices E at [[TTML2]]:
-        when making reference to content conformance, these designations refer to the syntactic expression or the semantic capability associated with each designated Feature; and
-        when making reference to processor conformance, these designations refer to processing requirements associated with each designated Feature.
+        This specification uses <dfn data-cite="ttml2#terms-feature">Feature</dfn> designations as defined in Appendices E at [[TTML2]]:
+        when making reference to content conformance, these designations refer to the syntactic expression or the semantic capability associated with each designated <a>Feature</a>; and
+        when making reference to processor conformance, these designations refer to processing requirements associated with each designated <a>Feature</a>.
         If the name of an element referenced in this specification is not namespace qualified, then the TT namespace applies (see <a href="#namespaces">9.3 Namespaces</a>.)
       </p>
     </section>
@@ -234,9 +234,6 @@ table.coldividers td + td { border-left:1px solid gray; }
       <h2>Definitions</h2>
       <p>
         The following terms are used in this proposal:
-      </p>
-      <p>
-        <dfn data-cite="ttml2#terms-feature">Feature</dfn>  See Section 2.2 at [[TTML2]].
       </p>
       <p>
         <dfn data-cite="ttml2#terms-intermediate-synchronic-document">Intermediate Synchronic Document</dfn> See Section 11.3.1.3 at [[TTML2]].
@@ -279,9 +276,9 @@ table.coldividers td + td { border-left:1px solid gray; }
     </p>
     <ul style="list-style-type:disc">
       <li>MUST satisfy all normative provisions specified by the profile;</li>
-      <li>MAY include any vocabulary, syntax or attribute value associated with a Feature whose disposition is permitted or optional in the profile;</li>
-      <li>MUST include any vocabulary, syntax or attribute value associated with a Feature whose disposition is required in the profile.</li>
-      <li>MUST NOT include any vocabulary, syntax or attribute value associated with a Feature whose disposition is prohibited in the profile.</li>
+      <li>MAY include any vocabulary, syntax or attribute value associated with a <a>Feature</a> whose disposition is permitted or optional in the profile;</li>
+      <li>MUST include any vocabulary, syntax or attribute value associated with a <a>Feature</a> whose disposition is required in the profile.</li>
+      <li>MUST NOT include any vocabulary, syntax or attribute value associated with a <a>Feature</a> whose disposition is prohibited in the profile.</li>
     </ul>
     <p class="note">
       A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]], and hence a <a>Document Instance</a> that conforms to a profile defined herein is also a conforming TTML2 Document Instance.
@@ -292,8 +289,8 @@ table.coldividers td + td { border-left:1px solid gray; }
     <ul style="list-style-type:disc">
       <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]]</li>
       <li>MUST satisfy all normative provisions specified by the profile; and</li>
-      <li>MUST implement presentation semantic support for every Feature designated as permitted or required by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
-      <li>MAY implement presentation semantic support for every Feature designated as optional by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
+      <li>MUST implement presentation semantic support for every <a>Feature</a> designated as permitted or required by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
+      <li>MAY implement presentation semantic support for every <a>Feature</a> designated as optional by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
     </ul>
     <p>
       A <a>transformation processor</a> that conforms to the profile defined in this specification:
@@ -301,8 +298,8 @@ table.coldividers td + td { border-left:1px solid gray; }
     <ul style="list-style-type:disc">
       <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]];</li>
       <li>MUST satisfy all normative provisions specified by the profile; and</li>
-      <li>MUST implement transformation semantic support for every Feature designated as permitted or required by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
-      <li>MAY implement transformation semantic support for every Feature designated as optional by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
+      <li>MUST implement transformation semantic support for every <a>Feature</a> designated as permitted or required by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
+      <li>MAY implement transformation semantic support for every <a>Feature</a> designated as optional by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
     </ul>
     <p class="note">
       The use of the terms <a>presentation processor</a> 
@@ -947,10 +944,10 @@ daptm:onScreen
           See <a href="#conformance" class="sec-ref">Conformance</a> for a definition of <em>permitted</em>, <em>prohibited</em> and <em>optional</em>.
         </p>
         <p class="ednote">Intent is to make it as easy as possible to transform a <a>Document Instance</a> into
-          IMSC ([[ttml-imsc1.2]]), so we need to check that there are no IMSC permitted features that we prohibit, or if there
+          IMSC ([[ttml-imsc1.2]]), so we need to check that there are no IMSC permitted <a>Features</a> that we prohibit, or if there
           are, then we can explain the reason.
         </p>
-        <p class="ednote">Editorial task: go through this list of features and check the disposition of each. IMSC-only features should be optional.</p>
+        <p class="ednote">Editorial task: go through this list of <a>features</a> and check the disposition of each. IMSC-only <a>features</a> should be optional.</p>
         <table class="simple">
           <tbody>
             <tr>
@@ -1424,7 +1421,7 @@ daptm:onScreen
 
       <section>
         <h4>Layout</h4>
-        <p>This specification does not put additional constraints on the layout and rendering features defined in [[!ttml-imsc1.2]].</p>
+        <p>This specification does not put additional constraints on the layout and rendering <a>features</a> defined in [[!ttml-imsc1.2]].</p>
         <div class="note">Layout of the paragraphs may rely on the default TTML region (i.e. if no <code>layout</code> is used in the <code>head</code> element) or may be explicit by the use of the <code>region</code> attribute, if a <code>region</code> element is defined in a <code>layout</code> element in the <code>head</code> element.</div>
       </section>  <!-- Layout -->
 
