@@ -236,9 +236,6 @@ table.coldividers td + td { border-left:1px solid gray; }
         The following terms are used in this proposal:
       </p>
       <p>
-        <dfn data-cite="ttml2#terms-presentation-processor">Presentation processor</dfn> See Section 2.2 at [[TTML2]].
-      </p>
-      <p>
         <dfn data-cite="ttml2#terms-processor">Processor</dfn>  Either a Presentation processor or a Transformation processor.
       </p>
       <p>
@@ -278,7 +275,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]], and hence a <a>Document Instance</a> that conforms to a profile defined herein is also a conforming TTML2 Document Instance.
     </p>
     <p>
-      A <a>presentation processor</a> that conforms to the profile defined in this specification:
+      A <dfn data-cite="ttml2#terms-presentation-processor">Presentation processor</dfn> that conforms to the profile defined in this specification:
     </p>
     <ul style="list-style-type:disc">
       <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]]</li>
@@ -301,7 +298,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       In other words, it is not considered an error for a <a>presentation processor</a> or <a>transformation processor</a> to conform to the profile defined in this document without also conforming to the TTML2  Presentation Profile or the TTML2 Transformation Profile.
     </p>
     <p class="note">
-      This document does not specify presentation processor or transformation processor behavior when processing or transforming a non-conformant <a>Document Instance</a>.
+      This document does not specify <a>presentation processor</a> or transformation processor behavior when processing or transforming a non-conformant <a>Document Instance</a>.
     </p>
     <p class="note">
       The permitted and prohibited dispositions do not refer to the specification of a ttp:feature or ttp:extension element as being permitted or prohibited within a ttp:profile element.
@@ -552,13 +549,13 @@ table.coldividers td + td { border-left:1px solid gray; }
             <p>A <code>&lt;style&gt;</code> element MAY omit the <code>ttm:agent</code> attribute if it is not associated with a <a>Character</a>.
               Such styles MAY be applied in the same way as any other style, via a reference in the <code>style</code> attribute.</p>
             <p>Character Styles are applied to <a>Script Events</a> and <a>Text</a> by using the <code>style</code> attribute to specify the set of applicable styles.
-              Presentation Processors MUST NOT apply character styles to text if they are not specified using the <code>style</code> attribute.
+              <a>Presentation Processors</a> MUST NOT apply character styles to text if they are not specified using the <code>style</code> attribute.
             </p>
             <p class="issue" data-number="44"></p>
             <aside class="note">Given a document that specifies a <code>&lt;style&gt;</code> element with a <code>ttm:agent</code> attribute,
             and a <a>Script Event</a> with the same <code>ttm:agent</code> attribute value,
             but that does not reference (directly or by inheritance) that style using a <code>style</code> attribute,
-            a Presentation Processor would not be conformant if it applied that style anyway, solely on the basis of the <code>ttm:agent</code>
+            a <a>Presentation Processor</a> would not be conformant if it applied that style anyway, solely on the basis of the <code>ttm:agent</code>
             being the same.</aside>
 
         <pre class="example">
@@ -790,7 +787,7 @@ daptm:onScreen
         <p>
           A <a>transformation processor</a> SHOULD preserve such elements or attributes whenever possible.
         </p>
-        <p class="ednote">Do we need to say that a presentation processor may ignore foreign vocab?</p>
+        <p class="ednote">Do we need to say that a <a>presentation processor</a> may ignore foreign vocab?</p>
 
         <section>
           <h4>Proprietary Metadata</h4>
@@ -892,7 +889,7 @@ daptm:onScreen
           or could be physical or haptic, such as a Braille display.
         </p>
         <p>
-          When mapping a media time expression M to a frame F of a Related Video Object (or Related Media Object), e.g. for the purpose of mixing audio sources signalled by a <a>Document Instance</a> into the main programme audio of the <a>Related Video Object</a>, the presentation processor MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
+          When mapping a media time expression M to a frame F of a Related Video Object (or Related Media Object), e.g. for the purpose of mixing audio sources signalled by a <a>Document Instance</a> into the main programme audio of the <a>Related Video Object</a>, the <a>presentation processor</a> MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
         </p>
         <p>
           EXAMPLE 1
