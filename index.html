@@ -108,7 +108,7 @@ table.coldividers td + td { border-left:1px solid gray; }
     <section id="scope">
       <h2>Scope</h2>
       <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]]
-        intended to support dubbing and audio description workflows worldwide,
+        intended to support dubbing and <a>audio description</a> workflows worldwide,
         to meet the requirements defined in [[[?DAPT-REQS]]], and to permit usage of visual presentation
         features within [[TTML2]] and its profiles, for example those in [[ttml-imsc1.2]].</p>
     </section>
@@ -128,18 +128,24 @@ table.coldividers td + td { border-left:1px solid gray; }
         This specification is designed to facilitate the addition of, and conversion to,
         subtitle and caption documents in other profiles of TTML, such as [[ttml-imsc1.2]],
         for example by permitting subtitle styling syntax to be carried in DAPT documents.
-        Alternatively, styling can be applied to assist voice artists when recording scripted dialogue or audio descriptions.
+        Alternatively, styling can be applied to assist voice artists when recording scripted dialogue or <a>audio descriptions</a>.
       </p>
-      <p>Creating audio description content is also a complex process with similar steps.</p> 
-      <p>
-        <a>Audio Description</a>, also known as Video Description, is an audio service to assist viewers who can not fully see a visual presentation
-        to understand the content, usually achieved by mixing a ‘<a>description</a>’ audio track
-        with the <a>main programme audio</a>, at moments when this does not clash with dialogue, to deliver an <a>audio description mixed audio track</a>.
-        More information about what <a>Audio Description</a> is and how it works can be found at [[WHP051]].
+      <p>Creating audio description content is also a complex process with similar steps.
+        An <dfn>audio description</dfn>, also known as video description, is an audio service
+        to assist viewers who can not fully see a visual presentation to understand the content.
+        It is the result of the audio rendition of one or more <a>descriptions</a>
+        mixed with the audio associated with the programme prior to any mixing with audio description
+        (sometimes referred to as <dfn>main programme audio</dfn>),
+        at moments when this does not clash with dialogue, to deliver an <dfn>audio description mixed audio track</dfn>.
+        A <dfn>description</dfn> is a set of words that describe an aspect of the programme presentation,
+        suitable for rendering into audio by means of vocalisation and recording
+        or used as a text alternative source for text to speech translation, as defined in [[WCAG20]].
+        More information about what <a>audio description</a> is and how it works can be found at [[WHP051]].
       </p>
+
       <p class="issue" data-number="28"></p>
-      <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and audio description pipeline.
-        A DAPT file is designed to carry pertinent information for dubbing or audio description such as type of script, dialogue, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations.
+      <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and <a>audio description</a> pipeline.
+        A DAPT file is designed to carry pertinent information for dubbing or <a>audio description</a> such as type of script, dialogue, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations.
         This specification first defines the data model (see [[[#data-model]]]) for DAPT scripts and then its representation as a TTML document with restrictions (see [[[#ttml-format]]]).</p>
 
       <section id="intro-example">
@@ -218,110 +224,46 @@ table.coldividers td + td { border-left:1px solid gray; }
         If a section or appendix header contains the expression "non-normative", then the entirety of the section or appendix is considered non-normative.
       </p>
       <p>
-        This specification uses Feature designations as defined in Appendices E at [[TTML2]]:
-        when making reference to content conformance, these designations refer to the syntactic expression or the semantic capability associated with each designated Feature; and
-        when making reference to processor conformance, these designations refer to processing requirements associated with each designated Feature.
+        This specification uses <dfn data-cite="ttml2#terms-feature">Feature</dfn> designations as defined in Appendices E at [[TTML2]]:
+        when making reference to content conformance, these designations refer to the syntactic expression or the semantic capability associated with each designated <a>Feature</a>; and
+        when making reference to <dfn data-cite="ttml2#terms-processor">Processor</dfn> conformance, these designations refer to processing requirements associated with each designated <a>Feature</a>.
         If the name of an element referenced in this specification is not namespace qualified, then the TT namespace applies (see <a href="#namespaces">9.3 Namespaces</a>.)
-      </p>
-    </section>
-
-    <section id="definitions">
-      <h2>Definitions</h2>
-      <p>
-        The following terms are used in this proposal:
-      </p>
-      <p>
-        <dfn>Audio description</dfn>	An audio rendition of a <a>Description</a> or a set of <a>Descriptions</a>.
-      </p>
-      <p>
-        <dfn>Audio description mixed audio track</dfn>  The output of an audio mixer incorporating the main programme audio and the audio description.
-      </p>
-      <p>
-        <dfn data-lt="Description|Descriptions">Description</dfn>  A set of words that describe an aspect of the programme presentation, suitable for rendering into audio by means of vocalisation and recording or used as a <a>Text Alternative</a> source for text to speech translation.
-      </p>
-      <p>
-        <dfn data-lt="Document Instance|Document Instances" data-cite="ttml2#terms-document-instance">Document Instance</dfn> As defined by [[TTML2]].
-      </p>
-      <p>
-        <dfn data-cite="ttml2#terms-document-interchange-context">Document Interchange Context</dfn> As defined by [[TTML2]].
-      </p>
-      <p>
-        <dfn data-cite="ttml2#terms-document-processing-context">Document Processing Context</dfn>  See Section 2.2 at [[TTML2]].
-      </p>
-      <p>
-        <dfn data-cite="ttml2#terms-feature">Feature</dfn>  See Section 2.2 at [[TTML2]].
-      </p>
-      <p>
-        <dfn data-cite="ttml2#terms-intermediate-synchronic-document">Intermediate Synchronic Document</dfn> See Section 11.3.1.3 at [[TTML2]].
-      </p>
-      <p>
-        <dfn data-cite="ttml2#style-value-lwsp">Linear White-Space</dfn> See Section 2.3 at [[TTML2]].
-      </p>
-      <p>
-        <dfn>Main programme audio</dfn> The audio associated with the programme prior to any mixing with audio description.
-      </p>
-      <p>
-        <dfn data-cite="ttml2#terms-presentation-processor">Presentation processor</dfn> See Section 2.2 at [[TTML2]].
-      </p>
-      <p>
-        <dfn data-cite="ttml2#terms-processor">Processor</dfn>  Either a Presentation processor or a Transformation processor.
-      </p>
-      <p>
-        <dfn data-cite="ttml2#terms-profile">Profile</dfn>  A TTML profile specification is a document that lists all the features of TTML that are required / optional / prohibited within “document instances” (files) and “processors” (things that process the files), and any extensions or constraints.
-      </p>
-      <p>
-        <dfn data-cite="ttml2#terms-related-media-object">Related Media Object</dfn> See Section 2.2 at [[TTML2]].
-      </p>
-      <p>
-        <dfn>Related Video Object</dfn> A <a>Related Media Object</a> that consists of a sequence of image frames, each a rectangular array of pixels.
-      </p>
-      <p>
-        <dfn data-cite="ttml2#terms-root-container-region">Root Container Region</dfn>  See Section 2.2 at [[TTML2]].
-      </p>
-      <p>
-        <dfn>Target Recording Language</dfn>
-        The eventual language for which a dubbing or audio description script is being prepared.
-        <aside class="note">In some workflows a translation script is prepared in an intermediate, or pivot,
-          language prior to translation into the Target Recording Language.</aside>
-      </p>
-      <p>
-        <dfn>Text Alternative</dfn> As defined in [[WCAG20]].
-      </p>
-      <p>
-        <dfn data-cite="ttml2#terms-transformation-processor">Transformation processor</dfn> See Section 2.2 at [[TTML2]].
       </p>
     </section>
 
   <section id="conformance">
     <p>
-      A <a>Document Instance</a> that conforms to the profile defined herein:
+      <dfn data-cite="ttml2#terms-profile">Profile</dfn>  A TTML profile specification is a document that lists all the features of TTML that are required / optional / prohibited within “document instances” (files) and “processors” (things that process the files), and any extensions or constraints.
+    </p>
+    <p>
+      A <dfn data-lt="Document Instance|Document Instances" data-cite="ttml2#terms-document-instance">Document Instance</dfn> that conforms to the profile defined herein:
     </p>
     <ul style="list-style-type:disc">
       <li>MUST satisfy all normative provisions specified by the profile;</li>
-      <li>MAY include any vocabulary, syntax or attribute value associated with a Feature whose disposition is permitted or optional in the profile;</li>
-      <li>MUST include any vocabulary, syntax or attribute value associated with a Feature whose disposition is required in the profile.</li>
-      <li>MUST NOT include any vocabulary, syntax or attribute value associated with a Feature whose disposition is prohibited in the profile.</li>
+      <li>MAY include any vocabulary, syntax or attribute value associated with a <a>Feature</a> whose disposition is permitted or optional in the profile;</li>
+      <li>MUST include any vocabulary, syntax or attribute value associated with a <a>Feature</a> whose disposition is required in the profile.</li>
+      <li>MUST NOT include any vocabulary, syntax or attribute value associated with a <a>Feature</a> whose disposition is prohibited in the profile.</li>
     </ul>
     <p class="note">
-      A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]], and hence a Document Instance that conforms to a profile defined herein is also a conforming TTML2 Document Instance.
+      A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]], and hence a <a>Document Instance</a> that conforms to a profile defined herein is also a conforming TTML2 Document Instance.
     </p>
     <p>
-      A <a>presentation processor</a> that conforms to the profile defined in this specification:
+      A <dfn data-cite="ttml2#terms-presentation-processor">Presentation processor</dfn> that conforms to the profile defined in this specification:
     </p>
     <ul style="list-style-type:disc">
       <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]]</li>
       <li>MUST satisfy all normative provisions specified by the profile; and</li>
-      <li>MUST implement presentation semantic support for every Feature designated as permitted or required by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
-      <li>MAY implement presentation semantic support for every Feature designated as optional by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
+      <li>MUST implement presentation semantic support for every <a>Feature</a> designated as permitted or required by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
+      <li>MAY implement presentation semantic support for every <a>Feature</a> designated as optional by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
     </ul>
     <p>
-      A <a>transformation processor</a> that conforms to the profile defined in this specification:
+      A <dfn data-cite="ttml2#terms-transformation-processor">Transformation processor</dfn> that conforms to the profile defined in this specification:
     </p>
     <ul style="list-style-type:disc">
       <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]];</li>
       <li>MUST satisfy all normative provisions specified by the profile; and</li>
-      <li>MUST implement transformation semantic support for every Feature designated as permitted or required by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
-      <li>MAY implement transformation semantic support for every Feature designated as optional by the profile, subject to any additional constraints on each Feature as specified by the profile.</li>
+      <li>MUST implement transformation semantic support for every <a>Feature</a> designated as permitted or required by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
+      <li>MAY implement transformation semantic support for every <a>Feature</a> designated as optional by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
     </ul>
     <p class="note">
       The use of the terms <a>presentation processor</a> 
@@ -329,7 +271,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       In other words, it is not considered an error for a <a>presentation processor</a> or <a>transformation processor</a> to conform to the profile defined in this document without also conforming to the TTML2  Presentation Profile or the TTML2 Transformation Profile.
     </p>
     <p class="note">
-      This document does not specify presentation processor or transformation processor behavior when processing or transforming a non-conformant Document Instance.
+      This document does not specify <a>presentation processor</a> or transformation processor behavior when processing or transforming a non-conformant <a>Document Instance</a>.
     </p>
     <p class="note">
       The permitted and prohibited dispositions do not refer to the specification of a ttp:feature or ttp:extension element as being permitted or prohibited within a ttp:profile element.
@@ -345,7 +287,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         For the purpose of content processing,
         the determination of the resolved profile SHOULD take into account both the signaled profile,
         as defined in <a href="#profile-signaling-section"></a>, and profile metadata,
-        as designated by either (or both) the Document Interchange Context or (and) the Document Processing Context,
+        as designated by either (or both) the <dfn data-cite="ttml2#terms-document-interchange-context">Document Interchange Context</dfn> or (and) the <dfn data-cite="ttml2#terms-document-processing-context">Document Processing Context</dfn>,
         which MAY entail inspecting document content.
       </p>
     </section> <!-- Profile resolution -->
@@ -580,13 +522,13 @@ table.coldividers td + td { border-left:1px solid gray; }
             <p>A <code>&lt;style&gt;</code> element MAY omit the <code>ttm:agent</code> attribute if it is not associated with a <a>Character</a>.
               Such styles MAY be applied in the same way as any other style, via a reference in the <code>style</code> attribute.</p>
             <p>Character Styles are applied to <a>Script Events</a> and <a>Text</a> by using the <code>style</code> attribute to specify the set of applicable styles.
-              Presentation Processors MUST NOT apply character styles to text if they are not specified using the <code>style</code> attribute.
+              <a>Presentation Processors</a> MUST NOT apply character styles to text if they are not specified using the <code>style</code> attribute.
             </p>
             <p class="issue" data-number="44"></p>
             <aside class="note">Given a document that specifies a <code>&lt;style&gt;</code> element with a <code>ttm:agent</code> attribute,
             and a <a>Script Event</a> with the same <code>ttm:agent</code> attribute value,
             but that does not reference (directly or by inheritance) that style using a <code>style</code> attribute,
-            a Presentation Processor would not be conformant if it applied that style anyway, solely on the basis of the <code>ttm:agent</code>
+            a <a>Presentation Processor</a> would not be conformant if it applied that style anyway, solely on the basis of the <code>ttm:agent</code>
             being the same.</aside>
 
         <pre class="example">
@@ -664,6 +606,11 @@ table.coldividers td + td { border-left:1px solid gray; }
           <h4>Text</h4>
           <p>The <dfn>Text</dfn> object contains text content in a single language, and may be styled and associated with a <a>Character</a>.
             It indicates whether it is in the <a>Original</a> language or if it is a <a>Translation</a>, as well as its language.</p>
+          <p>
+            The language for which a dubbing or audio description script is being prepared is called the <dfn>Target Recording Language</dfn>.
+            <aside class="note">In some workflows a translation script is prepared in an intermediate, or pivot,
+              language prior to translation into the Target Recording Language.</aside>
+          </p>
           <p class="issue" data-number="15"></p>
           <p>A <a>Text</a> object is represented with a <code>p</code> element with the following constraints:</p>
             <ul>
@@ -813,12 +760,12 @@ daptm:onScreen
           In particular, a Document Instance can contain elements and attributes not in any TT namespace, i.e. in foreign namespaces, since such elements and attributes are pruned by the algorithm at Section 4 of [[TTML2]] prior to evaluating content conformance.
         </p>
         <p class ="note">
-          For validation purposes it is good practice to define and use a content specification for all foreign namespace elements and attributes used within a Document Instance.
+          For validation purposes it is good practice to define and use a content specification for all foreign namespace elements and attributes used within a <a>Document Instance</a>.
         </p>
         <p>
           A <a>transformation processor</a> SHOULD preserve such elements or attributes whenever possible.
         </p>
-        <p class="ednote">Do we need to say that a presentation processor may ignore foreign vocab?</p>
+        <p class="ednote">Do we need to say that a <a>presentation processor</a> may ignore foreign vocab?</p>
 
         <section>
           <h4>Proprietary Metadata</h4>
@@ -894,7 +841,7 @@ daptm:onScreen
           </tbody>
         </table>
         <p>
-          The namespace prefix values defined above are for convenience and Document Instances MAY use any prefix value that conforms to [[xml-names]].
+          The namespace prefix values defined above are for convenience and <a>Document Instances</a> MAY use any prefix value that conforms to [[xml-names]].
         </p>
         <p>
           The namespaces defined by this proposal document are mutable [[namespaceState]]; all undefined names in these namespaces are reserved for future standardization by the W3C.
@@ -903,31 +850,33 @@ daptm:onScreen
       <section id="related-video-object-section">
         <h3>Related Video Object</h3>
         <p>
-          A <a>Document Instance</a> MAY be associated with a <a>Related Video Object</a>.
+          A <a>Document Instance</a> MAY be associated with a <dfn>Related Video Object</dfn>, i.e. a <dfn data-cite="ttml2#terms-related-media-object">Related Media Object</dfn> that consists of a sequence of image frames, each a rectangular array of pixels.
+      </p>
+
         </p>
         <p class="note">
-          While this specification contains specific provisions when a <a>Document Instance</a> is associated with a <a>Related Video Object</a>, it does not prevent the use of a Document Instance with other kinds of Related Media Object, e.g. an audio only object.
+          While this specification contains specific provisions when a <a>Document Instance</a> is associated with a <a>Related Video Object</a>, it does not prevent the use of a <a>Document Instance</a> with other kinds of <a>Related Media Object</a>, e.g. an audio only object.
         </p>
       </section>
       <section id="synchronization-section">
         <h3>Synchronization</h3>
         <p class="ednote">Check if we need this, and if we do, rework for audio - e.g. relate to audio sample, or other quantisation units?</p>
         <p>
-          Each intermediate synchronic document of the Document Instance is intended to be rendered starting on a specific frame and removed by a specific frame of the Related Video Object.
+          Each <dfn data-cite="ttml2#terms-intermediate-synchronic-document">Intermediate Synchronic Document</dfn> of the <a>Document Instance</a> is intended to be rendered starting on a specific frame and removed by a specific frame of the Related Video Object.
         </p>
         <p class="note">In the context of this specification rendering could be visual presentation of text,
           for example to show an actor what words to speak, or could be audible playback of an audio resource,
           or could be physical or haptic, such as a Braille display.
         </p>
         <p>
-          When mapping a media time expression M to a frame F of a Related Video Object (or Related Media Object), e.g. for the purpose of mixing audio sources signalled by a Document Instance into the main program audio of the <a>Related Video Object</a>, the presentation processor MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
+          When mapping a media time expression M to a frame F of a <a>Related Video Object</a> (or <a>Related Media Object</a>), e.g. for the purpose of mixing audio sources signalled by a <a>Document Instance</a> into the main programme audio of the <a>Related Video Object</a>, the <a>presentation processor</a> MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
         </p>
         <p>
           EXAMPLE 1
           A media time expression of 00:00:05.1 corresponds to frame ceiling( 5.1 × ( 1000 / 1001 × 30) ) = 153 of a <a>Related Video Object</a> with a frame rate of 1000 / 1001 × 30 ≈ 29.97.
         </p>
         <p class="note">
-          In typical scenario, the same video program (the <a>Related Video Object</a>) will be used for Document Instance authoring, delivery and user playback.
+          In typical scenario, the same video program (the <a>Related Video Object</a>) will be used for <a>Document Instance</a> authoring, delivery and user playback.
           The mapping from media time expression to <a>Related Video Object</a> above allows the author to precisely associate <a>audio description</a> content with video frames, e.g. around existing audio dialogue and sound effects.
           In circumstances where the video program is downsampled during delivery, the application can specify that, at playback, the relative video object be considered the delivered video program upsampled to is original rate, thereby allowing audio content to be presented at the same temporal locations it was authored.
         </p>
@@ -936,7 +885,7 @@ daptm:onScreen
         <h3>Profile Signaling</h3>
         <p>TTML documents representing DAPT Scripts MUST specify a <code>ttp:contentProfiles</code> attribute
           on the <code>tt</code> element with one value equal to the designator of the <a>DAPT 1.0</a> profile
-          to which the Document Instance conforms.
+          to which the <a>Document Instance</a> conforms.
           Other values MAY be present to declare conformance to other profiles of [[TTML2]].</p>
         <section id="profile-designator">
           <h4>Profile Designator</h4>
@@ -965,11 +914,11 @@ daptm:onScreen
         <p>
           See <a href="#conformance" class="sec-ref">Conformance</a> for a definition of <em>permitted</em>, <em>prohibited</em> and <em>optional</em>.
         </p>
-        <p class="ednote">Intent is to make it as easy as possible to transform a Document Instance into
-          IMSC ([[ttml-imsc1.2]]), so we need to check that there are no IMSC permitted features that we prohibit, or if there
+        <p class="ednote">Intent is to make it as easy as possible to transform a <a>Document Instance</a> into
+          IMSC ([[ttml-imsc1.2]]), so we need to check that there are no IMSC permitted <a>Features</a> that we prohibit, or if there
           are, then we can explain the reason.
         </p>
-        <p class="ednote">Editorial task: go through this list of features and check the disposition of each. IMSC-only features should be optional.</p>
+        <p class="ednote">Editorial task: go through this list of <a>features</a> and check the disposition of each. IMSC-only <a>features</a> should be optional.</p>
         <table class="simple">
           <tbody>
             <tr>
@@ -1390,7 +1339,7 @@ daptm:onScreen
               <td>permitted</td>
               <td>
                 <ul class="short-list">
-                  <li>All time expressions within a <a href="#dfn-document-instance" class="internalDFN" data-link-type="dfn">Document Instance</a> <em class="rfc2119" title="SHOULD">SHOULD</em> use the same syntax, either
+                  <li>All time expressions within a <a>Document Instance</a> <em class="rfc2119" title="SHOULD">SHOULD</em> use the same syntax, either
                   <code>clock-time</code> or <code>offset-time</code>.
                   </li>
                   <li>For any content element that contains <code>br</code> elements or text nodes or a
@@ -1443,11 +1392,15 @@ daptm:onScreen
 
       <section>
         <h4>Layout</h4>
-        <p>This specification does not put additional constraints on the layout and rendering features defined in [[!ttml-imsc1.2]].</p>
+        <p>This specification does not put additional constraints on the layout and rendering <a>features</a> defined in [[!ttml-imsc1.2]].</p>
         <div class="note">Layout of the paragraphs may rely on the default TTML region (i.e. if no <code>layout</code> is used in the <code>head</code> element) or may be explicit by the use of the <code>region</code> attribute, if a <code>region</code> element is defined in a <code>layout</code> element in the <code>head</code> element.</div>
       </section>  <!-- Layout -->
 
     </section> <!-- Profile Constraints -->
+
+  <section id="index" class="appendix">
+    <!-- All the terms will magically appear here -->
+  </section>
 
   <section id="acknowledgements">
       <h2>Acknowledgments</h2>
