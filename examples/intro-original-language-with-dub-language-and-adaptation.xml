@@ -1,0 +1,24 @@
+<tt xmlns="http://www.w3.org/ns/ttml"
+    xmlns:ttp="http://www.w3.org/ns/ttml#parameter"
+    xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
+    xml:lang="en"
+    ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt"
+    daptm:scriptType="DUBBING_PRE_RECORDING">
+  <head>
+    <metadata>
+      <ttm:agent type="character" xml:id="character_1">
+        <ttm:name type="alias">ASSANE</ttm:name>
+      </ttm:agent>
+    </metadata>
+  </head>
+  <body>
+    <div begin="10s" end="13s" ttm:agent="character_1">
+      <p xml:lang="fr" daptm:langSrc="original">
+        <span>Et c'est grâce à ça qu'on va devenir riches.</span>
+      </p>
+      <p daptm:langSrc="translation">
+        <span begin="0">And thanks to that,</span> <span begin="1.5s">we're gonna get rich.</span>
+      </p>
+    </div>
+  </body>
+</tt>
