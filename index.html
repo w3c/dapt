@@ -478,7 +478,8 @@ table.coldividers td + td { border-left:1px solid gray; }
 
             <li>If the <a>Character</a> has a <a>Talent Name</a> property, the following TTML constraints apply:
               <ul>
-                <li>Another <code>ttm:agent</code> MUST be added to a <code>metadata</code> element in the <code>head</code> element, with the following:
+            <li>Another <code>&lt;ttm:agent&gt;</code> element MUST be added at the path
+              <code>/tt/head/metadata/ttm:agent</code>, with the following constraints:
                   <ul>
                     <li>its <code>type</code> attribute MUST be set to <code>person</code></li>
                     <li>its <code>xml:id</code> attribute MUST be set.</li>
