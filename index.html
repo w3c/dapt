@@ -457,7 +457,8 @@ table.coldividers td + td { border-left:1px solid gray; }
         </p>
         <p>A <a>Character</a> is represented in TTML with the following structure and constraints:
           <ul>
-            <li>There MUST be a <code>ttm:agent</code> element, child a <code>metadata</code> element in the <code>head</code> element, with the following constraints:
+            <li>There MUST be a <code>&lt;ttm:agent&gt;</code> element at the path
+              <code>/tt/head/metadata/ttm:agent</code>, with the following constraints:
               <ul>
                 <li>The <code>type</code> attribute MUST be set to <code>character</code>.</li>
                 <li>The <code>xml:id</code> attribute MUST be present on the <code>ttm:agent</code> and set to the <a>Character Identifier</a>.</li>
