@@ -18,8 +18,9 @@ together {
 
     Class ScriptEvent as "**Script Event**" [[#script-event]] {
         Script Event Identifier [[[#dfn-script-event-identifier]]]
-        Begin [[[#dfn-begin]]]
-        End [[[#dfn-end]]]
+        {field} (optional) Begin [[[#dfn-begin]]]
+        {field} (optional) End [[[#dfn-end]]]
+        {field} (optional) Duration [[[#dfn-duration]]]
         {field} (optional) Script Event Type [[[#dfn-script-event-type]]]
         {field} (optional) Script Event Description [[[#dfn-script-event-description]]]
         {field} (optional) On Screen [[[#on-screen]]]
