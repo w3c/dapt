@@ -12,12 +12,12 @@
     </metadata>
   </head>
   <body>
-    <div begin="10s" end="13s" ttm:agent="character_1">
+    <div begin="10s" end="13s" ttm:agent="character_1" daptm:onScreen="ON_OFF">
       <p xml:lang="fr" daptm:langSrc="original">
         <span>Et c'est grâce à ça qu'on va devenir riches.</span>
       </p>
-      <p daptm:langSrc="translation">
-        <span begin="0">And thanks to that,</span> <span begin="1.5s">we're gonna get rich.</span>
+      <p xml:lang="en" daptm:langSrc="translation">
+        <span begin="0">And thanks to that,</span><span begin="1.5s"> we're gonna get rich.</span>
       </p>
     </div>
   </body>

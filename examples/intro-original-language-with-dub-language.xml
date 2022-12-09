@@ -16,7 +16,7 @@
       <p xml:lang="fr" daptm:langSrc="original">
         <span>Et c'est grâce à ça qu'on va devenir riches.</span>
       </p>
-      <p daptm:langSrc="translation">
+      <p xml:lang="en" daptm:langSrc="translation">
         <span>And thanks to that, we're gonna get rich.</span>
       </p>
     </div>
