@@ -1,9 +1,9 @@
-<tt xmlns="http://www.w3.org/ns/ttml"
+<tt xmlns="http://www.w3.org/ns/ttml" 
     xmlns:ttp="http://www.w3.org/ns/ttml#parameter"
     xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
-    xml:lang="en"
+    xml:lang="fr" 
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt"
-    daptm:scriptType="DUBBING_TRANSLATED_DIALOGUE_LIST">
+    daptm:scriptType="DUBBING_ORIGINAL_DIALOGUE_LIST">
   <head>
     <metadata>
       <ttm:agent type="character" xml:id="character_1">
@@ -12,12 +12,9 @@
     </metadata>
   </head>
   <body>
-    <div begin="10s" end="13s" ttm:agent="character_1">
-      <p xml:lang="fr" daptm:langSrc="original">
+    <div begin="10s" end="13s">
+      <p daptm:langSrc="original" ttm:agent="character_1">
         <span>Et c'est grâce à ça qu'on va devenir riches.</span>
-      </p>
-      <p xml:lang="en" daptm:langSrc="translation">
-        <span>And thanks to that, we're gonna get rich.</span>
       </p>
     </div>
   </body>

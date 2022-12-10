@@ -150,9 +150,8 @@ table.coldividers td + td { border-left:1px solid gray; }
 
       <section id="intro-example">
         <h3>Example documents</h3>
-        <p class="ednote">Do we need examples with metadata e.g. script type?</p>
-        <p class="issue" data-number="48"></p>
-        <p>The top level structure of a document is as follows:</p>
+        <h4>Basic document structure</h4>
+        <p>The top level structure of a document is as follows. The <code>xmlns</code> attribute and the <code>tt</code> element indicate that this is a TTML document and the <code>contentProfiles</code> attribute indicates that it adheres to the DAPT profile defined in this specification. The <code>daptm:scriptType</code> attribute indicates the type of script but in this empty example, it is not relevant, as only the structure of the document is shown. The structure is applicable to all types of scripts, dubbing or audio description.</p>
         <pre class="example"
           data-include="examples/intro-top-level.xml"
           data-include-format="text">
@@ -165,14 +164,12 @@ table.coldividers td + td { border-left:1px solid gray; }
           data-include="examples/intro-times-only.xml"
           data-include-format="text">
         </pre>
-        <p>When descriptions or transcriptions are added this becomes a Pre Recording Script: Text with times, or Original language Text with times:</p>
+        <p>The following examples will demonstrate different uses in dubbing and audio description workflows.</p>
+
+        <h4>Audio Description Examples</h4>
+        <p>When descriptions are added this becomes a Pre Recording Script:</p>
         <pre class="example"
           data-include="examples/intro-times-and-text.xml"
-          data-include-format="text">
-        </pre>
-        <p>After translating the text, this becomes Text in original language and dub language with times:</p>
-        <pre class="example"
-          data-include="examples/intro-original-language-with-dub-language.xml"
           data-include-format="text">
         </pre>
         <p>After creating audio recordings, if not using text to speech, instructions for playback
@@ -205,6 +202,30 @@ table.coldividers td + td { border-left:1px solid gray; }
         </p>
         <pre class="example"
           data-include="examples/intro-script-with-speak.xml"
+          data-include-format="text">
+        </pre>
+
+        <h4>Dubbing Examples</h4>
+        <p>From the basic structure of Example 1, a transcription of the audio programme produces an original language dubbing script,
+          which can look as follows. No specific style or layout is defined, and here the focus is on the transcription of the dialogs.
+          Characters are identified in the <code>metadata</code> section.
+        <pre class="example"
+          data-include="examples/intro-original-language.xml"
+          data-include-format="text">
+        </pre>
+
+        <p>After translating the text, the document is modified. It includes translation text, and
+        in this case the original text is preserved. The main document language is changed to indicate
+        that the focus is on the translated language:</p>
+        <pre class="example"
+          data-include="examples/intro-original-language-with-dub-language.xml"
+          data-include-format="text">
+        </pre>
+
+        <p>The process of adaptation, before recording, could adjust the wording and/or add further timing to assist in the recording.
+        The <code>daptm:scriptType</code> attribute is also modified, as in the following example:</p>
+        <pre class="example"
+          data-include="examples/intro-original-language-with-dub-language-and-adaptation.xml"
           data-include-format="text">
         </pre>
       </section>
@@ -259,7 +280,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                     <a>Text Language Source</a> is set to <a>Original</a>
                     and SHOULD NOT contain <a>Text</a> objects whose
                     <a>Text Language Source</a> is set to <a>Translation</a>.</p>
-                <aside class="example">If a movie contains dialogue in English and Hebrew,
+                <aside class="example">If a programme contains dialogue in English and Hebrew,
                   the <a>Original Language Dialogue List</a> will contain some <a>Script Events</a> in English and some in Hebrew,
                   all marked as <a>Original</a> <a>Text Language Source</a>.
                   None of the <a>Script Events</a> is marked as <a>Translation</a>.</aside>
@@ -281,7 +302,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                   It can also have <a>Translation</a> <a>Text</a> objects in other languages,
                   for example used as intermediate (&quot;pivot&quot;) translations,
                   or as additional context to assist in the adaptation process.</aside>
-                <aside class="example">If a movie contains dialogue in English and Hebrew,
+                <aside class="example">If a programme contains dialogue in English and Hebrew,
                   the French <a>Translated Dialogue List</a> will contain at least the translation in French of all <a>Script Events</a>.
                   It may still retain text content in Hebrew and English to assist further processing.</aside>
                 </li>
@@ -1401,43 +1422,6 @@ daptm:onScreen
   <section id="acknowledgements">
       <h2>Acknowledgments</h2>
       The editors would like to thank XXX for their contributions to this specification.
-  </section>
-
-  <section id="examples" class="appendix">
-      <h2>Examples</h2>
-      <p class="ednote">The examples need to be checked for conformance.</p>
-      <section>
-        <h3>Dubbing - Original Language Dialogue List</h3>
-        <pre>
-&lt;?xml version=&quot;1.1&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;
-&lt;tt ttp:contentProfiles=&quot;http://www.w3.org/ns/ttml/profile/dapt&quot; ttp:frameRate=&quot;24&quot; xml:lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/ns/ttml&quot; xmlns:nttm=&quot;http://www.netflix.com/ns/ttml#metadata&quot; xmlns:dapt=&quot;http://www.w3.org/ns/ttml/profile/dapt&quot; xmlns:ttm=&quot;http://www.w3.org/ns/ttml#metadata&quot; xmlns:ttp=&quot;http://www.w3.org/ns/ttml#parameter&quot; xmlns:tts=&quot;http://www.w3.org/ns/ttml#styling&quot;&gt;
-  &lt;head&gt;
-    &lt;metadata ttm:role=&quot;x-DIALOGUE_LIST&quot;&gt;
-      &lt;ttm:agent type=&quot;character&quot; xml:id=&quot;character_d6407d8d-4ce7-4b8c-8709-edccbf493283&quot;&gt;
-        &lt;ttm:name type=&quot;alias&quot;&gt;TOKIO&lt;/ttm:name&gt;
-      &lt;/ttm:agent&gt;
-    &lt;/metadata&gt;
-    &lt;styling&gt;
-      &lt;style xml:id=&quot;style_d6407d8d-4ce7-4b8c-8709-edccbf493283&quot;/&gt;
-    &lt;/styling&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;div&gt;
-      &lt;p begin=&quot;51422f&quot; end=&quot;51677f&quot; style=&quot;style_d6407d8d-4ce7-4b8c-8709-edccbf493283&quot; ttm:agent=&quot;character_d6407d8d-4ce7-4b8c-8709-edccbf493283f&quot; xml:id=&quot;event_007b6128-1ba8-4f47-ad25-2719c8685de1&quot;&gt;Like all those people lacking a sense of rhythm, the Professor sat at the table, while he was thinking, what&#039;s heavier: love or death?&lt;/p&gt;
-    &lt;/div&gt;
-  &lt;/body&gt;
-&lt;/tt&gt;
-        </pre>
-      </section>
-      <section>
-        <h3>Dubbing - Translated Dialogue List</h3>
-      </section>
-      <section>
-        <h3>Dubbing - Pre-Recording Script / As-Recorded Script</h3>
-      </section>
-      <section>
-        <h3>Audio Description Script</h3>
-      </section>
   </section>
 
   </body>
