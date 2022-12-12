@@ -762,7 +762,7 @@ daptm:onScreen
         <section>
           <h4>Script Event Description</h4>
           <p>The <dfn>Script Event Description</dfn> property is an annotation providing a human-readable description of a <a>Script Event</a>.
-          <p>The <a>Script Event Description</a> property is represented in TTML as <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
+          <p>The <a>Script Event Description</a> property is represented in TTML as a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
           <p class="note">The <a>Script Event Description</a> does not need to be unique, i.e. it does not need to have a different value for each <a>Script Event</a>. 
             For example a particular value could be re-used to identify in a human-readable way one or more <a>Script Events</a> that are intended to be processed together,
             e.g. in a batch recording.</p>
@@ -781,7 +781,7 @@ daptm:descType = string
             data-include="examples/event-desc-descType.xml"
             data-include-format="text">
           </pre>
-          <p>Multiple <code>&lt;ttm:desc&gt;</code> elements MAY be present with different values <code>daptm:descType</code>, as in the following example.</p>
+          <p>Multiple <code>&lt;ttm:desc&gt;</code> elements MAY be present with different values of <code>daptm:descType</code>, as in the following example.</p>
           <pre class="example"
             data-include="examples/event-desc-multiple-descType.xml"
             data-include-format="text">
