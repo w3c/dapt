@@ -762,7 +762,7 @@ daptm:onScreen
         <section>
           <h4>Script Event Description</h4>
           <p>The <dfn>Script Event Description</dfn> property is an annotation providing a human-readable description of a <a>Script Event</a>.
-          <p>The <a>Script Event Description</a> property is represented in TTML as <code>ttm:desc</code> element added to a <code>metadata</code> element at the <code>div</code> level.</p>
+          <p>The <a>Script Event Description</a> property is represented in TTML as <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
           <p class="note">The <a>Script Event Description</a> does not need to be unique, i.e. it does not need to have a different value for each <a>Script Event</a>. 
             For example a particular value could be re-used to identify in a human-readable way one or more <a>Script Events</a> that are intended to be processed together,
             e.g. in a batch recording.</p>
@@ -770,7 +770,7 @@ daptm:onScreen
           data-include="examples/event-desc.xml"
           data-include-format="text">
         </pre>
-          <p>The <code>ttm:desc</code> element MAY have a <code>daptm:descType</code> attribute specified to indicate the type of description. The <code>daptm:descType</code> attribute is defined below. Its possible values are as indicated in the registry at YYY.</p>
+          <p>The <code>&lt;ttm:desc&gt;</code> element MAY have a <code>daptm:descType</code> attribute specified to indicate the type of description. The <code>daptm:descType</code> attribute is defined below. Its possible values are as indicated in the registry at YYY.</p>
           <p class="ednote">Registry to be defined.</p>
           <div class="exampleInner">
             <pre class="nohighlight">
@@ -779,6 +779,11 @@ daptm:descType = string
           </div>
           <pre class="example"
             data-include="examples/event-desc-descType.xml"
+            data-include-format="text">
+          </pre>
+          <p>Multiple <code>&lt;ttm:desc&gt;</code> elements MAY be present with different values <code>daptm:descType</code>, as in the following example.</p>
+          <pre class="example"
+            data-include="examples/event-desc-multiple-descType.xml"
             data-include-format="text">
           </pre>
         </section>
