@@ -514,7 +514,8 @@ table.coldividers td + td { border-left:1px solid gray; }
         <p>An <dfn>Script Event</dfn> object represents dialogue, on screen text or audio descriptions to be spoken and has the following properties:
           <ul>
             <li>A mandatory <dfn>Script Event Identifier</dfn> which is unique in the script</li>
-            <li>A mandatory <dfn>Begin</dfn> property and a mandatory <dfn>End</dfn> property that together define the <a>Script Event</a>'s time interval in the programme timeline
+            <li>An optional <dfn>Begin</dfn> property and an optional <dfn>End</dfn> and an optional <dfn>Duration</dfn> property
+              that together define the <a>Script Event</a>'s time interval in the programme timeline
               <p class="note">Typically <a>Script Events</a> do not overlap in time. However, there can be cases where they do, e.g. in <a>Dubbing Scripts</a> when different <a>Characters</a> speak different text at the same time.</p>
             </li>
             <li>An optional <dfn>Script Event Type</dfn> used to identify in <a>Dubbing Scripts</a> if the <a>Script Event</a> represents spoken text, or on screen text, and in the later case, the type of on-screen text (title, credit, location, ...).</li>
@@ -536,7 +537,24 @@ table.coldividers td + td { border-left:1px solid gray; }
           <ul>There MUST be one <code>div</code> element, with the following constraints:
             <ul>
               <li>The <code>xml:id</code> attribute MUST be present containing the <a>Script Event Identifier</a>.</li>
-              <li>The <code>begin</code> and <code>end</code> attributes MUST be present and correspond to the <a>Begin</a> and <a>End</a> of the <a>Script Event</a>.</li>
+              <li>
+                <p>The <code>begin</code>, <code>end</code> and <code>dur</code> attributes define respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> of the <a>Script Event</a>.</p>
+                <p>The <code>begin</code> and <code>end</code> attributes SHOULD be present.
+                  The <code>dur</code> attribute MAY be present.</p>
+                <p class="note">As noted in [[?ttml2]] if both an <code>end</code> attribute and a <code>dur</code> attribute are present,
+                  the end time is the earlier of <code>end</code> and <code>(begin&nbsp;+&nbsp;dur)</code>.</p>
+                <div class="note">If timing attributes are omitted, the following rules apply:
+                  <ul>
+                    <li>The default value for <code>begin</code> is zero, i.e. the same as the begin time of the parent element.</li>
+                    <li>The default value for <code>end</code> is indefinite,
+                      i.e. it resolves to the same as the end time of the parent timed element,
+                      if there is one.
+                      The topmost timed element is the <code>&lt;body&gt;</code> element,
+                      whose end time is for practical purposes the end of the <a>Related Media Object</a>.</li>
+                    <li>The default value for <code>dur</code> is indefinite, i.e. the end time resolves to the same as the end time of the parent element.</li>
+                  </ul>
+                </div>
+              </li>
               <li>The <code>ttm:agent</code> attribute MAY be present and if present,
                 MUST contain a reference to each <code>ttm:agent</code> that represents an associated <a>Character</a>.
               <aside class="note">Multiple references are specified using a space-separated list.</aside></li>
@@ -864,6 +882,100 @@ daptm:onScreen
           </table>
         </section>
       </section>
+      <section id="time-constraints-section">
+        <h3>Timing constraints</h3>
+        <p>Within a DAPT Script, the following constraints apply in relation to time attributes and time expressions:</p>
+        <section id="timebase-section">
+          <h4><code>ttp:timeBase</code></h4>
+          <p>The only permitted <code>ttp:timeBase</code> value is <code>media</code>,
+            since <a href="#features-section"></a> prohibits all timeBase features
+            other than <a href="https://www.w3.org/TR/ttml2/#feature-timeBase-media"><code>#timeBase-media</code></a>.</p>
+          <p>This means that the beginning of the document timeline,
+            i.e. time "zero",
+             is the beginning of the <a>Related Media Object</a>.</p>
+        </section> <!-- timebase-section -->
+        <section id="timecontainer-section">
+          <h4><code>timeContainer</code></h4>
+          <p>The only permitted value of the <code>timeContainer</code> attribute is the default value, <code>par</code>.</p>
+          <p>Documents SHOULD omit the <code>timeContainer</code> attribute on all elements.</p>
+          <p>Documents MUST NOT set the <code>timeContainer</code> attribute to any value other than <code>par</code> on any element.</p>
+          <p class="note">This means that the <code>begin</code> attribute value for every timed element is relative to
+            the computed begin time of its parent element,
+            or for the <code>&lt;body&gt;</code> element, to time zero.</p>
+        </section> <!-- timecontainer-section -->
+        <section id="framerate-section">
+          <h4><code>ttp:frameRate</code></h4>
+          <p>If the document contains any time expression that uses the <code>f</code> metric,
+            or any time expression that contains a frames component,
+            the <code>ttp:frameRate</code> attribute MUST be present on the <code>&lt;tt&gt;</code> element.</p>
+        </section> <!-- framerate-section -->
+        <section id="tickrate-section">
+          <h4><code>ttp:tickRate</code></h4>
+          <p>If the document contains any time expression that uses the <code>t</code> metric,
+            the <code>ttp:tickRate</code> attribute MUST be present on the <code>&lt;tt&gt;</code> element.</p>
+        </section>
+        <section id="time-clock-with-frames-section" class="informative">
+          <h4><code>#time-clock-with-frames</code></h4>
+          <p>As specified in [[?ttml2]], a <code>#time-clock-with-frames</code> expression is translated to
+            a media time <code>M</code> according to
+            <br/>
+            <code>M = 3600 · hours + 60 · minutes + seconds + (frames ÷ (ttp:frameRateMultiplier · ttp:frameRate))</code>.</p>
+          <div class="example note">
+            <p>For example, the expression <code>01:23:45:15</code>,
+            where <code>ttp:frameRate=&quot;25&quot;</code> and <code>ttp:frameRateMultiplier</code> is unspecified,
+            and therefore the default of 1, is equivalent to a media time</p>
+            <pre>
+M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
+  = 5025.6s</pre>
+            </div>
+        </section> <!-- time-clock-with-frames-section -->
+        <section id="time-expression-section">
+          <h4>Time expressions</h4>
+          <p>All time expressions within a document SHOULD use the same syntax,
+            either <code>clock-time</code> or <code>offset-time</code>
+            as defined in [[ttml2]].</p>
+          <div class="example note">
+            <p>A <code>clock-time</code> has one of the forms:</p>
+            <ul>
+              <li><code>hh:mm:ss.sss</code></li>
+              <li><code>hh:mm:ss</code></li>
+              <li><code>hh:mm:ss:ff</code></li>
+              <li><code>hh:mm:ss:ff.x</code></li>
+            </ul>
+             <p>
+              where
+              <code>hh</code> is hours,
+              <code>mm</code> is minutes,
+              <code>ss</code> is seconds,
+              <code>ss.sss</code> is seconds with a decimal fraction of seconds (any precision),
+              <code>ff</code> is frames, and
+              <code>x</code> is sub-frames.
+            </p>
+          </div>
+          <div class="example note">
+            <p>An <code>offset-time</code> has one of the forms:</p>
+            <ul>
+              <li><code>nn metric</code></li>
+              <li><code>nn.nn metric</code></li>
+            </ul>
+            <p>
+              where
+              <code>nn</code> is an integer,
+              <code>nn.nn</code> is a number with a decimal fraction (any precision), and
+              <code>metric</code> is one of:
+            </p>
+            <ul>
+              <li><code>h</code> for hours,</li>
+              <li><code>m</code> for minutes,</li>
+              <li><code>s</code> for seconds,</li>
+              <li><code>ms</code> for milliseconds,</li>
+              <li><code>f</code> for frames, and</li>
+              <li><code>t</code> for ticks.</li>
+            </ul>
+          </div>
+
+        </section> <!-- time-expression-section -->
+      </section> <!-- time-constraints-section -->
       <section id="features-section">
         <h3>Features</h3>
         <p>
@@ -1028,9 +1140,7 @@ daptm:onScreen
               <td><code>#frameRate</code></td>
               <td>permitted</td>
               <td>
-                If the <a href="#dfn-document-instance" class="internalDFN" data-link-type="dfn">Document Instance</a> includes any time expression that uses the <code>frames</code> term or any
-                offset time expression that uses the <code>f</code> metric, the <code>ttp:frameRate</code> attribute <em class="rfc2119" title="MUST">MUST</em> be present
-                on the <code>tt</code> element.
+                See [[[#framerate-section]]].
               </td>
             </tr>
             <tr>
@@ -1238,8 +1348,7 @@ daptm:onScreen
             <tr>
               <td><code>#tickRate</code></td>
               <td>permitted</td>
-              <td><code>ttp:tickRate</code> <em class="rfc2119" title="MUST">MUST</em> be present on the <code>tt</code> element if the document contains any time
-              expression that uses the <code>t</code> metric.</td>
+              <td>See [[[#tickrate-section]]].</td>
             </tr>
             <tr>
               <td><code>#timeBase-clock</code></td>
@@ -1250,6 +1359,7 @@ daptm:onScreen
               <td><code>#timeBase-media</code></td>
               <td>permitted</td>
               <td>
+                <p>See [[[#timebase-section]]].</p>
                 <p class="inline-note">NOTE: [[TTML1]] specifies that the default timebase is <code>"media"</code> if
                 <code>ttp:timeBase</code> is not specified on <code>tt</code>.</p>
               </td>
@@ -1262,7 +1372,7 @@ daptm:onScreen
             <tr>
               <td><code>#time-clock-with-frames</code></td>
               <td>permitted</td>
-              <td></td>
+              <td>See [[[#framerate-section]]] and [[[#time-clock-with-frames-section]]].</td>
             </tr>
             <tr>
               <td><code>#time-clock</code></td>
@@ -1272,12 +1382,12 @@ daptm:onScreen
             <tr>
               <td><code>#time-offset-with-frames</code></td>
               <td>permitted</td>
-              <td></td>
+              <td>See [[[#framerate-section]]].</td>
             </tr>
             <tr>
               <td><code>#time-offset-with-ticks</code></td>
               <td>permitted</td>
-              <td></td>
+              <td>See [[[#tickrate-section]]].</td>
             </tr>
             <tr>
               <td><code>#time-offset</code></td>
@@ -1287,22 +1397,12 @@ daptm:onScreen
             <tr>
               <td><code>#timeContainer</code></td>
               <td>permitted</td>
-              <td></td>
+              <td>See [[[#timecontainer-section]]].</td>
             </tr>
             <tr>
               <td><code>#timing</code></td>
               <td>permitted</td>
-              <td>
-                <ul class="short-list">
-                  <li>All time expressions within a <a>Document Instance</a> <em class="rfc2119" title="SHOULD">SHOULD</em> use the same syntax, either
-                  <code>clock-time</code> or <code>offset-time</code>.
-                  </li>
-                  <li>For any content element that contains <code>br</code> elements or text nodes or a
-                  <code>smpte:backgroundImage</code> attribute, both the <code>begin</code> attribute and one of either the
-                  <code>end</code> or <code>dur</code> attributes <em class="rfc2119" title="SHOULD">SHOULD</em> be specified on the content element or at least one of its
-                  ancestors.</li>
-                </ul>
-              </td>
+              <td>See [[[#time-expression-section]]].</td>
             </tr>
             <tr>
               <td><code>#transformation</code></td>
