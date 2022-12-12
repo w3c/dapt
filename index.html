@@ -102,51 +102,97 @@ table.coldividers td + td { border-left:1px solid gray; }
       This specification defines <abbr title="Dubbing and Audio description Profiles of TTML2">DAPT</abbr>, a <abbr title="Timed Text Markup Language">TTML</abbr>-based file format for the exchange of timed text content in dubbing and audio description workflows.
     </section>
 
-    <section id="sotd">
+    <section id="sotd" class="updateable-rec">
     </section>
 
     <section id="scope">
       <h2>Scope</h2>
       <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]]
         intended to support dubbing and <a>audio description</a> workflows worldwide,
-        to meet the requirements defined in [[[?DAPT-REQS]]], and to permit usage of visual presentation
+        to meet the requirements defined in [[?DAPT-REQS]], and to permit usage of visual presentation
         features within [[TTML2]] and its profiles, for example those in [[ttml-imsc1.2]].</p>
     </section>
 
     <section class="informative" id="introduction">
       <h2>Introduction</h2>
-      <p>Creating a dub is a complex, multi-step process that involves:
-        <ul>
-          <li>Transcribing and timing the dialogue in the original language from a completed programme to create a source transcription text</li>
-          <li>Notating dialogue with character information and other annotations</li>
-          <li>Generating localization notes to guide further adaptation</li>
-          <li>Translating the dialogue to a target language</li>
-          <li>Adapting the translation to the dubbing and subtitling specifications; ex. matching the actor’s lip movements in the case of dubs and considering reading speeds and shot changes.</li>
-        </ul>
-      </p>
-      <p>The result of creating a <a>dubbing script</a> can be useful as a starting point for creation of subtitles or closed captions in alternate languages.
-        This specification is designed to facilitate the addition of, and conversion to,
-        subtitle and caption documents in other profiles of TTML, such as [[ttml-imsc1.2]],
-        for example by permitting subtitle styling syntax to be carried in DAPT documents.
-        Alternatively, styling can be applied to assist voice artists when recording scripted dialogue or <a>audio descriptions</a>.
-      </p>
-      <p>Creating audio description content is also a complex process with similar steps.
-        An <dfn>audio description</dfn>, also known as video description, is an audio service
-        to assist viewers who can not fully see a visual presentation to understand the content.
-        It is the result of the audio rendition of one or more <a>descriptions</a>
-        mixed with the audio associated with the programme prior to any mixing with audio description
-        (sometimes referred to as <dfn>main programme audio</dfn>),
-        at moments when this does not clash with dialogue, to deliver an <dfn>audio description mixed audio track</dfn>.
-        A <dfn>description</dfn> is a set of words that describe an aspect of the programme presentation,
-        suitable for rendering into audio by means of vocalisation and recording
-        or used as a text alternative source for text to speech translation, as defined in [[WCAG20]].
-        More information about what <a>audio description</a> is and how it works can be found at [[WHP051]].
-      </p>
-
-      <p class="issue" data-number="28"></p>
-      <p>This specification defines DAPT, a TTML-based format for the exchange of timed text content among authoring and prompting tools in the localization and <a>audio description</a> pipeline.
-        A DAPT file is designed to carry pertinent information for dubbing or <a>audio description</a> such as type of script, dialogue, descriptions, timing, metadata, original language text, transcribed text, language information, and to be extensible for future annotations.
-        This specification first defines the data model (see [[[#data-model]]]) for DAPT scripts and then its representation as a TTML document with restrictions (see [[[#ttml-format]]]).</p>
+      <section id="intro-overview">
+        <h3>Transcripts</h3>
+        <p>This specification defines DAPT, a TTML-based transcript format for the exchange of timed text content
+          among authoring, prompting and playback tools in the localization and <a>audio description</a> pipeline.
+          A DAPT file is designed to carry pertinent information for dubbing or <a>audio description</a>
+          such as type of script, dialogue, descriptions, timing, metadata, original language transcribed text, translated text, language information, and audio mixing instructions,
+          and to be extensible to allow user-defined annotations or additional future features.</p>
+        <p>This specification defines the data model for <a>DAPT scripts</a> and
+          its representation as a [[TTML2]] document (see [[[#data-model]]])
+          with some constraints and restrictions (see [[[#profile-constraints]]]).</p>
+        <p>A <a>DAPT script</a> is expected to be used to make audio visual media accessible
+          or localized for users who cannot understand it in its original form,
+          and to be used as part of the solution for meeting user needs
+          involving transcripts, including accessibility needs described in [[media-accessibility-reqs]],
+          as well as supporting users who need dialogue translated into a different language via dubbing.</p>
+        <p>The authoring workflow for both dubbing and audio description involves similar stages,
+          that share common requirements as described in [[dapt-reqs]].
+          In both cases, the author reviews the content and
+          writes down what is happening, either in the dialogue or in the video image,
+          alongside the time when it happens.
+          Further transformation processes can change the text to a different language and
+          adjust the wording to fit precise timing constraints.
+          Then there is a stage in which an audio rendering of the script is generated,
+          for eventual mixing into the programme audio.
+          That mixing can occur prior to distribution,
+          or in the client directly.</p>
+        <section id="intro-dubbing">
+          <h4>Dubbing scripts</h4>
+          <p>Creating a dub is a complex, multi-step process that involves:</p>
+          <ul>
+            <li>Transcribing and timing the dialogue in the original language from a completed programme to create a source transcription text</li>
+            <li>Notating dialogue with character information and other annotations</li>
+            <li>Generating localization notes to guide further adaptation</li>
+            <li>Translating the dialogue to a target language</li>
+            <li>Adapting the translation to the dubbing and subtitling specifications; ex. matching the actor’s lip movements in the case of dubs and considering reading speeds and shot changes.</li>
+          </ul>
+          <p>The result of creating a <a>dubbing script</a> can be useful as a starting point for creation of subtitles or closed captions in alternate languages.
+            This specification is designed to facilitate the addition of, and conversion to,
+            subtitle and caption documents in other profiles of TTML, such as [[ttml-imsc1.2]],
+            for example by permitting subtitle styling syntax to be carried in DAPT documents.
+            Alternatively, styling can be applied to assist voice artists when recording scripted dialogue.
+          </p>
+        </section> <!-- intro-dubbing -->
+        <section id="intro-audio-description">
+          <h4>Audio Description scripts</h4>
+          <p>Creating audio description content is also a multi-stage process.
+            An <dfn>audio description</dfn>,
+            also known as video description
+            or in [[media-accessibility-reqs]] as <a data-cite="media-accessibility-reqs#described-video">described video</a>,
+            is an audio service
+            to assist viewers who can not fully see a visual presentation to understand the content.
+            It is the result of the audio rendition of one or more <a>descriptions</a>
+            mixed with the audio associated with the programme prior to any mixing with audio description
+            (sometimes referred to as <dfn>main programme audio</dfn>),
+            at moments when this does not clash with dialogue, to deliver an audio description mixed audio track.
+            A <dfn>description</dfn> is a set of words that describe an aspect of the programme presentation,
+            suitable for rendering into audio by means of vocalisation and recording
+            or used as a text alternative source for text to speech translation, as defined in [[WCAG22]].
+            More information about what <a>audio description</a> is and how it works can be found at [[WHP051]].
+          </p>
+          <p>Writing the audio description script typically involves:</p>
+          <ul>
+            <li>watching the video content of the programme,
+            or series of programmes,</li>
+            <li>identifying the key moments during which there is an opportunity to speak descriptions,</li>
+            <li>writing the description text to explain the important visible parts of the programme at that time,</li>
+            <li>creating an audio version of the descriptions, either by recording a human actor or using text to speech,</li>
+            <li>defining mixing instructions (applied using styling) for combining the audio with the programme audio.</li>
+          </ul> 
+          <p>The audio mixing can occur prior to distribution of the media,
+            or in the client player.
+            If the <a>audio description</a> script is delivered to the player,
+            the text can be used to provide an alternative rendering,
+            for example on a Braille display,
+            or using the user's configured screen reader.
+          </p>
+        </section> <!-- intro-audio-description -->
+      </section> <!-- intro-overview -->
 
       <section id="intro-example">
         <h3>Example documents</h3>
@@ -244,7 +290,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         This specification uses <dfn data-cite="ttml2#terms-feature">Feature</dfn> designations as defined in Appendices E at [[TTML2]]:
         when making reference to content conformance, these designations refer to the syntactic expression or the semantic capability associated with each designated <a>Feature</a>; and
         when making reference to <dfn data-cite="ttml2#terms-processor">Processor</dfn> conformance, these designations refer to processing requirements associated with each designated <a>Feature</a>.
-        If the name of an element referenced in this specification is not namespace qualified, then the TT namespace applies (see <a href="#namespaces">9.3 Namespaces</a>.)
+        If the name of an element referenced in this specification is not namespace qualified, then the TT namespace applies (see <a href="#namespaces"></a>.)
       </p>
     </section>
 
@@ -898,7 +944,9 @@ daptm:eventType = string
           or could be physical or haptic, such as a Braille display.
         </p>
         <p>
-          When mapping a media time expression M to a frame F of a <a>Related Video Object</a> (or <a>Related Media Object</a>), e.g. for the purpose of mixing audio sources signalled by a <a>Document Instance</a> into the main programme audio of the <a>Related Video Object</a>, the <a>presentation processor</a> MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
+          When mapping a media time expression M to a frame F of a <a>Related Video Object</a> (or <a>Related Media Object</a>),
+          e.g. for the purpose of mixing audio sources signalled by a <a>Document Instance</a> into the <a>main programme audio</a> of the <a>Related Video Object</a>,
+          the <a>presentation processor</a> MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
         </p>
         <p>
           EXAMPLE 1
