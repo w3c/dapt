@@ -412,7 +412,8 @@ table.coldividers td + td { border-left:1px solid gray; }
         </p>
         <p>A <a>Character</a> is represented in TTML with the following structure and constraints:
           <ul>
-            <li>There MUST be a <code>ttm:agent</code> element, child of the <code>metadata</code> element that indicates the <a>Script Type</a> in the <code>head</code> element, with the following constraints:
+            <li>There MUST be a <code>&lt;ttm:agent&gt;</code> element at the path
+              <code>/tt/head/metadata/ttm:agent</code>, with the following constraints:
               <ul>
                 <li>The <code>type</code> attribute MUST be set to <code>character</code>.</li>
                 <li>The <code>xml:id</code> attribute MUST be present on the <code>ttm:agent</code> and set to the <a>Character Identifier</a>.</li>
@@ -432,7 +433,8 @@ table.coldividers td + td { border-left:1px solid gray; }
 
             <li>If the <a>Character</a> has a <a>Talent Name</a> property, the following TTML constraints apply:
               <ul>
-                <li>Another <code>ttm:agent</code> MUST be added to the <code>metadata</code> element that indicates the <a>Script Type</a> in the <code>head</code> element, with the following:
+            <li>Another <code>&lt;ttm:agent&gt;</code> element MUST be added at the path
+              <code>/tt/head/metadata/ttm:agent</code>, with the following constraints:
                   <ul>
                     <li>its <code>type</code> attribute MUST be set to <code>person</code></li>
                     <li>its <code>xml:id</code> attribute MUST be set.</li>
@@ -457,6 +459,11 @@ table.coldividers td + td { border-left:1px solid gray; }
 &lt;/metadata&gt;
 ...
         </pre>
+            <li>All <code>&lt;ttm:agent&gt;</code> elements SHOULD be contained in the first <code>&lt;metadata&gt;</code> element in the <code>&lt;head&gt;</code> element.
+              <div class="note">There can be multiple <code>&lt;metadata&gt;</code> elements in the <code>&lt;head&gt;</code> element,
+              for example to include <a href="#proprietary-metadata">proprietary metadata</a>
+              but the above recommends that only one is used to define the characters.</div>
+            </li>
 
             <li>A <a>Character Style</a> is represented in TTML with the following structure and constraints:
               <ul>
