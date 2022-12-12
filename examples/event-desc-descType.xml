@@ -1,0 +1,8 @@
+...
+  <body>
+    <div begin="10s" end="13s">
+      <ttm:desc daptm:descType="pronunciationNote">[oːnʲ]</ttm:desc>
+      <p daptm:langSrc="original">Eóin looks around at the other assembly members.</p>
+    </div>
+  </body>
+...
