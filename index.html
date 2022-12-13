@@ -29,7 +29,7 @@
 
       // local bibliography
       localBiblio: {
-          "WHP051": {
+          "BBC-WHP051": {
             title: "BBC R&D White Paper WHP 051. Audio Description: what it is and how it works",
             publisher: " N.E. Tanton, T. Ware and M. Armstrong",
             status: "October 2002 (revised July 2004)",
@@ -117,8 +117,8 @@ table.coldividers td + td { border-left:1px solid gray; }
       <h2>Introduction</h2>
       <section id="intro-overview">
         <h3>Transcripts</h3>
-        <p>This specification defines DAPT, a TTML-based transcript format for the exchange of timed text content
-          among authoring, prompting and playback tools in the localization and <a>audio description</a> pipeline.
+        <p>DAPT is a TTML-based transcript format for the exchange of timed text content
+          among authoring, prompting and playback tools in the localization and <a>audio description</a> pipelines.
           A DAPT file is designed to carry pertinent information for dubbing or <a>audio description</a>
           such as type of script, dialogue, descriptions, timing, metadata, original language transcribed text, translated text, language information, and audio mixing instructions,
           and to be extensible to allow user-defined annotations or additional future features.</p>
@@ -170,10 +170,10 @@ table.coldividers td + td { border-left:1px solid gray; }
             mixed with the audio associated with the programme prior to any mixing with audio description
             (sometimes referred to as <dfn>main programme audio</dfn>),
             at moments when this does not clash with dialogue, to deliver an audio description mixed audio track.
-            A <dfn>description</dfn> is a set of words that describe an aspect of the programme presentation,
+            A <dfn>description</dfn> is a set of words that describes an aspect of the programme presentation,
             suitable for rendering into audio by means of vocalisation and recording
             or used as a text alternative source for text to speech translation, as defined in [[WCAG22]].
-            More information about what <a>audio description</a> is and how it works can be found at [[WHP051]].
+            More information about what <a>audio description</a> is and how it works can be found at [[BBC-WHP051]].
           </p>
           <p>Writing the audio description script typically involves:</p>
           <ul>
@@ -182,7 +182,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             <li>identifying the key moments during which there is an opportunity to speak descriptions,</li>
             <li>writing the description text to explain the important visible parts of the programme at that time,</li>
             <li>creating an audio version of the descriptions, either by recording a human actor or using text to speech,</li>
-            <li>defining mixing instructions (applied using styling) for combining the audio with the programme audio.</li>
+            <li>defining mixing instructions (applied using [[ttml2]] audio styling) for combining the audio with the programme audio.</li>
           </ul> 
           <p>The audio mixing can occur prior to distribution of the media,
             or in the client player.
@@ -254,7 +254,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         <h4>Dubbing Examples</h4>
         <p>From the basic structure of Example 1, a transcription of the audio programme produces an original language dubbing script,
           which can look as follows. No specific style or layout is defined, and here the focus is on the transcription of the dialogs.
-          Characters are identified in the <code>metadata</code> section.
+          Characters are identified in the <code>metadata</code> section.</p>
         <pre class="example"
           data-include="examples/intro-original-language.xml"
           data-include-format="text">
@@ -742,7 +742,7 @@ daptm:onScreen
         </section>
         <section>
           <h4>Script Event Description</h4>
-          <p>The <dfn>Script Event Description</dfn> property is an annotation providing a human-readable description of a <a>Script Event</a>.
+          <p>The <dfn>Script Event Description</dfn> property is an annotation providing a human-readable description of a <a>Script Event</a>.</p>
           <p>The <a>Script Event Description</a> property is represented in TTML as a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
           <p class="note">The <a>Script Event Description</a> does not need to be unique, i.e. it does not need to have a different value for each <a>Script Event</a>. 
             For example a particular value could be re-used to identify in a human-readable way one or more <a>Script Events</a> that are intended to be processed together,
@@ -770,7 +770,10 @@ daptm:descType = string
         </section>
         <section>
           <h4>Script Event Type</h4>
-          <p>The <dfn>Script Event Type</dfn> property provides one or more space-separated keywords representing the type of the <a>Script Event</a>, i.e. spoken text, or on-screen text, and in the latter case, the type of on-screen text (title, credit, location, ...). The possible keywords are indicated in the registry at XXXX.
+          <p>The <dfn>Script Event Type</dfn> property provides one or more space-separated keywords representing the type of the <a>Script Event</a>,
+            i.e. spoken text, or on-screen text,
+            and in the latter case, the type of on-screen text (title, credit, location, ...).
+            The possible keywords are indicated in the registry at XXXX.</p>
           <p class="ednote">Registry to be defined.</p>
           <p>The <a>Script Event Type</a> is represented in TTML by the following attribute:
             <div class="exampleInner">
@@ -926,8 +929,6 @@ daptm:eventType = string
         <h3>Related Video Object</h3>
         <p>
           A <a>Document Instance</a> MAY be associated with a <dfn>Related Video Object</dfn>, i.e. a <dfn data-cite="ttml2#terms-related-media-object">Related Media Object</dfn> that consists of a sequence of image frames, each a rectangular array of pixels.
-      </p>
-
         </p>
         <p class="note">
           While this specification contains specific provisions when a <a>Document Instance</a> is associated with a <a>Related Video Object</a>, it does not prevent the use of a <a>Document Instance</a> with other kinds of <a>Related Media Object</a>, e.g. an audio only object.
