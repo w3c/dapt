@@ -3,7 +3,7 @@
     xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
     xml:lang="en" 
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt"
-    daptm:scriptType="DUBBING_ORIGINAL_DIALOGUE_LIST">
+    daptm:scriptType="ORIGINAL_TRANSCRIPT">
   <head>
     <metadata>
       <!-- Additional metadata may be placed here -->
