@@ -218,7 +218,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         <h4>Basic document structure</h4>
         <p>The top level structure of a document is as follows.
           The <code>xmlns</code> attribute and the <code>tt</code> element indicate that this is a TTML document
-          and the <code>contentProfiles</code> attribute indicates that it adheres to the DAPT profile defined in this specification.
+          and the <code>ttp:contentProflies</code> attribute indicates that it adheres to the DAPT profile defined in this specification.
           The <code>daptm:scriptType</code> attribute indicates the type of <a>DAPT script</a>
           but in this empty example, it is not relevant, as only the structure of the document is shown.
           The structure is applicable to all types of <a>DAPT scripts</a>, dubbing or <a>audio description</a>.</p>
@@ -1259,12 +1259,12 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <tr>
               <td><code>#contentProfiles</code></td>
               <td>required</td>
-              <td></td>
+              <td>See <a href="#content-profiles"></a>.</td>
             </tr>
             <tr>
               <td><code>#contentProfiles-combined</code></td>
               <td>optional</td>
-              <td></td>
+              <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
             </tr>
             <tr>
               <td><code>#core</code></td>
@@ -1446,12 +1446,12 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <tr>
               <td><code>#permitFeatureNarrowing</code></td>
               <td>optional</td>
-              <td></td>
+              <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
             </tr>
             <tr>
               <td><code>#permitFeatureWidening</code></td>
               <td>optional</td>
-              <td></td>
+              <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
             </tr>
             <tr>
               <td><code>#pitch</code></td>
@@ -1471,32 +1471,32 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <tr>
               <td><code>#processorProfiles</code></td>
               <td>optional</td>
-              <td></td>
+              <td>See <a href="#processor-profiles"></a>.</td>
             </tr>
             <tr>
               <td><code>#processorProfiles-combined</code></td>
               <td>optional</td>
-              <td></td>
+              <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
             </tr>
             <tr>
               <td><code>#profile</code></td>
               <td>partially permitted</td>
               <td>
-                See <a href="#profile-signaling-section" class="sec-ref"></a>.
+                See <a href="#ttp-profile"></a>.
               </td>
             </tr>
             <tr>
               <td><code>#profile-full-version-2</code></td>
               <td>partially permitted</td>
               <td>
-                See <a href="#profile-signaling-section" class="sec-ref"></a>.
+                See <a href="ttml2-profile-attr-vocab"></a>.
               </td>
             </tr>
             <tr>
               <td><code>#profile-version-2</code></td>
               <td>partially permitted</td>
               <td>
-                See <a href="#profile-signaling-section" class="sec-ref"></a>.
+                See <a href="#ttml2-profile-attr-vocab"></a>.
               </td>
             </tr>
             <tr>
