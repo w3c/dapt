@@ -1056,7 +1056,7 @@ daptm:eventType = string
           <p>The <code>ttp:processorProfiles</code> attribute is used to declare the processing requirements for a <a>Document Instance</a>.</p>
           <p>TTML documents representing DAPT Scripts MAY specify a <code>ttp:processorProfiles</code> attribute
             on the <code>&lt;tt&gt;</code> element.
-            If present, the <code>ttp:processorProfiles</code> must include a value equal to the designator of the <a>DAPT 1.0</a> profile
+            If present, the <code>ttp:processorProfiles</code> MUST include a value equal to the designator of the <a>DAPT 1.0</a> profile
             to which the <a>Document Instance</a> conforms.
             Other values MAY be present to declare additional processing constraints, 
             and MAY include profile designators in proprietary namespaces.</p>
@@ -1064,13 +1064,14 @@ daptm:eventType = string
 
         <section id="ttml2-profile-attr-vocab">
           <h4>Other TTML2 <a href="https://www.w3.org/TR/ttml2/#profile-attribute-vocabulary">Profile Attribute Vocabulary</a></h4>
-          <p>[[TTML2]] defines additional features and attribute vocabulary
+          <p>[[TTML2]] defines additional features and element and attribute vocabulary
             that can be used within <a>Document Instances</a>,
             the majority of which are to indicate how a processor computes the set of features
             that it is required to support in order to process the <a>Document Instance</a> successfully.
-            Those features not listed above, and their associated vocabulary,
-            MAY be used in <a>Document Instances</a> and
-            MAY be implemented in processors.
+            Those features are listed within <a href="#features=section"></a> as being optional. 
+            They MAY be implemented in processors
+            and their associated vocabulary
+            MAY be present in <a>Document Instances</a>.
           </p>
           <p class="note">If support for additional profile attributes is required by some workflow,
             it needs to be arranged using an out-of-band protocol.</p>
