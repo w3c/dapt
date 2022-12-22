@@ -961,6 +961,12 @@ daptm:eventType = string
               <td><code>http://www.w3.org/ns/ttml/profile/dapt#metadata</code></td>
               <td><em>This specification</em></td>
             </tr>
+            <tr>
+              <td><dfn>DAPT Extension</dfn></td>
+              <td><em>none</em></td>
+              <td><code>http://www.w3.org/ns/ttml/profile/dapt/extension</code></td>
+              <td><em>This specification</em></td>
+            </tr>
           </tbody>
         </table>
         <p>
@@ -1045,18 +1051,20 @@ daptm:eventType = string
 
         <section id="ttp-profile">
           <h4><code>ttp:profile</code></h4>
-          <p>The <code>ttp:profile</code> attribute was a mechanism within [[?TTML1]] for declaring the processing requirements for a <a>Document Instance</a>.
-            It has effectively been superceded by <code>ttp:processorProfiles</code>.</p>
+          <p>The <dfn data-cite="ttml2#parameter-attribute-profile"><code>ttp:profile</code></dfn> attribute
+            is a mechanism within [[?TTML1]] for declaring the processing requirements for a <a>Document Instance</a>.
+            It has effectively been superceded in [[TTML2]] by <a><code>ttp:processorProfiles</code></a>.</p>
           <p>TTML documents representing DAPT Scripts MUST NOT specify a <code>ttp:profile</code> attribute
             on the <code>&lt;tt&gt;</code> element.</p>
         </section>
 
         <section id="processor-profiles">
           <h4><code>ttp:processorProfiles</code></h4>
-          <p>The <code>ttp:processorProfiles</code> attribute is used to declare the processing requirements for a <a>Document Instance</a>.</p>
-          <p>TTML documents representing DAPT Scripts MAY specify a <code>ttp:processorProfiles</code> attribute
+          <p>The <dfn data-cite="ttml2#profile-attribute-processorProfiles"><code>ttp:processorProfiles</code></dfn> attribute
+            is used to declare the processing requirements for a <a>Document Instance</a>.</p>
+          <p>TTML documents representing DAPT Scripts MAY specify a <a><code>ttp:processorProfiles</code></a> attribute
             on the <code>&lt;tt&gt;</code> element.
-            If present, the <code>ttp:processorProfiles</code> MUST include a value equal to the designator of the <a>DAPT 1.0</a> profile
+            If present, the <a><code>ttp:processorProfiles</code></a> MUST include a value equal to the designator of the <a>DAPT 1.0</a> profile
             to which the <a>Document Instance</a> conforms.
             Other values MAY be present to declare additional processing constraints, 
             and MAY include profile designators in proprietary namespaces.</p>
@@ -1173,9 +1181,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         </section> <!-- time-expression-section -->
       </section> <!-- time-constraints-section -->
       <section id="features-section">
-        <h3>Features</h3>
+        <h3>Supported Features and Extensions</h3>
         <p>
-          See <a href="#conformance" class="sec-ref">Conformance</a> for a definition of <em>permitted</em>, <em>prohibited</em> and <em>optional</em>.
+          See <a href="#conformance" class="sec-ref">Conformance</a> for a definition of
+          <em>required</em>,
+          <em>permitted</em>,
+          <em>prohibited</em>,
+          and <em>optional</em>.
         </p>
         <p class="ednote">Intent is to make it as easy as possible to transform a <a>Document Instance</a> into
           IMSC ([[ttml-imsc1.2]]), so we need to check that there are no IMSC permitted <a>Features</a> that we prohibit, or if there
@@ -1183,12 +1195,14 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         </p>
         <p class="ednote">Editorial task: go through this list of <a>features</a> and check the disposition of each. IMSC-only <a>features</a> should be optional.</p>
         <table class="simple">
-          <tbody>
+          <thead>
             <tr>
-              <th style="width:20%" style="text-align:center">Feature</th>
+              <th style="width:20%" style="text-align:center">Feature or Extension</th>
               <th style="width:10%" style="text-align:center">Disposition</th>
               <th style="text-align:center">Additional provision</th>
             </tr>
+          </thead>
+          <tbody>
             <tr>
               <td colspan="3" style="text-align:center"><em>Relative to the TT Feature namespace</em></td>
             </tr>
@@ -1671,6 +1685,16 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
               <td>prohibited</td>
               <td></td>
             </tr>
+            <tr>
+              <td colspan="3" style="text-align:center"><em>Relative to the <a>DAPT Extension</a> namespace</em></td>
+            </tr>
+            <tr>
+              <td><a href="#feature-profile-root"><code>#profile-root</code></a></td>
+              <td>prohibited</td>
+              <td>
+                This is the profile expression of <a href="#ttp-profile"></a>.
+              </td>
+            </tr>
           </tbody>
         </table>
       </section> <!-- features -->
@@ -1775,6 +1799,28 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
   <section id="index" class="appendix">
     <!-- All the terms will magically appear here -->
   </section>
+
+  <section id="extensions" class="appendix">
+    <h2>Extensions</h2>
+    <section id="extensions-general">
+      <h3>General</h3>
+      <p>The following sections define extension designations,
+        expressed as relative URIs (fragment identifiers)
+        relative to the <a>DAPT Extension</a> Namespace base URI.
+      </p>
+    </section>
+
+    <section id="feature-profile-root">
+      <h3>#profile-root</h3>
+      <p>A <a>transformation processor</a> supports the <code>#profile-root</code> feature if
+        it recognizes and is capable of transforming values of the
+        <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+
+      <p>A <a>presentation processor</a> supports the <code>#profile-root</code> feature if
+        it implements presentation semantic support of the
+        <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+      </section>
+  </section> <!-- extensions-->
 
   <section id="acknowledgements">
       <h2>Acknowledgments</h2>
