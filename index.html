@@ -1691,7 +1691,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <dfn data-cite="ttml2#terms-profile">Profile</dfn>  A TTML profile specification is a document that lists all the features of TTML that are required / optional / prohibited within “document instances” (files) and “processors” (things that process the files), and any extensions or constraints.
       </p>
       <p>
-        A <dfn data-lt="Document Instance|Document Instances" data-cite="ttml2#terms-document-instance">Document Instance</dfn> that conforms to the profile defined herein:
+        A <dfn data-lt="Document Instance|Document Instances" data-cite="ttml2#terms-document-instance">Document Instance</dfn> that conforms to the <dfn data-cite="ttml2#terms-content-profile">content profile</dfn> defined herein:
       </p>
       <ul style="list-style-type:disc">
         <li>MUST satisfy all normative provisions specified by the profile;</li>
@@ -1703,23 +1703,61 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]], and hence a <a>Document Instance</a> that conforms to a profile defined herein is also a conforming TTML2 Document Instance.
       </p>
       <p>
-        A <dfn data-cite="ttml2#terms-presentation-processor">Presentation processor</dfn> that conforms to the profile defined in this specification:
+        A <dfn data-cite="ttml2#terms-presentation-processor">Presentation processor</dfn> that conforms to the <dfn data-cite="ttml2#terms-processor-profile">processor profile</dfn> defined in this specification:
       </p>
       <ul style="list-style-type:disc">
         <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]]</li>
         <li>MUST satisfy all normative provisions specified by the profile; and</li>
         <li>MUST implement presentation semantic support for every <a>Feature</a> designated as permitted or required by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
-        <li>MAY implement presentation semantic support for every <a>Feature</a> designated as optional by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
+        <li>MAY implement presentation semantic support for every <a>Feature</a> designated as optional or prohibited by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
       </ul>
       <p>
-        A <dfn data-cite="ttml2#terms-transformation-processor">Transformation processor</dfn> that conforms to the profile defined in this specification:
+        A <dfn data-cite="ttml2#terms-transformation-processor">Transformation processor</dfn> that conforms to the <a>processor profile</a> defined in this specification:
       </p>
       <ul style="list-style-type:disc">
         <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]];</li>
         <li>MUST satisfy all normative provisions specified by the profile; and</li>
         <li>MUST implement transformation semantic support for every <a>Feature</a> designated as permitted or required by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
-        <li>MAY implement transformation semantic support for every <a>Feature</a> designated as optional by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
+        <li>MAY implement transformation semantic support for every <a>Feature</a> designated as optional or prohibited by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
       </ul>
+      <p>The dispositions required, permitted, optional and prohibited as used in this specification
+        map to the [[TTML2]] <a href="https://www.w3.org/TR/ttml2/#profile-vocabulary-feature"><code>ttp:feature</code></a> element's
+        <code>value</code> attribute values as follows:</p>
+      <table class="complex data">
+        <thead>
+          <tr>
+            <th></th>
+            <th colspan="2"><code>ttp:feature</code> value in</th>
+          </tr>
+          <tr>
+            <th>DAPT disposition</th>
+            <th><a>content profile</a></th>
+            <th><a>processor profile</a></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>required</td>
+            <td>required</td>
+            <td>required</td>
+          </tr>
+          <tr>
+            <td>permitted</td>
+            <td>optional</td>
+            <td>required</td>
+          </tr>
+          <tr>
+            <td>optional</td>
+            <td>optional</td>
+            <td>optional</td>
+          </tr>
+          <tr>
+            <td>prohibited</td>
+            <td>prohibited</td>
+            <td>optional</td>
+          </tr>
+        </tbody>
+      </table>
       <p class="note">
         The use of the terms <a>presentation processor</a> 
         and <a>transformation processor</a> within this document does not imply conformance <i>per se</i> to any of the Standard Profiles defined in [[TTML2]].
