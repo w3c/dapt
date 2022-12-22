@@ -217,9 +217,9 @@ table.coldividers td + td { border-left:1px solid gray; }
         <h3>Example documents</h3>
         <h4>Basic document structure</h4>
         <p>The top level structure of a document is as follows.
-          The <code>xmlns</code> attribute and the <code>tt</code> element indicate that this is a TTML document
-          and the <code>ttp:contentProflies</code> attribute indicates that it adheres to the DAPT profile defined in this specification.
-          The <code>daptm:scriptType</code> attribute indicates the type of <a>DAPT script</a>
+          The <code>xmlns</code> attribute and the <code>&lt;tt&gt;</code> element indicate that this is a TTML document
+          and the <a><code>ttp:contentProfiles</code></a> attribute indicates that it adheres to the DAPT <a>content profile</a> defined in this specification.
+          The <code>daptm:scriptType</code> attribute indicates the type of script
           but in this empty example, it is not relevant, as only the structure of the document is shown.
           The structure is applicable to all types of <a>DAPT scripts</a>, dubbing or <a>audio description</a>.</p>
         <pre class="example"
@@ -311,10 +311,14 @@ table.coldividers td + td { border-left:1px solid gray; }
         Sections 6.2 and 8.2 of [[TTML2]] specify conventions used when specifying the syntax of attribute values.
       </p>
       <p>
-        This specification uses <dfn data-cite="ttml2#terms-feature">Feature</dfn> designations as defined in Appendices E at [[TTML2]]:
-        when making reference to content conformance, these designations refer to the syntactic expression or the semantic capability associated with each designated <a>Feature</a>; and
-        when making reference to <dfn data-cite="ttml2#terms-processor">Processor</dfn> conformance, these designations refer to processing requirements associated with each designated <a>Feature</a>.
-        If the name of an element referenced in this specification is not namespace qualified, then the TT namespace applies (see <a href="#namespaces"></a>.)
+        This specification uses <dfn data-cite="ttml2#terms-feature">Feature</dfn> designations as defined in Appendices E at [[TTML2]]
+        and defines <dfn data-cite="ttml2#terms-extension">Extension</dfn> designations:
+        when making reference to content conformance,
+        these designations refer to the syntactic expression or the semantic capability associated with each designated <a>Feature</a> or <a>Extension</a>;
+        and when making reference to <dfn data-cite="ttml2#terms-processor">Processor</dfn> conformance,
+        these designations refer to processing requirements associated with each designated <a>Feature</a> or <a>Extension</a>.
+        If the name of an element referenced in this specification is not namespace qualified,
+        then the TT namespace applies (see <a href="#namespaces">9.3 Namespaces</a>.)
       </p>
     </section>
 
@@ -1041,8 +1045,9 @@ daptm:eventType = string
 
         <section id="content-profiles">
           <h4><code>ttp:contentProfiles</code></h4>
-          <p>The <code>ttp:contentProfiles</code> attribute is used to declare the [[TTML2]] profiles to which the document conforms.</p>
-          <p>TTML documents representing DAPT Scripts MUST specify a <code>ttp:contentProfiles</code> attribute
+          <p>The <dfn data-cite="ttml2#profile-attribute-contentProfiles"><code>ttp:contentProfiles</code></dfn> attribute
+            is used to declare the [[TTML2]] profiles to which the document conforms.</p>
+          <p>TTML documents representing DAPT Scripts MUST specify a <a><code>ttp:contentProfiles</code></a> attribute
             on the <code>&lt;tt&gt;</code> element with one value equal to the designator of the <a>DAPT 1.0</a> profile
             to which the <a>Document Instance</a> conforms.
             Other values MAY be present to declare conformance to other profiles of [[TTML2]],
@@ -1180,528 +1185,10 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
 
         </section> <!-- time-expression-section -->
       </section> <!-- time-constraints-section -->
-      <section id="features-section">
-        <h3>Supported Features and Extensions</h3>
-        <p>
-          See <a href="#conformance" class="sec-ref">Conformance</a> for a definition of
-          <em>required</em>,
-          <em>permitted</em>,
-          <em>prohibited</em>,
-          and <em>optional</em>.
-        </p>
-        <p class="ednote">Intent is to make it as easy as possible to transform a <a>Document Instance</a> into
-          IMSC ([[ttml-imsc1.2]]), so we need to check that there are no IMSC permitted <a>Features</a> that we prohibit, or if there
-          are, then we can explain the reason.
-        </p>
-        <p class="ednote">Editorial task: go through this list of <a>features</a> and check the disposition of each. IMSC-only <a>features</a> should be optional.</p>
-        <table class="simple">
-          <thead>
-            <tr>
-              <th style="width:20%" style="text-align:center">Feature or Extension</th>
-              <th style="width:10%" style="text-align:center">Disposition</th>
-              <th style="text-align:center">Additional provision</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td colspan="3" style="text-align:center"><em>Relative to the TT Feature namespace</em></td>
-            </tr>
-            <tr>
-              <td><code>#animation-version-2</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#audio</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#audio-description</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#audio-speech</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#backgroundColor-block</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#backgroundColor-region</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#cellResolution</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#chunk</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#clockMode</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#clockMode-gps</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#clockMode-local</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#clockMode-utc</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#content</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#contentProfiles</code></td>
-              <td>required</td>
-              <td>See <a href="#content-profiles"></a>.</td>
-            </tr>
-            <tr>
-              <td><code>#contentProfiles-combined</code></td>
-              <td>optional</td>
-              <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
-            </tr>
-            <tr>
-              <td><code>#core</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#data</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#display-block</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#display-inline</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#display-region</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#display</code></td>
-              <td>prohibited<p class="ednote">Consider display="none" in relation to AD content</p></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#dropMode</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#dropMode-dropNTSC</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#dropMode-dropPAL</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#dropMode-nonDrop</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#embedded-audio</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#embedded-data</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#extent-root</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#extent</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#frameRate</code></td>
-              <td>permitted</td>
-              <td>
-                See [[[#framerate-section]]].
-              </td>
-            </tr>
-            <tr>
-              <td><code>#frameRateMultiplier</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#gain</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#layout</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#length-cell</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#length-integer</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#length-negative</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#length-percentage</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#length-pixel</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#length-positive</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#length-real</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#length</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#markerMode</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#markerMode-continuous</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#markerMode-discontinuous</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#metadata</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#opacity</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#origin</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#overflow</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#overflow-visible</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#pan</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#permitFeatureNarrowing</code></td>
-              <td>optional</td>
-              <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
-            </tr>
-            <tr>
-              <td><code>#permitFeatureWidening</code></td>
-              <td>optional</td>
-              <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
-            </tr>
-            <tr>
-              <td><code>#pitch</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#pixelAspectRatio</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#presentation</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#processorProfiles</code></td>
-              <td>optional</td>
-              <td>See <a href="#processor-profiles"></a>.</td>
-            </tr>
-            <tr>
-              <td><code>#processorProfiles-combined</code></td>
-              <td>optional</td>
-              <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
-            </tr>
-            <tr>
-              <td><code>#profile</code></td>
-              <td>partially permitted</td>
-              <td>
-                See <a href="#ttp-profile"></a>.
-              </td>
-            </tr>
-            <tr>
-              <td><code>#profile-full-version-2</code></td>
-              <td>partially permitted</td>
-              <td>
-                See <a href="ttml2-profile-attr-vocab"></a>.
-              </td>
-            </tr>
-            <tr>
-              <td><code>#profile-version-2</code></td>
-              <td>partially permitted</td>
-              <td>
-                See <a href="#ttml2-profile-attr-vocab"></a>.
-              </td>
-            </tr>
-            <tr>
-              <td><code>#region-timing</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#resources</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#showBackground</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#source</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#speak</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#speech</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#structure</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#styling</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#styling-chained</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#styling-inheritance-content</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#styling-inheritance-region</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#styling-inline</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#styling-nested</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#styling-referential</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#subFrameRate</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#tickRate</code></td>
-              <td>permitted</td>
-              <td>See [[[#tickrate-section]]].</td>
-            </tr>
-            <tr>
-              <td><code>#timeBase-clock</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#timeBase-media</code></td>
-              <td>permitted</td>
-              <td>
-                <p>See [[[#timebase-section]]].</p>
-                <p class="inline-note">NOTE: [[TTML1]] specifies that the default timebase is <code>"media"</code> if
-                <code>ttp:timeBase</code> is not specified on <code>tt</code>.</p>
-              </td>
-            </tr>
-            <tr>
-              <td><code>#timeBase-smpte</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#time-clock-with-frames</code></td>
-              <td>permitted</td>
-              <td>See [[[#framerate-section]]] and [[[#time-clock-with-frames-section]]].</td>
-            </tr>
-            <tr>
-              <td><code>#time-clock</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#time-offset-with-frames</code></td>
-              <td>permitted</td>
-              <td>See [[[#framerate-section]]].</td>
-            </tr>
-            <tr>
-              <td><code>#time-offset-with-ticks</code></td>
-              <td>permitted</td>
-              <td>See [[[#tickrate-section]]].</td>
-            </tr>
-            <tr>
-              <td><code>#time-offset</code></td>
-              <td>permitted</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#timeContainer</code></td>
-              <td>permitted</td>
-              <td>See [[[#timecontainer-section]]].</td>
-            </tr>
-            <tr>
-              <td><code>#timing</code></td>
-              <td>permitted</td>
-              <td>See [[[#time-expression-section]]].</td>
-            </tr>
-            <tr>
-              <td><code>#transformation</code></td>
-              <td>permitted</td>
-              <td>
-                See constraints at <a href="#profile-constraints">#profile</a>.
-              </td>
-            </tr>
-            <tr>
-              <td><code>#visibility-block</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#visibility-region</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#writingMode-horizontal-lr</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#writingMode-horizontal-rl</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#writingMode-horizontal</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td><code>#zIndex</code></td>
-              <td>prohibited</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td colspan="3" style="text-align:center"><em>Relative to the <a>DAPT Extension</a> namespace</em></td>
-            </tr>
-            <tr>
-              <td><a href="#feature-profile-root"><code>#profile-root</code></a></td>
-              <td>prohibited</td>
-              <td>
-                This is the profile expression of <a href="#ttp-profile"></a>.
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </section> <!-- features -->
 
       <section>
         <h4>Layout</h4>
-        <p>This specification does not put additional constraints on the layout and rendering <a>features</a> defined in [[!ttml-imsc1.2]].</p>
+        <p>This specification does not put additional constraints on the layout and rendering <a>Features</a> defined in [[!ttml-imsc1.2]].</p>
         <div class="note">Layout of the paragraphs may rely on the default TTML region (i.e. if no <code>layout</code> is used in the <code>head</code> element) or may be explicit by the use of the <code>region</code> attribute, if a <code>region</code> element is defined in a <code>layout</code> element in the <code>head</code> element.</div>
       </section>  <!-- Layout -->
 
@@ -1719,9 +1206,9 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       </p>
       <ul style="list-style-type:disc">
         <li>MUST satisfy all normative provisions specified by the profile;</li>
-        <li>MAY include any vocabulary, syntax or attribute value associated with a <a>Feature</a> whose disposition is permitted or optional in the profile;</li>
-        <li>MUST include any vocabulary, syntax or attribute value associated with a <a>Feature</a> whose disposition is required in the profile.</li>
-        <li>MUST NOT include any vocabulary, syntax or attribute value associated with a <a>Feature</a> whose disposition is prohibited in the profile.</li>
+        <li>MAY include any vocabulary, syntax or attribute value associated with a <a>Feature</a> or <a>Extension</a> whose disposition is permitted or optional in the profile;</li>
+        <li>MUST include any vocabulary, syntax or attribute value associated with a <a>Feature</a> or <a>Extension</a> whose disposition is required in the profile.</li>
+        <li>MUST NOT include any vocabulary, syntax or attribute value associated with a <a>Feature</a> or <a>Extension</a> whose disposition is prohibited in the profile.</li>
       </ul>
       <p class="note">
         A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]], and hence a <a>Document Instance</a> that conforms to a profile defined herein is also a conforming TTML2 Document Instance.
@@ -1732,8 +1219,8 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       <ul style="list-style-type:disc">
         <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]]</li>
         <li>MUST satisfy all normative provisions specified by the profile; and</li>
-        <li>MUST implement presentation semantic support for every <a>Feature</a> designated as permitted or required by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
-        <li>MAY implement presentation semantic support for every <a>Feature</a> designated as optional or prohibited by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
+        <li>MUST implement presentation semantic support for every <a>Feature</a> or <a>Extension</a> designated as permitted or required by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
+        <li>MAY implement presentation semantic support for every <a>Feature</a> or <a>Extension</a> designated as optional or prohibited by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
       </ul>
       <p>
         A <dfn data-cite="ttml2#terms-transformation-processor">Transformation processor</dfn> that conforms to the <a>processor profile</a> defined in this specification:
@@ -1741,17 +1228,18 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       <ul style="list-style-type:disc">
         <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]];</li>
         <li>MUST satisfy all normative provisions specified by the profile; and</li>
-        <li>MUST implement transformation semantic support for every <a>Feature</a> designated as permitted or required by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
-        <li>MAY implement transformation semantic support for every <a>Feature</a> designated as optional or prohibited by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
+        <li>MUST implement transformation semantic support for every <a>Feature</a> or <a>Extension</a> designated as permitted or required by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
+        <li>MAY implement transformation semantic support for every <a>Feature</a> or <a>Extension</a> designated as optional or prohibited by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
       </ul>
       <p>The dispositions required, permitted, optional and prohibited as used in this specification
-        map to the [[TTML2]] <a href="https://www.w3.org/TR/ttml2/#profile-vocabulary-feature"><code>ttp:feature</code></a> element's
+        map to the [[TTML2]] <dfn data-cite="ttml2#profile-vocabulary-feature"><code>&lt;ttp:feature&gt;</code></dfn>
+        and <dfn data-cite="ttml2#profile-vocabulary-extension"><code>&lt;ttp:extension&gt;</code></dfn> elements'
         <code>value</code> attribute values as follows:</p>
       <table class="complex data">
         <thead>
           <tr>
             <th></th>
-            <th colspan="2"><code>ttp:feature</code> value in</th>
+            <th colspan="2"><a><code>&lt;ttp:feature&gt;</code></a> or <a><code>&lt;ttp:extension&gt;</code></a> <code>value</code> attribute value in</th>
           </tr>
           <tr>
             <th>DAPT disposition</th>
@@ -1791,7 +1279,9 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         This document does not specify <a>presentation processor</a> or transformation processor behavior when processing or transforming a non-conformant <a>Document Instance</a>.
       </p>
       <p class="note">
-        The permitted and prohibited dispositions do not refer to the specification of a ttp:feature or ttp:extension element as being permitted or prohibited within a ttp:profile element.
+        The permitted and prohibited dispositions do not refer to the specification of
+        a <a><code>&lt;ttp:feature&gt;</code></a> or <a><code>&lt;ttp:extension&gt;</code></a> element
+        as being permitted or prohibited within a <dfn data-cite="ttml2#profile-vocabulary-profile"><code>&lt;ttp:profile&gt;</code></dfn> element.
       </p>
     </section> <!-- profile-conformance-section -->
   </section> <!-- conformance -->
@@ -1821,6 +1311,532 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
       </section>
   </section> <!-- extensions-->
+
+  <section id="features-section" class="appendix">
+    <h3>Profiles</h3>
+    <p>This section defines
+      a [[TTML2]] <a>content profile</a>
+      and a <a>processor profile</a>
+      by expressing dispositions against a set of <a>Features</a> and <a>Extensions</a>.
+    </p>
+    <p>
+      See <a href="#conformance" class="sec-ref">Conformance</a> for a definition of
+      the disposition values
+      <em>required</em>,
+      <em>permitted</em>,
+      <em>prohibited</em>,
+      and <em>optional</em>.
+    </p>
+
+    <p class="ednote">Intent is to make it as easy as possible to transform a <a>Document Instance</a> into
+      IMSC ([[ttml-imsc1.2]]), so we need to check that there are no IMSC permitted <a>Features</a> that we prohibit, or if there
+      are, then we can explain the reason.
+    </p>
+    <p class="ednote">Editorial task: go through this list of <a>Features</a> and check the disposition of each. IMSC-only <a>Features</a> and <a>Extensions</a> should be optional.</p>
+    <table class="simple">
+      <thead>
+        <tr>
+          <th style="width:20%" style="text-align:center">Feature or Extension</th>
+          <th style="width:10%" style="text-align:center">Disposition</th>
+          <th style="text-align:center">Additional provision</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3" style="text-align:center"><em>Relative to the TT Feature namespace</em></td>
+        </tr>
+        <tr>
+          <td><code>#animation-version-2</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#audio</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#audio-description</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#audio-speech</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#backgroundColor-block</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#backgroundColor-region</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#cellResolution</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#chunk</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#clockMode</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#clockMode-gps</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#clockMode-local</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#clockMode-utc</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#content</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#contentProfiles</code></td>
+          <td>required</td>
+          <td>See <a href="#content-profiles"></a>.</td>
+        </tr>
+        <tr>
+          <td><code>#contentProfiles-combined</code></td>
+          <td>optional</td>
+          <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
+        </tr>
+        <tr>
+          <td><code>#core</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#data</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#display-block</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#display-inline</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#display-region</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#display</code></td>
+          <td>prohibited<p class="ednote">Consider display="none" in relation to AD content</p></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#dropMode</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#dropMode-dropNTSC</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#dropMode-dropPAL</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#dropMode-nonDrop</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#embedded-audio</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#embedded-data</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#extent-root</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#extent</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#frameRate</code></td>
+          <td>permitted</td>
+          <td>
+            See [[[#framerate-section]]].
+          </td>
+        </tr>
+        <tr>
+          <td><code>#frameRateMultiplier</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#gain</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#layout</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#length-cell</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#length-integer</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#length-negative</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#length-percentage</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#length-pixel</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#length-positive</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#length-real</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#length</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#markerMode</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#markerMode-continuous</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#markerMode-discontinuous</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#metadata</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#opacity</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#origin</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#overflow</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#overflow-visible</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#pan</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#permitFeatureNarrowing</code></td>
+          <td>optional</td>
+          <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
+        </tr>
+        <tr>
+          <td><code>#permitFeatureWidening</code></td>
+          <td>optional</td>
+          <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
+        </tr>
+        <tr>
+          <td><code>#pitch</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#pixelAspectRatio</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#presentation</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#processorProfiles</code></td>
+          <td>optional</td>
+          <td>See <a href="#processor-profiles"></a>.</td>
+        </tr>
+        <tr>
+          <td><code>#processorProfiles-combined</code></td>
+          <td>optional</td>
+          <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
+        </tr>
+        <tr>
+          <td><code>#profile</code></td>
+          <td>partially permitted</td>
+          <td>
+            See <a href="#ttp-profile"></a>.
+          </td>
+        </tr>
+        <tr>
+          <td><code>#profile-full-version-2</code></td>
+          <td>partially permitted</td>
+          <td>
+            See <a href="#ttml2-profile-attr-vocab"></a>.
+          </td>
+        </tr>
+        <tr>
+          <td><code>#profile-version-2</code></td>
+          <td>partially permitted</td>
+          <td>
+            See <a href="#ttml2-profile-attr-vocab"></a>.
+          </td>
+        </tr>
+        <tr>
+          <td><code>#region-timing</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#resources</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#showBackground</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#source</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#speak</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#speech</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#structure</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#styling</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#styling-chained</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#styling-inheritance-content</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#styling-inheritance-region</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#styling-inline</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#styling-nested</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#styling-referential</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#subFrameRate</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#tickRate</code></td>
+          <td>permitted</td>
+          <td>See [[[#tickrate-section]]].</td>
+        </tr>
+        <tr>
+          <td><code>#timeBase-clock</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#timeBase-media</code></td>
+          <td>permitted</td>
+          <td>
+            <p>See [[[#timebase-section]]].</p>
+            <p class="inline-note">NOTE: [[TTML1]] specifies that the default timebase is <code>"media"</code> if
+            <code>ttp:timeBase</code> is not specified on <code>tt</code>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>#timeBase-smpte</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#time-clock-with-frames</code></td>
+          <td>permitted</td>
+          <td>See [[[#framerate-section]]] and [[[#time-clock-with-frames-section]]].</td>
+        </tr>
+        <tr>
+          <td><code>#time-clock</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#time-offset-with-frames</code></td>
+          <td>permitted</td>
+          <td>See [[[#framerate-section]]].</td>
+        </tr>
+        <tr>
+          <td><code>#time-offset-with-ticks</code></td>
+          <td>permitted</td>
+          <td>See [[[#tickrate-section]]].</td>
+        </tr>
+        <tr>
+          <td><code>#time-offset</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#timeContainer</code></td>
+          <td>permitted</td>
+          <td>See [[[#timecontainer-section]]].</td>
+        </tr>
+        <tr>
+          <td><code>#timing</code></td>
+          <td>permitted</td>
+          <td>See [[[#time-expression-section]]].</td>
+        </tr>
+        <tr>
+          <td><code>#transformation</code></td>
+          <td>permitted</td>
+          <td>
+            See constraints at <a href="#profile-constraints">#profile</a>.
+          </td>
+        </tr>
+        <tr>
+          <td><code>#visibility-block</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#visibility-region</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#writingMode-horizontal-lr</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#writingMode-horizontal-rl</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#writingMode-horizontal</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#zIndex</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td colspan="3" style="text-align:center"><em>Relative to the <a>DAPT Extension</a> namespace</em></td>
+        </tr>
+        <tr>
+          <td><a href="#feature-profile-root"><code>#profile-root</code></a></td>
+          <td>prohibited</td>
+          <td>
+            This is the profile expression of <a href="#ttp-profile"></a>.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section> <!-- features -->
 
   <section id="acknowledgements">
       <h2>Acknowledgments</h2>
