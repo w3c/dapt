@@ -1081,7 +1081,7 @@ daptm:eventType = string
             that can be used within <a>Document Instances</a>,
             the majority of which are to indicate how a processor computes the set of features
             that it is required to support in order to process the <a>Document Instance</a> successfully.
-            Those features are listed within <a href="#features-section"></a> as being optional. 
+            Those features are listed within <a href="#profiles-section"></a> as being optional. 
             They MAY be implemented in processors
             and their associated vocabulary
             MAY be present in <a>Document Instances</a>.
@@ -1097,7 +1097,7 @@ daptm:eventType = string
         <section id="timebase-section">
           <h4><code>ttp:timeBase</code></h4>
           <p>The only permitted <code>ttp:timeBase</code> value is <code>media</code>,
-            since <a href="#features-section"></a> prohibits all timeBase features
+            since <a href="#profiles-section"></a> prohibits all timeBase features
             other than <a href="https://www.w3.org/TR/ttml2/#feature-timeBase-media"><code>#timeBase-media</code></a>.</p>
           <p>This means that the beginning of the document timeline,
             i.e. time "zero",
@@ -1290,7 +1290,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
     <!-- All the terms will magically appear here -->
   </section>
 
-  <section id="extensions" class="appendix">
+  <section id="extensions-section" class="appendix">
     <h2>Extensions</h2>
     <section id="extensions-general">
       <h3>General</h3>
@@ -1300,7 +1300,18 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       </p>
     </section>
 
-    <section id="feature-profile-root">
+    <section id="extension-contentProfiles-root">
+      <h3>#contentProfiles-root</h3>
+      <p>A <a>transformation processor</a> supports the <code>#contentProfiles-root</code> feature if
+        it recognizes and is capable of transforming values of the
+        <a><code>ttp:contentProfiles</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+
+      <p>A <a>presentation processor</a> supports the <code>#contentProfiles-root</code> feature if
+        it implements presentation semantic support of the
+        <a><code>ttp:contentProfiles</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+      </section>
+
+      <section id="extension-profile-root">
       <h3>#profile-root</h3>
       <p>A <a>transformation processor</a> supports the <code>#profile-root</code> feature if
         it recognizes and is capable of transforming values of the
@@ -1310,9 +1321,20 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         it implements presentation semantic support of the
         <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
       </section>
-  </section> <!-- extensions-->
 
-  <section id="features-section" class="appendix">
+      <section id="extension-xmlLang-root">
+        <h3>#xmlLang-root</h3>
+        <p>A <a>transformation processor</a> supports the <code>#xmlLang-root</code> feature if
+          it recognizes and is capable of transforming values of the
+          <code>xml:lang</code> attribute on the <code>&lt;tt&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#xmlLang-root</code> feature if
+          it implements presentation semantic support of the
+          <code>xml:lang</code> attribute on the <code>&lt;tt&gt;</code> element.</p>
+        </section>
+    </section> <!-- extensions-->
+
+  <section id="profiles-section" class="appendix">
     <h3>Profiles</h3>
     <p>This section defines
       a [[TTML2]] <a>content profile</a>
@@ -1328,11 +1350,21 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       and <em>optional</em>.
     </p>
 
-    <p class="ednote">Intent is to make it as easy as possible to transform a <a>Document Instance</a> into
-      IMSC ([[ttml-imsc1.2]]), so we need to check that there are no IMSC permitted <a>Features</a> that we prohibit, or if there
-      are, then we can explain the reason.
+    <p>The <a>Features</a> and <a>Extensions</a> listed in this section express the
+      minimal requirements for <a>Document Instances</a>,
+      <a>Presentation Processors</a>,
+      and <a>Transformation Processors</a>.
+      DAPT <a>Document Instances</a> MAY additionally conform to other profiles,
+      and include syntax not prohibited by the DAPT <a>content profile</a>.
+      <a>Presentation Processors</a> and <a>Transformation Processors</a>
+      MAY support additional syntax and semantics relating to other profiles.</p>
+    <p class="note">For example, a <a>DAPT Script</a> can include syntax permitted
+      by the IMSC ([[ttml-imsc1.2]]) profiles of [[TTML2]] to enhance the presentation
+      of <a>scripts</a> to actors recording audio,
+      or to add styling important for later usage in subtitle or caption creation.
     </p>
-    <p class="ednote">Editorial task: go through this list of <a>Features</a> and check the disposition of each. IMSC-only <a>Features</a> and <a>Extensions</a> should be optional.</p>
+    <p class="ednote">Editorial task: go through this list of <a>Features</a> and check the disposition of each.
+      There should be no prohibited features that are permitted in IMSC.</p>
     <table class="simple">
       <thead>
         <tr>
@@ -1366,18 +1398,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <td></td>
         </tr>
         <tr>
-          <td><code>#backgroundColor-block</code></td>
-          <td>prohibited</td>
+          <td><code>#bidi</code></td>
+          <td>permitted</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>#backgroundColor-region</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#cellResolution</code></td>
-          <td>prohibited</td>
+          <td><code>#bidi-version-2</code></td>
+          <td>permitted</td>
           <td></td>
         </tr>
         <tr>
@@ -1412,8 +1439,9 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         </tr>
         <tr>
           <td><code>#contentProfiles</code></td>
-          <td>required</td>
-          <td>See <a href="#content-profiles"></a>.</td>
+          <td>optional</td>
+          <td>See <a href="#content-profiles"></a>
+            and <a href="#extension-contentProfiles-root"></a>.</td>
         </tr>
         <tr>
           <td><code>#contentProfiles-combined</code></td>
@@ -1431,23 +1459,8 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <td></td>
         </tr>
         <tr>
-          <td><code>#display-block</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#display-inline</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#display-region</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#display</code></td>
-          <td>prohibited<p class="ednote">Consider display="none" in relation to AD content</p></td>
+          <td><code>#direction</code></td>
+          <td>permitted</td>
           <td></td>
         </tr>
         <tr>
@@ -1481,16 +1494,6 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <td></td>
         </tr>
         <tr>
-          <td><code>#extent-root</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#extent</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
           <td><code>#frameRate</code></td>
           <td>permitted</td>
           <td>
@@ -1505,51 +1508,6 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <tr>
           <td><code>#gain</code></td>
           <td>permitted</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#layout</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#length-cell</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#length-integer</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#length-negative</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#length-percentage</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#length-pixel</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#length-positive</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#length-real</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#length</code></td>
-          <td>prohibited</td>
           <td></td>
         </tr>
         <tr>
@@ -1573,23 +1531,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <td></td>
         </tr>
         <tr>
-          <td><code>#opacity</code></td>
-          <td>prohibited</td>
+          <td><code>#metadata-item</code></td>
+          <td>permitted</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>#origin</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#overflow</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#overflow-visible</code></td>
-          <td>prohibited</td>
+          <td><code>#metadata-version-2</code></td>
+          <td>permitted</td>
           <td></td>
         </tr>
         <tr>
@@ -1613,13 +1561,8 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <td></td>
         </tr>
         <tr>
-          <td><code>#pixelAspectRatio</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#presentation</code></td>
-          <td>prohibited</td>
+          <td><code>#presentation-audio</code></td>
+          <td>permitted</td>
           <td></td>
         </tr>
         <tr>
@@ -1654,18 +1597,23 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           </td>
         </tr>
         <tr>
-          <td><code>#region-timing</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
           <td><code>#resources</code></td>
           <td>permitted</td>
           <td></td>
         </tr>
         <tr>
-          <td><code>#showBackground</code></td>
-          <td>prohibited</td>
+          <td><code>#set</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#set-fill</code></td>
+          <td>permitted</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#set-multiple-styles</code></td>
+          <td>permitted</td>
           <td></td>
         </tr>
         <tr>
@@ -1685,7 +1633,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         </tr>
         <tr>
           <td><code>#structure</code></td>
-          <td>permitted</td>
+          <td>required</td>
           <td></td>
         </tr>
         <tr>
@@ -1704,17 +1652,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <td></td>
         </tr>
         <tr>
-          <td><code>#styling-inheritance-region</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
           <td><code>#styling-inline</code></td>
-          <td>permitted</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#styling-nested</code></td>
           <td>permitted</td>
           <td></td>
         </tr>
@@ -1734,33 +1672,14 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <td>See [[[#tickrate-section]]].</td>
         </tr>
         <tr>
-          <td><code>#timeBase-clock</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#timeBase-media</code></td>
+          <td><code>#time-clock</code></td>
           <td>permitted</td>
-          <td>
-            <p>See [[[#timebase-section]]].</p>
-            <p class="inline-note">NOTE: [[TTML1]] specifies that the default timebase is <code>"media"</code> if
-            <code>ttp:timeBase</code> is not specified on <code>tt</code>.</p>
-          </td>
-        </tr>
-        <tr>
-          <td><code>#timeBase-smpte</code></td>
-          <td>prohibited</td>
           <td></td>
         </tr>
         <tr>
           <td><code>#time-clock-with-frames</code></td>
           <td>permitted</td>
           <td>See [[[#framerate-section]]] and [[[#time-clock-with-frames-section]]].</td>
-        </tr>
-        <tr>
-          <td><code>#time-clock</code></td>
-          <td>permitted</td>
-          <td></td>
         </tr>
         <tr>
           <td><code>#time-offset-with-frames</code></td>
@@ -1778,8 +1697,32 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <td></td>
         </tr>
         <tr>
+          <td><code>#time-wall-clock</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#timeBase-clock</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><code>#timeBase-media</code></td>
+          <td>required</td>
+          <td>
+            <p>See [[[#timebase-section]]].</p>
+            <p class="inline-note">NOTE: [[TTML1]] specifies that the default timebase is <code>"media"</code> if
+            <code>ttp:timeBase</code> is not specified on <code>tt</code>.</p>
+          </td>
+        </tr>
+        <tr>
+          <td><code>#timeBase-smpte</code></td>
+          <td>prohibited</td>
+          <td></td>
+        </tr>
+        <tr>
           <td><code>#timeContainer</code></td>
-          <td>permitted</td>
+          <td>prohibited</td>
           <td>See [[[#timecontainer-section]]].</td>
         </tr>
         <tr>
@@ -1795,48 +1738,53 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           </td>
         </tr>
         <tr>
-          <td><code>#visibility-block</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#visibility-region</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#writingMode-horizontal-lr</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#writingMode-horizontal-rl</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#writingMode-horizontal</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
-          <td><code>#zIndex</code></td>
-          <td>prohibited</td>
-          <td></td>
-        </tr>
-        <tr>
           <td colspan="3" style="text-align:center"><em>Relative to the <a>DAPT Extension</a> namespace</em></td>
         </tr>
         <tr>
-          <td><a href="#feature-profile-root"><code>#profile-root</code></a></td>
+          <td><a href="#extension-contentProfiles-root"><code>#contentProfiles-root</code></a></td>
+          <td>required</td>
+          <td>
+            This is the profile expression of <a href="#content-profiles"></a>.
+          </td>
+        </tr>
+        <tr>
+          <td><a href="#extension-profile-root"><code>#profile-root</code></a></td>
           <td>prohibited</td>
           <td>
             This is the profile expression of <a href="#ttp-profile"></a>.
           </td>
         </tr>
+        <tr>
+          <td><a href="#extension-xmlLang-root"><code>#xmlLang-root</code></a></td>
+          <td>required</td>
+          <td>
+            This is the profile expression of <a href="#primary-language"></a>.
+          </td>
+        </tr>
       </tbody>
     </table>
-  </section> <!-- features -->
+
+    <section id="content-profile">
+      <h4>DAPT Content Profile</h4>
+      <p>The DAPT Content Profile expresses the conformance requirements of <a>DAPT Scripts</a>
+        using the profile mechanism of [[TTML2]].
+        It can be used by a validating processor that supports the DAPT Processor Profile
+        to validate a DAPT <a>Document Instance</a>.</p>
+      <p>There is no requirement to include the DAPT Content Profile within a <a>Document Instance</a>.</p>
+      <pre class="xml" data-include="profiles/dapt-content-profile.xml" data-include-format="text"></pre>
+    </section>
+
+    <section id="processor-profile">
+      <h4>DAPT Processor Profile</h4>
+      <p>The DAPT Processor Profile expresses the processing requirements of <a>DAPT Scripts</a>
+        using the profile mechanism of [[TTML2]].
+        A processor that supports the required features and extensions of the DAPT Processor Profile
+        can, minimally, process all permitted features within a DAPT <a>Document Instance</a>.</p>
+        <p>There is no requirement to include the DAPT Processor Profile within a <a>Document Instance</a>.</p>
+        <pre class="xml" data-include="profiles/dapt-processor-profile.xml" data-include-format="text"></pre>
+    </section>
+
+  </section> <!-- profiles-section -->
 
   <section id="acknowledgements">
       <h2>Acknowledgments</h2>
