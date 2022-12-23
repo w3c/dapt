@@ -45,6 +45,7 @@ table.coldividers td + td { border-left:1px solid gray; }
   table.syntax th { border: 0px solid black; text-align: left }
   table.syntax td { border: 0px solid black }
   table.syntax div { background-color: #ffffc8 }
+  table#table-features-and-extensions tbody tr td:nth-child(2) { text-align: center;}
   div.exampleInner { background-color: #d5dee3;
                    border-top-width: 4px;
                    border-top-style: double;
@@ -68,6 +69,10 @@ table.coldividers td + td { border-left:1px solid gray; }
     display: inline-block;
     border-radius: 3px;
   }
+  span.optional::before {
+    content: "\00A0?\00A0";
+    font-weight: bold;
+  }
   span.permitted::before {
     content: "\00A0\2713\00A0"
   }
@@ -78,8 +83,15 @@ table.coldividers td + td { border-left:1px solid gray; }
     font-weight: bold;
     content: "\00A0!\00A0"
   }
-  span.label::after {
+  span.label::after, span.label.required::before {
     content: "\00A0";
+  }
+  span.optional {
+    color: black;
+    background-color: #FFFF50;
+    border-color: #444444;
+    border-style: solid;
+    border-width: 1px;
   }
   span.permitted {
     color: black;
@@ -92,6 +104,10 @@ table.coldividers td + td { border-left:1px solid gray; }
   span.permitted-deprecated {
     color: black;
     background-color: #FFC000;
+  }
+  span.required {
+    color: white;
+    background-color: black;
   }
   </style>
   </head>
@@ -1365,7 +1381,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
     </p>
     <p class="ednote">Editorial task: go through this list of <a>Features</a> and check the disposition of each.
       There should be no prohibited features that are permitted in IMSC.</p>
-    <table class="simple">
+    <table class="simple" id="table-features-and-extensions">
       <thead>
         <tr>
           <th style="width:20%" style="text-align:center">Feature or Extension</th>
@@ -1379,200 +1395,200 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         </tr>
         <tr>
           <td><code>#animation-version-2</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#audio</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#audio-description</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#audio-speech</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#bidi</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#bidi-version-2</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#chunk</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#clockMode</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#clockMode-gps</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#clockMode-local</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#clockMode-utc</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#content</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#contentProfiles</code></td>
-          <td>optional</td>
+          <td><span class="optional label">optional</span></td>
           <td>See <a href="#content-profiles"></a>
             and <a href="#extension-contentProfiles-root"></a>.</td>
         </tr>
         <tr>
           <td><code>#contentProfiles-combined</code></td>
-          <td>optional</td>
+          <td><span class="optional label">optional</span></td>
           <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
         </tr>
         <tr>
           <td><code>#core</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#data</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#direction</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#dropMode</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#dropMode-dropNTSC</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#dropMode-dropPAL</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#dropMode-nonDrop</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#embedded-audio</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#embedded-data</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#frameRate</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td>
             See [[[#framerate-section]]].
           </td>
         </tr>
         <tr>
           <td><code>#frameRateMultiplier</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#gain</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#markerMode</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#markerMode-continuous</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#markerMode-discontinuous</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#metadata</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#metadata-item</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#metadata-version-2</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#pan</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#permitFeatureNarrowing</code></td>
-          <td>optional</td>
+          <td><span class="optional label">optional</span></td>
           <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
         </tr>
         <tr>
           <td><code>#permitFeatureWidening</code></td>
-          <td>optional</td>
+          <td><span class="optional label">optional</span></td>
           <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
         </tr>
         <tr>
           <td><code>#pitch</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#presentation-audio</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#processorProfiles</code></td>
-          <td>optional</td>
+          <td><span class="optional label">optional</span></td>
           <td>See <a href="#processor-profiles"></a>.</td>
         </tr>
         <tr>
           <td><code>#processorProfiles-combined</code></td>
-          <td>optional</td>
+          <td><span class="optional label">optional</span></td>
           <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
         </tr>
         <tr>
@@ -1598,117 +1614,117 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         </tr>
         <tr>
           <td><code>#resources</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#set</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#set-fill</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#set-multiple-styles</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#source</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#speak</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#speech</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#structure</code></td>
-          <td>required</td>
+          <td><span class="required label">required</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#styling</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#styling-chained</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#styling-inheritance-content</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#styling-inline</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#styling-referential</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#subFrameRate</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#tickRate</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td>See [[[#tickrate-section]]].</td>
         </tr>
         <tr>
           <td><code>#time-clock</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#time-clock-with-frames</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td>See [[[#framerate-section]]] and [[[#time-clock-with-frames-section]]].</td>
         </tr>
         <tr>
           <td><code>#time-offset-with-frames</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td>See [[[#framerate-section]]].</td>
         </tr>
         <tr>
           <td><code>#time-offset-with-ticks</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td>See [[[#tickrate-section]]].</td>
         </tr>
         <tr>
           <td><code>#time-offset</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#time-wall-clock</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#timeBase-clock</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#timeBase-media</code></td>
-          <td>required</td>
+          <td><span class="required label">required</span></td>
           <td>
             <p>See [[[#timebase-section]]].</p>
             <p class="inline-note">NOTE: [[TTML1]] specifies that the default timebase is <code>"media"</code> if
@@ -1717,22 +1733,22 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         </tr>
         <tr>
           <td><code>#timeBase-smpte</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td></td>
         </tr>
         <tr>
           <td><code>#timeContainer</code></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td>See [[[#timecontainer-section]]].</td>
         </tr>
         <tr>
           <td><code>#timing</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td>See [[[#time-expression-section]]].</td>
         </tr>
         <tr>
           <td><code>#transformation</code></td>
-          <td>permitted</td>
+          <td><span class="permitted label">permitted</span></td>
           <td>
             See constraints at <a href="#profile-constraints">#profile</a>.
           </td>
@@ -1742,21 +1758,21 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         </tr>
         <tr>
           <td><a href="#extension-contentProfiles-root"><code>#contentProfiles-root</code></a></td>
-          <td>required</td>
+          <td><span class="required label">required</span></td>
           <td>
             This is the profile expression of <a href="#content-profiles"></a>.
           </td>
         </tr>
         <tr>
           <td><a href="#extension-profile-root"><code>#profile-root</code></a></td>
-          <td>prohibited</td>
+          <td><span class="prohibited label">prohibited</span></td>
           <td>
             This is the profile expression of <a href="#ttp-profile"></a>.
           </td>
         </tr>
         <tr>
           <td><a href="#extension-xmlLang-root"><code>#xmlLang-root</code></a></td>
-          <td>required</td>
+          <td><span class="required label">required</span></td>
           <td>
             This is the profile expression of <a href="#primary-language"></a>.
           </td>
