@@ -369,7 +369,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                   <dfn>Original Language Transcript</dfn>:
                   <p>When the <code>daptm:scriptType</code> value is <code>ORIGINAL_TRANSCRIPT</code>,
                   the document is a literal transcription of the dialogue and on-screen text in their original spoken/written language(s).</p>
-                  <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Text</a> objects whose
+                  <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain <a>Text</a> objects whose
                     <a>Text Language Source</a> is set to <a>Original</a>
                     and SHOULD NOT contain <a>Text</a> objects whose
                     <a>Text Language Source</a> is set to <a>Translation</a>.</p>
@@ -385,10 +385,10 @@ table.coldividers td + td { border-left:1px solid gray; }
                   <p>It can be adapted to produce a <a>Pre-Recording Dub Script</a>,
                   and/or used as the basis for producing translation subtitles,
                   or used as the basis for a further translation into the <a>Target Recording Language</a>.</p> 
-                <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Text</a> objects whose
+                <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain <a>Text</a> objects whose
                   <a>Text Language Source</a> is set to <a>Translation</a>.
                   They MAY also contain <a>Original</a> language <a>Text</a>.</p>
-                <aside class="note">A <a>Script Event</a> in this type of <a>script</a> has a 
+                <aside class="note">A <a>Script Event</a> in this type of <a>transcript</a> has a 
                   <a>Translation</a> <a>Text</a> object in the <a>Target Recording Language</a>
                   and can also contain an <a>Original</a> <a>Text</a> object, for context,
                   to assist in the adaption process.
@@ -430,7 +430,10 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <li>
                   <dfn>Audio Description Script</dfn>:
                   <p>When the <code>daptm:scriptType</code> value is <code>AUDIO_DESCRIPTION</code>,
-                    the document represents text <a>script</a>, times, optional links to audio and mixing instructions
+                    the document represents a <a>transcript</a> of the important visual contents of the
+                    <a>Related Video Object</a> written to be suitable for use as a <a>script</a>
+                    for generating an audio representation.
+                    It contains text, times, and optional links to audio and mixing instructions
                     for the purpose of producing an audio description audio track.</p>
                   <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Original</a> <a>Text</a> objects
                     and MAY contain <a>Translation</a> <a>Text</a> objects in other languages.
