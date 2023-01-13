@@ -6,8 +6,6 @@
   type="processor">
   <features xml:base="http://www.w3.org/ns/ttml/feature/">
     <!-- required (mandatory) feature support -->
-    <feature value="required">#structure</feature>
-    <feature value="required">#timeBase-media</feature>
     <feature value="required">#animation-version-2</feature>
     <feature value="required">#audio</feature>
     <feature value="required">#audio-description</feature>
@@ -38,6 +36,7 @@
     <feature value="required">#source</feature>
     <feature value="required">#speak</feature>
     <feature value="required">#speech</feature>
+    <feature value="required">#structure</feature>
     <feature value="required">#styling</feature>
     <feature value="required">#styling-chained</feature>
     <feature value="required">#styling-inheritance-content</feature>
@@ -50,6 +49,7 @@
     <feature value="required">#time-offset-with-frames</feature>
     <feature value="required">#time-offset-with-ticks</feature>
     <feature value="required">#time-offset</feature>
+    <feature value="required">#timeBase-media</feature>
     <feature value="required">#timing</feature>
     <feature value="required">#transformation</feature>
     <feature value="required">#unicodeBidi</feature>
