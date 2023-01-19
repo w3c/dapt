@@ -376,7 +376,7 @@ table.coldividers td + td { border-left:1px solid gray; }
               <a>Pre-recording Dub Script</a>, and
               <a>As-recorded Dub Script</a>
               are referred to as <dfn>Dubbing Scripts</dfn>.</p>
-            <p>To represent this property, the following TTML attribute MUST be present on the <code>tt</code> element:</p>
+            <p>To represent this property, the <dfn><code>daptm:scriptType</code></dfn> attribute MUST be present on the <code>tt</code> element:</p>
             <div class="exampleInner">
               <pre class="nohighlight">
   daptm:scriptType
@@ -1262,11 +1262,11 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
 
     <section id="extension-contentProfiles-root">
       <h3>#contentProfiles-root</h3>
-      <p>A <a>transformation processor</a> supports the <code>#contentProfiles-root</code> feature if
+      <p>A <a>transformation processor</a> supports the <code>#contentProfiles-root</code> extension if
         it recognizes and is capable of transforming values of the
         <a><code>ttp:contentProfiles</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
 
-      <p>A <a>presentation processor</a> supports the <code>#contentProfiles-root</code> feature if
+      <p>A <a>presentation processor</a> supports the <code>#contentProfiles-root</code> extension if
         it implements presentation semantic support of the
         <a><code>ttp:contentProfiles</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
 
@@ -1280,22 +1280,44 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
 
       <section id="extension-profile-root">
       <h3>#profile-root</h3>
-      <p>A <a>transformation processor</a> supports the <code>#profile-root</code> feature if
+      <p>A <a>transformation processor</a> supports the <code>#profile-root</code> extension if
         it recognizes and is capable of transforming values of the
         <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
 
-      <p>A <a>presentation processor</a> supports the <code>#profile-root</code> feature if
+      <p>A <a>presentation processor</a> supports the <code>#profile-root</code> extension if
         it implements presentation semantic support of the
         <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
       </section>
 
+      <section id="extension-scriptType-root">
+        <h3>#scriptType-root</h3>
+        <p>A <a>transformation processor</a> supports the <code>#scriptType-root</code> extension if
+          it recognizes and is capable of transforming values of the
+          <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#scriptType-root</code> extension if
+          it implements presentation semantic support of the
+          <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+
+        <p>An example of a <a>transformation processor</a> that supports this extension is
+          a validating processor that provides appropriate feedback, for example warnings,
+          when the SHOULD requirements defined in <a href="#script-type"></a> for a
+          <a>DAPT Document</a>'s <a><code>daptm:scriptType</code></a> are not met,
+          and that reports an error if the extension is required by a
+          <a>content profile</a> but the <a>Document Instance</a> claiming
+          conformance to that profile either does not have a
+          <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element
+          or has one whose value is not defined herein.</p>
+
+      </section>
+  
       <section id="extension-xmlLang-root">
         <h3>#xmlLang-root</h3>
-        <p>A <a>transformation processor</a> supports the <code>#xmlLang-root</code> feature if
+        <p>A <a>transformation processor</a> supports the <code>#xmlLang-root</code> extension if
           it recognizes and is capable of transforming values of the
           <code>xml:lang</code> attribute on the <code>&lt;tt&gt;</code> element.</p>
   
-        <p>A <a>presentation processor</a> supports the <code>#xmlLang-root</code> feature if
+        <p>A <a>presentation processor</a> supports the <code>#xmlLang-root</code> extension if
           it implements presentation semantic support of the
           <code>xml:lang</code> attribute on the <code>&lt;tt&gt;</code> element.</p>
         </section>
@@ -1802,6 +1824,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <td><span class="prohibited label">prohibited</span></td>
             <td>
               This is the profile expression of <a href="#ttp-profile"></a>.
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#extension-scriptType-root"><code>#scriptType-root</code></a></td>
+            <td><span class="required label">required</span></td>
+            <td>
+              This is the profile expression of <a href="#script-type"></a>.
             </td>
           </tr>
           <tr>
