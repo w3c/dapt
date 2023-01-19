@@ -74,16 +74,21 @@ table.coldividers td + td { border-left:1px solid gray; }
     font-weight: bold;
   }
   span.permitted::before {
-    content: "\00A0\2713\00A0"
+    content: "\00A0\2713\00A0";
   }
   span.prohibited::before {
-    content: "\00A0\2718\00A0"
+    content: "\00A0\2718\00A0";
   }
   span.permitted-deprecated::before {
     font-weight: bold;
-    content: "\00A0!\00A0"
+    content: "\00A0!\00A0";
   }
-  span.label::after, span.label.required::before {
+  span.label.required::before, span.label.required::after {
+    font-weight: bold;
+    color: white;
+    content: "\00A0!!\00A0";
+  }
+  span.label::after {
     content: "\00A0";
   }
   span.optional {
