@@ -536,7 +536,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         <p class="issue" data-number="66"></p>
         <p>A <a>Character</a> is represented in TTML with the following structure and constraints:
           <ul>
-            <li>If the <a>Character</a> has a <a>Talent Name</a> property, the following TTML constraints apply:
+            <li>If the <a>Character</a> has a <a>Talent Name</a> property:
               <ul>
                 <li>A <code>&lt;ttm:agent&gt;</code> element corresponding to the <a>Talent Name</a> 
                   MUST be present at the path
@@ -601,8 +601,9 @@ table.coldividers td + td { border-left:1px solid gray; }
               for example to include <a href="#proprietary-metadata">proprietary metadata</a>
               but the above recommends that only one is used to define the characters.</div>
             </li>
+          </ul>
 
-            <li>A <a>Character Style</a> is represented in TTML with the following structure and constraints:
+            <p>A <a>Character Style</a> is represented in TTML with the following structure and constraints:</p>
               <ul>
                 <li>Each <a>Character Style</a> is represented by one or more <code>&lt;style&gt;</code> elements
                   at the path <code>/tt/head/styling/style</code>.</li>
@@ -615,7 +616,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <li>A <a>Script Event</a> SHOULD NOT apply a <a>Character Style</a> for a <a>Character</a> that is not associated with that Script Event.</li>
                 <li>A <a>Text</a> object SHOULD NOT apply a <a>Character Style</a> for a <a>Character</a> that is not associated with that Text object's Script Event.</li>
               </ul>
-            </li>
+            
 
             <p class="note">Any style attribute defined in [[TTML2]] or [[ttml-imsc1.2]]
               (or other profiles using non-W3C namespaces) can be present on the <code>&lt;style&gt;</code> element.</p>
@@ -647,9 +648,6 @@ table.coldividers td + td { border-left:1px solid gray; }
   &lt;-- Script event contents here, not in Character 3's style --&gt;
   &lt;/div&gt;
         </pre>
-
-          </ul>
-        </p>
 
         <p class="issue" data-number="15"></p>
       </section>
