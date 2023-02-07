@@ -84,6 +84,7 @@
     <extension value="required">#scriptType-root</extension>
     <extension value="required">#xmlLang-root</extension>
     <!-- optional (voluntary) extension support -->
+    <extension value="optional">#agent</extension>
     <!-- prohibited extension support -->
     <extension value="prohibited">#profile-root</extension>
 </extensions>

@@ -1274,6 +1274,29 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       </p>
     </section>
 
+      <section id="extension-agent">
+      <h3>#agent</h3>
+      <p>A <a>transformation processor</a> supports the <code>#agent</code> extension if
+        it recognizes and is capable of transforming values of the following
+        elements and attributes on
+        the <code>&lt;ttm:agent&gt;</code> element:</p>
+      <ul>
+        <li><code>xml:id</code> attribute</li>
+        <li><code>&lt;ttm:name&gt;</code> element</li>
+      </ul>
+      <p>and if it recognizes and is capable of transforming each of the following value combinations:</p>
+      <ul>
+        <li><code>&lt;ttm:agent&gt;</code> element with <code>type="person"</code>
+          and child <code>&lt;ttm:name&gt;</code> element with <code>type="full"</code>;</li>
+          <li><code>&lt;ttm:agent&gt;</code> element with <code>type="character"</code>
+            and child <code>&lt;ttm:name&gt;</code> element with <code>type="alias"</code>;</li>
+        </ul>
+
+      <p>A <a>presentation processor</a> supports the <code>#agent</code> extension if
+        it implements presentation semantic support of the above listed
+        elements, attributes and value combinations.</p>
+      </section>
+
     <section id="extension-contentProfiles-root">
       <h3>#contentProfiles-root</h3>
       <p>A <a>transformation processor</a> supports the <code>#contentProfiles-root</code> extension if
@@ -1293,17 +1316,17 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       </section>
 
       <section id="extension-profile-root">
-      <h3>#profile-root</h3>
-      <p>A <a>transformation processor</a> supports the <code>#profile-root</code> extension if
-        it recognizes and is capable of transforming values of the
-        <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-
-      <p>A <a>presentation processor</a> supports the <code>#profile-root</code> extension if
-        it implements presentation semantic support of the
-        <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-      </section>
-
-      <section id="extension-scriptType-root">
+        <h3>#profile-root</h3>
+        <p>A <a>transformation processor</a> supports the <code>#profile-root</code> extension if
+          it recognizes and is capable of transforming values of the
+          <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#profile-root</code> extension if
+          it implements presentation semantic support of the
+          <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+        </section>
+  
+        <section id="extension-scriptType-root">
         <h3>#scriptType-root</h3>
         <p>A <a>transformation processor</a> supports the <code>#scriptType-root</code> extension if
           it recognizes and is capable of transforming values of the
@@ -1825,6 +1848,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           </tr>
           <tr>
             <td colspan="3" style="text-align:center"><em>Relative to the <a>DAPT Extension</a> namespace</em></td>
+          </tr>
+          <tr>
+            <td><a href="#extension-agent"><code>#agent</code></a></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td>
+              This is the profile expression of <a href="#character"></a>.
+            </td>
           </tr>
           <tr>
             <td><a href="#extension-contentProfiles-root"><code>#contentProfiles-root</code></a></td>
