@@ -1348,6 +1348,17 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
 
       </section>
 
+      <section id="extension-textLanguageSource">
+        <h3>#textLanguageSource</h3>
+        <p>A <a>transformation processor</a> supports the <code>#textLanguageSource</code> extension if
+          it recognizes and is capable of transforming values of the
+          <code>daptm:langSrc</code> attribute on the <code>&lt;p&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#textLanguageSource</code> extension if
+          it implements presentation semantic support of the
+          <code>daptm:langSrc</code> attribute on the <code>&lt;p&gt;</code> element.</p>
+        </section>
+
       <section id="extension-xmlId-div">
         <h3>#xmlId-div</h3>
         <p>A <a>transformation processor</a> supports the <code>#xmlId-div</code> extension if
@@ -1886,6 +1897,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <td><span class="required label">required</span></td>
             <td>
               This is the profile expression of <a href="#script-type"></a>.
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#extension-textLanguageSource"><code>#textLanguageSource</code></a></td>
+            <td><span class="required label">required</span></td>
+            <td>
+              This is the profile expression of <a href="#text-language-source"></a> as required at <a href="#text"></a>.
             </td>
           </tr>
           <tr>
