@@ -82,6 +82,7 @@
     <!-- required (mandatory) extension support -->
     <extension value="required">#contentProfiles-root</extension>
     <extension value="required">#scriptType-root</extension>
+    <extension value="required">#xmlId-div</extension>
     <extension value="required">#xmlLang-root</extension>
     <!-- optional (voluntary) extension support -->
     <extension value="optional">#agent</extension>

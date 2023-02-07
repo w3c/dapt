@@ -1347,7 +1347,18 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           or has one whose value is not defined herein.</p>
 
       </section>
+
+      <section id="extension-xmlId-div">
+        <h3>#xmlId-div</h3>
+        <p>A <a>transformation processor</a> supports the <code>#xmlId-div</code> extension if
+          it recognizes and is capable of transforming values of the
+          <code>xml:id</code> attribute on the <code>&lt;div&gt;</code> element.</p>
   
+        <p>A <a>presentation processor</a> supports the <code>#xmlId-div</code> extension if
+          it implements presentation semantic support of the
+          <code>xml:id</code> attribute on the <code>&lt;div&gt;</code> element.</p>
+        </section>
+
       <section id="extension-xmlLang-root">
         <h3>#xmlLang-root</h3>
         <p>A <a>transformation processor</a> supports the <code>#xmlLang-root</code> extension if
@@ -1875,6 +1886,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <td><span class="required label">required</span></td>
             <td>
               This is the profile expression of <a href="#script-type"></a>.
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#extension-xmlId-div"><code>#xmlId-div</code></a></td>
+            <td><span class="required label">required</span></td>
+            <td>
+              This is the profile expression of <a href="#script-event"></a>.
             </td>
           </tr>
           <tr>
