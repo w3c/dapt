@@ -897,7 +897,7 @@ daptm:eventType = string
           <div class="note">
             <p>The resulting [[xml]] document can contain
             <dfn data-cite="xml#dt-charref">character references</dfn>,
-            and <dfn data-cite="xml#dt-entref">entity referencess</dfn> to
+            and <dfn data-cite="xml#dt-entref">entity references</dfn> to
             <dfn data-cite="xml#sec-predefined-ent">predefined entities</dfn>.</p>
             <p>The predefined entities are (including the leading ampersand and trailing semicolon):</p>
             <ul>
@@ -1348,6 +1348,25 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
 
       </section>
 
+      <section id="extension-serialization">
+        <h3>#serialization</h3>
+        <p>A serialized document that is valid with respect to the <code>#serialization</code>
+          extension is
+          an XML 1.0 [[xml]] document encoded using
+          UTF-8 character encoding as specified in [[UNICODE]],
+          that contains no entity declarations and
+          no entity references other than to predefined entities.</p>
+
+        <p>A <a>transformation processor</a> or a <a>presentation processor</a> supports
+          the <code>#serialization</code> extension if
+          it can read a serialized document as defined above.</p>
+  
+        <p>A <a>transformation processor</a> that writes documents supports
+          the <code>#serialization</code> extension if
+          it can write a serialized document as defined above.</p>
+
+      </section>
+
       <section id="extension-textLanguageSource">
         <h3>#textLanguageSource</h3>
         <p>A <a>transformation processor</a> supports the <code>#textLanguageSource</code> extension if
@@ -1357,7 +1376,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <p>A <a>presentation processor</a> supports the <code>#textLanguageSource</code> extension if
           it implements presentation semantic support of the
           <code>daptm:langSrc</code> attribute on the <code>&lt;p&gt;</code> element.</p>
-        </section>
+      </section>
 
       <section id="extension-xmlId-div">
         <h3>#xmlId-div</h3>
@@ -1897,6 +1916,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <td><span class="required label">required</span></td>
             <td>
               This is the profile expression of <a href="#script-type"></a>.
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#extension-serialization"><code>#serialization</code></a></td>
+            <td><span class="required label">required</span></td>
+            <td>
+              This is the profile expression of <a href="#Document Encoding"></a>.
             </td>
           </tr>
           <tr>

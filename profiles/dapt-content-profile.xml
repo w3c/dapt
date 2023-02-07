@@ -77,11 +77,12 @@
     <feature value="prohibited">#timeBase-clock</feature>
     <feature value="prohibited">#timeBase-smpte</feature>
     <feature value="prohibited">#timeContainer</feature>
-</features>
+  </features>
   <extensions xml:base="http://www.w3.org/ns/ttml/profile/dapt/extension">
     <!-- required (mandatory) extension support -->
     <extension value="required">#contentProfiles-root</extension>
     <extension value="required">#scriptType-root</extension>
+    <extension value="required">#serialization</extension>
     <extension value="required">#textLanguageSource</extension>
     <extension value="required">#xmlId-div</extension>
     <extension value="required">#xmlLang-root</extension>
