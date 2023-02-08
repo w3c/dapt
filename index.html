@@ -710,7 +710,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           </pre>
               <li>It MAY contain zero or more <code>p</code> elements representing each <a>Text</a> object.</li>
               <li>The <code>style</code> attribute MAY be present. If present, it MAY contain a reference to the <code>&lt;style&gt;</code> defining the <a>Character Style</a>. Additional style references or inline styles MAY be used.</li>
-              <li>It MAY contain a <code>metadata</code> element representing the <a>On Screen</a> property.</li>
+              <li>The <a><code>daptm:onScreen</code></a> attribute MAY be present to represent the <a>On Screen</a> property.</li>
             </ul>
           </ul>
         </p>
@@ -808,7 +808,7 @@ daptm:langSrc
               <li>OFF_ON - the <a>character</a> starts off screen, but goes on screen at some point</li>
             </ul>
           </p>
-          <p>The <a>On Screen</a> property is represented as a <code>metadata</code> element with the following constraints:
+          <p>The <a>On Screen</a> property is represented as a <dfn><code>daptm:onScreen</code></dfn> attribute with the following constraints:
             <ul>
               <li>The following attribute corresponding to the <a>On Screen</a> <a>Script Event</a> property may be present:
                 <div class="exampleInner">
@@ -1315,6 +1315,17 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       </aside>
       </section>
 
+      <section id="extension-onScreen">
+        <h3>#onScreen</h3>
+        <p>A <a>transformation processor</a> supports the <code>#onScreen</code> extension if
+          it recognizes and is capable of transforming values of the
+          <a><code>daptm:onScreen</code></a> attribute on the <code>&lt;div&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#onScreen</code> extension if
+          it implements presentation semantic support of the
+          <a><code>daptm:onScreen</code></a> attribute on the <code>&lt;div&gt;</code> element.</p>
+      </section>
+
       <section id="extension-profile-root">
         <h3>#profile-root</h3>
         <p>A <a>transformation processor</a> supports the <code>#profile-root</code> extension if
@@ -1324,7 +1335,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <p>A <a>presentation processor</a> supports the <code>#profile-root</code> extension if
           it implements presentation semantic support of the
           <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-        </section>
+      </section>
   
         <section id="extension-scriptType-root">
         <h3>#scriptType-root</h3>
@@ -1902,6 +1913,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <td><span class="required label">required</span></td>
             <td>
               This is the profile expression of <a href="#content-profiles"></a>.
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#extension-onScreen"><code>#onScreen</code></a></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td>
+              This is the profile expression of <a href="#on-screen"></a>.
             </td>
           </tr>
           <tr>

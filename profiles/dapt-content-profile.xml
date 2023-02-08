@@ -88,6 +88,7 @@
     <extension value="required">#xmlLang-root</extension>
     <!-- optional (voluntary) extension support -->
     <extension value="optional">#agent</extension>
+    <extension value="optional">#onScreen</extension>
     <!-- prohibited extension support -->
     <extension value="prohibited">#profile-root</extension>
 </extensions>
