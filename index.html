@@ -345,15 +345,15 @@ table.coldividers td + td { border-left:1px solid gray; }
     </section>
 
   <section id="data-model">
-      <h2>DAPT Data Model and corresponding TTML syntax</h2>
-      <p>This section specifies the data model for DAPT and its corresponding TTML syntax. In the model, there are objects which can have properties and be associated with other objects. In the TTML syntax, these objects and properties are expressed as elements and attributes.</p>
-      <figure id="fig-class-diagram">
-        <div data-include="figures/class-diagram.svg"></div>
-        <figcaption>
-            Class diagram showing main entities in the DAPT data model.
-        </figcaption>
+    <h2>DAPT Data Model and corresponding TTML syntax</h2>
+    <p>This section specifies the data model for DAPT and its corresponding TTML syntax. In the model, there are objects which can have properties and be associated with other objects. In the TTML syntax, these objects and properties are expressed as elements and attributes.</p>
+    <figure id="fig-class-diagram">
+      <div data-include="figures/class-diagram.svg"></div>
+      <figcaption>
+          Class diagram showing main entities in the DAPT data model.
+      </figcaption>
     </figure>
-      <section>
+      <section id="dapt-script">
         <h3>DAPT Script</h3>
           <p>A <dfn>DAPT Script</dfn> is a <a>transcript</a> or <a>script</a>
             that corresponds to a document processed within an authoring workflow or processed by a client,
@@ -377,7 +377,7 @@ table.coldividers td + td { border-left:1px solid gray; }
               <a>Pre-recording Dub Script</a>, and
               <a>As-recorded Dub Script</a>
               are referred to as <dfn>Dubbing Scripts</dfn>.</p>
-            <p>To represent this property, the <dfn><code>daptm:scriptType</code></dfn> attribute MUST be present on the <code>tt</code> element:</p>
+            <p>To represent this property, the <dfn><code>daptm:scriptType</code></dfn> attribute MUST be present on the <code>&lt;tt&gt;</code> element:</p>
             <div class="exampleInner">
               <pre class="language-abnf">
   daptm:scriptType
@@ -386,138 +386,179 @@ table.coldividers td + td { border-left:1px solid gray; }
     | "DUBBING_PRE_RECORDING"
     | "DUBBING_AS_RECORDED"
     | "AUDIO_DESCRIPTION"
-              </pre>
-            </div>
+            </pre>
+          </div>
 
-            <p>The definitions of the types of documents and the corresponding <code>daptm:scriptType</code> values are:
-              <ul>
-                <li>
-                  <dfn>Original Language Transcript</dfn>:
-                  <p>When the <code>daptm:scriptType</code> value is <code>ORIGINAL_TRANSCRIPT</code>,
-                  the document is a literal transcription of the dialogue and on-screen text in their original spoken/written language(s).</p>
-                  <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain <a>Text</a> objects whose
-                    <a>Text Language Source</a> is set to <a>Original</a>
-                    and SHOULD NOT contain <a>Text</a> objects whose
-                    <a>Text Language Source</a> is set to <a>Translation</a>.</p>
-                <aside class="example">If a programme contains dialogue in English and Hebrew,
-                  the <a>Original Language Transcript</a> will contain some <a>Script Events</a> in English and some in Hebrew,
-                  all marked as <a>Original</a> <a>Text Language Source</a>.
-                  None of the <a>Script Events</a> is marked as <a>Translation</a>.</aside>
-                </li>
-                <li>
-                  <dfn>Translated Transcript</dfn>:
-                  <p>When the <code>daptm:scriptType</code> value is <code>TRANSLATED_TRANSCRIPT</code>,
-                  the document represents a translation of the <a>Original Language Transcript</a> in a common language.</p>
-                  <p>It can be adapted to produce a <a>Pre-Recording Dub Script</a>,
-                  and/or used as the basis for producing translation subtitles,
-                  or used as the basis for a further translation into the <a>Target Recording Language</a>.</p> 
+          <p>The definitions of the types of documents and the corresponding <code>daptm:scriptType</code> values are:
+            <ul>
+              <li>
+                <dfn>Original Language Transcript</dfn>:
+                <p>When the <code>daptm:scriptType</code> value is <code>ORIGINAL_TRANSCRIPT</code>,
+                the document is a literal transcription of the dialogue and on-screen text in their original spoken/written language(s).</p>
                 <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain <a>Text</a> objects whose
-                  <a>Text Language Source</a> is set to <a>Translation</a>.
-                  They MAY also contain <a>Original</a> language <a>Text</a>.</p>
-                <aside class="note">A <a>Script Event</a> in this type of <a>transcript</a> has a 
-                  <a>Translation</a> <a>Text</a> object in the <a>Target Recording Language</a>
-                  and can also contain an <a>Original</a> <a>Text</a> object, for context,
-                  to assist in the adaption process.
-                  It can also have <a>Translation</a> <a>Text</a> objects in other languages,
-                  for example used as intermediate (&quot;pivot&quot;) translations,
-                  or as additional context to assist in the adaptation process.</aside>
-                <aside class="example">If a programme contains dialogue in English and Hebrew,
-                  the French <a>Translated Transcript</a> will contain at least the translation in French of all <a>Script Events</a>.
-                  It may still retain text content in Hebrew and English to assist further processing.</aside>
-                </li>
-                <li>
-                  <dfn>Pre-recording Dub Script</dfn>:
-                  <p>When the <code>daptm:scriptType</code> value is <code>DUBBING_PRE_RECORDING</code>,
-                  the document represents the result of the adaptation of a <a>Translated Transcript</a> for dubbing,
-                  e.g. for better lip-sync.</p>
-                  <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Translation</a> <a>Text</a> objects
-                    in the <a>Target Recording Language</a>
-                    and MAY also contain <a>Original</a> <a>Text</a> objects from the <a>Original Language Transcript</a>
-                    or <a>Translation</a> <a>Text</a> objects in other languages for context,
-                    to assist further processing.</p>
-                  <aside class="note">The <a>Script Type</a> of a <a>DAPT Script</a> cannot necessarily be detected by inspecting the text content of the document.
-                  For example, the adaptation of a <a>Translated Transcript</a> into a <a>Pre-recording Dub Script</a>
-                  can consist in replacing some words in the text content of a <a>Script Event</a> without altering the rest of the document.
-                  In either case, <a>Text</a> objects that are translations have <a>Text Language Source</a> properties set to <a>Translation</a>.</aside>
-                </li>
-                <li>
-                  <dfn>As-recorded Dub Script</dfn>:
-                  <p>When the <code>daptm:scriptType</code> value is <code>DUBBING_AS_RECORDED</code>,
-                  the document represents a transcription of the output of the dubbing workflow.</p>
-                  <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Translation</a> <a>Text</a> objects
+                  <a>Text Language Source</a> is set to <a>Original</a>
+                  and SHOULD NOT contain <a>Text</a> objects whose
+                  <a>Text Language Source</a> is set to <a>Translation</a>.</p>
+              <aside class="example">If a programme contains dialogue in English and Hebrew,
+                the <a>Original Language Transcript</a> will contain some <a>Script Events</a> in English and some in Hebrew,
+                all marked as <a>Original</a> <a>Text Language Source</a>.
+                None of the <a>Script Events</a> is marked as <a>Translation</a>.</aside>
+              </li>
+              <li>
+                <dfn>Translated Transcript</dfn>:
+                <p>When the <code>daptm:scriptType</code> value is <code>TRANSLATED_TRANSCRIPT</code>,
+                the document represents a translation of the <a>Original Language Transcript</a> in a common language.</p>
+                <p>It can be adapted to produce a <a>Pre-Recording Dub Script</a>,
+                and/or used as the basis for producing translation subtitles,
+                or used as the basis for a further translation into the <a>Target Recording Language</a>.</p> 
+                  or used as the basis for a further translation into the <a>Target Recording Language</a>.</p> 
+                or used as the basis for a further translation into the <a>Target Recording Language</a>.</p> 
+              <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain <a>Text</a> objects whose
+                <a>Text Language Source</a> is set to <a>Translation</a>.
+                They MAY also contain <a>Original</a> language <a>Text</a>.</p>
+              <aside class="note">A <a>Script Event</a> in this type of <a>transcript</a> has a 
+                <a>Translation</a> <a>Text</a> object in the <a>Target Recording Language</a>
+                and can also contain an <a>Original</a> <a>Text</a> object, for context,
+                to assist in the adaption process.
+                It can also have <a>Translation</a> <a>Text</a> objects in other languages,
+                for example used as intermediate (&quot;pivot&quot;) translations,
+                or as additional context to assist in the adaptation process.</aside>
+              <aside class="example">If a programme contains dialogue in English and Hebrew,
+                the French <a>Translated Transcript</a> will contain at least the translation in French of all <a>Script Events</a>.
+                It may still retain text content in Hebrew and English to assist further processing.</aside>
+              </li>
+              <li>
+                <dfn>Pre-recording Dub Script</dfn>:
+                <p>When the <code>daptm:scriptType</code> value is <code>DUBBING_PRE_RECORDING</code>,
+                the document represents the result of the adaptation of a <a>Translated Transcript</a> for dubbing,
+                e.g. for better lip-sync.</p>
+                <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Translation</a> <a>Text</a> objects
                   in the <a>Target Recording Language</a>
                   and MAY also contain <a>Original</a> <a>Text</a> objects from the <a>Original Language Transcript</a>
-                  or <a>Translation</a> <a>Text</a> objects in other languages for for context and quality verification.</p>
-                  <aside class="note">Even though the output of the dubbing workflow is in the same language as those
-                    <a>Text</a> objects with the matching language,
-                    the <a>Text Language Source</a> of those Text objects remains <a>Translation</a>
-                    since they differ from the original language of the dialogue.</aside>
-                </li>
-                <li>
-                  <dfn>Audio Description Script</dfn>:
-                  <p>When the <code>daptm:scriptType</code> value is <code>AUDIO_DESCRIPTION</code>,
-                    the document represents a <a>transcript</a> of the important visual contents of the
-                    <a>Related Video Object</a> written to be suitable for use as a <a>script</a>
-                    for generating an audio representation.
-                    It contains text, times, and optional links to audio and mixing instructions
-                    for the purpose of producing an audio description audio track.</p>
-                  <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Original</a> <a>Text</a> objects
-                    and MAY contain <a>Translation</a> <a>Text</a> objects in other languages.
-                    If the <a>Target Recording Language</a> is different to the <a>Primary language</a>
-                    then <a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Translation</a> <a>Text</a> objects
-                    in the <a>Target Recording Language</a>.</p>
-                  <aside class="note">The <a>Text</a> objects in Audio Description <a>Script Events</a> are each expected to have
-                    a <a>Text Language Source</a> property of <a>Original</a> if their language is the <a>Primary Language</a>
-                    or, when representing in-image text,
-                    if they are in the same language as that text.
-                    If audio description <a>scripts</a> are translated,
-                    their translations would be marked as <a>Translation</a>.</aside>
-                </li>
-              </ul>
-            </p>
-            <p class="ednote">The following example is orphaned - move to the top of the section, before the enumerated script types?</p>
-            <pre class="example">
+                  or <a>Translation</a> <a>Text</a> objects in other languages for context,
+                  to assist further processing.</p>
+                <aside class="note">The <a>Script Type</a> of a <a>DAPT Script</a> cannot necessarily be detected by inspecting the text content of the document.
+                For example, the adaptation of a <a>Translated Transcript</a> into a <a>Pre-recording Dub Script</a>
+                can consist in replacing some words in the text content of a <a>Script Event</a> without altering the rest of the document.
+                In either case, <a>Text</a> objects that are translations have <a>Text Language Source</a> properties set to <a>Translation</a>.</aside>
+              </li>
+              <li>
+                <dfn>As-recorded Dub Script</dfn>:
+                <p>When the <code>daptm:scriptType</code> value is <code>DUBBING_AS_RECORDED</code>,
+                the document represents a transcription of the output of the dubbing workflow.</p>
+                <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Translation</a> <a>Text</a> objects
+                in the <a>Target Recording Language</a>
+                and MAY also contain <a>Original</a> <a>Text</a> objects from the <a>Original Language Transcript</a>
+                or <a>Translation</a> <a>Text</a> objects in other languages for for context and quality verification.</p>
+                <aside class="note">Even though the output of the dubbing workflow is in the same language as those
+                  <a>Text</a> objects with the matching language,
+                  the <a>Text Language Source</a> of those Text objects remains <a>Translation</a>
+                  since they differ from the original language of the dialogue.</aside>
+              </li>
+              <li>
+                <dfn>Audio Description Script</dfn>:
+                <p>When the <code>daptm:scriptType</code> value is <code>AUDIO_DESCRIPTION</code>,
+                  the document represents a <a>transcript</a> of the important visual contents of the
+                  <a>Related Video Object</a> written to be suitable for use as a <a>script</a>
+                  for generating an audio representation.
+                  It contains text, times, and optional links to audio and mixing instructions
+                  for the purpose of producing an audio description audio track.</p>
+                <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Original</a> <a>Text</a> objects
+                  and MAY contain <a>Translation</a> <a>Text</a> objects in other languages.
+                  If the <a>Target Recording Language</a> is different to the <a>Primary language</a>
+                  then <a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Translation</a> <a>Text</a> objects
+                  in the <a>Target Recording Language</a>.</p>
+                <aside class="note">The <a>Text</a> objects in Audio Description <a>Script Events</a> are each expected to have
+                  a <a>Text Language Source</a> property of <a>Original</a> if their language is the <a>Primary Language</a>
+                  or, when representing in-image text,
+                  if they are in the same language as that text.
+                  If audio description <a>scripts</a> are translated,
+                  their translations would be marked as <a>Translation</a>.</aside>
+              </li>
+            </ul>
+          </p>
+          <p class="ednote">The following example is orphaned - move to the top of the section, before the enumerated script types?</p>
+          <pre class="example">
 &lt;tt daptm:scriptType=&quot;ORIGINAL_TRANSCRIPT&quot;&gt;
 ...
 &lt;/tt&gt;
-            </pre>
-          </section>
+          </pre>
+        </section>
+        <section id="primary-language">
+          <h4>Primary Language</h4>
+          <p>The <dfn>Primary Language</dfn> is a mandatory property of a <a>DAPT Script</a>
+            which represents the default language for the <a>Text</a> content of <a>Script Events</a>.
+            It is represented in TTML with the following structure and constraints:
+            <ul>
+              <li>the <code>xml:lang</code> attribute MUST be present on the <code>tt</code> element and its value MUST NOT be empty.</li>
+            </ul>
+          </p>
+          <p class="note">All text content in a <a>DAPT Script</a> has a specified language.
+            When multiple languages are used, the <a>Primary Language</a> can correspond to the language of the majority of <a>Script Events</a>,
+            to the language being spoken for the longest duration, or to the language arbitrarily chosen by the author.</p>
+          <p class="note">Text content is marked either as being either in the <a>Original</a> language or
+            as being a <a>Translation</a> independently of the <a>Primary Language</a>, using the <a>Text Language Source</a> property.</p>
+          <aside class="example">An <a>Original Language Transcript</a> <a>script</a> is prepared for a video
+            containing dialogue in Danish and Swedish.
+            The <a>Primary Language</a> is set to Danish by setting <code>xml:lang="da"</code> on the <code>&lt;tt&gt;</code> element.
+            <a>Script Events</a> that contain Swedish <a>Text</a> override this by setting
+            <code>xml:lang="sv"</code> on the <code>&lt;p&gt;</code> element.
+            Script Events that contain Danish <a>Text</a> can set the <code>xml:lang</code> attribute
+            or omit it, since the inherited language is the <a>Primary Language</a> of the document.
+            In both cases the Script Events' <a>Text</a> objects are <code>&lt;p&gt;</code> elements that represent original language text
+            and therefore set their <a>Text Language Source</a> to Original by setting <code>daptm:langSrc="original"</code>.</aside>
+        </section>
+
+        <section>
+          <h4>Script Events</h4>
+          <p>A <a>DAPT Script</a> MAY contain zero or more <a>Script Event</a> objects, each corresponding to dialogue, on screen text, or descriptions for a given time interval.</p>
+        </section>
+
+        <section>
+          <h4>Characters</h4>
+          <p>A <a>DAPT Script</a> MAY contain zero or more <a>Character</a> objects, each describing a character that can be referenced by a <a>Script Event</a>.</p>
+        </section>
+
+        <section>
+          <h4>Shared properties</h4>
+          <p>Some of the properties in the DAPT data model are common within more than one object type,
+            and carry the same semantic everywhere they occur.
+            These shared properties are listed in this section.
+          </p>
+          <p class="ednote">Would it be better to make a "Timed Object" class and subclass Script Event,
+            Mixing Instruction and Audio Recording from it?
+          </p>
           <section>
-            <h4>Primary Language</h4>
-            <p>The <dfn>Primary Language</dfn> is a mandatory property of a <a>DAPT Script</a>
-              which represents the default language for the <a>Text</a> content of <a>Script Events</a>.
-              It is represented in TTML with the following structure and constraints:
-              <ul>
-                <li>the <code>xml:lang</code> attribute MUST be present on the <code>tt</code> element and its value MUST NOT be empty.</li>
-              </ul>
+            <h5>Timing Properties</h5>
+            <p>The following timing properties define when the entities that contain them
+              are active:
             </p>
-            <p class="note">All text content in a <a>DAPT Script</a> has a specified language.
-              When multiple languages are used, the <a>Primary Language</a> can correspond to the language of the majority of <a>Script Events</a>,
-              to the language being spoken for the longest duration, or to the language arbitrarily chosen by the author.</p>
-            <p class="note">Text content is marked either as being either in the <a>Original</a> language or
-              as being a <a>Translation</a> independently of the <a>Primary Language</a>, using the <a>Text Language Source</a> property.</p>
-            <aside class="example">An <a>Original Language Transcript</a> <a>script</a> is prepared for a video
-              containing dialogue in Danish and Swedish.
-              The <a>Primary Language</a> is set to Danish by setting <code>xml:lang="da"</code> on the <code>&lt;tt&gt;</code> element.
-              <a>Script Events</a> that contain Swedish <a>Text</a> override this by setting
-              <code>xml:lang="sv"</code> on the <code>&lt;p&gt;</code> element.
-              Script Events that contain Danish <a>Text</a> can set the <code>xml:lang</code> attribute
-              or omit it, since the inherited language is the <a>Primary Language</a> of the document.
-              In both cases the Script Events' <a>Text</a> objects are <code>&lt;p&gt;</code> elements that represent original language text
-              and therefore set their <a>Text Language Source</a> to Original by setting <code>daptm:langSrc="original"</code>.</aside>
+            <ul>
+              <li>The <dfn>Begin</dfn> property defines when an object becomes active,
+                and is relative to the active begin time of the parent object.
+                <a>DAPT Scripts</a> begin at time zero on the media timeline.
+              </li>
+              <li>The <dfn>End</dfn> property defines when an object stops being active,
+                and is relative to the active begin time of the parent object.</li>
+              <li>The <dfn>Duration</dfn> property defines the maximum duration of an object.</li>
+                <p class="note">If both an <a>End</a> and a <a>Duration</a> property are present,
+                  the end time is the earlier of <a>Begin</a> and <a>Begin</a> + <a>Duration</a>.</p>
+            </ul>
+            <div class="note">If timing properties are omitted, the following rules apply:
+              <ul>
+                <li>The default value for <a>Begin</a> is zero, i.e. the same as the begin time of the parent object.</li>
+                <li>The default value for <a>End</a> is indefinite,
+                  i.e. it resolves to the same as the end time of the parent timed object,
+                  if there is one.
+                  The end time of a <a>DAPT Script</a> is for practical purposes the end of the <a>Related Media Object</a>.</li>
+                <li>The default value for <a>Duration</a> is indefinite,
+                  i.e. the end time resolves to the same as the end time of the parent object.</li>
+              </ul>
+            </div>
           </section>
-
-          <section>
-            <h4>Script Events</h4>
-            <p>A <a>DAPT Script</a> MAY contain zero or more <a>Script Event</a> objects, each corresponding to dialogue, on screen text, or descriptions for a given time interval.</p>
-          </section>
-
-          <section>
-            <h4>Characters</h4>
-            <p>A <a>DAPT Script</a> MAY contain zero or more <a>Character</a> objects, each describing a character that can be referenced by a <a>Script Event</a>.</p>
-          </section>
+        </section>
       </section>
-      <section>
+      <section id="character">
         <h3>Character</h3>
 
         <p>In <a>Dubbing Scripts</a>, it is necessary to identify each character in the programme. This is done with a <dfn>Character</dfn> object which has the following properties: 
@@ -652,12 +693,12 @@ table.coldividers td + td { border-left:1px solid gray; }
         <p class="issue" data-number="15"></p>
       </section>
 
-      <section>
+      <section id="script-event">
         <h3>Script Event</h3>
-        <p>An <dfn>Script Event</dfn> object represents dialogue, on screen text or audio descriptions to be spoken and has the following properties:
+        <p>A <dfn>Script Event</dfn> object represents dialogue, on screen text or audio descriptions to be spoken and has the following properties:
           <ul>
             <li>A mandatory <dfn>Script Event Identifier</dfn> which is unique in the <a>script</a></li>
-            <li>An optional <dfn>Begin</dfn> property and an optional <dfn>End</dfn> and an optional <dfn>Duration</dfn> property
+            <li>An optional <a>Begin</a> property and an optional <a>End</a> and an optional <a>Duration</a> property
               that together define the <a>Script Event</a>'s time interval in the programme timeline
               <p class="note">Typically <a>Script Events</a> do not overlap in time. However, there can be cases where they do, e.g. in <a>Dubbing Scripts</a> when different <a>Characters</a> speak different text at the same time.</p>
             </li>
@@ -671,10 +712,11 @@ table.coldividers td + td { border-left:1px solid gray; }
                 It is recommended that empty <a>Text</a> objects are not used as a workflow placeholder to indicate incomplete work.</p></li>
             <li>an optional <a>Script Event Description</a> property, as a human-readable description of the <a>Script Event</a>.</li>
             <li>an optional <a>On Screen</a> property, which is an annotation indicating the position of the subject (e.g. a <a>character</a>) of the <a>Script Event</a></li>
+            <li>Zero or more <a>Mixing Instruction</a> objects used to modify the programme audio during the <a>Script Event</a>.</li>
           </ul>
         </p>
 
-        <p>An <a>Script Event</a> is represented in TTML with the following structure and constraints:
+        <p>A <a>Script Event</a> is represented in TTML with the following structure and constraints:
           <ul>There MUST be one <code>div</code> element, with the following constraints:
             <ul>
               <li>The <code>xml:id</code> attribute MUST be present containing the <a>Script Event Identifier</a>.</li>
@@ -710,13 +752,13 @@ table.coldividers td + td { border-left:1px solid gray; }
           </pre>
               <li>It MAY contain zero or more <code>p</code> elements representing each <a>Text</a> object.</li>
               <li>The <code>style</code> attribute MAY be present. If present, it MAY contain a reference to the <code>&lt;style&gt;</code> defining the <a>Character Style</a>. Additional style references or inline styles MAY be used.</li>
-              <li>The <a><code>daptm:onScreen</code></a> attribute MAY be present to represent the <a>On Screen</a> property.</li>
+              <li>It MAY contain a <code>metadata</code> element representing the <a>On Screen</a> property.</li>
             </ul>
           </ul>
         </p>
         </section>
 
-        <section>
+        <section id="text">
           <h4>Text</h4>
           <p>The <dfn>Text</dfn> object contains text content in a single language, and may be styled and associated with a <a>Character</a>.
             It indicates whether it is in the <a>Original</a> language or if it is a <a>Translation</a>, as well as its language.</p>
@@ -725,21 +767,31 @@ table.coldividers td + td { border-left:1px solid gray; }
             <aside class="note">In some workflows a translation <a>script</a> is prepared in an intermediate, or pivot,
               language prior to translation into the Target Recording Language.</aside>
           </p>
+          <p>Zero or more <a>Mixing Instruction</a> objects used to modify the programme audio during the <a>Text</a> MAY be present.
+          </p>
           <p class="issue" data-number="15"></p>
           <p>A <a>Text</a> object is represented with a <code>p</code> element with the following constraints:</p>
             <ul>
               <li>The text content of the <code>&lt;p&gt;</code> is the <a>Text</a> of the <a>Script Event</a>.
-                <div class="note">The text content of the paragraph can be structured using TTML elements such as
+                <aside class="note">The text content of the paragraph can be structured using TTML elements such as
                   <code>&lt;br&gt;</code> or <code>&lt;span&gt;</code>
-                  which can include TTML attributes such as <code>tts:ruby</code> used to alter the layout or styling of
+                  which can include or reference TTML style attributes
+                  such as <code>tts:ruby</code> used to alter the layout or styling of
                   sections of text within each paragraph.
-                  Similarly metadata can be added using attributes or <code>&lt;metadata&gt;</code> elements.</div>
-                <p class="ednote">Need to specify that <code>&lt;audio&gt;</code> elements are permitted too, for AD mixing.</p>
+                  Similarly metadata can be added using attributes or <code>&lt;metadata&gt;</code> elements.</aside>
               </li>
               <li>The <code>style</code> attribute MAY be present.
                 If present, it MAY contain a reference to the <code>&lt;style&gt;</code> that defines the relevant <a>Character Style</a>.
                 Additional style references or inline styles MAY be used as defined in [[ttml2]],
                 and MAY be applied to sub-sections of the text defined by <code>&lt;span&gt;</code> elements.</li>
+              <li>The referenced or inline styles MAY include the
+                <code>tta:speak</code> or
+                <code>tta:pitch</code> attributes
+                representing a <a>Synthesized Audio</a> object.
+                <aside class="note">Synthesized audio styles may be applied to <code>&lt;span&gt;</code> elements
+                  within the text content to vary the rate or pitch of specific sub-sections of the text.
+                </aside>
+              </li>
               <li>The <code>&lt;p&gt;</code> element MUST have one <a>Text Language Source</a> property.</li>
               <li>The <code>&lt;p&gt;</code> element SHOULD have an <code>xml:lang</code> attribute corresponding to the language of the <a>Text</a> object.
                 <p class="note">If a <code>&lt;p&gt;</code> element omits the <code>xml:lang</code> attribute then its computed language
@@ -750,9 +802,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 Authors can mitigate this risk by explicitly setting <code>xml:lang</code> on all <code>&lt;p&gt;</code> elements.</p>
                 <p class="note">Within a <code>&lt;div&gt;</code> representing a <a>Script Event</a>
                   the order of <code>&lt;p&gt;</code> children is significant.</p>
-              </li>
-            </ul>
-          <pre class="example">
+                <pre class="example">
 &lt;div xml:id=&quot;event_3&quot;
      begin=&quot;9663f&quot; end=&quot;9682f&quot; 
      style=&quot;style_a&quot;
@@ -760,10 +810,15 @@ table.coldividers td + td { border-left:1px solid gray; }
   &lt;p xml:lang=&quot;pt-BR&quot; daptm:langSrc=&quot;original&quot; &gt;Voc&#xea; vai ter.&lt;/p&gt;
   &lt;p xml:lang=&quot;fr&quot; daptm:langSrc=&quot;translation&quot; &gt;Bah, il arrive.&lt;/p&gt;
 &lt;/div&gt;
-          </pre>
+                </pre>
+              </li>
+              <li>It MAY contain zero or more <code>&lt;audio&gt;</code> elements representing each <a>Audio Recording</a> object.</li>
+              <li>It MAY contain zero or more <code>&lt;animate&gt;</code> elements representing each <a>Mixing Instruction</a> object.</li>
+            </ul>
+
         </section>
 
-        <section>
+        <section id="text-language-source">
           <h4>Text Language Source</h4>
           <p>The <dfn>Text Language Source</dfn> property is an annotation indicating whether a <a>Text</a> object is
             in the same language as the relevant part of the <a>Related Media Object</a>'s
@@ -798,7 +853,7 @@ daptm:langSrc
           </div>
         </section>
 
-        <section>
+        <section id="on-screen">
           <h4>On Screen</h4>
           <p>The <dfn>On Screen</dfn> property is an annotation indicating
             the position in the scene relating to the subject of a <a>Script Event</a>,
@@ -832,7 +887,7 @@ daptm:onScreen
             </ul>
           </p>
         </section>
-        <section>
+        <section id="script-event-description">
           <h4>Script Event Description</h4>
           <p>The <dfn>Script Event Description</dfn> property is an annotation providing a human-readable description of a <a>Script Event</a>.</p>
           <p>The <a>Script Event Description</a> property is represented in TTML as a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
@@ -860,7 +915,7 @@ daptm:descType : string
             data-include-format="text">
           </pre>
         </section>
-        <section>
+        <section id="script-event-type">
           <h4>Script Event Type</h4>
           <p>The <dfn>Script Event Type</dfn> property provides one or more space-separated keywords representing the type of the <a>Script Event</a>,
             i.e. spoken text, or on-screen text,
@@ -885,7 +940,78 @@ daptm:eventType: string
             </pre>
           </p>
         </section>
+      <section id="audio">
+        <h3>Audio</h3>
+        <p>An <dfn>Audio</dfn> object is used to specify an audio rendering of a <a>Text</a>.
+          The audio rendering can either be a recorded audio resource,
+          as an <a>Audio Recording</a> object,
+          or a directive to synthesize a rendering of the text via a text to speech engine,
+          which is a <a>Synthesized Audio</a> object.
+          Both are types of <a>Audio</a> object.
+        </p>
+        <p>It is an error for an <a>Audio</a> not to be in the same language as its <a>Text</a>.</p>
+        <p>A <a>presentation processor</a> that supports audio plays or inserts the <a>Audio</a>
+          at the specified time on the <a>related media object</a>'s timeline.</p>
+        <section id="audio-recording">
+          <h4>Audio Recording</h4>
+          <p>An <dfn>Audio Recording</dfn> is an <a>Audio</a> that references an audio resource.
+            It has the following properties:
+          </p>
+          <ul>
+            <li>A mandatory <dfn>Source</dfn> that is either 1) a link to an external audio resource
+              or 2) an embedded audio recording;</li>
+            <li>A mandatory <dfn>Type</dfn> that specifies the type ([[MIME-TYPES]]) of the audio resource,
+              for example <code>audio/basic</code>;</li>
+            <li>An optional <a>Begin</a> property and an optional <a>End</a> and an optional <a>Duration</a> property
+              that together define the <a>Audio Recording</a>'s time interval in the programme timeline,
+              in relation to the parent element's time interval;
+            </li>
+            <li>An optional <dfn>In Time</dfn> and an optional <dfn>Out Time</dfn> property
+              that together define the temporal subsection of the audio resource;
+            </li>
+            <li>Zero or more <a>Mixing Instructions</a> that modify the characteristics
+               of the <a>Audio Recording</a>.</li>
+          </ul>
+          <p class="ednote">Insert TTML representation</p>
+        </section>
+        <section id="synthesized-audio">
+          <h4>Synthesized Audio</h4>
+          <p>A <dfn>Synthesized Audio</dfn> is an <a>Audio</a> that represents
+            a machine generated audio rendering of the parent <a>Text</a> content.
+            It has the following properties:
+          </p>
+          <ul>
+            <li>A mandatory <dfn>Rate</dfn> that specifies the rate of speech, being
+              <code>normal</code>,
+              <code>fast</code> or
+              <code>slow</code>;</li>
+            <li>An optional <dfn>Pitch</dfn> that allows adjustment of the pitch
+              of the speech.</li>
+          </ul>
+          <p class="ednote">Insert TTML representation</p>
+        </section>
       </section>
+      <section id="mixing-instruction">
+        <h3>Mixing Instruction</h3>
+        <p>A <dfn>Mixing Instruction</dfn> is a static or animated adjustment
+          of the audio relating to the containing object.
+          It has the following properties:</p>
+        <ul>
+          <li>Zero or more <dfn>Gain</dfn> values.
+            The gain acts as a multiplier to be applied to the related <a>Audio</a>;</li>
+          <li>Zero or more <dfn>Pan</dfn> values.
+            The pan adjusts the stereoscopic (left/right) position;</li>
+          <li>An optional <a>Begin</a> and an optional <a>End</a> and an optional <a>Duration</a> property
+            that together define the time interval during which the <a>Mixing Instruction</a>
+            applies;</li>
+          <li>An optional <dfn>Fill</dfn> property that specifies whether,
+            at the end time of an animated <a>Mixing Instruction</a>,
+            the specified <a>Gain</a> and <a>Pan</a> value should be
+            retained (<code>fill</code>) or reverted</li>
+        </ul>
+        <p class="ednote">Insert TTML representation</p>
+      </section>
+    </section> <!-- #data-model -->
 
     <section id="profile-constraints">
       <h2>Constraints</h2>
@@ -1877,15 +2003,11 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       </table>
     </section>
 
-    <section id="content-profile">
-      <h4>DAPT Content Profile</h4>
-      <p>The DAPT Content Profile expresses the conformance requirements of <a>DAPT Scripts</a>
-        using the profile mechanism of [[ttml2]].
-        It can be used by a validating processor that supports the DAPT Processor Profile
-        to validate a DAPT <a>Document Instance</a>.</p>
-      <p>There is no requirement to include the DAPT Content Profile within a <a>Document Instance</a>.</p>
-      <pre class="xml" data-include="profiles/dapt-content-profile.xml" data-include-format="text"></pre>
-    </section>
+      <section>
+        <h4>Layout</h4>
+        <p>This specification does not put additional constraints on the layout and rendering <a>features</a> defined in [[!ttml-imsc1.2]].</p>
+        <div class="note">Layout of the paragraphs may rely on the default TTML region (i.e. if no <code>layout</code> is used in the <code>head</code> element) or may be explicit by the use of the <code>region</code> attribute, if a <code>region</code> element is defined in a <code>layout</code> element in the <code>head</code> element.</div>
+      </section>  <!-- Layout -->
 
     <section id="processor-profile">
       <h4>DAPT Processor Profile</h4>
