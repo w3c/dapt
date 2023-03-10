@@ -1006,7 +1006,20 @@ daptm:eventType: string
             <li>An optional <dfn>Pitch</dfn> that allows adjustment of the pitch
               of the speech.</li>
           </ul>
-          <p class="ednote">Insert TTML representation</p>
+          <p>A <a>Synthesized Audio</a> is represented in TTML by
+            the application of a
+            <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-speak"><code>tta:speak</code></a>
+            style attribute on the element representing the <a>Text</a> object to be spoken,
+            where the computed value of the attribute is
+            <code>normal</code>, <code>fast</code> or <code>slow</code>.
+            This attribute also represents the <a>Rate</a> Property.
+          </p>
+          <p>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-pitch"><code>tta:pitch</code></a>
+            style attribute represents the <a>Pitch</a> property.</p>
+          <p class="note">A <code>tta:pitch</code> attribute on an element
+            whose computed value of <code>tta:rate</code> is <code>none</code>
+            has no effect.
+            Such an element is not considered to have an associated <a>Synthesized Audio</a>.</p>
         </section>
       </section>
       <section id="mixing-instruction">
@@ -1063,9 +1076,9 @@ daptm:eventType: string
       </section>
     </section> <!-- #data-model -->
 
-    <section id="audio-mixing">
+    <section id="audio-mixing" class="informative">
       <h2>Audio Mixing</h2>
-
+      <p class="ednote">Describe audio mixing semantic. Move to appendix?</p>
     </section> <!-- #audio-mixing -->
 
     <section id="profile-constraints">
