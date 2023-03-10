@@ -129,10 +129,10 @@ table.coldividers td + td { border-left:1px solid gray; }
 
     <section id="scope">
       <h2>Scope</h2>
-      <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[TTML2]]
+      <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[ttml2]]
         intended to support dubbing and <a>audio description</a> workflows worldwide,
         to meet the requirements defined in [[?DAPT-REQS]], and to permit usage of visual presentation
-        features within [[TTML2]] and its profiles, for example those in [[ttml-imsc1.2]].</p>
+        features within [[ttml2]] and its profiles, for example those in [[ttml-imsc1.2]].</p>
     </section>
 
     <section class="informative" id="introduction">
@@ -158,7 +158,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           such as type of <a>DAPT script</a>, dialogue, descriptions, timing, metadata, original language transcribed text, translated text, language information, and audio mixing instructions,
           and to be extensible to allow user-defined annotations or additional future features.</p>
         <p>This specification defines the data model for <a>DAPT scripts</a> and
-          its representation as a [[TTML2]] document (see [[[#data-model]]])
+          its representation as a [[ttml2]] document (see [[[#data-model]]])
           with some constraints and restrictions (see [[[#profile-constraints]]]).</p>
         <p>A <a>DAPT script</a> is expected to be used to make audio visual media accessible
           or localized for users who cannot understand it in its original form,
@@ -326,14 +326,14 @@ table.coldividers td + td { border-left:1px solid gray; }
     <section id="conventions">
       <h2>Documentation Conventions</h2>
       <p>
-        This document uses the same conventions as [[TTML2]] for the specification of parameter attributes, styling attributes and metadata elements. In particular:
+        This document uses the same conventions as [[ttml2]] for the specification of parameter attributes, styling attributes and metadata elements. In particular:
       </p>
       <p>
-        Section 2.3 of [[TTML2]] specifies conventions used in the [[XML]] representation of elements; and
-        Sections 6.2 and 8.2 of [[TTML2]] specify conventions used when specifying the syntax of attribute values.
+        Section 2.3 of [[ttml2]] specifies conventions used in the [[XML]] representation of elements; and
+        Sections 6.2 and 8.2 of [[ttml2]] specify conventions used when specifying the syntax of attribute values.
       </p>
       <p>
-        This specification uses <dfn data-cite="ttml2#terms-feature">Feature</dfn> designations as defined in Appendices E at [[TTML2]]
+        This specification uses <dfn data-cite="ttml2#terms-feature">Feature</dfn> designations as defined in Appendices E at [[ttml2]]
         and defines <dfn data-cite="ttml2#terms-extension">Extension</dfn> designations:
         when making reference to content conformance,
         these designations refer to the syntactic expression or the semantic capability associated with each designated <a>Feature</a> or <a>Extension</a>;
@@ -618,7 +618,7 @@ table.coldividers td + td { border-left:1px solid gray; }
               </ul>
             
 
-            <p class="note">Any style attribute defined in [[TTML2]] or [[ttml-imsc1.2]]
+            <p class="note">Any style attribute defined in [[ttml2]] or [[ttml-imsc1.2]]
               (or other profiles using non-W3C namespaces) can be present on the <code>&lt;style&gt;</code> element.</p>
             <p>A <code>&lt;style&gt;</code> element MAY omit the <code>ttm:agent</code> attribute if it is not associated with a <a>Character</a>.
               Such styles MAY be applied in the same way as any other style, via a reference in the <code>style</code> attribute.</p>
@@ -738,7 +738,7 @@ table.coldividers td + td { border-left:1px solid gray; }
               </li>
               <li>The <code>style</code> attribute MAY be present.
                 If present, it MAY contain a reference to the <code>&lt;style&gt;</code> that defines the relevant <a>Character Style</a>.
-                Additional style references or inline styles MAY be used as defined in [[TTML2]],
+                Additional style references or inline styles MAY be used as defined in [[ttml2]],
                 and MAY be applied to sub-sections of the text defined by <code>&lt;span&gt;</code> elements.</li>
               <li>The <code>&lt;p&gt;</code> element MUST have one <a>Text Language Source</a> property.</li>
               <li>The <code>&lt;p&gt;</code> element SHOULD have an <code>xml:lang</code> attribute corresponding to the language of the <a>Text</a> object.
@@ -918,8 +918,8 @@ daptm:eventType = string
           A <a>Document Instance</a> MAY contain elements and attributes that are neither specifically permitted nor forbidden by a profile.
         </p>
         <p class ="note">
-          <a>Document Instances</a> remain subject to the content conformance requirements specified at Section 3.1 of [[TTML2]].
-          In particular, a Document Instance can contain elements and attributes not in any TT namespace, i.e. in foreign namespaces, since such elements and attributes are pruned by the algorithm at Section 4 of [[TTML2]] prior to evaluating content conformance.
+          <a>Document Instances</a> remain subject to the content conformance requirements specified at Section 3.1 of [[ttml2]].
+          In particular, a Document Instance can contain elements and attributes not in any TT namespace, i.e. in foreign namespaces, since such elements and attributes are pruned by the algorithm at Section 4 of [[ttml2]] prior to evaluating content conformance.
         </p>
         <p class ="note">
           For validation purposes it is good practice to define and use a content specification for all foreign namespace elements and attributes used within a <a>Document Instance</a>.
@@ -932,9 +932,9 @@ daptm:eventType = string
         <section>
           <h4>Proprietary Metadata</h4>
           <p>Many dubbing and <a>audio description</a> workflows permit annotation of <a>Script Events</a> or documents with proprietary metadata.
-            Metadata vocabulary defined in this specification or in [[TTML2]] MAY be included.
+            Metadata vocabulary defined in this specification or in [[ttml2]] MAY be included.
             Additional vocabulary in other namespaces MAY also be included.</p>
-          <p class="note">It is possible to add information such as the title of the programme using [[TTML2]] constructs.</p>
+          <p class="note">It is possible to add information such as the title of the programme using [[ttml2]] constructs.</p>
           <pre class="example"
             data-include="examples/metadata-ttml2.xml"
             data-include-format="text">
@@ -974,25 +974,25 @@ daptm:eventType = string
               <td>TT</td>
               <td><code>tt</code></td>
               <td><code>http://www.w3.org/ns/ttml</code></td>
-              <td>[[TTML2]]</td>
+              <td>[[ttml2]]</td>
             </tr>
             <tr>
               <td>TT Parameter</td>
               <td><code>ttp</code></td>
               <td><code>http://www.w3.org/ns/ttml#parameter</code></td>
-              <td>[[TTML2]]</td>
+              <td>[[ttml2]]</td>
             </tr>
             <tr>
               <td>TT Feature</td>
               <td><em>none</em></td>
               <td><code>http://www.w3.org/ns/ttml/feature/</code></td>
-              <td>[[TTML2]]</td>
+              <td>[[ttml2]]</td>
             </tr>
             <tr>
               <td>TT Audio Style</td>
               <td><em>tta:</em></td>
               <td><code>http://www.w3.org/ns/ttml#audio</code></td>
-              <td>[[TTML2]]</td>
+              <td>[[ttml2]]</td>
             </tr>
             <tr>
               <td>DAPT Metadata</td>
@@ -1058,7 +1058,7 @@ daptm:eventType = string
 
         <section id="profile-designator">
           <h4>Profile Designator</h4>
-          <p>This profile is associated with the following profile designator:</p>
+          <p>This profile is associated with the following profile designators:</p>
           <table class="simple">
             <thead>
               <tr>
@@ -1084,12 +1084,11 @@ daptm:eventType = string
         <section id="content-profiles">
           <h4><code>ttp:contentProfiles</code></h4>
           <p>The <dfn data-cite="ttml2#profile-attribute-contentProfiles"><code>ttp:contentProfiles</code></dfn> attribute
-            is used to declare the [[TTML2]] profiles to which the document conforms.</p>
+            is used to declare the [[ttml2]] profiles to which the document conforms.</p>
           <p>TTML documents representing DAPT Scripts MUST specify a <a><code>ttp:contentProfiles</code></a> attribute
-            on the <code>&lt;tt&gt;</code> element including one value equal to the designator of the
-            <a>DAPT 1.0 Content Profile</a> profile
-            to which the <a>Document Instance</a> conforms.
-            Other values MAY be present to declare conformance to other profiles of [[TTML2]],
+            on the <code>&lt;tt&gt;</code> element including one value equal to the
+            <a>DAPT 1.0 Content Profile</a> designator.
+            Other values MAY be present to declare conformance to other profiles of [[ttml2]],
             and MAY include profile designators in proprietary namespaces.</p>
         </section>
 
@@ -1097,7 +1096,7 @@ daptm:eventType = string
           <h4><code>ttp:profile</code></h4>
           <p>The <dfn data-cite="ttml2#parameter-attribute-profile"><code>ttp:profile</code></dfn> attribute
             is a mechanism within [[?TTML1]] for declaring the processing requirements for a <a>Document Instance</a>.
-            It has effectively been superceded in [[TTML2]] by <a><code>ttp:processorProfiles</code></a>.</p>
+            It has effectively been superceded in [[ttml2]] by <a><code>ttp:processorProfiles</code></a>.</p>
           <p>TTML documents representing DAPT Scripts MUST NOT specify a <code>ttp:profile</code> attribute
             on the <code>&lt;tt&gt;</code> element.</p>
         </section>
@@ -1108,9 +1107,8 @@ daptm:eventType = string
             is used to declare the processing requirements for a <a>Document Instance</a>.</p>
           <p>TTML documents representing DAPT Scripts MAY specify a <a><code>ttp:processorProfiles</code></a> attribute
             on the <code>&lt;tt&gt;</code> element.
-            If present, the <a><code>ttp:processorProfiles</code></a> MUST include one value equal to
-            the designator of the <a>DAPT 1.0 Processor Profile</a> profile
-            to which the <a>Document Instance</a> conforms.
+            If present, the <a><code>ttp:processorProfiles</code></a> attribute MUST include one value equal to
+            the designator of the <a>DAPT 1.0 Processor Profile</a>.
             Other values MAY be present to declare additional processing constraints, 
             and MAY include profile designators in proprietary namespaces.</p>
           <p class="note"><a><code>ttp:processorProfiles</code></a> can be used
@@ -1119,21 +1117,41 @@ daptm:eventType = string
             For example, a local workflow might introduce particular metadata requirements,
             and signal that the processor needs to support those by using an additional
             processor profile designator.</p>
+          <p class="note">If the content author does not need to signal that
+            additional processor requirements than those defined by DAPT
+            are needed to process the <a>DAPT document</a> then the
+            <a><code>ttp:processorProfiles</code></a> is not expected to be present.</p>
         </section>
 
         <section id="ttml2-profile-attr-vocab">
-          <h4>Other TTML2 <a href="https://www.w3.org/TR/ttml2/#profile-attribute-vocabulary">Profile Attribute Vocabulary</a></h4>
-          <p>[[TTML2]] defines additional profile-related features and element and attribute vocabulary
-            that can be used within <a>Document Instances</a>,
-            the majority of which are to indicate how a processor computes the set of features
-            that it is required to support in order to process the <a>Document Instance</a> successfully.
-            Those features are listed within <a href="#profiles-section"></a> as being optional. 
+          <h4>Other TTML2 Profile Vocabulary</h4>
+          <p>[[ttml2]] specifies a vocabulary and semantics that can be used to define the set of features
+            that a <a>document instance</a> can make use of, or that a processor needs to support,
+            known as a <a href="https://www.w3.org/TR/ttml2/#profile">Profile</a>.</p>
+          <p>Except where specified, it is not a requirement of DAPT that this profile vocabulary is supported by
+            processors; nevertheless such support is permitted.</p>
+          <p>The majority of this profile vocabulary is used to indicate how a processor can compute the set of features
+            that it needs to support in order to process the <a>Document Instance</a> successfully.
+            The vocabulary is itself defined in terms of TTML2 features.
+            Those profile-related features are listed within <a href="#profiles-section"></a> as being optional. 
             They MAY be implemented in processors
             and their associated vocabulary
             MAY be present in <a>Document Instances</a>.
           </p>
-          <p class="note">If support for additional profile attributes is required by some workflow,
-            it needs to be arranged using an out-of-band protocol.</p>
+          <p class="note">Unless processor support for these features and vocabulary has been
+            arranged (using an out-of-band protocol), the vocabulary is not expected to be present.</p>
+          <p>The additional profile-related vocabulary for which processor support is
+            not required (but is permitted) in DAPT is:</p>
+          <ul>
+            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-vocabulary-profile"><code>&lt;ttp:profile&gt;</code></a> element;</li>
+            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-vocabulary-feature"><code>&lt;ttp:feature&gt;</code></a>
+              and <a href="https://www.w3.org/TR/ttml2/#profile-vocabulary-extension"><code>&lt;ttp:extension&gt;</code></a> elements;</li>
+            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-attribute-permitFeatureNarrowing"><code>ttp:permitFeatureNarrowing</code></a> attribute;</li>
+            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-attribute-permitFeatureWidening"><code>ttp:permitFeatureWidening</code></a> attribute;</li>
+            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-attribute-contentProfileCombination"><code>ttp:contentProfileCombination</code></a> attribute;</li>
+            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-attribute-inferProcessorProfileSource"><code>ttp:inferProcessorProfileSource</code></a> attribute;</li>
+            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-attribute-processorProfileCombination"><code>ttp:processorProfileCombination</code></a> attribute.</li>
+          </ul>
         </section>
 
       </section>
@@ -1241,11 +1259,28 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
     </section> <!-- Profile Constraints -->
 
   <section id="conformance">
+    <p>[[ttml2]] specifies a formal language for expressing document and processor requirements,
+      within the <a href="https://www.w3.org/TR/ttml2/#vocabulary-profiling">Profiling</a> sub-system.
+      The normative requirements of this specification are defined using the conformance terminology
+      described above, and are also defined using this TTML2 profile mechanism.
+      Where TTML2 vocabulary is referenced, the syntactic and semantic requirements relating to that
+      vocabulary as defined in [[ttml2]] apply.</p>
+    <p>Whilst there is no requirement for a DAPT processor to implement the
+      TTML2 profile processing semantics in general,
+      implementers can use the TTML2 profiles defined in <a href="#profiles-section"></a>
+      as a means of verifying that their implementations meet the normative requirements
+      of DAPT, for example as a checklist.
+    </p>
+    <p>Conversely, a general purpose [[ttml2]] processor that does support the TTML2
+      profile processing semantics can use the TTML2 profiles defined in <a href="#profiles-section"></a>
+      directly to determine if it is capable of processing a <a>DAPT document</a>.
+    </p>
     <section id="content-profile-conformance-section">
       <h3>Conformance of <a>DAPT Scripts</a></h3>
       <p>Conformant <a>DAPT Scripts</a> are [[ttml2]] <a>Document Instances</a> that
-        conform to the normative provisions of this specification,
-        expressed using the vocabulary of [[ttml2]] in the
+        conform to the normative provisions of this specification.
+        Those provisions are expressed using the 
+        <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[ttml2]] in the
         <dfn data-cite="ttml2#terms-content-profile">content profile</dfn> defined
         in <a href="#profiles-section"></a>.</p>
     </section> <!-- content-profile-conformance-section -->
@@ -1253,8 +1288,9 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       <h3>Conformance of DAPT Processors</h3>
       <p>Conformant DAPT Processors are [[ttml2]]
         <dfn data-cite="ttml2#terms-content-processor">content processors</dfn> that
-        conform to the normative provisions of this specification,
-        expressed using the vocabulary of [[ttml2]] in the
+        conform to the normative provisions of this specification.
+        Those provisions are expressed using the 
+        <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[ttml2]] in the
         <dfn data-cite="ttml2#terms-processor-profile">processor profile</dfn> defined
         in <a href="#profiles-section"></a>.</p>
     </section> <!-- processor-profile-conformance-section -->
@@ -1264,160 +1300,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
     <!-- All the terms will magically appear here -->
   </section>
 
-  <section id="extensions-section" class="appendix">
-    <h2>Extensions</h2>
-    <section id="extensions-general">
-      <h3>General</h3>
-      <p>The following sections define extension designations,
-        expressed as relative URIs (fragment identifiers)
-        relative to the <a>DAPT Extension</a> Namespace base URI.
-      </p>
-    </section>
-
-      <section id="extension-agent">
-      <h3>#agent</h3>
-      <p>A <a>transformation processor</a> supports the <code>#agent</code> extension if
-        it recognizes and is capable of transforming values of the following
-        elements and attributes on
-        the <code>&lt;ttm:agent&gt;</code> element:</p>
-      <ul>
-        <li><code>xml:id</code> attribute</li>
-        <li><code>&lt;ttm:name&gt;</code> element</li>
-      </ul>
-      <p>and if it recognizes and is capable of transforming each of the following value combinations:</p>
-      <ul>
-        <li><code>&lt;ttm:agent&gt;</code> element with <code>type="person"</code>
-          and child <code>&lt;ttm:name&gt;</code> element with <code>type="full"</code>;</li>
-          <li><code>&lt;ttm:agent&gt;</code> element with <code>type="character"</code>
-            and child <code>&lt;ttm:name&gt;</code> element with <code>type="alias"</code>;</li>
-        </ul>
-
-      <p>A <a>presentation processor</a> supports the <code>#agent</code> extension if
-        it implements presentation semantic support of the above listed
-        elements, attributes and value combinations.</p>
-      </section>
-
-    <section id="extension-contentProfiles-root">
-      <h3>#contentProfiles-root</h3>
-      <p>A <a>transformation processor</a> supports the <code>#contentProfiles-root</code> extension if
-        it recognizes and is capable of transforming values of the
-        <a><code>ttp:contentProfiles</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-
-      <p>A <a>presentation processor</a> supports the <code>#contentProfiles-root</code> extension if
-        it implements presentation semantic support of the
-        <a><code>ttp:contentProfiles</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-
-      <aside class="note">This extension is defined as a subset of
-        <code><a>#contentProfiles</a></code>
-        to avoid requiring processor support for
-        the <a><code>ttp:profile</code></a> attribute and
-        processor profile inference semantics.
-      </aside>
-      </section>
-
-      <section id="extension-onScreen">
-        <h3>#onScreen</h3>
-        <p>A <a>transformation processor</a> supports the <code>#onScreen</code> extension if
-          it recognizes and is capable of transforming values of the
-          <a><code>daptm:onScreen</code></a> attribute on the <code>&lt;div&gt;</code> element.</p>
-  
-        <p>A <a>presentation processor</a> supports the <code>#onScreen</code> extension if
-          it implements presentation semantic support of the
-          <a><code>daptm:onScreen</code></a> attribute on the <code>&lt;div&gt;</code> element.</p>
-      </section>
-
-      <section id="extension-profile-root">
-        <h3>#profile-root</h3>
-        <p>A <a>transformation processor</a> supports the <code>#profile-root</code> extension if
-          it recognizes and is capable of transforming values of the
-          <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-  
-        <p>A <a>presentation processor</a> supports the <code>#profile-root</code> extension if
-          it implements presentation semantic support of the
-          <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-      </section>
-  
-        <section id="extension-scriptType-root">
-        <h3>#scriptType-root</h3>
-        <p>A <a>transformation processor</a> supports the <code>#scriptType-root</code> extension if
-          it recognizes and is capable of transforming values of the
-          <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-  
-        <p>A <a>presentation processor</a> supports the <code>#scriptType-root</code> extension if
-          it implements presentation semantic support of the
-          <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-
-        <p>An example of a <a>transformation processor</a> that supports this extension is
-          a validating processor that provides appropriate feedback, for example warnings,
-          when the SHOULD requirements defined in <a href="#script-type"></a> for a
-          <a>DAPT Document</a>'s <a><code>daptm:scriptType</code></a> are not met,
-          and that reports an error if the extension is required by a
-          <a>content profile</a> but the <a>Document Instance</a> claiming
-          conformance to that profile either does not have a
-          <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element
-          or has one whose value is not defined herein.</p>
-
-      </section>
-
-      <section id="extension-serialization">
-        <h3>#serialization</h3>
-        <p>A serialized document that is valid with respect to the <code>#serialization</code>
-          extension is
-          an XML 1.0 [[xml]] document encoded using
-          UTF-8 character encoding as specified in [[UNICODE]],
-          that contains no entity declarations and
-          no entity references other than to predefined entities.</p>
-
-        <p>A <a>transformation processor</a> or a <a>presentation processor</a> supports
-          the <code>#serialization</code> extension if
-          it can read a serialized document as defined above.</p>
-  
-        <p>A <a>transformation processor</a> that writes documents supports
-          the <code>#serialization</code> extension if
-          it can write a serialized document as defined above.</p>
-
-      </section>
-
-      <section id="extension-textLanguageSource">
-        <h3>#textLanguageSource</h3>
-        <p>A <a>transformation processor</a> supports the <code>#textLanguageSource</code> extension if
-          it recognizes and is capable of transforming values of the
-          <code>daptm:langSrc</code> attribute on the <code>&lt;p&gt;</code> element.</p>
-  
-        <p>A <a>presentation processor</a> supports the <code>#textLanguageSource</code> extension if
-          it implements presentation semantic support of the
-          <code>daptm:langSrc</code> attribute on the <code>&lt;p&gt;</code> element.</p>
-      </section>
-
-      <section id="extension-xmlId-div">
-        <h3>#xmlId-div</h3>
-        <p>A <a>transformation processor</a> supports the <code>#xmlId-div</code> extension if
-          it recognizes and is capable of transforming values of the
-          <code>xml:id</code> attribute on the <code>&lt;div&gt;</code> element.</p>
-  
-        <p>A <a>presentation processor</a> supports the <code>#xmlId-div</code> extension if
-          it implements presentation semantic support of the
-          <code>xml:id</code> attribute on the <code>&lt;div&gt;</code> element.</p>
-        </section>
-
-      <section id="extension-xmlLang-root">
-        <h3>#xmlLang-root</h3>
-        <p>A <a>transformation processor</a> supports the <code>#xmlLang-root</code> extension if
-          it recognizes and is capable of transforming values of the
-          <code>xml:lang</code> attribute on the <code>&lt;tt&gt;</code> element.</p>
-  
-        <p>A <a>presentation processor</a> supports the <code>#xmlLang-root</code> extension if
-          it implements presentation semantic support of the
-          <code>xml:lang</code> attribute on the <code>&lt;tt&gt;</code> element.</p>
-        </section>
-    </section> <!-- extensions-->
-
   <section id="profiles-section" class="appendix">
     <h3>Profiles</h3>
     <p>This section defines
-      a [[TTML2]] <a>content profile</a>
+      a [[ttml2]] <a>content profile</a>
       and a <a>processor profile</a>
       by expressing dispositions against a set of <a>Features</a> and <a>Extensions</a>.
+      The DAPT extensions are defined in <a href="#extensions-section"></a>.
     </p>
     <p>The Profile Semantics specified in [[ttml2]] apply.</p>
     <p>
@@ -1437,13 +1326,14 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       <li>MUST NOT include any vocabulary, syntax or attribute value associated with a <a>Feature</a> or <a>Extension</a> whose disposition is prohibited in the profile.</li>
     </ul>
     <p class="note">
-      A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]], and hence a <a>Document Instance</a> that conforms to a profile defined herein is also a conforming TTML2 Document Instance.
+      A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[ttml2]],
+      and hence a <a>Document Instance</a> that conforms to a profile defined herein is also a conforming TTML2 Document Instance.
     </p>
     <p>
       A <dfn data-cite="ttml2#terms-presentation-processor">Presentation processor</dfn> that conforms to the <a>processor profile</a> defined in this specification:
     </p>
     <ul style="list-style-type:disc">
-      <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]]</li>
+      <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[ttml2]]</li>
       <li>MUST satisfy all normative provisions specified by the profile; and</li>
       <li>MUST implement presentation semantic support for every <a>Feature</a> or <a>Extension</a> designated as permitted or required by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
       <li>MAY implement presentation semantic support for every <a>Feature</a> or <a>Extension</a> designated as optional or prohibited by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
@@ -1452,13 +1342,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       A <dfn data-cite="ttml2#terms-transformation-processor">Transformation processor</dfn> that conforms to the <a>processor profile</a> defined in this specification:
     </p>
     <ul style="list-style-type:disc">
-      <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[TTML2]];</li>
+      <li>MUST satisfy the Generic Processor Conformance requirements at Section 3.2.1 of [[ttml2]];</li>
       <li>MUST satisfy all normative provisions specified by the profile; and</li>
       <li>MUST implement transformation semantic support for every <a>Feature</a> or <a>Extension</a> designated as permitted or required by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
       <li>MAY implement transformation semantic support for every <a>Feature</a> or <a>Extension</a> designated as optional or prohibited by the profile, subject to any additional constraints on each <a>Feature</a> as specified by the profile.</li>
     </ul>
     <p>The dispositions required, permitted, optional and prohibited as used in this specification
-      map to the [[TTML2]] <dfn data-cite="ttml2#profile-vocabulary-feature"><code>&lt;ttp:feature&gt;</code></dfn>
+      map to the [[ttml2]] <dfn data-cite="ttml2#profile-vocabulary-feature"><code>&lt;ttp:feature&gt;</code></dfn>
       and <dfn data-cite="ttml2#profile-vocabulary-extension"><code>&lt;ttp:extension&gt;</code></dfn> elements'
       <code>value</code> attribute values as follows:</p>
     <table class="complex data">
@@ -1498,11 +1388,22 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
     </table>
     <p class="note">
       The use of the terms <a>presentation processor</a> 
-      and <a>transformation processor</a> within this document does not imply conformance <i>per se</i> to any of the Standard Profiles defined in [[TTML2]].
-      In other words, it is not considered an error for a <a>presentation processor</a> or <a>transformation processor</a> to conform to the profile defined in this document without also conforming to the TTML2  Presentation Profile or the TTML2 Transformation Profile.
+      and <a>transformation processor</a> within this document does not imply conformance
+      <i>per se</i> to any of the Standard Profiles defined in [[ttml2]].
+      In other words, it is not considered an error for
+      a <a>presentation processor</a> or <a>transformation processor</a>
+      to conform to the profile defined in this document
+      without also conforming to the TTML2 Presentation Profile or the TTML2 Transformation Profile.
     </p>
     <p class="note">
-      This document does not specify <a>presentation processor</a> or transformation processor behavior when processing or transforming a non-conformant <a>Document Instance</a>.
+      The use of the [[ttml2]] <a href="https://www.w3.org/TR/ttml2/#vocabulary-profiling">profiling</a>
+      sub-system to describe DAPT conformance within this specification
+      is not intended imply that DAPT processors are required to support any features of that
+      system other than those for which support is explicitly required by DAPT.
+    </p>
+    <p class="note">
+      This document does not specify <a>presentation processor</a> or <a>transformation processor</a> behavior
+      when processing or transforming a non-conformant <a>Document Instance</a>.
     </p>
     <p class="note">
       The permitted and prohibited dispositions do not refer to the specification of
@@ -1520,7 +1421,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <a>Presentation Processors</a> and <a>Transformation Processors</a>
         MAY support additional syntax and semantics relating to other profiles.</p>
       <p class="note">For example, a <a>DAPT Script</a> can include syntax permitted
-        by the IMSC ([[ttml-imsc1.2]]) profiles of [[TTML2]] to enhance the presentation
+        by the IMSC ([[ttml-imsc1.2]]) profiles of [[ttml2]] to enhance the presentation
         of <a>scripts</a> to actors recording audio,
         or to add styling important for later usage in subtitle or caption creation.
       </p>
@@ -1971,7 +1872,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
     <section id="content-profile">
       <h4>DAPT Content Profile</h4>
       <p>The DAPT Content Profile expresses the conformance requirements of <a>DAPT Scripts</a>
-        using the profile mechanism of [[TTML2]].
+        using the profile mechanism of [[ttml2]].
         It can be used by a validating processor that supports the DAPT Processor Profile
         to validate a DAPT <a>Document Instance</a>.</p>
       <p>There is no requirement to include the DAPT Content Profile within a <a>Document Instance</a>.</p>
@@ -1981,7 +1882,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
     <section id="processor-profile">
       <h4>DAPT Processor Profile</h4>
       <p>The DAPT Processor Profile expresses the processing requirements of <a>DAPT Scripts</a>
-        using the profile mechanism of [[TTML2]].
+        using the profile mechanism of [[ttml2]].
         A processor that supports the required features and extensions of the DAPT Processor Profile
         can, minimally, process all permitted features within a DAPT <a>Document Instance</a>.</p>
         <p>There is no requirement to include the DAPT Processor Profile within a <a>Document Instance</a>.</p>
@@ -1989,6 +1890,157 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
     </section>
 
   </section> <!-- profiles-section -->
+
+  <section id="extensions-section" class="appendix">
+    <h2>Extensions</h2>
+    <section id="extensions-general">
+      <h3>General</h3>
+      <p>The following sections define <a href="https://www.w3.org/TR/ttml2/#terms-extension">extension</a> designations,
+        expressed as relative URIs (fragment identifiers)
+        relative to the <a>DAPT Extension</a> Namespace base URI.
+        These extension designations are used in <a href="#profiles-section"></a>
+        to describe the normative provisions of DAPT that are not expressed
+        by [[ttml2]] profile features.
+      </p>
+    </section>
+
+      <section id="extension-agent">
+      <h3>#agent</h3>
+      <p>A <a>transformation processor</a> supports the <code>#agent</code> extension if
+        it recognizes and is capable of transforming values of the following
+        elements and attributes on
+        the <code>&lt;ttm:agent&gt;</code> element:</p>
+      <ul>
+        <li><code>xml:id</code> attribute</li>
+        <li><code>&lt;ttm:name&gt;</code> element</li>
+      </ul>
+      <p>and if it recognizes and is capable of transforming each of the following value combinations:</p>
+      <ul>
+        <li><code>&lt;ttm:agent&gt;</code> element with <code>type="person"</code>
+          and child <code>&lt;ttm:name&gt;</code> element with <code>type="full"</code>;</li>
+          <li><code>&lt;ttm:agent&gt;</code> element with <code>type="character"</code>
+            and child <code>&lt;ttm:name&gt;</code> element with <code>type="alias"</code>;</li>
+        </ul>
+
+      <p>A <a>presentation processor</a> supports the <code>#agent</code> extension if
+        it implements presentation semantic support of the above listed
+        elements, attributes and value combinations.</p>
+      </section>
+
+    <section id="extension-contentProfiles-root">
+      <h3>#contentProfiles-root</h3>
+      <p>A <a>transformation processor</a> supports the <code>#contentProfiles-root</code> extension if
+        it recognizes and is capable of transforming values of the
+        <a><code>ttp:contentProfiles</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+
+      <p>A <a>presentation processor</a> supports the <code>#contentProfiles-root</code> extension if
+        it implements presentation semantic support of the
+        <a><code>ttp:contentProfiles</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+
+      <aside class="note">This extension is defined as a subset of
+        <code><a>#contentProfiles</a></code>
+        to avoid requiring processor support for
+        the <a><code>ttp:profile</code></a> attribute and
+        processor profile inference semantics.
+      </aside>
+      </section>
+
+      <section id="extension-onScreen">
+        <h3>#onScreen</h3>
+        <p>A <a>transformation processor</a> supports the <code>#onScreen</code> extension if
+          it recognizes and is capable of transforming values of the
+          <a><code>daptm:onScreen</code></a> attribute on the <code>&lt;div&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#onScreen</code> extension if
+          it implements presentation semantic support of the
+          <a><code>daptm:onScreen</code></a> attribute on the <code>&lt;div&gt;</code> element.</p>
+      </section>
+
+      <section id="extension-profile-root">
+        <h3>#profile-root</h3>
+        <p>A <a>transformation processor</a> supports the <code>#profile-root</code> extension if
+          it recognizes and is capable of transforming values of the
+          <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#profile-root</code> extension if
+          it implements presentation semantic support of the
+          <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+      </section>
+  
+        <section id="extension-scriptType-root">
+        <h3>#scriptType-root</h3>
+        <p>A <a>transformation processor</a> supports the <code>#scriptType-root</code> extension if
+          it recognizes and is capable of transforming values of the
+          <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#scriptType-root</code> extension if
+          it implements presentation semantic support of the
+          <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+
+        <p>An example of a <a>transformation processor</a> that supports this extension is
+          a validating processor that provides appropriate feedback, for example warnings,
+          when the SHOULD requirements defined in <a href="#script-type"></a> for a
+          <a>DAPT Document</a>'s <a><code>daptm:scriptType</code></a> are not met,
+          and that reports an error if the extension is required by a
+          <a>content profile</a> but the <a>Document Instance</a> claiming
+          conformance to that profile either does not have a
+          <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element
+          or has one whose value is not defined herein.</p>
+
+      </section>
+
+      <section id="extension-serialization">
+        <h3>#serialization</h3>
+        <p>A serialized document that is valid with respect to the <code>#serialization</code>
+          extension is
+          an XML 1.0 [[xml]] document encoded using
+          UTF-8 character encoding as specified in [[UNICODE]],
+          that contains no entity declarations and
+          no entity references other than to predefined entities.</p>
+
+        <p>A <a>transformation processor</a> or a <a>presentation processor</a> supports
+          the <code>#serialization</code> extension if
+          it can read a serialized document as defined above.</p>
+  
+        <p>A <a>transformation processor</a> that writes documents supports
+          the <code>#serialization</code> extension if
+          it can write a serialized document as defined above.</p>
+
+      </section>
+
+      <section id="extension-textLanguageSource">
+        <h3>#textLanguageSource</h3>
+        <p>A <a>transformation processor</a> supports the <code>#textLanguageSource</code> extension if
+          it recognizes and is capable of transforming values of the
+          <code>daptm:langSrc</code> attribute on the <code>&lt;p&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#textLanguageSource</code> extension if
+          it implements presentation semantic support of the
+          <code>daptm:langSrc</code> attribute on the <code>&lt;p&gt;</code> element.</p>
+      </section>
+
+      <section id="extension-xmlId-div">
+        <h3>#xmlId-div</h3>
+        <p>A <a>transformation processor</a> supports the <code>#xmlId-div</code> extension if
+          it recognizes and is capable of transforming values of the
+          <code>xml:id</code> attribute on the <code>&lt;div&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#xmlId-div</code> extension if
+          it implements presentation semantic support of the
+          <code>xml:id</code> attribute on the <code>&lt;div&gt;</code> element.</p>
+        </section>
+
+      <section id="extension-xmlLang-root">
+        <h3>#xmlLang-root</h3>
+        <p>A <a>transformation processor</a> supports the <code>#xmlLang-root</code> extension if
+          it recognizes and is capable of transforming values of the
+          <code>xml:lang</code> attribute on the <code>&lt;tt&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#xmlLang-root</code> extension if
+          it implements presentation semantic support of the
+          <code>xml:lang</code> attribute on the <code>&lt;tt&gt;</code> element.</p>
+        </section>
+    </section> <!-- extensions-->
 
   <section id="acknowledgements">
       <h2>Acknowledgments</h2>
