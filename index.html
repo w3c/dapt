@@ -346,7 +346,14 @@ table.coldividers td + td { border-left:1px solid gray; }
 
   <section id="data-model">
     <h2>DAPT Data Model and corresponding TTML syntax</h2>
-    <p>This section specifies the data model for DAPT and its corresponding TTML syntax. In the model, there are objects which can have properties and be associated with other objects. In the TTML syntax, these objects and properties are expressed as elements and attributes.</p>
+    <p>This section specifies the data model for DAPT and its corresponding TTML syntax.
+      In the model, there are objects which can have properties and be associated with other objects.
+      In the TTML syntax, these objects and properties are expressed as elements and attributes,
+      though it is not always the case that objects are expressed as elements and properties as attributes.
+    </p>
+    <p>In <a href="#fig-class-diagram"></a> <a>shared properties</a> are shown in italics.
+      All other conventions in the diagram are as per [[?uml]].
+    </p>
     <figure id="fig-class-diagram">
       <div data-include="figures/class-diagram.svg"></div>
       <figcaption>
@@ -523,15 +530,15 @@ table.coldividers td + td { border-left:1px solid gray; }
           <h4>Shared properties</h4>
           <p>Some of the properties in the DAPT data model are common within more than one object type,
             and carry the same semantic everywhere they occur.
-            These shared properties are listed in this section.
+            These <dfn>shared properties</dfn> are listed in this section.
           </p>
           <p class="ednote">Would it be better to make a "Timed Object" class and subclass Script Event,
             Mixing Instruction and Audio Recording from it?
           </p>
           <section>
             <h5>Timing Properties</h5>
-            <p>The following timing properties define when the entities that contain them
-              are active:
+            <p>The following <dfn data-lt="timing property|timing properties">timing properties</dfn>
+              define when the entities that contain them are active:
             </p>
             <ul>
               <li>The <dfn>Begin</dfn> property defines when an object becomes active,
@@ -544,7 +551,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <p class="note">If both an <a>End</a> and a <a>Duration</a> property are present,
                   the end time is the earlier of <a>Begin</a> and <a>Begin</a> + <a>Duration</a>.</p>
             </ul>
-            <div class="note">If timing properties are omitted, the following rules apply:
+            <div class="note">If any of the <a>timing properties</a> is omitted, the following rules apply:
               <ul>
                 <li>The default value for <a>Begin</a> is zero, i.e. the same as the begin time of the parent object.</li>
                 <li>The default value for <a>End</a> is indefinite,
@@ -967,9 +974,20 @@ daptm:eventType: string
               in relation to the parent element's time interval;
             </li>
             <li>An optional <dfn>In Time</dfn> and an optional <dfn>Out Time</dfn> property
-              that together define the temporal subsection of the audio resource;
+              that together define a temporal subsection of the audio resource;
+              <p>The default <a>In Time</a> is the beginning of the audio resource.</p>
+              <p>The default <a>Out Time</a> is the end of the audio resource.</p>
+              <p>If the temporal subsection of the audio resource is longer than
+                the duration of the <a>Audio Recording</a>'s time interval,
+                then playback MUST be truncated to end when the
+                <a>Audio Recording</a>'s time interval ends.
+              </p>
+              <p>If the temporal subsection of the audio resource is shorter than
+                the duration of the <a>Audio Recording</a>'s time interval,
+                then the audio resource MUST play once.
+              </p>
             </li>
-            <li>Zero or more <a>Mixing Instructions</a> that modify the characteristics
+            <li>Zero or more <a>Mixing Instructions</a> that modify the playback characteristics
                of the <a>Audio Recording</a>.</li>
           </ul>
           <p class="ednote">Insert TTML representation</p>
@@ -997,21 +1015,58 @@ daptm:eventType: string
           of the audio relating to the containing object.
           It has the following properties:</p>
         <ul>
-          <li>Zero or more <dfn>Gain</dfn> values.
+          <li>Zero or more <dfn>Gain</dfn> properties.
             The gain acts as a multiplier to be applied to the related <a>Audio</a>;</li>
-          <li>Zero or more <dfn>Pan</dfn> values.
+          <li>Zero or more <dfn>Pan</dfn> properties.
             The pan adjusts the stereoscopic (left/right) position;</li>
           <li>An optional <a>Begin</a> and an optional <a>End</a> and an optional <a>Duration</a> property
             that together define the time interval during which the <a>Mixing Instruction</a>
             applies;</li>
           <li>An optional <dfn>Fill</dfn> property that specifies whether,
             at the end time of an animated <a>Mixing Instruction</a>,
-            the specified <a>Gain</a> and <a>Pan</a> value should be
-            retained (<code>fill</code>) or reverted</li>
+            the specified <a>Gain</a> and <a>Pan</a> properties should be
+            retained (<code>freeze</code>) or reverted (<code>remove</code>).</li>
         </ul>
-        <p class="ednote">Insert TTML representation</p>
+        <p>A <a>Mixing Instruction</a> is represented by applying audio style attributes
+          to the element that corresponds to the relevant object, either inline,
+          by reference to a <code>&lt;style&gt;</code> element, or in a child (inline)
+          <code>&lt;animate&gt;</code> element:</p>
+        <ul>
+          <li>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-gain"><code>tta:gain</code></a>
+            attribute defines the <a>Gain</a> property;</li>
+          <li>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-pan"><code>tta:pan</code></a>
+            attribute defines the <a>Pan</a> property.</li>
+        </ul>
+        <p>If the <a>Mixing Instruction</a> is animated, that is,
+          if the adjustment properties change during the
+          containing object's active time interval, then it is represented using
+          one or more child <a href="https://www.w3.org/TR/ttml2/#animation-vocabulary-animate"><code>&lt;animate&gt;</code></a> elements.
+          This applies if more than one <a>Gain</a> or <a>Pan</a> property is needed,
+          or if any <a>timing properties</a> are needed.</p>
+        <p>The <a href="https://www.w3.org/TR/ttml2/#animation-vocabulary-animate"><code>&lt;animate&gt;</code></a>
+           element(s) MUST be children of
+          the element corresponding to the containing object,
+          and have the following constraints:</p>
+        <ul>
+          <li>The <code>begin</code>, <code>end</code> and <code>dur</code> attributes
+            define respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> properties;</li>
+          <li>The <code>fill</code> attribute defines the <a>Fill</a> property;</li>
+          <li>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-gain"><code>tta:gain</code></a>
+            attribute defines the <a>Gain</a> property,
+            and uses the <a href="https://www.w3.org/TR/ttml2/#animation-value-animation-value-list"><code>animation-value-list</code></a>
+            syntax to express the list of values to be applied during the animation period;</li>
+          <li>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-pan"><code>tta:pan</code></a>
+            attribute defines the <a>Pan</a> property,
+            and uses the <a href="https://www.w3.org/TR/ttml2/#animation-value-animation-value-list"><code>animation-value-list</code></a>
+            syntax to express the list of values to be applied during the animation period.</li>
+        </ul>
       </section>
     </section> <!-- #data-model -->
+
+    <section id="audio-mixing">
+      <h2>Audio Mixing</h2>
+
+    </section> <!-- #audio-mixing -->
 
     <section id="profile-constraints">
       <h2>Constraints</h2>
