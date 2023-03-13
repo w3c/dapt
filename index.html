@@ -728,7 +728,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             <ul>
               <li>The <code>xml:id</code> attribute MUST be present containing the <a>Script Event Identifier</a>.</li>
               <li>
-                <p>The <code>begin</code>, <code>end</code> and <code>dur</code> attributes define respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> of the <a>Script Event</a>.</p>
+                <p>The <code>begin</code>, <code>end</code> and <code>dur</code> attributes represent respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> of the <a>Script Event</a>.</p>
                 <p>The <code>begin</code> and <code>end</code> attributes SHOULD be present.
                   The <code>dur</code> attribute MAY be present.</p>
                 <p class="note">As noted in [[?ttml2]] if both an <code>end</code> attribute and a <code>dur</code> attribute are present,
@@ -992,7 +992,84 @@ daptm:eventType: string
             <li>Zero or more <a>Mixing Instructions</a> that modify the playback characteristics
                of the <a>Audio Recording</a>.</li>
           </ul>
-          <p class="ednote">Insert TTML representation</p>
+          <p>An <a>Audio Recording</a> is represented in TTML by an 
+            <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-audio"><code>&lt;audio&gt;</code></a>
+            element child of a <code>&lt;p&gt;</code> or <code>&lt;span&gt;</code> element
+            corresponding to the <a>Text</a> to which it applies.
+            The following constraints apply to the <code>&lt;audio&gt;</code> element:</p>
+          <ul>
+            <li>The <code>begin</code>, <code>end</code> and <code>dur</code> attributes
+              represent respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> properties;</li>
+            <li>The <code>clipBegin</code> and <code>clipEnd</code> attributes
+              represent respectively the <a>In Time</a> and <a>Out Time</a> properties;</li>
+            <li>If the <a>Source</a> is a link to an external audio resource,
+              the <a>Source</a> and <a>Type</a> properties are represented by exactly one of:
+              <ol>
+                <li>A <code>src</code> attribute that is not a fragment identifier,
+                  and a <code>type</code> attribute respectively;</li>
+                <li>A <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
+                  <code>src</code> attribute that is not a fragment identifier
+                  and a <code>type</code> attribute respectively;</li>
+              </ol>
+              <p>A <code>src</code> attribute that is not a fragment identifier is a URL that references
+                an external audio resource, i.e. one that is not embedded within the <a>DAPT Script</a>.
+                No validation that the resource can be located is specified in DAPT.</p>
+              <p class="ednote">Do we need both mechanisms here?
+                It's not clear what semantic advantage the child <code>&lt;source&gt;</code> element carries in this case.
+                Consider marking use of that child <code>&lt;source&gt;</code> element as "at risk"?</p>
+            </li>
+            <li>If the <a>Source</a> is an embedded audio resource,
+              the <a>Source</a> and <a>Type</a> properties are represented together by exactly one of:
+              <ol>
+                <li>A <code>src</code> attribute that is a fragment identifier
+                  that references either
+                  an <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-audio"><code>&lt;audio&gt;</code></a> element
+                  or a <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element,
+                  where the referenced element is a
+                  child of <code>/tt/head/resources</code>
+                  and specifies a <code>type</code> attribute
+                  and the <code>xml:id</code> attribute used to reference it;</li>
+                <li>A <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
+                  <code>src</code> attribute that is a fragment identifier
+                  that references either
+                  an <code>&lt;audio&gt;</code> element
+                  or a <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element,
+                  where the referenced element is a
+                  child of <code>/tt/head/resources</code>
+                  and specifies a <code>type</code> attribute
+                  and the <code>xml:id</code> attribute used to reference it;</li>
+                <li>A <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a 
+                  <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element child
+                  that specifies a <code>type</code> attribute and contains the audio recording data.</li>
+              </ol>
+              <p>In each of the cases above the <code>type</code> attribute represents the <a>Type</a> property.</p>
+              <p>A <code>src</code> attribute that is a fragment identifier is a pointer
+                to an audio resource that is embedded within the <a>DAPT Script</a></p>
+              <p>If <code>&lt;data&gt;</code> elements are defined, each one MUST contain
+                either <code>#PCDATA</code> or
+                <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-chunk"><code>&lt;chunk&gt;</code></a> child elements
+                and MUST NOT contain any <code>&lt;source&gt;</code> child elements.</p>
+              <p class="ednote">Do we need all 3 mechanisms here?
+                Do we need any?
+                There may be a use case for embedding audio data,
+                since it makes the single document a portable (though large)
+                entity that can be exchanged and transferred with no concern for missing resources,
+                and no need for e.g. manifest files.
+                If we do not need to support referenced embedded audio then only the last option is needed,
+                and is probably the simplest to implement.
+                One case for referenced embedded audio is that it more easily allows reuse of the
+                same audio in different document locations, though that seems like an unlikely
+                requirement in this use case. Another is that it means that all embedded audio is in
+                an easily located part of the document in <code>tt/head/resources</code>, which
+                potentially could carry an implementation benefit?
+                Consider marking the embedded data features as "at risk"?</p>
+              <p class="ednote">Should we make explicit the possible presence of embedded audio resources
+                within the <a href="#data-model">Data Model</a>?
+              </p>
+            </li>
+            <li><a>Mixing Instructions</a> MAY be applied as specified in their
+              <a href="#mixing-instruction-ttml">TTML representation</a>.</li>
+          </ul>
         </section>
         <section id="synthesized-audio">
           <h4>Synthesized Audio</h4>
@@ -1042,21 +1119,21 @@ daptm:eventType: string
             the specified <a>Gain</a> and <a>Pan</a> properties should be
             retained (<code>freeze</code>) or reverted (<code>remove</code>).</li>
         </ul>
-        <p>A <a>Mixing Instruction</a> is represented by applying audio style attributes
+        <p id="mixing-instruction-ttml">A <a>Mixing Instruction</a> is represented by applying audio style attributes
           to the element that corresponds to the relevant object, either inline,
           by reference to a <code>&lt;style&gt;</code> element, or in a child (inline)
           <code>&lt;animate&gt;</code> element:</p>
         <ul>
           <li>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-gain"><code>tta:gain</code></a>
-            attribute defines the <a>Gain</a> property;</li>
+            attribute represents the <a>Gain</a> property;</li>
           <li>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-pan"><code>tta:pan</code></a>
-            attribute defines the <a>Pan</a> property.</li>
+            attribute represents the <a>Pan</a> property.</li>
         </ul>
         <p>If the <a>Mixing Instruction</a> is animated, that is,
           if the adjustment properties change during the
           containing object's active time interval, then it is represented using
           one or more child <a href="https://www.w3.org/TR/ttml2/#animation-vocabulary-animate"><code>&lt;animate&gt;</code></a> elements.
-          This applies if more than one <a>Gain</a> or <a>Pan</a> property is needed,
+          This representation is required if more than one <a>Gain</a> or <a>Pan</a> property is needed,
           or if any <a>timing properties</a> are needed.</p>
         <p>The <a href="https://www.w3.org/TR/ttml2/#animation-vocabulary-animate"><code>&lt;animate&gt;</code></a>
            element(s) MUST be children of
@@ -1064,14 +1141,14 @@ daptm:eventType: string
           and have the following constraints:</p>
         <ul>
           <li>The <code>begin</code>, <code>end</code> and <code>dur</code> attributes
-            define respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> properties;</li>
-          <li>The <code>fill</code> attribute defines the <a>Fill</a> property;</li>
+            represent respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> properties;</li>
+          <li>The <code>fill</code> attribute represents the <a>Fill</a> property;</li>
           <li>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-gain"><code>tta:gain</code></a>
-            attribute defines the <a>Gain</a> property,
+            attribute represents the <a>Gain</a> property,
             and uses the <a href="https://www.w3.org/TR/ttml2/#animation-value-animation-value-list"><code>animation-value-list</code></a>
             syntax to express the list of values to be applied during the animation period;</li>
           <li>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-pan"><code>tta:pan</code></a>
-            attribute defines the <a>Pan</a> property,
+            attribute represents the <a>Pan</a> property,
             and uses the <a href="https://www.w3.org/TR/ttml2/#animation-value-animation-value-list"><code>animation-value-list</code></a>
             syntax to express the list of values to be applied during the animation period.</li>
         </ul>
