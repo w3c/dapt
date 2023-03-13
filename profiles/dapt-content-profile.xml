@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- this file defines the "dapt-content" profile of ttml -->
+<profile xmlns="http://www.w3.org/ns/ttml#parameter"
+  designator="http://www.w3.org/ns/dapt/profile/content"
+  combine="mostRestrictive"
+  type="content">
+  <features xml:base="http://www.w3.org/ns/ttml/feature/">
+    <!-- required (mandatory) feature support -->
+    <feature value="required">#structure</feature>
+    <feature value="required">#timeBase-media</feature>
+    <!-- optional (voluntary) feature support -->
+    <feature value="optional">#animation-version-2</feature>
+    <feature value="optional">#audio</feature>
+    <feature value="optional">#audio-description</feature>
+    <feature value="optional">#audio-speech</feature>
+    <feature value="optional">#bidi</feature>
+    <feature value="optional" extends="#bidi">#bidi-version-2</feature>
+    <feature value="optional">#chunk</feature>
+    <feature value="optional">#content</feature>
+    <feature value="optional">#contentProfiles</feature>
+    <feature value="optional">#contentProfiles-combined</feature>
+    <feature value="optional">#core</feature>
+    <feature value="optional">#data</feature>
+    <feature value="optional">#direction</feature>
+    <feature value="optional">#embedded-audio</feature>
+    <feature value="optional">#embedded-data</feature>
+    <feature value="optional">#frameRate</feature>
+    <feature value="optional">#frameRateMultiplier</feature>
+    <feature value="optional">#gain</feature>
+    <feature value="optional">#metadata</feature>
+    <feature value="optional">#metadata-item</feature>
+    <feature value="optional" extends="#metadata">#metadata-version-2</feature>
+    <feature value="optional">#pan</feature>
+    <feature value="optional">#permitFeatureNarrowing</feature>
+    <feature value="optional">#permitFeatureWidening</feature>
+    <feature value="optional">#pitch</feature>
+    <feature value="optional">#presentation-audio</feature>
+    <feature value="optional">#processorProfiles</feature>
+    <feature value="optional">#processorProfiles-combined</feature>
+    <feature value="optional">#resources</feature>
+    <feature value="optional" extends="#animation">#set</feature>
+    <feature value="optional">#set-fill</feature>
+    <feature value="optional">#set-multiple-styles</feature>
+    <feature value="optional">#source</feature>
+    <feature value="optional">#speak</feature>
+    <feature value="optional">#speech</feature>
+    <feature value="optional">#styling</feature>
+    <feature value="optional">#styling-chained</feature>
+    <feature value="optional">#styling-inheritance-content</feature>
+    <feature value="optional">#styling-inline</feature>
+    <feature value="optional">#styling-referential</feature>
+    <feature value="optional">#subFrameRate</feature>
+    <feature value="optional">#tickRate</feature>
+    <feature value="optional">#time-clock-with-frames</feature>
+    <feature value="optional">#time-clock</feature>
+    <feature value="optional">#time-offset-with-frames</feature>
+    <feature value="optional">#time-offset-with-ticks</feature>
+    <feature value="optional">#time-offset</feature>
+    <feature value="optional">#timing</feature>
+    <feature value="optional">#unicodeBidi</feature>
+    <feature value="optional">#unicodeBidi-isolate</feature>
+    <feature value="optional" extends="#unicodeBidi">#unicodeBidi-version-2</feature>
+    <feature value="optional">#xlink</feature>
+    <!-- prohibited feature support -->
+    <feature value="prohibited">#clockMode</feature>
+    <feature value="prohibited">#clockMode-gps</feature>
+    <feature value="prohibited">#clockMode-local</feature>
+    <feature value="prohibited">#clockMode-utc</feature>
+    <feature value="prohibited">#dropMode</feature>
+    <feature value="prohibited">#dropMode-dropNTSC</feature>
+    <feature value="prohibited">#dropMode-dropPAL</feature>
+    <feature value="prohibited">#dropMode-nonDrop</feature>
+    <feature value="prohibited">#markerMode</feature>
+    <feature value="prohibited">#markerMode-continuous</feature>
+    <feature value="prohibited">#markerMode-discontinuous</feature>
+    <feature value="prohibited">#time-wall-clock</feature>
+    <feature value="prohibited">#timeBase-clock</feature>
+    <feature value="prohibited">#timeBase-smpte</feature>
+    <feature value="prohibited">#timeContainer</feature>
+  </features>
+  <extensions xml:base="http://www.w3.org/ns/ttml/profile/dapt/extension">
+    <!-- required (mandatory) extension support -->
+    <extension value="required">#contentProfiles-root</extension>
+    <extension value="required">#scriptType-root</extension>
+    <extension value="required">#serialization</extension>
+    <extension value="required">#textLanguageSource</extension>
+    <extension value="required">#xmlId-div</extension>
+    <extension value="required">#xmlLang-root</extension>
+    <!-- optional (voluntary) extension support -->
+    <extension value="optional">#agent</extension>
+    <extension value="optional">#onScreen</extension>
+    <!-- prohibited extension support -->
+    <extension value="prohibited">#profile-root</extension>
+</extensions>
+</profile>

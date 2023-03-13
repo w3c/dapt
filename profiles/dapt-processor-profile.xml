@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- this file defines the "dapt-processor" profile of ttml -->
+<profile xmlns="http://www.w3.org/ns/ttml#parameter"
+  designator="http://www.w3.org/ns/dapt/profile/processor"
+  combine="mostRestrictive"
+  type="processor">
+  <features xml:base="http://www.w3.org/ns/ttml/feature/">
+    <!-- required (mandatory) feature support -->
+    <feature value="required">#animation-version-2</feature>
+    <feature value="required">#audio</feature>
+    <feature value="required">#audio-description</feature>
+    <feature value="required">#audio-speech</feature>
+    <feature value="required">#bidi</feature>
+    <feature value="required" extends="#bidi">#bidi-version-2</feature>
+    <feature value="required">#chunk</feature>
+    <feature value="required">#content</feature>
+    <feature value="required">#contentProfiles</feature>
+    <feature value="required">#core</feature>
+    <feature value="required">#data</feature>
+    <feature value="required">#direction</feature>
+    <feature value="required">#embedded-audio</feature>
+    <feature value="required">#embedded-data</feature>
+    <feature value="required">#frameRate</feature>
+    <feature value="required">#frameRateMultiplier</feature>
+    <feature value="required">#gain</feature>
+    <feature value="required">#metadata</feature>
+    <feature value="required">#metadata-item</feature>
+    <feature value="required" extends="#metadata">#metadata-version-2</feature>
+    <feature value="required">#pan</feature>
+    <feature value="required">#pitch</feature>
+    <feature value="required">#presentation-audio</feature>
+    <feature value="required">#resources</feature>
+    <feature value="required" extends="#animation">#set</feature>
+    <feature value="required">#set-fill</feature>
+    <feature value="required">#set-multiple-styles</feature>
+    <feature value="required">#source</feature>
+    <feature value="required">#speak</feature>
+    <feature value="required">#speech</feature>
+    <feature value="required">#structure</feature>
+    <feature value="required">#styling</feature>
+    <feature value="required">#styling-chained</feature>
+    <feature value="required">#styling-inheritance-content</feature>
+    <feature value="required">#styling-inline</feature>
+    <feature value="required">#styling-referential</feature>
+    <feature value="required">#subFrameRate</feature>
+    <feature value="required">#tickRate</feature>
+    <feature value="required">#time-clock-with-frames</feature>
+    <feature value="required">#time-clock</feature>
+    <feature value="required">#time-offset-with-frames</feature>
+    <feature value="required">#time-offset-with-ticks</feature>
+    <feature value="required">#time-offset</feature>
+    <feature value="required">#timeBase-media</feature>
+    <feature value="required">#timing</feature>
+    <feature value="required">#transformation</feature>
+    <feature value="required">#unicodeBidi</feature>
+    <feature value="required">#unicodeBidi-isolate</feature>
+    <feature value="required" extends="#unicodeBidi">#unicodeBidi-version-2</feature>
+    <feature value="required">#xlink</feature>
+    <!-- optional (voluntary) feature support -->
+    <feature value="optional">#clockMode</feature>
+    <feature value="optional">#clockMode-gps</feature>
+    <feature value="optional">#clockMode-local</feature>
+    <feature value="optional">#clockMode-utc</feature>
+    <feature value="optional">#contentProfiles-combined</feature>
+    <feature value="optional">#dropMode</feature>
+    <feature value="optional">#dropMode-dropNTSC</feature>
+    <feature value="optional">#dropMode-dropPAL</feature>
+    <feature value="optional">#dropMode-nonDrop</feature>
+    <feature value="optional">#markerMode</feature>
+    <feature value="optional">#markerMode-continuous</feature>
+    <feature value="optional">#markerMode-discontinuous</feature>
+    <feature value="optional">#permitFeatureNarrowing</feature>
+    <feature value="optional">#permitFeatureWidening</feature>
+    <feature value="optional">#processorProfiles</feature>
+    <feature value="optional">#processorProfiles-combined</feature>
+    <feature value="optional">#time-wall-clock</feature>
+    <feature value="optional">#timeBase-clock</feature>
+    <feature value="optional">#timeBase-smpte</feature>
+    <feature value="optional">#timeContainer</feature>
+  </features>
+  <extensions xml:base="http://www.w3.org/ns/ttml/profile/dapt/extension">
+    <!-- required (mandatory) extension support -->
+    <extension value="required">#agent</extension>
+    <extension value="required">#contentProfiles-root</extension>
+    <extension value="required">#onScreen</extension>
+    <extension value="required">#scriptType-root</extension>
+    <extension value="required">#serialization</extension>
+    <extension value="required">#textLanguageSource</extension>
+    <extension value="required">#xmlId-div</extension>
+    <extension value="required">#xmlLang-root</extension>
+    <!-- optional (voluntary) extension support -->
+    <extension value="optional">#profile-root</extension>
+</extensions>
+</profile>
