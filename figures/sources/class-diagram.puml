@@ -81,19 +81,19 @@ class MixingInstruction as "**Mixing Instruction**" [[#dfn-mixing-instruction]] 
 ' MixingInstruction -[hidden]r-AudioRecording
 
 
-DAPTScript *-down- "0..*" ScriptEvent : contains >
-DAPTScript *-right- "0..*" Character : contains >
-DAPTScript *-right- "0..*" Style : contains >
-Character "0..1" <.down. "0..*" Style [[#dfn-character-style]] : Character\rStyle
+DAPTScript *-down- "0..* " ScriptEvent : contains >
+DAPTScript *-right- "0..*" Character : contains\r >
+DAPTScript *-right- "0..*  " Style : contains >
+Character "0..1  " <.down. "0..*" Style [[#dfn-character-style]] : Character\rStyle
 ScriptEvent "0..*" .right.> "0..*" Style [[#dfn-character-style]] : Character\rStyle
 ScriptEvent *-left- "0..*" MixingInstruction : contains >
 Text "0..*" .right.> "0..*" Style [[#dfn-character-style]] : Character\nStyle
 Text "0..*" .right.> "0..*" Style : Other\nStyle
-Text *-down- "0..*" Audio : contains >
-Text *-left- "0..*" MixingInstruction : contains >
+Text *-down- "0..* " Audio : contains >
+Text *-left- "0..* " MixingInstruction : contains >
 ScriptEvent *-down- "0..*" Text : contains >
 ScriptEvent "0..*" .left.> "0..*" Character
-AudioRecording *-left- "0..*" MixingInstruction : contains >
+AudioRecording *-left- "0..* " MixingInstruction : contains >
 Audio <|-- SynthesizedAudio : is <
 Audio <|-- AudioRecording : is <
 
