@@ -1162,6 +1162,41 @@ daptm:eventType: string
     <section id="audio-mixing" class="informative">
       <h2>Audio Mixing</h2>
       <p class="ednote">Describe audio mixing semantic. Move to appendix?</p>
+      <p>Applying the <a>Mixing Instructions</a> can be done using [[webaudio]].
+        <a href="#audio-mixing-figure"></a> shows the flow of programme audio,
+        and how, when audio-generating elements are active,
+        the pan and gain (if set) on the <a>Script Event</a> are applied,
+        then the output is passed to the <a>Text</a>,
+        which mixes in the audio from any active <a>Audio Recording</a>,
+        itself subject to its own <a>Mixing Instructions</a>,
+        then the result has the <a>Text</a>'s <a>Mixing Instructions</a>
+        applied, prior to the output being mixed on to the master bus.
+      </p>
+
+      <figure id="audio-mixing-figure">
+        <div data-include="figures/audio-mixing.svg"></div>
+        <figcaption>Example simple audio routing between objects</figcaption>
+      </figure>
+
+      <p>This example is shown as [[webaudio]] nodes in <a href="#webaudio-nodes-figure"></a>.</p>
+
+      <figure id="webaudio-nodes-figure">
+        <div data-include="figures/webaudio-nodes.svg"></div>
+        <figcaption>Web audio nodes representing the audio processing needed.</figcaption>
+      </figure>
+
+      <p>The above examples are simplified in at least two ways:</p>
+      <ul>
+        <li>if a <a>Text</a> contains
+          <code>&lt;span&gt;</code> elements that themselves have <a>Mixing Instructions</a>
+          applied, then additional nodes would be needed;</li>
+        <li>the application of animated <a>Mixing Instructions</a> is not
+          shown explicitly. [[webaudio]] supports the timed variation of
+          input parameters to its nodes: it is possible to translate the
+          TTML <code>&lt;animate&gt;</code> semantics directly into
+          [[webaudio]] API calls to achieve the equivalent effect.</li>
+      </ul>
+
     </section> <!-- #audio-mixing -->
 
     <section id="profile-constraints">

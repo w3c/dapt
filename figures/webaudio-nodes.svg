@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="664px" preserveAspectRatio="none" style="width:515px;height:664px;background:#FFFFFF;" version="1.1" viewBox="0 0 515 664" width="515px" zoomAndPan="magnify"><defs/><g><rect fill="#FFFFFF" height="40" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="195" x="16" y="155"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="179" x="24" y="181.0469">GainNode (ScriptEvent)</text><rect fill="#FFFFFF" height="40" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="187" x="24" y="237"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="171" x="32" y="263.0469">PanNode (ScriptEvent)</text><rect fill="#FFFFFF" height="40" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="143" x="182" y="479"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="127" x="190" y="505.0469">GainNode (Text)</text><rect fill="#FFFFFF" height="40" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="135" x="186" y="397"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="119" x="194" y="423.0469">PanNode (Text)</text><rect fill="#FFFFFF" height="40" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="233" x="276" y="155"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="217" x="284" y="181.0469">GainNode (AudioRecording)</text><rect fill="#FFFFFF" height="40" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="225" x="278" y="237"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="209" x="286" y="263.0469">PanNode (AudioRecording)</text><rect fill="#000000" height="8" style="stroke:none;stroke-width:1.0;" width="80" x="213.5" y="574"/><rect fill="#000000" height="8" style="stroke:none;stroke-width:1.0;" width="80" x="213.5" y="333"/><rect fill="#FFFFFF" height="40" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="199" x="293" y="73"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="183" x="301" y="99.0469">AudioRecording Source</text><ellipse cx="113.5" cy="21" fill="#000000" rx="10" ry="10" style="stroke:none;stroke-width:1.0;"/><rect fill="#FFFFFF" height="40" rx="12.5" ry="12.5" style="stroke:#000000;stroke-width:1.0;" width="153" x="37" y="73"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="137" x="45" y="99.0469">ProgrammeAudio</text><g id="elem_GMN20"><path d="M11,319.5 L11,354.3438 A0,0 0 0 0 11,354.3438 L148,354.3438 A0,0 0 0 0 148,354.3438 L148,341 L213.3,337 L148,333 L148,329.5 L138,319.5 L11,319.5 A0,0 0 0 0 11,319.5 " fill="#FFFFFF" style="stroke:#000000;stroke-width:1.0;"/><path d="M138,319.5 L138,329.5 L148,329.5 L138,319.5 " fill="#FFFFFF" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="110" x="20" y="342.9688">Implicit mixer</text></g><ellipse cx="253.5" cy="648" fill="none" rx="10" ry="10" style="stroke:#000000;stroke-width:1.0;"/><ellipse cx="254" cy="648.5" fill="#000000" rx="6" ry="6" style="stroke:none;stroke-width:1.0;"/><g id="elem_GMN28"><path d="M35,560.5 L35,595.3438 A0,0 0 0 0 35,595.3438 L148,595.3438 A0,0 0 0 0 148,595.3438 L148,582 L213.29,578 L148,574 L148,570.5 L138,560.5 L35,560.5 A0,0 0 0 0 35,560.5 " fill="#FFFFFF" style="stroke:#000000;stroke-width:1.0;"/><path d="M138,560.5 L138,570.5 L148,570.5 L138,560.5 " fill="#FFFFFF" style="stroke:#000000;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="86" x="44" y="583.9688">Master bus</text></g><!--MD5=[31154548bb638bfaf06ac34d8f7e9c41]
+link *start to ProgrammeAudio--><g id="link_*start_ProgrammeAudio"><path d="M113.5,31.44 C113.5,40.4 113.5,54.28 113.5,66.49 " fill="none" id="*start-to-ProgrammeAudio" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="113.5,71.17,117.5,62.17,113.5,66.17,109.5,62.17,113.5,71.17" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[785c059597c0c80b680a689edd0079b4]
+link ProgrammeAudio to GN1--><g id="link_ProgrammeAudio_GN1"><path d="M113.5,113.37 C113.5,123.8 113.5,136.82 113.5,148.12 " fill="none" id="ProgrammeAudio-to-GN1" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="113.5,153.02,117.5,144.02,113.5,148.02,109.5,144.02,113.5,153.02" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[64ab020211cf346a2e3b3e5eba9983bf]
+link GN1 to PN1--><g id="link_GN1_PN1"><path d="M114.47,195.37 C114.99,205.8 115.64,218.82 116.21,230.12 " fill="none" id="GN1-to-PN1" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="116.45,235.02,119.9825,225.8264,116.1932,230.0266,111.993,226.2373,116.45,235.02" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[6232ff64b2dab6949129b8cedba842c2]
+link AS to GN3--><g id="link_AS_GN3"><path d="M392.5,113.37 C392.5,123.8 392.5,136.82 392.5,148.12 " fill="none" id="AS-to-GN3" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="392.5,153.02,396.5,144.02,392.5,148.02,388.5,144.02,392.5,153.02" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[8c9f34730db7b39be9c5d185a8c223b9]
+link GN3 to PN3--><g id="link_GN3_PN3"><path d="M392.02,195.37 C391.75,205.8 391.43,218.82 391.15,230.12 " fill="none" id="GN3-to-PN3" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="391.02,235.02,395.25,226.1258,391.1485,230.0217,387.2527,225.9202,391.02,235.02" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[7b9117d3f4916ae39ac847a760edb77a]
+link PN1 to M1--><g id="link_PN1_M1"><path d="M151.47,277.48 C181,294.42 222.07,317.98 241.89,329.34 " fill="none" id="PN1-to-M1" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="246.22,331.83,240.4157,323.8733,241.8867,329.3355,236.4245,330.8065,246.22,331.83" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[392c4814316265b60afd116479656829]
+link PN3 to M1--><g id="link_PN3_M1"><path d="M356.28,277.48 C326.4,294.49 284.8,318.18 264.94,329.49 " fill="none" id="PN3-to-M1" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="260.82,331.83,270.6205,330.8551,265.1656,329.357,266.6637,323.9021,260.82,331.83" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[b0470ef9598eb3db2fc9964596078660]
+link M1 to PN2--><g id="link_M1_PN2"><path d="M253.5,341.35 C253.5,349.71 253.5,372.13 253.5,390.23 " fill="none" id="M1-to-PN2" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="253.5,395.16,257.5,386.16,253.5,390.16,249.5,386.16,253.5,395.16" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[d6a6dfaf610f79e560e3287744bb55f4]
+link PN2 to GN2--><g id="link_PN2_GN2"><path d="M253.5,437.37 C253.5,447.8 253.5,460.82 253.5,472.12 " fill="none" id="PN2-to-GN2" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="253.5,477.02,257.5,468.02,253.5,472.02,249.5,468.02,253.5,477.02" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[8e9f8947328f5c06802704de4eb671b5]
+link GN2 to MB--><g id="link_GN2_MB"><path d="M253.5,519.43 C253.5,534.63 253.5,555.14 253.5,567.13 " fill="none" id="GN2-to-MB" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="253.5,572.13,257.5,563.13,253.5,567.13,249.5,563.13,253.5,572.13" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[0d9006013d38754aabeedef9354d7659]
+link MB to *end--><g id="link_MB_*end"><path d="M253.5,582.28 C253.5,591.01 253.5,615.24 253.5,631.45 " fill="none" id="MB-to-*end" style="stroke:#000000;stroke-width:1.0;"/><polygon fill="#000000" points="253.5,636.32,257.5,627.32,253.5,631.32,249.5,627.32,253.5,636.32" style="stroke:#000000;stroke-width:1.0;"/></g><!--MD5=[4f1fc613dabaefb837708ccc1fe30b3d]
+@startuml webaudio-nodes
+!theme plain
+!pragma ratio 1.3
+skinparam groupInheritance 2
+' skinparam linetype ortho
+skinparam DefaultFontName sans-serif
+skinparam DefaultFontSize 16
+skinparam ArrowFontSize 13
+skinparam ArrowMessageAlignment direction
+skinparam Padding 3
+skinparam Nodesep 65
+skinparam Ranksep 40
+' skinparam MinClassWidth 220
+
+hide empty description
+
+state GN1 as "GainNode (ScriptEvent)"
+state PN1 as "PanNode (ScriptEvent)"
+state GN2 as "GainNode (Text)"
+state PN2 as "PanNode (Text)"
+state GN3 as "GainNode (AudioRecording)"
+state PN3 as "PanNode (AudioRecording)"
+state MB as "Master Bus" <<join>>
+state M1 as "+" <<join>>
+state AS as "AudioRecording Source"
+
+[*] - -> ProgrammeAudio
+ProgrammeAudio - -> GN1
+GN1 - -> PN1
+
+AS - -> GN3
+GN3 - -> PN3
+
+PN1 - -> M1
+PN3 - -> M1
+
+note left of M1
+  Implicit mixer
+end note
+
+M1 - -> PN2
+PN2 - -> GN2
+
+GN2 - -> MB
+MB - -> [*]
+
+note left of MB
+  Master bus
+end note
+
+@enduml
+
+@startuml webaudio-nodes
+
+
+
+
+
+
+
+<style>
+  root {
+    BackgroundColor white
+    FontColor black
+    FontName Verdana
+    HyperLinkColor blue
+    LineColor black
+    LineThickness 1
+    Margin 5
+  }
+  caption {
+    LineThickness 0
+  }
+  footer {
+    LineThickness 0
+  }
+  header {
+    LineThickness 0
+  }
+  node {
+    MaximumWidth 300
+  }
+  title {
+    FontSize 22
+    LineThickness 0
+  }
+</style>
+
+skinparam ArrowLollipopColor black
+skinparam BackgroundColor white
+skinparam DefaultFontName Verdana
+skinparam DefaultMonospacedFontName Courier
+skinparam LifelineStrategy nosolid
+skinparam ParticipantPadding 10
+skinparam SequenceLifeLineBorderColor black
+skinparam Shadowing false
+skinparam UseBetaStyle true
+
+skinparam Activity {
+  BackgroundColor white
+  BarColor black
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam Boundary {
+  FontColor black
+}
+skinparam Box {
+  Padding 5
+}
+skinparam CircledCharacter {
+  FontColor black
+  FontName Courier
+  Radius 9
+}
+skinparam Class {
+  BackgroundColor white
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassAttribute {
+  FontColor black
+  FontName Verdana
+}
+skinparam ClassStereotype {
+  FontColor black
+  FontName Verdana
+}
+skinparam Footer {
+  FontColor black
+  FontName Verdana
+}
+skinparam Header {
+  FontColor black
+  FontName Verdana
+}
+skinparam Hyperlink {
+  Color blue
+}
+skinparam IconPackage {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPrivate {
+  Color black
+  BackgroundColor white
+}
+skinparam IconProtected {
+  Color black
+  BackgroundColor white
+}
+skinparam IconPublic {
+  Color black
+  BackgroundColor white
+}
+skinparam Note {
+  FontColor black
+  FontName Verdana
+}
+skinparam Object {
+  BorderColor black
+}
+skinparam Package {
+  BorderColor black
+  FontColor black
+  FontName Verdana
+}
+skinparam State {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeA {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeC {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeE {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeI {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam StereotypeN {
+  BackgroundColor white
+  BorderColor black
+}
+skinparam UseCaseStereoType {
+  FontColor black
+  FontName Verdana
+}
+!pragma ratio 1.3
+skinparam groupInheritance 2
+skinparam DefaultFontName sans-serif
+skinparam DefaultFontSize 16
+skinparam ArrowFontSize 13
+skinparam ArrowMessageAlignment direction
+skinparam Padding 3
+skinparam Nodesep 65
+skinparam Ranksep 40
+
+hide empty description
+
+state GN1 as "GainNode (ScriptEvent)"
+state PN1 as "PanNode (ScriptEvent)"
+state GN2 as "GainNode (Text)"
+state PN2 as "PanNode (Text)"
+state GN3 as "GainNode (AudioRecording)"
+state PN3 as "PanNode (AudioRecording)"
+state MB as "Master Bus" <<join>>
+state M1 as "+" <<join>>
+state AS as "AudioRecording Source"
+
+[*] - -> ProgrammeAudio
+ProgrammeAudio - -> GN1
+GN1 - -> PN1
+
+AS - -> GN3
+GN3 - -> PN3
+
+PN1 - -> M1
+PN3 - -> M1
+
+note left of M1
+  Implicit mixer
+end note
+
+M1 - -> PN2
+PN2 - -> GN2
+
+GN2 - -> MB
+MB - -> [*]
+
+note left of MB
+  Master bus
+end note
+
+@enduml
+
+PlantUML version 1.2022.7(Mon Aug 22 18:01:30 BST 2022)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: UTF-8
+Language: en
+Country: GB
+--></g></svg>
