@@ -1068,7 +1068,11 @@ daptm:eventType: string
               </p>
             </li>
             <li><a>Mixing Instructions</a> MAY be applied as specified in their
-              <a href="#mixing-instruction-ttml">TTML representation</a>.</li>
+              <a href="#mixing-instruction-ttml">TTML representation</a>;</li>
+            <li>The computed value of <code>xml:lang</code> MUST be identical
+              to the computed value of <code>xml:lang</code> of the parent element
+              and any child <code>&lt;source&gt;</code> elements
+              and any referenced embedded <code>&lt;data&gt;</code> elements.</li>
           </ul>
         </section>
         <section id="synthesized-audio">
