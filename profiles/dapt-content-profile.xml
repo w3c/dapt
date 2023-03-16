@@ -91,5 +91,6 @@
     <extension value="optional">#onScreen</extension>
     <!-- prohibited extension support -->
     <extension value="prohibited">#profile-root</extension>
+    <extension value="prohibited">#source-data</extension>
 </extensions>
 </profile>

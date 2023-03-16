@@ -2196,6 +2196,15 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             </td>
           </tr>
           <tr>
+            <td><a href="#extension-source-data"><code>#source-data</code></a></td>
+            <td><span class="prohibited label">prohibited</span></td>
+            <td>
+              This is the profile expression of the prohibition of <code>&lt;source&gt;</code>
+              child elements of <code>&lt;data&gt;</code> elements defined in
+              <a href="#audio-recording"></a>.
+            </td>
+          </tr>
+          <tr>
             <td><a href="#extension-textLanguageSource"><code>#textLanguageSource</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
@@ -2362,7 +2371,21 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <p>A <a>transformation processor</a> that writes documents supports
           the <code>#serialization</code> extension if
           it can write a serialized document as defined above.</p>
+      </section>
 
+      <section id="extension-source-data">
+        <h3>#source-data</h3>
+        <p>A <a>transformation processor</a> supports the <code>#source-data</code> extension if
+          it recognizes and is capable of transforming values of the
+          <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source">&lt;source&gt;</a> element
+          child of a
+          <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data">&lt;data&gt;</a> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#source-data</code> extension if
+          it implements presentation semantic support of the
+          <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source">&lt;source&gt;</a> element
+          child of a
+          <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data">&lt;data&gt;</a> element.</p>
       </section>
 
       <section id="extension-textLanguageSource">
