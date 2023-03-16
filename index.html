@@ -2200,7 +2200,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <td><span class="prohibited label">prohibited</span></td>
             <td>
               This is the profile expression of the prohibition of <code>&lt;source&gt;</code>
-              child elements of <code>&lt;data&gt;</code> elements defined in
+              child elements of <code>&lt;data&gt;</code> elements as specified in
               <a href="#audio-recording"></a>.
             </td>
           </tr>
@@ -2216,6 +2216,17 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <td><span class="required label">required</span></td>
             <td>
               This is the profile expression of <a href="#script-event"></a>.
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#extension-xmlLang-audio-nonMatching"><code>#xmlLang-audio-nonMatching</code></a></td>
+            <td><span class="required label">prohibited</span></td>
+            <td>
+              This is the profile expression of the prohibition of <code>xml:lang</code>
+              on <code>&lt;audio&gt;</code> having a different computed value to the
+              parent element and descendant or referenced <code>&lt;source&gt;</code>
+              and <code>&lt;data&gt;</code> elements, as specified in
+              <a href="#audio-recording"></a>.
             </td>
           </tr>
           <tr>
@@ -2410,6 +2421,21 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <code>xml:id</code> attribute on the <code>&lt;div&gt;</code> element.</p>
         </section>
 
+      <section id="extension-xmlLang-audio-nonMatching">
+        <h3>#xmlLang-audio-nonMatching</h3>
+        <p>A <a>transformation processor</a> supports the <code>#xmlLang-audio-nonMatching</code> extension if
+          it recognizes and is capable of transforming values of the
+          <code>xml:lang</code> attribute on the <code>&lt;audio&gt;</code> element
+          that differ from the computed value of the same attribute of its
+          parent element or any of its descendant or referenced
+          <code>&lt;source&gt;</code> or <code>&lt;data&gt;</code> elements,
+          known as <dfn>non-matching</dfn> values.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#xmlLang-audio-nonMatching</code> extension if
+          it implements presentation semantic support of such <a>non-matching</a>
+          <code>xml:lang</code> attribute values.</p>
+      </section>
+  
       <section id="extension-xmlLang-root">
         <h3>#xmlLang-root</h3>
         <p>A <a>transformation processor</a> supports the <code>#xmlLang-root</code> extension if

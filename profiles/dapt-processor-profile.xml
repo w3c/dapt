@@ -91,5 +91,6 @@
     <!-- optional (voluntary) extension support -->
     <extension value="optional">#profile-root</extension>
     <extension value="optional">#source-data</extension>
+    <extension value="optional">#xmlLang-audio-nonMatching</extension>
 </extensions>
 </profile>

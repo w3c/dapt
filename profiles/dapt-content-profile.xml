@@ -92,5 +92,6 @@
     <!-- prohibited extension support -->
     <extension value="prohibited">#profile-root</extension>
     <extension value="prohibited">#source-data</extension>
+    <extension value="prohibited">#xmlLang-audio-nonMatching</extension>
 </extensions>
 </profile>
