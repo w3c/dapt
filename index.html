@@ -296,6 +296,14 @@ table.coldividers td + td { border-left:1px solid gray; }
           data-include="examples/intro-script-with-speak.xml"
           data-include-format="text">
         </pre>
+        <p>It is also possible to embed the audio directly,
+          so that a single document contains all of the script and
+          recorded audio together:
+        </p>
+        <pre class="example"
+          data-include="examples/intro-script-with-embedded-audio.xml"
+          data-include-format="text">
+        </pre>
 
         <h4>Dubbing Examples</h4>
         <p>From the basic structure of Example 1, a transcription of the audio programme produces an original language dubbing <a>script</a>,
@@ -967,9 +975,11 @@ daptm:eventType: string
             It has the following properties:
           </p>
           <ul>
-            <li>A mandatory <dfn>Source</dfn> that is either 1) a link to an external audio resource
+            <li>One or more alternative <dfn data-lt="Source|Sources">Sources</dfn>, each of which is either
+              1) a link to an external audio resource
               or 2) an embedded audio recording;</li>
-            <li>A mandatory <dfn>Type</dfn> that specifies the type ([[MIME-TYPES]]) of the audio resource,
+            <li>For each <a>Source</a>, one mandatory <dfn>Type</dfn>
+              that specifies the type ([[MIME-TYPES]]) of the audio resource,
               for example <code>audio/basic</code>;</li>
             <li>An optional <a>Begin</a> property and an optional <a>End</a> and an optional <a>Duration</a> property
               that together define the <a>Audio Recording</a>'s time interval in the programme timeline,
@@ -992,6 +1002,17 @@ daptm:eventType: string
             <li>Zero or more <a>Mixing Instructions</a> that modify the playback characteristics
                of the <a>Audio Recording</a>.</li>
           </ul>
+          <p>When a list of <a>Sources</a> is provided,
+            a <a>presentation processor</a> MUST play no more than one of the
+            <a>Sources</a> for each <a>Audio Recording</a>.</p>
+          <p>Implementations can use the <a>Type</a>, and if present,
+            any relevant additional formatting information,
+            to decide which <a>Source</a> to play.
+            For example, given two <a>Sources</a>, one being a WAV file, and the other an MP3,
+            an implementation that can play only one of those formats,
+            or is configured to have a preference for one or the other,
+            would select the playable or preferred version. 
+          </p>
           <p>An <a>Audio Recording</a> is represented in TTML by an 
             <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-audio"><code>&lt;audio&gt;</code></a>
             element child of a <code>&lt;p&gt;</code> or <code>&lt;span&gt;</code> element
@@ -1002,14 +1023,16 @@ daptm:eventType: string
               represent respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> properties;</li>
             <li>The <code>clipBegin</code> and <code>clipEnd</code> attributes
               represent respectively the <a>In Time</a> and <a>Out Time</a> properties;</li>
-            <li>If the <a>Source</a> is a link to an external audio resource,
+            <li>For each <a>Source</a>, if it is a link to an external audio resource,
               the <a>Source</a> and <a>Type</a> properties are represented by exactly one of:
               <ol>
                 <li>A <code>src</code> attribute that is not a fragment identifier,
-                  and a <code>type</code> attribute respectively;</li>
+                  and a <code>type</code> attribute respectively;
+                  <p>This mechanism MUST NOT be used if there is more than one <a>Source</a>.</p>
+                </li>
                 <li>A <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
                   <code>src</code> attribute that is not a fragment identifier
-                  and a <code>type</code> attribute respectively;</li>
+                  and a <code>type</code> attribute respectively;
               </ol>
               <p>A <code>src</code> attribute that is not a fragment identifier is a URL that references
                 an external audio resource, i.e. one that is not embedded within the <a>DAPT Script</a>.
@@ -1029,7 +1052,9 @@ daptm:eventType: string
                   where the referenced element is a
                   child of <code>/tt/head/resources</code>
                   and specifies a <code>type</code> attribute
-                  and the <code>xml:id</code> attribute used to reference it;</li>
+                  and the <code>xml:id</code> attribute used to reference it;
+                  <p>This mechanism MUST NOT be used if there is more than one <a>Source</a>.</p>
+                </li>
                 <li>A <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
                   <code>src</code> attribute that is a fragment identifier
                   that references either
@@ -1050,6 +1075,10 @@ daptm:eventType: string
                 either <code>#PCDATA</code> or
                 <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-chunk"><code>&lt;chunk&gt;</code></a> child elements
                 and MUST NOT contain any <code>&lt;source&gt;</code> child elements.</p>
+              <p><code>&lt;data&gt;</code> and <code>&lt;source&gt;</code> elements MAY contain a <code>format</code> attribute
+                whose value implementations MAY use in addition to the <code>type</code> attribute value
+                when selecting an appropriate audio resource.
+              </p>
               <p class="ednote">Do we need all 3 mechanisms here?
                 Do we need any?
                 There may be a use case for embedding audio data,
@@ -2197,12 +2226,22 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <div class="note">Layout of the paragraphs may rely on the default TTML region (i.e. if no <code>layout</code> is used in the <code>head</code> element) or may be explicit by the use of the <code>region</code> attribute, if a <code>region</code> element is defined in a <code>layout</code> element in the <code>head</code> element.</div>
       </section>  <!-- Layout -->
 
-    <section id="processor-profile">
-      <h4>DAPT Processor Profile</h4>
-      <p>The DAPT Processor Profile expresses the processing requirements of <a>DAPT Scripts</a>
-        using the profile mechanism of [[ttml2]].
-        A processor that supports the required features and extensions of the DAPT Processor Profile
-        can, minimally, process all permitted features within a DAPT <a>Document Instance</a>.</p>
+      <section id="content-profile">
+        <h4>DAPT Content Profile</h4>
+        <p>The DAPT Content Profile expresses the conformance requirements of <a>DAPT Scripts</a>
+          using the profile mechanism of [[ttml2]].
+          It can be used by a validating processor that supports the DAPT Processor Profile
+          to validate a DAPT <a>Document Instance</a>.</p>
+        <p>There is no requirement to include the DAPT Content Profile within a <a>Document Instance</a>.</p>
+        <pre class="xml" data-include="profiles/dapt-content-profile.xml" data-include-format="text"></pre>
+      </section>
+
+      <section id="processor-profile">
+        <h4>DAPT Processor Profile</h4>
+        <p>The DAPT Processor Profile expresses the processing requirements of <a>DAPT Scripts</a>
+          using the profile mechanism of [[ttml2]].
+          A processor that supports the required features and extensions of the DAPT Processor Profile
+          can, minimally, process all permitted features within a DAPT <a>Document Instance</a>.</p>
         <p>There is no requirement to include the DAPT Processor Profile within a <a>Document Instance</a>.</p>
         <pre class="xml" data-include="profiles/dapt-processor-profile.xml" data-include-format="text"></pre>
     </section>
