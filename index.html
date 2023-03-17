@@ -47,7 +47,7 @@ table.coldividers td + td { border-left:1px solid gray; }
   table.syntax td { border: 0px solid black }
   table.syntax div { background-color: #ffffc8 }
   table#table-features-and-extensions tbody tr td:nth-child(2) { text-align: center;}
-  div.exampleInner { background-color: #d5dee3;
+  div.exampleInner { background-color: #fafafa;
                    border-top-width: 4px;
                    border-top-style: double;
                    border-top-color: #d3d3d3;
@@ -379,7 +379,7 @@ table.coldividers td + td { border-left:1px solid gray; }
               are referred to as <dfn>Dubbing Scripts</dfn>.</p>
             <p>To represent this property, the <dfn><code>daptm:scriptType</code></dfn> attribute MUST be present on the <code>tt</code> element:</p>
             <div class="exampleInner">
-              <pre class="nohighlight">
+              <pre class="language-abnf">
   daptm:scriptType
     : "ORIGINAL_TRANSCRIPT"
     | "TRANSLATED_TRANSCRIPT"
@@ -670,7 +670,7 @@ table.coldividers td + td { border-left:1px solid gray; }
               <p class="note">Empty <a>Text</a> objects can be used to indicate explicitly that there is no text content.
                 It is recommended that empty <a>Text</a> objects are not used as a workflow placeholder to indicate incomplete work.</p></li>
             <li>an optional <a>Script Event Description</a> property, as a human-readable description of the <a>Script Event</a>.</li>
-            <li>an optional <a>On Screen</a> property, which is an annotation indicating the position of the <a>character</a> during the <a>Script Event</a></li>
+            <li>an optional <a>On Screen</a> property, which is an annotation indicating the position of the subject (e.g. a <a>character</a>) of the <a>Script Event</a></li>
           </ul>
         </p>
 
@@ -790,7 +790,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             Abbreviating O for Original is probably a bad idea because the letter O and the number 0 can easily be confused.
             I also considered P for Primary but that caused potential confusion between Primary Language and Primary Text Language Source.</p>
           <div class="exampleInner">
-            <pre class="nohighlight">
+            <pre class="language-abnf">
 daptm:langSrc
   : "original"
   | "translation"
@@ -800,21 +800,29 @@ daptm:langSrc
 
         <section>
           <h4>On Screen</h4>
-          <p>The <dfn>On Screen</dfn> property is an annotation indicating the position in the scene of the <a>character</a> during the <a>Script Event</a>:
-            <ul>
-              <li>ON - the <a>character</a> is on screen for the entire duration</li>
-              <li>OFF - the <a>character</a> is off screen for the entire duration</li>
-              <li>ON_OFF - the <a>character</a> starts on screen, but goes off screen at some point</li>
-              <li>OFF_ON - the <a>character</a> starts off screen, but goes on screen at some point</li>
-            </ul>
-          </p>
-          <p>The <a>On Screen</a> property is represented as a <dfn><code>daptm:onScreen</code></dfn> attribute with the following constraints:
+          <p>The <dfn>On Screen</dfn> property is an annotation indicating
+            the position in the scene relating to the subject of a <a>Script Event</a>,
+            for example of the <a>character</a> speaking:</p>
+          <ul>
+            <li>ON - the <a>Script Event</a>'s subject is on screen for the entire duration</li>
+            <li>OFF - the <a>Script Event</a>'s subject is off screen for the entire duration</li>
+            <li>ON_OFF - the <a>Script Event</a>'s subject starts on screen, but goes off screen at some point</li>
+            <li>OFF_ON - the <a>Script Event</a>'s subject starts off screen, but goes on screen at some point</li>
+          </ul>
+          <p>If omitted, the default value is "ON".</p>
+          <aside class="note">In <a>Audio Description Scripts</a> the subject of each
+            <a>Script Event</a>, i.e. what is being described,
+            is expected to be in the video image, therefore the default of "ON" allows
+            the property to be omitted in those cases without distortion of meaning.</aside>
+          <p>The <a>On Screen</a> property is represented in TTML as a
+            <dfn><code>daptm:onScreen</code></dfn> attribute on the
+            <code>&lt;div&gt;</code> element, with the following constraints:
             <ul>
               <li>The following attribute corresponding to the <a>On Screen</a> <a>Script Event</a> property may be present:
                 <div class="exampleInner">
-                  <pre class="nohighlight">
+                  <pre class="language-abnf">
 daptm:onScreen
-  : "ON" 
+  : "ON"     # default
   | "OFF"
   | "ON_OFF"
   | "OFF_ON"
@@ -838,8 +846,8 @@ daptm:onScreen
           <p>The <code>&lt;ttm:desc&gt;</code> element MAY have a <code>daptm:descType</code> attribute specified to indicate the type of description. The <code>daptm:descType</code> attribute is defined below. Its possible values are as indicated in the registry at YYY.</p>
           <p class="ednote">Registry to be defined.</p>
           <div class="exampleInner">
-            <pre class="nohighlight">
-daptm:descType = string
+            <pre class="language-abnf">
+daptm:descType : string
             </pre>
           </div>
           <pre class="example"
@@ -861,8 +869,8 @@ daptm:descType = string
           <p class="ednote">Registry to be defined.</p>
           <p>The <a>Script Event Type</a> is represented in TTML by the following attribute:
             <div class="exampleInner">
-              <pre class="nohighlight">
-daptm:eventType = string
+              <pre class="language-abnf">
+daptm:eventType: string
               </pre>
             </div>
             <pre class="example">
