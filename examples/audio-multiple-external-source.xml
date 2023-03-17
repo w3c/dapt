@@ -1,0 +1,4 @@
+<audio>
+  <source src="https://example.com/audio.wav" type="audio/wave"/>
+  <source src="https://example.com/audio.aac" type="audio/aac"/>
+</audio>

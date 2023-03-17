@@ -425,23 +425,21 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <p>When the <code>daptm:scriptType</code> value is <code>TRANSLATED_TRANSCRIPT</code>,
                 the document represents a translation of the <a>Original Language Transcript</a> in a common language.</p>
                 <p>It can be adapted to produce a <a>Pre-Recording Dub Script</a>,
-                and/or used as the basis for producing translation subtitles,
-                or used as the basis for a further translation into the <a>Target Recording Language</a>.</p> 
+                  and/or used as the basis for producing translation subtitles,
                   or used as the basis for a further translation into the <a>Target Recording Language</a>.</p> 
-                or used as the basis for a further translation into the <a>Target Recording Language</a>.</p> 
-              <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain <a>Text</a> objects whose
-                <a>Text Language Source</a> is set to <a>Translation</a>.
-                They MAY also contain <a>Original</a> language <a>Text</a>.</p>
-              <aside class="note">A <a>Script Event</a> in this type of <a>transcript</a> has a 
-                <a>Translation</a> <a>Text</a> object in the <a>Target Recording Language</a>
-                and can also contain an <a>Original</a> <a>Text</a> object, for context,
-                to assist in the adaption process.
-                It can also have <a>Translation</a> <a>Text</a> objects in other languages,
-                for example used as intermediate (&quot;pivot&quot;) translations,
-                or as additional context to assist in the adaptation process.</aside>
-              <aside class="example">If a programme contains dialogue in English and Hebrew,
-                the French <a>Translated Transcript</a> will contain at least the translation in French of all <a>Script Events</a>.
-                It may still retain text content in Hebrew and English to assist further processing.</aside>
+                <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain <a>Text</a> objects whose
+                  <a>Text Language Source</a> is set to <a>Translation</a>.
+                  They MAY also contain <a>Original</a> language <a>Text</a>.</p>
+                <aside class="note">A <a>Script Event</a> in this type of <a>transcript</a> has a 
+                  <a>Translation</a> <a>Text</a> object in the <a>Target Recording Language</a>
+                  and can also contain an <a>Original</a> <a>Text</a> object, for context,
+                  to assist in the adaption process.
+                  It can also have <a>Translation</a> <a>Text</a> objects in other languages,
+                  for example used as intermediate (&quot;pivot&quot;) translations,
+                  or as additional context to assist in the adaptation process.</aside>
+                <aside class="example">If a programme contains dialogue in English and Hebrew,
+                  the French <a>Translated Transcript</a> will contain at least the translation in French of all <a>Script Events</a>.
+                  It may still retain text content in Hebrew and English to assist further processing.</aside>
               </li>
               <li>
                 <dfn>Pre-recording Dub Script</dfn>:
@@ -461,12 +459,12 @@ table.coldividers td + td { border-left:1px solid gray; }
               <li>
                 <dfn>As-recorded Dub Script</dfn>:
                 <p>When the <code>daptm:scriptType</code> value is <code>DUBBING_AS_RECORDED</code>,
-                the document represents a transcription of the output of the dubbing workflow.</p>
+                  the document represents a transcription of the output of the dubbing workflow.</p>
                 <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Translation</a> <a>Text</a> objects
-                in the <a>Target Recording Language</a>
-                and MAY also contain <a>Original</a> <a>Text</a> objects from the <a>Original Language Transcript</a>
-                or <a>Translation</a> <a>Text</a> objects in other languages for for context and quality verification.</p>
-                <aside class="note">Even though the output of the dubbing workflow is in the same language as those
+                  in the <a>Target Recording Language</a>
+                  and MAY also contain <a>Original</a> <a>Text</a> objects from the <a>Original Language Transcript</a>
+                  or <a>Translation</a> <a>Text</a> objects in other languages for for context and quality verification.</p>
+                  <aside class="note">Even though the output of the dubbing workflow is in the same language as those
                   <a>Text</a> objects with the matching language,
                   the <a>Text Language Source</a> of those Text objects remains <a>Translation</a>
                   since they differ from the original language of the dialogue.</aside>
@@ -591,7 +589,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           </ul>
         </p>
         <p class="issue" data-number="66"></p>
-        <p>A <a>Character</a> is represented in TTML with the following structure and constraints:
+        <p>A <a>Character</a> is represented in TTML with the following structure and constraints:</p>
           <ul>
             <li>If the <a>Character</a> has a <a>Talent Name</a> property:
               <ul>
@@ -1023,17 +1021,27 @@ daptm:eventType: string
             <li>The <code>begin</code>, <code>end</code> and <code>dur</code> attributes
               represent respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> properties;</li>
             <li>The <code>clipBegin</code> and <code>clipEnd</code> attributes
-              represent respectively the <a>In Time</a> and <a>Out Time</a> properties;</li>
+              represent respectively the <a>In Time</a> and <a>Out Time</a> properties,
+              as illustrated by <a href="#example-5"></a>;</li>
             <li>For each <a>Source</a>, if it is a link to an external audio resource,
               the <a>Source</a> and <a>Type</a> properties are represented by exactly one of:
               <ol>
                 <li>A <code>src</code> attribute that is not a fragment identifier,
                   and a <code>type</code> attribute respectively;
                   <p>This mechanism cannot be used if there is more than one <a>Source</a>.</p>
+                  <pre class="example"
+                    data-include="examples/audio-single-external-source.xml"
+                    data-include-format="text">
+                  </pre>
                 </li>
                 <li>A <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
                   <code>src</code> attribute that is not a fragment identifier
                   and a <code>type</code> attribute respectively;
+                  <pre class="example"
+                    data-include="examples/audio-multiple-external-source.xml"
+                    data-include-format="text">
+                  </pre>
+                </li>
               </ol>
               <p>A <code>src</code> attribute that is not a fragment identifier is a URL that references
                 an external audio resource, i.e. one that is not embedded within the <a>DAPT Script</a>.
@@ -1055,6 +1063,10 @@ daptm:eventType: string
                   and specifies a <code>type</code> attribute
                   and the <code>xml:id</code> attribute used to reference it;
                   <p>This mechanism cannot be used if there is more than one <a>Source</a>.</p>
+                  <pre class="example"
+                    data-include="examples/audio-single-embedded-referenced-source.xml"
+                    data-include-format="text">
+                  </pre>
                 </li>
                 <li>A <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
                   <code>src</code> attribute that is a fragment identifier
@@ -1064,10 +1076,20 @@ daptm:eventType: string
                   where the referenced element is a
                   child of <code>/tt/head/resources</code>
                   and specifies a <code>type</code> attribute
-                  and the <code>xml:id</code> attribute used to reference it;</li>
+                  and the <code>xml:id</code> attribute used to reference it;
+                  <pre class="example"
+                    data-include="examples/audio-multiple-embedded-referenced-source.xml"
+                    data-include-format="text">
+                  </pre>
+                </li>
                 <li>A <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a 
                   <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element child
-                  that specifies a <code>type</code> attribute and contains the audio recording data.</li>
+                  that specifies a <code>type</code> attribute and contains the audio recording data.
+                  <pre class="example"
+                    data-include="examples/audio-single-embedded-inline-source.xml"
+                    data-include-format="text">
+                  </pre>
+                </li>
               </ol>
               <p>In each of the cases above the <code>type</code> attribute represents the <a>Type</a> property.</p>
               <p>A <code>src</code> attribute that is a fragment identifier is a pointer
@@ -1131,6 +1153,8 @@ daptm:eventType: string
           </p>
           <p>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-pitch"><code>tta:pitch</code></a>
             style attribute represents the <a>Pitch</a> property.</p>
+          <p>The TTML representation of a <a>Synthesized Audio</a>
+            is illustrated by <a href="#example-6"></a>.</p>
           <p class="note">A <code>tta:pitch</code> attribute on an element
             whose computed value of <code>tta:rate</code> is <code>none</code>
             has no effect.
@@ -1188,6 +1212,8 @@ daptm:eventType: string
             and uses the <a href="https://www.w3.org/TR/ttml2/#animation-value-animation-value-list"><code>animation-value-list</code></a>
             syntax to express the list of values to be applied during the animation period.</li>
         </ul>
+        <p>The TTML representation of animated <a>Mixing Instructions</a> is
+          illustrated by <a href="#example-4"></a>.</p>
       </section>
     </section> <!-- #data-model -->
 
