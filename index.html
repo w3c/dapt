@@ -1371,35 +1371,62 @@ daptm:eventType : string
       <section id="related-video-object-section">
         <h3>Related Video Object</h3>
         <p>
-          A <a>Document Instance</a> MAY be associated with a <dfn>Related Video Object</dfn>, i.e. a <dfn data-cite="ttml2#terms-related-media-object">Related Media Object</dfn> that consists of a sequence of image frames, each a rectangular array of pixels.
+          A <a>Document Instance</a> MAY be associated with a <dfn>Related Video Object</dfn>,
+          i.e. a <dfn data-cite="ttml2#terms-related-media-object">Related Media Object</dfn>
+          that consists of a sequence of image frames, each a rectangular array of pixels.
         </p>
-        <p class="note">
-          While this specification contains specific provisions when a <a>Document Instance</a> is associated with a <a>Related Video Object</a>, it does not prevent the use of a <a>Document Instance</a> with other kinds of <a>Related Media Object</a>, e.g. an audio only object.
+        <p>
+          A <a>Document Instance</a> MAY be associated with a <dfn>Related Audio Object</dfn>,
+          i.e. a <a>Related Media Object</a>
+          that consists of one or more co-synchronous sequences of audio samples,
+          each relating to an audio channel.
         </p>
+        <p>The <a>Related Video Object</a> and the <a>Related Media Object</a> MAY each
+          be sub-parts of a single <a>Related Media Object</a>.</p>
       </section>
       <section id="synchronization-section">
         <h3>Synchronization</h3>
-        <p class="ednote">Check if we need this, and if we do, rework for audio - e.g. relate to audio sample, or other quantisation units?</p>
         <p>
-          Each <dfn data-cite="ttml2#terms-intermediate-synchronic-document">Intermediate Synchronic Document</dfn> of the <a>Document Instance</a> is intended to be rendered starting on a specific frame and removed by a specific frame of the Related Video Object.
+          If the <a>Document Instance</a> is intended to be used as the basis for producing
+          an [[ttml-imsc1.2]] document,
+          the synchronization provisions of [[ttml-imsc1.2]] apply
+          in relation to the <a>Related Video Object</a>.
         </p>
+        <p>Timed content within the <a>Document Instance</a> is intended to be rendered
+          starting on a specific audio sample of the <a>Related Audio Object</a> and
+          ending by a specific audio sample of the <a>Related Audio Object</a>.</p>
         <p class="note">In the context of this specification rendering could be visual presentation of text,
           for example to show an actor what words to speak, or could be audible playback of an audio resource,
           or could be physical or haptic, such as a Braille display.
         </p>
-        <p>
-          When mapping a media time expression M to a frame F of a <a>Related Video Object</a> (or <a>Related Media Object</a>),
-          e.g. for the purpose of mixing audio sources signalled by a <a>Document Instance</a> into the <a>main programme audio</a> of the <a>Related Video Object</a>,
-          the <a>presentation processor</a> MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.
+        <p>When mapping a media time expression M to a sample S of a <a>Related Audio Object</a>,
+          e.g. for the purpose of mixing audio sources signalled by a <a>Document Instance</a>
+          into the <a>main programme audio</a> of the <a>Related Audio Object</a>,
+          the <a>content processor</a> MUST map M to the sample S with the presentation time that is the closest to, but not less, than M.
         </p>
-        <p>
-          EXAMPLE 1
-          A media time expression of 00:00:05.1 corresponds to frame ceiling( 5.1 × ( 1000 / 1001 × 30) ) = 153 of a <a>Related Video Object</a> with a frame rate of 1000 / 1001 × 30 ≈ 29.97.
+        <p>In constrained applications, such as real-time audio mixing and playback,
+          if exact sample time mapping cannot be achieved in the rendered output,
+          timed changes in presentation SHOULD occur within 10ms of the specified mapped sample time.
+        </p>
+        <p>When mapping a media time expression M to a sample F of a <a>Related Video Object</a>,
+          e.g. for the purpose of accurately timing lip synchronization,
+          the <a>content processor</a> MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.</p>
+        <p class="example">
+          A media time expression of 00:00:05.1 corresponds to frame 
+          <code>ceiling( 5.1 × ( 1000 / 1001 × 30) ) = 153</code>
+          of a <a>Related Video Object</a> with a frame rate of <code>1000 / 1001 × 30 ≈ 29.97</code>.
         </p>
         <p class="note">
-          In typical scenario, the same video program (the <a>Related Video Object</a>) will be used for <a>Document Instance</a> authoring, delivery and user playback.
-          The mapping from media time expression to <a>Related Video Object</a> above allows the author to precisely associate <a>audio description</a> content with video frames, e.g. around existing audio dialogue and sound effects.
-          In circumstances where the video program is downsampled during delivery, the application can specify that, at playback, the relative video object be considered the delivered video program upsampled to is original rate, thereby allowing audio content to be presented at the same temporal locations it was authored.
+          In typical scenarios, the same audio-video program (the <a>Related Media Object</a>) is used for
+          <a>Document Instance</a> authoring, delivery and user playback.
+          The mapping from media time expression to <a>Related Audio Object</a> above
+          allows the author to precisely associate <a>audio description</a> content with audio tracks,
+          e.g. around existing audio dialogue and sound effects.
+          The mapping from media time expressions to both the <a>Related Audio Object</a>
+          and the <a>Related Video Object</a> allows the author to precisely associate
+          <a>dubbing script</a> content with audio tracks and video frames,
+          e.g. to synchronise speech with lip movements,
+          or to replace sections of dialogue with their dubbed translations.
         </p>
       </section>
       <section id="profile-signaling-section">
