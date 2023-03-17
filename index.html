@@ -991,6 +991,21 @@ daptm:eventType: string
                 then playback MUST be truncated to end when the
                 <a>Audio Recording</a>'s time interval ends.
               </p>
+              <aside class="note">
+                "Extended descriptions" are longer than the allocated time within the related media.
+                A <a>presentation processor</a> that supports extended descriptions
+                can allow the effective play rate of the audio resource
+                to differ from the play rate of the related media object
+                so that the resulting interval has a long enough duration
+                to accommodate the audio resource's temporal subsection.
+                For example it could pause or slow down playback of
+                the <a>related media object</a> while
+                continuing playback of the audio resource,
+                or it could speed up playback of the audio resource, so that
+                the <a>Audio Recording</a>'s time interval does not end
+                before the audio resource's temporal subsection.
+                This behaviour is currently unspecified and therefore implementation-defined.
+              </aside>
               <p>If the temporal subsection of the audio resource is shorter than
                 the duration of the <a>Audio Recording</a>'s time interval,
                 then the audio resource plays once.
