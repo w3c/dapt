@@ -368,33 +368,34 @@ table.coldividers td + td { border-left:1px solid gray; }
           Class diagram showing main entities in the DAPT data model.
       </figcaption>
     </figure>
-      <section id="dapt-script">
-        <h3>DAPT Script</h3>
-          <p>A <dfn>DAPT Script</dfn> is a <a>transcript</a> or <a>script</a>
-            that corresponds to a document processed within an authoring workflow or processed by a client,
-            and conforms to the constraints of this specification.
-            It has properties and objects defined in the following sections:
-            <a>Script Type</a>, <a>Primary Language</a>, <a>Script Events</a> and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
-          <p>A <a>DAPT Script</a> is represented as a TTML document with the structure and constraints also defined in the following sections.</p>
-          <section>
-            <h4>Script Type</h4>
-            <p>The <dfn>Script Type</dfn> property is a mandatory property of a <a>DAPT Script</a>
-              which describes the type of documents used in Dubbing and Audio Description workflows,
-              among the following:
-              <a>Original Language Transcript</a>,
-              <a>Translated Transcript</a>,
-              <a>Pre-recording Dub Script</a>,
-              <a>As-recorded Dub Script</a>, and
-              <a>Audio Description Script</a>.</p>
-            <p>
-              <a>Original Language Transcript</a>,
-              <a>Translated Transcript</a>,
-              <a>Pre-recording Dub Script</a>, and
-              <a>As-recorded Dub Script</a>
-              are referred to as <dfn>Dubbing Scripts</dfn>.</p>
-            <p>To represent this property, the <dfn><code>daptm:scriptType</code></dfn> attribute MUST be present on the <code>&lt;tt&gt;</code> element:</p>
-            <div class="exampleInner">
-              <pre class="language-abnf">
+    <p class="issue" data-number="116"></p>
+    <section id="dapt-script">
+      <h3>DAPT Script</h3>
+        <p>A <dfn>DAPT Script</dfn> is a <a>transcript</a> or <a>script</a>
+          that corresponds to a document processed within an authoring workflow or processed by a client,
+          and conforms to the constraints of this specification.
+          It has properties and objects defined in the following sections:
+          <a>Script Type</a>, <a>Primary Language</a>, <a>Script Events</a> and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
+        <p>A <a>DAPT Script</a> is represented as a TTML document with the structure and constraints also defined in the following sections.</p>
+        <section>
+          <h4>Script Type</h4>
+          <p>The <dfn>Script Type</dfn> property is a mandatory property of a <a>DAPT Script</a>
+            which describes the type of documents used in Dubbing and Audio Description workflows,
+            among the following:
+            <a>Original Language Transcript</a>,
+            <a>Translated Transcript</a>,
+            <a>Pre-recording Dub Script</a>,
+            <a>As-recorded Dub Script</a>, and
+            <a>Audio Description Script</a>.</p>
+          <p>
+            <a>Original Language Transcript</a>,
+            <a>Translated Transcript</a>,
+            <a>Pre-recording Dub Script</a>, and
+            <a>As-recorded Dub Script</a>
+            are referred to as <dfn>Dubbing Scripts</dfn>.</p>
+          <p>To represent this property, the <dfn><code>daptm:scriptType</code></dfn> attribute MUST be present on the <code>&lt;tt&gt;</code> element:</p>
+          <div class="exampleInner">
+            <pre class="language-abnf">
   daptm:scriptType
     : "ORIGINAL_TRANSCRIPT"
     | "TRANSLATED_TRANSCRIPT"
