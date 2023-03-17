@@ -58,8 +58,8 @@ together {
     }
 
     Class AudioRecording as "**Audio Recording**" [[#dfn-audio-recording]] {
-        Source [[[#dfn-source]]]
-        Type [[[#dfn-type]]]
+        Source [ ] [[[#dfn-source]]]
+        Type [ ] [[[#dfn-type]]]
         {field} {abstract} (optional) Begin [[[#dfn-begin]]]
         {field} {abstract} (optional) End [[[#dfn-end]]]
         {field} {abstract} (optional) Duration [[[#dfn-duration]]]
