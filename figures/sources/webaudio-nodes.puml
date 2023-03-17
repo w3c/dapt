@@ -22,13 +22,12 @@ state GN3 as "GainNode (AudioRecording)"
 state PN3 as "PanNode (AudioRecording)"
 state MB as "Master Bus" <<join>>
 state M1 as "+" <<join>>
-state AS as "AudioRecording Source"
+state AS as "AudioRecording Source" <<start>>
 
-[*] --> ProgrammeAudio
-ProgrammeAudio --> GN1
+[*] --> GN1 : Programme Audio
 GN1 --> PN1
 
-AS --> GN3
+AS --> GN3 : AudioRecording\lSource Audio
 GN3 --> PN3
 
 PN1 --> M1
@@ -42,7 +41,7 @@ M1 --> PN2
 PN2 --> GN2
 
 GN2 --> MB
-MB --> [*]
+MB --> [*] : Output Audio
 
 note left of MB
   Master bus
