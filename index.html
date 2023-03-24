@@ -32,10 +32,16 @@
       localBiblio: {
           "BBC-WHP051": {
             title: "BBC R&D White Paper WHP 051. Audio Description: what it is and how it works",
-            publisher: " N.E. Tanton, T. Ware and M. Armstrong",
+            publisher: "N.E. Tanton, T. Ware and M. Armstrong",
             status: "October 2002 (revised July 2004)",
             href: "http://www.bbc.co.uk/rd/publications/whitepaper051",
           },
+          "EBU-R37": {
+            title: "EBU Recommendation R37-2007. The relative timing of the sound and vision components of a television signal",
+            publisher: "EBU/UER",
+            status: "February 2007",
+            href: "https://tech.ebu.ch/publications/r037"
+          }
       },
     };
     </script>
@@ -473,7 +479,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <dfn>Audio Description Script</dfn>:
                 <p>When the <code>daptm:scriptType</code> value is <code>AUDIO_DESCRIPTION</code>,
                   the document represents a <a>transcript</a> of the important visual contents of the
-                  <a>Related Video Object</a> written to be suitable for use as a <a>script</a>
+                  video written to be suitable for use as a <a>script</a>
                   for generating an audio representation.
                   It contains text, times, and optional links to audio and mixing instructions
                   for the purpose of producing an audio description audio track.</p>
@@ -833,7 +839,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         <section id="text-language-source">
           <h4>Text Language Source</h4>
           <p>The <dfn>Text Language Source</dfn> property is an annotation indicating whether a <a>Text</a> object is
-            in the same language as the relevant part of the <a>Related Media Object</a>'s
+            in the same language as the relevant part of the audio's
             language (original), or if it is a representation in another language (translation):</p>
           <ul>
             <li><dfn>Original</dfn> - the <a>Text</a> is any of:
@@ -1368,21 +1374,14 @@ daptm:eventType : string
           The namespaces defined by this proposal document are mutable [[namespaceState]]; all undefined names in these namespaces are reserved for future standardization by the W3C.
         </p>
       </section>
-      <section id="related-video-object-section">
-        <h3>Related Video Object</h3>
-        <p>
-          A <a>Document Instance</a> MAY be associated with a <dfn>Related Video Object</dfn>,
-          i.e. a <dfn data-cite="ttml2#terms-related-media-object">Related Media Object</dfn>
-          that consists of a sequence of image frames, each a rectangular array of pixels.
-        </p>
-        <p>
-          A <a>Document Instance</a> MAY be associated with a <dfn>Related Audio Object</dfn>,
-          i.e. a <a>Related Media Object</a>
-          that consists of one or more co-synchronous sequences of audio samples,
-          each relating to an audio channel.
-        </p>
-        <p>The <a>Related Video Object</a> and the <a>Related Media Object</a> MAY each
-          be sub-parts of a single <a>Related Media Object</a>.</p>
+      <section id="related-media-object-section">
+        <h3>Related Media Object (TTML)</h3>
+        <p>Within DAPT, the common language terms audio and video are used in the context of a programme;
+          The audio and video are each a part of what is defined in [[ttml2]] as the
+          <dfn data-cite="ttml2#terms-related-media-object">Related Media Object</dfn> that
+          provides the media timeline and is the source of the <a>main programme audio</a>,
+          and any visual timing references needed when adjusting timings relevant to the video image,
+          such as for lip synchronization.</p>
       </section>
       <section id="synchronization-section">
         <h3>Synchronization</h3>
@@ -1390,44 +1389,30 @@ daptm:eventType : string
           If the <a>Document Instance</a> is intended to be used as the basis for producing
           an [[ttml-imsc1.2]] document,
           the synchronization provisions of [[ttml-imsc1.2]] apply
-          in relation to the <a>Related Video Object</a>.
+          in relation to the video.
         </p>
         <p>Timed content within the <a>Document Instance</a> is intended to be rendered
-          starting on a specific audio sample of the <a>Related Audio Object</a> and
-          ending by a specific audio sample of the <a>Related Audio Object</a>.</p>
+          starting and ending on specific samples of the audio.</p>
         <p class="note">In the context of this specification rendering could be visual presentation of text,
           for example to show an actor what words to speak, or could be audible playback of an audio resource,
           or could be physical or haptic, such as a Braille display.
         </p>
-        <p>When mapping a media time expression M to a sample S of a <a>Related Audio Object</a>,
-          e.g. for the purpose of mixing audio sources signalled by a <a>Document Instance</a>
-          into the <a>main programme audio</a> of the <a>Related Audio Object</a>,
-          the <a>content processor</a> MUST map M to the sample S with the presentation time that is the closest to, but not less, than M.
-        </p>
         <p>In constrained applications, such as real-time audio mixing and playback,
           if exact sample time mapping cannot be achieved in the rendered output,
-          timed changes in presentation SHOULD occur within 10ms of the specified mapped sample time.
+          the combined effects of authoring and playback inaccuracies in
+          timed changes in presentation SHOULD meet the synchronization requirements
+          of [[EBU-R37]], i.e. audio changes are not to precede image changes by
+          more than 40ms, and are not to follow them by more than 60s.</p>
+        <p>Likewise, authoring applications SHOULD allow authors to meet the
+          requirements of [[EBU-R37]] by defining times with an accuracy
+          such that changes to audio are less than 15ms after any associated change in
+          the video image, and less than 5ms before any associated change in the video image.  
         </p>
-        <p>When mapping a media time expression M to a sample F of a <a>Related Video Object</a>,
-          e.g. for the purpose of accurately timing lip synchronization,
-          the <a>content processor</a> MUST map M to the frame F with the presentation time that is the closest to, but not less, than M.</p>
-        <p class="example">
-          A media time expression of 00:00:05.1 corresponds to frame 
-          <code>ceiling( 5.1 × ( 1000 / 1001 × 30) ) = 153</code>
-          of a <a>Related Video Object</a> with a frame rate of <code>1000 / 1001 × 30 ≈ 29.97</code>.
-        </p>
-        <p class="note">
-          In typical scenarios, the same audio-video program (the <a>Related Media Object</a>) is used for
-          <a>Document Instance</a> authoring, delivery and user playback.
-          The mapping from media time expression to <a>Related Audio Object</a> above
-          allows the author to precisely associate <a>audio description</a> content with audio tracks,
-          e.g. around existing audio dialogue and sound effects.
-          The mapping from media time expressions to both the <a>Related Audio Object</a>
-          and the <a>Related Video Object</a> allows the author to precisely associate
-          <a>dubbing script</a> content with audio tracks and video frames,
-          e.g. to synchronise speech with lip movements,
-          or to replace sections of dialogue with their dubbed translations.
-        </p>
+        <p>Taken together, the above two constraints on overall presentation and
+          on <a>DAPT documents</a> intended for real-time playback mean that
+          <a>content processors</a> SHOULD complete audio presentation changes
+          no more than 35ms before the time specified in the <a>DAPT document</a>
+          and no more than 45ms after the time specified.</p>
       </section>
       <section id="profile-signaling-section">
         <h3>Profile Signaling</h3>
@@ -1626,7 +1611,16 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
               <li><code>t</code> for ticks.</li>
             </ul>
           </div>
-
+          <p>When mapping a media time expression M to a frame F of the video,
+            e.g. for the purpose of accurately timing lip synchronization,
+            the <a>content processor</a> SHOULD map M to the frame F with the presentation time
+            that is the closest to, but not less, than M.</p>
+          <p class="example">
+            A media time expression of 00:00:05.1 corresponds to frame 
+            <code>ceiling( 5.1 × ( 1000 / 1001 × 30) ) = 153</code>
+            of a video that has a frame rate of <code>1000 / 1001 × 30 ≈ 29.97</code>.
+          </p>
+  
         </section> <!-- time-expression-section -->
       </section> <!-- time-constraints-section -->
 
