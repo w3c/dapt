@@ -1376,7 +1376,7 @@ daptm:eventType : string
       </section>
       <section id="related-media-object-section">
         <h3>Related Media Object (TTML)</h3>
-        <p>Within DAPT, the common language terms audio and video are used in the context of a programme;
+        <p>Within DAPT, the common language terms audio and video are used in the context of a programme.
           The audio and video are each a part of what is defined in [[ttml2]] as the
           <dfn data-cite="ttml2#terms-related-media-object">Related Media Object</dfn> that
           provides the media timeline and is the source of the <a>main programme audio</a>,
@@ -1392,17 +1392,17 @@ daptm:eventType : string
           in relation to the video.
         </p>
         <p>Timed content within the <a>Document Instance</a> is intended to be rendered
-          starting and ending on specific samples of the audio.</p>
+          starting and ending on specific audio samples.</p>
         <p class="note">In the context of this specification rendering could be visual presentation of text,
           for example to show an actor what words to speak, or could be audible playback of an audio resource,
           or could be physical or haptic, such as a Braille display.
         </p>
         <p>In constrained applications, such as real-time audio mixing and playback,
-          if exact sample time mapping cannot be achieved in the rendered output,
+          if accurate synchronization to the audio sample cannot be achieved in the rendered output,
           the combined effects of authoring and playback inaccuracies in
           timed changes in presentation SHOULD meet the synchronization requirements
           of [[EBU-R37]], i.e. audio changes are not to precede image changes by
-          more than 40ms, and are not to follow them by more than 60s.</p>
+          more than 40ms, and are not to follow them by more than 60ms.</p>
         <p>Likewise, authoring applications SHOULD allow authors to meet the
           requirements of [[EBU-R37]] by defining times with an accuracy
           such that changes to audio are less than 15ms after any associated change in
