@@ -9,7 +9,8 @@
     <feature value="required">#structure</feature>
     <feature value="required">#timeBase-media</feature>
     <!-- optional (voluntary) feature support -->
-    <feature value="optional">#animation-version-2</feature>
+    <feature value="optional">#animate-fill</feature>
+    <feature value="optional">#animate-minimal</feature>
     <feature value="optional">#audio</feature>
     <feature value="optional">#audio-description</feature>
     <feature value="optional">#audio-speech</feature>
@@ -62,6 +63,7 @@
     <feature value="optional" extends="#unicodeBidi">#unicodeBidi-version-2</feature>
     <feature value="optional">#xlink</feature>
     <!-- prohibited feature support -->
+    <feature value="prohibited">#animation-out-of-line</feature>
     <feature value="prohibited">#clockMode</feature>
     <feature value="prohibited">#clockMode-gps</feature>
     <feature value="prohibited">#clockMode-local</feature>
@@ -91,5 +93,7 @@
     <extension value="optional">#onScreen</extension>
     <!-- prohibited extension support -->
     <extension value="prohibited">#profile-root</extension>
+    <extension value="prohibited">#source-data</extension>
+    <extension value="prohibited">#xmlLang-audio-nonMatching</extension>
 </extensions>
 </profile>

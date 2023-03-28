@@ -1,0 +1,7 @@
+<audio>
+  <source>
+    <data type="audio/wave">
+        [base64-encoded WAV audio resource]
+    </data>
+  </source>
+</audio>

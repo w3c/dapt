@@ -1,0 +1,20 @@
+<tt>
+  <head>
+    <resources>
+      <data type="audio/wave" xml:id="audio1wav">
+        [base64-encoded WAV audio resource]
+      </data>
+      <data type="audio/mpeg" xml:id="audio1mp3">
+        [base64-encoded MP3 audio resource]
+      </data>
+    </resources>
+  </head>
+  <body>
+    ..
+    <audio>
+      <source src="#audio1wav"/>
+      <source src="#audio1mp3"/>
+    </audio>
+    ..
+  </body>
+</tt>

@@ -1,0 +1,50 @@
+@startuml webaudio-nodes
+!theme plain
+!pragma ratio 1.3
+skinparam groupInheritance 2
+' skinparam linetype ortho
+skinparam DefaultFontName sans-serif
+skinparam DefaultFontSize 16
+skinparam ArrowFontSize 13
+skinparam ArrowMessageAlignment direction
+skinparam Padding 3
+skinparam Nodesep 65
+skinparam Ranksep 40
+' skinparam MinClassWidth 220
+
+hide empty description
+
+state GN1 as "GainNode (ScriptEvent)"
+state PN1 as "PanNode (ScriptEvent)"
+state GN2 as "GainNode (Text)"
+state PN2 as "PanNode (Text)"
+state GN3 as "GainNode (AudioRecording)"
+state PN3 as "PanNode (AudioRecording)"
+state MB as "Master Bus" <<join>>
+state M1 as "+" <<join>>
+state AS as "AudioRecording Source" <<start>>
+
+[*] --> GN1 : Programme Audio
+GN1 --> PN1
+
+AS --> GN3 : AudioRecording\lSource Audio
+GN3 --> PN3
+
+PN1 --> M1
+PN3 --> M1
+
+note left of M1
+  Implicit mixer
+end note
+
+M1 --> PN2
+PN2 --> GN2
+
+GN2 --> MB
+MB --> [*] : Output Audio
+
+note left of MB
+  Master bus
+end note
+
+@enduml

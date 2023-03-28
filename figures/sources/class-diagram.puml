@@ -1,14 +1,16 @@
-@startuml
+@startuml class-diagram
 !theme plain
 !pragma ratio 1.3
+skinparam groupInheritance 2
 skinparam linetype ortho
 skinparam DefaultFontName sans-serif
 skinparam DefaultFontSize 16
-skinparam ArrowFontSize 14
+skinparam ArrowFontSize 13
 skinparam ArrowMessageAlignment direction
 skinparam Padding 4
-skinparam Nodesep 2
-skinparam Ranksep 0
+skinparam Nodesep 15
+skinparam Ranksep 20
+skinparam MinClassWidth 220
 
 together {
     Class DAPTScript as "**DAPT Script**" [[#dapt-script]] {
@@ -18,9 +20,9 @@ together {
 
     Class ScriptEvent as "**Script Event**" [[#script-event]] {
         Script Event Identifier [[[#dfn-script-event-identifier]]]
-        {field} (optional) Begin [[[#dfn-begin]]]
-        {field} (optional) End [[[#dfn-end]]]
-        {field} (optional) Duration [[[#dfn-duration]]]
+        {field} {abstract} (optional) Begin [[[#dfn-begin]]]
+        {field} {abstract} (optional) End [[[#dfn-end]]]
+        {field} {abstract} (optional) Duration [[[#dfn-duration]]]
         {field} (optional) Script Event Type [[[#dfn-script-event-type]]]
         {field} (optional) Script Event Description [[[#dfn-script-event-description]]]
         {field} (optional) On Screen [[[#on-screen]]]
@@ -46,19 +48,63 @@ Class Style as "**Style**" {
     Style Attributes
 }
 
-DAPTScript *-down- "0..*" ScriptEvent : contains
-DAPTScript *-right- "0..*" Character : contains
-DAPTScript *-right- "0..*" Style : contains
-Character "0..1" <.down. "0..*" Style [[#dfn-character-style]] : Character Style
-ScriptEvent "0..*" .right.> "0..*" Style [[#dfn-character-style]] : Character Style
-Text "0..*" .right.> "0..*" Style [[#dfn-character-style]] : Character Style
-Text "0..*" .right.> "0..*" Style : Other Style
-ScriptEvent *-down- "0..*" Text : contains
-ScriptEvent "0..*" ..> "0..*" Character
+together {
+    abstract Class Audio as "**Audio**" [[#dfn-audio]] {
+    }
+
+    Class SynthesizedAudio as "**Synthesized Audio**" [[#dfn-synthesized-audio]] {
+        Rate [[[#dfn-rate]]]
+        {field} (optional) Pitch [[[#dfn-pitch]]]
+    }
+
+    Class AudioRecording as "**Audio Recording**" [[#dfn-audio-recording]] {
+        Source [ ] [[[#dfn-source]]]
+        Type [ ] [[[#dfn-type]]]
+        {field} {abstract} (optional) Begin [[[#dfn-begin]]]
+        {field} {abstract} (optional) End [[[#dfn-end]]]
+        {field} {abstract} (optional) Duration [[[#dfn-duration]]]
+        {field} (optional) In Time [[[#dfn-in-time]]]
+        {field} (optional) Out Time [[[#dfn-out-time]]]
+    }
+
+}
+
+class MixingInstruction as "**Mixing Instruction**" [[#dfn-mixing-instruction]] {
+    {field} (optional) Gain [[[#dfn-gain]]]
+    {field} (optional) Pan [[[#dfn-pan]]]
+    {field} {abstract} (optional) Begin [[[#dfn-begin]]]
+    {field} {abstract} (optional) End [[[#dfn-end]]]
+    {field} {abstract} (optional) Duration [[[#dfn-duration]]]
+    {field} (optional) Fill [[[#dfn-fill]]]
+}
+
+' MixingInstruction -[hidden]r-AudioRecording
+
+
+DAPTScript *-down- "0..* " ScriptEvent : contains >
+DAPTScript *-right- "0..*" Character : contains\r >
+DAPTScript *-right- "0..*  " Style : contains >
+Character "0..1  " <.down. "0..*" Style [[#dfn-character-style]] : Character\rStyle
+ScriptEvent "0..*" .right.> "0..*" Style [[#dfn-character-style]] : Character\rStyle
+ScriptEvent *-left- "0..*" MixingInstruction : contains >
+Text "0..*" .right.> "0..*" Style [[#dfn-character-style]] : Character\nStyle
+Text "0..*" .right.> "0..*" Style : Other\nStyle
+Text *-down- "0..* " Audio : contains >
+Text *-left- "0..* " MixingInstruction : contains >
+ScriptEvent *-down- "0..*" Text : contains >
+ScriptEvent "0..*" .left.> "0..*" Character
+AudioRecording *-left- "0..* " MixingInstruction : contains >
+Audio <|-- SynthesizedAudio : is <
+Audio <|-- AudioRecording : is <
+
+SynthesizedAudio -[hidden]r- AudioRecording
 
 ' Hidden links to persuade the layout to look nicer
-DAPTScript -[hidden]r- Style
-' Text -[hidden]d- Style
+DAPTScript -[hidden]right- Style
+Character -[hidden]down- Style
+' MixingInstruction -[hidden]left- Text
+' Text -[hidden]down- Audio
+' AudioRecording -[hidden]right- SynthesizedAudio
 
 hide empty members
 hide circle

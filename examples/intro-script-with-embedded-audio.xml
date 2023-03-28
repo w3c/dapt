@@ -1,0 +1,13 @@
+...
+    <div begin="25s" end="28s">
+      <p daptm:langSrc="original">
+        <animate begin="0.0s" end="0.3s" tta:gain="1;0.39" fill="freeze"/>
+        <animate begin="2.7s" end="3s" tta:gain="0.39;1"/>
+        <span begin="0.3s" end="2.7s">
+          <audio><source><data type="audio/wave">
+            [base64-encoded audio data]
+          </data></source></audio>
+          The sails billow in the wind.</span>
+      </p>
+    </div>
+...

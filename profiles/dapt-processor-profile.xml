@@ -6,7 +6,8 @@
   type="processor">
   <features xml:base="http://www.w3.org/ns/ttml/feature/">
     <!-- required (mandatory) feature support -->
-    <feature value="required">#animation-version-2</feature>
+    <feature value="required">#animate-fill</feature>
+    <feature value="required">#animate-minimal</feature>
     <feature value="required">#audio</feature>
     <feature value="required">#audio-description</feature>
     <feature value="required">#audio-speech</feature>
@@ -57,6 +58,7 @@
     <feature value="required" extends="#unicodeBidi">#unicodeBidi-version-2</feature>
     <feature value="required">#xlink</feature>
     <!-- optional (voluntary) feature support -->
+    <feature value="optional">#animation-out-of-line</feature>
     <feature value="optional">#clockMode</feature>
     <feature value="optional">#clockMode-gps</feature>
     <feature value="optional">#clockMode-local</feature>
@@ -90,5 +92,7 @@
     <extension value="required">#xmlLang-root</extension>
     <!-- optional (voluntary) extension support -->
     <extension value="optional">#profile-root</extension>
+    <extension value="optional">#source-data</extension>
+    <extension value="optional">#xmlLang-audio-nonMatching</extension>
 </extensions>
 </profile>

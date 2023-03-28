@@ -1,0 +1,14 @@
+<tt>
+  <head>
+    <resources>
+      <data type="audio/wave" xml:id="audio1">
+        [base64-encoded WAV audio resource]
+      </data>
+    </resources>
+  </head>
+  <body>
+    ..
+    <audio src="#audio1"/>
+    ..
+  </body>
+</tt>
