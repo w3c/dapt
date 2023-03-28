@@ -724,7 +724,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 It is recommended that empty <a>Text</a> objects are not used as a workflow placeholder to indicate incomplete work.</p></li>
             <li>an optional <a>Script Event Description</a> property, as a human-readable description of the <a>Script Event</a>.</li>
             <li>an optional <a>On Screen</a> property, which is an annotation indicating the position of the subject (e.g. a <a>character</a>) of the <a>Script Event</a></li>
-            <li>Zero or more <a>Mixing Instruction</a> objects used to modify the programme audio during the <a>Script Event</a>.</li>
+            <li>Zero or more <a>Mixing Instruction</a> objects used to adjust playback of the programme audio during the <a>Script Event</a>.</li>
           </ul>
         </p>
 
@@ -968,7 +968,7 @@ daptm:eventType : string
           one of its sub-types, <a>Audio Recording</a> or <a>Synthesized Audio</a>.</p>
         <section id="audio-recording">
           <h4>Audio Recording</h4>
-          <p>An <dfn>Audio Recording</dfn> is an <a>Audio</a> that references an audio resource.
+          <p>An <dfn>Audio Recording</dfn> is an <a>Audio</a> object that references an audio resource.
             It has the following properties:
           </p>
           <ul>
@@ -992,7 +992,8 @@ daptm:eventType : string
                 <a>Audio Recording</a>'s time interval ends.
               </p>
               <aside class="note">
-                "Extended descriptions" are longer than the allocated time within the related media.
+                "Extended descriptions" (known in [[media-accessibility-reqs]] as "Extended video descriptions")
+                are longer than the allocated time within the related media.
                 A <a>presentation processor</a> that supports extended descriptions
                 can allow the effective play rate of the audio resource
                 to differ from the play rate of the related media object
@@ -1144,7 +1145,7 @@ daptm:eventType : string
         </section>
         <section id="synthesized-audio">
           <h4>Synthesized Audio</h4>
-          <p>A <dfn>Synthesized Audio</dfn> is an <a>Audio</a> that represents
+          <p>A <dfn>Synthesized Audio</dfn> is an <a>Audio</a> object that represents
             a machine generated audio rendering of the parent <a>Text</a> content.
             It has the following properties:
           </p>
@@ -1176,7 +1177,7 @@ daptm:eventType : string
       </section>
       <section id="mixing-instruction">
         <h3>Mixing Instruction</h3>
-        <p>A <dfn>Mixing Instruction</dfn> is a static or animated adjustment
+        <p>A <dfn>Mixing Instruction</dfn> object is a static or animated adjustment
           of the audio relating to the containing object.
           It has the following properties:</p>
         <ul>
