@@ -514,7 +514,14 @@ table.coldividers td + td { border-left:1px solid gray; }
           <h4>Primary Language</h4>
           <p>The <dfn>Primary Language</dfn> is a mandatory property of a <a>DAPT Script</a>
             which represents the default language for the <a>Text</a> content of <a>Script Events</a>.
-            It is represented in TTML with the following structure and constraints:
+            This language may be the <a>Original</a> language or a <a>Translation</a> language.
+            When it represents a <a>Translation</a> language, it may be the final language
+            for which a dubbing or audio description <a>script</a> is being prepared,
+            called the <dfn>Target Recording Language</dfn> or it may be an intermediate, or pivot, language
+             used in the workflow.
+          </p>
+
+            <p>The <a>Primary Language</a> is represented in TTML with the following structure and constraints:
             <ul>
               <li>the <code>xml:lang</code> attribute MUST be present on the <code>tt</code> element and its value MUST NOT be empty.</li>
             </ul>
@@ -783,11 +790,6 @@ table.coldividers td + td { border-left:1px solid gray; }
           <h4>Text</h4>
          <p>The <dfn>Text</dfn> object contains text content typically in a single language. This language may be the <a>Original</a> language or a <a>Translation</a> language.</p>
           <p>A <a>Text</a> object may be styled and associated with a <a>Character</a>.</p>
-          <p>
-            The language for which a dubbing or audio description <a>script</a> is being prepared is called the <dfn>Target Recording Language</dfn>.
-            <aside class="note">In some workflows a translation <a>script</a> is prepared in an intermediate, or pivot,
-              language prior to translation into the Target Recording Language.</aside>
-          </p>
           <p>Zero or more <a>Mixing Instruction</a> objects used to modify the programme audio during the <a>Text</a> MAY be present.
           </p>
           <p>A <a>Text</a> object is represented with a <code>p</code> element with the following constraints:</p>
