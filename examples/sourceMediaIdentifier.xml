@@ -6,7 +6,9 @@
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt"
     daptm:scriptType="ORIGINAL_TRANSCRIPT">
   <head>
-    <metadata ebuttm:sourceMediaIdentifier="https://example.org/programme.mov"/>
+    <metadata>
+      <ebuttm:sourceMediaIdentifier>https://example.org/programme.mov</ebuttm:sourceMediaIdentifier>
+    </metadata>
   </head>
   <body>
     ...
