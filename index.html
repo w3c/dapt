@@ -822,7 +822,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <p class="note">If a <code>&lt;p&gt;</code> element omits the <code>xml:lang</code> attribute then its computed language
                 is derived by inheritance from its parent element, and so forth up to the root <code>&lt;tt&gt;</code> element,
                 which is required to set the <a>Primary Language</a> via its <code>xml:lang</code> attribute.
-                Care should be taken if changing the <a>Primary Language</a> of a <a>Document Instance</a> in case
+                Care should be taken if changing the <a>Primary Language</a> of a <a>DAPT Script</a> in case
                 doing so affects descendant elements unexpectedly.
                 Authors can mitigate this risk by explicitly setting <code>xml:lang</code> on all <code>&lt;p&gt;</code> elements.</p>
                 <p class="note">Within a <code>&lt;div&gt;</code> representing a <a>Script Event</a>
@@ -857,8 +857,8 @@ table.coldividers td + td { border-left:1px solid gray; }
               <ol>
                 <li>the same language as the dialogue that it represents in the original programme audio;</li>
                 <li>a transcription of text visible in the original programme video, in the same language as that text;</li>
-                <li>representative of non-dialogue sound and is in the <a>Primary Language</a> of the <a>Document Instance</a>;</li>
-                <li>representative of the scene in the original programme video, and is in the <a>Primary Language</a> of the <a>Document Instance</a>.</li>
+                <li>representative of non-dialogue sound and is in the <a>Primary Language</a> of the <a>DAPT Script</a>;</li>
+                <li>representative of the scene in the original programme video, and is in the <a>Primary Language</a> of the <a>DAPT Script</a>.</li>
               </ol>
             </li>
             <li><dfn>Translation</dfn> - the <a>Text</a> is a representation of the Original language text in a different language.</li>
@@ -1253,7 +1253,7 @@ daptm:eventType : string
       <h2>Constraints</h2>
       <section id="Document Encoding">
         <h3>Document Encoding</h3>
-        <p>A <a>Document Instance</a> MUST be serialised as a well-formed XML 1.0 [[!xml]] document
+        <p>A <a>DAPT Document</a> MUST be serialised as a well-formed XML 1.0 [[!xml]] document
           encoded using the UTF-8 character encoding as specified in [[UNICODE]].</p>
     
           <p>The resulting [[!xml]] document MUST NOT contain any of the following physical structures:</p>
@@ -1279,20 +1279,20 @@ daptm:eventType : string
             </ul>
           </div>
 
-          <p class="note">A <a>Document Instance</a> can also be used as an in-memory model
+          <p class="note">A <a>DAPT Document</a> can also be used as an in-memory model
             for processing, in which case the serialisation requirements do not apply.</p>
       </section>
       <section id="foreign-elements-and-attributes">
         <h3>Foreign Elements and Attributes</h3>
         <p>
-          A <a>Document Instance</a> MAY contain elements and attributes that are neither specifically permitted nor forbidden by a profile.
+          A <a>DAPT Document</a> MAY contain elements and attributes that are neither specifically permitted nor forbidden by a profile.
         </p>
         <p class ="note">
-          <a>Document Instances</a> remain subject to the content conformance requirements specified at Section 3.1 of [[ttml2]].
-          In particular, a Document Instance can contain elements and attributes not in any TT namespace, i.e. in foreign namespaces, since such elements and attributes are pruned by the algorithm at Section 4 of [[ttml2]] prior to evaluating content conformance.
+          <a>DAPT Documents</a> remain subject to the content conformance requirements specified at Section 3.1 of [[ttml2]].
+          In particular, a <a>DAPT Document</a> can contain elements and attributes not in any TT namespace, i.e. in foreign namespaces, since such elements and attributes are pruned by the algorithm at Section 4 of [[ttml2]] prior to evaluating content conformance.
         </p>
         <p class ="note">
-          For validation purposes it is good practice to define and use a content specification for all foreign namespace elements and attributes used within a <a>Document Instance</a>.
+          For validation purposes it is good practice to define and use a content specification for all foreign namespace elements and attributes used within a <a>DAPT Document</a>.
         </p>
         <p>
           A <a>transformation processor</a> SHOULD preserve such elements or attributes whenever possible.
@@ -1379,7 +1379,7 @@ daptm:eventType : string
           </tbody>
         </table>
         <p>
-          The namespace prefix values defined above are for convenience and <a>Document Instances</a> MAY use any prefix value that conforms to [[xml-names]].
+          The namespace prefix values defined above are for convenience and <a>DAPT Documents</a> MAY use any prefix value that conforms to [[xml-names]].
         </p>
         <p>
           The namespaces defined by this proposal document are mutable [[namespaceState]]; all undefined names in these namespaces are reserved for future standardization by the W3C.
@@ -1394,7 +1394,7 @@ daptm:eventType : string
           and any visual timing references needed when adjusting timings relevant to the video image,
           such as for lip synchronization.</p>
           <div class="example note">
-          <p>A document instance can identify the programme acting
+          <p>A <a>DAPT document</a> can identify the programme acting
           as the <a>Related Media Object</a> using metadata. For example, it is possible
           to use the <code>ebuttm:sourceMediaIdentifier</code> attribute defined in [[EBU-TT-3390]].</p>
           <pre class="xml" data-include="examples/sourceMediaIdentifier.xml" data-include-format="text"></pre>
@@ -1404,12 +1404,12 @@ daptm:eventType : string
       <section id="synchronization-section">
         <h3>Synchronization</h3>
         <p>
-          If the <a>Document Instance</a> is intended to be used as the basis for producing
+          If the <a>DAPT Document</a> is intended to be used as the basis for producing
           an [[ttml-imsc1.2]] document,
           the synchronization provisions of [[ttml-imsc1.2]] apply
           in relation to the video.
         </p>
-        <p>Timed content within the <a>Document Instance</a> is intended to be rendered
+        <p>Timed content within the <a>DAPT Document</a> is intended to be rendered
           starting and ending on specific audio samples.</p>
         <p class="note">In the context of this specification rendering could be visual presentation of text,
           for example to show an actor what words to speak, or could be audible playback of an audio resource,
@@ -1434,10 +1434,10 @@ daptm:eventType : string
       </section>
       <section id="profile-signaling-section">
         <h3>Profile Signaling</h3>
-        This section defines how a <a>Document Instance</a> signals that it is a <em>DAPT</em> <a>Document Instance</a>
+        This section defines how a TTML <a>Document Instance</a> signals that it is a <a>DAPT Document</a>
         and how it signals any processing requirements that apply.
         See also <a href="#content-profile-conformance-section"></a>, which defines how to
-        establish that a DAPT <a>Document Instance</a> conforms to this specification.
+        establish that a <a>DAPT Document</a> conforms to this specification.
 
         <section id="profile-designator">
           <h4>Profile Designator</h4>
@@ -1668,8 +1668,8 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       directly to determine if it is capable of processing a <a>DAPT document</a>.
     </p>
     <section id="content-profile-conformance-section">
-      <h3>Conformance of <a>DAPT Scripts</a></h3>
-      <p>Conformant <a>DAPT Scripts</a> are [[ttml2]] <a>Document Instances</a> that
+      <h3>Conformance of <a>DAPT Documents</a></h3>
+      <p>Conformant <a>DAPT Documents</a> are [[ttml2]] <a>Document Instances</a> that
         conform to the normative provisions of this specification.
         Those provisions are expressed using the 
         <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[ttml2]] in the
@@ -1759,7 +1759,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
     </ul>
     <p class="note">
       A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[ttml2]],
-      and hence a <a>Document Instance</a> that conforms to a profile defined herein is also a conforming TTML2 Document Instance.
+      and hence a <a>Document Instance</a> that conforms to a profile defined herein is also a conforming TTML2 <a>Document Instance</a>.
     </p>
     <p>
       A <dfn data-cite="ttml2#terms-presentation-processor">Presentation processor</dfn> that conforms to the <a>processor profile</a> defined in this specification:
@@ -1845,10 +1845,10 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
     <section id="features-and-extensions-section">
       <h4>Disposition of Features and Extensions</h4>
       <p>The <a>Features</a> and <a>Extensions</a> listed in this section express the
-        minimal requirements for <a>Document Instances</a>,
+        minimal requirements for <a>DAPT Documents</a>,
         <a>Presentation Processors</a>,
         and <a>Transformation Processors</a>.
-        DAPT <a>Document Instances</a> MAY additionally conform to other profiles,
+        <a>DAPT Document</a> MAY additionally conform to other profiles,
         and include syntax not prohibited by the DAPT <a>content profile</a>.
         <a>Presentation Processors</a> and <a>Transformation Processors</a>
         MAY support additional syntax and semantics relating to other profiles.</p>
@@ -2336,7 +2336,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <p>The DAPT Content Profile expresses the conformance requirements of <a>DAPT Scripts</a>
           using the profile mechanism of [[ttml2]].
           It can be used by a validating processor that supports the DAPT Processor Profile
-          to validate a DAPT <a>Document Instance</a>.</p>
+          to validate a <a>DAPT Document</a>.</p>
         <p>There is no requirement to include the DAPT Content Profile within a <a>Document Instance</a>.</p>
         <pre class="xml" data-include="profiles/dapt-content-profile.xml" data-include-format="text"></pre>
       </section>
@@ -2346,7 +2346,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <p>The DAPT Processor Profile expresses the processing requirements of <a>DAPT Scripts</a>
           using the profile mechanism of [[ttml2]].
           A processor that supports the required features and extensions of the DAPT Processor Profile
-          can, minimally, process all permitted features within a DAPT <a>Document Instance</a>.</p>
+          can, minimally, process all permitted features within a <a>DAPT Document</a>.</p>
         <p>There is no requirement to include the DAPT Processor Profile within a <a>Document Instance</a>.</p>
         <pre class="xml" data-include="profiles/dapt-processor-profile.xml" data-include-format="text"></pre>
     </section>
