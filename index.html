@@ -781,8 +781,8 @@ table.coldividers td + td { border-left:1px solid gray; }
 
         <section id="text">
           <h4>Text</h4>
-          <p>The <dfn>Text</dfn> object contains text content in a single language, and may be styled and associated with a <a>Character</a>.
-            It indicates whether it is in the <a>Original</a> language or if it is a <a>Translation</a>, as well as its language.</p>
+         <p>The <dfn>Text</dfn> object contains text content typically in a single language. This language may be the <a>Original</a> language or a <a>Translation</a> language.</p>
+          <p>A <a>Text</a> object may be styled and associated with a <a>Character</a>.</p>
           <p>
             The language for which a dubbing or audio description <a>script</a> is being prepared is called the <dfn>Target Recording Language</dfn>.
             <aside class="note">In some workflows a translation <a>script</a> is prepared in an intermediate, or pivot,
@@ -831,6 +831,10 @@ table.coldividers td + td { border-left:1px solid gray; }
   &lt;p xml:lang=&quot;fr&quot; daptm:langSrc=&quot;translation&quot; &gt;Bah, il arrive.&lt;/p&gt;
 &lt;/div&gt;
                 </pre>
+                <p class="note">In some cases, when it is not desired to split a <a>Script Event</a> into
+                multiple <a>Script Events</a>, <a>Text</a> objects can also contain some words in a different language than
+                the <a>Original</a> language or <a>Translation</a> language. The <code>xml:lang</code> attribute may be set on
+                inner <code>&lt;span&gt;</code> elements.</p>
               </li>
               <li>It MAY contain zero or more <code>&lt;audio&gt;</code> elements representing each <a>Audio Recording</a> object.</li>
               <li>It MAY contain zero or more <code>&lt;animate&gt;</code> elements representing each <a>Mixing Instruction</a> object.</li>
