@@ -524,7 +524,7 @@ table.coldividers td + td { border-left:1px solid gray; }
              used in the workflow.
           </p>
 
-            <p>The <a>Primary Language</a> is represented in TTML with the following structure and constraints:
+            <p>The <a>Primary Language</a> is represented in a <a>DAPT Document</a> by the following structure and constraints:
             <ul>
               <li>the <code>xml:lang</code> attribute MUST be present on the <code>tt</code> element and its value MUST NOT be empty.</li>
             </ul>
@@ -610,7 +610,7 @@ table.coldividers td + td { border-left:1px solid gray; }
               for example during recording by an actor or when transforming the <a>script</a> into subtitles.</li>
           </ul>
         </p>
-        <p>A <a>Character</a> is represented in TTML with the following structure and constraints:</p>
+        <p>A <a>Character</a> is represented in a <a>DAPT Document</a> by the following structure and constraints:</p>
         <ul>
           <li>If the <a>Character</a> has a <a>Talent Name</a> property:
             <ul>
@@ -634,7 +634,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             </ul>
           </li>
 
-          <li>The <a>Character</a> is represented by a <code>&lt;ttm:agent&gt;</code> element present at the path
+          <li>The <a>Character</a> is represented in a <a>DAPT Document</a> by a <code>&lt;ttm:agent&gt;</code> element present at the path
             <code>/tt/head/metadata/ttm:agent</code>, with the following constraints:
             <ul>
               <li>The <code>type</code> attribute MUST be set to <code>character</code>.</li>
@@ -678,7 +678,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           </li>
         </ul>
 
-        <p>A <a>Character Style</a> is represented in TTML with the following structure and constraints:</p>
+        <p>A <a>Character Style</a> is represented in a <a>DAPT Document</a> by the following structure and constraints:</p>
         <ul>
           <li>Each <a>Character Style</a> is represented by one or more <code>&lt;style&gt;</code> elements
             at the path <code>/tt/head/styling/style</code>.</li>
@@ -747,7 +747,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           </ul>
         </p>
 
-        <p>A <a>Script Event</a> is represented in TTML with the following structure and constraints:
+        <p>A <a>Script Event</a> is represented in a <a>DAPT Document</a> by the following structure and constraints:
           <ul>There MUST be one <code>div</code> element, with the following constraints:
             <ul>
               <li>The <code>xml:id</code> attribute MUST be present containing the <a>Script Event Identifier</a>.</li>
@@ -795,7 +795,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           <p>A <a>Text</a> object may be styled and associated with a <a>Character</a>.</p>
           <p>Zero or more <a>Mixing Instruction</a> objects used to modify the programme audio during the <a>Text</a> MAY be present.
           </p>
-          <p>A <a>Text</a> object is represented with a <code>p</code> element with the following constraints:</p>
+          <p>A <a>Text</a> object is represented by a <code>p</code> element with the following constraints:</p>
             <ul>
               <li>The text content of the <code>&lt;p&gt;</code> is the <a>Text</a> of the <a>Script Event</a>.
                 <aside class="note">The text content of the paragraph can be structured using TTML elements such as
@@ -867,7 +867,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             can be different to the document's <a>Primary Language</a>.
             For example a <a>transcript</a> of a short piece of dialogue spoken in a different language to the majority of the dialogue would be annotated
             with both a different <code>xml:lang</code> value and as being <a>Original</a>.</aside>
-          <p>The <a>Text Language Source</a> property is represented as a <code>daptm:langSrc</code> attribute with the following constraints:</p>
+          <p>The <a>Text Language Source</a> property is represented by a <code>daptm:langSrc</code> attribute with the following constraints:</p>
           <p class="ednote">Should we use an abbreviated attribute name?</p>
           <p class="ednote">Initial design is to use an abbreviated name and <code>original|translation</code>,
             though I considered using an abbreviated value too, since this attribute will appear on every <code>&lt;p&gt;</code> element.
@@ -898,7 +898,7 @@ daptm:langSrc
             <a>Script Event</a>, i.e. what is being described,
             is expected to be in the video image, therefore the default of "ON" allows
             the property to be omitted in those cases without distortion of meaning.</aside>
-          <p>The <a>On Screen</a> property is represented in TTML as a
+          <p>The <a>On Screen</a> property is represented in a <a>DAPT Document</a> by a
             <dfn><code>daptm:onScreen</code></dfn> attribute on the
             <code>&lt;div&gt;</code> element, with the following constraints:
             <ul>
@@ -919,7 +919,7 @@ daptm:onScreen
         <section id="script-event-description">
           <h4>Script Event Description</h4>
           <p>The <dfn>Script Event Description</dfn> property is an annotation providing a human-readable description of a <a>Script Event</a>.</p>
-          <p>The <a>Script Event Description</a> property is represented in TTML as a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
+          <p>The <a>Script Event Description</a> property is represented in a <a>DAPT Document</a> by a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
           <p class="note">The <a>Script Event Description</a> does not need to be unique, i.e. it does not need to have a different value for each <a>Script Event</a>. 
             For example a particular value could be re-used to identify in a human-readable way one or more <a>Script Events</a> that are intended to be processed together,
             e.g. in a batch recording.</p>
@@ -951,7 +951,7 @@ daptm:descType : string
             and in the latter case, the type of on-screen text (title, credit, location, ...).
             The possible keywords are indicated in the registry at XXXX.</p>
           <p class="ednote">Registry to be defined.</p>
-          <p>The <a>Script Event Type</a> is represented in TTML by the following attribute:
+          <p>The <a>Script Event Type</a> is represented in a <a>DAPT Document</a> by the following attribute:
             <div class="exampleInner">
               <pre class="language-abnf">
 daptm:eventType : string
@@ -1043,7 +1043,7 @@ daptm:eventType : string
             or is configured to have a preference for one or the other,
             would select the playable or preferred version. 
           </p>
-          <p>An <a>Audio Recording</a> is represented in TTML by an 
+          <p>An <a>Audio Recording</a> is represented in a <a>DAPT Document</a> by an
             <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-audio"><code>&lt;audio&gt;</code></a>
             element child of a <code>&lt;p&gt;</code> or <code>&lt;span&gt;</code> element
             corresponding to the <a>Text</a> to which it applies.
@@ -1174,7 +1174,7 @@ daptm:eventType : string
             <li>An optional <dfn>Pitch</dfn> that allows adjustment of the pitch
               of the speech.</li>
           </ul>
-          <p>A <a>Synthesized Audio</a> is represented in TTML by
+          <p>A <a>Synthesized Audio</a> is represented in a <a>DAPT Document</a> by
             the application of a
             <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-speak"><code>tta:speak</code></a>
             style attribute on the element representing the <a>Text</a> object to be spoken,
@@ -1222,7 +1222,7 @@ daptm:eventType : string
         </ul>
         <p>If the <a>Mixing Instruction</a> is animated, that is,
           if the adjustment properties change during the
-          containing object's active time interval, then it is represented using
+          containing object's active time interval, then it is represented by
           one or more child <a href="https://www.w3.org/TR/ttml2/#animation-vocabulary-animate"><code>&lt;animate&gt;</code></a> elements.
           This representation is required if more than one <a>Gain</a> or <a>Pan</a> property is needed,
           or if any <a>timing properties</a> are needed.</p>
