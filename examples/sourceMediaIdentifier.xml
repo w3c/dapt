@@ -1,0 +1,14 @@
+<tt xmlns="http://www.w3.org/ns/ttml" 
+    xmlns:ttp="http://www.w3.org/ns/ttml#parameter"
+    xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
+    xmlns:ebuttm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
+    xml:lang="en" 
+    ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt"
+    daptm:scriptType="ORIGINAL_TRANSCRIPT">
+  <head>
+    <metadata ebuttm:sourceMediaIdentifier="https://example.org/programme.mov"/>
+  </head>
+  <body>
+    ...
+  </body>
+</tt>
