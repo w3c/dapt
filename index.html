@@ -166,7 +166,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         <p>DAPT is a TTML-based format for the exchange of <a>transcripts</a> and <a>scripts</a>
           (i.e. <a>DAPT Scripts</a>)
           among authoring, prompting and playback tools in the localization and <a>audio description</a> pipelines.
-          A <dfn>DAPT document</dfn> is a serializable form of a <a>DAPT Script</a> designed to carry pertinent information for dubbing or <a>audio description</a>
+          A <a>DAPT document</a> is a serializable form of a <a>DAPT Script</a> designed to carry pertinent information for dubbing or <a>audio description</a>
           such as type of <a>DAPT script</a>, dialogue, descriptions, timing, metadata, original language transcribed text, translated text, language information, and audio mixing instructions,
           and to be extensible to allow user-defined annotations or additional future features.</p>
         <p>This specification defines the data model for <a>DAPT scripts</a> and
@@ -390,7 +390,8 @@ table.coldividers td + td { border-left:1px solid gray; }
           and conforms to the constraints of this specification.
           It has properties and objects defined in the following sections:
           <a>Script Type</a>, <a>Primary Language</a>, <a>Script Events</a> and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
-        <p>A <a>DAPT Script</a> is represented as a TTML document with the structure and constraints also defined in the following sections.</p>
+        <p>A <dfn>DAPT Document</dfn> is a TTML <a>Document Instance</a> representing a <a>DAPT Script</a>.
+          A <a>DAPT Document</a> has the structure and constraints defined in the following sections.</p>
         <section>
           <h4>Script Type</h4>
           <p>The <dfn>Script Type</dfn> property is a mandatory property of a <a>DAPT Script</a>
