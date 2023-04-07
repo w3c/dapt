@@ -1554,6 +1554,12 @@ daptm:eventType : string
             the computed begin time of its parent element,
             or for the <code>&lt;body&gt;</code> element, to time zero.</p>
         </section> <!-- timecontainer-section -->
+        <section id="framerate-section">
+          <h4><code>ttp:frameRate</code></h4>
+          <p>If the document contains any time expression that uses the <code>f</code> metric,
+            or any time expression that contains a frames component,
+            the <code>ttp:frameRate</code> attribute MUST be present on the <code>&lt;tt&gt;</code> element.</p>
+        </section> <!-- framerate-section -->
         <section id="tickrate-section">
           <h4><code>ttp:tickRate</code></h4>
           <p>If the document contains any time expression that uses the <code>t</code> metric,
@@ -1579,6 +1585,13 @@ daptm:eventType : string
               <code>ss.sss</code> is seconds with a decimal fraction of seconds (any precision).
             </p>
           </div>
+          <p class="note">
+            Clock time expressions that use frame components,
+            which look similar to "time code",
+            are prohibited due to the semantic confusion that has been observed
+            elsewhere when they are used, particularly with non-integer frame rates,
+            "drop modes" and sub-frame rates.
+          </p>
           <div class="example note">
             <p>An <code>offset-time</code> has one of the forms:</p>
             <ul>
@@ -1595,7 +1608,8 @@ daptm:eventType : string
               <li><code>h</code> for hours,</li>
               <li><code>m</code> for minutes,</li>
               <li><code>s</code> for seconds,</li>
-              <li><code>ms</code> for milliseconds, and</li>
+              <li><code>ms</code> for milliseconds,</li>
+              <li><code>f</code> for frames, and</li>
               <li><code>t</code> for ticks.</li>
             </ul>
           </div>
@@ -1607,12 +1621,6 @@ daptm:eventType : string
             A media time expression of 00:00:05.1 corresponds to frame 
             <code>ceiling( 5.1 × ( 1000 / 1001 × 30) ) = 153</code>
             of a video that has a frame rate of <code>1000 / 1001 × 30 ≈ 29.97</code>.
-          </p>
-          <p class="note">
-            Time expressions that use frame components, including "time code",
-            are prohibited due to the semantic confusion that has been observed
-            elsewhere when they are used, particularly with non-integer frame rates,
-            "drop modes" and sub-frame rates.
           </p>
   
         </section> <!-- time-expression-section -->
@@ -1975,12 +1983,14 @@ daptm:eventType : string
           </tr>
           <tr>
             <td><code>#frameRate</code></td>
-            <td><span class="prohibited label">prohibited</span></td>
-            <td></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td>
+              See [[[#framerate-section]]].
+            </td>
           </tr>
           <tr>
             <td><code>#frameRateMultiplier</code></td>
-            <td><span class="prohibited label">prohibited</span></td>
+            <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
@@ -2161,8 +2171,8 @@ daptm:eventType : string
           </tr>
           <tr>
             <td><code>#time-offset-with-frames</code></td>
-            <td><span class="prohibited label">prohibited</span></td>
-            <td></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td>See [[[#framerate-section]]].</td>
           </tr>
           <tr>
             <td><code>#time-offset-with-ticks</code></td>

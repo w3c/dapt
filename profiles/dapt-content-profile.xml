@@ -25,6 +25,8 @@
     <feature value="optional">#direction</feature>
     <feature value="optional">#embedded-audio</feature>
     <feature value="optional">#embedded-data</feature>
+    <feature value="optional">#frameRate</feature>
+    <feature value="optional">#frameRateMultiplier</feature>
     <feature value="optional">#gain</feature>
     <feature value="optional">#metadata</feature>
     <feature value="optional">#metadata-item</feature>
@@ -50,8 +52,9 @@
     <feature value="optional">#styling-referential</feature>
     <feature value="optional">#tickRate</feature>
     <feature value="optional">#time-clock</feature>
-    <feature value="optional">#time-offset-with-ticks</feature>
     <feature value="optional">#time-offset</feature>
+    <feature value="optional">#time-offset-with-frames</feature>
+    <feature value="optional">#time-offset-with-ticks</feature>
     <feature value="optional">#timing</feature>
     <feature value="optional">#unicodeBidi</feature>
     <feature value="optional">#unicodeBidi-isolate</feature>
@@ -67,14 +70,11 @@
     <feature value="prohibited">#dropMode-dropNTSC</feature>
     <feature value="prohibited">#dropMode-dropPAL</feature>
     <feature value="prohibited">#dropMode-nonDrop</feature>
-    <feature value="prohibited">#frameRate</feature>
-    <feature value="prohibited">#frameRateMultiplier</feature>
     <feature value="prohibited">#markerMode</feature>
     <feature value="prohibited">#markerMode-continuous</feature>
     <feature value="prohibited">#markerMode-discontinuous</feature>
     <feature value="prohibited">#subFrameRate</feature>
     <feature value="prohibited">#time-clock-with-frames</feature>
-    <feature value="prohibited">#time-offset-with-frames</feature>
     <feature value="prohibited">#time-wall-clock</feature>
     <feature value="prohibited">#timeBase-clock</feature>
     <feature value="prohibited">#timeBase-smpte</feature>
