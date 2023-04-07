@@ -4,7 +4,8 @@
     xmlns:ebuttm="urn:ebu:tt:metadata"
     xml:lang="en" 
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
-    daptm:scriptType="ORIGINAL_TRANSCRIPT">
+    daptm:applicationType="dubbing"
+    daptm:scriptType="originalTranscript">
   <head>
     <metadata>
       <ebuttm:sourceMediaIdentifier>https://example.org/programme.mov</ebuttm:sourceMediaIdentifier>
