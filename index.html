@@ -836,9 +836,10 @@ table.coldividers td + td { border-left:1px solid gray; }
   &lt;p xml:lang=&quot;fr&quot; daptm:langSrc=&quot;translation&quot; &gt;Bah, il arrive.&lt;/p&gt;
 &lt;/div&gt;
                 </pre>
-                <p class="note">In some cases, when it is not desired to split a <a>Script Event</a> into
-                multiple <a>Script Events</a>, <a>Text</a> objects can also contain some words in a different language than
-                the <a>Original</a> language or <a>Translation</a> language. The <code>xml:lang</code> attribute may be set on
+                <p class="note">In some cases, a single section of original language dialogue can contain some words in other languages.
+                Rather than splitting a <a>Script Event</a> into multiple <a>Script Events</a> to deal with this,
+                <a>Text</a> objects in one language can also contain some words in a different language.
+                This is represented in TTML by setting the <code>xml:lang</code> attribute on
                 inner <code>&lt;span&gt;</code> elements.</p>
               </li>
               <li>It MAY contain zero or more <code>&lt;audio&gt;</code> elements representing each <a>Audio Recording</a> object.</li>
