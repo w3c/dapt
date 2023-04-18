@@ -139,7 +139,7 @@ table.coldividers td + td { border-left:1px solid gray; }
     <section id="sotd" class="updateable-rec">
     </section>
 
-    <section id="scope">
+    <section>
       <h2>Scope</h2>
       <p>This specification defines a text-based profile of the Timed Text Markup Language version 2.0 [[ttml2]]
         intended to support dubbing and <a>audio description</a> workflows worldwide,
@@ -147,9 +147,9 @@ table.coldividers td + td { border-left:1px solid gray; }
         features within [[ttml2]] and its profiles, for example those in [[ttml-imsc1.2]].</p>
     </section>
 
-    <section class="informative" id="introduction">
+    <section class="informative">
       <h2>Introduction</h2>
-      <section id="intro-overview">
+      <section>
         <h3>Transcripts and Scripts</h3>
         <p>A <dfn>transcript</dfn> is a text representation of <i>pre-existing</i> media in another form,
           for example the dialogue in a video;
@@ -170,7 +170,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           such as type of <a>DAPT script</a>, dialogue, descriptions, timing, metadata, original language transcribed text, translated text, language information, and audio mixing instructions,
           and to be extensible to allow user-defined annotations or additional future features.</p>
         <p>This specification defines the data model for <a>DAPT scripts</a> and
-          its representation as a [[ttml2]] document (see [[[#data-model]]])
+          its representation as a [[ttml2]] document (see [[[#dapt-data-model-and-corresponding-ttml-syntax]]])
           with some constraints and restrictions (see [[[#profile-constraints]]]).</p>
         <p>A <a>DAPT script</a> is expected to be used to make audio visual media accessible
           or localized for users who cannot understand it in its original form,
@@ -188,7 +188,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           for eventual mixing into the programme audio.
           That mixing can occur prior to distribution,
           or in the client directly.</p>
-        <section id="intro-dubbing">
+        <section>
           <h4>Dubbing <a>scripts</a></h4>
           <p>A <dfn>dubbing script</dfn> is a <a>transcript</a> or <a>script</a>
             (depending on workflow stage) used for
@@ -210,8 +210,8 @@ table.coldividers td + td { border-left:1px solid gray; }
             for example by permitting subtitle styling syntax to be carried in <a>DAPT documents</a>.
             Alternatively, styling can be applied to assist voice artists when recording scripted dialogue.
           </p>
-        </section> <!-- intro-dubbing -->
-        <section id="intro-audio-description">
+        </section>
+        <section>
           <h4>Audio Description <a>scripts</a></h4>
           <p>Creating audio description content is also a multi-stage process.
             An <dfn>audio description</dfn>,
@@ -244,10 +244,10 @@ table.coldividers td + td { border-left:1px solid gray; }
             for example on a Braille display,
             or using the user's configured screen reader.
           </p>
-        </section> <!-- intro-audio-description -->
-      </section> <!-- intro-overview -->
+        </section>
+      </section>
 
-      <section id="intro-example">
+      <section>
         <h3>Example documents</h3>
         <h4>Basic document structure</h4>
         <p>The top level structure of a document is as follows.
@@ -343,7 +343,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       </section>
     </section>
 
-    <section id="conventions">
+    <section>
       <h2>Documentation Conventions</h2>
       <p>
         This document uses the same conventions as [[ttml2]] for the specification of parameter attributes, styling attributes and metadata elements. In particular:
@@ -364,7 +364,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       </p>
     </section>
 
-  <section id="data-model">
+  <section>
     <h2>DAPT Data Model and corresponding TTML syntax</h2>
     <p>This section specifies the data model for DAPT and its corresponding TTML syntax.
       In the model, there are objects which can have properties and be associated with other objects.
@@ -381,7 +381,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       </figcaption>
     </figure>
     <p class="issue" data-number="116"></p>
-    <section id="dapt-script">
+    <section>
       <h3>DAPT Script</h3>
         <p>A <dfn>DAPT Script</dfn> is a <a>transcript</a> or <a>script</a>
           that corresponds to a document processed within an authoring workflow or processed by a client,
@@ -510,7 +510,7 @@ table.coldividers td + td { border-left:1px solid gray; }
 &lt;/tt&gt;
           </pre>
         </section>
-        <section id="primary-language">
+        <section>
           <h4>Primary Language</h4>
           <p>The <dfn>Primary Language</dfn> is a mandatory property of a <a>DAPT Script</a>
             which represents the default language for the <a>Text</a> content of <a>Script Events</a>.
@@ -584,7 +584,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           </section>
         </section>
       </section>
-      <section id="character">
+      <section>
         <h3>Character</h3>
 
         <p>In <a>Dubbing Scripts</a>, it is necessary to identify each character in the programme. This is done with a <dfn>Character</dfn> object which has the following properties: 
@@ -717,7 +717,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         <p class="issue" data-number="15"></p>
       </section>
 
-      <section id="script-event">
+      <section>
         <h3>Script Event</h3>
         <p>A <dfn>Script Event</dfn> object represents dialogue, on screen text or audio descriptions to be spoken and has the following properties:
           <ul>
@@ -782,7 +782,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         </p>
         </section>
 
-        <section id="text">
+        <section>
           <h4>Text</h4>
           <p>The <dfn>Text</dfn> object contains text content in a single language, and may be styled and associated with a <a>Character</a>.
             It indicates whether it is in the <a>Original</a> language or if it is a <a>Translation</a>, as well as its language.</p>
@@ -842,7 +842,7 @@ table.coldividers td + td { border-left:1px solid gray; }
 
         </section>
 
-        <section id="text-language-source">
+        <section>
           <h4>Text Language Source</h4>
           <p>The <dfn>Text Language Source</dfn> property is an annotation indicating whether a <a>Text</a> object is
             in the same language as the relevant part of the audio's
@@ -877,7 +877,7 @@ daptm:langSrc
           </div>
         </section>
 
-        <section id="on-screen">
+        <section>
           <h4>On Screen</h4>
           <p>The <dfn>On Screen</dfn> property is an annotation indicating
             the position in the scene relating to the subject of a <a>Script Event</a>,
@@ -911,7 +911,7 @@ daptm:onScreen
             </ul>
           </p>
         </section>
-        <section id="script-event-description">
+        <section>
           <h4>Script Event Description</h4>
           <p>The <dfn>Script Event Description</dfn> property is an annotation providing a human-readable description of a <a>Script Event</a>.</p>
           <p>The <a>Script Event Description</a> property is represented in TTML as a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
@@ -939,7 +939,7 @@ daptm:descType : string
             data-include-format="text">
           </pre>
         </section>
-        <section id="script-event-type">
+        <section>
           <h4>Script Event Type</h4>
           <p>The <dfn>Script Event Type</dfn> property provides one or more space-separated keywords representing the type of the <a>Script Event</a>,
             i.e. spoken text, or on-screen text,
@@ -964,7 +964,7 @@ daptm:eventType : string
             </pre>
           </p>
         </section>
-      <section id="audio">
+      <section>
         <h3>Audio</h3>
         <p>An <dfn>Audio</dfn> object is used to specify an audio rendering of a <a>Text</a>.
           The audio rendering can either be a recorded audio resource,
@@ -978,7 +978,7 @@ daptm:eventType : string
           at the specified time on the <a>related media object</a>'s timeline.</p>
         <p class="note">The <a>Audio</a> object is "abstract": it only can exist as
           one of its sub-types, <a>Audio Recording</a> or <a>Synthesized Audio</a>.</p>
-        <section id="audio-recording">
+        <section>
           <h4>Audio Recording</h4>
           <p>An <dfn>Audio Recording</dfn> is an <a>Audio</a> object that references an audio resource.
             It has the following properties:
@@ -1155,7 +1155,7 @@ daptm:eventType : string
               and any referenced embedded <code>&lt;data&gt;</code> elements.</li>
           </ul>
         </section>
-        <section id="synthesized-audio">
+        <section>
           <h4>Synthesized Audio</h4>
           <p>A <dfn>Synthesized Audio</dfn> is an <a>Audio</a> object that represents
             a machine generated audio rendering of the parent <a>Text</a> content.
@@ -1187,7 +1187,7 @@ daptm:eventType : string
             Such an element is not considered to have an associated <a>Synthesized Audio</a>.</p>
         </section>
       </section>
-      <section id="mixing-instruction">
+      <section>
         <h3>Mixing Instruction</h3>
         <p>A <dfn>Mixing Instruction</dfn> object is a static or animated adjustment
           of the audio relating to the containing object.
@@ -1242,11 +1242,11 @@ daptm:eventType : string
           illustrated by <a href="#example-4"></a>.</p>
         <p>See also <a href="#audio-mixing"></a>.</p>
       </section>
-    </section> <!-- #data-model -->
+    </section>
 
     <section id="profile-constraints">
       <h2>Constraints</h2>
-      <section id="Document Encoding">
+      <section>
         <h3>Document Encoding</h3>
         <p>A <a>Document Instance</a> MUST be serialised as a well-formed XML 1.0 [[!xml]] document
           encoded using the UTF-8 character encoding as specified in [[UNICODE]].</p>
@@ -1277,7 +1277,7 @@ daptm:eventType : string
           <p class="note">A <a>Document Instance</a> can also be used as an in-memory model
             for processing, in which case the serialisation requirements do not apply.</p>
       </section>
-      <section id="foreign-elements-and-attributes">
+      <section>
         <h3>Foreign Elements and Attributes</h3>
         <p>
           A <a>Document Instance</a> MAY contain elements and attributes that are neither specifically permitted nor forbidden by a profile.
@@ -1314,7 +1314,7 @@ daptm:eventType : string
         </section> <!-- Proprietary Metadata -->
   
       </section>
-      <section id="namespaces">
+      <section>
         <h3>Namespaces</h3>
         <p>
           The following namespaces (see [[xml-names]]) are used in this specification:
@@ -1380,7 +1380,7 @@ daptm:eventType : string
           The namespaces defined by this proposal document are mutable [[namespaceState]]; all undefined names in these namespaces are reserved for future standardization by the W3C.
         </p>
       </section>
-      <section id="related-media-object-section">
+      <section>
         <h3>Related Media Object (TTML)</h3>
         <p>Within DAPT, the common language terms audio and video are used in the context of a programme.
           The audio and video are each a part of what is defined in [[ttml2]] as the
@@ -1396,7 +1396,7 @@ daptm:eventType : string
           </div>
 
       </section>
-      <section id="synchronization-section">
+      <section>
         <h3>Synchronization</h3>
         <p>
           If the <a>Document Instance</a> is intended to be used as the basis for producing
@@ -1427,14 +1427,14 @@ daptm:eventType : string
           no more than 35ms before the time specified in the <a>DAPT document</a>
           and no more than 45ms after the time specified.</p>
       </section>
-      <section id="profile-signaling-section">
+      <section>
         <h3>Profile Signaling</h3>
         This section defines how a <a>Document Instance</a> signals that it is a <em>DAPT</em> <a>Document Instance</a>
         and how it signals any processing requirements that apply.
-        See also <a href="#content-profile-conformance-section"></a>, which defines how to
+        See also <a href="#conformance-of-dapt-scripts"></a>, which defines how to
         establish that a DAPT <a>Document Instance</a> conforms to this specification.
 
-        <section id="profile-designator">
+        <section>
           <h4>Profile Designator</h4>
           <p>This profile is associated with the following profile designators:</p>
           <table class="simple">
@@ -1448,18 +1448,18 @@ daptm:eventType : string
     
             <tbody>
               <tr>
-                <td><dfn data-dfn-type="dfn" id="dfn-dapt-1-0-content-profile">DAPT 1.0 Content Profile</dfn></td>
+                <td><dfn data-dfn-type="dfn">DAPT 1.0 Content Profile</dfn></td>
                 <td><code>http://www.w3.org/ns/dapt/profile/content</code></td>
               </tr>
               <tr>
-                <td><dfn data-dfn-type="dfn" id="dfn-dapt-1-0-processor-profile">DAPT 1.0 Processor Profile</dfn></td>
+                <td><dfn data-dfn-type="dfn">DAPT 1.0 Processor Profile</dfn></td>
                 <td><code>http://www.w3.org/ns/dapt/profile/processor</code></td>
               </tr>
             </tbody>
           </table>
         </section> <!-- profile-designator -->
 
-        <section id="content-profiles">
+        <section>
           <h4><code>ttp:contentProfiles</code></h4>
           <p>The <dfn data-cite="ttml2#profile-attribute-contentProfiles"><code>ttp:contentProfiles</code></dfn> attribute
             is used to declare the [[ttml2]] profiles to which the document conforms.</p>
@@ -1470,7 +1470,7 @@ daptm:eventType : string
             and MAY include profile designators in proprietary namespaces.</p>
         </section>
 
-        <section id="ttp-profile">
+        <section>
           <h4><code>ttp:profile</code></h4>
           <p>The <dfn data-cite="ttml2#parameter-attribute-profile"><code>ttp:profile</code></dfn> attribute
             is a mechanism within [[?TTML1]] for declaring the processing requirements for a <a>Document Instance</a>.
@@ -1479,7 +1479,7 @@ daptm:eventType : string
             on the <code>&lt;tt&gt;</code> element.</p>
         </section>
 
-        <section id="processor-profiles">
+        <section>
           <h4><code>ttp:processorProfiles</code></h4>
           <p>The <dfn data-cite="ttml2#profile-attribute-processorProfiles"><code>ttp:processorProfiles</code></dfn> attribute
             is used to declare the processing requirements for a <a>Document Instance</a>.</p>
@@ -1501,7 +1501,7 @@ daptm:eventType : string
             <a><code>ttp:processorProfiles</code></a> is not expected to be present.</p>
         </section>
 
-        <section id="ttml2-profile-attr-vocab">
+        <section>
           <h4>Other TTML2 Profile Vocabulary</h4>
           <p>[[ttml2]] specifies a vocabulary and semantics that can be used to define the set of features
             that a <a>document instance</a> can make use of, or that a processor needs to support,
@@ -1511,7 +1511,7 @@ daptm:eventType : string
           <p>The majority of this profile vocabulary is used to indicate how a processor can compute the set of features
             that it needs to support in order to process the <a>Document Instance</a> successfully.
             The vocabulary is itself defined in terms of TTML2 features.
-            Those profile-related features are listed within <a href="#profiles-section"></a> as being optional. 
+            Those profile-related features are listed within <a href="#profiles"></a> as being optional. 
             They MAY be implemented in processors
             and their associated vocabulary
             MAY be present in <a>Document Instances</a>.
@@ -1533,19 +1533,19 @@ daptm:eventType : string
         </section>
 
       </section>
-      <section id="time-constraints-section">
+      <section>
         <h3>Timing constraints</h3>
         <p>Within a DAPT Script, the following constraints apply in relation to time attributes and time expressions:</p>
-        <section id="timebase-section">
+        <section>
           <h4><code>ttp:timeBase</code></h4>
           <p>The only permitted <code>ttp:timeBase</code> value is <code>media</code>,
-            since <a href="#profiles-section"></a> prohibits all timeBase features
+            since <a href="#profiles"></a> prohibits all timeBase features
             other than <a href="https://www.w3.org/TR/ttml2/#feature-timeBase-media"><code>#timeBase-media</code></a>.</p>
           <p>This means that the beginning of the document timeline,
             i.e. time "zero",
              is the beginning of the <a>Related Media Object</a>.</p>
-        </section> <!-- timebase-section -->
-        <section id="timecontainer-section">
+        </section>
+        <section>
           <h4><code>timeContainer</code></h4>
           <p>The only permitted value of the <code>timeContainer</code> attribute is the default value, <code>par</code>.</p>
           <p>Documents SHOULD omit the <code>timeContainer</code> attribute on all elements.</p>
@@ -1553,19 +1553,19 @@ daptm:eventType : string
           <p class="note">This means that the <code>begin</code> attribute value for every timed element is relative to
             the computed begin time of its parent element,
             or for the <code>&lt;body&gt;</code> element, to time zero.</p>
-        </section> <!-- timecontainer-section -->
-        <section id="framerate-section">
+        </section>
+        <section>
           <h4><code>ttp:frameRate</code></h4>
           <p>If the document contains any time expression that uses the <code>f</code> metric,
             or any time expression that contains a frames component,
             the <code>ttp:frameRate</code> attribute MUST be present on the <code>&lt;tt&gt;</code> element.</p>
-        </section> <!-- framerate-section -->
-        <section id="tickrate-section">
+        </section>
+        <section>
           <h4><code>ttp:tickRate</code></h4>
           <p>If the document contains any time expression that uses the <code>t</code> metric,
             the <code>ttp:tickRate</code> attribute MUST be present on the <code>&lt;tt&gt;</code> element.</p>
         </section>
-        <section id="time-clock-with-frames-section" class="informative">
+        <section class="informative">
           <h4><code>#time-clock-with-frames</code></h4>
           <p>As specified in [[?ttml2]], a <code>#time-clock-with-frames</code> expression is translated to
             a media time <code>M</code> according to
@@ -1579,8 +1579,8 @@ daptm:eventType : string
 M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
   = 5025.6s</pre>
             </div>
-        </section> <!-- time-clock-with-frames-section -->
-        <section id="time-expression-section">
+        </section>
+        <section>
           <h4>Time expressions</h4>
           <p>All time expressions within a document SHOULD use the same syntax,
             either <code>clock-time</code> or <code>offset-time</code>
@@ -1634,7 +1634,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             of a video that has a frame rate of <code>1000 / 1001 × 30 ≈ 29.97</code>.
           </p>
   
-        </section> <!-- time-expression-section -->
+        </section>
       </section> <!-- time-constraints-section -->
 
       <section>
@@ -1645,7 +1645,8 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
 
     </section> <!-- Profile Constraints -->
 
-  <section id="conformance">
+  <section>
+    <h2>Conformance</h2>
     <p>[[ttml2]] specifies a formal language for expressing document and processor requirements,
       within the <a href="https://www.w3.org/TR/ttml2/#vocabulary-profiling">Profiling</a> sub-system.
       The normative requirements of this specification are defined using the conformance terminology
@@ -1654,24 +1655,24 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       vocabulary as defined in [[ttml2]] apply.</p>
     <p>Whilst there is no requirement for a DAPT processor to implement the
       TTML2 profile processing semantics in general,
-      implementers can use the TTML2 profiles defined in <a href="#profiles-section"></a>
+      implementers can use the TTML2 profiles defined in <a href="#profiles"></a>
       as a means of verifying that their implementations meet the normative requirements
       of DAPT, for example as a checklist.
     </p>
     <p>Conversely, a general purpose [[ttml2]] processor that does support the TTML2
-      profile processing semantics can use the TTML2 profiles defined in <a href="#profiles-section"></a>
+      profile processing semantics can use the TTML2 profiles defined in <a href="#profiles"></a>
       directly to determine if it is capable of processing a <a>DAPT document</a>.
     </p>
-    <section id="content-profile-conformance-section">
+    <section>
       <h3>Conformance of <a>DAPT Scripts</a></h3>
       <p>Conformant <a>DAPT Scripts</a> are [[ttml2]] <a>Document Instances</a> that
         conform to the normative provisions of this specification.
         Those provisions are expressed using the 
         <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[ttml2]] in the
         <dfn data-cite="ttml2#terms-content-profile">content profile</dfn> defined
-        in <a href="#profiles-section"></a>.</p>
-    </section> <!-- content-profile-conformance-section -->
-    <section id="processor-profile-conformance-section">
+        in <a href="#profiles"></a>.</p>
+    </section>
+    <section>
       <h3>Conformance of DAPT Processors</h3>
       <p>Conformant DAPT Processors are [[ttml2]]
         <dfn data-cite="ttml2#terms-content-processor">content processors</dfn> that
@@ -1679,15 +1680,15 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         Those provisions are expressed using the 
         <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[ttml2]] in the
         <dfn data-cite="ttml2#terms-processor-profile">processor profile</dfn> defined
-        in <a href="#profiles-section"></a>.</p>
-    </section> <!-- processor-profile-conformance-section -->
+        in <a href="#profiles"></a>.</p>
+    </section>
   </section> <!-- conformance -->
 
   <section id="index" class="appendix">
     <!-- All the terms will magically appear here -->
   </section>
 
-  <section id="audio-mixing" class="informative appendix">
+  <section class="informative appendix">
     <h2>Audio Mixing</h2>
 
     <p>Applying the <a>Mixing Instructions</a> can be implemented using [[webaudio]].
@@ -1727,13 +1728,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
 
   </section> <!-- #audio-mixing -->
 
-<section id="profiles-section" class="appendix">
+<section class="appendix">
     <h3>Profiles</h3>
     <p>This section defines
       a [[ttml2]] <a>content profile</a>
       and a <a>processor profile</a>
       by expressing dispositions against a set of <a>Features</a> and <a>Extensions</a>.
-      The DAPT extensions are defined in <a href="#extensions-section"></a>.
+      The DAPT extensions are defined in <a href="#extensions"></a>.
     </p>
     <p>The Profile Semantics specified in [[ttml2]] apply.</p>
     <p>
@@ -1837,7 +1838,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       a <a><code>&lt;ttp:feature&gt;</code></a> or <a><code>&lt;ttp:extension&gt;</code></a> element
       as being permitted or prohibited within a <dfn data-cite="ttml2#profile-vocabulary-profile"><code>&lt;ttp:profile&gt;</code></dfn> element.
     </p>
-    <section id="features-and-extensions-section">
+    <section>
       <h4>Disposition of Features and Extensions</h4>
       <p>The <a>Features</a> and <a>Extensions</a> listed in this section express the
         minimal requirements for <a>Document Instances</a>,
@@ -1939,13 +1940,13 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <tr>
             <td> <dfn data-cite="ttml2#feature-contentProfiles"><code>#contentProfiles</code></dfn></td>
             <td><span class="optional label">optional</span></td>
-            <td>See <a href="#content-profiles"></a>
-              and <a href="#extension-contentProfiles-root"></a>.</td>
+            <td>See <a href="#ttp-contentprofiles"></a>
+              and <a href="#contentprofiles-root"></a>.</td>
           </tr>
           <tr>
             <td><code>#contentProfiles-combined</code></td>
             <td><span class="optional label">optional</span></td>
-            <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
+            <td>See <a href="#other-ttml2-profile-vocabulary"></a>.</td>
           </tr>
           <tr>
             <td><code>#core</code></td>
@@ -1996,7 +1997,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <td><code>#frameRate</code></td>
             <td><span class="permitted label">permitted</span></td>
             <td>
-              See [[[#framerate-section]]].
+              See [[[#ttp-framerate]]].
             </td>
           </tr>
           <tr>
@@ -2047,12 +2048,12 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <tr>
             <td><code>#permitFeatureNarrowing</code></td>
             <td><span class="optional label">optional</span></td>
-            <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
+            <td>See <a href="#other-ttml2-profile-vocabulary"></a>.</td>
           </tr>
           <tr>
             <td><code>#permitFeatureWidening</code></td>
             <td><span class="optional label">optional</span></td>
-            <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
+            <td>See <a href="#other-ttml2-profile-vocabulary"></a>.</td>
           </tr>
           <tr>
             <td><code>#pitch</code></td>
@@ -2067,12 +2068,12 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <tr>
             <td><code>#processorProfiles</code></td>
             <td><span class="optional label">optional</span></td>
-            <td>See <a href="#processor-profiles"></a>.</td>
+            <td>See <a href="#ttp-processorprofiles"></a>.</td>
           </tr>
           <tr>
             <td><code>#processorProfiles-combined</code></td>
             <td><span class="optional label">optional</span></td>
-            <td>See <a href="#ttml2-profile-attr-vocab"></a>.</td>
+            <td>See <a href="#other-ttml2-profile-vocabulary"></a>.</td>
           </tr>
           <tr>
             <td><code>#profile</code></td>
@@ -2085,14 +2086,14 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <td><code>#profile-full-version-2</code></td>
             <td>partially permitted</td>
             <td>
-              See <a href="#ttml2-profile-attr-vocab"></a>.
+              See <a href="#other-ttml2-profile-vocabulary"></a>.
             </td>
           </tr>
           <tr>
             <td><code>#profile-version-2</code></td>
             <td>partially permitted</td>
             <td>
-              See <a href="#ttml2-profile-attr-vocab"></a>.
+              See <a href="#other-ttml2-profile-vocabulary"></a>.
             </td>
           </tr>
           <tr>
@@ -2168,7 +2169,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <tr>
             <td><code>#tickRate</code></td>
             <td><span class="permitted label">permitted</span></td>
-            <td>See [[[#tickrate-section]]].</td>
+            <td>See [[[#ttp-tickrate]]].</td>
           </tr>
           <tr>
             <td><code>#time-clock</code></td>
@@ -2178,17 +2179,17 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <tr>
             <td><code>#time-clock-with-frames</code></td>
             <td><span class="permitted label">permitted</span></td>
-            <td>See [[[#framerate-section]]] and [[[#time-clock-with-frames-section]]].</td>
+            <td>See [[[#ttp-framerate]]] and [[[#time-clock-with-frames]]].</td>
           </tr>
           <tr>
             <td><code>#time-offset-with-frames</code></td>
             <td><span class="permitted label">permitted</span></td>
-            <td>See [[[#framerate-section]]].</td>
+            <td>See [[[#ttp-framerate]]].</td>
           </tr>
           <tr>
             <td><code>#time-offset-with-ticks</code></td>
             <td><span class="permitted label">permitted</span></td>
-            <td>See [[[#tickrate-section]]].</td>
+            <td>See [[[#ttp-tickrate]]].</td>
           </tr>
           <tr>
             <td><code>#time-offset</code></td>
@@ -2209,7 +2210,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <td><code>#timeBase-media</code></td>
             <td><span class="required label">required</span></td>
             <td>
-              <p>See [[[#timebase-section]]].</p>
+              <p>See [[[#ttp-timebase]]].</p>
               <p class="inline-note">NOTE: [[TTML1]] specifies that the default timebase is <code>"media"</code> if
               <code>ttp:timeBase</code> is not specified on <code>tt</code>.</p>
             </td>
@@ -2222,12 +2223,12 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <tr>
             <td><code>#timeContainer</code></td>
             <td><span class="prohibited label">prohibited</span></td>
-            <td>See [[[#timecontainer-section]]].</td>
+            <td>See [[[#timecontainer]]].</td>
           </tr>
           <tr>
             <td><code>#timing</code></td>
             <td><span class="permitted label">permitted</span></td>
-            <td>See [[[#time-expression-section]]].</td>
+            <td>See [[[#time-expressions]]].</td>
           </tr>
           <tr>
             <td><code>#transformation</code></td>
@@ -2240,49 +2241,49 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             <td colspan="3" style="text-align:center"><em>Relative to the <a>DAPT Extension</a> namespace</em></td>
           </tr>
           <tr>
-            <td><a href="#extension-agent"><code>#agent</code></a></td>
+            <td><a href="#agent"><code>#agent</code></a></td>
             <td><span class="permitted label">permitted</span></td>
             <td>
               This is the profile expression of <a href="#character"></a>.
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-contentProfiles-root"><code>#contentProfiles-root</code></a></td>
+            <td><a href="#contentprofiles-root"><code>#contentProfiles-root</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
-              This is the profile expression of <a href="#content-profiles"></a>.
+              This is the profile expression of <a href="#ttp-contentprofiles"></a>.
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-onScreen"><code>#onScreen</code></a></td>
+            <td><a href="#onscreen"><code>#onScreen</code></a></td>
             <td><span class="permitted label">permitted</span></td>
             <td>
               This is the profile expression of <a href="#on-screen"></a>.
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-profile-root"><code>#profile-root</code></a></td>
+            <td><a href="#profile-root"><code>#profile-root</code></a></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td>
               This is the profile expression of <a href="#ttp-profile"></a>.
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-scriptType-root"><code>#scriptType-root</code></a></td>
+            <td><a href="#scripttype-root"><code>#scriptType-root</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
               This is the profile expression of <a href="#script-type"></a>.
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-serialization"><code>#serialization</code></a></td>
+            <td><a href="#serialization"><code>#serialization</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
-              This is the profile expression of <a href="#Document Encoding"></a>.
+              This is the profile expression of <a href="#document-encoding"></a>.
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-source-data"><code>#source-data</code></a></td>
+            <td><a href="#source-data"><code>#source-data</code></a></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td>
               This is the profile expression of the prohibition of <code>&lt;source&gt;</code>
@@ -2291,21 +2292,21 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-textLanguageSource"><code>#textLanguageSource</code></a></td>
+            <td><a href="#textlanguagesource"><code>#textLanguageSource</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
               This is the profile expression of <a href="#text-language-source"></a> as required at <a href="#text"></a>.
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-xmlId-div"><code>#xmlId-div</code></a></td>
+            <td><a href="#xmlid-div"><code>#xmlId-div</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
               This is the profile expression of <a href="#script-event"></a>.
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-xmlLang-audio-nonMatching"><code>#xmlLang-audio-nonMatching</code></a></td>
+            <td><a href="#xmllang-audio-nonmatching"><code>#xmlLang-audio-nonMatching</code></a></td>
             <td><span class="required label">prohibited</span></td>
             <td>
               This is the profile expression of the prohibition of <code>xml:lang</code>
@@ -2316,7 +2317,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-xmlLang-root"><code>#xmlLang-root</code></a></td>
+            <td><a href="#xmllang-root"><code>#xmlLang-root</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
               This is the profile expression of <a href="#primary-language"></a>.
@@ -2326,7 +2327,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       </table>
     </section>
 
-      <section id="content-profile">
+      <section>
         <h4>DAPT Content Profile</h4>
         <p>The DAPT Content Profile expresses the conformance requirements of <a>DAPT Scripts</a>
           using the profile mechanism of [[ttml2]].
@@ -2336,7 +2337,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <pre class="xml" data-include="profiles/dapt-content-profile.xml" data-include-format="text"></pre>
       </section>
 
-      <section id="processor-profile">
+      <section>
         <h4>DAPT Processor Profile</h4>
         <p>The DAPT Processor Profile expresses the processing requirements of <a>DAPT Scripts</a>
           using the profile mechanism of [[ttml2]].
@@ -2348,20 +2349,20 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
 
   </section> <!-- profiles-section -->
 
-  <section id="extensions-section" class="appendix">
+  <section class="appendix">
     <h2>Extensions</h2>
-    <section id="extensions-general">
+    <section>
       <h3>General</h3>
       <p>The following sections define <a href="https://www.w3.org/TR/ttml2/#terms-extension">extension</a> designations,
         expressed as relative URIs (fragment identifiers)
         relative to the <a>DAPT Extension</a> Namespace base URI.
-        These extension designations are used in <a href="#profiles-section"></a>
+        These extension designations are used in <a href="#profiles"></a>
         to describe the normative provisions of DAPT that are not expressed
         by [[ttml2]] profile features.
       </p>
     </section>
 
-      <section id="extension-agent">
+      <section>
       <h3>#agent</h3>
       <p>A <a>transformation processor</a> supports the <code>#agent</code> extension if
         it recognizes and is capable of transforming values of the following
@@ -2384,7 +2385,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         elements, attributes and value combinations.</p>
       </section>
 
-    <section id="extension-contentProfiles-root">
+    <section>
       <h3>#contentProfiles-root</h3>
       <p>A <a>transformation processor</a> supports the <code>#contentProfiles-root</code> extension if
         it recognizes and is capable of transforming values of the
@@ -2402,7 +2403,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       </aside>
       </section>
 
-      <section id="extension-onScreen">
+      <section>
         <h3>#onScreen</h3>
         <p>A <a>transformation processor</a> supports the <code>#onScreen</code> extension if
           it recognizes and is capable of transforming values of the
@@ -2413,7 +2414,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <a><code>daptm:onScreen</code></a> attribute on the <code>&lt;div&gt;</code> element.</p>
       </section>
 
-      <section id="extension-profile-root">
+      <section>
         <h3>#profile-root</h3>
         <p>A <a>transformation processor</a> supports the <code>#profile-root</code> extension if
           it recognizes and is capable of transforming values of the
@@ -2424,7 +2425,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
       </section>
   
-        <section id="extension-scriptType-root">
+        <section>
         <h3>#scriptType-root</h3>
         <p>A <a>transformation processor</a> supports the <code>#scriptType-root</code> extension if
           it recognizes and is capable of transforming values of the
@@ -2446,7 +2447,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
 
       </section>
 
-      <section id="extension-serialization">
+      <section>
         <h3>#serialization</h3>
         <p>A serialized document that is valid with respect to the <code>#serialization</code>
           extension is
@@ -2464,7 +2465,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           it can write a serialized document as defined above.</p>
       </section>
 
-      <section id="extension-source-data">
+      <section>
         <h3>#source-data</h3>
         <p>A <a>transformation processor</a> supports the <code>#source-data</code> extension if
           it recognizes and is capable of transforming values of the
@@ -2479,7 +2480,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data">&lt;data&gt;</a> element.</p>
       </section>
 
-      <section id="extension-textLanguageSource">
+      <section>
         <h3>#textLanguageSource</h3>
         <p>A <a>transformation processor</a> supports the <code>#textLanguageSource</code> extension if
           it recognizes and is capable of transforming values of the
@@ -2490,7 +2491,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <code>daptm:langSrc</code> attribute on the <code>&lt;p&gt;</code> element.</p>
       </section>
 
-      <section id="extension-xmlId-div">
+      <section>
         <h3>#xmlId-div</h3>
         <p>A <a>transformation processor</a> supports the <code>#xmlId-div</code> extension if
           it recognizes and is capable of transforming values of the
@@ -2501,7 +2502,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <code>xml:id</code> attribute on the <code>&lt;div&gt;</code> element.</p>
         </section>
 
-      <section id="extension-xmlLang-audio-nonMatching">
+      <section>
         <h3>#xmlLang-audio-nonMatching</h3>
         <p>A <a>transformation processor</a> supports the <code>#xmlLang-audio-nonMatching</code> extension if
           it recognizes and is capable of transforming values of the
@@ -2516,7 +2517,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           <code>xml:lang</code> attribute values.</p>
       </section>
   
-      <section id="extension-xmlLang-root">
+      <section>
         <h3>#xmlLang-root</h3>
         <p>A <a>transformation processor</a> supports the <code>#xmlLang-root</code> extension if
           it recognizes and is capable of transforming values of the
@@ -2528,10 +2529,11 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         </section>
     </section> <!-- extensions-->
 
-  <section id="acknowledgements">
+  <section class="appendix">
       <h2>Acknowledgments</h2>
       The editors would like to thank XXX for their contributions to this specification.
   </section>
-
+  <section id="conformance">
+  </section>
   </body>
 </html>
