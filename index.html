@@ -170,7 +170,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           such as type of <a>DAPT script</a>, dialogue, descriptions, timing, metadata, original language transcribed text, translated text, language information, and audio mixing instructions,
           and to be extensible to allow user-defined annotations or additional future features.</p>
         <p>This specification defines the data model for <a>DAPT scripts</a> and
-          its representation as a [[ttml2]] document (see [[[#dapt-data-model-and-corresponding-ttml-syntax]]])
+          its representation as a [[ttml2]] document (see [[[#data-model]]])
           with some constraints and restrictions (see [[[#profile-constraints]]]).</p>
         <p>A <a>DAPT script</a> is expected to be used to make audio visual media accessible
           or localized for users who cannot understand it in its original form,
@@ -210,7 +210,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             for example by permitting subtitle styling syntax to be carried in <a>DAPT documents</a>.
             Alternatively, styling can be applied to assist voice artists when recording scripted dialogue.
           </p>
-        </section>
+        </section> <!-- intro-dubbing -->
         <section>
           <h4>Audio Description <a>scripts</a></h4>
           <p>Creating audio description content is also a multi-stage process.
@@ -244,8 +244,8 @@ table.coldividers td + td { border-left:1px solid gray; }
             for example on a Braille display,
             or using the user's configured screen reader.
           </p>
-        </section>
-      </section>
+        </section> <!-- intro-audio-description -->
+      </section> <!-- intro-overview -->
 
       <section>
         <h3>Example documents</h3>
@@ -364,7 +364,7 @@ table.coldividers td + td { border-left:1px solid gray; }
       </p>
     </section>
 
-  <section>
+  <section id="data-model">
     <h2>DAPT Data Model and corresponding TTML syntax</h2>
     <p>This section specifies the data model for DAPT and its corresponding TTML syntax.
       In the model, there are objects which can have properties and be associated with other objects.
@@ -1246,7 +1246,7 @@ daptm:eventType : string
           illustrated by <a href="#example-4"></a>.</p>
         <p>See also <a href="#audio-mixing"></a>.</p>
       </section>
-    </section>
+    </section> <!-- #data-model -->
 
     <section id="profile-constraints">
       <h2>Constraints</h2>
@@ -1548,7 +1548,7 @@ daptm:eventType : string
           <p>This means that the beginning of the document timeline,
             i.e. time "zero",
              is the beginning of the <a>Related Media Object</a>.</p>
-        </section>
+        </section> <!-- timebase-section -->
         <section>
           <h4><code>timeContainer</code></h4>
           <p>The only permitted value of the <code>timeContainer</code> attribute is the default value, <code>par</code>.</p>
@@ -1557,13 +1557,13 @@ daptm:eventType : string
           <p class="note">This means that the <code>begin</code> attribute value for every timed element is relative to
             the computed begin time of its parent element,
             or for the <code>&lt;body&gt;</code> element, to time zero.</p>
-        </section>
+        </section> <!-- timecontainer-section -->
         <section>
           <h4><code>ttp:frameRate</code></h4>
           <p>If the document contains any time expression that uses the <code>f</code> metric,
             or any time expression that contains a frames component,
             the <code>ttp:frameRate</code> attribute MUST be present on the <code>&lt;tt&gt;</code> element.</p>
-        </section>
+        </section> <!-- framerate-section -->
         <section>
           <h4><code>ttp:tickRate</code></h4>
           <p>If the document contains any time expression that uses the <code>t</code> metric,
@@ -1583,7 +1583,7 @@ daptm:eventType : string
 M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
   = 5025.6s</pre>
             </div>
-        </section>
+        </section> <!-- time-clock-with-frames-section -->
         <section>
           <h4>Time expressions</h4>
           <p>All time expressions within a document SHOULD use the same syntax,
@@ -1638,7 +1638,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
             of a video that has a frame rate of <code>1000 / 1001 × 30 ≈ 29.97</code>.
           </p>
   
-        </section>
+        </section> <!-- time-expression-section -->
       </section> <!-- time-constraints-section -->
 
       <section>
@@ -1649,8 +1649,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
 
     </section> <!-- Profile Constraints -->
 
-  <section>
-    <h2>Conformance</h2>
+  <section id="conformance"><!-- keep section id, not use h2 -->
     <p>[[ttml2]] specifies a formal language for expressing document and processor requirements,
       within the <a href="https://www.w3.org/TR/ttml2/#vocabulary-profiling">Profiling</a> sub-system.
       The normative requirements of this specification are defined using the conformance terminology
@@ -1675,7 +1674,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[ttml2]] in the
         <dfn data-cite="ttml2#terms-content-profile">content profile</dfn> defined
         in <a href="#profiles"></a>.</p>
-    </section>
+    </section> <!-- content-profile-conformance-section -->
     <section>
       <h3>Conformance of DAPT Processors</h3>
       <p>Conformant DAPT Processors are [[ttml2]]
@@ -1685,7 +1684,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
         <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[ttml2]] in the
         <dfn data-cite="ttml2#terms-processor-profile">processor profile</dfn> defined
         in <a href="#profiles"></a>.</p>
-    </section>
+    </section> <!-- processor-profile-conformance-section -->
   </section> <!-- conformance -->
 
   <section id="index" class="appendix">
@@ -2537,7 +2536,6 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
       <h2>Acknowledgments</h2>
       The editors would like to thank XXX for their contributions to this specification.
   </section>
-  <section id="conformance">
-  </section>
+
   </body>
 </html>
