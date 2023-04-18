@@ -566,9 +566,10 @@ table.coldividers td + td { border-left:1px solid gray; }
               </li>
               <li>The <dfn>End</dfn> property defines when an object stops being active,
                 and is relative to the active begin time of the parent object.</li>
-              <li>The <dfn>Duration</dfn> property defines the maximum duration of an object.</li>
+              <li>The <dfn>Duration</dfn> property defines the maximum duration of an object.
                 <p class="note">If both an <a>End</a> and a <a>Duration</a> property are present,
                   the end time is the earlier of <a>Begin</a> and <a>Begin</a> + <a>Duration</a>.</p>
+                </li>
             </ul>
             <div class="note">If any of the <a>timing properties</a> is omitted, the following rules apply:
               <ul>
@@ -637,7 +638,6 @@ table.coldividers td + td { border-left:1px solid gray; }
                 corresponding to the <a>Talent Name</a>,
                 that is, whose <code>type</code> is set to <code>person</code>.</li>
             </ul>
-          </li>
 
           <pre class="example">
 ...
@@ -662,6 +662,7 @@ table.coldividers td + td { border-left:1px solid gray; }
 &lt;/metadata&gt;
 ...
           </pre>
+          </li>
           <li>All <code>&lt;ttm:agent&gt;</code> elements SHOULD be contained in the first <code>&lt;metadata&gt;</code> element in the <code>&lt;head&gt;</code> element.
             <div class="note">There can be multiple <code>&lt;metadata&gt;</code> elements in the <code>&lt;head&gt;</code> element,
             for example to include <a href="#proprietary-metadata">proprietary metadata</a>
