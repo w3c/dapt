@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- this file defines the "dapt-content" profile of ttml -->
 <profile xmlns="http://www.w3.org/ns/ttml#parameter"
-  designator="http://www.w3.org/ns/dapt/profile/content"
+  designator="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
   combine="mostRestrictive"
   type="content">
   <features xml:base="http://www.w3.org/ns/ttml/feature/">
