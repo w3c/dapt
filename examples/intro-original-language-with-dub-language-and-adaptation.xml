@@ -2,7 +2,7 @@
     xmlns:ttp="http://www.w3.org/ns/ttml#parameter"
     xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
     xml:lang="en"
-    ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt"
+    ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
     daptm:scriptType="DUBBING_PRE_RECORDING">
   <head>
     <metadata>
@@ -17,7 +17,7 @@
         <span>Et c'est grâce à ça qu'on va devenir riches.</span>
       </p>
       <p xml:lang="en" daptm:langSrc="translation">
-        <span begin="0">And thanks to that,</span><span begin="1.5s"> we're gonna get rich.</span>
+        <span begin="0s">And thanks to that,</span><span begin="1.5s"> we're gonna get rich.</span>
       </p>
     </div>
   </body>
