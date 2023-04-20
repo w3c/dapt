@@ -50,13 +50,11 @@
     <feature value="optional">#styling-inheritance-content</feature>
     <feature value="optional">#styling-inline</feature>
     <feature value="optional">#styling-referential</feature>
-    <feature value="optional">#subFrameRate</feature>
     <feature value="optional">#tickRate</feature>
-    <feature value="optional">#time-clock-with-frames</feature>
     <feature value="optional">#time-clock</feature>
+    <feature value="optional">#time-offset</feature>
     <feature value="optional">#time-offset-with-frames</feature>
     <feature value="optional">#time-offset-with-ticks</feature>
-    <feature value="optional">#time-offset</feature>
     <feature value="optional">#timing</feature>
     <feature value="optional">#unicodeBidi</feature>
     <feature value="optional">#unicodeBidi-isolate</feature>
@@ -75,6 +73,8 @@
     <feature value="prohibited">#markerMode</feature>
     <feature value="prohibited">#markerMode-continuous</feature>
     <feature value="prohibited">#markerMode-discontinuous</feature>
+    <feature value="prohibited">#subFrameRate</feature>
+    <feature value="prohibited">#time-clock-with-frames</feature>
     <feature value="prohibited">#time-wall-clock</feature>
     <feature value="prohibited">#timeBase-clock</feature>
     <feature value="prohibited">#timeBase-smpte</feature>

@@ -43,13 +43,11 @@
     <feature value="required">#styling-inheritance-content</feature>
     <feature value="required">#styling-inline</feature>
     <feature value="required">#styling-referential</feature>
-    <feature value="required">#subFrameRate</feature>
     <feature value="required">#tickRate</feature>
-    <feature value="required">#time-clock-with-frames</feature>
     <feature value="required">#time-clock</feature>
+    <feature value="required">#time-offset</feature>
     <feature value="required">#time-offset-with-frames</feature>
     <feature value="required">#time-offset-with-ticks</feature>
-    <feature value="required">#time-offset</feature>
     <feature value="required">#timeBase-media</feature>
     <feature value="required">#timing</feature>
     <feature value="required">#transformation</feature>
@@ -75,6 +73,8 @@
     <feature value="optional">#permitFeatureWidening</feature>
     <feature value="optional">#processorProfiles</feature>
     <feature value="optional">#processorProfiles-combined</feature>
+    <feature value="optional">#subFrameRate</feature>
+    <feature value="optional">#time-clock-with-frames</feature>
     <feature value="optional">#time-wall-clock</feature>
     <feature value="optional">#timeBase-clock</feature>
     <feature value="optional">#timeBase-smpte</feature>

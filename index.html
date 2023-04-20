@@ -1571,44 +1571,33 @@ daptm:eventType : string
           <p>If the document contains any time expression that uses the <code>t</code> metric,
             the <code>ttp:tickRate</code> attribute MUST be present on the <code>&lt;tt&gt;</code> element.</p>
         </section>
-        <section id="time-clock-with-frames-section" class="informative">
-          <h4><code>#time-clock-with-frames</code></h4>
-          <p>As specified in [[?ttml2]], a <code>#time-clock-with-frames</code> expression is translated to
-            a media time <code>M</code> according to
-            <br/>
-            <code>M = 3600 · hours + 60 · minutes + seconds + (frames ÷ (ttp:frameRateMultiplier · ttp:frameRate))</code>.</p>
-          <div class="example note">
-            <p>For example, the expression <code>01:23:45:15</code>,
-            where <code>ttp:frameRate=&quot;25&quot;</code> and <code>ttp:frameRateMultiplier</code> is unspecified,
-            and therefore the default of 1, is equivalent to a media time</p>
-            <pre>
-M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
-  = 5025.6s</pre>
-            </div>
-        </section> <!-- time-clock-with-frames-section -->
         <section id="time-expression-section">
           <h4>Time expressions</h4>
           <p>All time expressions within a document SHOULD use the same syntax,
             either <code>clock-time</code> or <code>offset-time</code>
-            as defined in [[ttml2]].</p>
+            as defined in [[ttml2]], with <a href="#features-and-extensions-section">DAPT constraints</a> applied.</p>
           <div class="example note">
-            <p>A <code>clock-time</code> has one of the forms:</p>
+            <p>A DAPT <code>clock-time</code> has one of the forms:</p>
             <ul>
               <li><code>hh:mm:ss.sss</code></li>
               <li><code>hh:mm:ss</code></li>
-              <li><code>hh:mm:ss:ff</code></li>
-              <li><code>hh:mm:ss:ff.x</code></li>
+
             </ul>
              <p>
               where
               <code>hh</code> is hours,
               <code>mm</code> is minutes,
-              <code>ss</code> is seconds,
-              <code>ss.sss</code> is seconds with a decimal fraction of seconds (any precision),
-              <code>ff</code> is frames, and
-              <code>x</code> is sub-frames.
+              <code>ss</code> is seconds, and
+              <code>ss.sss</code> is seconds with a decimal fraction of seconds (any precision).
             </p>
           </div>
+          <p class="note">
+            Clock time expressions that use frame components,
+            which look similar to "time code",
+            are prohibited due to the semantic confusion that has been observed
+            elsewhere when they are used, particularly with non-integer frame rates,
+            "drop modes" and sub-frame rates.
+          </p>
           <div class="example note">
             <p>An <code>offset-time</code> has one of the forms:</p>
             <ul>
@@ -2168,7 +2157,7 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           </tr>
           <tr>
             <td><code>#subFrameRate</code></td>
-            <td><span class="permitted label">permitted</span></td>
+            <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
@@ -2183,8 +2172,8 @@ M = 3600 × 01 + 60 × 23 + 45 + (15 ÷ (1 × 25))
           </tr>
           <tr>
             <td><code>#time-clock-with-frames</code></td>
-            <td><span class="permitted label">permitted</span></td>
-            <td>See [[[#framerate-section]]] and [[[#time-clock-with-frames-section]]].</td>
+            <td><span class="prohibited label">prohibited</span></td>
+            <td></td>
           </tr>
           <tr>
             <td><code>#time-offset-with-frames</code></td>
