@@ -43,3 +43,16 @@ If using VSCode with the [PlantUML Extension](https://marketplace.visualstudio.c
 Then while editing the source, running "PlantUML: Export Current Diagram"
 from the command palette will regenerate the SVG and write the output to
 the correct location, `/figures`.
+
+### Tidying the SVG output for validation
+
+Unfortunately the SVG that PlantUML generates from our source files has some structural issues that cause it to fail the W3C's HTML validator.
+The following steps can be taken to fix them. It'd be neat to automate this somehow, one day...
+1. delete `contentStyleType="text/css"`
+2. delete text matching the regexp ` title="[#a-zA-Z\-]+"`
+3. delete text matching the regexp = ` codeline="[0-9]+"`
+4. deduplicate id values, e.g. id="link_Text_Style" in more than one place - a specific problem with the two links from Text to Style in the class diagram. E.g. change the "other" link with `id="link_Text_Style"` to `id="link_Text_Style_other"`
+5. Move <a> wrappers from around boxes which contain other <a> elements, which therefore get nested, so the link is not on the box but is on the top text.
+   * Specifically, where there is `/svg/a/g/text` move the `<a>` wrappers to being around the `<text>` that includes the text that's relevant.
+   * It then becomes `/svg/g/a/text` (where the `a` has is the second child of the `g`, the first being a `rect`)
+   * Atsushi also moved the `<rect>` at `/svg/a/g/rect` out of the `<g>` so there is `/svg/rect` followed by `/svg/g/a/text` but why? Seems okay without doing that.
