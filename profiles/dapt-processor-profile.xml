@@ -88,6 +88,7 @@
     <extension value="required">#scriptType-root</extension>
     <extension value="required">#serialization</extension>
     <extension value="required">#textLanguageSource</extension>
+    <extension value="required">#workflowType-root</extension>
     <extension value="required">#xmlId-div</extension>
     <extension value="required">#xmlLang-root</extension>
     <!-- optional (voluntary) extension support -->

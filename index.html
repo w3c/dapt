@@ -2294,6 +2294,13 @@ daptm:eventType : string
             </td>
           </tr>
           <tr>
+            <td><a href="#workflowtype-root"><code>#workflowType-root</code></a></td>
+            <td><span class="required label">required</span></td>
+            <td>
+              This is the profile expression of <a href="#workflow-type"></a>.
+            </td>
+          </tr>
+          <tr>
             <td><a href="#xmlid-div"><code>#xmlId-div</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
@@ -2420,7 +2427,7 @@ daptm:eventType : string
           <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
       </section>
   
-        <section>
+      <section>
         <h3>#scriptType-root</h3>
         <p>A <a>transformation processor</a> supports the <code>#scriptType-root</code> extension if
           it recognizes and is capable of transforming values of the
@@ -2484,6 +2491,25 @@ daptm:eventType : string
         <p>A <a>presentation processor</a> supports the <code>#textLanguageSource</code> extension if
           it implements presentation semantic support of the
           <code>daptm:langSrc</code> attribute on the <code>&lt;p&gt;</code> element.</p>
+      </section>
+
+      <section>
+        <h3>#workflowType-root</h3>
+        <p>A <a>transformation processor</a> supports the <code>#workflowType-root</code> extension if
+          it recognizes and is capable of transforming values of the
+          <a><code>daptm:workflowType</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#workflowType-root</code> extension if
+          it implements presentation semantic support of the
+          <a><code>daptm:workflowType</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+
+        <p>An example of a <a>transformation processor</a> that supports this extension is
+          a validating processor that reports an error if the extension is required by a
+          <a>content profile</a> but the <a>Document Instance</a> claiming
+          conformance to that profile either does not have a
+          <a><code>daptm:workflowType</code></a> attribute on the <code>&lt;tt&gt;</code> element
+          or has one whose value is not defined herein.</p>
+
       </section>
 
       <section>
