@@ -3,7 +3,8 @@
     xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
     xml:lang="fr" 
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
-    daptm:scriptType="ORIGINAL_TRANSCRIPT">
+    daptm:applicationType="dubbing"
+    daptm:scriptType="originalTranscript">
   <head>
     <metadata>
       <ttm:agent type="character" xml:id="character_1">

@@ -14,6 +14,7 @@ skinparam MinClassWidth 220
 
 together {
     Class DAPTScript as "**DAPT Script**" [[#dapt-script]] {
+        Workflow Type [[[#workflow-type]]]
         Script Type [[[#script-type]]]
         Primary Language [[[#primary-language]]]
     }
