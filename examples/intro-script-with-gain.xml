@@ -1,4 +1,8 @@
-...
+<tt ...
+  daptm:workflowType="audioDescription"
+  daptm:scriptType="asRecorded"
+  xml:lang="en">
+  ...
     <div begin="25s" end="28s">
       <p daptm:langSrc="original">
         <animate begin="0.0s" end="0.3s" tta:gain="1;0.39" fill="freeze"/>
