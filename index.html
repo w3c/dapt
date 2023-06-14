@@ -900,91 +900,112 @@ daptm:langSrc
         </section>
 
         <section>
-          <h4>On Screen</h4>
-          <p>The <dfn>On Screen</dfn> property is an annotation indicating
-            the position in the scene relating to the subject of a <a>Script Event</a>,
-            for example of the <a>character</a> speaking:</p>
+          <h4>Script Event Annotations</h4>
+
+          <p>In <a>dubbing</a> or <a>audio description</a> workflows, authors very often need to annotate
+          <a>Script Events</a>. Examples include providing the type of event (e.g. dialog), scene information, 
+          plot significance, etc. While proprietary annotations can be added with foreign elements and attributes
+          (see [[[#foreign-elements-and-attributes]]]), this specification defines some standard ways
+          of annotating.</p>
+          <p>Annotations can be represented in a <a>DAPT Document</a> by:
           <ul>
-            <li>ON - the <a>Script Event</a>'s subject is on screen for the entire duration</li>
-            <li>OFF - the <a>Script Event</a>'s subject is off screen for the entire duration</li>
-            <li>ON_OFF - the <a>Script Event</a>'s subject starts on screen, but goes off screen at some point</li>
-            <li>OFF_ON - the <a>Script Event</a>'s subject starts off screen, but goes on screen at some point</li>
+          <li>a new attribute in the DAPT Metadata namespace. This is the case for
+          the <a>On Screen</a> representation, or for the <a>Script Event Type</a> representation.</li>
+          <li>an element in the TT Metadata namespace. This is the case for the <a>Script Event Description</a></li>
           </ul>
-          <p>If omitted, the default value is "ON".</p>
-          <aside class="note">When <a>daptm:workflowType</a> is set to <code>audioDescription</code> the subject of each
-            <a>Script Event</a>, i.e. what is being described,
-            is expected to be in the video image, therefore the default of "ON" allows
-            the property to be omitted in those cases without distortion of meaning.</aside>
-          <p>The <a>On Screen</a> property is represented in a <a>DAPT Document</a> by a
-            <dfn><code>daptm:onScreen</code></dfn> attribute on the
-            <code>&lt;div&gt;</code> element, with the following constraints:
+          </p>The <a>Script Event Type</a> property and the <a>Script Event Description</a> property are
+          similar, general purpose annotation mechanisms. The difference is that <a>Script Event Type</a>
+          only supports a list of keywords. Keywords have to be registered in a registry associated to this specification, or they are proprietary keywords. On the other hand, <a>Script Event Description</a> represents free-from text, that can also be typed via the <code>daptm:descType</code> attribute and another registry.
+          <p>
+
+          <p class="ednote">Should we update the model and diagram?</p>
+          <section>
+            <h5>On Screen</h5>
+            <p>The <dfn>On Screen</dfn> property is an annotation indicating
+              the position in the scene relating to the subject of a <a>Script Event</a>,
+              for example of the <a>character</a> speaking:</p>
             <ul>
-              <li>The following attribute corresponding to the <a>On Screen</a> <a>Script Event</a> property may be present:
-                <div class="exampleInner">
-                  <pre class="language-abnf">
-daptm:onScreen
-  : "ON"     # default
-  | "OFF"
-  | "ON_OFF"
-  | "OFF_ON"
-                  </pre>
-                </div>
-              </li>
+              <li>ON - the <a>Script Event</a>'s subject is on screen for the entire duration</li>
+              <li>OFF - the <a>Script Event</a>'s subject is off screen for the entire duration</li>
+              <li>ON_OFF - the <a>Script Event</a>'s subject starts on screen, but goes off screen at some point</li>
+              <li>OFF_ON - the <a>Script Event</a>'s subject starts off screen, but goes on screen at some point</li>
             </ul>
-          </p>
-        </section>
-        <section>
-          <h4>Script Event Description</h4>
-          <p>The <dfn>Script Event Description</dfn> property is an annotation providing a human-readable description of a <a>Script Event</a>.</p>
-          <p>The <a>Script Event Description</a> property is represented in a <a>DAPT Document</a> by a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
-          <p class="note">The <a>Script Event Description</a> does not need to be unique, i.e. it does not need to have a different value for each <a>Script Event</a>. 
-            For example a particular value could be re-used to identify in a human-readable way one or more <a>Script Events</a> that are intended to be processed together,
-            e.g. in a batch recording.</p>
-        <pre class="example"
-          data-include="examples/event-desc.xml"
-          data-include-format="text">
-        </pre>
-          <p>The <code>&lt;ttm:desc&gt;</code> element MAY have a <code>daptm:descType</code> attribute specified to indicate the type of description. The <code>daptm:descType</code> attribute is defined below. Its possible values are as indicated in the registry at YYY.</p>
-          <p class="ednote">Registry to be defined.</p>
-          <div class="exampleInner">
-            <pre class="language-abnf">
-daptm:descType : string
-            </pre>
-          </div>
+            <p>If omitted, the default value is "ON".</p>
+            <aside class="note">When <a>daptm:workflowType</a> is set to <code>audioDescription</code> the subject of each
+              <a>Script Event</a>, i.e. what is being described,
+              is expected to be in the video image, therefore the default of "ON" allows
+              the property to be omitted in those cases without distortion of meaning.</aside>
+            <p>The <a>On Screen</a> property is represented in a <a>DAPT Document</a> by a
+              <dfn><code>daptm:onScreen</code></dfn> attribute on the
+              <code>&lt;div&gt;</code> element, with the following constraints:
+              <ul>
+                <li>The following attribute corresponding to the <a>On Screen</a> <a>Script Event</a> property may be present:
+                  <div class="exampleInner">
+                    <pre class="language-abnf">
+  daptm:onScreen
+    : "ON"     # default
+    | "OFF"
+    | "ON_OFF"
+    | "OFF_ON"
+                    </pre>
+                  </div>
+                </li>
+              </ul>
+            </p>
+          </section>
+          <section>
+            <h5>Script Event Description</h5>
+            <p>The <dfn>Script Event Description</dfn> property is an annotation providing a human-readable description of a <a>Script Event</a>.</p>
+            <p>The <a>Script Event Description</a> property is represented in a <a>DAPT Document</a> by a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
+            <p class="note">The <a>Script Event Description</a> does not need to be unique, i.e. it does not need to have a different value for each <a>Script Event</a>. 
+              For example a particular value could be re-used to identify in a human-readable way one or more <a>Script Events</a> that are intended to be processed together,
+              e.g. in a batch recording.</p>
           <pre class="example"
-            data-include="examples/event-desc-descType.xml"
+            data-include="examples/event-desc.xml"
             data-include-format="text">
           </pre>
-          <p>Multiple <code>&lt;ttm:desc&gt;</code> elements MAY be present with different values of <code>daptm:descType</code>, as in the following example.</p>
-          <pre class="example"
-            data-include="examples/event-desc-multiple-descType.xml"
-            data-include-format="text">
-          </pre>
-        </section>
-        <section>
-          <h4>Script Event Type</h4>
-          <p>The <dfn>Script Event Type</dfn> property provides one or more space-separated keywords representing the type of the <a>Script Event</a>,
-            i.e. spoken text, or on-screen text,
-            and in the latter case, the type of on-screen text (title, credit, location, ...).
-            The possible keywords are indicated in the registry at XXXX.</p>
-          <p class="ednote">Registry to be defined.</p>
-          <p>The <a>Script Event Type</a> is represented in a <a>DAPT Document</a> by the following attribute:
+            <p>The <code>&lt;ttm:desc&gt;</code> element MAY have a <code>daptm:descType</code> attribute specified to indicate the type of description. The <code>daptm:descType</code> attribute is defined below. Its possible values are as indicated in the registry at YYY.</p>
+            <p class="ednote">Registry to be defined.</p>
             <div class="exampleInner">
               <pre class="language-abnf">
-daptm:eventType : string
+  daptm:descType : string
               </pre>
             </div>
-            <pre class="example">
-...
-&lt;div xml:id=&quot;event_1&quot;
-     begin=&quot;9663f&quot; end=&quot;9682f&quot; 
-     ttm:agent=&quot;character_4&quot;&gt;
-     daptm:eventType=&quot;dialogue&quot;
-...
-&lt;/div&gt;
-...
+            <pre class="example"
+              data-include="examples/event-desc-descType.xml"
+              data-include-format="text">
             </pre>
-          </p>
+            <p>Multiple <code>&lt;ttm:desc&gt;</code> elements MAY be present with different values of <code>daptm:descType</code>, as in the following example.</p>
+            <pre class="example"
+              data-include="examples/event-desc-multiple-descType.xml"
+              data-include-format="text">
+            </pre>
+          </section>
+          <section>
+            <h5>Script Event Type</h5>
+            <p>The <dfn>Script Event Type</dfn> property provides one or more space-separated keywords representing the type of the <a>Script Event</a>,
+              i.e. spoken text, or on-screen text,
+              and in the latter case, the type of on-screen text (title, credit, location, ...).
+              The possible keywords are indicated in the registry at XXXX.</p>
+            <p class="ednote">Registry to be defined.</p>
+            <p>The <a>Script Event Type</a> is represented in a <a>DAPT Document</a> by the following attribute:
+              <div class="exampleInner">
+                <pre class="language-abnf">
+  daptm:eventType : string
+                </pre>
+              </div>
+              <pre class="example">
+  ...
+  &lt;div xml:id=&quot;event_1&quot;
+       begin=&quot;9663f&quot; end=&quot;9682f&quot; 
+       ttm:agent=&quot;character_4&quot;&gt;
+       daptm:eventType=&quot;dialogue&quot;
+  ...
+  &lt;/div&gt;
+  ...
+              </pre>
+            </p>
+          </section>
         </section>
       <section>
         <h3>Audio</h3>
