@@ -406,7 +406,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           that corresponds to a document processed within an authoring workflow or processed by a client,
           and conforms to the constraints of this specification.
           It has properties and objects defined in the following sections:
-          <a>Workflow Type</a>, <a>Script Type</a>, <a>Primary Language</a>, <a>Script Events</a> and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
+          <a>Workflow Type</a>, <a>Script Type</a>, <a>Primary Language</a>, <a>Original Language</a>, <a>Script Events</a> and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
         <p>A <dfn>DAPT Document</dfn> is a TTML <a>Document Instance</a> representing a <a>DAPT Script</a>.
           A <a>DAPT Document</a> has the structure and constraints defined in the following sections.</p>
         <section>
@@ -526,14 +526,15 @@ table.coldividers td + td { border-left:1px solid gray; }
           </pre>
         </section>
         <section>
-          <h4>Primary Language</h4>
+          <h4>Languages</h4>
           <p>The <dfn>Primary Language</dfn> is a mandatory property of a <a>DAPT Script</a>
             which represents the default language for the <a>Text</a> content of <a>Script Events</a>.
             This language may be the <a>Original</a> language or a <a>Translation</a> language.
             When it represents a <a>Translation</a> language, it may be the final language
             for which a dubbing or audio description <a>script</a> is being prepared,
             called the <dfn>Target Recording Language</dfn> or it may be an intermediate, or pivot, language
-             used in the workflow.
+             used in the workflow. The <dfn>Original Language</dfn> is an optional property of a <a>DAPT Script</a>
+             which represents the <a>Original</a> language when the <a>Primary Language</a> is no longer the <a>Original</a> language (e.g. after translation).
           </p>
 
             <p>The <a>Primary Language</a> is represented in a <a>DAPT Document</a> by the following structure and constraints:
@@ -555,6 +556,13 @@ table.coldividers td + td { border-left:1px solid gray; }
             or omit it, since the inherited language is the <a>Primary Language</a> of the document.
             In both cases the Script Events' <a>Text</a> objects are <code>&lt;p&gt;</code> elements that represent original language text
             and therefore set their <a>Text Language Source</a> to Original by setting <code>daptm:langSrc="original"</code>.</aside>
+
+          <p>The <a>Original Language</a> is represented in a <a>DAPT Document</a> by the following structure and constraints:
+            <ul>
+              <li>the <code>daptm:originalLang</code> attribute MAY be present on the <code>&lt;tt&gt;</code> element and its value MUST NOT be empty.</li>
+            </ul>
+          </p>
+
         </section>
 
         <section>
