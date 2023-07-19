@@ -1736,6 +1736,42 @@ daptm:eventType : string
   </section>
 
   <section class="informative appendix">
+    <h2>Privacy and Security Considerations</h2>
+
+    <p>With the exception of the following, the security and privacy considerations of [[ttml2]] apply:</p>
+
+    <ul>
+      <li>Appendix P.3 (Resource Fetching), where only the considerations relating to the <code>&lt;audio&gt;</code> element apply.</li>
+      <li>Appendix P.7 (Access to Processing State) does not apply, since no support for the <code>condition</code> attribute is required.</li>
+      <li>Appendix P.9 (Privacy of Preference) is extended to include the potential indication that the user has a need for audio description.</li>
+    </ul>
+
+    <section>
+      <h3>Personal Information</h3>
+      <p>DAPT documents typically contain the names of characters or people who feature within the associated media,
+        either fictional or real.
+        In general this information would be present within the media itself or be public via other routes.
+        If there is sensitivity associated with their being known to people with access to
+        the DAPT documents in which their identity is contained,
+        then such access should be managed with appropriate confidentiality.
+        For example those documents could be available within a closed authoring environment and
+        edited to remove the sensitive information prior to distribution to a wider audience.
+        If this scenario arises, information security good practices within the closed environment should be applied,
+        such as encryption of the document "at rest" and when being moved,
+        access controlled by authentication platforms, etc.
+      </p>
+    </section>
+
+    <section>
+      <h3>Audio format preference</h3>
+      <p>DAPT documents can reference a set of alternate external audio resources for the same fragment of audio,
+        where the processor is expected to select one of the alternatives based on features such as format support.
+        If this pattern is used, it is possible that the processor's choice of audio resource,
+        being exposed to the origin, reveals information about that processor, such as its preferred audio format.
+      </p>
+    </section>
+  </section>
+  <section class="informative appendix">
     <h2>Audio Mixing</h2>
 
     <p>Applying the <a>Mixing Instructions</a> can be implemented using [[webaudio]].
@@ -1905,8 +1941,8 @@ daptm:eventType : string
       <table class="simple" id="table-features-and-extensions">
         <thead>
           <tr>
-            <th style="width:20%" style="text-align:center">Feature or Extension</th>
-            <th style="width:10%" style="text-align:center">Disposition</th>
+            <th style="width:20%; text-align:center;">Feature or Extension</th>
+            <th style="width:10%; text-align:center;">Disposition</th>
             <th style="text-align:center">Additional provision</th>
           </tr>
         </thead>
