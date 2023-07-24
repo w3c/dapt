@@ -78,6 +78,11 @@ table.coldividers td + td { border-left:1px solid gray; }
     font-family: sans-serif;
     line-height: 24px;
   }
+  img.fingerprint {
+    float: left;
+    margin-left: -2rem;
+    max-height: 2rem;
+  }
   span.label {
     display: inline-block;
     border-radius: 3px;
@@ -1063,7 +1068,11 @@ daptm:eventType : string
           <p>When a list of <a>Sources</a> is provided,
             a <a>presentation processor</a> MUST play no more than one of the
             <a>Sources</a> for each <a>Audio Recording</a>.</p>
-          <p>Implementations can use the <a>Type</a>, and if present,
+          <p>
+            <img src="https://www.w3.org/TR/html5/images/fingerprint.png" 
+            class="fingerprint" 
+            alt="This feature may contribute to browser fingerprintability.">
+            Implementations can use the <a>Type</a>, and if present,
             any relevant additional formatting information,
             to decide which <a>Source</a> to play.
             For example, given two <a>Sources</a>, one being a WAV file, and the other an MP3,
@@ -1764,7 +1773,11 @@ daptm:eventType : string
 
     <section>
       <h3>Audio format preference</h3>
-      <p>DAPT documents can reference a set of alternate external audio resources for the same fragment of audio,
+      <p>
+        <img src="https://www.w3.org/TR/html5/images/fingerprint.png" 
+        class="fingerprint" 
+        alt="This feature may contribute to browser fingerprintability.">
+        DAPT documents can reference a set of alternate external audio resources for the same fragment of audio,
         where the processor is expected to select one of the alternatives based on features such as format support.
         If this pattern is used, it is possible that the processor's choice of audio resource,
         being exposed to the origin, reveals information about that processor, such as its preferred audio format.
