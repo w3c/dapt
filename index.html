@@ -829,6 +829,9 @@ table.coldividers td + td { border-left:1px solid gray; }
                   which can include or reference TTML style attributes
                   such as <code>tts:ruby</code> used to alter the layout or styling of
                   sections of text within each paragraph.
+                  Mixed direction text, for example interleaved left to right (ltr)
+                  and right to left (rtl) text, can be specified by using the
+                  <code>tts:direction</code> attribute on <code>&lt;span&gt;</code> elements.
                   Similarly metadata can be added using attributes or <code>&lt;metadata&gt;</code> elements.</aside>
               </li>
               <li>The <code>style</code> attribute MAY be present.
@@ -1667,6 +1670,26 @@ daptm:eventType : string
         <p>This specification does not put additional constraints on the layout and rendering <a>features</a> defined in [[!TTML-IMSC1.2]].</p>
         <div class="note">Layout of the paragraphs may rely on the default TTML region (i.e. if no <code>&lt;layout&gt;</code> element is used in the <code>&lt;head&gt;</code> element) or may be explicit by the use of the <code>region</code> attribute, to refer to a <code>&lt;region&gt;</code> element present at <code>/tt/head/layout/region</code>.</div>
       </section>  <!-- Layout -->
+
+      <section>
+        <h4>Bidirectional text</h4>
+        <p>
+          The following metadata elements are permitted in DAPT and specified in [[TTML2]] as containing <code>#PCDATA</code>,
+          i.e. text data only with no element content.
+          Where bidirectional text is required within the character content within such an element,
+          Unicode control characters can be used to define the base direction within arbitrary ranges of text. 
+        </p>
+        <ul>
+          <li><code>&lt;ttm:copyright&gt;</code></li>
+          <li><code>&lt;ttm:desc&gt;</code></li>
+          <li><code>&lt;ttm:item&gt;</code></li>
+          <li><code>&lt;ttm:name&gt;</code></li>
+          <li><code>&lt;ttm:title&gt;</code></li>
+        </ul>
+        <p>The content elements <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> permit the direction of text
+          to be specified using the <code>tts:direction</code> and <code>tts:unicodeBidi</code> attributes.
+          Document authors should use this more robust mechanism rather than using Unicode control characters.</p>
+      </section>  <!-- Bidirectional text -->
 
     </section> <!-- Profile Constraints -->
 
