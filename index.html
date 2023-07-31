@@ -577,7 +577,14 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <aside class="example">If a programme contains dialogue in English and Hebrew,
                   the French <a>Translated Transcript</a> will contain at least the translation in French of all <a>Script Events</a>.
                   It may still retain text content in Hebrew and English to assist further processing.</aside>
-              </li>
+                <aside class="example">If an <a>audio description</a> <a>Original Language Transcript</a> contains
+                  <a>Original</a> language <a>Script Events</a> that describe in-image text content that is not in the nominal
+                  original language of the programme, and the desired <a>audio description</a> output needs to be in that nominal
+                  original language, the <a>Text</a> objects can be translated and marked as <a>Translation</a>.
+                  In that case, it is appropriate to mark the transcript as a <a>Translated Transcript</a>.
+                  It may also be appropriate, as part of the translation activity, to describe the original language of the text.
+                </aside>
+                </li>
               <li>
                 <dfn>Pre-recording Script</dfn>:
                 <p>When the <code>daptm:scriptType</code> value is <code>preRecording</code>,
@@ -596,7 +603,8 @@ table.coldividers td + td { border-left:1px solid gray; }
                 In either case, <a>Text</a> objects that are translations have <a>Text Language Source</a> properties set to <a>Translation</a>.</aside>
                 
                 <aside class="note">The <a>Text</a> objects in Audio Description <a>Script Events</a> are each expected to have
-                  a <a>Text Language Source</a> property of <a>Original</a> if their language is the <a>Primary Language</a>
+                  a <a>Text Language Source</a> property of <a>Original</a> if they represent non-textual visual elements of the scene,
+                  and their language is the nominal original language of the original programme audio, 
                   or, when representing in-image text,
                   if they are in the same language as that text.
                   If audio description <a>scripts</a> are translated,
@@ -646,15 +654,26 @@ table.coldividers td + td { border-left:1px solid gray; }
             to the language being spoken for the longest duration, or to the language arbitrarily chosen by the author.</p>
           <p class="note">Text content is marked either as being either in the <a>Original</a> language or
             as being a <a>Translation</a> independently of the <a>Primary Language</a>, using the <a>Text Language Source</a> property.</p>
-          <aside class="example">An <a>Original Language Transcript</a> <a>script</a> is prepared for a video
+          <aside class="example">An <a>Original Language Transcript</a> of dialogue is prepared for a video
             containing dialogue in Danish and Swedish.
             The <a>Primary Language</a> is set to Danish by setting <code>xml:lang="da"</code> on the <code>&lt;tt&gt;</code> element.
             <a>Script Events</a> that contain Swedish <a>Text</a> override this by setting
             <code>xml:lang="sv"</code> on the <code>&lt;p&gt;</code> element.
-            Script Events that contain Danish <a>Text</a> can set the <code>xml:lang</code> attribute
+            <a>Script Events</a> that contain Danish <a>Text</a> can set the <code>xml:lang</code> attribute
             or omit it, since the inherited language is the <a>Primary Language</a> of the document.
             In both cases the Script Events' <a>Text</a> objects are <code>&lt;p&gt;</code> elements that represent original language text
             and therefore set their <a>Text Language Source</a> to Original by setting <code>daptm:langSrc="original"</code>.</aside>
+          <aside class="example">
+            An <a>Original Language Transcript</a> of the video image is prepared for a video
+            containing dialogue in Danish and Swedish, that is nominally considered to be in Danish.
+            The video features text written in Danish and Swedish.
+            The <a>Primary Language</a> is set to Danish.
+            <a>Script Events</a> that describe non-textual parts of the scene are written in Danish
+            and have their <a>Text Language Source</a> set to Original by setting <code>daptm:langSrc="original"</code>.
+            <a>Script Events</a> that describe Swedish text in the video image are written in Swedish
+            and have their <a>Text Language Source</a> set to Original and their language set to Swedish
+            by setting <code>xml:lang="sv"</code> on the <code>&lt;p&gt;</code> element.
+          </aside>
         </section>
 
         <section>
@@ -923,8 +942,8 @@ table.coldividers td + td { border-left:1px solid gray; }
               <ol>
                 <li>the same language as the dialogue that it represents in the original programme audio;</li>
                 <li>a transcription of text visible in the original programme video, in the same language as that text;</li>
-                <li>representative of non-dialogue sound and is in the <a>Primary Language</a> of the <a>DAPT Script</a>;</li>
-                <li>representative of the scene in the original programme video, and is in the <a>Primary Language</a> of the <a>DAPT Script</a>.</li>
+                <li>representative of non-dialogue sound and is in the same language as the original programme audio;</li>
+                <li>representative of the scene in the original programme video, and is in the nominal language of the original programme audio.</li>
               </ol>
             </li>
             <li><dfn>Translation</dfn> - the <a>Text</a> is a representation of the Original language text in a different language.</li>
@@ -933,12 +952,17 @@ table.coldividers td + td { border-left:1px solid gray; }
             can be different to the document's <a>Primary Language</a>.
             For example a <a>transcript</a> of a short piece of dialogue spoken in a different language to the majority of the dialogue would be annotated
             with both a different <code>xml:lang</code> value and as being <a>Original</a>.</aside>
+          <aside class="note">In programmes containing content in multiple languages,
+            a single nominal language for the programme is assumed.</aside>
+          <aside class="note">Maintaining alignment between the audio description's &quot;original&quot; language
+            and the nominal language of the original programme audio allows for translations
+            of audio description to be tracked for use alongside dubbed versions.
+          </aside>
           <p>The <a>Text Language Source</a> property is represented in a <a>DAPT Document</a> by a <code>daptm:langSrc</code> attribute with the following constraints:</p>
           <p class="ednote">Should we use an abbreviated attribute name?</p>
           <p class="ednote">Initial design is to use an abbreviated name and <code>original|translation</code>,
             though I considered using an abbreviated value too, since this attribute will appear on every <code>&lt;p&gt;</code> element.
-            Abbreviating O for Original is probably a bad idea because the letter O and the number 0 can easily be confused.
-            I also considered P for Primary but that caused potential confusion between Primary Language and Primary Text Language Source.</p>
+            Obvious abbreviated values would be <code>o</code> for <a>Original</a> and <code>t</code> for <a>Translation</a>.</p>
           <div class="exampleInner">
             <pre class="language-abnf">
 daptm:langSrc
