@@ -78,6 +78,11 @@ table.coldividers td + td { border-left:1px solid gray; }
     font-family: sans-serif;
     line-height: 24px;
   }
+  img.fingerprint {
+    float: left;
+    margin-left: -2rem;
+    max-height: 2rem;
+  }
   span.label {
     display: inline-block;
     border-radius: 3px;
@@ -1063,7 +1068,11 @@ daptm:eventType : string
           <p>When a list of <a>Sources</a> is provided,
             a <a>presentation processor</a> MUST play no more than one of the
             <a>Sources</a> for each <a>Audio Recording</a>.</p>
-          <p>Implementations can use the <a>Type</a>, and if present,
+          <p>
+            <img src="https://www.w3.org/TR/html5/images/fingerprint.png" 
+            class="fingerprint" 
+            alt="This feature may contribute to browser fingerprintability.">
+            Implementations can use the <a>Type</a>, and if present,
             any relevant additional formatting information,
             to decide which <a>Source</a> to play.
             For example, given two <a>Sources</a>, one being a WAV file, and the other an MP3,
@@ -1736,6 +1745,61 @@ daptm:eventType : string
   </section>
 
   <section class="informative appendix">
+    <h2>Privacy Considerations</h2>
+
+    <p>With the exception of the following, the privacy considerations of [[ttml2]] apply:</p>
+
+    <ul>
+      <li>Appendix P.3 (Resource Fetching), where only the considerations relating to the <code>&lt;audio&gt;</code> element apply.</li>
+      <li>Appendix P.7 (Access to Processing State) does not apply, since no support for the <code>condition</code> attribute is required.</li>
+      <li>Appendix P.9 (Privacy of Preference) is extended to include the potential indication that the user has a need for audio description.</li>
+    </ul>
+
+    <section>
+      <h3>Personal Information</h3>
+      <p>DAPT documents typically contain the names of characters or people who feature within the associated media,
+        either fictional or real.
+        In general this information would be present within the media itself or be public via other routes.
+        If there is sensitivity associated with their being known to people with access to
+        the DAPT documents in which their identity is contained,
+        then such access should be managed with appropriate confidentiality.
+        For example those documents could be available within a closed authoring environment and
+        edited to remove the sensitive information prior to distribution to a wider audience.
+        If this scenario arises, information security good practices within the closed environment should be applied,
+        such as encryption of the document "at rest" and when being moved,
+        access controlled by authentication platforms, etc.
+      </p>
+    </section>
+
+    <section>
+      <h3>Audio format preference</h3>
+      <p>
+        <img src="https://www.w3.org/TR/html5/images/fingerprint.png" 
+        class="fingerprint" 
+        alt="This feature may contribute to browser fingerprintability.">
+        DAPT documents can reference a set of alternate external audio resources for the same fragment of audio,
+        where the processor is expected to select one of the alternatives based on features such as format support.
+        If this pattern is used, it is possible that the processor's choice of audio resource,
+        being exposed to the origin, reveals information about that processor, such as its preferred audio format.
+      </p>
+      <aside class="note">
+        Document authors and content providers can avoid referencing external audio resources by embedding
+        the audio resources within the document. 
+        This usage pattern does not expose the processor's choice of audio resource to the origin.
+      </aside>
+    </section>
+  </section>
+
+  <section class="informative appendix">
+    <h2>Security Considerations</h2>
+
+    <p>
+      The security considerations of [[ttml2]] apply.
+    </p>
+
+  </section>
+
+  <section class="informative appendix">
     <h2>Audio Mixing</h2>
 
     <p>Applying the <a>Mixing Instructions</a> can be implemented using [[webaudio]].
@@ -1905,8 +1969,8 @@ daptm:eventType : string
       <table class="simple" id="table-features-and-extensions">
         <thead>
           <tr>
-            <th style="width:20%" style="text-align:center">Feature or Extension</th>
-            <th style="width:10%" style="text-align:center">Disposition</th>
+            <th style="width:20%; text-align:center;">Feature or Extension</th>
+            <th style="width:10%; text-align:center;">Disposition</th>
             <th style="text-align:center">Additional provision</th>
           </tr>
         </thead>
