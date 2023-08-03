@@ -1,7 +1,8 @@
 <tt ...
   daptm:workflowType="audioDescription"
   daptm:scriptType="asRecorded"
-  xml:lang="en">
+  xml:lang="en"
+  daptm:originalLang="en">
   ...
     <div begin="25s" end="28s">
       <p daptm:langSrc="original">

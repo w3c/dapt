@@ -4,7 +4,8 @@
     xml:lang="en" 
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
     daptm:workflowType="dubbing"
-    daptm:scriptType="originalTranscript">
+    daptm:scriptType="originalTranscript"
+    daptm:originalLang="en">
   <head>
     <metadata>
       <!-- Additional metadata may be placed here -->

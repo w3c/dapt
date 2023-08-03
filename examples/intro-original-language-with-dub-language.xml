@@ -1,10 +1,12 @@
 <tt xmlns="http://www.w3.org/ns/ttml"
+    xmlns:ttm="http://www.w3.org/ns/ttml#metadata"
     xmlns:ttp="http://www.w3.org/ns/ttml#parameter"
     xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
     xml:lang="en"
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
     daptm:workflowType="dubbing"
-    daptm:scriptType="translatedTranscript">
+    daptm:scriptType="translatedTranscript"
+    daptm:originalLang="fr">
   <head>
     <metadata>
       <ttm:agent type="character" xml:id="character_1">
