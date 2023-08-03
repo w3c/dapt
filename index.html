@@ -696,7 +696,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           </p>
           <p>The <a>Original Language</a> is represented in a <a>DAPT Document</a> by the following structure and constraints:
             <ul>
-              <li>the <code>daptm:originalLang</code> attribute MUST be present on the <code>&lt;tt&gt;</code> element
+              <li>the <dfn><code>daptm:originalLang</code></dfn> attribute MUST be present on the <code>&lt;tt&gt;</code> element
                 and its value MUST NOT be empty.</li>
               <li>the value of the attribute MUST be a language identifier as defined by [[BCP47]].</li>
             </ul>
@@ -2571,6 +2571,14 @@ daptm:eventType : string
               This is the profile expression of <a href="#on-screen"></a>.
             </td>
           </tr>
+          
+          <tr>
+            <td><a href="#originallang-root"><code>#originallLang-root</code></a></td>
+            <td><span class="required label">required</span></td>
+            <td>
+              This is the profile expression of <a href="#original-language"></a>.
+            </td>
+          </tr>
           <tr>
             <td><a href="#profile-root"><code>#profile-root</code></a></td>
             <td><span class="prohibited label">prohibited</span></td>
@@ -2731,6 +2739,17 @@ daptm:eventType : string
           <a><code>daptm:onScreen</code></a> attribute on the <code>&lt;div&gt;</code> element.</p>
       </section>
 
+      <section>
+        <h3>#originalLang-root</h3>
+        <p>A <a>transformation processor</a> supports the <code>#originalLang-root</code> extension if
+          it recognizes and is capable of transforming values of the
+          <a><code>daptm:originalLang</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#originalLang-root</code> extension if
+          it implements presentation semantic support of the
+          <a><code>daptm:originalLang</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+      </section>
+  
       <section>
         <h3>#profile-root</h3>
         <p>A <a>transformation processor</a> supports the <code>#profile-root</code> extension if

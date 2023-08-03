@@ -85,6 +85,7 @@
     <extension value="required">#agent</extension>
     <extension value="required">#contentProfiles-root</extension>
     <extension value="required">#onScreen</extension>
+    <extension value="required">#originallLang-root</extension>
     <extension value="required">#scriptType-root</extension>
     <extension value="required">#serialization</extension>
     <extension value="required">#textLanguageSource</extension>
