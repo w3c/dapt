@@ -16,10 +16,10 @@
   </head>
   <body>
     <div begin="10s" end="13s" ttm:agent="character_1">
-      <p xml:lang="fr" daptm:langSrc="original">
+      <p xml:lang="fr">
         <span>Et c'est grâce à ça qu'on va devenir riches.</span>
       </p>
-      <p xml:lang="en" daptm:langSrc="translation">
+      <p xml:lang="en" daptm:langSrc="fr">
         <span>And thanks to that, we're gonna get rich.</span>
       </p>
     </div>

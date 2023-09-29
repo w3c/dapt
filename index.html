@@ -553,13 +553,13 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <p>When the <code>daptm:scriptType</code> value is <code>originalTranscript</code>,
                 the document is a literal transcription of the dialogue and on-screen text in their inherent spoken/written language(s),
                 or of non-dialogue sounds and visual content in the <a>Original Language</a>.</p>
-                <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain <a>Text</a> objects whose
-                  <a>Text Language Source</a> is set to <a>Original</a>
+                <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain
+                  <a>Original</a> language <a>Text</a> objects
                   and SHOULD NOT contain <a>Text</a> objects whose
-                  <a>Text Language Source</a> is set to <a>Translation</a>.</p>
+                  <a>Text Language Source</a> indicates that they are <a>Translations</a>.</p>
               <aside class="example">If a programme contains dialogue in English and Hebrew,
                 the <a>Original Language Transcript</a> will contain some <a>Script Events</a> in English and some in Hebrew,
-                all marked as <a>Original</a> <a>Text Language Source</a>.
+                all containing <a>Original</a> language <a>Text</a>.
                 None of the <a>Script Events</a> is marked as <a>Translation</a>.</aside>
               </li>
               <li>
@@ -569,15 +569,18 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <p>It can be adapted to produce a <a>Pre-Recording Script</a>,
                   and/or used as the basis for a further translation into the <a>Target Recording Language</a>.</p> 
                 <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain <a>Text</a> objects whose
-                  <a>Text Language Source</a> is set to <a>Translation</a>.
-                  They MAY also contain Text whose language is <a>Original</a>.</p>
+                  <a>Text Language Source</a> is set to the source language from which they were translated,
+                  which also indicates that they are <a>Translations</a>.
+                  They MAY also contain <a>Original</a> <a>Text</a> objects.</p>
                 <aside class="note">A <a>Script Event</a> in this type of <a>transcript</a> has a 
                   <a>Translation</a> <a>Text</a> object in the <a>Target Recording Language</a>
                   and can also contain an <a>Original</a> <a>Text</a> object, for context,
                   to assist in the adaption process.
                   It can also have <a>Translation</a> <a>Text</a> objects in other languages,
                   for example used as intermediate (&quot;pivot&quot;) translations,
-                  or as additional context to assist in the adaptation process.</aside>
+                  or as additional context to assist in the adaptation process.
+                  Each <a>Translation</a> <a>Text</a> object indicates its source language
+                  using the <a>Text Language Source</a> property.</aside>
                 <aside class="example">If a programme contains dialogue in English and Hebrew,
                   the French <a>Translated Transcript</a> will contain at least the translation in French of all <a>Script Events</a>.
                   It may still retain text content in Hebrew and English to assist further processing.</aside>
@@ -587,7 +590,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                   <a>Original Language</a>, the <a>Text</a> objects can be translated and marked as <a>Translation</a>.
                   In that case, it is appropriate to mark the transcript as a <a>Translated Transcript</a>.
                   It may also be appropriate, as part of the translation activity, to describe within the translated text
-                  the original inherent language of the text, to inform the audience.
+                  the original language of that text, to inform the audience.
                 </aside>
                 </li>
               <li>
@@ -605,15 +608,20 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <aside class="note">The <a>Script Type</a> of a <a>DAPT Script</a> cannot necessarily be detected by inspecting the text content of the document.
                 For example, the adaptation of a <a>Translated Transcript</a> into a <a>Pre-recording Script</a>
                 can consist in replacing some words in the text content of a <a>Script Event</a> without altering the rest of the document.
-                In either case, <a>Text</a> objects that are translations have <a>Text Language Source</a> properties set to <a>Translation</a>.</aside>
+                In either case, <a>Text</a> objects that are <a>Translations</a>
+                have <a>Text Language Source</a> properties
+                set to the source language from which they were translated.</aside>
                 
-                <aside class="note">The <a>Text</a> objects in Audio Description <a>Script Events</a> are each expected to have
-                  a <a>Text Language Source</a> property of <a>Original</a> if they represent non-textual visual elements of the scene,
+                <aside class="note">The <a>Text</a> objects in Audio Description <a>Script Events</a> are not expected to have
+                  a <a>Text Language Source</a> property if they represent non-textual visual elements of the scene,
+                  i.e. they are <a>Original</a>
                   and their language is the <a>Original Language</a>, 
                   or, when representing in-image text,
                   if they are in the same language as that text.
                   If audio description <a>scripts</a> are translated,
-                  their translations would be marked as <a>Translation</a>.</aside>
+                  their translations would be marked as <a>Translation</a>
+                  and those translation <a>Text</a> objects would indicate
+                  the source language using the <a>Text Language Source</a> property.</aside>
               </li>
               <li>
                 <dfn>As-recorded Script</dfn>:
@@ -626,7 +634,8 @@ table.coldividers td + td { border-left:1px solid gray; }
                   They MAY also contain links to audio and mixing instructions for the purpose of producing an audio track incorporating the recordings.</p>
                 <aside class="note">Even though the output of the dubbing workflow is in the same language as those
                 <a>Text</a> objects with the matching language,
-                the <a>Text Language Source</a> of those Text objects remains <a>Translation</a>
+                the <a>Text Language Source</a> is retained,
+                indicating the source language of those <a>Translation</a> <a>Text</a> objects 
                 since they differ from the untranslated language of the dialogue.</aside>
               </li>
             </ul>
@@ -658,7 +667,9 @@ table.coldividers td + td { border-left:1px solid gray; }
             When multiple languages are used, the <a>Default Language</a> can correspond to the language of the majority of <a>Script Events</a>,
             to the language being spoken for the longest duration, or to the language arbitrarily chosen by the author.</p>
           <p class="note">The language of text content is marked either as being either <a>Original</a>  or
-            <a>Translation</a> independently of the <a>Default Language</a>, using the <a>Text Language Source</a> property.</p>
+            <a>Translation</a> independently of the <a>Default Language</a>,
+            using the absence or presence of the <a>Text Language Source</a> property,
+            and its value.</p>
           <aside class="example">An <a>Original Language Transcript</a> of dialogue is prepared for a video
             containing dialogue in Danish and Swedish.
             The <a>Default Language</a> is set to Danish by setting <code>xml:lang="da"</code> on the <code>&lt;tt&gt;</code> element.
@@ -667,7 +678,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             <a>Script Events</a> that contain Danish <a>Text</a> can set the <code>xml:lang</code> attribute
             or omit it, since the inherited language is the <a>Default Language</a> of the document.
             In both cases the Script Events' <a>Text</a> objects are <code>&lt;p&gt;</code> elements that represent untranslated text
-            and therefore set their <a>Text Language Source</a> to <a>Original</a> by setting <code>daptm:langSrc="original"</code>.</aside>
+            and therefore omit the <code>daptm:langSrc</code> attribute, implying that they are in the <a>Original</a> language.</aside>
         </section>
 
         <section>
@@ -703,14 +714,14 @@ table.coldividers td + td { border-left:1px solid gray; }
           </p>
           <aside class="example">
             An <a>Original Language Transcript</a> of the video image is prepared for a video
-            containing dialogue in Danish and Swedish, and has it's <a>Original Language</a> set to Danish.
+            containing dialogue in Danish and Swedish, and has its <a>Original Language</a> set to Danish.
             The video features text written in Danish and Swedish.
             The <a>Default Language</a> is set to Danish.
             <a>Script Events</a> that describe non-textual parts of the scene are written in Danish
-            and have their <a>Text Language Source</a> set to Original by setting <code>daptm:langSrc="original"</code>.
+            and have their <a>Text Language Source</a> set to <a>Original</a> by omitting the <code>daptm:langSrc</code> attribute.
             <a>Script Events</a> that describe Swedish text in the video image are written in Swedish
-            and have their <a>Text Language Source</a> set to Original and their language set to Swedish
-            by setting <code>xml:lang="sv"</code> on the <code>&lt;p&gt;</code> element.
+            and have their <a>Text Language Source</a> set to <a>Original</a> and their language set to Swedish
+            by omitting the <code>daptm:langSrc</code> attribute and setting <code>xml:lang="sv"</code> on the <code>&lt;p&gt;</code> element.
           </aside>
         </section>
 
@@ -870,7 +881,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             <li>Zero or more <a>Character Identifiers</a> indicating the <a>Characters</a> involved in this <a>Script Event</a>.
               <p class="note">While typically, a <a>Script Event</a> corresponds to one single <a>Character</a>, there are cases where multiple <a>characters</a> can be associated with a <a>Script Event</a>. This is when all <a>Characters</a> speak the same text at the same time.</p>
             </li>
-            <li><p>Zero or more <a>Text</a> objects, each representing either the untranslated (<a>Original</a>) <a>transcript</a> or
+            <li><p>Zero or more <a>Text</a> objects, each representing either the <a>Original</a> (untranslated) <a>transcript</a> or
               <a>Translations</a> in other languages.</p>
               <p class="note">Empty <a>Text</a> objects can be used to indicate explicitly that there is no text content.
                 It is recommended that empty <a>Text</a> objects are not used as a workflow placeholder to indicate incomplete work.</p></li>
@@ -944,7 +955,14 @@ table.coldividers td + td { border-left:1px solid gray; }
                   <code>tts:direction</code> attribute on <code>&lt;span&gt;</code> elements.
                   Similarly metadata can be added using attributes or <code>&lt;metadata&gt;</code> elements.</aside>
               </li>
-              <li>The <code>&lt;p&gt;</code> element MUST have one <a>Text Language Source</a> property.</li>
+              <li>If the <a>Text</a> is a <a>Translation</a>,
+                the <code>&lt;p&gt;</code> element MUST have one
+                <code>daptm:langSrc</code> attribute representing the <a>Text Language Source</a> property,
+                indicating the source language used as the basis of the translation.</li>
+              <li>If the <a>Text</a> is <a>Original</a>,
+                the <code>&lt;p&gt;</code> element MUST either not have a <code>daptm:langSrc</code> attribute or
+                have a <code>daptm:langSrc</code> attribute whose value is the computed value of <code>xml:lang</code>
+                for the <code>&lt;p&gt;</code> element.</li>
               <li>The <code>&lt;p&gt;</code> element SHOULD have an <code>xml:lang</code> attribute corresponding to the language of the <a>Text</a> object.
                 <p class="note">If a <code>&lt;p&gt;</code> element omits the <code>xml:lang</code> attribute then its computed language
                 is derived by inheritance from its parent element, and so forth up to the root <code>&lt;tt&gt;</code> element,
@@ -956,8 +974,8 @@ table.coldividers td + td { border-left:1px solid gray; }
 &lt;div xml:id=&quot;event_3&quot;
      begin=&quot;9663f&quot; end=&quot;9682f&quot; 
      ttm:agent=&quot;character_3&quot;&gt;
-  &lt;p xml:lang=&quot;pt-BR&quot; daptm:langSrc=&quot;original&quot; &gt;Voc&#xea; vai ter.&lt;/p&gt;
-  &lt;p xml:lang=&quot;fr&quot; daptm:langSrc=&quot;translation&quot; &gt;Bah, il arrive.&lt;/p&gt;
+  &lt;p xml:lang=&quot;pt-BR&quot;&gt;Voc&#xea; vai ter.&lt;/p&gt;
+  &lt;p xml:lang=&quot;fr&quot; daptm:langSrc=&quot;pt-BR&quot;&gt;Bah, il arrive.&lt;/p&gt;
 &lt;/div&gt;
                 </pre>
                 <p class="note">In some cases, a single section of untranslated dialogue can contain text in more than one language.
@@ -974,12 +992,11 @@ table.coldividers td + td { border-left:1px solid gray; }
 
         <section>
           <h4>Text Language Source</h4>
-          <p>The <dfn>Text Language Source</dfn> property is an annotation indicating whether a <a>Text</a> object is
-            in the same language as the original content
-            (or the <a>Original Language</a> for content that has no inherent language),
-            referred to as &quot;original&quot;, or if it is a representation in another language, referred to as &quot;translation&quot;:</p>
+          <p>The <dfn>Text Language Source</dfn> property is an annotation indicating the source language of
+            a <a>Text</a> object that is
+            a representation in another language, referred to as &quot;translation&quot;:</p>
           <ul>
-            <li><dfn>Original</dfn> - the <a>Text</a> is any of:
+            <li><a>Text</a> is defined as <dfn>Original</dfn> if it is any of:
               <ol>
                 <li>the same language as the dialogue that it represents in the original programme audio;</li>
                 <li>a transcription of text visible in the original programme video, in the same language as that text;</li>
@@ -993,18 +1010,17 @@ table.coldividers td + td { border-left:1px solid gray; }
             can be different to the document's <a>Default Language</a>.
             For example a <a>transcript</a> of a short piece of dialogue spoken in a different language to the majority of the dialogue would be annotated
             with both a different <code>xml:lang</code> value and as being <a>Original</a>.</aside>
-          <p>The <a>Text Language Source</a> property is represented in a <a>DAPT Document</a> by a <code>daptm:langSrc</code> attribute with the following constraints:</p>
-          <p class="ednote">Should we use an abbreviated attribute name?</p>
-          <p class="ednote">Initial design is to use an abbreviated name and <code>original|translation</code>,
-            though I considered using an abbreviated value too, since this attribute will appear on every <code>&lt;p&gt;</code> element.
-            Obvious abbreviated values would be <code>o</code> for <a>Original</a> and <code>t</code> for <a>Translation</a>.</p>
-          <div class="exampleInner">
-            <pre class="language-abnf">
-daptm:langSrc
-  : "original"
-  | "translation"
-            </pre>
-          </div>
+          <p>The <a>Text Language Source</a> property is represented in a <a>DAPT Document</a> by a <code>daptm:langSrc</code> attribute
+            whose value MUST be a language identifier as defined by [[BCP47]].
+            The language identifier indicates the language from which the <a>Text</a> was translated.</p>
+          <p><a>Original</a> <a>Text</a> objects MUST have either
+            a <code>daptm:langSrc</code> attribute whose value is the same as its computed <code>xml:lang</code>,
+            or have no <code>daptm:langSrc</code> attribute.</p>
+          <p class="note">An example of the usage of <a>Text Language Source</a> is present in the <a>Text</a> section.</p>
+          <p class="ednote">Prohibiting the use of <code>daptm:langSrc</code> whose value is the same as the <code>xml:lang</code>
+            would be another possibility, i.e. forcing the absence of the attribute in <a>Original</a> language <a>Text</a> objects,
+            but it seems as though there's little benefit in doing this. If a benefit is identified, this could be opened as an
+            issue.</p>
         </section>
 
         <section>

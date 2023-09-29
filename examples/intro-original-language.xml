@@ -16,7 +16,7 @@
   </head>
   <body>
     <div begin="10s" end="13s">
-      <p daptm:langSrc="original" ttm:agent="character_1">
+      <p ttm:agent="character_1">
         <span>Et c'est grâce à ça qu'on va devenir riches.</span>
       </p>
     </div>
