@@ -10,20 +10,20 @@
                 style="stroke:#000000;stroke-width:1.0;" width="220" x="410" y="12"/>
             <a href="#dapt-script" target="_top" xlink:actuate="onRequest" xlink:href="#dapt-script"
                 xlink:show="new" xlink:title="#dapt-script" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
-                    textLength="98" x="471" y="36.4688">DAPT Script</text></a>
-                <line style="stroke:#000000;stroke-width:1.0;" x1="411" x2="629" y1="48.8438" y2="48.8438"/>
-                <a href="#workflow-type" target="_top" xlink:actuate="onRequest"
-                    xlink:href="#workflow-type" xlink:show="new" xlink:title="#workflow-type" xlink:type="simple"><text
-                        fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="115"
-                        x="420" y="72.3125">Workflow Type</text></a>
-                <a href="#script-type" target="_top" xlink:actuate="onRequest"
-                    xlink:href="#script-type" xlink:show="new" xlink:title="#script-type" xlink:type="simple"><text
-                        fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="87"
-                        x="420" y="99.1563">Script Type</text></a>
-                <a href="#primary-language" target="_top" xlink:actuate="onRequest"
-                    xlink:href="#primary-language" xlink:show="new" xlink:title="#primary-language" xlink:type="simple"><text
-                        fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing"
-                        textLength="141" x="420" y="126">Primary Language</text></a>
+                textLength="98" x="471" y="36.4688">DAPT Script</text></a>
+            <line style="stroke:#000000;stroke-width:1.0;" x1="411" x2="629" y1="48.8438" y2="48.8438"/>
+            <a href="#workflow-type" target="_top" xlink:actuate="onRequest"
+                xlink:href="#workflow-type" xlink:show="new" xlink:title="#workflow-type" xlink:type="simple"><text
+                    fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="115"
+                    x="420" y="72.3125">Workflow Type</text></a>
+            <a href="#script-type" target="_top" xlink:actuate="onRequest"
+                xlink:href="#script-type" xlink:show="new" xlink:title="#script-type" xlink:type="simple"><text
+                    fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="87"
+                    x="420" y="99.1563">Script Type</text></a>
+            <a href="#primary-language" target="_top" xlink:actuate="onRequest"
+                xlink:href="#primary-language" xlink:show="new" xlink:title="#primary-language" xlink:type="simple"
+                    ><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing"
+                    textLength="141" x="420" y="126">Primary Language</text></a>
         </g>
         <!--class Character-->
         <g id="elem_Character">
@@ -31,7 +31,7 @@
                 style="stroke:#000000;stroke-width:1.0;" width="220" x="248" y="287"/>
             <a href="#character" target="_top" xlink:actuate="onRequest" xlink:href="#character"
                 xlink:show="new" xlink:title="#character" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
-                    textLength="78" x="319" y="311.4688">Character</text></a>
+                textLength="78" x="319" y="311.4688">Character</text></a>
             <line style="stroke:#000000;stroke-width:1.0;" x1="249" x2="467" y1="323.8438" y2="323.8438"/>
             <a href="#dfn-character-identifier" target="_top"
                 xlink:actuate="onRequest" xlink:href="#dfn-character-identifier" xlink:show="new"
@@ -93,8 +93,8 @@
             <rect fill="#FFFFFF" height="125.375" id="ScriptEventDescription" rx="2.5" ry="2.5"
                 style="stroke:#000000;stroke-width:1.0;" width="232" x="895" y="287"/>
             <a href="#dfn-script-event-description" target="_top"
-            xlink:actuate="onRequest" xlink:href="#dfn-script-event-description" xlink:show="new"
-            xlink:title="#dfn-script-event-description" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
+                xlink:actuate="onRequest" xlink:href="#dfn-script-event-description" xlink:show="new"
+                xlink:title="#dfn-script-event-description" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
                 textLength="197" x="912.5" y="311.4688">Script Event Description</text></a>
             <line style="stroke:#000000;stroke-width:1.0;" x1="896" x2="1126" y1="323.8438" y2="323.8438"/>
             <text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="90"
@@ -127,13 +127,13 @@
                 x="561" y="718">(optional) Language</text>
         </g>
         <!--class Audio-->
-        <a href="#dfn-audio" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-audio"
-            xlink:show="new" xlink:title="#dfn-audio" xlink:type="simple"><g id="elem_Audio">
+        <g id="elem_Audio">
             <rect fill="#FFFFFF" height="36.8438" id="Audio" rx="2.5" ry="2.5"
                 style="stroke:#000000;stroke-width:1.0;" width="220" x="841" y="648.27"/>
-            <text fill="#000000" font-family="sans-serif" font-size="16" font-style="italic" font-weight="bold"
-                lengthAdjust="spacing" textLength="49" x="926.5" y="672.7388">Audio</text>
-        </g></a>
+            <a href="#dfn-audio" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-audio"
+                xlink:show="new" xlink:title="#dfn-audio" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-style="italic" font-weight="bold"
+                lengthAdjust="spacing" textLength="49" x="926.5" y="672.7388">Audio</text></a>
+        </g>
         <!--class SynthesizedAudio-->
         <g id="elem_SynthesizedAudio">
             <rect fill="#FFFFFF" height="98.5313" id="SynthesizedAudio" rx="2.5" ry="2.5"
@@ -141,7 +141,7 @@
             <a href="#dfn-synthesized-audio" target="_top" xlink:actuate="onRequest"
                 xlink:href="#dfn-synthesized-audio" xlink:show="new" xlink:title="#dfn-synthesized-audio"
                 xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
-                    textLength="152" x="875" y="958.8988">Synthesized Audio</text></a>
+                textLength="152" x="875" y="958.8988">Synthesized Audio</text></a>
             <line style="stroke:#000000;stroke-width:1.0;" x1="842" x2="1060" y1="971.2738" y2="971.2738"/>
             <a href="#dfn-rate" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-rate"
                 xlink:show="new" xlink:title="#dfn-rate" xlink:type="simple"><text fill="#000000"
@@ -196,7 +196,7 @@
             <a href="#dfn-mixing-instruction" target="_top" xlink:actuate="onRequest"
                 xlink:href="#dfn-mixing-instruction" xlink:show="new" xlink:title="#dfn-mixing-instruction"
                 xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
-                    textLength="151" x="46.5" y="588.2088">Mixing Instruction</text></a>
+                textLength="151" x="46.5" y="588.2088">Mixing Instruction</text></a>
             <line style="stroke:#000000;stroke-width:1.0;" x1="13" x2="231" y1="600.5838" y2="600.5838"/>
             <a href="#dfn-gain" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-gain"
                 xlink:show="new" xlink:title="#dfn-gain" xlink:type="simple"><text fill="#000000"
