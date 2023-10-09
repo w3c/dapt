@@ -954,19 +954,36 @@ daptm:onScreen
         </section>
         <section>
           <h4>Script Event Description</h4>
-          <p>The <dfn>Script Event Description</dfn> object is an annotation providing a human-readable description of a <a>Script Event</a>.</p>
-          <p>The <a>Script Event Description</a> object is represented in a <a>DAPT Document</a> by a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
-          <p class="note">The <a>Script Event Description</a> does not need to be unique, i.e. it does not need to have a different value for each <a>Script Event</a>. 
-            For example a particular value could be re-used to identify in a human-readable way one or more <a>Script Events</a> that are intended to be processed together,
+          <p>The <dfn>Script Event Description</dfn> object is
+            an annotation providing a human-readable description of a <a>Script Event</a>.
+            Script Event Descriptions can themselves be classified with
+            a <a>Description Type</a>.</p>
+          <p>A <a>Script Event Description</a> object is represented in a <a>DAPT Document</a> by
+            a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
+          <p>Zero or more <code>&lt;ttm:desc&gt;</code> elements MAY be present.</p>
+          <p class="note">The <a>Script Event Description</a> does not need to be unique,
+            i.e. it does not need to have a different value for each <a>Script Event</a>. 
+            For example a particular value could be re-used to identify in a human-readable way
+            one or more <a>Script Events</a> that are intended to be processed together,
             e.g. in a batch recording.</p>
-          <p>Each <a>Script Event Description</a> can be annotated with a <dfn>Description Type</dfn> to categorise further the purpose of the Script Event Description.</p>
-          <p>The <a>Description Type</a> is represented in a <a>DAPT Document</a> by a <code>daptm:descType</code> attribute on the <code>&lt;ttm:desc&gt;</code> element.</p>
-        <pre class="example"
-          data-include="examples/event-desc.xml"
-          data-include-format="text">
-        </pre>
-          <p>The <code>&lt;ttm:desc&gt;</code> element MAY have a <code>daptm:descType</code> attribute specified to indicate the <a>Description Type</a>.
-            The <code>daptm:descType</code> attribute is defined below. Its possible values are as indicated in the registry at YYY.</p>
+          <p>The <code>&lt;ttm:desc&gt;</code> element
+            MAY specify its language
+            using the <code>xml:lang</code> attribute.</p>
+          <aside class="note">In the absence of a <code>xml:lang</code> attribute
+            the language of the <a>Script Event Description</a> is inherited from the
+            parent <a>Script Event</a> object.</aside>
+          <pre class="example"
+            data-include="examples/event-desc.xml"
+            data-include-format="text">
+          </pre>
+          <p>Each <a>Script Event Description</a> can be annotated with
+            one or more <dfn>Description Type</dfn>s
+            to categorise further the purpose of the Script Event Description.</p>
+          <p>Each <a>Description Type</a> is represented in a <a>DAPT Document</a> by
+            a <code>daptm:descType</code> attribute on the <code>&lt;ttm:desc&gt;</code> element.</p>
+          <p>The <code>&lt;ttm:desc&gt;</code> element MAY have zero or one <code>daptm:descType</code> attribute.
+            The <code>daptm:descType</code> attribute is defined below.
+            Its possible values are as indicated in the registry at YYY.</p>
           <p class="ednote">Registry to be defined.</p>
           <div class="exampleInner">
             <pre class="language-abnf">
@@ -977,16 +994,13 @@ daptm:descType : string
             data-include="examples/event-desc-descType.xml"
             data-include-format="text">
           </pre>
-          <p>Multiple <code>&lt;ttm:desc&gt;</code> elements MAY be present.
-            Amongst a sibling group of <code>&lt;ttm:desc&gt;</code> elements there are no constraints on the uniqueness of <code>daptm:descType</code>,
+          <p>Amongst a sibling group of <code>&lt;ttm:desc&gt;</code> elements
+            there are no constraints on the uniqueness of <code>daptm:descType</code>,
             however it may be useful as a distinguisher as shown in the following example.</p>
           <pre class="example"
             data-include="examples/event-desc-multiple-descType.xml"
             data-include-format="text">
           </pre>
-          <aside class="note">It is possible to label the language of the contents of a <code>&lt;ttm:desc&gt;</code> element
-            using the <code>xml:lang</code> attribute.
-          </aside>
         </section>
         <section>
           <h4>Script Event Type</h4>
