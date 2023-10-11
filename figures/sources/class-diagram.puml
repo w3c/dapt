@@ -1,22 +1,28 @@
 @startuml class-diagram
 !theme plain
-!pragma ratio 1.3
-skinparam groupInheritance 2
+!pragma ratio 1
+' skinparam groupInheritance 2
 skinparam linetype ortho
 skinparam DefaultFontName sans-serif
 skinparam DefaultFontSize 16
 skinparam ArrowFontSize 13
 skinparam ArrowMessageAlignment direction
 skinparam Padding 4
-skinparam Nodesep 15
-skinparam Ranksep 20
+skinparam Nodesep 70
+skinparam Ranksep 80
 skinparam MinClassWidth 220
 
+Class DAPTScript as "**DAPT Script**" [[#dapt-script]] {
+    Workflow Type [[[#workflow-type]]]
+    Script Type [[[#script-type]]]
+    Primary Language [[[#primary-language]]]
+}
+
 together {
-    Class DAPTScript as "**DAPT Script**" [[#dapt-script]] {
-        Workflow Type [[[#workflow-type]]]
-        Script Type [[[#script-type]]]
-        Primary Language [[[#primary-language]]]
+    Class Character as "**Character**" [[#character]] {
+        Character Identifier [[[#dfn-character-identifier]]]
+        Name [[[#dfn-character-name]]]
+        {field} (optional) Talent Name [[[#dfn-character-talent-name]]]
     }
 
     Class ScriptEvent as "**Script Event**" [[#script-event]] {
@@ -29,24 +35,18 @@ together {
         {field} (optional) On Screen [[[#on-screen]]]
     }
 
+    Class ScriptEventDescription as "**Script Event Description**" [[#dfn-script-event-description]] {
+        {field} Description
+        {field} (optional) Description Type [[[#dfn-description-type]]]
+        {field} (optional) Language
+    }
+
     Class Text as "**Text**" [[#text]] {
         Text content [[[#dfn-text]]]
         Text Language Source [[[#text-language-source]]]
         {field} (optional) Language
         ' {field} (optional) Inline Style Attributes
     }
-}
-
-Class Character as "**Character**" [[#character]] {
-    Character Identifier [[[#dfn-character-identifier]]]
-    Name [[[#dfn-character-name]]]
-    {field} (optional) Talent Name [[[#dfn-character-talent-name]]]
-}
-
-Class Style as "**Style**" {
-    Style Identifier
-    {field} (optional) Character Identifier [[[#dfn-character-identifier]]]
-    Style Attributes
 }
 
 together {
@@ -82,30 +82,25 @@ class MixingInstruction as "**Mixing Instruction**" [[#dfn-mixing-instruction]] 
 ' MixingInstruction -[hidden]r-AudioRecording
 
 
-DAPTScript *-down- "0..* " ScriptEvent : contains >
-DAPTScript *-right- "0..*" Character : contains\r >
-DAPTScript *-right- "0..*  " Style : contains >
-Character "0..1  " <.down. "0..*" Style [[#dfn-character-style]] : Character\rStyle
-ScriptEvent "0..*" .right.> "0..*" Style [[#dfn-character-style]] : Character\rStyle
-ScriptEvent *-left- "0..*" MixingInstruction : contains >
-Text "0..*" .right.> "0..*" Style [[#dfn-character-style]] : Character\nStyle
-Text "0..*" .right.> "0..*" Style : Other\nStyle
-Text *-down- "0..* " Audio : contains >
-Text *-left- "0..* " MixingInstruction : contains >
-ScriptEvent *-down- "0..*" Text : contains >
-ScriptEvent "0..*" .left.> "0..*" Character
-AudioRecording *-left- "0..* " MixingInstruction : contains >
-Audio <|-- SynthesizedAudio : is <
-Audio <|-- AudioRecording : is <
+DAPTScript *-down- "0..* " ScriptEvent : contains\n >
+DAPTScript *-- "0..*" Character : contains >
+ScriptEvent *-down- "0..*" MixingInstruction : contains\n >
+Text *-left- "0..* " Audio : contains\n <
+Text *-- "0..* " MixingInstruction : contains\n >
+Character "0..*" <.right. "0..*" ScriptEvent
+ScriptEvent *-left> "0..*" ScriptEventDescription : contains\n <
+ScriptEvent *-down- "0..*" Text : contains\n >
+AudioRecording *-- "0..* " MixingInstruction : contains >
+Audio <|-down- SynthesizedAudio : is\n <
+Audio <|-down- AudioRecording : is\n <
 
 SynthesizedAudio -[hidden]r- AudioRecording
 
 ' Hidden links to persuade the layout to look nicer
-DAPTScript -[hidden]right- Style
-Character -[hidden]down- Style
 ' MixingInstruction -[hidden]left- Text
 ' Text -[hidden]down- Audio
-' AudioRecording -[hidden]right- SynthesizedAudio
+AudioRecording -[hidden]left- SynthesizedAudio
+Audio -[hidden]left- MixingInstruction
 
 hide empty members
 hide circle
