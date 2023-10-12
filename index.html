@@ -272,17 +272,17 @@ table.coldividers td + td { border-left:1px solid gray; }
           <li>The <code>&lt;tt&gt;</code> root element in the namespace <code>http://www.w3.org/ns/ttml</code> indicates that this is a TTML document
           and the <a><code>ttp:contentProfiles</code></a> attribute indicates that it adheres to the DAPT <a>content profile</a> defined in this specification.</li>
           <li>The <code>daptm:workflowType</code> attribute indicates the type of workflow.</li>
-          <li>The <code>daptm:scriptType</code> attribute indicates the type of script
-          but in this empty example, it is not relevant, as only the structure of the document is shown.</li>
+          <li>The <code>daptm:scriptType</code> attribute indicates the type of <a>transcript</a> or <a>script</a>
+          but in this empty example, it is not relevant, since only the structure of the document is shown.</li>
         </ul>
         <p>The structure is applicable to all types of <a>DAPT scripts</a>, dubbing or <a>audio description</a>.</p>
         <pre class="example"
           data-include="examples/intro-top-level.xml"
           data-include-format="text">
         </pre>
-        <p>The following examples correspond to the timed text <a>scripts</a> produced
+        <p>The following examples correspond to the timed text <a>transcripts</a> and <a>scripts</a> produced
           at each stage of the workflow described in [[DAPT-REQS]].</p>
-        <p>The first example shows a <a>script</a> where timed opportunities for descriptions
+        <p>The first example shows an early stage <a>transcript</a> in which timed opportunities for descriptions
           or transcriptions have been identified but no text has been written:</p>
         <pre class="example"
           data-include="examples/intro-times-only.xml"
@@ -329,7 +329,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           data-include-format="text">
         </pre>
         <p>It is also possible to embed the audio directly,
-          so that a single document contains all of the script and
+          so that a single document contains the <a>script</a> and
           recorded audio together:
         </p>
         <pre class="example"
@@ -338,7 +338,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         </pre>
 
         <h4>Dubbing Examples</h4>
-        <p>From the basic structure of Example 1, a transcription of the audio programme produces an original language dubbing <a>script</a>,
+        <p>From the basic structure of <a href="#example-1"></a>, a transcription of the audio programme produces an original language dubbing <a>script</a>,
           which can look as follows. No specific style or layout is defined, and here the focus is on the transcription of the dialogs.
           Characters are identified within the <code>&lt;metadata&gt;</code>.</p>
         <pre class="example"
