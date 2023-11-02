@@ -3,7 +3,7 @@
     <div begin="10s" end="13s">
       <ttm:desc daptm:descType="scene">Scene 1</ttm:desc>
       <ttm:desc daptm:descType="plotSignificance">High</ttm:desc>
-      <p daptm:langSrc="original">
+      <p>
         <span>A woman climbs into a small sailing boat.</span>
       </p>
       <p xml:lang="fr" daptm:langSrc="en">
