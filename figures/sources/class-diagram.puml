@@ -44,7 +44,7 @@ together {
 
     Class Text as "**Text**" [[#text]] {
         Text content [[[#dfn-text]]]
-        Text Language Source [[[#text-language-source]]]
+        {field} (optional) Text Language Source [[[#text-language-source]]]
         {field} (optional) Language
         ' {field} (optional) Inline Style Attributes
     }
