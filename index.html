@@ -5,6 +5,13 @@
     <title>Dubbing and Audio description Profiles of TTML2</title>
     <script defer src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
     <script class="remove">
+      // Rather than include the version control system (VCS) URL, use the Respec config value
+      function replaceVCS(config) {
+        // If the element is an <a> already, Respec gives an error. Recreate the element as an <a> instead.
+        document.querySelectorAll(".pp-vcs").forEach((element) => 
+          element.outerHTML=`<a class="${element.className}" href="${config.github.repoURL}">${element.innerHTML}</a>`);
+      }
+
       var respecConfig = {
       // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
       specStatus: "ED",
@@ -49,6 +56,10 @@
             href: "https://tech.ebu.ch/publications/tech3390"
           }
       },
+
+      postProcess: [
+        replaceVCS,
+      ]
     };
     </script>
   <style>
@@ -145,6 +156,12 @@ table.coldividers td + td { border-left:1px solid gray; }
     </section>
 
     <section id="sotd" class="updateable-rec">
+      This document incorporates a <dfn data-cite="w3c-process#registry-section">registry section</dfn>
+      and defines <dfn data-cite="w3c-process#registry-table">registry tables</dfn>,
+      as defined in the [[w3c-process]] requirements for <a>w3c registries</a>.
+      Updates to the document that only change <a>registry tables</a> can be made
+      without meeting other requirements for Recommendation track updates,
+      as set out in <dfn data-cite="w3c-process#reg-table-update">Updating Registry Tables</dfn>. 
     </section>
 
     <section>
@@ -948,8 +965,7 @@ daptm:onScreen
             a <code>daptm:descType</code> attribute on the <code>&lt;ttm:desc&gt;</code> element.</p>
           <p>The <code>&lt;ttm:desc&gt;</code> element MAY have zero or one <code>daptm:descType</code> attributes.
             The <code>daptm:descType</code> attribute is defined below.
-            Its possible values are as indicated in the registry at YYY.</p>
-          <p class="ednote">Registry to be defined.</p>
+            Its possible values are as indicated in the <a>registry table</a> at <a href="#registry-table-descType"></a>.</p>
           <div class="exampleInner">
             <pre class="language-abnf">
 daptm:descType : string
@@ -972,8 +988,7 @@ daptm:descType : string
           <p>The <dfn>Script Event Type</dfn> property provides one or more space-separated keywords representing the type of the <a>Script Event</a>,
             i.e. spoken text, or on-screen text,
             and in the latter case, the type of on-screen text (title, credit, location, ...).
-            The possible keywords are indicated in the registry at XXXX.</p>
-          <p class="ednote">Registry to be defined.</p>
+            The possible keywords are indicated in the <a>registry table</a> at <a href="#registry-table-eventType"></a>.</p>
           <p>The <a>Script Event Type</a> is represented in a <a>DAPT Document</a> by the following attribute:
             <div class="exampleInner">
               <pre class="language-abnf">
@@ -2663,8 +2678,263 @@ daptm:eventType : string
     </section> <!-- extensions-->
 
   <section class="appendix">
-      <h2>Acknowledgments</h2>
-      The editors would like to thank XXX for their contributions to this specification.
+    <h2>Registry Section</h2>
+    <section id="registry-definition">
+      <h2>Registry Definition</h2>
+      <p>This section specifies the <a>registry definition</a>, consisting of
+        the custodianship, change process and
+        the core requirements of a <a>registry table</a>.
+      </p>
+      <section id="custodianship">
+        <h3>Custodianship</h3>
+        <p>The <dfn data-cite="w3c-process#custodian">custodian</dfn> of this <a>w3c registry</a> is the
+          <dfn data-abbr="TTWG"><a href="https://www.w3.org/groups/wg/timed-text">Timed Text Working Group</a></dfn>. 
+          If the <a>TTWG</a> is unable to fulfil the role of <a>custodian</a>,
+          for example if it has been <a data-cite="w3c-process#GeneralTermination">closed</a>,
+          the <a>custodian</a> in lieu is the <a>W3C Team</a>.
+        </p>
+      </section>
+      <section id="change-process">
+        <h3>Change Process</h3>
+        <section id="requesting-a-change">
+          <h4>Requesting a change</h4>
+          <p>Changes to this  <a>W3C Registry</a> MUST be requested (the <dfn>change request</dfn>)
+            using any one of the following options:</p>
+          <ul>
+            <li>Open an issue on this document's <span class="pp-vcs">version control system</span>;</li>
+            <li>Send an email to the <a>TTWG</a>'s public email reflector
+              <a href="mailto:public-tt@w3.org">public-tt@w3.org</a></li>
+          </ul>
+          <p>The <a>change request</a> MUST include enough information for the <a>custodian</a>
+            to be able to identify all of:</p>
+          <ul>
+            <li>The <a>registry table</a>;</li>
+            <li>The <a>registry entries</a> being proposed for addition;</li>
+            <li>The <a>provisional</a> <a>registry entries</a> for which changes are being proposed;</li>
+            <li>The <a>registry entries</a> being proposed for a <a>status</a> change;</li>
+            <li>Details of the requested changes for each <a>registry entry</a>;</li>
+            <li>The motivation for making the requested changes;</li>
+            <li>Any other supporting information, for example real world usage statistics;</li>
+          </ul>
+          <p>The proposer of the change MAY open a pull request (or equivalent) on
+            the <span class="pp-vcs">version control system</span>, with that pull request
+            containing the proposed changes. If a pull request is opened then
+            a corresponding issue MUST also be opened and
+            the pull request MUST be linked to that issue.</p>
+          <aside class="note">A pull request representing the proposals made in the <a>change request</a>
+            is required before <a>TTWG</a> review can proceed.</aside>
+        </section>
+        <section id="change-request-assessment">
+          <h4>Change request assessment process</h4>
+          <p>The process for assessing a <a>change request</a> depends on the <a>custodian</a>.</p>
+          <section id="ttwg-change-request-assessment">
+            <h5>Custodian is TTWG</h5>
+            <p>If the <a>custodian</a> is the <a>TTWG</a>:</p>
+            <ul>
+              <li>If the change proposer did not open a pull request
+                on the <span class="pp-vcs">version control system</span>,
+                then assessment is paused until a TTWG member
+                has opened such a pull request,
+                which MUST represent the requested changes
+                and MUST be linked to a related issue.</li>
+              <li>The TTWG follows its Decision Policy to review
+                the proposal in the pull request.</li>
+              <li>At the end of the Decision Review Period
+                if a TTWG Chair declares that there is consensus to approve,
+                the <a>change request</a> is approved.</li>
+              <li>In the absence of consensus to approve the expectation is
+                that a discussion will happen, to include the
+                change requester.
+                The result of this discussion can be any one of:
+                <ol>
+                  <li>the <a>change request</a> is abandoned;</li>
+                  <li>the <a>change request</a> is modified for another review;</li>
+                  <li>if the discussion resolves the objections,
+                    and a TTWG Chair declares consensus to approve,
+                    the <a>change request</a> can be approved.</li>
+                </ol>
+              </li>
+            </ul>
+            <p>An approved <a>change request</a> is enacted by merging its
+              related pull request into the <span class="pp-vcs">version control system</span>
+              and publishing the updated version of this document.</p>
+          </section>
+          <section id="team-change-request-assessment">
+            <h5>Custodian is the W3C Team</h5>
+            <p>If the <a>custodian</a> is the <a>W3C Team</a>,
+              the Team MUST seek <a>wide review</a> of the <a>change request</a> and
+              offer a review period of at least 4 weeks,
+              before assessing from the responses received
+              if there is consensus amongst the respondents.</p>
+            <p>The Team MAY require a pull request on the <span class="pp-vcs">version control system</span>
+              to be opened as the basis of the review.
+            </p>
+            <p>If there is such consensus,
+              the Team MUST make the proposed changes.</p>
+          </section>
+        </section>
+      </section>
+      <h3>Registry Table Constraints</h3>
+      <p>This section defines constraints on <a>registry tables</a>.
+        Each <a>registry table</a> consists of a set of
+        <dfn data-cite="w3c-process#registry-entry" data-lt="registry entry|registry entries">registry entries</dfn>.</p>
+      <section id="registry-entries">
+        <h4>Registry Entries</h4>
+        <p>Each <a>registry entry</a> has a <a>status</a>, a unique <dfn>key</dfn>, and
+          if appropriate, other <dfn>fields</dfn>, for example any notes,
+          a description, or a reference to some other
+          defining entity.
+        </p>
+        <p>The <a>registry table</a> definition MUST define
+          the <a>fields</a> and the <a>key</a> to be used
+          in each <a>registry entry</a>.</p>
+        <aside class="note">It is possible to use any <a>field</a>
+          or combination of <a>fields</a> as the <a>key</a>.
+          For example a <a>field</a> called "4 Character Code"
+          might be used as the <a>key</a>.
+          Another example is two fields called "Short name" and
+          "Revision number" which, in combination,
+          might be used as the <a>key</a>.
+        </aside>
+
+        <section id="registry-entry-status">
+          <h5>Status</h5>
+          <p>The <a>registry entry</a> <dfn>status</dfn> field reflects the maturity of that entry.
+            Permitted values are:</p>
+          <pre>
+            Provisional
+            Final
+            Deprecated
+          </pre>
+          <p>No other values are permitted.</p>
+          <section id="provisional-entry">
+            <h6>Provisional</h6>
+            <p><a>Registry entries</a> with a <a>status</a> of <dfn><code>Provisional</code></dfn> MAY be changed or deleted.
+              Their <a>status</a> may be changed to <a><code>Final</code></a> or <a><code>Deprecated</code></a>.</p>
+            <p><a>Registry entry</a> <a>keys</a> in <a><code>Provisional</code></a> entries
+              that were later deleted MAY be reused.</p>
+            <p>Newly created <a>registry entries</a> SHOULD have <a>status</a> <a><code>Provisional</code></a>.</p>
+          </section>
+          <section id="final-entry">
+            <h6>Final</h6>
+            <p><a>Registry entries</a> with a <a>status</a> of <dfn><code>Final</code></dfn> MUST NOT be deleted or changed.
+              Their <a>status</a> MAY be changed to <a><code>Deprecated</code></a>.</p>
+            <p><a>Registry entry</a> <a>keys</a> in <a><code>Final</code></a> entries MUST NOT be reused.</p>
+            <p>Newly created <a>registry entries</a> MAY have <a>status</a> <a><code>Final</code></a>.</p>
+          </section>
+          <section id="deprecated-entry">
+            <h6>Deprecated</h6>
+            <p><a>Registry entries</a> with a <a>status</a> of <dfn><code>Deprecated</code></dfn> MUST NOT be deleted or changed.
+              Their <a>status</a> MAY be changed to <a><code>Final</code></a>
+              unless that would result in a duplicate <a>key</a> within the set of entries whose
+              <a>status</a> is either <a><code>Provisional</code></a> or <a><code>Final</code></a>.</p>
+            <p><a>Registry entry</a> <a>keys</a> in <a><code>Deprecated</code></a> entries
+              that were previously <code>Provisional</code> and never <a><code>Final</code></a>
+              MAY be reused.</p>
+            <p><a>Registry entry</a> <a>keys</a> in <a><code>Deprecated</code></a> entries
+              that were previously <a><code>Final</code></a> MUST NOT be reused.</p>
+            <p>Newly created <a>registry entries</a> MUST NOT have <a>status</a> <a><code>Deprecated</code></a>.</p>
+          </section>
+        </section>
+      </section>
+    </section>
+    <section id="registry-table">
+      <h2>Registry Tables</h2>
+      <p>This section contains the <a>registry tables</a>, i.e. the set of <a>registry entries</a>.</p>
+      <section id="registry-table-descType">
+        <h3><code>daptm:descType</code></h3>
+        <p>The <a>registry table</a> for <code>daptm:descType</code> defines a set of values that can be
+        used in the <code>daptm:descType</code> attribute.</p>
+        <p>The <a>key</a> is the &quot;<code>daptm:descType</code>&quot; field.
+        The &quot;description&quot; field describes the intended purpose of each value.</p> 
+        <table class="simple">
+          <thead>
+            <th><code>daptm:descType</code></th>
+            <th>Status</th>
+            <th>Description</th>
+            <th>Notes</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>pronunciationNote</td>
+              <td>Provisional</td>
+              <td>Notes for how to pronounce the content.</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>scene</td>
+              <td>Provisional</td>
+              <td>Contains a scene identifier</td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>plotSignificance</td>
+              <td>Provisional</td>
+              <td>Defines a measure of how significant the content is to the plot.</td>
+              <td>Contents are undefined and may be low, medium or high, or a numerical scale.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      <section id="registry-table-eventType">
+        <h3><code>daptm:eventType</code></h3>
+        <p>The <a>registry table</a> for <code>daptm:eventType</code> defines a set of values that can be
+          used in the <code>daptm:eventType</code> attribute.</p>
+          <p>The <a>key</a> is the &quot;<code>daptm:eventType</code>&quot; field.
+          The &quot;description&quot; field describes the intended purpose of each value.</p> 
+        <table class="simple">
+          <thead>
+            <th><code>daptm:eventType</code></th>
+            <th>Status</th>
+            <th>Description</th>
+            <th>Notes</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td>dialogue</td>
+              <td>Provisional</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>spokenText</td>
+              <td>Provisional</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>onScreenText</td>
+              <td>Provisional</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>title</td>
+              <td>Provisional</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>credit</td>
+              <td>Provisional</td>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>location</td>
+              <td>Provisional</td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+        </section>
+    </section>
+  </section>
+
+  <section class="appendix">
+    <h2>Acknowledgments</h2>
+    The editors would like to thank XXX for their contributions to this specification.
   </section>
 
   </body>
