@@ -145,6 +145,35 @@ table.coldividers td + td { border-left:1px solid gray; }
   figure svg {
     max-width: max-content !important;
   }
+  .registry-section::after, .registry-section::before {
+    color: #444444;
+    background: rgb(175, 238, 238);
+    display: block;
+    text-transform: uppercase;
+    margin-left: -0.5em;
+    margin-right: -0.5em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+  .registry-section::before {
+    content: 'Registry section begins';
+    margin-top: -0.5em;
+    margin-bottom: 0.5em;
+  }
+  .registry-section::after {
+    content: 'Registry section ends';
+    margin-top: 0.5em;
+    margin-bottom: -0.5em;
+  }
+  .registry-section {
+    padding: 0.5em;
+    border-left-width: 0.5em;
+    border-left-style: solid;
+    border-right-width: 0.5em;
+    border-right-style: solid;
+    border-color: #52e0e0;
+    margin: 1em 0;
+  }
   </style>
   </head>
   <body>
@@ -963,13 +992,45 @@ daptm:onScreen
           <p>Each <a>Description Type</a> is represented in a <a>DAPT Document</a> by
             a <code>daptm:descType</code> attribute on the <code>&lt;ttm:desc&gt;</code> element.</p>
           <p>The <code>&lt;ttm:desc&gt;</code> element MAY have zero or one <code>daptm:descType</code> attributes.
-            The <code>daptm:descType</code> attribute is defined below.
-            Its possible values are as indicated in the <a>registry table</a> at <a href="#registry-table-descType"></a>.</p>
+            The <code>daptm:descType</code> attribute is defined below.</p>
           <div class="exampleInner">
             <pre class="language-abnf">
 daptm:descType : string
             </pre>
           </div>
+          <p>Its permitted values are as indicated in the <a>registry table</a>
+            whose definition is at <a href="#registry-table-descType"></a> and
+            whose values are listed in the following table.</p>
+          <aside class="registry-section">
+            <table class="simple">
+              <thead>
+                <th><code>daptm:descType</code></th>
+                <th>Status</th>
+                <th>Description</th>
+                <th>Notes</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>pronunciationNote</td>
+                  <td>Provisional</td>
+                  <td>Notes for how to pronounce the content.</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>scene</td>
+                  <td>Provisional</td>
+                  <td>Contains a scene identifier</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>plotSignificance</td>
+                  <td>Provisional</td>
+                  <td>Defines a measure of how significant the content is to the plot.</td>
+                  <td>Contents are undefined and may be low, medium or high, or a numerical scale.</td>
+                </tr>
+              </tbody>
+            </table>
+          </aside>
           <pre class="example"
             data-include="examples/event-desc-descType.xml"
             data-include-format="text">
@@ -986,25 +1047,74 @@ daptm:descType : string
           <h4>Script Event Type</h4>
           <p>The <dfn>Script Event Type</dfn> property provides one or more space-separated keywords representing the type of the <a>Script Event</a>,
             i.e. spoken text, or on-screen text,
-            and in the latter case, the type of on-screen text (title, credit, location, ...).
-            The possible keywords are indicated in the <a>registry table</a> at <a href="#registry-table-eventType"></a>.</p>
-          <p>The <a>Script Event Type</a> is represented in a <a>DAPT Document</a> by the following attribute:
-            <div class="exampleInner">
-              <pre class="language-abnf">
+            and in the latter case, the type of on-screen text (title, credit, location, ...).</p>
+          <p>The <a>Script Event Type</a> is represented in a <a>DAPT Document</a> by the following attribute:</p>
+          <div class="exampleInner">
+            <pre class="language-abnf">
 daptm:eventType : string
-              </pre>
-            </div>
-            <pre class="example">
-...
-&lt;div xml:id=&quot;event_1&quot;
-     begin=&quot;9663f&quot; end=&quot;9682f&quot; 
-     ttm:agent=&quot;character_4&quot;
-     daptm:eventType=&quot;dialogue&quot;&gt;
-...
-&lt;/div&gt;
-...
             </pre>
-          </p>
+          </div>
+          <p>Its permitted values are as indicated in the <a>registry table</a>
+          whose definition is at <a href="#registry-table-eventType"></a> and
+          whose values are listed in the following table.</p>
+          <div class="registry-section">
+            <table class="simple">
+              <thead>
+                <th><code>daptm:eventType</code></th>
+                <th>Status</th>
+                <th>Description</th>
+                <th>Notes</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>dialogue</td>
+                  <td>Provisional</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>spokenText</td>
+                  <td>Provisional</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>onScreenText</td>
+                  <td>Provisional</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>title</td>
+                  <td>Provisional</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>credit</td>
+                  <td>Provisional</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>location</td>
+                  <td>Provisional</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <pre class="example">
+            ...
+            &lt;div xml:id=&quot;event_1&quot;
+                 begin=&quot;9663f&quot; end=&quot;9682f&quot; 
+                 ttm:agent=&quot;character_4&quot;
+                 daptm:eventType=&quot;dialogue&quot;&gt;
+            ...
+            &lt;/div&gt;
+            ...
+                      </pre>
         </section>
       <section>
         <h3>Audio</h3>
@@ -2676,13 +2786,13 @@ daptm:eventType : string
         </section>
     </section> <!-- extensions-->
 
-  <section class="appendix">
+  <section class="appendix registry-section">
     <h2>Registry Section</h2>
     <section id="registry-definition">
       <h2>Registry Definition</h2>
       <p>This section specifies the <a>registry definition</a>, consisting of
         the custodianship, change process and
-        the core requirements of a <a>registry table</a>.
+        the core requirements of the <a>registry tables</a> defined in this document.
       </p>
       <section id="custodianship">
         <h3>Custodianship</h3>
@@ -2841,92 +2951,20 @@ daptm:eventType : string
       <h2>Registry Tables</h2>
       <p>This section contains the <a>registry tables</a>, i.e. the set of <a>registry entries</a>.</p>
       <section id="registry-table-descType">
-        <h3><code>daptm:descType</code></h3>
+        <h3><code>daptm:descType</code> registry table definition</h3>
         <p>The <a>registry table</a> for <code>daptm:descType</code> defines a set of values that can be
         used in the <code>daptm:descType</code> attribute.</p>
         <p>The <a>key</a> is the &quot;<code>daptm:descType</code>&quot; field.
         The &quot;description&quot; field describes the intended purpose of each value.</p> 
-        <table class="simple">
-          <thead>
-            <th><code>daptm:descType</code></th>
-            <th>Status</th>
-            <th>Description</th>
-            <th>Notes</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>pronunciationNote</td>
-              <td>Provisional</td>
-              <td>Notes for how to pronounce the content.</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>scene</td>
-              <td>Provisional</td>
-              <td>Contains a scene identifier</td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>plotSignificance</td>
-              <td>Provisional</td>
-              <td>Defines a measure of how significant the content is to the plot.</td>
-              <td>Contents are undefined and may be low, medium or high, or a numerical scale.</td>
-            </tr>
-          </tbody>
-        </table>
+        <p>The table values for this <a>registry table</a> are located in <a href="#script-event-description"></a>.</p>
       </section>
       <section id="registry-table-eventType">
-        <h3><code>daptm:eventType</code></h3>
+        <h3><code>daptm:eventType</code> registry table definition</h3>
         <p>The <a>registry table</a> for <code>daptm:eventType</code> defines a set of values that can be
           used in the <code>daptm:eventType</code> attribute.</p>
           <p>The <a>key</a> is the &quot;<code>daptm:eventType</code>&quot; field.
           The &quot;description&quot; field describes the intended purpose of each value.</p> 
-        <table class="simple">
-          <thead>
-            <th><code>daptm:eventType</code></th>
-            <th>Status</th>
-            <th>Description</th>
-            <th>Notes</th>
-          </thead>
-          <tbody>
-            <tr>
-              <td>dialogue</td>
-              <td>Provisional</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>spokenText</td>
-              <td>Provisional</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>onScreenText</td>
-              <td>Provisional</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>title</td>
-              <td>Provisional</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>credit</td>
-              <td>Provisional</td>
-              <td></td>
-              <td></td>
-            </tr>
-            <tr>
-              <td>location</td>
-              <td>Provisional</td>
-              <td></td>
-              <td></td>
-            </tr>
-          </tbody>
-        </table>
+          <p>The table values for this <a>registry table</a> are located in <a href="#script-event-type"></a>.</p>
         </section>
     </section>
   </section>
