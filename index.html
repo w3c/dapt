@@ -7,9 +7,8 @@
     <script class="remove">
       // Rather than include the version control system (VCS) URL, use the Respec config value
       function replaceVCS(config) {
-        // If the element is an <a> already, Respec gives an error. Recreate the element as an <a> instead.
         document.querySelectorAll(".pp-vcs").forEach((element) => 
-          element.outerHTML=`<a class="${element.className}" href="${config.github.repoURL}">${element.innerHTML}</a>`);
+          element.href=config.github.repoURL)
       }
 
       var respecConfig = {
@@ -2701,7 +2700,7 @@ daptm:eventType : string
           <p>Changes to this  <a>W3C Registry</a> MUST be requested (the <dfn>change request</dfn>)
             using any one of the following options:</p>
           <ul>
-            <li>Open an issue on this document's <span class="pp-vcs">version control system</span>;</li>
+            <li>Open an issue on this document's <a class="pp-vcs" href="">version control system</a>;</li>
             <li>Send an email to the <a>TTWG</a>'s public email reflector
               <a href="mailto:public-tt@w3.org">public-tt@w3.org</a></li>
           </ul>
@@ -2717,7 +2716,7 @@ daptm:eventType : string
             <li>Any other supporting information, for example real world usage statistics;</li>
           </ul>
           <p>The proposer of the change MAY open a pull request (or equivalent) on
-            the <span class="pp-vcs">version control system</span>, with that pull request
+            the <a class="pp-vcs" href="">version control system</a>, with that pull request
             containing the proposed changes. If a pull request is opened then
             a corresponding issue MUST also be opened and
             the pull request MUST be linked to that issue.</p>
@@ -2732,7 +2731,7 @@ daptm:eventType : string
             <p>If the <a>custodian</a> is the <a>TTWG</a>:</p>
             <ul>
               <li>If the change proposer did not open a pull request
-                on the <span class="pp-vcs">version control system</span>,
+                on the <a class="pp-vcs" href="">version control system</a>,
                 then assessment is paused until a TTWG member
                 has opened such a pull request,
                 which MUST represent the requested changes
@@ -2756,7 +2755,7 @@ daptm:eventType : string
               </li>
             </ul>
             <p>An approved <a>change request</a> is enacted by merging its
-              related pull request into the <span class="pp-vcs">version control system</span>
+              related pull request into the <a class="pp-vcs" href="">version control system</a>
               and publishing the updated version of this document.</p>
           </section>
           <section id="team-change-request-assessment">
@@ -2766,7 +2765,7 @@ daptm:eventType : string
               offer a review period of at least 4 weeks,
               before assessing from the responses received
               if there is consensus amongst the respondents.</p>
-            <p>The Team MAY require a pull request on the <span class="pp-vcs">version control system</span>
+            <p>The Team MAY require a pull request on the <a class="pp-vcs" href="">version control system</a>
               to be opened as the basis of the review.
             </p>
             <p>If there is such consensus,
