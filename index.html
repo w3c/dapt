@@ -184,10 +184,10 @@ table.coldividers td + td { border-left:1px solid gray; }
     left: -1.1em;
     position: relative;
   }
-  .registry-section:has(:is(h2, h3, h4, h5, h6)) {
+  .registry-section.has-header {
     margin-top: 3rem;
   }
-  .registry-section > div.header-wrapper :is(h2, h3, h4, h5, h6) {
+  .registry-section.has-header > div.header-wrapper :is(h2, h3, h4, h5, h6) {
     margin-top: 1rem;
   }
   </style>
@@ -2810,7 +2810,7 @@ daptm:eventType : string
         </section>
     </section> <!-- extensions-->
 
-  <section class="appendix registry-section">
+  <section class="appendix registry-section has-header">
     <h2>Registry Section</h2>
     <section id="registry-definition">
       <h2>Registry Definition</h2>
