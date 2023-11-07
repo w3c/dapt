@@ -145,17 +145,16 @@ table.coldividers td + td { border-left:1px solid gray; }
   figure svg {
     max-width: max-content !important;
   }
-  .registry-section::after, .registry-section::before {
+  .registry-section::after, .registry-section::before, .registry-section > .marker {
     color: #444444;
-    background: rgb(175, 238, 238);
+    background: rgb(224, 251, 251);
     display: block;
     text-transform: uppercase;
     margin-left: -0.5em;
     margin-right: -0.5em;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    padding: 0.5em;
   }
-  .registry-section::before {
+  .registry-section::before, .registry-section > .marker {
     content: 'Registry section begins';
     margin-top: -0.5em;
     margin-bottom: 0.5em;
@@ -166,13 +165,30 @@ table.coldividers td + td { border-left:1px solid gray; }
     margin-bottom: -0.5em;
   }
   .registry-section {
-    padding: 0.5em;
+    padding: .5em;
+    border: .5em;
+    border-left-style: solid;
+    page-break-inside: avoid;
+    margin: 1em auto;
+    
     border-left-width: 0.5em;
     border-left-style: solid;
     border-right-width: 0.5em;
     border-right-style: solid;
     border-color: #52e0e0;
-    margin: 1em 0;
+
+    overflow: visible;
+    clear: both;
+  }
+  .registry-section a.self-link::before {
+    left: -1.1em;
+    position: relative;
+  }
+  .registry-section:has(:is(h2, h3, h4, h5, h6)) {
+    margin-top: 3rem;
+  }
+  .registry-section > div.header-wrapper :is(h2, h3, h4, h5, h6) {
+    margin-top: 1rem;
   }
   </style>
   </head>
@@ -457,6 +473,14 @@ table.coldividers td + td { border-left:1px solid gray; }
           the <code>&lt;tt&gt;</code> element,
           the following path would be used:
           <code>/tt/head/metadata[0]</code>.
+        </li>
+        <li><a>Registry sections</a> are indicated as follows:
+          <div class="registry-section">
+            <p>Content in registry sections has different requirements
+              for updates than other Recommendation track content,
+              as defined in [[w3c-process]].
+            </p>
+          </div>
         </li>
       </ul>
     </section>
