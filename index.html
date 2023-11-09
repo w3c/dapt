@@ -145,7 +145,7 @@ table.coldividers td + td { border-left:1px solid gray; }
   figure svg {
     max-width: max-content !important;
   }
-  .registry-section::after, .registry-section::before, .registry-section > .marker {
+  .registry-table-section::after, .registry-table-section::before, .registry-table-section > .marker {
     color: #444444;
     background: rgb(224, 251, 251);
     display: block;
@@ -154,17 +154,17 @@ table.coldividers td + td { border-left:1px solid gray; }
     margin-right: -0.5em;
     padding: 0.5em;
   }
-  .registry-section::before, .registry-section > .marker {
-    content: 'Registry section begins';
+  .registry-table-section::before, .registry-table-section > .marker {
+    content: 'Registry table section begins';
     margin-top: -0.5em;
     margin-bottom: 0.5em;
   }
-  .registry-section::after {
-    content: 'Registry section ends';
+  .registry-table-section::after {
+    content: 'Registry table section ends';
     margin-top: 0.5em;
     margin-bottom: -0.5em;
   }
-  .registry-section {
+  .registry-table-section {
     padding: .5em;
     border: .5em;
     border-left-style: solid;
@@ -174,21 +174,15 @@ table.coldividers td + td { border-left:1px solid gray; }
     border-left-width: 0.5em;
     border-left-style: solid;
     border-right-width: 0.5em;
-    border-right-style: solid;
+    border-right-style: none;
     border-color: #52e0e0;
 
     overflow: visible;
     clear: both;
   }
-  .registry-section a.self-link::before {
+  .registry-table-section a.self-link::before {
     left: -1.1em;
     position: relative;
-  }
-  .registry-section.has-header {
-    margin-top: 3rem;
-  }
-  .registry-section.has-header > div.header-wrapper :is(h2, h3, h4, h5, h6) {
-    margin-top: 1rem;
   }
   </style>
   </head>
@@ -205,7 +199,9 @@ table.coldividers td + td { border-left:1px solid gray; }
       as defined in the [[w3c-process]] requirements for <a>w3c registries</a>.
       Updates to the document that only change <a>registry tables</a> can be made
       without meeting other requirements for Recommendation track updates,
-      as set out in <dfn data-cite="w3c-process#reg-table-update">Updating Registry Tables</dfn>. 
+      as set out in <dfn data-cite="w3c-process#reg-table-update">Updating Registry Tables</dfn>;
+      requirements for updating those registry tables are normatively specified
+      within <a href="#registry-section"></a>. 
     </section>
 
     <section>
@@ -474,9 +470,9 @@ table.coldividers td + td { border-left:1px solid gray; }
           the following path would be used:
           <code>/tt/head/metadata[0]</code>.
         </li>
-        <li><a>Registry sections</a> are indicated as follows:
-          <div class="registry-section">
-            <p>Content in registry sections has different requirements
+        <li><a>Registry sections</a> that include registry table data are indicated as follows:
+          <div class="registry-table-section">
+            <p>Content in registry table sections has different requirements
               for updates than other Recommendation track content,
               as defined in [[w3c-process]].
             </p>
@@ -1022,11 +1018,11 @@ daptm:onScreen
 daptm:descType : string
             </pre>
           </div>
-          <p>Its permitted values are as indicated in the <a>registry table</a>
-            whose definition is at <a href="#registry-table-descType"></a> and
-            whose values are listed in the following table.</p>
-          <aside class="registry-section">
-            <table class="simple">
+          <p>Its permitted values are listed in the following <a>registry table</a>:</p>
+          <div class="registry-table-section">
+            <table class="data">
+              <caption><a>Registry table</a> for <code>daptm:descType</code>
+                whose Registry Definition is at <a href="#registry-table-descType"></a></caption>
               <thead>
                 <th><code>daptm:descType</code></th>
                 <th>Status</th>
@@ -1054,7 +1050,7 @@ daptm:descType : string
                 </tr>
               </tbody>
             </table>
-          </aside>
+          </div>
           <pre class="example"
             data-include="examples/event-desc-descType.xml"
             data-include-format="text">
@@ -1078,11 +1074,11 @@ daptm:descType : string
 daptm:eventType : string
             </pre>
           </div>
-          <p>Its permitted values are as indicated in the <a>registry table</a>
-          whose definition is at <a href="#registry-table-eventType"></a> and
-          whose values are listed in the following table.</p>
-          <div class="registry-section">
-            <table class="simple">
+          <p>Its permitted values are as listed in the following <a>registry table</a>:</p>
+          <div class="registry-table-section">
+            <table class="data">
+              <caption><a>Registry table</a> for <code>daptm:eventType</code>
+                whose Registry Definition is at <a href="#registry-table-eventType"></a></caption>
               <thead>
                 <th><code>daptm:eventType</code></th>
                 <th>Status</th>
@@ -2810,7 +2806,7 @@ daptm:eventType : string
         </section>
     </section> <!-- extensions-->
 
-  <section class="appendix registry-section has-header">
+  <section class="appendix">
     <h2>Registry Section</h2>
     <section id="registry-definition">
       <h2>Registry Definition</h2>
@@ -2908,7 +2904,8 @@ daptm:eventType : string
         </section>
       </section>
       <h3>Registry Table Constraints</h3>
-      <p>This section defines constraints on <a>registry tables</a>.
+      <p>This section defines constraints on the <a>registry tables</a>
+        defined in this document.
         Each <a>registry table</a> consists of a set of
         <dfn data-cite="w3c-process#registry-entry" data-lt="registry entry|registry entries">registry entries</dfn>.</p>
       <section id="registry-entries">
@@ -2972,15 +2969,15 @@ daptm:eventType : string
       </section>
     </section>
     <section id="registry-table">
-      <h2>Registry Tables</h2>
-      <p>This section contains the <a>registry tables</a>, i.e. the set of <a>registry entries</a>.</p>
+      <h2>Registry Table Definitions</h2>
+      <p>This section defines <a>registry tables</a> and locates their <a>registry entries</a>.</p>
       <section id="registry-table-descType">
         <h3><code>daptm:descType</code> registry table definition</h3>
         <p>The <a>registry table</a> for <code>daptm:descType</code> defines a set of values that can be
         used in the <code>daptm:descType</code> attribute.</p>
         <p>The <a>key</a> is the &quot;<code>daptm:descType</code>&quot; field.
         The &quot;description&quot; field describes the intended purpose of each value.</p> 
-        <p>The table values for this <a>registry table</a> are located in <a href="#script-event-description"></a>.</p>
+        <p>The <a>registry entries</a> for this <a>registry table</a> are located in <a href="#script-event-description"></a>.</p>
       </section>
       <section id="registry-table-eventType">
         <h3><code>daptm:eventType</code> registry table definition</h3>
@@ -2988,7 +2985,7 @@ daptm:eventType : string
           used in the <code>daptm:eventType</code> attribute.</p>
           <p>The <a>key</a> is the &quot;<code>daptm:eventType</code>&quot; field.
           The &quot;description&quot; field describes the intended purpose of each value.</p> 
-          <p>The table values for this <a>registry table</a> are located in <a href="#script-event-type"></a>.</p>
+          <p>The <a>registry entries</a> for this <a>registry table</a> are located in <a href="#script-event-type"></a>.</p>
         </section>
     </section>
   </section>
