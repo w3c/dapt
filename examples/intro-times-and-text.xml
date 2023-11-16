@@ -6,7 +6,7 @@
   daptm:workflowType="audioDescription"
   daptm:scriptType="preRecording"
   xml:lang="en"
-  daptm:originalLang="en">
+  daptm:originalLangs="en">
   <body>
     <div begin="10s" end="13s">
       <p>

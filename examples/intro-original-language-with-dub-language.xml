@@ -6,7 +6,7 @@
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
     daptm:workflowType="dubbing"
     daptm:scriptType="translatedTranscript"
-    daptm:originalLang="fr">
+    daptm:originalLangs="fr">
   <head>
     <metadata>
       <ttm:agent type="character" xml:id="character_1">
