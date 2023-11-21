@@ -14,20 +14,20 @@
             <line style="stroke:#000000;stroke-width:1.0;" x1="411" x2="629" y1="48.8438" y2="48.8438"/>
             <a href="#workflow-type" target="_top" xlink:actuate="onRequest"
                 xlink:href="#workflow-type" xlink:show="new" xlink:title="#workflow-type" xlink:type="simple"><text
-                    fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="115"
-                    x="420" y="72.3125">Workflow Type</text></a>
+                fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="115"
+                x="420" y="72.3125">Workflow Type</text></a>
             <a href="#script-type" target="_top" xlink:actuate="onRequest"
                 xlink:href="#script-type" xlink:show="new" xlink:title="#script-type" xlink:type="simple"><text
-                    fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="87"
-                    x="420" y="99.1563">Script Type</text></a>
+                fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="87"
+                x="420" y="99.1563">Script Type</text></a>
             <a href="#default-language" target="_top" xlink:actuate="onRequest"
                 xlink:href="#default-language" xlink:show="new" xlink:title="#default-language" xlink:type="simple"
                     ><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing"
                     textLength="138" x="420" y="126">Default Language</text></a>
-            <a href="#original-language" target="_top" xlink:actuate="onRequest"
-                xlink:href="#original-language" xlink:show="new" xlink:title="#original-language"
+            <a href="#original-languages" target="_top" xlink:actuate="onRequest"
+                xlink:href="#original-languages" xlink:show="new" xlink:title="#original-languages"
                 xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    lengthAdjust="spacing" textLength="144" x="420" y="152.8438">Original Language</text></a>
+                lengthAdjust="spacing" textLength="152" x="420" y="152.8438">Original Languages</text></a>
         </g>
         <!--class Character-->
         <g id="elem_Character">
@@ -40,17 +40,17 @@
             <a href="#dfn-character-identifier" target="_top"
                 xlink:actuate="onRequest" xlink:href="#dfn-character-identifier" xlink:show="new"
                 xlink:title="#dfn-character-identifier" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="153" x="258"
-                    y="367.7425">Character Identifier</text></a>
+                font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="153" x="258"
+                y="367.7425">Character Identifier</text></a>
             <a href="#dfn-character-name" target="_top" xlink:actuate="onRequest"
                 xlink:href="#dfn-character-name" xlink:show="new" xlink:title="#dfn-character-name"
                 xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    lengthAdjust="spacing" textLength="45" x="258" y="394.5863">Name</text></a>
+                lengthAdjust="spacing" textLength="45" x="258" y="394.5863">Name</text></a>
             <a href="#dfn-character-talent-name" target="_top"
                 xlink:actuate="onRequest" xlink:href="#dfn-character-talent-name" xlink:show="new"
                 xlink:title="#dfn-character-talent-name" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="179" x="258"
-                    y="421.43">(optional) Talent Name</text></a>
+                font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="179" x="258"
+                y="421.43">(optional) Talent Name</text></a>
         </g>
         <!--class ScriptEvent-->
         <g id="elem_ScriptEvent">
@@ -63,34 +63,34 @@
             <a href="#dfn-script-event-identifier" target="_top"
                 xlink:actuate="onRequest" xlink:href="#dfn-script-event-identifier" xlink:show="new"
                 xlink:title="#dfn-script-event-identifier" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="169" x="548.5"
-                    y="314.0525">Script Event Identifier</text></a>
+                font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="169" x="548.5"
+                y="314.0525">Script Event Identifier</text></a>
             <a href="#dfn-begin" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-begin"
                 xlink:show="new" xlink:title="#dfn-begin" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" font-style="italic" lengthAdjust="spacing"
-                    textLength="123" x="548.5" y="340.8963">(optional) Begin</text></a>
+                font-family="sans-serif" font-size="16" font-style="italic" lengthAdjust="spacing"
+                textLength="123" x="548.5" y="340.8963">(optional) Begin</text></a>
             <a href="#dfn-end" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-end"
                 xlink:show="new" xlink:title="#dfn-end" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" font-style="italic" lengthAdjust="spacing"
-                    textLength="109" x="548.5" y="367.74">(optional) End</text></a>
+                font-family="sans-serif" font-size="16" font-style="italic" lengthAdjust="spacing"
+                textLength="109" x="548.5" y="367.74">(optional) End</text></a>
             <a href="#dfn-duration" target="_top" xlink:actuate="onRequest"
                 xlink:href="#dfn-duration" xlink:show="new" xlink:title="#dfn-duration" xlink:type="simple"><text
-                    fill="#000000" font-family="sans-serif" font-size="16" font-style="italic"
-                    lengthAdjust="spacing" textLength="149" x="548.5" y="394.5838">(optional) Duration</text></a>
+                fill="#000000" font-family="sans-serif" font-size="16" font-style="italic"
+                lengthAdjust="spacing" textLength="149" x="548.5" y="394.5838">(optional) Duration</text></a>
             <a href="#dfn-script-event-type" target="_top" xlink:actuate="onRequest"
                 xlink:href="#dfn-script-event-type" xlink:show="new" xlink:title="#dfn-script-event-type"
                 xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    lengthAdjust="spacing" textLength="214" x="548.5" y="421.4275">(optional) Script Event
-                    Type</text></a>
+                lengthAdjust="spacing" textLength="214" x="548.5" y="421.4275">(optional) Script Event
+                Type</text></a>
             <a href="#dfn-script-event-description" target="_top"
                 xlink:actuate="onRequest" xlink:href="#dfn-script-event-description" xlink:show="new"
                 xlink:title="#dfn-script-event-description" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="267" x="548.5"
-                    y="448.2713">(optional) Script Event Description</text></a>
+                font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="267" x="548.5"
+                y="448.2713">(optional) Script Event Description</text></a>
             <a href="#on-screen" target="_top" xlink:actuate="onRequest" xlink:href="#on-screen"
                 xlink:show="new" xlink:title="#on-screen" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="159" x="548.5"
-                    y="475.115">(optional) On Screen</text></a>
+                font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="159" x="548.5"
+                y="475.115">(optional) On Screen</text></a>
         </g>
         <!--class ScriptEventDescription-->
         <g id="elem_ScriptEventDescription">
@@ -106,7 +106,7 @@
             <a href="#dfn-description-type" target="_top" xlink:actuate="onRequest"
                 xlink:href="#dfn-description-type" xlink:show="new" xlink:title="#dfn-description-type"
                 xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    lengthAdjust="spacing" textLength="212" x="905" y="394.5863">(optional) Description
+                lengthAdjust="spacing" textLength="212" x="905" y="394.5863">(optional) Description
                 Type</text></a>
             <text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="156"
                 x="905" y="421.43">(optional) Language</text>
@@ -121,12 +121,12 @@
             <line style="stroke:#000000;stroke-width:1.0;" x1="498" x2="770" y1="653.2738" y2="653.2738"/>
             <a href="#dfn-text" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-text"
                 xlink:show="new" xlink:title="#dfn-text" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="99" x="507"
-                    y="676.7425">Text content</text></a>
+                font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="99" x="507"
+                y="676.7425">Text content</text></a>
             <a href="#text-language-source" target="_top" xlink:actuate="onRequest"
                 xlink:href="#text-language-source" xlink:show="new" xlink:title="#text-language-source"
                 xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    lengthAdjust="spacing" textLength="254" x="507" y="703.5863">(optional) Text Language
+                lengthAdjust="spacing" textLength="254" x="507" y="703.5863">(optional) Text Language
                     Source</text></a>
             <text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="156"
                 x="507" y="730.43">(optional) Language</text>
@@ -201,7 +201,7 @@
             <a href="#dfn-mixing-instruction" target="_top" xlink:actuate="onRequest"
                 xlink:href="#dfn-mixing-instruction" xlink:show="new" xlink:title="#dfn-mixing-instruction"
                 xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
-                textLength="151" x="46.5" y="600.6288">Mixing Instruction</text></a>
+                    textLength="151" x="46.5" y="600.6288">Mixing Instruction</text></a>
             <line style="stroke:#000000;stroke-width:1.0;" x1="13" x2="231" y1="613.0038" y2="613.0038"/>
             <a href="#dfn-gain" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-gain"
                 xlink:show="new" xlink:title="#dfn-gain" xlink:type="simple"><text fill="#000000"
@@ -389,6 +389,6 @@
         <!--link SynthesizedAudio to AudioRecording-->
         <!--link SynthesizedAudio to AudioRecording-->
         <!--link MixingInstruction to Audio-->
-        <!--SRC=[tLTDR-Cs4BthLyowXxG656JJeYqMmGBkPhSrq6o29C0UKXyOYRO9owH0KiswwVxt3Zz4aP9YUzjRXHpCcJUZzsP68-MLNjCjXReYZ6UlQabMMmAIQ2RWTNO2QiDuJIJPmagAffxpDPLC4rvGECywPyKurRkQWf1wBIB79LsIfj8V1DSV2Tv74QvoXJcMuw0xzXU5rpz6pfcKugbpVTztNL6bo8hEAhRYMyerb4pI0ldp27b3ofBn5VmGsJwAaYfQmqzdaV6My8qn_XmRhnX_Ln6bFh5Ih-7y_2pBx1akPpVtTuLajGQYO3AT6WCuotGwWOU7RqfIwrnPos81pndWzKd8pR8IJt1lIlQ0g2TloKqH5uk5XVdC0UIo911VEVYTy5M3LR2uqXdpoXjRyBLaAyP9bQA5joRmBrccnOhYR4ZFsGb-jyQ251gjJcyuUxL5UmvQRMo8cfVO8RPa-DCoNV8yXEGiE5l6vh9ZCmHpDCUmPuohoY_mhQXDxqdr7ToJoip32mcqzIPvK7KdrLN__PycXHFh-s5DNgzl2JMcH7AC7LCT1xuWl5NqJ1wLDgGJSRzGx5f8zsXEnmU_vsK8fRmyFl2oiQkXkt7f3GTQaPGZ3FIW4F5e7vFfahhmc56IiEm01_9USvEQKfT8s3nuEZGQCOFXbCG4stsmbs8qGIt7ACK-_Z6HfC1H_cFgs-w6eUfx-hbz4inFhqVZpuItXHMuhut-beH3xNzQJLpOJ7UYaOKJOMB3SigLTNoD27ETZA7ctBosu4xlAWephILxR3HLNlbm1RPFXA_7h2dn9UaAOdz77IRc7CgI3i-EOqw5BxCopX2PePzDTRvUPdFT4jrr6v_6GyMvORfOXu3Qd4QdtBAufOMGzjKP2OLWxKlEPUj9jw7l9YowntJGHpUr4UIbQVq_BCGvFgKiUYynbCiElj6k6vs6YKOdSTX0_2ji_wxOP-p3d2FhfeWMbBD3v8YwkBLEf1ESeP4ZV7ubKSbNfAlusDYH3bgJ0VAhc_gl6leVcpaYwmEhge1Vui5_FfsCr3z_MBCIt_KBcQSFLvPbqQVaD2_54yzXSdPwEeL9yYNongvMhBJwWyFRDCf7JABlhGwEu3XFSe_92DVUZUnsdkOLNUgEc5i62VAYHNQeWxaxkfxDnIb-awxrQNkEYFT463vlHs3nsx37RqyLBFKUkTuMF5PO6maNV_jx3FR-6s2EKG_OksE0POCCqJn1Vw1Eu3VhC_-QRHHe0JMLgY4b1Km25TdXxZ3cIeWDS5PGkNzcNUjDYH1dAnLS4Uz-lNhXVGbPJuX33LXa6Vefq6sjTx2bsqUKuam5aqL5_m40]-->
+        <!--SRC=[tLTDR-Cs4BthLyowXxG656JJeYqMmGBkPhSrq6o29C0UKXyOYRO9qwH0KiswwVxt3Zz4KH-nlUsjGWxcp9lHUpEZaVBAhEcMGiK94zchIf7Lbe0YXabudPs0tZ1H4KMsi5AohkPYJHKpH1GKphFMoPcWPbTHaCgiPUAuf4jIS_D12lEHu7qq4JhNc6Cv3hfZVr5u_MFYd2abdrhNzttN5TMQhEYCivNOKc6WP8eMo5yao1jIbaoiu8V4zb6MLDCAVZfBZBT4RApnvzHunSGxJhJ-n4gpXlFpionpPxYStTpV5OfL1eY6oNHg3U0jq-a47Xw-AKbbSkqiYmKyPu3N9wasIowVuDwMx05HJy6Iso8k5Wi72vaZo6VfG4Bbu7SYLZLMmU5ARynvC3RWQyLMJ10UqTh1PJ17lBO1NxBCo1N5wL21jPVyReqbAGnQlU9u3dgBvXpLkjWODI-nHsp9yAVZkXHv3CbPT3QSxUK6PmWMQ4vXpnZ7oo_mhQnizmd_3ku9jnFnGWBZl9qygBgLwkl__a-RmeiD7N6ce3SqXLfJHtAA7LET1huWl57qJ1wriQGxudwXsBQOxj6UZWz-ByeOIaLvVE1bxPP3U-Co60wqebEEEDA3GgJ3VKocI-h3KqQTX6KBE93tMjZKbFf4qkN1qw7HI1aCfoGbs6o4lHIJ2Meu9YdsyK-9T0gSv3-clirs6Ag-fv-R9y7-37eC_kpmTh02DxRLtv3mgFrFgusBc-nErghm8cnit4wvTewl4M6lap7KNDWN5zoP7QSmCqQnnzfG7PGFLs3pH8HwpEeINvE-8Evtqc5Ypx4itU7P2SofyNLMfXaIC_IpwTRNosolMsBQRkFJUAWuDymKwnXGsTFeb3iMjxIGohqy4w4GhNt9kMeytMqOkWcBzZ4TzD5FRG9vQLh_3mjnZayfIzvB3EMoWs-qwzfqmsHjEd7OGFmhNF-ks6VimrmWwxf85fItG-98khXrJgGJdR6H8tn-9Kd9LwIj-DZOaHPQaG7ogvlwhnhw7viv8ki3uppYbtW8dqyd8_NF7zQin7VzGkNTXolBikHZSfgNyadaC3axFPt2fFCbyiQjLgoq_aF0ssvKY9Watrij7C5fdiuz9YDSUpTostcQSxeqBJ6_33h8YmRPeWxcRka6DXUd-56wDgVDEI7U4s7vl1s1fM_37hyzLN3KU-HwM_1OOKqaNFmTxZ7O-s-0UKOzOE-E4PODCYJp1Fs1Ee7VdC_-SxRHO2HKLEcQb1Gm2N2omzrXpLpA3GXMKBL_PdthROaGvoeLNGdlVhrwuNq9MK-8HmrOP1dwAT1jPNQmfTj7bE9D1LC5f_y0]-->
     </g>
 </svg>

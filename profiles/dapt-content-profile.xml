@@ -91,7 +91,7 @@
     <!-- optional (voluntary) extension support -->
     <extension value="optional">#agent</extension>
     <extension value="optional">#onScreen</extension>
-    <extension value="optional">#originallLang-root</extension>
+    <extension value="optional">#originallLangs-root</extension>
     <extension value="optional">#textLanguageSource</extension>
     <!-- prohibited extension support -->
     <extension value="prohibited">#profile-root</extension>

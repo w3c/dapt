@@ -348,7 +348,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           <li>The <code>daptm:workflowType</code> attribute indicates the type of workflow.</li>
           <li>The <code>daptm:scriptType</code> attribute indicates the type of <a>transcript</a> or <a>script</a>
           but in this empty example, it is not relevant, as only the structure of the document is shown.</li>
-          <li>The <code>daptm:originalLangs</code> attribute indicates the languages used
+          <li>The <code>daptm:originalLangs</code> attribute indicates the language(s) used
             in the original content.</li>
         </ul>
         <p>The structure is applicable to all types of <a>DAPT scripts</a>, dubbing or <a>audio description</a>.</p>
@@ -424,7 +424,7 @@ table.coldividers td + td { border-left:1px solid gray; }
 
         <p>After translating the text, the document is modified. It includes translation text, and
         in this case the original text is preserved. The main document's <a>default language</a> is changed to indicate
-        that the focus is on the translated language, but the <a>original language</a> remains the same:</p>
+        that the focus is on the translated language, but the <a>Original languages list</a> remains the same:</p>
         <pre class="example"
           data-include="examples/intro-original-language-with-dub-language.xml"
           data-include-format="text">
@@ -506,7 +506,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           that corresponds to a document processed within an authoring workflow or processed by a client,
           and conforms to the constraints of this specification.
           It has properties and objects defined in the following sections:
-          <a>Workflow Type</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Original Language</a>, <a>Script Events</a>
+          <a>Workflow Type</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Original Languages</a>, <a>Script Events</a>
           and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
         <p>A <dfn>DAPT Document</dfn> is a TTML <a>Document Instance</a> representing a <a>DAPT Script</a>.
           A <a>DAPT Document</a> has the structure and constraints defined in the following sections.</p>
@@ -585,8 +585,8 @@ table.coldividers td + td { border-left:1px solid gray; }
                   It may still retain text content in Hebrew and English to assist further processing.</aside>
                 <aside class="example">If an <a>audio description</a> <a>Original Language Transcript</a> contains
                   <a>Original</a> language <a>Script Events</a> that describe in-image text content whose language is not
-                  the <a>Original Language</a>, and the desired <a>audio description</a> output needs to be in the
-                  <a>Original Language</a>, the <a>Text</a> objects can be translated and marked as <a>Translation</a>.
+                  in the <a>Original languages list</a>, and the desired <a>audio description</a> output needs to be in
+                  a different language, the <a>Text</a> objects can be translated and marked as <a>Translation</a>.
                   In that case, it is appropriate to mark the transcript as a <a>Translated Transcript</a>.
                   It may also be appropriate, as part of the translation activity, to describe within the translated text
                   the original language of that text, to inform the audience.
@@ -649,7 +649,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           <h4>Default Language</h4>
           <p>The <dfn>Default Language</dfn> is a mandatory property of a <a>DAPT Script</a>
             which represents the default language for the <a>Text</a> content of <a>Script Events</a>.
-            This language may be the <a>Original Language</a> or a <a>Translation</a> language.
+            This language may be one of the <a>Original Languages</a> or a <a>Translation</a> language.
             When it represents a <a>Translation</a> language, it may be the final language
             for which a dubbing or audio description <a>script</a> is being prepared,
             called the <dfn>Target Recording Language</dfn> or it may be an intermediate, or pivot, language
@@ -682,30 +682,32 @@ table.coldividers td + td { border-left:1px solid gray; }
         </section>
 
         <section>
-          <h4>Original Language</h4>
+          <h4>Original Languages</h4>
           <p>
-            The <dfn>Original Language</dfn> is an optional property of a <a>DAPT Script</a>
+            The <dfn data-lt="Original languages list">Original Languages</dfn>,
+            also referred to as "Original languages list",
+            is an optional property of a <a>DAPT Script</a>
             which represents the list of languages used in the original content,
             and therefore for Text in the <a>Original Language Transcript</a>.
           </p>
           <p class="note">
             <a>Text</a> marked as <a>Original</a> can be in a 
-            language not in the <a>Original Language</a> list;
-            this could occur if the original language list omits languages used for
+            language not in the <a>Original Languages</a>;
+            this could occur if the original languages list omits languages used for
             a small proportion of content, for example.
           </p>
           <p class="note">
-            The <a>Original Language</a> is not expected to change after transcription, for example
+            The <a>Original Languages</a> are not expected to change after transcription, for example
             during translation.
           </p>
           <p class="note">
-            The <a>Original Language</a> is generally expected to represent the main languages used in the programme audio.
+            The <a>Original Languages</a> are generally expected to represent the main languages used in the programme audio.
             For example this allows the <a>Original Language Transcript</a> to be used as the basis for hard of hearing
             subtitles. If a programme has significant dialogue in more than one language, for example Danish and Swedish,
             all those languages used are expected to be included in the
-            <a>Original Language</a> list.
+            <a>Original Languages</a>.
           </p>
-          <p>The <a>Original Language</a> is represented in a <a>DAPT Document</a> by the following structure and constraints:</p>
+          <p>The <a>Original Languages</a> are represented in a <a>DAPT Document</a> by the following structure and constraints:</p>
           <ul>
             <li>the <dfn><code>daptm:originalLangs</code></dfn> attribute
               SHOULD be present on the <code>&lt;tt&gt;</code> element
@@ -733,16 +735,16 @@ languageIdentifier  \\ BCP47 language tag
               Two <a>Original Language Transcripts</a> are prepared,
               one transcribing the dialogue, as a precursor to hard of hearing subtitles or dubbing,
               the other transcribing the image, for audio description.</p>
-            <p>The dialogue transcript has its <a>Original Language</a> list set to Danish and Swedish,
+            <p>The dialogue transcript has its <a>Original languages list</a> set to Danish and Swedish,
               by setting <code>daptm:originalLangs="da sv"</code> on the <code>&lt;tt&gt;</code> element.
               The <a>Text</a> objects are each marked up with an appropriate language using <code>xml:lang</code>
               and <a>Text Language Source</a> using <a><code>daptm:langSrc</code></a> reflecting the language of that part of the dialogue.
               During the video, a character speaks briefly in Arabic;
               on that <a>Text</a>, the <a>Text Language Source</a> and language are both set to Arabic,
               indicating that Arabic is the original language, even though it is not in the document's
-              <a>Original Language</a> list.</p>
+              <a>Original languages list</a>.</p>
             <p>The video image transcript is being prepared for a Danish audience initially,
-              and has its <a>Original Language</a> set to Danish only
+              and has its <a>Original Languages</a> set to Danish only
               by setting <code>daptm:originalLangs="da"</code> on the <code>&lt;tt&gt;</code> element.
               The <a>Text</a> objects are each marked up with an appropriate language using <code>xml:lang</code>,
               and, if representing in-image text, a <a>Text Language Source</a> set to
@@ -1048,10 +1050,10 @@ languageIdentifier  \\ BCP47 language tag
           </ul>
           <aside class="note">The language of a <a>Text</a> object whose <a>Text Language Source</a> is <a>Original</a>
             can be different to the document's <a>Default Language</a>.
-            Similarly it can be absent from the document's <a>Original Language</a> list.
+            Similarly it can be absent from the document's <a>Original Languages</a>.
             For example a <a>transcript</a> of a short piece of dialogue spoken in a different language to the majority of the dialogue would be annotated
             with both a different <code>xml:lang</code> value and as being <a>Original</a>,
-            but that language might not occur frequently enough to justify including in the <a>Original Language</a> list.</aside>
+            but that language might not occur frequently enough to justify including in the <a>Original Languages</a>.</aside>
           <p>The <a>Text Language Source</a> property is represented in a <a>DAPT Document</a> by a <dfn><code>daptm:langSrc</code></dfn> attribute
             whose value MUST be a language identifier as defined by [[BCP47]].</p>
           <p>If the value of <a><code>daptm:langSrc</code></a> differs from the computed <code>xml:lang</code> then it indicates
@@ -1067,7 +1069,7 @@ languageIdentifier  \\ BCP47 language tag
             <table class="simple">
               <caption>Table enumerating example values of <code>xml:lang</code> and
                 <code>daptm:langSrc</code> for different <a>Original</a> transcript sources and
-                their inherent languages in a document whose <a>Original language</a> list is
+                their inherent languages in a document whose <a>Original languages list</a> is
                 English, Arabic.
               </caption>
               <thead>
@@ -2695,7 +2697,7 @@ daptm:eventType : string
             <td><a href="#originallangs-root"><code>#originallLangs-root</code></a></td>
             <td><span class="permitted label">permitted</span></td>
             <td>
-              This is the profile expression of <a href="#original-language"></a>.
+              This is the profile expression of <a href="#original-languages"></a>.
             </td>
           </tr>
           <tr>

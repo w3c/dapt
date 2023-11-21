@@ -2,7 +2,7 @@
   <body>
     <div begin="10s" end="13s">
       <ttm:desc>Scene 1</ttm:desc>
-      <p>
+      <p xml:lang="en">
         <span>A woman climbs into a small sailing boat.</span>
       </p>
       <p xml:lang="fr" daptm:langSrc="en">
