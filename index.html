@@ -2907,7 +2907,9 @@ daptm:eventType : string
       <p>This section defines constraints on the <a>registry tables</a>
         defined in this document.
         Each <a>registry table</a> consists of a set of
-        <dfn data-cite="w3c-process#registry-entry" data-lt="registry entry|registry entries">registry entries</dfn>.</p>
+        <dfn data-cite="w3c-process#registry-entry" data-lt="registry entry|registry entries">registry entries</dfn>.
+        Each <a>registry table</a> has an associated <dfn>registry table definition</dfn> in <a href="#registry-table-definitions"></a>,
+        which lists the <a>fields</a> present in each <a>registry entry</a>.</p>
       <section id="registry-entries">
         <h4>Registry Entries</h4>
         <p>Each <a>registry entry</a> has a <a>status</a>, a unique <dfn>key</dfn>, and
@@ -2915,7 +2917,7 @@ daptm:eventType : string
           a description, or a reference to some other
           defining entity.
         </p>
-        <p>The <a>registry table</a> definition MUST define
+        <p>The <a>registry table definition</a> MUST define
           the <a>fields</a> and the <a>key</a> to be used
           in each <a>registry entry</a>.</p>
         <aside class="note">It is possible to use any <a>field</a>
@@ -2968,7 +2970,7 @@ daptm:eventType : string
         </section>
       </section>
     </section>
-    <section id="registry-table">
+    <section id="registry-table-definitions">
       <h2>Registry Table Definitions</h2>
       <p>This section defines <a>registry tables</a> and locates their <a>registry entries</a>.</p>
       <section id="registry-table-descType">
