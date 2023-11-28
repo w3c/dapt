@@ -11,7 +11,7 @@
     </div>
     <div begin="18s" end="20s">
       <ttm:desc>Scene 1</ttm:desc>
-      <p>
+      <p xml:lang="en">
         <span>The woman pulls the tiller and the boat turns.</span>
       </p>
       <p xml:lang="fr" daptm:langSrc="en">
