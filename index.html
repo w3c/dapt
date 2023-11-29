@@ -1005,23 +1005,35 @@ languageIdentifier  \\ BCP47 language tag
                   <code>tts:direction</code> attribute on <code>&lt;span&gt;</code> elements.
                   Similarly metadata can be added using attributes or <code>&lt;metadata&gt;</code> elements.</aside>
               </li>
-              <li>If the <a>Text</a> is a <a>Translation</a>,
-                the <code>&lt;p&gt;</code> element MUST have one
-                <a><code>daptm:langSrc</code></a> attribute representing the <a>Text Language Source</a> property,
-                indicating the source language used as the basis of the translation.</li>
-              <li>If the <a>Text</a> is <a>Original</a> and represents content with an inherent language,
-                the <code>&lt;p&gt;</code> element MUST have a <a><code>daptm:langSrc</code></a> attribute
-                whose value is the computed value of <code>xml:lang</code>
-                for the <code>&lt;p&gt;</code> element.</li>
-              <li>If the <a>Text</a> is <a>Original</a> and represents content without an inherent language,
-                the <code>&lt;p&gt;</code> element MUST NOT have a <a><code>daptm:langSrc</code></a> attribute.</li>
-              <li>The <code>&lt;p&gt;</code> element SHOULD have an <code>xml:lang</code> attribute corresponding to the language of the <a>Text</a> object.
-                <p class="note">If a <code>&lt;p&gt;</code> element omits the <code>xml:lang</code> attribute then its computed language
-                is derived by inheritance from its parent element, and so forth up to the root <code>&lt;tt&gt;</code> element,
-                which is required to set the <a>Default Language</a> via its <code>xml:lang</code> attribute.
-                Care should be taken if changing the <a>Default Language</a> of a <a>DAPT Script</a> in case
-                doing so affects descendant elements unexpectedly.
-                Authors can mitigate this risk by explicitly setting <code>xml:lang</code> on all <code>&lt;p&gt;</code> elements.</p>
+              <li>The <code>&lt;p&gt;</code> element SHOULD have a <a><code>daptm:langSrc</code></a> attribute
+                indicating whether the <a>Text</a> is <a>Original</a> or a <a>Translation</a> and if its
+                source had an inherent language.
+                <aside class="note">
+                  <p>If a <code>&lt;p&gt;</code> element omits the <a><code>daptm:langSrc</code></a> attribute
+                    then its computed value is derived by inheritance from its parent element,
+                    and so forth up to the root <code>&lt;tt&gt;</code> element.</p>
+                  <p>In <a>scripts</a> that have very little variation in source language,
+                    for example audio description scripts,
+                    the <a><code>daptm:langSrc</code></a> attribute can be set on the root element
+                    and omitted from <code>&lt;p&gt;</code> elements except where its value
+                    differs.
+                    Care should be taken if using this approach, especially when moving between
+                    <a>Script Types</a>, because changing it at the root element could affect
+                    the interpretation of descendant elements unexpectedly.
+                    Authors can mitigate this risk by explicitly setting <a><code>daptm:langSrc</code></a>
+                    on all <code>&lt;p&gt;</code> elements.</p>
+                  </p>
+                </aside></li>
+              <li>The <code>&lt;p&gt;</code> element SHOULD have an <code>xml:lang</code> attribute
+                corresponding to the language of the <a>Text</a> object.
+                <p class="note">If a <code>&lt;p&gt;</code> element omits the <code>xml:lang</code> attribute
+                  then its computed language is derived by inheritance from its parent element,
+                  and so forth up to the root <code>&lt;tt&gt;</code> element,
+                  which is required to set the <a>Default Language</a> via its <code>xml:lang</code> attribute.
+                  Care should be taken if changing the <a>Default Language</a> of a <a>DAPT Script</a> in case
+                  doing so affects descendant elements unexpectedly.
+                  Authors can mitigate this risk by explicitly setting <code>xml:lang</code>
+                  on all <code>&lt;p&gt;</code> elements.</p>
                 <pre class="example">
 &lt;div xml:id=&quot;event_3&quot;
      begin=&quot;9663f&quot; end=&quot;9682f&quot; 
@@ -1056,8 +1068,7 @@ languageIdentifier  \\ BCP47 language tag
             such as untranslated descriptions of a visual scene or
             captions representing non-dialogue sounds.</p>
           <p>The <a>Text Language Source</a> property is represented in a <a>DAPT Document</a> by a <dfn><code>daptm:langSrc</code></dfn> attribute
-            whose value MUST be an empty string or a language identifier as defined by [[BCP47]].</p>
-          <p>The default value of <a><code>daptm:langSrc</code></a> is the empty string.</p>
+            with the following syntax, constraints and semantics:</p>
           <div class="exampleInner">
             <pre class="language-abnf">
 daptm:langSrc
@@ -1069,24 +1080,29 @@ daptm:langSrc
 &lt;language-identifier&gt;   # valid BCP-47 language tag
             </pre>
           </div>
-          <p>The <a><code>daptm:langSrc</code></a> <em>applies</em> to <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> elements.</p>
-          <p>If no <a><code>daptm:langSrc</code></a> attribute is present on an element,
-            the computed value of the attribute on that element is
-            the computed value of the same attribute on the element's parent, if present,
-            or the default value otherwise.</p>
-          <p class="note">The inheritance model of <a><code>daptm:langSrc</code></a> is intended to match
-            the inheritance model of the <code>xml:lang</code> attribute [[XML]].</p>
-          <p>If the computed value of <a><code>daptm:langSrc</code></a> is the empty string then it indicates
-            that the <a>Text</a> is <a>Original</a>
-            and sourced from content without an inherent language.</p>
-          <p>Otherwise, if the computed value of <a><code>daptm:langSrc</code></a> is not empty and
-            differs from the computed value of <code>xml:lang</code>,
-            then it indicates that the <a>Text</a> is a <a>translation</a>,
-            and is the language from which the <a>Text</a> was translated.</p>
-          <p>Otherwise, if the computed value of <a><code>daptm:langSrc</code></a> is not empty and
-            is the same as the computed value of <code>xml:lang</code>,
-            then it indicates that the <a>Text</a> is <a>Original</a>
-            and sourced from content with an inherent language.</p>
+          <ul>
+            <li>The value MUST be an empty string or a language identifier as defined by [[BCP47]].</li>
+            <li>The default value is the empty string.</li>
+            <li>It <em>applies</em> to <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> elements.</li>
+            <li>If it is not present on an element,
+              the computed value of the attribute on that element is
+              the computed value of the same attribute on the element's parent,
+              or if the element has no parent it is the default value.
+              <p class="note">The inheritance model of <a><code>daptm:langSrc</code></a> is intended to match
+                the inheritance model of the <code>xml:lang</code> attribute [[XML]].</p>
+            </li>
+            <li>If the computed value is the empty string then it indicates
+              that the <a>Text</a> is <a>Original</a>
+              and sourced from content without an inherent language.</li>
+            <li>Otherwise, if the computed value is not empty and
+              is the same as the computed value of <code>xml:lang</code>,
+              then it indicates that the <a>Text</a> is <a>Original</a>
+              and sourced from content with an inherent language.</li>
+           <li>Otherwise, if the computed value is not empty and
+              differs from the computed value of <code>xml:lang</code>,
+              then it indicates that the <a>Text</a> is a <a>translation</a>,
+              and the computed value is the language from which the <a>Text</a> was translated.</li>
+          </ul>
           <p class="note">An example of the usage of <a>Text Language Source</a> in a document is present in the <a>Text</a> section.</p>
           <aside class="example">
             <table class="simple">
@@ -2964,13 +2980,11 @@ daptm:eventType : string
         <h3>#textLanguageSource</h3>
         <p>A <a>transformation processor</a> supports the <code>#textLanguageSource</code> extension if
           it recognizes and is capable of transforming values of the
-          <a><code>daptm:langSrc</code></a> attribute on the
-          <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> elements.</p>
+          <a><code>daptm:langSrc</code></a> attribute.</p>
   
         <p>A <a>presentation processor</a> supports the <code>#textLanguageSource</code> extension if
           it implements presentation semantic support of the
-          <a><code>daptm:langSrc</code></a> attribute on the
-          <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> elements.</p>
+          <a><code>daptm:langSrc</code></a> attribute.</p>
       </section>
 
       <section>
