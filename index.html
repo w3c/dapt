@@ -1084,6 +1084,9 @@ daptm:langSrc
             <li>The value MUST be an empty string or a language identifier as defined by [[BCP47]].</li>
             <li>The default value is the empty string.</li>
             <li>It <em>applies</em> to <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> elements.</li>
+            <li>If it is present on an element,
+              the computed value is the specified value.
+            </li>
             <li>If it is not present on an element,
               the computed value of the attribute on that element is
               the computed value of the same attribute on the element's parent,
