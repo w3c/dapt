@@ -1046,25 +1046,47 @@ languageIdentifier  \\ BCP47 language tag
         <section>
           <h4>Text Language Source</h4>
           <p>The <dfn>Text Language Source</dfn> property is an annotation indicating the source language of
-            a <a>Text</a> object that represents content with an inherent language.
-            If it differs from the language of the <a>Text</a> object,
+            a <a>Text</a> object, if applicable, or that the source content had no inherent language.</p>
+          <p>If it is not empty and differs from the language of the <a>Text</a> object,
             that implies that it is a representation in another language,
             referred to as &quot;translation&quot;;
             conversely if it is the same that implies that the language of the <a>Text</a> is <a>Original</a>.</p>
-          <p><a>Text Language Source</a> properties SHOULD NOT be present on <a>Text</a> objects
-            that represent content without an inherent language,
+          <p>An empty <a>Text Language Source</a> property on a <a>Text</a> object
+            indicates that the <a>Text</a> represents content without an inherent language,
             such as untranslated descriptions of a visual scene or
             captions representing non-dialogue sounds.</p>
           <p>The <a>Text Language Source</a> property is represented in a <a>DAPT Document</a> by a <dfn><code>daptm:langSrc</code></dfn> attribute
-            whose value MUST be a language identifier as defined by [[BCP47]].</p>
-          <p>If the value of <a><code>daptm:langSrc</code></a> differs from the computed <code>xml:lang</code> then it indicates
-            that the <a>Text</a> is a <a>translation</a>, and is the language from which the <a>Text</a> was translated.
-            Otherwise, if they are the same, then the <a>Text</a> is <a>Original</a>
-            and sourced from content with an inherent language.</p>
-          <p>If a <a>Text</a> object does not have a <a><code>daptm:langSrc</code></a> attribute then it is <a>Original</a>
+            whose value MUST be an empty string or a language identifier as defined by [[BCP47]].</p>
+          <p>The default value of <a><code>daptm:langSrc</code></a> is the empty string.</p>
+          <div class="exampleInner">
+            <pre class="language-abnf">
+daptm:langSrc
+: &lt;empty-string&gt; | &lt;language-identifier&gt;
+
+&lt;empty-string&gt;
+: ""                    # default
+
+&lt;language-identifier&gt;   # valid BCP-47 language tag
+            </pre>
+          </div>
+          <p>The <a><code>daptm:langSrc</code></a> <em>applies</em> to <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> elements.</p>
+          <p>If no <a><code>daptm:langSrc</code></a> attribute is present on an element,
+            the computed value of the attribute on that element is
+            the computed value of the same attribute on the element's parent, if present,
+            or the default value otherwise.</p>
+          <p class="note">The inheritance model of <a><code>daptm:langSrc</code></a> is intended to match
+            the inheritance model of the <code>xml:lang</code> attribute [[XML]].</p>
+          <p>If the computed value of <a><code>daptm:langSrc</code></a> is the empty string then it indicates
+            that the <a>Text</a> is <a>Original</a>
             and sourced from content without an inherent language.</p>
-          <p>If a <code>&lt;span&gt;</code> element does not have a <a><code>daptm:langSrc</code></a> attribute then
-            its <a>Text Language Source</a> is as defined by its parent element.</p>
+          <p>Otherwise, if the computed value of <a><code>daptm:langSrc</code></a> is not empty and
+            differs from the computed value of <code>xml:lang</code>,
+            then it indicates that the <a>Text</a> is a <a>translation</a>,
+            and is the language from which the <a>Text</a> was translated.</p>
+          <p>Otherwise, if the computed value of <a><code>daptm:langSrc</code></a> is not empty and
+            is the same as the computed value of <code>xml:lang</code>,
+            then it indicates that the <a>Text</a> is <a>Original</a>
+            and sourced from content with an inherent language.</p>
           <p class="note">An example of the usage of <a>Text Language Source</a> in a document is present in the <a>Text</a> section.</p>
           <aside class="example">
             <table class="simple">
@@ -1098,13 +1120,13 @@ languageIdentifier  \\ BCP47 language tag
                   <td>Video image (non text)</td>
                   <td><em>none</em></td>
                   <td><code>en</code></td>
-                  <td><em>absent</em></td>
+                  <td><em>empty</em></td>
                 </tr>
                 <tr>
                   <td>Sound effect</td>
                   <td><em>none</em></td>
                   <td><code>en</code></td>
-                  <td><em>absent</em></td>
+                  <td><em>empty</em></td>
                 </tr>
                 <tr>
                   <td>Dialogue in one of the <a>original languages</a></td>
