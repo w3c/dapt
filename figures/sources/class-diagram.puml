@@ -16,7 +16,7 @@ Class DAPTScript as "**DAPT Script**" [[#dapt-script]] {
     Workflow Type [[[#workflow-type]]]
     Script Type [[[#script-type]]]
     Default Language [[[#default-language]]]
-    Original Languages [[[#original-languages]]]
+    {field} (optional) Original Languages [[[#original-languages]]]
 }
 
 together {
@@ -32,7 +32,6 @@ together {
         {field} {abstract} (optional) End [[[#dfn-end]]]
         {field} {abstract} (optional) Duration [[[#dfn-duration]]]
         {field} (optional) Script Event Type [[[#dfn-script-event-type]]]
-        {field} (optional) Script Event Description [[[#dfn-script-event-description]]]
         {field} (optional) On Screen [[[#on-screen]]]
     }
 
