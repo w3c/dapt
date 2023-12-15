@@ -254,8 +254,7 @@
         </g>
         <!--reverse link ScriptEvent to MixingInstruction-->
         <g id="link_ScriptEvent_MixingInstruction">
-            <path codeLine="86"
-                d="M598,467.92 C598,467.92 598,549.11 598,549.11 C598,549.11 373.02,549.11 232.4,549.11 " fill="none"
+            <path d="M598,467.92 C598,467.92 598,549.11 598,549.11 C598,549.11 373.02,549.11 232.4,549.11 " fill="none"
                 id="ScriptEvent-backto-MixingInstruction" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="#000000" points="598,454.92,594,460.92,598,466.92,602,460.92,598,454.92"
                 style="stroke:#000000;stroke-width:1.0;"/>
@@ -344,8 +343,7 @@
         </g>
         <!--reverse link AudioRecording to MixingInstruction-->
         <g id="link_AudioRecording_MixingInstruction">
-            <path codeLine="92"
-                d="M608,808.73 C608,808.73 608,721.11 608,721.11 C608,721.11 375.67,721.11 232.28,721.11 " fill="none"
+            <path d="M608,808.73 C608,808.73 608,721.11 608,721.11 C608,721.11 375.67,721.11 232.28,721.11 " fill="none"
                 id="AudioRecording-backto-MixingInstruction" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="#000000" points="608,821.73,612,815.73,608,809.73,604,815.73,608,821.73"
                 style="stroke:#000000;stroke-width:1.0;"/>
@@ -371,8 +369,7 @@
         </g>
         <!--reverse link Audio to AudioRecording-->
         <g id="link_Audio_AudioRecording">
-            <path codeLine="94"
-                d="M861.33,678.38 C861.33,678.38 861.33,858.11 861.33,858.11 C861.33,858.11 786.65,858.11 718.38,858.11 "
+            <path d="M861.33,678.38 C861.33,678.38 861.33,858.11 861.33,858.11 C861.33,858.11 786.65,858.11 718.38,858.11 "
                 fill="none" id="Audio-backto-AudioRecording" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="none" points="854.33,678.38,861.33,658.38,868.33,678.38,854.33,678.38"
                 style="stroke:#000000;stroke-width:1.0;"/>
