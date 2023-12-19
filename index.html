@@ -697,7 +697,8 @@ languageIdentifier  \\ BCP47 language tag
                   a different language, the <a>Text</a> objects can be translated and marked as <a>Translation</a>.
                   In that case, it is appropriate to mark the transcript as a <a>Translated Transcript</a>.
                   It may also be appropriate, as part of the translation activity, to describe within the translated text
-                  the original language of that text, to inform the audience.
+                  content the original language of that text, to inform the audience,
+                  for example, &quot;A Japanese newspaper headline that means: sailor completes ocean crossing&quot;.
                 </aside>
                 </li>
               <li>
@@ -971,8 +972,8 @@ languageIdentifier  \\ BCP47 language tag
             <ol>
               <li>the same language as the dialogue that it represents in the original programme audio;</li>
               <li>a transcription of text visible in the programme video, in the same language as that text;</li>
-              <li>representative of non-dialogue sound;</li>
-              <li>a description of the scene in the programme video.</li>
+              <li>an untranslated representative of non-dialogue sound;</li>
+              <li>an untranslated description of the scene in the programme video.</li>
             </ol>
           </p>
           <aside class="note">The language of an <a>Original</a> <a>Text</a> object
@@ -1013,7 +1014,6 @@ languageIdentifier  \\ BCP47 language tag
                     then its computed value is derived by inheritance from its parent element,
                     and so forth up to the root <code>&lt;tt&gt;</code> element.</p>
                   <p>In <a>scripts</a> that have very little variation in source language,
-                    for example audio description scripts,
                     the <a><code>daptm:langSrc</code></a> attribute can be set on the root element
                     and omitted from <code>&lt;p&gt;</code> elements except where its value
                     differs.
