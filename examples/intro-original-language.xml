@@ -2,11 +2,11 @@
     xmlns:ttm="http://www.w3.org/ns/ttml#metadata"
     xmlns:ttp="http://www.w3.org/ns/ttml#parameter"
     xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
-    xml:lang="fr" daptm:langSrc="fr"
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
+    xml:lang="fr"
+    daptm:langSrc="fr"
     daptm:workflowType="dubbing"
-    daptm:scriptType="originalTranscript"
-    daptm:originalLangs="fr">
+    daptm:scriptType="originalTranscript">
   <head>
     <metadata>
       <ttm:agent type="character" xml:id="character_1">

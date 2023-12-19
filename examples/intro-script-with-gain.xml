@@ -2,7 +2,7 @@
   daptm:workflowType="audioDescription"
   daptm:scriptType="asRecorded"
   xml:lang="en"
-  daptm:originalLangs="en">
+  daptm:langSrc="">
   ...
     <div begin="25s" end="28s">
       <p>

@@ -16,7 +16,7 @@ Class DAPTScript as "**DAPT Script**" [[#dapt-script]] {
     Workflow Type [[[#workflow-type]]]
     Script Type [[[#script-type]]]
     Default Language [[[#default-language]]]
-    {field} (optional) Original Languages [[[#original-languages]]]
+    {field} (optional) Text Language Source [[[#text-language-source]]]
 }
 
 together {

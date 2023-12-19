@@ -1,11 +1,11 @@
 <tt xmlns="http://www.w3.org/ns/ttml" 
     xmlns:ttp="http://www.w3.org/ns/ttml#parameter"
     xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
-    xml:lang="en" 
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
+    xml:lang="en"
+    daptm:langSrc="en"
     daptm:workflowType="dubbing"
-    daptm:scriptType="originalTranscript"
-    daptm:originalLangs="en">
+    daptm:scriptType="originalTranscript">
   <head>
     <metadata>
       <!-- Additional metadata may be placed here -->

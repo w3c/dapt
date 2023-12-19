@@ -3,10 +3,10 @@
   xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
   xmlns:xml="http://www.w3.org/XML/1998/namespace"
   ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
-  daptm:workflowType="audioDescription"
-  daptm:scriptType="preRecording"
   xml:lang="en"
-  daptm:originalLangs="en">
+  daptm:langSrc=""
+  daptm:workflowType="audioDescription"
+  daptm:scriptType="preRecording">
   <body>
     <div begin="10s" end="13s">
       <p>
