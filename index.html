@@ -936,24 +936,36 @@ table.coldividers td + td { border-left:1px solid gray; }
                   <p>In <a>scripts</a> that have very little variation in source language,
                     the <a><code>daptm:langSrc</code></a> attribute can be set on the root element
                     and omitted from <code>&lt;p&gt;</code> elements except where its value
-                    differs.
-                    Care should be taken if using this approach, especially when moving between
+                    differs.</p>
+                  <p>Care should be taken if using this approach, especially when moving between
                     <a>Script Types</a>, because changing it at the root element could affect
                     the interpretation of descendant elements unexpectedly.
-                    Authors can mitigate this risk by explicitly setting <a><code>daptm:langSrc</code></a>
+                    In tools that allow fine-grained control,
+                    authors can mitigate this risk by explicitly setting <a><code>daptm:langSrc</code></a>
                     on all <code>&lt;p&gt;</code> elements.</p>
-                  </p>
-                </aside></li>
+                  <p>Implementers should take care to ensure that,
+                    when changing <a><code>daptm:langSrc</code></a> on an element,
+                    they check down the tree and if appropriate specify the attribute on descendant elements
+                    so that their meaning does not change unintentionally.</p>
+                </aside>
+              </li>
               <li>The <code>&lt;p&gt;</code> element SHOULD have an <code>xml:lang</code> attribute
                 corresponding to the language of the <a>Text</a> object.
-                <p class="note">If a <code>&lt;p&gt;</code> element omits the <code>xml:lang</code> attribute
-                  then its computed language is derived by inheritance from its parent element,
-                  and so forth up to the root <code>&lt;tt&gt;</code> element,
-                  which is required to set the <a>Default Language</a> via its <code>xml:lang</code> attribute.
-                  Care should be taken if changing the <a>Default Language</a> of a <a>DAPT Script</a> in case
-                  doing so affects descendant elements unexpectedly.
-                  Authors can mitigate this risk by explicitly setting <code>xml:lang</code>
-                  on all <code>&lt;p&gt;</code> elements.</p>
+                <aside class="note">
+                  <p>If a <code>&lt;p&gt;</code> element omits the <code>xml:lang</code> attribute
+                    then its computed language is derived by inheritance from its parent element,
+                    and so forth up to the root <code>&lt;tt&gt;</code> element,
+                    which is required to set the <a>Default Language</a> via its <code>xml:lang</code> attribute.</p>
+                  <p>Care should be taken if changing the <a>Default Language</a> of a <a>DAPT Script</a> in case
+                    doing so affects descendant elements unexpectedly.
+                    In tools that allow fine-grained control,
+                    authors can mitigate this risk by explicitly setting <code>xml:lang</code>
+                    on all <code>&lt;p&gt;</code> elements.</p>
+                  <p>Implementers should take care to ensure that,
+                    when changing <code>xml:lang</code> on an element,
+                    they check down the tree and if appropriate specify the attribute on descendant elements
+                    so that their meaning does not change unintentionally.</p>
+                </aside>
                 <pre class="example">
 &lt;div xml:id=&quot;event_3&quot;
      begin=&quot;9663f&quot; end=&quot;9682f&quot; 
