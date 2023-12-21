@@ -955,6 +955,12 @@ table.coldividers td + td { border-left:1px solid gray; }
                     they check down the tree and if appropriate specify the attribute on descendant elements
                     so that their meaning does not change unintentionally.</p>
                 </aside>
+                <aside class="note">
+                  <p>A document that does not specify <a><code>daptm:langSrc</code></a> at all
+                    implies that all of the text is a transcript of content with no inherent language,
+                    for example audio description where no in-image text is transcribed,
+                    and which has not been translated.</p>
+                </aside>
               </li>
               <li>The <code>&lt;p&gt;</code> element SHOULD have an <code>xml:lang</code> attribute
                 corresponding to the language of the <a>Text</a> object.
