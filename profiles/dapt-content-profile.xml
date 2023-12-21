@@ -85,13 +85,13 @@
     <extension value="required">#contentProfiles-root</extension>
     <extension value="required">#scriptType-root</extension>
     <extension value="required">#serialization</extension>
-    <extension value="required">#textLanguageSource</extension>
     <extension value="required">#workflowType-root</extension>
     <extension value="required">#xmlId-div</extension>
     <extension value="required">#xmlLang-root</extension>
     <!-- optional (voluntary) extension support -->
     <extension value="optional">#agent</extension>
     <extension value="optional">#onScreen</extension>
+    <extension value="optional">#textLanguageSource</extension>
     <!-- prohibited extension support -->
     <extension value="prohibited">#profile-root</extension>
     <extension value="prohibited">#source-data</extension>

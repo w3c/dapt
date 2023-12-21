@@ -1,8 +1,10 @@
 <tt xmlns="http://www.w3.org/ns/ttml"
+    xmlns:ttm="http://www.w3.org/ns/ttml#metadata"
     xmlns:ttp="http://www.w3.org/ns/ttml#parameter"
     xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
-    xml:lang="en"
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
+    xml:lang="en"
+    daptm:langSrc="fr"
     daptm:workflowType="dubbing"
     daptm:scriptType="preRecording">
   <head>
@@ -14,10 +16,10 @@
   </head>
   <body>
     <div begin="10s" end="13s" ttm:agent="character_1" daptm:onScreen="ON_OFF">
-      <p xml:lang="fr" daptm:langSrc="original">
+      <p xml:lang="fr" daptm:langSrc="fr">
         <span>Et c'est grâce à ça qu'on va devenir riches.</span>
       </p>
-      <p xml:lang="en" daptm:langSrc="translation">
+      <p xml:lang="en" daptm:langSrc="fr">
         <span begin="0s">And thanks to that,</span><span begin="1.5s"> we're gonna get rich.</span>
       </p>
     </div>

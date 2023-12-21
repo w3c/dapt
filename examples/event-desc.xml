@@ -2,19 +2,19 @@
   <body>
     <div begin="10s" end="13s">
       <ttm:desc>Scene 1</ttm:desc>
-      <p daptm:langSrc="original">
+      <p xml:lang="en">
         <span>A woman climbs into a small sailing boat.</span>
       </p>
-      <p xml:lang="fr" daptm:langSrc="translation">
+      <p xml:lang="fr" daptm:langSrc="en">
         <span>Une femme monte à bord d'un petit bateau à voile.</span>
       </p>
     </div>
     <div begin="18s" end="20s">
       <ttm:desc>Scene 1</ttm:desc>
-      <p daptm:langSrc="original">
+      <p xml:lang="en">
         <span>The woman pulls the tiller and the boat turns.</span>
       </p>
-      <p xml:lang="fr" daptm:langSrc="translation">
+      <p xml:lang="fr" daptm:langSrc="en">
         <span>La femme tire sur la barre et le bateau tourne.</span>
       </p>
     </div>

@@ -15,7 +15,8 @@ skinparam MinClassWidth 220
 Class DAPTScript as "**DAPT Script**" [[#dapt-script]] {
     Workflow Type [[[#workflow-type]]]
     Script Type [[[#script-type]]]
-    Primary Language [[[#primary-language]]]
+    Default Language [[[#default-language]]]
+    {field} (optional) Text Language Source [[[#text-language-source]]]
 }
 
 together {
@@ -31,7 +32,6 @@ together {
         {field} {abstract} (optional) End [[[#dfn-end]]]
         {field} {abstract} (optional) Duration [[[#dfn-duration]]]
         {field} (optional) Script Event Type [[[#dfn-script-event-type]]]
-        {field} (optional) Script Event Description [[[#dfn-script-event-description]]]
         {field} (optional) On Screen [[[#on-screen]]]
     }
 
@@ -43,7 +43,7 @@ together {
 
     Class Text as "**Text**" [[#text]] {
         Text content [[[#dfn-text]]]
-        Text Language Source [[[#text-language-source]]]
+        {field} (optional) Text Language Source [[[#text-language-source]]]
         {field} (optional) Language
         ' {field} (optional) Inline Style Attributes
     }
