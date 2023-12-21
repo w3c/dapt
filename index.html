@@ -374,7 +374,9 @@ table.coldividers td + td { border-left:1px solid gray; }
           Note that in this case, to reflect that most of the audio description content
           transcribes the video image where there is no inherent language,
           the <a>Text Language Source</a>, represented by the <a><code>daptm:langSrc</code></a> attribute,
-          is set to the empty string at the top level of the document:</p>
+          is set to the empty string at the top level of the document.
+          It would be semantically equivalent to omit the attribute altogether,
+          since the default value is the empty string:</p>
         <pre class="example"
           data-include="examples/intro-times-and-text.xml"
           data-include-format="text">
@@ -421,8 +423,10 @@ table.coldividers td + td { border-left:1px solid gray; }
         </pre>
 
         <h4>Dubbing Examples</h4>
-        <p>From the basic structure of <a href="#example-1"></a>, a transcription of the audio programme produces an original language dubbing <a>script</a>,
-          which can look as follows. No specific style or layout is defined, and here the focus is on the transcription of the dialogs.
+        <p>From the basic structure of <a href="#example-1"></a>, 
+          transcribing the audio produces an original language dubbing <a>transcript</a>,
+          which can look as follows.
+          No specific style or layout is defined, and here the focus is on the transcription of the dialogue.
           Characters are identified within the <code>&lt;metadata&gt;</code>.
           Note that the language and the <a>text language source</a> are defined using
           <code>xml:lang</code> and <a><code>daptm:langSrc</code></a> respectively,
@@ -437,7 +441,10 @@ table.coldividers td + td { border-left:1px solid gray; }
         in this case the original text is preserved. The main document's <a>default language</a> is changed to indicate
         that the focus is on the translated language.
         The combination of the <code>xml:lang</code> and <a><code>daptm:langSrc</code></a> attributes are used
-        to mark the text as being original or translated:</p>
+        to mark the text as being original or translated.
+        In this case, they are present on both the <code>&lt;tt&gt;</code> and <code>&lt;p&gt;</code>
+        elements to make the example easier to read, but it would also be possible to omit
+        them in some cases, making use of the inheritance model:</p>
         <pre class="example"
           data-include="examples/intro-original-language-with-dub-language.xml"
           data-include-format="text">
@@ -1024,9 +1031,6 @@ daptm:langSrc
             <li>The default value is the empty string.</li>
             <li>It <em>applies</em> to <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> elements.</li>
             <li>It MAY be specified on the following elements: <code>&lt;tt&gt;</code>, <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code>.</li>
-            <li>If it is present on an element,
-              the computed value is the specified value.
-            </li>
             <li>The inheritance model of <a><code>daptm:langSrc</code></a> is as follows:
               <ul>
                 <li>If it is present on an element,
