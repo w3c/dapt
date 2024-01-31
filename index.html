@@ -403,7 +403,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           The first <code>&lt;animate&gt;</code> element drops the gain from 1
           to 0.39 over 0.3s, freezing that value after it ends,
           and the second one raises it back in the
-          final 0.3s of this description. Then the <code>&lt;span&gt;</code> is
+          final 0.3s of this description. Then the <code>&lt;span&gt;</code> element is
           timed to begin only after the first audio dip has finished.</p>
         <p>If the audio recording is long and just a snippet needs to be played,
         that can be done using <code>clipBegin</code> and <code>clipEnd</code>.
@@ -433,7 +433,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           transcribing the audio produces an original language dubbing <a>transcript</a>,
           which can look as follows.
           No specific style or layout is defined, and here the focus is on the transcription of the dialogue.
-          Characters are identified within the <code>&lt;metadata&gt;</code>.
+          Characters are identified within the <code>&lt;metadata&gt;</code> element.
           Note that the language and the <a>text language source</a> are defined using
           <code>xml:lang</code> and <a><code>daptm:langSrc</code></a> respectively,
           which have the same value
@@ -471,8 +471,9 @@ table.coldividers td + td { border-left:1px solid gray; }
         This document uses the following conventions:
       </p>
       <ul>
-        <li>When referring to an [[XML]] element in the prose, angled brackets and a specific style are used as follows: <code>&lt;someElement&gt;</code>. If the name of an element referenced in this specification
-        is not namespace qualified, then the TT namespace applies (see <a href="#namespaces">Namespaces</a>).</li>
+        <li>When referring to an [[XML]] element in the prose, angled brackets and a specific style are used as follows: <code>&lt;someElement&gt;</code>.
+          If the name of an element referenced in this specification
+          is not namespace qualified, then the TT namespace applies (see <a href="#namespaces">Namespaces</a>).</li>
         <li>When referring to an [[XML]] attribute in the prose, the attribute name is given with its prefix,
           or without a prefix if the attribute is in the global namespace.
           Attributes are styled as follows: <code>attributePrefix:attributeName</code>.</li>
@@ -920,7 +921,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           </p>
           <p>A <a>Text</a> object is represented in a <a>DAPT Document</a> by a <code>&lt;p&gt;</code> element with the following constraints:</p>
             <ul>
-              <li>The text content of the <code>&lt;p&gt;</code> is the <a>Text</a> of the <a>Script Event</a>.
+              <li>The text content of the <code>&lt;p&gt;</code> element is the <a>Text</a> of the <a>Script Event</a>.
                 <aside class="note">The text content of the paragraph can be structured using TTML elements such as
                   <code>&lt;br&gt;</code> or <code>&lt;span&gt;</code>
                   which can include or reference TTML style attributes
@@ -1158,7 +1159,7 @@ daptm:onScreen
             Script Event Descriptions can themselves be classified with
             a <a>Description Type</a>.</p>
           <p>A <a>Script Event Description</a> object is represented in a <a>DAPT Document</a> by
-            a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> level.</p>
+            a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> element level.</p>
           <p>Zero or more <code>&lt;ttm:desc&gt;</code> elements MAY be present.</p>
           <p class="note">The <a>Script Event Description</a> does not need to be unique,
             i.e. it does not need to have a different value for each <a>Script Event</a>. 
@@ -2005,7 +2006,7 @@ daptm:eventType : string
           <li><code>&lt;ttm:title&gt;</code></li>
         </ul>
         <p class="note">More guidance about usage of this mechanism is available at <a data-cite="I18N-INLINE-BIDI#nomarkup"></a>.</p>
-        <p>The content elements <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> permit the direction of text
+        <p>The <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> content elements permit the direction of text
           to be specified using the <code>tts:direction</code> and <code>tts:unicodeBidi</code> attributes.
           Document authors should use this more robust mechanism rather than using Unicode control characters.</p>
         <div class="note">
@@ -2151,7 +2152,7 @@ daptm:eventType : string
       <li>the application of <em>animated</em> <a>Mixing Instructions</a> is not
         shown explicitly. [[webaudio]] supports the timed variation of
         input parameters to its nodes: it is possible to translate the
-        TTML <code>&lt;animate&gt;</code> semantics directly into
+        TTML <code>&lt;animate&gt;</code> element semantics directly into
         [[webaudio]] API calls to achieve the equivalent effect.</li>
     </ul>
 
@@ -2213,7 +2214,7 @@ daptm:eventType : string
       <thead>
         <tr>
           <th rowspan="2" style="vertical-align: bottom;">DAPT disposition</th>
-          <th colspan="2"><a><code>&lt;ttp:feature&gt;</code></a> or <a><code>&lt;ttp:extension&gt;</code></a> <code>value</code> attribute value in</th>
+          <th colspan="2"><a><code>&lt;ttp:feature&gt;</code></a> or <a><code>&lt;ttp:extension&gt;</code></a> element <code>value</code> attribute value in</th>
         </tr>
         <tr>
           <th><a>content profile</a></th>
@@ -2641,7 +2642,7 @@ daptm:eventType : string
             <td>
               <p>See [[[#ttp-timebase]]].</p>
               <p class="inline-note">NOTE: [[TTML1]] specifies that the default timebase is <code>"media"</code> if
-              <code>ttp:timeBase</code> is not specified on <code>&lt;tt&gt;</code>.</p>
+              <code>ttp:timeBase</code> is not specified on the <code>&lt;tt&gt;</code> element.</p>
             </td>
           </tr>
           <tr>
@@ -2746,7 +2747,7 @@ daptm:eventType : string
             <td><span class="prohibited label">prohibited</span></td>
             <td>
               This is the profile expression of the prohibition of <code>xml:lang</code>
-              on <code>&lt;audio&gt;</code> having a different computed value to the
+              on the <code>&lt;audio&gt;</code> element having a different computed value to the
               parent element and descendant or referenced <code>&lt;source&gt;</code>
               and <code>&lt;data&gt;</code> elements, as specified in
               <a href="#audio-recording"></a>.
