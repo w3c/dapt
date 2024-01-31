@@ -719,10 +719,12 @@ table.coldividers td + td { border-left:1px solid gray; }
                 and is relative to the active begin time of the parent object.</li>
               <li>The <dfn>Duration</dfn> property defines the maximum duration of an object.
                 <p class="note">If both an <a>End</a> and a <a>Duration</a> property are present,
-                  the end time is the earlier of <a>End</a> and <a>Begin</a> + <a>Duration</a>.</p>
+                  the end time is the earlier of <a>End</a> and <a>Begin</a> + <a>Duration</a>,
+                  as defined by [[TTML2]].</p>
                 </li>
             </ul>
-            <div class="note">If any of the <a>timing properties</a> is omitted, the following rules apply:
+            <div class="note">If any of the <a>timing properties</a> is omitted, the following rules apply,
+              paraphrasing the timing semantics defined in [[TTML2]]:
               <ul>
                 <li>The default value for <a>Begin</a> is zero, i.e. the same as the begin time of the parent object.</li>
                 <li>The default value for <a>End</a> is indefinite,
@@ -860,19 +862,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <p>The <code>begin</code>, <code>end</code> and <code>dur</code> attributes represent respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> of the <a>Script Event</a>.</p>
                 <p>The <code>begin</code> and <code>end</code> attributes SHOULD be present.
                   The <code>dur</code> attribute MAY be present.</p>
-                <p class="note">As noted in [[?TTML2]] if both an <code>end</code> attribute and a <code>dur</code> attribute are present,
-                  the end time is the earlier of <code>end</code> and <code>(begin&nbsp;+&nbsp;dur)</code>.</p>
-                <div class="note">If timing attributes are omitted, the following rules apply:
-                  <ul>
-                    <li>The default value for <code>begin</code> is zero, i.e. the same as the begin time of the parent element.</li>
-                    <li>The default value for <code>end</code> is indefinite,
-                      i.e. it resolves to the same as the end time of the parent timed element,
-                      if there is one.
-                      The topmost timed element is the <code>&lt;body&gt;</code> element,
-                      whose end time is for practical purposes the end of the <a>Related Media Object</a>.</li>
-                    <li>The default value for <code>dur</code> is indefinite, i.e. the end time resolves to the same as the end time of the parent element.</li>
-                  </ul>
-                </div>
+                <p class="note">See <a href="#timing-properties"></a> for additional notes on timing properties.</p>
               </li>
               <li>The <code>ttm:agent</code> attribute MAY be present and if present,
                 MUST contain a reference to each <code>ttm:agent</code> that represents an associated <a>Character</a>.
