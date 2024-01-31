@@ -765,28 +765,6 @@ table.coldividers td + td { border-left:1px solid gray; }
         </p>
         <p>A <a>Character</a> is represented in a <a>DAPT Document</a> by the following structure and constraints:</p>
         <ul>
-          <li>If the <a>Character</a> has a <a>Talent Name</a> property:
-            <ul>
-              <li>A <code>&lt;ttm:agent&gt;</code> element corresponding to the <a>Talent Name</a> 
-                MUST be present at the path
-                <code>/tt/head/metadata/ttm:agent</code>, with the following constraints:
-                <ul>
-                  <li>its <code>type</code> attribute MUST be set to <code>person</code></li>
-                  <li>its <code>xml:id</code> attribute MUST be set.</li>
-                  <li>it MUST have a <code>&lt;ttm:name&gt;</code> child element whose
-                    <code>type</code> attribute MUST be set to <code>full</code> and its content set to the <a>Talent Name</a></li>
-                </ul>
-              </li>
-              <li>If more than one <a>Character</a> is associated with the same
-                <a>Talent Name</a> there SHOULD be a single
-                <code>&lt;ttm:agent&gt;</code> element corresponding to that <a>Talent Name</a>,
-                referenced separately by each of the <a>Characters</a>.</li>
-              <li>Each <code>&lt;ttm:agent&gt;</code> element corresponding to a <a>Talent Name</a>
-                SHOULD appear before any of the <a>Character</a> <code>&lt;ttm:agent&gt;</code> elements
-                whose <code>&lt;ttm:actor&gt;</code> child element references it.</li>
-            </ul>
-          </li>
-
           <li>The <a>Character</a> is represented in a <a>DAPT Document</a> by a <code>&lt;ttm:agent&gt;</code> element present at the path
             <code>/tt/head/metadata/ttm:agent</code>, with the following constraints:
             <ul>
@@ -824,6 +802,29 @@ table.coldividers td + td { border-left:1px solid gray; }
 ...
           </pre>
           </li>
+
+          <li>If the <a>Character</a> has a <a>Talent Name</a> property:
+            <ul>
+              <li>A <code>&lt;ttm:agent&gt;</code> element corresponding to the <a>Talent Name</a> 
+                MUST be present at the path
+                <code>/tt/head/metadata/ttm:agent</code>, with the following constraints:
+                <ul>
+                  <li>its <code>type</code> attribute MUST be set to <code>person</code></li>
+                  <li>its <code>xml:id</code> attribute MUST be set.</li>
+                  <li>it MUST have a <code>&lt;ttm:name&gt;</code> child element whose
+                    <code>type</code> MUST be set to <code>full</code> and its content set to the <a>Talent Name</a></li>
+                </ul>
+              </li>
+              <li>If more than one <a>Character</a> is associated with the same
+                <a>Talent Name</a> there SHOULD be a single
+                <code>&lt;ttm:agent&gt;</code> element corresponding to that <a>Talent Name</a>,
+                referenced separately by each of the <a>Characters</a>.</li>
+              <li>Each <code>&lt;ttm:agent&gt;</code> element corresponding to a <a>Talent Name</a>
+                SHOULD appear before any of the <a>Character</a> <code>&lt;ttm:agent&gt;</code> elements
+                whose <code>&lt;ttm:actor&gt;</code> child element references it.</li>
+            </ul>
+          </li>
+
           <li>All <code>&lt;ttm:agent&gt;</code> elements SHOULD be contained in the first <code>&lt;metadata&gt;</code> element in the <code>&lt;head&gt;</code> element.
             <div class="note">There can be multiple <code>&lt;metadata&gt;</code> elements in the <code>&lt;head&gt;</code> element,
             for example to include <a href="#proprietary-metadata">proprietary metadata</a>
