@@ -356,7 +356,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           but in this empty example, it is not relevant, since only the structure of the document is shown.</li>
           <li>The <a><code>daptm:langSrc</code></a> attribute indicates the default text language source,
             for example the original language of the content,
-            while the <code>xml:lang</code> indicates the default language 
+            while the <code>xml:lang</code> attribute indicates the default language 
             in this script, which in this case is the same.
             Both of these attributes are inherited and can be overridden within the content of the document.</li>
         </ul>
@@ -397,7 +397,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           data-include-format="text">
         </pre>
         <p>In the above example, the <code>&lt;div&gt;</code> element's
-          <code>begin</code> time becomes the "syncbase" for its child, 
+          <code>begin</code> attribute defines the time that is the "syncbase" for its child, 
           so the times on the <code>&lt;animate&gt;</code> and <code>&lt;span&gt;</code>
           elements are relative to 25s here.
           The first <code>&lt;animate&gt;</code> element drops the gain from 1
@@ -471,12 +471,16 @@ table.coldividers td + td { border-left:1px solid gray; }
         This document uses the following conventions:
       </p>
       <ul>
-        <li>When referring to an [[XML]] element in the prose, angled brackets and a specific style are used as follows: <code>&lt;someElement&gt;</code>.
+        <li>When referring to an [[XML]] element in the prose,
+          angled brackets and a specific style are used as follows: <code>&lt;someElement&gt;</code>.
+          The entity is also described as an element in the prose.
           If the name of an element referenced in this specification
           is not namespace qualified, then the TT namespace applies (see <a href="#namespaces">Namespaces</a>).</li>
-        <li>When referring to an [[XML]] attribute in the prose, the attribute name is given with its prefix,
+        <li>When referring to an [[XML]] attribute in the prose,
+          the attribute name is given with its prefix,
           or without a prefix if the attribute is in the global namespace.
-          Attributes are styled as follows: <code>attributePrefix:attributeName</code>.</li>
+          Attributes are styled as follows: <code>attributePrefix:attributeName</code>.
+          The entity is also described as an attribute in the prose.</li>
         <li>When defining new [[XML]] attributes, this specification uses the conventions used for
         "value syntax expressions" in [[TTML2]]. For example, the following would define a new attribute
         called <code>daptm:foo</code> as a string with two possible values:
@@ -605,11 +609,11 @@ table.coldividers td + td { border-left:1px solid gray; }
             </pre>
           </div>
 
-          <p>The definitions of the types of documents and the corresponding <code>daptm:scriptType</code> values are:
+          <p>The definitions of the types of documents and the corresponding <code>daptm:scriptType</code> attribute values are:
             <ul>
               <li>
                 <dfn>Original Language Transcript</dfn>:
-                <p>When the <code>daptm:scriptType</code> value is <code>originalTranscript</code>,
+                <p>When the <code>daptm:scriptType</code> attribute value is <code>originalTranscript</code>,
                 the document is a literal transcription of the dialogue and/or on-screen text in their inherent spoken/written language(s),
                 or of non-dialogue sounds and non-linguistic visual content.</p>
                 <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain
@@ -622,7 +626,7 @@ table.coldividers td + td { border-left:1px solid gray; }
               </li>
               <li>
                 <dfn>Translated Transcript</dfn>:
-                <p>When the <code>daptm:scriptType</code> value is <code>translatedTranscript</code>,
+                <p>When the <code>daptm:scriptType</code> attribute value is <code>translatedTranscript</code>,
                 the document represents a translation of the <a>Original Language Transcript</a> in a common language.</p>
                 <p>It can be adapted to produce a <a>Pre-Recording Script</a>,
                   and/or used as the basis for a further translation into the <a>Target Recording Language</a>.</p> 
@@ -644,7 +648,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 </li>
               <li>
                 <dfn>Pre-recording Script</dfn>:
-                <p>When the <code>daptm:scriptType</code> value is <code>preRecording</code>,
+                <p>When the <code>daptm:scriptType</code> attribute value is <code>preRecording</code>,
                 the document represents the result of the adaptation of an <a>Original Language Transcript</a> or
                 a <a>Translated Transcript</a> for recording, e.g. for better lip-sync in a dubbing workflow,
                 or to ensure that the words can fit within the time available in an audio description workflow.</p>
@@ -673,7 +677,7 @@ table.coldividers td + td { border-left:1px solid gray; }
               </li>
               <li>
                 <dfn>As-recorded Script</dfn>:
-                <p>When the <code>daptm:scriptType</code> value is <code>asRecorded</code>, 
+                <p>When the <code>daptm:scriptType</code> attribute value is <code>asRecorded</code>, 
                 the document represents the actual audio recording.</p>
                 <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Text</a> objects
                   in the <a>Target Recording Language</a>
@@ -770,7 +774,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                   <li>its <code>type</code> attribute MUST be set to <code>person</code></li>
                   <li>its <code>xml:id</code> attribute MUST be set.</li>
                   <li>it MUST have a <code>&lt;ttm:name&gt;</code> child element whose
-                    <code>type</code> MUST be set to <code>full</code> and its content set to the <a>Talent Name</a></li>
+                    <code>type</code> attribute MUST be set to <code>full</code> and its content set to the <a>Talent Name</a></li>
                 </ul>
               </li>
               <li>If more than one <a>Character</a> is associated with the same
@@ -788,12 +792,12 @@ table.coldividers td + td { border-left:1px solid gray; }
             <ul>
               <li>The <code>type</code> attribute MUST be set to <code>character</code>.</li>
               <li>The <code>xml:id</code> attribute MUST be present on the <code>&lt;ttm:agent&gt;</code> element and set to the <a>Character Identifier</a>.</li>
-              <li>The <code>&lt;ttm:agent&gt;</code> element MUST contain a <code>ttm:name</code> element with its <code>type</code> attribute set to <code>alias</code> and its content set to the <a>Character Name</a>.</li>
+              <li>The <code>&lt;ttm:agent&gt;</code> element MUST contain a <code>&lt;ttm:name&gt;</code> element with its <code>type</code> attribute set to <code>alias</code> and its content set to the <a>Character Name</a>.</li>
               <li>If the Character has a <a>Talent Name</a>, it MUST contain a <code>&lt;ttm:actor&gt;</code> child element.
                 That child element MUST have an <code>agent</code> attribute set to
-                the <code>xml:id</code> of the <code>&lt;ttm:agent&gt;</code> element
+                the value of the <code>xml:id</code> attribute of the <code>&lt;ttm:agent&gt;</code> element
                 corresponding to the <a>Talent Name</a>,
-                that is, whose <code>type</code> is set to <code>person</code>.</li>
+                that is, whose <code>type</code> attribute is set to <code>person</code>.</li>
             </ul>
 
           <pre class="example">
@@ -874,7 +878,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                 <p class="note">See <a href="#timing-properties"></a> for additional notes on timing properties.</p>
               </li>
               <li>The <code>ttm:agent</code> attribute MAY be present and if present,
-                MUST contain a reference to each <code>ttm:agent</code> that represents an associated <a>Character</a>.
+                MUST contain a reference to each <code>ttm:agent</code> attribute that represents an associated <a>Character</a>.
               <aside class="note">Multiple references are specified using a space-separated list.</aside>
           <pre class="example">
 ...
@@ -974,7 +978,7 @@ table.coldividers td + td { border-left:1px solid gray; }
                     authors can mitigate this risk by explicitly setting <code>xml:lang</code>
                     on all <code>&lt;p&gt;</code> elements.</p>
                   <p>Implementers should take care to ensure that,
-                    when changing <code>xml:lang</code> on an element,
+                    when changing the <code>xml:lang</code> attribute on an element,
                     they check down the tree and if appropriate specify the attribute on descendant elements
                     so that their meaning does not change unintentionally.</p>
                 </aside>
@@ -1070,8 +1074,8 @@ daptm:langSrc
           <p class="note">An example of the usage of <a>Text Language Source</a> in a document is present in the <a>Text</a> section.</p>
           <aside class="example">
             <table class="simple">
-              <caption>Table enumerating example values of <code>xml:lang</code> and
-                <code>daptm:langSrc</code> for different <a>Original</a> transcript sources and
+              <caption>Table enumerating example values of the <code>xml:lang</code> and
+                <code>daptm:langSrc</code> attributes for different <a>Original</a> transcript sources and
                 their inherent languages.
               </caption>
               <thead>
@@ -1130,7 +1134,7 @@ daptm:langSrc
             <li>OFF_ON - the <a>Script Event</a>'s subject starts off screen, but goes on screen at some point</li>
           </ul>
           <p>If omitted, the default value is "ON".</p>
-          <aside class="note">When <a>daptm:workflowType</a> is set to <code>audioDescription</code> the subject of each
+          <aside class="note">When the <a>daptm:workflowType</a> attribute is set to <code>audioDescription</code> the subject of each
             <a>Script Event</a>, i.e. what is being described,
             is expected to be in the video image, therefore the default of "ON" allows
             the property to be omitted in those cases without distortion of meaning.</aside>
@@ -1495,8 +1499,8 @@ daptm:eventType : string
             </li>
             <li><a>Mixing Instructions</a> MAY be applied as specified in their
               <a href="#mixing-instruction-ttml">TTML representation</a>;</li>
-            <li>The computed value of <code>xml:lang</code> MUST be identical
-              to the computed value of <code>xml:lang</code> of the parent element
+            <li>The computed value of the <code>xml:lang</code> attribute MUST be identical
+              to the computed value of the <code>xml:lang</code> attribute of the parent element
               and any child <code>&lt;source&gt;</code> elements
               and any referenced embedded <code>&lt;data&gt;</code> elements.</li>
           </ul>
@@ -1528,7 +1532,7 @@ daptm:eventType : string
           <p>The TTML representation of a <a>Synthesized Audio</a>
             is illustrated by <a href="#example-6"></a>.</p>
           <p class="note">A <code>tta:pitch</code> attribute on an element
-            whose computed value of <code>tta:rate</code> is <code>none</code>
+            whose computed value of the <code>tta:rate</code> attribute is <code>none</code>
             has no effect.
             Such an element is not considered to have an associated <a>Synthesized Audio</a>.</p>
           <p class="note">The semantics of the <a>Synthesized Audio</a> vocabulary of DAPT are derived from equivalent features in [[SSML]] as indicated in [[TTML2]]. This version
@@ -1887,7 +1891,7 @@ daptm:eventType : string
         <p>Within a DAPT Script, the following constraints apply in relation to time attributes and time expressions:</p>
         <section>
           <h4><code>ttp:timeBase</code></h4>
-          <p>The only permitted <code>ttp:timeBase</code> value is <code>media</code>,
+          <p>The only permitted <code>ttp:timeBase</code> attribute value is <code>media</code>,
             since <a href="#profiles"></a> prohibits all timeBase features
             other than <a href="https://www.w3.org/TR/ttml2/#feature-timeBase-media"><code>#timeBase-media</code></a>.</p>
           <p>This means that the beginning of the document timeline,
@@ -2642,7 +2646,7 @@ daptm:eventType : string
             <td>
               <p>See [[[#ttp-timebase]]].</p>
               <p class="inline-note">NOTE: [[TTML1]] specifies that the default timebase is <code>"media"</code> if
-              <code>ttp:timeBase</code> is not specified on the <code>&lt;tt&gt;</code> element.</p>
+              the <code>ttp:timeBase</code> attribute is not specified on the <code>&lt;tt&gt;</code> element.</p>
             </td>
           </tr>
           <tr>
