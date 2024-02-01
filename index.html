@@ -389,7 +389,7 @@ table.coldividers td + td { border-left:1px solid gray; }
         </pre>
         <p>After creating audio recordings, if not using text to speech, instructions for playback
           mixing can be inserted. For example, The gain of "received" audio can be changed before mixing in
-          the audio played from inside the <code>span</code>, smoothly
+          the audio played from inside the <code>&lt;span&gt;</code> element, smoothly
           animating the value on the way in and returning it on the way out:
         </p>
         <pre class="example"
@@ -787,8 +787,8 @@ table.coldividers td + td { border-left:1px solid gray; }
             <code>/tt/head/metadata/ttm:agent</code>, with the following constraints:
             <ul>
               <li>The <code>type</code> attribute MUST be set to <code>character</code>.</li>
-              <li>The <code>xml:id</code> attribute MUST be present on the <code>ttm:agent</code> and set to the <a>Character Identifier</a>.</li>
-              <li>The <code>ttm:agent</code> MUST contain a <code>ttm:name</code> element with its <code>type</code> attribute set to <code>alias</code> and its content set to the <a>Character Name</a>.</li>
+              <li>The <code>xml:id</code> attribute MUST be present on the <code>&lt;ttm:agent&gt;</code> element and set to the <a>Character Identifier</a>.</li>
+              <li>The <code>&lt;ttm:agent&gt;</code> element MUST contain a <code>ttm:name</code> element with its <code>type</code> attribute set to <code>alias</code> and its content set to the <a>Character Name</a>.</li>
               <li>If the Character has a <a>Talent Name</a>, it MUST contain a <code>&lt;ttm:actor&gt;</code> child element.
                 That child element MUST have an <code>agent</code> attribute set to
                 the <code>xml:id</code> of the <code>&lt;ttm:agent&gt;</code> element
@@ -922,8 +922,8 @@ table.coldividers td + td { border-left:1px solid gray; }
           <p>A <a>Text</a> object is represented in a <a>DAPT Document</a> by a <code>&lt;p&gt;</code> element with the following constraints:</p>
             <ul>
               <li>The text content of the <code>&lt;p&gt;</code> element is the <a>Text</a> of the <a>Script Event</a>.
-                <aside class="note">The text content of the paragraph can be structured using TTML elements such as
-                  <code>&lt;br&gt;</code> or <code>&lt;span&gt;</code>
+                <aside class="note">The text content of the paragraph can be structured using TTML mark-up such as
+                  <code>&lt;br&gt;</code> or <code>&lt;span&gt;</code> elements
                   which can include or reference TTML style attributes
                   such as <code>tts:ruby</code> used to alter the layout or styling of
                   sections of text within each paragraph.
