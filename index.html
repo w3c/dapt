@@ -53,6 +53,12 @@
             publisher: "EBU/UER",
             status: "May 2017",
             href: "https://tech.ebu.ch/publications/tech3390"
+          },
+          "I18N-INLINE-BIDI": {
+            title: "Inline markup and bidirectional text in HTML",
+            publisher: "W3C",
+            status: "2021-06-25",
+            href: "https://www.w3.org/International/articles/inline-bidi-markup"
           }
       },
 
@@ -1998,9 +2004,18 @@ daptm:eventType : string
           <li><code>&lt;ttm:name&gt;</code></li>
           <li><code>&lt;ttm:title&gt;</code></li>
         </ul>
+        <p class="note">More guidance about usage of this mechanism is available at <a data-cite="I18N-INLINE-BIDI#nomarkup"></a>.</p>
         <p>The content elements <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> permit the direction of text
           to be specified using the <code>tts:direction</code> and <code>tts:unicodeBidi</code> attributes.
           Document authors should use this more robust mechanism rather than using Unicode control characters.</p>
+        <div class="note">
+          <p>The following example taken from [[TTML2]] demonstrates the syntax for bidirectional text markup within
+            the <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> elements.
+          </p>
+          <pre class="example xml" data-include="examples/bidi-in-p.xml" data-include-format="text"></pre>
+          <p>An example rendering of the above fragment is shown below.</p>
+          <img src="figures/direction.png" alt="Example rendition of direction example showing from left to right The title of the book is W3C and then from right to left the applicable Arabic text"/>
+        </div>
       </section>  <!-- Bidirectional text -->
 
     </section> <!-- Profile Constraints -->
