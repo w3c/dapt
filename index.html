@@ -773,7 +773,7 @@ table.coldividers td + td { border-left:1px solid gray; }
               <li>The <code>&lt;ttm:agent&gt;</code> element MUST contain a <code>&lt;ttm:name&gt;</code> element with its <code>type</code> attribute set to <code>alias</code> and its content set to the <a>Character Name</a>.</li>
               <li><p>If the Character has a <a>Talent Name</a>, it MUST contain a <code>&lt;ttm:actor&gt;</code> child element.
                 That child element MUST have an <code>agent</code> attribute set to
-                the value of the <code>xml:id</code> attribute of the <code>&lt;ttm:agent&gt;</code> element
+                the value of the <code>xml:id</code> attribute of a separate <code>&lt;ttm:agent&gt;</code> element
                 corresponding to the <a>Talent Name</a>,
                 that is, whose <code>type</code> attribute is set to <code>person</code>.</p>
                 <p class="note">The requirement for an additional <code>&lt;ttm:agent&gt;</code> element
