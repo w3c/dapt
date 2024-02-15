@@ -754,7 +754,8 @@ table.coldividers td + td { border-left:1px solid gray; }
       <section>
         <h3>Character</h3>
 
-        <p>In <a>Dubbing Scripts</a>, it is necessary to identify each character in the programme. This is done with a <dfn>Character</dfn> object which has the following properties: 
+        <p><em>This section is mainly relevant to <a>Dubbing</a> workflows.</em></p>
+        <p>A character in the programme can be described using a <dfn>Character</dfn> object which has the following properties: 
           <ul>
             <li>a mandatory <dfn data-lt="Character Identifier">Identifier</dfn>
             which is a unique identifier used to reference the character from elsewhere in the document,
@@ -858,7 +859,13 @@ table.coldividers td + td { border-left:1px solid gray; }
             </li>
             <li>An optional <a>Script Event Type</a> used to identify the type of event (e.g. dialogue, on screen text) in <a>Dubbing Scripts</a>.</li>
             <li>Zero or more <a>Character Identifiers</a> indicating the <a>Characters</a> involved in this <a>Script Event</a>.
-              <p class="note">While typically, a <a>Script Event</a> corresponds to one single <a>Character</a>, there are cases where multiple <a>characters</a> can be associated with a <a>Script Event</a>. This is when all <a>Characters</a> speak the same text at the same time.</p>
+              <p class="note">While typically, a <a>Script Event</a> corresponds to one single <a>Character</a>,
+                there are cases where multiple <a>characters</a> can be associated with a <a>Script Event</a>.
+                This is when all <a>Characters</a> speak the same text at the same time.</p>
+              <p class="note">In a <a>transcript</a>, when the event corresponds to in-image content,
+                for example an <a>audio description</a>, no <a>Character Identifier</a> is needed.
+                However it may be helpful in a <a>Pre-recording Script</a> or an <a>As-recorded Script</a> context
+                to indicate a <a>Character</a> signifying who voices the recording.</p>
             </li>
             <li><p>Zero or more <a>Text</a> objects, each being either <a>Original</a> or <a>Translation</a>.</p>
               <p class="note">Empty <a>Text</a> objects can be used to indicate explicitly that there is no text content.
