@@ -927,9 +927,9 @@ table.coldividers td + td { border-left:1px solid gray; }
             <ul>
               <li>The <a>Text</a> of the <a>Script Event</a> is represented by the character content
               of the <code>&lt;p&gt;</code> element and of all of its <code>&lt;span&gt;</code> descendant elements,
-              excluding <code>&lt;metadata&gt;</code> elements and foreign elements,
-              treating <code>&lt;br&gt;</code> elements as new lines,
-              and applying White Space Handling as defined in [[!XML]].
+              after <code>&lt;metadata&gt;</code> elements and foreign elements have been pruned,
+              after replacing <code>&lt;br&gt;</code> elements by line breaks,
+              and after applying White Space Handling as defined in [[!XML]].
                 <aside class="note">The text content of the paragraph can be structured using TTML elements such as
                   <code>&lt;br&gt;</code> or <code>&lt;span&gt;</code>
                   which can include or reference TTML style attributes
