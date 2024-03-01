@@ -935,9 +935,13 @@ table.coldividers td + td { border-left:1px solid gray; }
           </p>
           <p>A <a>Text</a> object is represented in a <a>DAPT Document</a> by a <code>&lt;p&gt;</code> element with the following constraints:</p>
             <ul>
-              <li>The text content of the <code>&lt;p&gt;</code> element is the <a>Text</a> of the <a>Script Event</a>.
-                <aside class="note">The text content of the paragraph can be structured using TTML mark-up such as
-                  <code>&lt;br&gt;</code> or <code>&lt;span&gt;</code> elements
+              <li>The <a>Text</a> of the <a>Script Event</a> is represented by the character content
+              of the <code>&lt;p&gt;</code> element and of all of its <code>&lt;span&gt;</code> descendant elements,
+              after <code>&lt;metadata&gt;</code> elements and foreign elements have been pruned,
+              after replacing <code>&lt;br&gt;</code> elements by line breaks,
+              and after applying White Space Handling as defined in [[!XML]].
+                <aside class="note">The text content of the paragraph can be structured using TTML elements such as
+                  <code>&lt;br&gt;</code> or <code>&lt;span&gt;</code>
                   which can include or reference TTML style attributes
                   such as <code>tts:ruby</code> used to alter the layout or styling of
                   sections of text within each paragraph.
@@ -1006,11 +1010,14 @@ table.coldividers td + td { border-left:1px solid gray; }
                 This is represented in a <a>DAPT Document</a> by setting the <code>xml:lang</code> and
                 <a><code>daptm:langSrc</code></a>
                 attributes on inner <code>&lt;span&gt;</code> elements.</p>
+                <p class="note"><code>&lt;span&gt;</code> elements can be used to add specific timing
+                as illustrated in [[[#example-10]]] to indicate the timing of the audio rendering
+                of the relevant section of text. Per [[TTML2]], timing of the <code>&lt;span&gt;</code>
+                element is relative to the parent element's computed begin time.</p>
               </li>
               <li>It MAY contain zero or more <code>&lt;audio&gt;</code> elements representing each <a>Audio Recording</a> object.</li>
               <li>It MAY contain zero or more <code>&lt;animate&gt;</code> elements representing each <a>Mixing Instruction</a> object.</li>
             </ul>
-
         </section>
 
         <section>
