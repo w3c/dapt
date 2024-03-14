@@ -1700,6 +1700,66 @@ daptm:eventType : string
       </section>
     </section> <!-- #data-model -->
 
+    <section id="ttml-to-data-model" class="informative">
+      <h2>Mapping from TTML to the DAPT Data Model</h2>
+      <p>This section defines rules for processors when attempting to populate a data structure corresponding
+        to the DAPT data model from any conformant <a>DAPT document</a>.
+        Note that there is no requirement for DAPT implementations to perform this task.</p>
+      <p>A generic TTML processor can process a TTML document instance corresponding to the representation defined in <a href="#data-model"></a>,
+        however it could be useful for some implementations to map <a>DAPT documents</a> back into that DAPT data model.
+        It is possible to generate a conformant <a>DAPT Document</a> that includes content not predicted by the DAPT data model alone.</p>
+      <section>
+        <h3>Early identification of non-conformant documents</h3>
+        <p>Since it is a requirement of DAPT that <a>DAPT Documents</a> include a
+        <code>ttp:contentProfiles</code> attribute on the root element,
+        and that the attribute includes a value equal to the <a>DAPT 1.0 Content Profile</a>,
+        as specified at <a href="#ttp-contentprofiles"></a>,
+        it follows that any TTML document that does not include such an attribute can not be considered
+        to be a <a>DAPT Document</a>;
+        therefore a processor requiring strict adherence to DAPT could stop processing
+        such a document.</p>
+      </section>
+      <section>
+        <h3>Handling <code>&lt;div&gt;</code> elements</h3>
+        <p>TTML allows <code>&lt;div&gt;</code> elements to contain any combination of
+          <code>&lt;div&gt;</code> elements and <code>&lt;p&gt;</code> elements.
+          The DAPT data model only describes the case where the <code>&lt;body&gt;</code> element
+          contains a <code>&lt;div&gt;</code> element that contains zero or more <code>&lt;p&gt;</code> elements.
+          In addition, attributes not corresponding to properties in the DAPT data model are permitted.</p>
+        <p>This gives rise to possibilities such as:</p>
+        <ul>
+          <li><code>&lt;div&gt;</code> elements that contain children that are not <a>Text</a> objects,
+            for example other <code>&lt;div&gt;</code> elements;</li>
+          <li><code>&lt;div&gt;</code> elements that do not have attributes required for <a>Script Events</a>, like <code>xml:id</code>;</li>
+          <li><code>&lt;div&gt;</code> elements that have attributes absent from the DAPT data model for <a>Script Events</a>,
+            like <code>begin</code> or <code>end</code>.</li>
+        </ul>
+        <p>The following example demonstrates these possibilities,
+          which a processor might need to handle:</p>
+        <pre class="example"
+          data-include="examples/non-dapt-divs.xml"
+          data-include-format="text">
+        </pre>
+        <p>The following processing rules are suggested for resolving these cases:</p>
+        <ol>
+          <li>A <code>&lt;div&gt;</code> element that contains any <code>&lt;div&gt;</code> element children
+            is not mapped to a <a>Script Event</a>;
+            the processor instead can iterate through those <code>&lt;div&gt;</code> element children
+            (recursively) and consider if each one meets the requirements of a <a>Script Event</a>;</li>
+          <li>A <code>&lt;p&gt;</code> element that is not a child of a <code>&lt;div&gt;</code> element
+            that maps to a <a>Script Event</a> is not mapped to a <a>Text</a> object;</li>
+          <li>A <code>&lt;p&gt;</code> element that is a child of a <code>&lt;div&gt;</code> element
+            that maps to a <a>Script Event</a> is mapped to a <a>Text</a> object.</li>
+        </ol>
+        <p>Additionally, as per TODO FOREIGN ELEMENTS, implementers of DAPT processors are
+          encouraged to maintain unrecognised vocabulary within a <a>DAPT Document</a> whenever possible.
+        </p>
+  </section>
+      <section>
+        <h3>Handling <code>&lt;p&gt;</code> elements</h3>
+      </section>
+    </section> <!-- #ttml-to-data-model -->
+
     <section id="profile-constraints">
       <h2>Constraints</h2>
       <section>
@@ -1734,21 +1794,40 @@ daptm:eventType : string
             for processing, in which case the serialisation requirements do not apply.</p>
       </section>
       <section>
-        <h3>Foreign Elements and Attributes</h3>
+        <h3>Unrecognised Elements and Attributes</h3>
         <p>
           A <a>DAPT Document</a> MAY contain elements and attributes that are neither specifically permitted nor forbidden by a profile.
+          Those elements and attributes could be in a namespace used by DAPT or TTML, or some other namespace.
         </p>
-        <p class ="note">
+        <div class="note">
+          <p>The requirements in this section are intended to facilitate forwards and backwards compatibility,
+            specifically to permit:
+          </p>
+          <ul>
+            <li>DAPT processors targeted at one version of the specification to process <a>DAPT documents</a> that
+              include vocabulary or semantics defined in future versions,
+              albeit without supporting the later features;</li>
+            <li>DAPT processors targeted at one version of the specification to process <a>DAPT documents</a>
+              authored for an earlier version with similar or identical behaviour to a DAPT processor
+              targeted at that earlier version.</li>
+          </ul>
+        </div>
+        <p class="note">
           <a>DAPT Documents</a> remain subject to the content conformance requirements specified at Section 3.1 of [[TTML2]].
-          In particular, a <a>DAPT Document</a> can contain elements and attributes not in any TT namespace, i.e. in foreign namespaces, since such elements and attributes are pruned by the algorithm at Section 4 of [[TTML2]] prior to evaluating content conformance.
+          In particular, a <a>DAPT Document</a> can contain elements and attributes not in any TT namespace,
+          i.e. in foreign namespaces,
+          since such elements and attributes are pruned by the algorithm at Section 4 of [[TTML2]] prior to evaluating content conformance.
         </p>
         <p class ="note">
-          For validation purposes it is good practice to define and use a content specification for all foreign namespace elements and attributes used within a <a>DAPT Document</a>.
+          For validation purposes it is good practice to define and use
+          a content specification for all foreign namespace elements and attributes used within a <a>DAPT Document</a>.
         </p>
         <p>
           A <a>transformation processor</a> SHOULD preserve such elements or attributes whenever possible.
         </p>
-        <p class="ednote">Do we need to say that a <a>presentation processor</a> may ignore foreign vocab?</p>
+        <p>
+          A <a>presentation processor</a> SHOULD ignore elements and attributes that it does not recognise and support.
+        </p>
 
         <section>
           <h4>Proprietary Metadata</h4>

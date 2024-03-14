@@ -1,0 +1,21 @@
+<body>
+    <div xml:id="d1"> <!-- This is a Script Event -->
+        <p> <!-- This is a Text --> </p>
+    </div>
+    <div> <!-- This cannot be a Script Event because it has no xml:id -->
+        <p> <!-- Would be a Text if its parent were a Script Event --> </p>
+    </div>
+    <div> <!-- div parent of another div -->
+        <div xml:id="d2"> <!-- Possibly a Script Event --></div>
+    </div>
+    <div> <!-- double layer of nesting -->
+        <div>
+            <div xml:id="d3" begin="..." end="..."> <!-- A Script Event with unexpected attributes -->
+            </div>
+        </div>
+    </div>
+    <div xml:id="d4_1"> <!-- mixed div and p children -->
+        <div xml:id="d4_2"> <!-- This possible Script Event has a sibling <p> --> </div>
+        <p> <!-- Possible Text, but not if its parent is not a Script Event --> </p>
+    </div>
+</body>
