@@ -1,0 +1,14 @@
+<tt ... xml:lang="en">
+    <body>
+        <div xml:id="d1" begin="00:01:00" end="00:01:10">
+            <!-- Script Event beginning at 1 minute, duration 10 seconds -->
+            <p> <!-- This is a Text, language "en" --> </p>
+        </div>
+        <div begin="00:10:00" xml:lang="fr"> <!-- div that is not a Script Event -->
+            <div xml:id="d2" begin="00:01:00" end="00:01:10">
+                <!-- Script Event beginning at 11 minutes, duration 10 seconds -->
+                <p> <!-- This is a Text, language "fr" --> </p>
+            </div>
+        </div>
+    </body>
+</tt>

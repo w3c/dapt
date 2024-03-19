@@ -912,7 +912,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             The group welcomes feedback from implementers and users."</aside>
           </li>
         </ul>
-        <aside class="note">As indicated in [[[#foreign-elements-and-attributes]]], <code>ttm:agent</code>
+        <aside class="note">As indicated in [[[#unrecognised-elements-and-attributes]]], <code>ttm:agent</code>
         elements can have foreign attributes and elements. This can be used to provide additional, proprietary
         character information.</aside>
 
@@ -1708,6 +1708,10 @@ daptm:eventType : string
       <p>A generic TTML processor can process a TTML document instance corresponding to the representation defined in <a href="#data-model"></a>,
         however it could be useful for some implementations to map <a>DAPT documents</a> back into that DAPT data model.
         It is possible to generate a conformant <a>DAPT Document</a> that includes content not predicted by the DAPT data model alone.</p>
+      <p>Importantly, it is a design goal that if a DAPT processor supports the required features of this specification
+        then it should be able to process, within its supported feature set, a DAPT document for a future version of the specification.
+        Some future version could, for example, define some new grouping entity to encapsulate <a>Script Events</a>,
+        or allow some property to be specified on an entity where it is currently absent in the DAPT data model.</p>
       <section>
         <h3>Early identification of non-conformant documents</h3>
         <p>Since it is a requirement of DAPT that <a>DAPT Documents</a> include a
@@ -1720,7 +1724,7 @@ daptm:eventType : string
         such a document.</p>
       </section>
       <section>
-        <h3>Handling <code>&lt;div&gt;</code> elements</h3>
+        <h3>Handling <code>&lt;div&gt;</code> and  <code>&lt;p&gt;</code> elements</h3>
         <p>TTML allows <code>&lt;div&gt;</code> elements to contain any combination of
           <code>&lt;div&gt;</code> elements and <code>&lt;p&gt;</code> elements.
           The DAPT data model only describes the case where the <code>&lt;body&gt;</code> element
@@ -1732,7 +1736,8 @@ daptm:eventType : string
             for example other <code>&lt;div&gt;</code> elements;</li>
           <li><code>&lt;div&gt;</code> elements that do not have attributes required for <a>Script Events</a>, like <code>xml:id</code>;</li>
           <li><code>&lt;div&gt;</code> elements that have attributes absent from the DAPT data model for <a>Script Events</a>,
-            like <code>begin</code> or <code>end</code>.</li>
+            like <code>begin</code> or <code>end</code>;</li>
+          <li><code>&lt;p&gt;</code> elements whose parent <code>&lt;div&gt;</code> element does not appear to be a <a>Script Event</a>.</li>
         </ul>
         <p>The following example demonstrates these possibilities,
           which a processor might need to handle:</p>
@@ -1751,14 +1756,55 @@ daptm:eventType : string
           <li>A <code>&lt;p&gt;</code> element that is a child of a <code>&lt;div&gt;</code> element
             that maps to a <a>Script Event</a> is mapped to a <a>Text</a> object.</li>
         </ol>
-        <p>Additionally, as per TODO FOREIGN ELEMENTS, implementers of DAPT processors are
+        <p>Additionally, as per <a href="#unrecognised-elements-and-attributes"></a>, implementers of DAPT processors are
           encouraged to maintain unrecognised vocabulary within a <a>DAPT Document</a> whenever possible.
         </p>
-  </section>
-      <section>
-        <h3>Handling <code>&lt;p&gt;</code> elements</h3>
       </section>
-    </section> <!-- #ttml-to-data-model -->
+      <section>
+        <h3>Using computed attribute values</h3>
+        <p>Some attributes have semantics for computing their value that depend on the computed value of
+          the attribute on some other element.
+          For example if the <code>xml:lang</code> attribute is not specified on an element then its computed
+          value is the computed value of the same attribute on the element's parent.</p>
+        <p>Or, for another example, the computed times of an element in a DAPT document are relative
+          to the begin time of its parent element. If a <code>&lt;div&gt;</code> element specifies a <code>begin</code>
+          attribute, and that element does not correspond to a <a>Script Event</a>, then the computed times
+          of its descendant <code>&lt;div&gt;</code> elements that do correspond to <a>Script Events</a>
+          are different to what they would be if that intermediate <code>&lt;div&gt;</code> element's <code>begin</code>
+          time were ignored.</p>
+        <p class="ednote">MAYBE REMOVE Or, also for example, if styling is used in a TTML document, the computed value of the <code>tts:fontSize</code>
+          attribute when expressed as a percentage is relative to the computed value of the same attribute
+          on the element's parent.
+          Furthermore, in this example, the algorithm for generating ISDs (Intermediate Synchronic Documents)
+          involves reparenting some elements. The computed value that applies is the one <em>before</em>
+          rehoming has taken place.</p>
+        <p>Considering this situation more generally,
+          it is possible that, within a DAPT document, there can be TTML elements that
+          do not directly correspond to objects in the DAPT data model,
+          and those elements can specify attributes
+          that affect the computation of attribute values that apply to elements that do correspond to
+          objects in the DAPT data model.</p>
+        <p>The semantics defined by TTML take precedence in this scenario.
+          Implementations need to compute attribute values based on the TTML document <em>before</em>
+          applying those computed values to those elements that correspond to DAPT objects.
+        </p>
+        <p>The following example demonstrates these possibilities,
+          which a processor might need to handle:</p>
+        <pre class="example"
+          data-include="examples/non-dapt-div-with-begin-and-lang.xml"
+          data-include-format="text">
+        </pre>
+        <p>In the above example, the <code>&lt;div&gt;</code> elements that correspond to <a>Script Events</a>,
+          which have ids <code>d1</code> and <code>d2</code>,
+          are otherwise (apart from their identifiers) identical,
+          yet their language and <a>Begin</a> properties have different values,
+          due to the attributes specified on the <code>&lt;div&gt;</code> element parent of <code>d2</code>.</p>
+      </section>
+      <section>
+        <h3>Validation warnings and errors</h3>
+        <p class="ednote">TODO</p>
+      </section>
+  </section> <!-- #ttml-to-data-model -->
 
     <section id="profile-constraints">
       <h2>Constraints</h2>
