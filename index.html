@@ -1943,7 +1943,15 @@ daptm:eventType : string
           A <a>transformation processor</a> SHOULD preserve such elements or attributes whenever possible.
         </p>
         <p>
-          A <a>presentation processor</a> SHOULD ignore elements and attributes that it does not recognise and support.
+          After attribute value computation,
+          a <a>presentation processor</a> SHOULD ignore elements and attributes that it does not recognise and support.
+        </p>
+        <p class="note">
+          The above constraint is specified as being after attribute value computation because it is possible
+          that an implementation recognises and supports attributes present only on particular elements,
+          for example those corresponding to the DAPT data model.
+          As described in <a href="#using-computed-attribute-values"></a> it is important that processor implementations
+          do not ignore such attributes when present on other elements.
         </p>
 
         <section>
