@@ -537,10 +537,10 @@ table.coldividers td + td { border-left:1px solid gray; }
       <a>Shared properties</a> are shown in italics.
       All other conventions in the diagram are as per [[?uml]].
     </p>
-    <figure id="fig-class-diagram">
+    <figure id="fig-class-diagram" class="informative">
       <div data-include="figures/class-diagram.svg"></div>
       <figcaption>
-          Class diagram showing main entities in the DAPT data model.
+          (Informative) Class diagram showing main entities in the DAPT data model.
       </figcaption>
     </figure>
     <p class="issue" data-number="116"></p>
@@ -1702,14 +1702,16 @@ daptm:eventType : string
 
     <section id="ttml-to-data-model" class="informative">
       <h2>Mapping from TTML to the DAPT Data Model</h2>
-      <p>This section defines rules for processors when attempting to populate a data structure corresponding
+      <p class="ednote">Should this be an appendix?</p>
+      <p>This section suggests rules for processors to use when attempting to populate a data structure corresponding
         to the DAPT data model from any conformant <a>DAPT document</a>.
         Note that there is no requirement for DAPT implementations to perform this task.</p>
-      <p>A generic TTML processor can process a TTML document instance corresponding to the representation defined in <a href="#data-model"></a>,
+      <p>A generic [[TTML2]] processor can process a TTML <a>document instance</a> corresponding to the representation defined in <a href="#data-model"></a>,
         however it could be useful for some implementations to map <a>DAPT documents</a> back into that DAPT data model.
-        It is possible to generate a conformant <a>DAPT Document</a> that includes content not predicted by the DAPT data model alone.</p>
+        This could be more complex than an initial reading of this specification might suggest because
+        it is possible to generate a conformant <a>DAPT Document</a> that includes content not predicted by the DAPT data model alone.</p>
       <p>Importantly, it is a design goal that if a DAPT processor supports the required features of this specification
-        then it should be able to process, within its supported feature set, a DAPT document for a future version of the specification.
+        then it should be able to process, within its supported feature set, a <a>DAPT document</a> for a future version of the specification.
         Some future version could, for example, define some new grouping entity to encapsulate <a>Script Events</a>,
         or allow some property to be specified on an entity where it is currently absent in the DAPT data model.</p>
       <section>
@@ -1725,7 +1727,7 @@ daptm:eventType : string
       </section>
       <section>
         <h3>Handling <code>&lt;div&gt;</code> and  <code>&lt;p&gt;</code> elements</h3>
-        <p>TTML allows <code>&lt;div&gt;</code> elements to contain any combination of
+        <p>[[TTML2]] allows <code>&lt;div&gt;</code> elements to contain any combination of
           <code>&lt;div&gt;</code> elements and <code>&lt;p&gt;</code> elements.
           The DAPT data model only describes the case where the <code>&lt;body&gt;</code> element
           contains a <code>&lt;div&gt;</code> element that contains zero or more <code>&lt;p&gt;</code> elements.
@@ -1733,33 +1735,50 @@ daptm:eventType : string
         <p>This gives rise to possibilities such as:</p>
         <ul>
           <li><code>&lt;div&gt;</code> elements that contain children that are not <a>Text</a> objects,
-            for example other <code>&lt;div&gt;</code> elements;</li>
+            for example other <code>&lt;div&gt;</code> elements or <code>&lt;metadata&gt;</code> elements;</li>
           <li><code>&lt;div&gt;</code> elements that do not have attributes required for <a>Script Events</a>, like <code>xml:id</code>;</li>
           <li><code>&lt;div&gt;</code> elements that have attributes absent from the DAPT data model for <a>Script Events</a>,
             like <code>begin</code> or <code>end</code>;</li>
           <li><code>&lt;p&gt;</code> elements whose parent <code>&lt;div&gt;</code> element does not appear to be a <a>Script Event</a>.</li>
         </ul>
-        <p>The following example demonstrates these possibilities,
-          which a processor might need to handle:</p>
-        <pre class="example"
-          data-include="examples/non-dapt-divs.xml"
-          data-include-format="text">
-        </pre>
+
         <p>The following processing rules are suggested for resolving these cases:</p>
         <ol>
           <li>A <code>&lt;div&gt;</code> element that contains any <code>&lt;div&gt;</code> element children
             is not mapped to a <a>Script Event</a>;
             the processor instead can iterate through those <code>&lt;div&gt;</code> element children
             (recursively) and consider if each one meets the requirements of a <a>Script Event</a>;</li>
+          <li>A <code>&lt;div&gt;</code> element that contains unrecognised attributes
+            is not rejected as a <a>Script Event</a> if it otherwise meets the requirements
+            for being a <a>Script Event</a>, such as having a valid <code>xml:id</code>
+            representing the <a>Script Event Identifier</a>;</li>
           <li>A <code>&lt;p&gt;</code> element that is not a child of a <code>&lt;div&gt;</code> element
             that maps to a <a>Script Event</a> is not mapped to a <a>Text</a> object;</li>
           <li>A <code>&lt;p&gt;</code> element that is a child of a <code>&lt;div&gt;</code> element
             that maps to a <a>Script Event</a> is mapped to a <a>Text</a> object.</li>
         </ol>
-        <p>Additionally, as per <a href="#unrecognised-elements-and-attributes"></a>, implementers of DAPT processors are
-          encouraged to maintain unrecognised vocabulary within a <a>DAPT Document</a> whenever possible.
-        </p>
+
+        <aside class="example">This example demonstrates the above possibilities,
+          and the application of the suggested rules:
+          <pre
+            data-include="examples/non-dapt-divs.xml"
+            data-include-format="text">
+          </pre>
+
+          <p>The result of applying the above rules to this example is:</p>
+          <ul>
+            <li><code>d1</code> is a <a>Script Event</a> and its child <code>&lt;p&gt;</code> element is a <a>Text</a> object;</li>
+            <li>The <code>&lt;div&gt;</code> element between <code>d1</code> and
+              <code>d2</code>'s parent <code>&lt;div&gt;</code> element is not a <a>Script Event</a>
+              and its child <code>&lt;p&gt;</code> element is not a <a>Text</a> object;</li>
+            <li><code>d2</code> is a <a>Script Event</a> and its parent <code>&lt;div&gt;</code> element is not;</li>
+            <li><code>d3</code> is a <a>Script Event</a> and its parent and its grandparent <code>&lt;div&gt;</code> elements are not;</li>
+            <li><code>d4_1</code> is not a <a>Script Event</a> and its child <code>&lt;p&gt;</code> element is not a <a>Text</a> object;</li>
+            <li><code>d4_2</code> is a <a>Script Event</a>.</li>
+          </ul>
+        </aside>
       </section>
+
       <section>
         <h3>Using computed attribute values</h3>
         <p>Some attributes have semantics for computing their value that depend on the computed value of
@@ -1784,25 +1803,77 @@ daptm:eventType : string
           and those elements can specify attributes
           that affect the computation of attribute values that apply to elements that do correspond to
           objects in the DAPT data model.</p>
-        <p>The semantics defined by TTML take precedence in this scenario.
-          Implementations need to compute attribute values based on the TTML document <em>before</em>
-          applying those computed values to those elements that correspond to DAPT objects.
+        <p>The semantics defined by [[TTML2]] take precedence in this scenario.
+          Implementations need to compute attribute values based on the contents of the <a>document instance</a> <em>before</em>
+          applying those computed values to DAPT data model objects.
         </p>
-        <p>The following example demonstrates these possibilities,
-          which a processor might need to handle:</p>
-        <pre class="example"
-          data-include="examples/non-dapt-div-with-begin-and-lang.xml"
-          data-include-format="text">
-        </pre>
-        <p>In the above example, the <code>&lt;div&gt;</code> elements that correspond to <a>Script Events</a>,
-          which have ids <code>d1</code> and <code>d2</code>,
-          are otherwise (apart from their identifiers) identical,
-          yet their language and <a>Begin</a> properties have different values,
-          due to the attributes specified on the <code>&lt;div&gt;</code> element parent of <code>d2</code>.</p>
+        <aside class="example">
+          <p>This example demonstrates these possibilities,
+            which a processor might need to handle:</p>
+          <pre
+            data-include="examples/non-dapt-div-with-begin-and-lang.xml"
+            data-include-format="text">
+          </pre>
+          <p>Here, the <code>&lt;div&gt;</code> elements that correspond to <a>Script Events</a>,
+            which have ids <code>d1</code> and <code>d2</code>,
+            are otherwise (apart from their identifiers) identical,
+            yet their language and <a>Begin</a> properties have different computed values,
+            due to the attributes specified on the <code>&lt;div&gt;</code> element parent of <code>d2</code>.</p>
+        </aside>
+        <!-- deliberate duplication of the statement before the example follows, for emphasis: -->
+        <p>If an implementation internally creates DAPT data model objects,
+          such as the <a>Script Events</a> shown in the example above,
+          it is important for interoperability that they use the computed values.</p>
       </section>
+
+      <section>
+        <h3>Retaining unrecognised vocabulary</h3>
+        <p>As per <a href="#unrecognised-elements-and-attributes"></a>,
+          implementers of DAPT processors are encouraged to maintain unrecognised vocabulary
+          within a <a>DAPT Document</a> whenever possible.
+          In practice this is likely to mean that an implementation which both inputs DAPT documents
+          and outputs DAPT documents somehow needs to retain the input
+          document structure and contents, and to include those contents within the output document.</p>
+        <p>This does not proscribe the implementation of processors whose purpose is to minimise
+          the input document into an output document that only contains content that maps directly
+          to the DAPT data model; however the use of such a &quot;sanitising&quot; processor is discouraged within
+          operational workflows since it is likely to prevent adoption of additional features,
+          whether defined locally or in future versions of DAPT.
+        </p>
+      </section>
+
       <section>
         <h3>Validation warnings and errors</h3>
-        <p class="ednote">TODO</p>
+        <p>[[TTML2]] defines a <dfn data-cite="TTML2#terms-validation-processor">validation processor</dfn>,
+          a class of implementation whose purpose is
+          to assess a <a>document instance</a> and decide if it is valid or not.
+          Typically this would be used within a processing workflow
+          to check that documents are acceptable for onward usage.
+          A real world example would likely not return simply "good" or "bad",
+          but also output informational, warning and error messages
+          describing unusual, unexpected or problematic contents in the input document.
+        </p>
+        <p>When implementing a <a>validation processor</a> for a <a>DAPT document</a>,
+          strict [[TTML2]] validation processing rules can be applied.
+          Doing this involves checking for the presence and semantic validity of
+          syntax and content associated with required or optional features defined in the
+          profile, and checking for the absence of syntax associated with prohibited features.
+        </p>
+        <p>The [[TTML2]] mechanism for dealing with vocabulary in unrecognised namespaces is
+          to prune it prior to validation.
+          This approach can be used, however it could be reasonable for
+          an implementation to report as information those attributes and elements
+          that have been pruned.
+        </p>
+        <p>Validation warnings could be issued when unsupported, optional, or deprecated,
+          elements and attributes in recognised namespaces are encountered after pruning,
+          or when supported elements and attributes contain unexpected but not invalid content,
+          but in these scenarios errors are not expected.
+        </p>
+        <p>Validation errors are expected when prohibited vocabulary is present,
+          or when semantically invalid content within permitted elements and attributes
+          is encountered.
+        </p>
       </section>
   </section> <!-- #ttml-to-data-model -->
 
