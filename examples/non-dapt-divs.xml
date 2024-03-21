@@ -10,7 +10,8 @@
     </div>
     <div> <!-- double layer of nesting -->
         <div>
-            <div xml:id="d3" begin="..." end="..."> <!-- A Script Event with unexpected attributes -->
+            <div xml:id="d3" begin="..." end="..." xml:lang="ja" foo:bar="baz">
+                <!-- A Script Event with possibly unexpected attributes -->
             </div>
         </div>
     </div>
