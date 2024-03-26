@@ -216,7 +216,7 @@
         </g>
         <!--reverse link DAPTScript to ScriptEvent-->
         <g id="link_DAPTScript_ScriptEvent">
-            <path codeLine="84" d="M590.5,179.11 C590.5,179.11 590.5,246.74 590.5,246.74 " fill="none"
+            <path d="M590.5,179.11 C590.5,179.11 590.5,246.74 590.5,246.74 " fill="none"
                 id="DAPTScript-backto-ScriptEvent" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="#000000" points="590.5,166.11,586.5,172.11,590.5,178.11,594.5,172.11,590.5,166.11"
                 style="stroke:#000000;stroke-width:1.0;"/>
@@ -231,7 +231,7 @@
         </g>
         <!--reverse link DAPTScript to Character-->
         <g id="link_DAPTScript_Character">
-            <path codeLine="85" d="M418.5,179.11 C418.5,179.11 418.5,287.22 418.5,287.22 " fill="none"
+            <path d="M418.5,179.11 C418.5,179.11 418.5,287.22 418.5,287.22 " fill="none"
                 id="DAPTScript-backto-Character" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="#000000" points="418.5,166.11,414.5,172.11,418.5,178.11,422.5,172.11,418.5,166.11"
                 style="stroke:#000000;stroke-width:1.0;"/>
@@ -244,7 +244,7 @@
         </g>
         <!--reverse link ScriptEvent to MixingInstruction-->
         <g id="link_ScriptEvent_MixingInstruction">
-            <path codeLine="86"
+            <path
                 d="M598,467.92 C598,467.92 598,549.11 598,549.11 C598,549.11 373.02,549.11 232.4,549.11 " fill="none"
                 id="ScriptEvent-backto-MixingInstruction" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="#000000" points="598,454.92,594,460.92,598,466.92,602,460.92,598,454.92"
@@ -260,7 +260,7 @@
         </g>
         <!--link Audio to Text-->
         <g id="link_Audio_Text">
-            <path codeLine="87" d="M787.57,638.11 C787.57,638.11 732.88,638.11 732.88,638.11 " fill="none"
+            <path d="M787.57,638.11 C787.57,638.11 732.88,638.11 732.88,638.11 " fill="none"
                 id="Audio-to-Text" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="#000000" points="719.88,638.11,725.88,642.11,731.88,638.11,725.88,634.11,719.88,638.11"
                 style="stroke:#000000;stroke-width:1.0;"/>
@@ -275,7 +275,7 @@
         </g>
         <!--reverse link Text to MixingInstruction-->
         <g id="link_Text_MixingInstruction">
-            <path codeLine="88" d="M429.08,638.11 C429.08,638.11 232.46,638.11 232.46,638.11 " fill="none"
+            <path d="M429.08,638.11 C429.08,638.11 232.46,638.11 232.46,638.11 " fill="none"
                 id="Text-backto-MixingInstruction" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="#000000" points="442.08,638.11,436.08,634.11,430.08,638.11,436.08,642.11,442.08,638.11"
                 style="stroke:#000000;stroke-width:1.0;"/>
@@ -290,7 +290,7 @@
         </g>
         <!--reverse link Character to ScriptEvent-->
         <g id="link_Character_ScriptEvent">
-            <path codeLine="89" d="M474.68,350.11 C474.68,350.11 537.54,350.11 537.54,350.11 " fill="none"
+            <path d="M474.68,350.11 C474.68,350.11 537.54,350.11 537.54,350.11 " fill="none"
                 id="Character-backto-ScriptEvent" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/>
             <polygon fill="#000000" points="469.68,350.11,478.68,354.11,474.68,350.11,478.68,346.11,469.68,350.11"
                 style="stroke:#000000;stroke-width:1.0;"/>
@@ -301,7 +301,7 @@
         </g>
         <!--link ScriptEventDescription to ScriptEvent-->
         <g id="link_ScriptEventDescription_ScriptEvent">
-            <path codeLine="90" d="M827.21,350.11 C827.21,350.11 786.99,350.11 786.99,350.11 " fill="none"
+            <path d="M827.21,350.11 C827.21,350.11 786.99,350.11 786.99,350.11 " fill="none"
                 id="ScriptEventDescription-ScriptEvent" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="#000000" points="840.21,350.11,831.21,346.11,835.21,350.11,831.21,354.11,840.21,350.11"
                 style="stroke:#000000;stroke-width:1.0;"/>
@@ -319,7 +319,7 @@
         </g>
         <!--reverse link ScriptEvent to Text-->
         <g id="link_ScriptEvent_Text">
-            <path codeLine="91" d="M658,467.79 C658,467.79 658,574.99 658,574.99 " fill="none"
+            <path d="M658,467.79 C658,467.79 658,574.99 658,574.99 " fill="none"
                 id="ScriptEvent-backto-Text" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="#000000" points="658,454.79,654,460.79,658,466.79,662,460.79,658,454.79"
                 style="stroke:#000000;stroke-width:1.0;"/>
@@ -334,7 +334,7 @@
         </g>
         <!--reverse link AudioRecording to MixingInstruction-->
         <g id="link_AudioRecording_MixingInstruction">
-            <path codeLine="92"
+            <path
                 d="M608,808.73 C608,808.73 608,721.11 608,721.11 C608,721.11 375.67,721.11 232.28,721.11 " fill="none"
                 id="AudioRecording-backto-MixingInstruction" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="#000000" points="608,821.73,612,815.73,608,809.73,604,815.73,608,821.73"
@@ -348,7 +348,7 @@
         </g>
         <!--reverse link Audio to SynthesizedAudio-->
         <g id="link_Audio_SynthesizedAudio">
-            <path codeLine="93" d="M934.67,678.52 C934.67,678.52 934.67,890.37 934.67,890.37 " fill="none"
+            <path d="M934.67,678.52 C934.67,678.52 934.67,890.37 934.67,890.37 " fill="none"
                 id="Audio-backto-SynthesizedAudio" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="none" points="927.67,678.52,934.67,658.52,941.67,678.52,927.67,678.52"
                 style="stroke:#000000;stroke-width:1.0;"/>
@@ -361,7 +361,7 @@
         </g>
         <!--reverse link Audio to AudioRecording-->
         <g id="link_Audio_AudioRecording">
-            <path codeLine="94"
+            <path
                 d="M861.33,678.38 C861.33,678.38 861.33,858.11 861.33,858.11 C861.33,858.11 786.65,858.11 718.38,858.11 "
                 fill="none" id="Audio-backto-AudioRecording" style="stroke:#000000;stroke-width:1.0;"/>
             <polygon fill="none" points="854.33,678.38,861.33,658.38,868.33,678.38,854.33,678.38"
