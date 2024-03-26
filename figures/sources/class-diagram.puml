@@ -9,7 +9,7 @@ skinparam ArrowFontSize 13
 skinparam ArrowMessageAlignment direction
 skinparam Padding 4
 skinparam Nodesep 70
-skinparam Ranksep 2
+skinparam Ranksep 80
 skinparam MinClassWidth 220
 
 Class DAPTScript as "**DAPT Script**" [[#dapt-script]] {
@@ -49,15 +49,6 @@ together {
     }
 }
 
-class MixingInstruction as "**Mixing Instruction**" [[#dfn-mixing-instruction]] {
-    {field} (optional) Gain [[[#dfn-gain]]]
-    {field} (optional) Pan [[[#dfn-pan]]]
-    {field} {abstract} (optional) Begin [[[#dfn-begin]]]
-    {field} {abstract} (optional) End [[[#dfn-end]]]
-    {field} {abstract} (optional) Duration [[[#dfn-duration]]]
-    {field} (optional) Fill [[[#dfn-fill]]]
-}
-
 together {
     abstract Class Audio as "**Audio**" [[#dfn-audio]] {
     }
@@ -79,15 +70,24 @@ together {
 
 }
 
-MixingInstruction -[hidden]r-AudioRecording
+class MixingInstruction as "**Mixing Instruction**" [[#dfn-mixing-instruction]] {
+    {field} (optional) Gain [[[#dfn-gain]]]
+    {field} (optional) Pan [[[#dfn-pan]]]
+    {field} {abstract} (optional) Begin [[[#dfn-begin]]]
+    {field} {abstract} (optional) End [[[#dfn-end]]]
+    {field} {abstract} (optional) Duration [[[#dfn-duration]]]
+    {field} (optional) Fill [[[#dfn-fill]]]
+}
+
+' MixingInstruction -[hidden]r-AudioRecording
 
 
 DAPTScript *-down- "0..* " ScriptEvent : contains\n >
 DAPTScript *-- "0..*" Character : contains >
-ScriptEvent *-left- "0..*" MixingInstruction : contains\n >
-Text *-right- "0..* " Audio : contains\n <
-Text *-left- "0..* " MixingInstruction : contains\n >
-ScriptEvent "0..*" .left.> "0..*" Character
+ScriptEvent *-down- "0..*" MixingInstruction : contains\n >
+Text *-left- "0..* " Audio : contains\n <
+Text *-- "0..* " MixingInstruction : contains\n >
+Character "0..*" <.right. "0..*" ScriptEvent
 ScriptEvent *-left> "0..*" ScriptEventDescription : contains\n <
 ScriptEvent *-down- "0..*" Text : contains\n >
 AudioRecording *-- "0..* " MixingInstruction : contains >
@@ -98,10 +98,10 @@ SynthesizedAudio -[hidden]r- AudioRecording
 
 ' Hidden links to persuade the layout to look nicer
 ' MixingInstruction -[hidden]left- Text
-Text -[hidden]down- Audio
-AudioRecording -[hidden]right- SynthesizedAudio
-' Audio -[hidden]left- MixingInstruction
-ScriptEventDescription -[hidden]down- MixingInstruction
+' Text -[hidden]down- Audio
+AudioRecording -[hidden]left- SynthesizedAudio
+Audio -[hidden]left- MixingInstruction
+' ScriptEventDescription -[hidden]down- MixingInstruction
 
 hide empty members
 hide circle
