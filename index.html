@@ -351,7 +351,7 @@ table.coldividers td + td { border-left:1px solid gray; }
           <ul>
           <li>The <code>&lt;tt&gt;</code> root element in the namespace <code>http://www.w3.org/ns/ttml</code> indicates that this is a TTML document
           and the <a><code>ttp:contentProfiles</code></a> attribute indicates that it adheres to the DAPT <a>content profile</a> defined in this specification.</li>
-          <li>The <code>daptm:alternativeFor</code> attribute indicates what the contents of the document are an alternative for,
+          <li>The <code>daptm:represents</code> attribute indicates what the contents of the document are an alternative for,
             within the original programme.</li>
           <li>The <code>daptm:scriptType</code> attribute indicates the type of <a>transcript</a> or <a>script</a>
           but in this empty example, it is not relevant, since only the structure of the document is shown.</li>
@@ -538,20 +538,20 @@ table.coldividers td + td { border-left:1px solid gray; }
           that corresponds to a document processed within an authoring workflow or processed by a client,
           and conforms to the constraints of this specification.
           It has properties and objects defined in the following sections:
-          <a>Alternative For</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Text Language Source</a>, <a>Script Events</a>
+          <a>Represents</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Text Language Source</a>, <a>Script Events</a>
           and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
         <p>A <dfn>DAPT Document</dfn> is a TTML <a>Document Instance</a> representing a <a>DAPT Script</a>.
           A <a>DAPT Document</a> has the structure and constraints defined in the following sections.</p>
         <section>
-          <h4>Alternative For</h4>
-          <p>The <dfn>Alternative For</dfn> property is a mandatory property of a <a>DAPT Script</a> which
+          <h4>Represents</h4>
+          <p>The <dfn>Represents</dfn> property is a mandatory property of a <a>DAPT Script</a> which
             indicates which components of the <a>related media object</a>
             the contents of the document provide an alternative for.
           </p>
-          <p>To represent this property, the <dfn><code>daptm:alternativeFor</code></dfn> attribute MUST be present on the <code>&lt;tt&gt;</code> element:</p>
+          <p>To represent this property, the <dfn><code>daptm:represents</code></dfn> attribute MUST be present on the <code>&lt;tt&gt;</code> element:</p>
           <div class="exampleInner">
             <pre class="language-abnf">
-  daptm:alternativeFor
+  daptm:represents
   : &lt;content-descriptor&gt; ( &lt;lwsp&gt;? "," &lt;lwsp&gt;? &lt;content-descriptor&gt;)*
 
   &lt;content-descriptor&gt;
@@ -563,10 +563,10 @@ table.coldividers td + td { border-left:1px solid gray; }
   &lt;lwsp&gt;  # as TTML2
             </pre>
           </div>
-          <p>For example, a dubbing script would have <code>daptm:alternativeFor=&quot;dialogue&quot;</code>,
-            an audio description script would have <code>daptm:alternativeFor=&quot;visualNonText, visualText&quot;</code>,
+          <p>For example, a dubbing script would have <code>daptm:represents=&quot;dialogue&quot;</code>,
+            an audio description script would have <code>daptm:represents=&quot;visualNonText, visualText&quot;</code>,
             and a post-production script that could be the precursor to a hard of hearing subtitle document
-            would have <code>daptm:alternativeFor=&quot;dialogue, nonDialogueSounds&quot;</code>.</p>
+            would have <code>daptm:represents=&quot;dialogue, nonDialogueSounds&quot;</code>.</p>
         </section>
 
         <section>
@@ -1164,7 +1164,7 @@ daptm:langSrc
             <li>OFF_ON - the <a>Script Event</a>'s subject starts off screen, but goes on screen at some point</li>
           </ul>
           <p>If omitted, the default value is "ON".</p>
-          <aside class="note">When the <a>daptm:alternativeFor</a> attribute value includes
+          <aside class="note">When the <a>daptm:represents</a> attribute value includes
             <code>visualNonText</code> or <code>visualText</code> the subject of each
             <a>Script Event</a>, i.e. what is being described,
             is expected to be in the video image, therefore the default of "ON" allows
@@ -2713,13 +2713,6 @@ daptm:eventType : string
             </td>
           </tr>
           <tr>
-            <td><a href="#alternativefor-root"><code>#alternativeFor-root</code></a></td>
-            <td><span class="required label">required</span></td>
-            <td>
-              This is the profile expression of <a href="#alternative-for"></a>.
-            </td>
-          </tr>
-          <tr>
             <td><a href="#contentprofiles-root"><code>#contentProfiles-root</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
@@ -2738,6 +2731,13 @@ daptm:eventType : string
             <td><span class="prohibited label">prohibited</span></td>
             <td>
               This is the profile expression of <a href="#ttp-profile"></a>.
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#represents-root"><code>#represents-root</code></a></td>
+            <td><span class="required label">required</span></td>
+            <td>
+              This is the profile expression of <a href="#represents"></a>.
             </td>
           </tr>
           <tr>
@@ -2964,20 +2964,20 @@ daptm:eventType : string
       </section>
 
       <section>
-        <h3>#alternativeFor-root</h3>
-        <p>A <a>transformation processor</a> supports the <code>#alternativeFor-root</code> extension if
+        <h3>#represents-root</h3>
+        <p>A <a>transformation processor</a> supports the <code>#represents-root</code> extension if
           it recognizes and is capable of transforming values of the
-          <a><code>daptm:alternativeFor</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+          <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
   
-        <p>A <a>presentation processor</a> supports the <code>#alternativeFor-root</code> extension if
+        <p>A <a>presentation processor</a> supports the <code>#represents-root</code> extension if
           it implements presentation semantic support of the
-          <a><code>daptm:alternativeFor</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+          <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
 
         <p>An example of a <a>transformation processor</a> that supports this extension is
           a validating processor that reports an error if the extension is required by a
           <a>content profile</a> but the <a>Document Instance</a> claiming
           conformance to that profile either does not have a
-          <a><code>daptm:alternativeFor</code></a> attribute on the <code>&lt;tt&gt;</code> element
+          <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element
           or has one whose value is not conformant with the requirements defined herein.</p>
 
       </section>

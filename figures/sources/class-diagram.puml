@@ -13,7 +13,7 @@ skinparam Ranksep 80
 skinparam MinClassWidth 220
 
 Class DAPTScript as "**DAPT Script**" [[#dapt-script]] {
-    Alternative For [[[#alternative-for]]]
+    Represents [[[#represents]]]
     Script Type [[[#script-type]]]
     Default Language [[[#default-language]]]
     {field} (optional) Text Language Source [[[#text-language-source]]]

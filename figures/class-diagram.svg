@@ -13,10 +13,10 @@
                     font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="98" x="457" y="36.4688">DAPT
                     Script</text></a>
             <line style="stroke:#000000;stroke-width:1.0;" x1="370" x2="642" y1="48.8438" y2="48.8438"/>
-            <a href="#alternative-for" target="_top" xlink:actuate="onRequest" xlink:href="#alternative-for"
-                xlink:show="new" xlink:title="#alternative-for" xlink:type="simple"><text fill="#000000"
+            <a href="#represents" target="_top" xlink:actuate="onRequest" xlink:href="#represents"
+                xlink:show="new" xlink:title="#represents" xlink:type="simple"><text fill="#000000"
                     font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="116" x="379" y="72.3125"
-                    >Alternative For</text></a>
+                    >Represents</text></a>
             <a href="#script-type" target="_top" xlink:actuate="onRequest" xlink:href="#script-type" xlink:show="new"
                 xlink:title="#script-type" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
                     font-size="16" lengthAdjust="spacing" textLength="87" x="379" y="99.1563">Script Type</text></a>

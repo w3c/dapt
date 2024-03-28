@@ -1,5 +1,5 @@
 <tt ...
-  daptm:alternativeFor="visualNonText, visualText"
+  daptm:represents="visualNonText, visualText"
   daptm:scriptType="asRecorded"
   xml:lang="en"
   daptm:langSrc="">
