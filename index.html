@@ -880,7 +880,14 @@ table.coldividers td + td { border-left:1px solid gray; }
                 to indicate a <a>Character</a> signifying who voices the recording.</p>
             </li>
             <li><p>Zero or more <a>Text</a> objects, each being either <a>Original</a> or <a>Translation</a>.</p>
-              <p class="note">Empty <a>Text</a> objects can be used to indicate explicitly that there is no text content.
+              <p class="note">A <a>Script Event</a> with no <a>Text</a> objects can be created as part
+                of an initial phase of authoring, in workflows where it is helpful
+                to block out the time intervals during which some content could be present.
+                For example, an empty <a>Script Event</a> with <a>timing properties</a>
+                can be created to identify an opportunity for creating an audio description.
+                See also <a data-cite="DAPT-REQS#identify-key-times-in-programme-dialog-mark-gaps-process-step-1">[DAPT-REQS] Process Step 1</a>.</p>
+              <p class="note">Empty <a>Text</a> objects, i.e. ones that have no text content,
+                can be used to indicate explicitly that there is no text content.
                 It is recommended that empty <a>Text</a> objects are not used as a workflow placeholder to indicate incomplete work.</p></li>
             <li>zero or more <a>Script Event Description</a> objects, each being a human-readable description of the <a>Script Event</a>.</li>
             <li>an optional <a>On Screen</a> property, which is an annotation indicating the position of the subject (e.g. a <a>character</a>) of the <a>Script Event</a></li>
