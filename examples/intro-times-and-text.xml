@@ -5,7 +5,7 @@
   ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
   xml:lang="en"
   daptm:langSrc=""
-  daptm:workflowType="audioDescription"
+  daptm:represents="visualNonText, visualText"
   daptm:scriptType="preRecording">
   <body>
     <div begin="10s" end="13s">

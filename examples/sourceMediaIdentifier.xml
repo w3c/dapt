@@ -4,7 +4,7 @@
     xmlns:ebuttm="urn:ebu:tt:metadata"
     xml:lang="en" 
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
-    daptm:workflowType="dubbing"
+    daptm:represents="dialogue"
     daptm:scriptType="originalTranscript">
   <head>
     <metadata>

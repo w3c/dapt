@@ -363,7 +363,8 @@ table.coldividers td + td { border-left:1px solid gray; }
           <ul>
           <li>The <code>&lt;tt&gt;</code> root element in the namespace <code>http://www.w3.org/ns/ttml</code> indicates that this is a TTML document
           and the <a><code>ttp:contentProfiles</code></a> attribute indicates that it adheres to the DAPT <a>content profile</a> defined in this specification.</li>
-          <li>The <code>daptm:workflowType</code> attribute indicates the type of workflow.</li>
+          <li>The <code>daptm:represents</code> attribute indicates what the contents of the document are an alternative for,
+            within the original programme.</li>
           <li>The <code>daptm:scriptType</code> attribute indicates the type of <a>transcript</a> or <a>script</a>
           but in this empty example, it is not relevant, since only the structure of the document is shown.</li>
           <li>The <a><code>daptm:langSrc</code></a> attribute indicates the default text language source,
@@ -549,23 +550,81 @@ table.coldividers td + td { border-left:1px solid gray; }
           that corresponds to a document processed within an authoring workflow or processed by a client,
           and conforms to the constraints of this specification.
           It has properties and objects defined in the following sections:
-          <a>Workflow Type</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Text Language Source</a>, <a>Script Events</a>
+          <a>Represents</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Text Language Source</a>, <a>Script Events</a>
           and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
         <p>A <dfn>DAPT Document</dfn> is a TTML <a>Document Instance</a> representing a <a>DAPT Script</a>.
           A <a>DAPT Document</a> has the structure and constraints defined in the following sections.</p>
-        <section>
-          <h4>Workflow Type</h4>
-          <p>The <dfn>Workflow Type</dfn> property is a mandatory property of a <a>DAPT Script</a> which
-            indicates if the workflow is for Dubbing or Audio Description.
+
+          <section>
+          <h4>Represents</h4>
+          <p>The <dfn>Represents</dfn> property is a mandatory property of a <a>DAPT Script</a> which
+            indicates which components of the <a>related media object</a>
+            the contents of the document represent.
+            The contents of the document could be used as part of a mechanism
+            to provide an accessible alternative for those components.
           </p>
-          <p>To represent this property, the <dfn><code>daptm:workflowType</code></dfn> attribute MUST be present on the <code>&lt;tt&gt;</code> element:</p>
+          <p>To represent this property, the <dfn><code>daptm:represents</code></dfn> attribute MUST be present on the <code>&lt;tt&gt;</code> element:</p>
           <div class="exampleInner">
             <pre class="language-abnf">
-  daptm:workflowType
-    : "dubbing"
-    | "audioDescription"
+  daptm:represents
+  : &lt;content-descriptor&gt; ( &lt;lwsp&gt;? "," &lt;lwsp&gt;? &lt;content-descriptor&gt;)*
+
+  &lt;content-descriptor&gt;  # see registry table below
+
+  &lt;lwsp&gt;                # as TTML2
             </pre>
           </div>
+          <p>The permitted values for <code>&lt;content-descriptor&gt;</code>
+            are listed in the following <a>registry table</a>:</p>
+            <div class="registry-table-section">
+              <table class="data">
+                <caption><a>Registry table</a> for the <code>&lt;content-descriptor&gt;</code> component
+                  whose Registry Definition is at <a href="#registry-table-content-descriptor"></a></caption>
+                <thead>
+                  <th><code>&lt;content-descriptor&gt;</code></th>
+                  <th>Status</th>
+                  <th>Description</th>
+                  <th>Used in</th>
+                  <th>Notes</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>dialogue</code></td>
+                    <td>Provisional</td>
+                    <td>Verbal communication, in audio</td>
+                    <td>Dubbing, translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
+                    <td>For example, a spoken conversation.</td>
+                  </tr>
+                  <tr>
+                    <td><code>nonDialogueSounds</code></td>
+                    <td>Provisional</td>
+                    <td>Sounds that are not verbal communication, in audio</td>
+                    <td>Translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
+                    <td>For example, significant sounds, such as a door being slammed in anger.</td>
+                  </tr>
+                  <tr>
+                    <td><code>visualNonText</code></td>
+                    <td>Provisional</td>
+                    <td>Parts of the visual image that are not textual</td>
+                    <td>Audio Description</td>
+                    <td>For example, a significant object in the scene</td>
+                  </tr>
+                  <tr>
+                    <td><code>visualText</code></td>
+                    <td>Provisional</td>
+                    <td>Textual parts of the visual image</td>
+                    <td>Audio Description</td>
+                    <td>For example, a signpost, a clock, a newspaper headline, an instant message etc.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <aside class="example">
+              <p>A dubbing script might have <code>daptm:represents=&quot;dialogue&quot;</code>;</p>
+              <p>An audio description script might have <code>daptm:represents=&quot;visualNonText, visualText&quot;</code>;</p>
+              <p>A post-production script that could be the precursor to a hard of hearing subtitle document
+                might have <code>daptm:represents=&quot;dialogue, nonDialogueSounds&quot;</code>.</p>
+            </aside>
         </section>
 
         <section>
@@ -1170,7 +1229,8 @@ daptm:langSrc
             <li>OFF_ON - the <a>Script Event</a>'s subject starts off screen, but goes on screen at some point</li>
           </ul>
           <p>If omitted, the default value is "ON".</p>
-          <aside class="note">When the <a>daptm:workflowType</a> attribute is set to <code>audioDescription</code> the subject of each
+          <aside class="note">When the <a>daptm:represents</a> attribute value includes
+            <code>visualNonText</code> or <code>visualText</code> the subject of each
             <a>Script Event</a>, i.e. what is being described,
             is expected to be in the video image, therefore the default of "ON" allows
             the property to be omitted in those cases without distortion of meaning.</aside>
@@ -2746,6 +2806,13 @@ daptm:eventType : string
             </td>
           </tr>
           <tr>
+            <td><a href="#represents-root"><code>#represents-root</code></a></td>
+            <td><span class="required label">required</span></td>
+            <td>
+              This is the profile expression of <a href="#represents"></a>.
+            </td>
+          </tr>
+          <tr>
             <td><a href="#scripttype-root"><code>#scriptType-root</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
@@ -2773,13 +2840,6 @@ daptm:eventType : string
             <td><span class="permitted label">permitted</span></td>
             <td>
               This is the profile expression of <a href="#text-language-source"></a> as required at <a href="#text"></a>.
-            </td>
-          </tr>
-          <tr>
-            <td><a href="#workflowtype-root"><code>#workflowType-root</code></a></td>
-            <td><span class="required label">required</span></td>
-            <td>
-              This is the profile expression of <a href="#workflow-type"></a>.
             </td>
           </tr>
           <tr>
@@ -2908,7 +2968,26 @@ daptm:eventType : string
           it implements presentation semantic support of the
           <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
       </section>
+
+      <section>
+        <h3>#represents-root</h3>
+        <p>A <a>transformation processor</a> supports the <code>#represents-root</code> extension if
+          it recognizes and is capable of transforming values of the
+          <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
   
+        <p>A <a>presentation processor</a> supports the <code>#represents-root</code> extension if
+          it implements presentation semantic support of the
+          <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+
+        <p>An example of a <a>transformation processor</a> that supports this extension is
+          a validating processor that reports an error if the extension is required by a
+          <a>content profile</a> but the <a>Document Instance</a> claiming
+          conformance to that profile either does not have a
+          <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element
+          or has one whose value is not conformant with the requirements defined herein.</p>
+
+      </section>
+
       <section>
         <h3>#scriptType-root</h3>
         <p>A <a>transformation processor</a> supports the <code>#scriptType-root</code> extension if
@@ -2973,25 +3052,6 @@ daptm:eventType : string
         <p>A <a>presentation processor</a> supports the <code>#textLanguageSource</code> extension if
           it implements presentation semantic support of the
           <a><code>daptm:langSrc</code></a> attribute.</p>
-      </section>
-
-      <section>
-        <h3>#workflowType-root</h3>
-        <p>A <a>transformation processor</a> supports the <code>#workflowType-root</code> extension if
-          it recognizes and is capable of transforming values of the
-          <a><code>daptm:workflowType</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-  
-        <p>A <a>presentation processor</a> supports the <code>#workflowType-root</code> extension if
-          it implements presentation semantic support of the
-          <a><code>daptm:workflowType</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-
-        <p>An example of a <a>transformation processor</a> that supports this extension is
-          a validating processor that reports an error if the extension is required by a
-          <a>content profile</a> but the <a>Document Instance</a> claiming
-          conformance to that profile either does not have a
-          <a><code>daptm:workflowType</code></a> attribute on the <code>&lt;tt&gt;</code> element
-          or has one whose value is not defined herein.</p>
-
       </section>
 
       <section>
@@ -3216,8 +3276,18 @@ daptm:eventType : string
           <p>The <a>key</a> is the &quot;<code>daptm:eventType</code>&quot; field.
           The &quot;description&quot; field describes the intended purpose of each value.</p> 
           <p>The <a>registry entries</a> for this <a>registry table</a> are located in <a href="#script-event-type"></a>.</p>
+      </section>
+      <section id="registry-table-content-descriptor">
+        <h3><code>&lt;content-descriptor&gt;</code> registry table definition</h3>
+        <p>The <a>registry table</a> for <code>&lt;content-descriptor&gt;</code> defines a set of values that can be
+          used in the <code>daptm:represents</code> attribute.</p>
+          <p>The <a>key</a> is the &quot;<code>&lt;content-descriptor&gt;</code>&quot; field.
+          The &quot;Description&quot; field describes the type of media content represented by each value.
+          The &quot;Used in&quot; field describes the type of script in which the content type
+          described are commonly found.</p> 
+          <p>The <a>registry entries</a> for this <a>registry table</a> are located in <a href="#represents"></a>.</p>
         </section>
-    </section>
+      </section>
   </section>
 
   <section class="appendix">
