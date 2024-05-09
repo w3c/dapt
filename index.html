@@ -901,7 +901,7 @@ table.coldividers td + td { border-left:1px solid gray; }
 
           <li>All <code>&lt;ttm:agent&gt;</code> elements SHOULD be contained in the first <code>&lt;metadata&gt;</code> element in the <code>&lt;head&gt;</code> element.
             <div class="note">There can be multiple <code>&lt;metadata&gt;</code> elements in the <code>&lt;head&gt;</code> element,
-            for example to include <a href="#proprietary-metadata">proprietary metadata</a>
+            for example to include <a href="#proprietary-metadata-and-foreign-vocabulary">proprietary metadata</a>
             but the above recommends that only one is used to define the characters.</div>
             <aside class="ednote">The group is considering updating the rule(s) around which metadata element
             is used to carry DAPT information. The group would like to balance simplicity of implementation
@@ -1783,7 +1783,7 @@ daptm:eventType : string
         </p>
 
         <section>
-          <h4>Proprietary Metadata</h4>
+          <h4>Proprietary Metadata and Foreign Vocabulary</h4>
           <p>Many dubbing and <a>audio description</a> workflows permit annotation of <a>Script Events</a> or documents with proprietary metadata.
             Metadata vocabulary defined in this specification or in [[TTML2]] MAY be included.
             <a>Foreign vocabulary</a> MAY also be included,
