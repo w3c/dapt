@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="color-scheme" content="light dark">
     <title>Dubbing and Audio description Profiles of TTML2</title>
     <script defer src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
     <script class="remove">
@@ -68,20 +69,86 @@
     };
     </script>
   <style>
-table.coldividers td + td { border-left:1px solid gray; }
+    @media (prefers-color-scheme: dark) {
+      .data tr:nth-child(even) {
+        background: #444444;
+      }
+      span.label.required::before, span.label.required::after {
+        color: black;
+      }
+      span.optional {
+        color: black;
+        background-color: #FFFF50;
+        border-color: #f0f6ff;
+      }
+      span.permitted {
+        color: black;
+        background-color: #50FF50;
+      }
+      span.prohibited {
+        color: black;
+        background-color: #FF5F5F;
+      }
+      span.permitted-deprecated {
+        color: black;
+        background-color: #FFC000;
+      }
+      span.required {
+        color: black;
+        background-color: white;
+      }
+      img.fingerprint, svg {
+        filter: invert(100%);
+      }
+      div.exampleInner {
+        background-color: #282c34;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      .data tr:nth-child(even) {
+        background: #f0f6ff;
+      }
+      span.label.required::before, span.label.required::after {
+        color: white;
+      }
+      span.optional {
+        color: black;
+        background-color: #FFFF50;
+        border-color: #444444;
+      }
+      span.permitted {
+        color: black;
+        background-color: #50FF50;
+      }
+      span.prohibited {
+        color: black;
+        background-color: #FF5F5F;
+      }
+      span.permitted-deprecated {
+        color: black;
+        background-color: #FFC000;
+      }
+      span.required {
+        color: white;
+        background-color: black;
+      }
+      div.exampleInner {
+        background-color: #fafafa;
+      }
+    }
+  table.coldividers td + td { border-left:1px solid gray; }
   table.syntax { border: 0px solid black; width: 85%; border-collapse: collapse }
   table.syntax caption { font-weight: bold; text-align: left; padding-bottom: 0.5em }
   table.syntax th { border: 0px solid black; text-align: left }
   table.syntax td { border: 0px solid black }
   table.syntax div { background-color: #ffffc8 }
   table#table-features-and-extensions tbody tr td:nth-child(2) { text-align: center;}
-  div.exampleInner { background-color: #fafafa;
-                   border-top-width: 4px;
+  div.exampleInner { border-top-width: 4px;
                    border-top-style: double;
                    border-top-color: #d3d3d3;
+                   border-bottom-color: #d3d3d3;
                    border-bottom-width: 4px;
                    border-bottom-style: double;
-                   border-bottom-color: #d3d3d3;
                    padding: 4px; margin: 0em }
   ul.short-list { margin: 0; padding-left: 0; list-style-position: inside;}
   .equation {text-indent: 10%;}
@@ -117,34 +184,14 @@ table.coldividers td + td { border-left:1px solid gray; }
   }
   span.label.required::before, span.label.required::after {
     font-weight: bold;
-    color: white;
     content: "\00A0!!\00A0";
   }
   span.label::after {
     content: "\00A0";
   }
   span.optional {
-    color: black;
-    background-color: #FFFF50;
-    border-color: #444444;
     border-style: solid;
     border-width: 1px;
-  }
-  span.permitted {
-    color: black;
-    background-color: #50FF50;
-  }
-  span.prohibited {
-    color: black;
-    background-color: #FF5F5F;
-  }
-  span.permitted-deprecated {
-    color: black;
-    background-color: #FFC000;
-  }
-  span.required {
-    color: white;
-    background-color: black;
   }
   figure svg {
     max-width: max-content !important;
@@ -1168,7 +1215,7 @@ daptm:langSrc
           </ul>
           <p class="note">An example of the usage of <a>Text Language Source</a> in a document is present in the <a>Text</a> section.</p>
           <aside class="example">
-            <table class="simple">
+            <table class="data">
               <caption>Table enumerating example values of the <code>xml:lang</code> and
                 <a><code>daptm:langSrc</code></a> attributes for different <a>Original</a> transcript sources and
                 their inherent languages.
@@ -1824,7 +1871,7 @@ daptm:eventType : string
         <p>
           The following namespaces (see [[xml-names]]) are used in this specification:
         </p>
-        <table class="simple">
+        <table class="data">
           <thead>
             <tr>
               <th>Name</th>
@@ -1942,7 +1989,7 @@ daptm:eventType : string
         <section>
           <h4>Profile Designator</h4>
           <p>This profile is associated with the following profile designators:</p>
-          <table class="simple">
+          <table class="data">
             <thead>
               <tr>
                 <th>Profile Name</th>
@@ -2655,7 +2702,7 @@ daptm:eventType : string
       </p>
       <p class="ednote">Editorial task: go through this list of <a>features</a> and check the disposition of each.
         There should be no prohibited features that are permitted in IMSC.</p>
-      <table class="simple" id="table-features-and-extensions">
+      <table class="data" id="table-features-and-extensions">
         <thead>
           <tr>
             <th style="width:20%; text-align:center;">Feature or Extension</th>
@@ -3076,6 +3123,13 @@ daptm:eventType : string
             </td>
           </tr>
           <tr>
+            <td><a href="#scripteventmapping"><code>#scriptEventMapping</code></a></td>
+            <td><span class="optional label">optional</span></td>
+            <td>
+              This is the profile expression of <a href="#handling-div-and-p-elements"></a>.
+            </td>
+          </tr>
+          <tr>
             <td><a href="#scripttype-root"><code>#scriptType-root</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
@@ -3248,7 +3302,19 @@ daptm:eventType : string
           conformance to that profile either does not have a
           <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element
           or has one whose value is not conformant with the requirements defined herein.</p>
+      </section>
 
+      <section>
+        <h3>#scriptEventMapping</h3>
+        <p>A <a>transformation processor</a> supports the <code>#scriptEventMapping</code> extension
+          if, when mapping a <a>DAPT document</a> into an internal representation of the DAPT data model,
+          it implements the processing requirements specified at <a href="#handling-div-and-p-elements"></a>.</p>
+
+        <p class="note">No support for the <code>#scriptEventMapping</code> extension is
+          required for <a>presentation processors</a> because there are no presentation semantics that
+          either require, or depend upon, mapping a <a>DAPT document</a> into an internal representation
+          of the DAPT data model. A presentation processor that does perform such a mapping can also be
+          considered to be a <a>transformation processor</a> for the purpose of this extension.</p>
       </section>
 
       <section>
