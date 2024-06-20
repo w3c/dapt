@@ -1783,11 +1783,11 @@ daptm:eventType : string
       <section>
         <h3>Unrecognised Elements and Attributes</h3>
         <p>
-          A <a>DAPT Document</a> MAY contain elements and attributes that are neither specifically permitted nor forbidden by a profile.
+          A <a>DAPT Document</a> MAY contain elements and attributes that are neither specifically permitted nor forbidden
+          by the <a>DAPT 1.0 Content Profile</a>,
+          for example ones that are defined in a future version of DAPT,
+          or ones that are defined by some other <a>content profile</a>.
           Those elements and attributes could be in a namespace used by DAPT or TTML, or some other namespace.</p>
-        <p><dfn>Foreign vocabulary</dfn> consists of the set of elements and attributes whose namespace
-          is not one of the namespaces listed in <a href="#namespaces"></a> and
-          the set of attributes in the global namespace that are not otherwise defined in DAPT or in [[TTML2]].</p>
         <div class="note">
           <p>The requirements in this section are intended to facilitate forwards and backwards compatibility,
             specifically to permit:
@@ -1801,6 +1801,10 @@ daptm:eventType : string
               targeted at that earlier version.</li>
           </ul>
         </div>
+        <p><dfn>Foreign vocabulary</dfn> is the subset of unrecognised vocabulary that consists of
+          those elements and attributes whose namespace
+          is not one of the namespaces listed in <a href="#namespaces"></a> and
+          the set of attributes in the global namespace that are not otherwise defined in DAPT or in [[TTML2]].</p>
         <p class="note">
           <a>DAPT Documents</a> remain subject to the content conformance requirements specified at Section 3.1 of [[TTML2]].
           In particular, a <a>DAPT Document</a> can contain <a>foreign vocabulary</a>,
@@ -1808,17 +1812,22 @@ daptm:eventType : string
         </p>
         <p class ="note">
           For validation purposes it is good practice to define and use
-          a content specification for all <a>foreign vocabulary</a> used within a <a>DAPT Document</a>.
+          a specification for all <a>foreign vocabulary</a> used within a <a>DAPT Document</a>,
+          for example a <a>content profile</a>.
         </p>
         <p>
-          A <a>transformation processor</a> SHOULD preserve <a>foreign vocabulary</a> associated with or descendant to
-          <code>&lt;metadata&gt;</code> elements even if it is not associated with features that it supports.</p>
-        <p>A <a>transformation processor</a> MUST prune vocabulary that is a) not associated or descendant to
-          <code>&lt;metadata&gt;</code> elements and b) not associated with any feature that it supports.</p>
+          A <a>transformation processor</a> SHOULD preserve <a>foreign vocabulary</a> that is
+          either an attribute or a descendant of
+          a <code>&lt;metadata&gt;</code> element.
+          This includes <a>foreign vocabulary</a> that is not associated with any feature that the processor supports.</p>
+        <p>A <a>transformation processor</a> MUST prune vocabulary that is both
+          a) not associated with any feature that it supports and
+          b) is neither an attribute nor a descendant of
+          a <code>&lt;metadata&gt;</code> element.</p>
         <p class="note">See also <a href="#ttp-contentprofiles"></a> which prohibits the signalling of profile
           conformance to profiles that the <a>transformation processor</a> does not support.</p>
         <p>
-          After attribute value computation,
+          After <a href="#using-computed-attribute-values">attribute value computation</a>,
           a <a>presentation processor</a> SHOULD ignore elements and attributes that it does not recognise and support.
         </p>
         <p class="note">
@@ -1836,33 +1845,41 @@ daptm:eventType : string
             <a>Foreign vocabulary</a> MAY also be included,
             either as attributes of <code>&lt;metadata&gt;</code> elements or
             as descendant elements of <code>&lt;metadata&gt;</code> elements.</p>
-          <p class="note">It is possible to add information such as the title of the programme using [[TTML2]] constructs.</p>
-          <p>If any semantic needs to be defined for some <a>foreign vocabulary</a>,
-            or if it needs to be located outside a <code>&lt;metadata&gt;</code> element,
-            the mechanism provided to avoid it being pruned, and to indicate content and processor conformance, is as follows:</p>
-          <ol>
-            <li>Define a profile including a feature definition for that semantic and vocabulary,
-          with a profile designator.</li>
-            <li>Signal document conformance to that profile using the <a href="#ttp-contentprofiles"></a></li>
-          </ol>
-          <p>This allows processors that support the feature to process the vocabulary
-            in whatever way is appropriate, to avoid pruning it,
-            and allows processors that do not support the feature to take
-            appropriate action, for example warning users that some functionality may be lost.</p>
-          <p class="note">If <a>foreign vocabulary</a> is included in locations other than <code>&lt;metadata&gt;</code> elements
-            it will be pruned by <a>transformation processors</a> that do not support features associated with that vocabulary,
-            as required in <a href="#unrecognised-elements-and-attributes"></a>.</p>
-          <pre class="example"
-            data-include="examples/metadata-TTML2.xml"
-            data-include-format="text">
-          </pre>
-          <p class="note">It is possible to add workflow-specific information using a foreign namespace.
-            In the following example, a fictitious namespace <code>vendorm</code> from an "example vendor" is used
-            to provide document-level information not defined by DAPT.</p>
-          <pre class="example"
-            data-include="examples/metadata-proprietary.xml"
-            data-include-format="text">
-          </pre>
+          <div class="note">
+            <p>It is possible to add information such as the title of the programme using [[TTML2]] constructs.</p>
+            <pre class="example"
+              data-include="examples/metadata-TTML2.xml"
+              data-include-format="text">
+            </pre>
+          </div>
+          <div class="note">
+            <p>It is possible to add workflow-specific information using a foreign namespace.
+              In the following example, a fictitious namespace <code>vendorm</code> from an "example vendor" is used
+              to provide document-level information not defined by DAPT.</p>
+            <pre class="example"
+              data-include="examples/metadata-proprietary.xml"
+              data-include-format="text">
+            </pre>
+          </div>
+
+          <section class="informative">
+            <h5>Defining and using foreign vocabulary that is not metadata</h5>
+            <p>If <a>foreign vocabulary</a> is included in locations other than <code>&lt;metadata&gt;</code> elements
+              it will be pruned by <a>transformation processors</a> that do not support features associated with that vocabulary,
+              as required in <a href="#unrecognised-elements-and-attributes"></a>.</p>
+            <p>A mechanism is provided to prevent such pruning, and to define semantics for such <a>foreign vocabulary</a>,
+              allowing it to be located outside a <code>&lt;metadata&gt;</code> element without being pruned,
+              and to indicate content and processor conformance:</p>
+            <ol>
+              <li>Define a profile including a feature definition for that semantic and vocabulary,
+            with a profile designator.</li>
+              <li>Signal document conformance to that profile using the <a href="#ttp-contentprofiles"></a></li>
+            </ol>
+            <p>This allows processors that support the feature to process the vocabulary
+              in whatever way is appropriate, to avoid pruning it,
+              and allows processors that do not support the feature to take
+              appropriate action, for example warning users that some functionality may be lost.</p>
+            </section>
         </section> <!-- Proprietary Metadata -->
   
       </section>
@@ -1940,11 +1957,11 @@ daptm:eventType : string
           provides the media timeline and is the source of the <a>main programme audio</a>,
           and any visual timing references needed when adjusting timings relevant to the video image,
           such as for lip synchronization.</p>
-          <div class="example note">
-          <p>A <a>DAPT document</a> can identify the programme acting
-          as the <a>Related Media Object</a> using metadata. For example, it is possible
-          to use the <code>&lt;ebuttm:sourceMediaIdentifier&gt;</code> element defined in [[EBU-TT-3390]].</p>
-          <pre class="xml" data-include="examples/sourceMediaIdentifier.xml" data-include-format="text"></pre>
+          <div class="note">
+            <p>A <a>DAPT document</a> can identify the programme acting
+            as the <a>Related Media Object</a> using metadata. For example, it is possible
+            to use the <code>&lt;ebuttm:sourceMediaIdentifier&gt;</code> element defined in [[EBU-TT-3390]].</p>
+            <pre class="xml example" data-include="examples/sourceMediaIdentifier.xml" data-include-format="text"></pre>
           </div>
 
       </section>
@@ -2015,7 +2032,7 @@ daptm:eventType : string
           <h4><code>ttp:contentProfiles</code></h4>
           <p>The <dfn data-cite="TTML2#profile-attribute-contentProfiles"><code>ttp:contentProfiles</code></dfn> attribute
             is used to declare the [[TTML2]] profiles to which the document conforms.</p>
-          <p>TTML documents representing DAPT Scripts MUST specify a <a><code>ttp:contentProfiles</code></a> attribute
+          <p><a>DAPT Documents</a> MUST specify a <a><code>ttp:contentProfiles</code></a> attribute
             on the <code>&lt;tt&gt;</code> element including one value equal to the
             <a>DAPT 1.0 Content Profile</a> designator.
             Other values MAY be present to declare conformance to other profiles of [[TTML2]],
@@ -2031,7 +2048,7 @@ daptm:eventType : string
           <p>The <dfn data-cite="TTML2#profile-attribute-profile"><code>ttp:profile</code></dfn> attribute
             is a mechanism within [[?TTML1]] for declaring the processing requirements for a <a>Document Instance</a>.
             It has effectively been superceded in [[TTML2]] by <a><code>ttp:processorProfiles</code></a>.</p>
-          <p>TTML documents representing DAPT Scripts MUST NOT specify a <code>ttp:profile</code> attribute
+          <p><a>DAPT Documents</a> MUST NOT specify a <code>ttp:profile</code> attribute
             on the <code>&lt;tt&gt;</code> element.</p>
         </section>
 
@@ -2039,7 +2056,7 @@ daptm:eventType : string
           <h4><code>ttp:processorProfiles</code></h4>
           <p>The <dfn data-cite="TTML2#profile-attribute-processorProfiles"><code>ttp:processorProfiles</code></dfn> attribute
             is used to declare the processing requirements for a <a>Document Instance</a>.</p>
-          <p>TTML documents representing DAPT Scripts MAY specify a <a><code>ttp:processorProfiles</code></a> attribute
+          <p><a>DAPT Documents</a> MAY specify a <a><code>ttp:processorProfiles</code></a> attribute
             on the <code>&lt;tt&gt;</code> element.
             If present, the <a><code>ttp:processorProfiles</code></a> attribute MUST include one value equal to
             the designator of the <a>DAPT 1.0 Processor Profile</a>.
@@ -2232,25 +2249,21 @@ daptm:eventType : string
       <h2>Mapping from TTML to the DAPT Data Model</h2>
       <p class="ednote">Consider renaming to "Special provisions for processors that read, modify and write DAPT documents"
         or something pithier.</p>
-      <p>It is possible that conformant <a>DAPT documents</a> contain entities that
+      <p>It is possible that conformant <a>DAPT documents</a> contain elements or attributes that
         do not map unambiguously, or at all, to the model defined at <a href="#data-model"></a>.
         This could be because it has been generated by a processor conformant to some future
         version of DAPT, or through a generic [[TTML2]] process.</p>
       <p>This section defines the processing behaviour for processors that read conformant <a>DAPT documents</a>,
-        so that they can interoperably handle unrecognised entities.
+        so that they can interoperably handle that unrecognised vocabulary.
         The intent is to pave the way forwards so that processors conformant to earlier versions of DAPT
         can process documents conformant to later versions,
         while retaining the semantics of the earlier version.</p>
       <div class="note">
-        <p>These provisions apply especially to implementers of DAPT processers that
-        populate a data structure corresponding
-        to the DAPT data model from a conformant input <a>DAPT document</a>.
-        There is no generalised requirement for DAPT processors to map DAPT documents to the DAPT data model,
-        as long as their output behaviour is consistent with the provisions of this specification.</p>
-        <p>For example, a generic [[TTML2]] processor can process a TTML <a>document instance</a>
-        corresponding to the representation defined in <a href="#data-model"></a> without
-        performing such a mapping, especially for presentation purposes such as
-        rendering an audio mix based on the contents of the document.</p>
+        <p>It is also possible to process <a>DAPT documents</a> using generic [[TTML2]] processors,
+          which do not necessarily map the documents to the DAPT data model.
+          For example a generic TTML2 processor could render an audio mix based on
+          a DAPT document without needing to model <a>Script Events</a> <i>per se</i>.
+        </p>
       </div>
       <p>Importantly, it is a design goal that if a DAPT processor supports the required features of this specification
         then it should be able to process, within its supported feature set, a <a>DAPT document</a> for a future version of the specification.
