@@ -1807,11 +1807,6 @@ daptm:eventType : string
           those elements and attributes whose namespace
           is not one of the namespaces listed in <a href="#namespaces"></a> and
           those attributes in the global namespace that are not otherwise defined in DAPT or in [[TTML2]].</p>
-        <p class="note">
-          <a>DAPT Documents</a> remain subject to the content conformance requirements specified at Section 3.1 of [[TTML2]].
-          In particular, a <a>DAPT Document</a> can contain <a>foreign vocabulary</a>,
-          since such elements and attributes are pruned by the algorithm at Section 4 of [[TTML2]] prior to evaluating content conformance.
-        </p>
         <p class ="note">
           For validation purposes it is good practice to define and use
           a specification for all <a>foreign vocabulary</a> used within a <a>DAPT Document</a>,
@@ -2470,6 +2465,7 @@ daptm:eventType : string
       profile processing semantics can use the TTML2 profiles defined in <a href="#profiles"></a>
       directly to determine if it is capable of processing a <a>DAPT document</a>.
     </p>
+
     <section>
       <h3>Conformance of <a>DAPT Documents</a></h3>
       <p>Conformant <a>DAPT Documents</a> are [[TTML2]] <a>Document Instances</a> that
@@ -2478,7 +2474,13 @@ daptm:eventType : string
         <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[TTML2]] in the
         <dfn data-cite="ttml2#terms-content-profile">content profile</dfn> defined
         in <a href="#profiles"></a>.</p>
+      <p class="note">
+        <a>DAPT Documents</a> remain subject to the content conformance requirements specified at Section 3.1 of [[TTML2]].
+        In particular, a <a>DAPT Document</a> can contain <a>foreign vocabulary</a>,
+        since such elements and attributes are pruned by the algorithm at Section 4 of [[TTML2]] prior to evaluating content conformance.
+      </p>
     </section> <!-- content-profile-conformance-section -->
+
     <section>
       <h3>Conformance of DAPT Processors</h3>
       <p>Conformant DAPT Processors are [[TTML2]]
