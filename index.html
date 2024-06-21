@@ -1858,6 +1858,16 @@ daptm:eventType : string
               data-include-format="text">
             </pre>
           </div>
+          
+          <div class="advisement">
+            <strong>It is strongly recommended not to place data
+            whose semantics depend on the contents of the document
+            within <code>&lt;metadata&gt;</code> elements.</strong>
+            <p>Such data can be invalidated by <a>transformation processors</a> that
+            modify the contents of the document but preserve metadata
+            while being unaware of their semantics.
+            </p>
+          </div>
 
           <section class="informative">
             <h5>Defining and using foreign vocabulary that is not metadata</h5>
