@@ -1785,11 +1785,9 @@ daptm:eventType : string
       <section>
         <h3>Unrecognised Elements and Attributes</h3>
         <p>
-          A <a>DAPT Document</a> MAY contain elements and attributes that are neither specifically permitted nor forbidden
-          by the <a>DAPT 1.0 Content Profile</a>,
-          for example ones that are defined in a future version of DAPT,
-          or ones that are defined by some other <a>content profile</a>.
-          Those elements and attributes could be in a namespace used by DAPT or TTML, or some other namespace.</p>
+          A <a>DAPT Document</a> MAY contain <a>foreign vocabulary</a> that is neither specifically permitted nor forbidden
+          by the profiles signalled in <a>ttp:contentProfiles</a>.
+        </p>
         <div class="note">
           <p>The requirements in this section are intended to facilitate forwards and backwards compatibility,
             specifically to permit:
@@ -1802,6 +1800,8 @@ daptm:eventType : string
               authored for an earlier version with similar or identical behaviour to a DAPT processor
               targeted at that earlier version.</li>
           </ul>
+          <p>A <a>DAPT document</a> that conforms to a future version of the specification could specify
+            conformance to multiple DAPT <a>content profiles</a>.</p>
         </div>
         <p><dfn>Foreign vocabulary</dfn> is the subset of unrecognised vocabulary that consists of
           those elements and attributes whose namespace
@@ -2007,18 +2007,20 @@ daptm:eventType : string
             <thead>
               <tr>
                 <th>Profile Name</th>
-    
+                <th>Profile type</th>
                 <th>Profile Designator</th>
               </tr>
             </thead>
     
             <tbody>
               <tr>
-                <td><dfn data-dfn-type="dfn">DAPT 1.0 Content Profile</dfn></td>
+                <td><dfn data-dfn-type="dfn" class="export">DAPT 1.0 Content Profile</dfn></td>
+                <td><a>content profile</a></td>
                 <td><code>http://www.w3.org/ns/ttml/profile/dapt1.0/content</code></td>
               </tr>
               <tr>
-                <td><dfn data-dfn-type="dfn">DAPT 1.0 Processor Profile</dfn></td>
+                <td><dfn data-dfn-type="dfn" class="export">DAPT 1.0 Processor Profile</dfn></td>
+                <td><a>processor profile</a></td>
                 <td><code>http://www.w3.org/ns/ttml/profile/dapt1.0/processor</code></td>
               </tr>
             </tbody>
@@ -2030,13 +2032,15 @@ daptm:eventType : string
           <p>The <dfn data-cite="TTML2#profile-attribute-contentProfiles"><code>ttp:contentProfiles</code></dfn> attribute
             is used to declare the [[TTML2]] profiles to which the document conforms.</p>
           <p><a>DAPT Documents</a> MUST specify a <a><code>ttp:contentProfiles</code></a> attribute
-            on the <code>&lt;tt&gt;</code> element including one value equal to the
-            <a>DAPT 1.0 Content Profile</a> designator.
+            on the <code>&lt;tt&gt;</code> element including at least one value equal to a
+            <a>content profile</a> designator specified at <a href="#profile-designator"></a>.
             Other values MAY be present to declare conformance to other profiles of [[TTML2]],
             and MAY include profile designators in proprietary namespaces.</p>
+          <p>It is an error for a <a>DAPT Document</a> to signal conformance to a
+            <a>content profile</a> to which it does not conform.</p>
           <p><a>Transformation processors</a> MUST NOT include values within the
             <a><code>ttp:contentProfiles</code></a> attribute
-            associated with profiles that they do not support;
+            associated with profiles that they (the processors) do not support;
             by definition they cannot verify conformance of the content to those profiles.</p>
         </section>
 
@@ -2271,10 +2275,11 @@ daptm:eventType : string
         <p><em>Normative provisions relating to this section are defined in [[TTML2]].</em></p>
         <p>Since it is a requirement of DAPT that <a>DAPT Documents</a> include a
         <code>ttp:contentProfiles</code> attribute on the root element,
-        and that the attribute includes a value equal to the <a>DAPT 1.0 Content Profile</a>,
+        and that the attribute includes a DAPT <a>content profile</a> designator,
         as specified at <a href="#ttp-contentprofiles"></a>,
-        it follows that any TTML document that does not include such an attribute can be considered
-        not to be a <a>DAPT Document</a>;
+        it follows that any TTML document that does not include such an attribute,
+        or does not include such a profile designator,
+        can be considered not to be a <a>DAPT Document</a>;
         therefore a processor requiring strict adherence to DAPT could stop processing
         such a document.</p>
       </section>
