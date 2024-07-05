@@ -1825,7 +1825,7 @@ daptm:eventType : string
           conformance to profiles that the <a>transformation processor</a> does not support.</p>
         <p>
           After <a href="#using-computed-attribute-values">attribute value computation</a>,
-          a <a>presentation processor</a> SHOULD ignore elements and attributes that it does not recognise and support.
+          a <a>presentation processor</a> SHOULD ignore elements that it does not recognise and support.
         </p>
         <p class="note">
           The above constraint is specified as being after attribute value computation because it is possible
@@ -1834,6 +1834,7 @@ daptm:eventType : string
           As described in <a href="#using-computed-attribute-values"></a> it is important that processor implementations
           do not ignore such attributes when present on other elements.
         </p>
+        <p>A <a>presentation processor</a> SHOULD ignore attributes that it does not recognise and support.</p>
 
         <section>
           <h4>Proprietary Metadata and Foreign Vocabulary</h4>
