@@ -1814,16 +1814,14 @@ daptm:eventType : string
           a specification for all <a>foreign vocabulary</a> used within a <a>DAPT Document</a>,
           for example a <a>content profile</a>.
         </p>
-        <p>
-          A <a>transformation processor</a> SHOULD preserve <a>foreign vocabulary</a> that is
-          either an attribute or a descendant of
-          a <code>&lt;metadata&gt;</code> element.
-          This includes <a>foreign vocabulary</a> that is not associated with any feature that the processor supports.</p>
         <p>A <a>transformation processor</a> MUST prune vocabulary that is both
-          a) not associated with any feature that it supports and
-          b) is neither an attribute nor a descendant of
-          a <code>&lt;metadata&gt;</code> element.</p>
-        <p class="note">See also <a href="#ttp-contentprofiles"></a> which prohibits the signalling of profile
+            a) not associated with any feature that it supports and
+            b) is neither an attribute nor a descendant of
+            a <code>&lt;metadata&gt;</code> element.</p>
+          <p>A <a>transformation processor</a> SHOULD preserve <a>foreign vocabulary</a> that is
+            either an attribute or a descendant of
+            a <code>&lt;metadata&gt;</code> element.</p>
+          <p class="note">See also <a href="#ttp-contentprofiles"></a> which prohibits the signalling of profile
           conformance to profiles that the <a>transformation processor</a> does not support.</p>
         <p>
           After <a href="#using-computed-attribute-values">attribute value computation</a>,
