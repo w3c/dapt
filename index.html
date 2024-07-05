@@ -2292,20 +2292,22 @@ daptm:eventType : string
         therefore a processor requiring strict adherence to DAPT could stop processing
         such a document.</p>
       </section>
-      <section>
-        <h3>Document conformance claims on output</h3>
+      <section class="informative">
+        <h3>Avoiding unverified profile conformance signalling</h3>
         <p>If a processor takes as its input a <a>DAPT document</a> that claims conformance to
           one or more content profiles which that processor does not support,
-          allows the document to be modified, and then outputs a document based on that
-          modified source, <a href="#ttp-contentprofiles"></a> prohibits it from including in <code>ttp:contentProfiles</code>
-          the values of those content profiles which it does not support.
+          allows the document to be modified, and then outputs that modified document,
+          <a href="#ttp-contentprofiles"></a> prohibits it from including in <code>ttp:contentProfiles</code>
+          the values of those content profiles which that processor does not support.
         </p>
-        <p>Conversely, a processor that takes as its input a <a>DAPT document</a> that
+      </section>
+      <section>
+        <h3>Not supporting features excluded by the content profile</h3>
+        <p>A processor that takes as its input a <a>DAPT document</a> that
           contains vocabulary relating to features that it does support,
           but where support for those features is excluded from the content profiles
           to which the document claims conformance, SHOULD NOT implement
-          those features in the context of the document, and MAY take
-          additional validation steps to check the semantics of the document.</p>
+          those features in the context of that document.</p>
       </section>
       <section>
         <h3>Handling <code>&lt;div&gt;</code> and  <code>&lt;p&gt;</code> elements</h3>
