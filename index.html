@@ -2450,13 +2450,14 @@ daptm:eventType : string
             an implementation to report as information those attributes and elements
             that have been pruned.
           </p>
-          <p>Validation warnings could be issued when unsupported, optional, or deprecated,
-            elements and attributes in recognised namespaces are encountered after pruning,
-            or when supported elements and attributes contain unexpected but not invalid content,
+          <p class="note">The term "vocabulary" here refers to XML elements and attributes.</p>
+          <p>Validation warnings could be issued when unsupported or deprecated
+            vocabulary in recognised namespaces is encountered after pruning,
+            or when supported vocabulary contains unexpected but not invalid content,
             but in these scenarios errors are not expected.
           </p>
           <p>Validation errors are expected when prohibited vocabulary is present,
-            or when semantically invalid content within permitted elements and attributes
+            or when semantically invalid content within permitted vocabulary
             is encountered.
           </p>
         </section>
