@@ -1814,11 +1814,10 @@ daptm:eventType : string
           a specification for all <a>foreign vocabulary</a> used within a <a>DAPT Document</a>,
           for example a <a>content profile</a>.
         </p>
-        <p>A <a>transformation processor</a> MUST prune vocabulary that is both
-            a) not associated with any feature that it supports and
-            b) is neither an attribute nor a descendant of
+        <p>A <a>transformation processor</a> MUST prune <a>unrecognised vocabulary</a> that is
+            neither an attribute nor a descendant of
             a <code>&lt;metadata&gt;</code> element.</p>
-          <p>A <a>transformation processor</a> SHOULD preserve <a>foreign vocabulary</a> that is
+          <p>A <a>transformation processor</a> SHOULD preserve <a>unrecognised vocabulary</a> that is
             either an attribute or a descendant of
             a <code>&lt;metadata&gt;</code> element.</p>
           <p class="note">See also <a href="#ttp-contentprofiles"></a> which prohibits the signalling of profile
