@@ -1824,14 +1824,14 @@ daptm:eventType : string
         </section>
         <section>
           <h4>Special considerations for foreign vocabulary</h4>
-          <p>
-            A <a>DAPT Document</a> MAY contain <a>foreign vocabulary</a> that is neither specifically permitted nor forbidden
-            by the profiles signalled in <a>ttp:contentProfiles</a>.
-          </p>
           <p><dfn>Foreign vocabulary</dfn> is the subset of <a>unrecognised vocabulary</a> that consists of
             those elements and attributes whose namespace
             is not one of the namespaces listed in <a href="#namespaces"></a> and
             those attributes in the global namespace that are not otherwise defined in DAPT or in [[TTML2]].</p>
+          <p>
+            A <a>DAPT Document</a> MAY contain <a>foreign vocabulary</a> that is neither specifically permitted nor forbidden
+            by the profiles signalled in <a>ttp:contentProfiles</a>.
+          </p>
           <p class ="note">
             For validation purposes it is good practice to define and use
             a specification for all <a>foreign vocabulary</a> used within a <a>DAPT Document</a>,
@@ -2413,49 +2413,53 @@ daptm:eventType : string
       </section>
 
       <section class="informative">
-        <h3>Retaining unrecognised vocabulary</h3>
-        <p>As per <a href="#unrecognised-elements-and-attributes"></a>,
-          implementers of DAPT processors are encouraged to maintain <a>unrecognised vocabulary</a>
-          within <code>&lt;metadata&gt;</code> elements in <a>DAPT Documents</a>.
-          In practice it is possible that an implementation which both inputs DAPT documents
-          and outputs DAPT documents might modify the input
-          document structure and contents, and while doing so,
-          effectively prune those entities with <a>unrecognised vocabulary</a> from the output document.</p>
-      </section>
+        <h3>Considerations for transformation and validation processors</h3>
 
-      <section class="informative">
-        <h3>Validation warnings and errors</h3>
-        <p><em>Normative provisions relating to this section are defined in [[TTML2]].</em></p>
-        <p>[[TTML2]] defines a <dfn data-cite="TTML2#terms-validation-processor">validation processor</dfn>,
-          a class of implementation whose purpose is
-          to assess a <a>document instance</a> and decide if it is valid or not.
-          Typically this would be used within a processing workflow
-          to check that documents are acceptable for onward usage.
-          A real world example would likely not return simply "good" or "bad",
-          but also output informational, warning and error messages
-          describing unusual, unexpected or problematic contents in the input document.
-        </p>
-        <p>When implementing a <a>validation processor</a> for a <a>DAPT document</a>,
-          strict [[TTML2]] validation processing rules can be applied.
-          Doing this involves checking for the presence and semantic validity of
-          syntax and content associated with required or optional features defined in the
-          profile, and checking for the absence of syntax associated with prohibited features.
-        </p>
-        <p>The [[TTML2]] mechanism for dealing with vocabulary in unrecognised namespaces is
-          to prune it prior to validation.
-          This approach can be used, however it could be reasonable for
-          an implementation to report as information those attributes and elements
-          that have been pruned.
-        </p>
-        <p>Validation warnings could be issued when unsupported, optional, or deprecated,
-          elements and attributes in recognised namespaces are encountered after pruning,
-          or when supported elements and attributes contain unexpected but not invalid content,
-          but in these scenarios errors are not expected.
-        </p>
-        <p>Validation errors are expected when prohibited vocabulary is present,
-          or when semantically invalid content within permitted elements and attributes
-          is encountered.
-        </p>
+        <section>
+          <h3>Retaining unrecognised vocabulary</h3>
+          <p>As per <a href="#unrecognised-elements-and-attributes"></a>,
+            implementers of DAPT processors are encouraged to maintain <a>unrecognised vocabulary</a>
+            within <code>&lt;metadata&gt;</code> elements in <a>DAPT Documents</a>.
+            In practice it is possible that an implementation which both inputs DAPT documents
+            and outputs DAPT documents might modify the input
+            document structure and contents, and while doing so,
+            effectively prune those entities with <a>unrecognised vocabulary</a> from the output document.</p>
+        </section>
+
+        <section>
+          <h3>Validation warnings and errors</h3>
+          <p><em>Normative provisions relating to this section are defined in [[TTML2]].</em></p>
+          <p>[[TTML2]] defines a <dfn data-cite="TTML2#terms-validation-processor">validation processor</dfn>,
+            a class of implementation whose purpose is
+            to assess a <a>document instance</a> and decide if it is valid or not.
+            Typically this would be used within a processing workflow
+            to check that documents are acceptable for onward usage.
+            A real world example would likely not return simply "good" or "bad",
+            but also output informational, warning and error messages
+            describing unusual, unexpected or problematic contents in the input document.
+          </p>
+          <p>When implementing a <a>validation processor</a> for a <a>DAPT document</a>,
+            strict [[TTML2]] validation processing rules can be applied.
+            Doing this involves checking for the presence and semantic validity of
+            syntax and content associated with required or optional features defined in the
+            profile, and checking for the absence of syntax associated with prohibited features.
+          </p>
+          <p>The [[TTML2]] mechanism for dealing with vocabulary in unrecognised namespaces is
+            to prune it prior to validation.
+            This approach can be used, however it could be reasonable for
+            an implementation to report as information those attributes and elements
+            that have been pruned.
+          </p>
+          <p>Validation warnings could be issued when unsupported, optional, or deprecated,
+            elements and attributes in recognised namespaces are encountered after pruning,
+            or when supported elements and attributes contain unexpected but not invalid content,
+            but in these scenarios errors are not expected.
+          </p>
+          <p>Validation errors are expected when prohibited vocabulary is present,
+            or when semantically invalid content within permitted elements and attributes
+            is encountered.
+          </p>
+        </section>
       </section>
   </section> <!-- #ttml-to-data-model -->
 
