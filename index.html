@@ -1004,8 +1004,14 @@
 
         <p class="issue" data-number="233"></p>
 
+        <p>There MAY be any number of nested <code>&lt;div&gt;</code> element ancestors
+          in the path between the <code>&lt;body&gt;</code> element and
+          the <code>&lt;div&gt;</code> element corresponding to the <a>Script Event</a>.
+          No further semantic is defined for such elements.</p>
+
         <ul>
-          <li>There MUST be one <code>&lt;div&gt;</code> element, with the following constraints:
+          <li>There MUST be one <code>&lt;div&gt;</code> element corresponding to the <a>Script Event</a>,
+            with the following constraints:
           <ul>
             <li>The <code>xml:id</code> attribute MUST be present containing the <a>Script Event Identifier</a>.</li>
             <li>
@@ -1029,6 +1035,7 @@
             </li>
             <li>It MAY contain zero or more <code>&lt;p&gt;</code> elements representing each <a>Text</a> object.</li>
             <li>It MAY contain a <code>&lt;metadata&gt;</code> element representing the <a>On Screen</a> property.</li>
+            <li>It MUST NOT contain any <code>&lt;div&gt;</code> element children.</li>
           </ul>
           </li>
         </ul>
