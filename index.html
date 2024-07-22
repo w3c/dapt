@@ -599,8 +599,8 @@
           It has properties and objects defined in the following sections:
           <a>Represents</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Text Language Source</a>, <a>Script Events</a>
           and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
-        <p>A <dfn>DAPT Document</dfn> is a TTML <a>Document Instance</a> representing a <a>DAPT Script</a>.
-          A <a>DAPT Document</a> has the structure and constraints defined in the following sections.</p>
+        <p>A <dfn>DAPT Document</dfn> is a TTML <a>timed text content document instance</a> representing a <a>DAPT Script</a>.
+          A <a>DAPT Document</a> has the structure and constraints defined in this and the following sections.</p>
 
           <section>
           <h4>Represents</h4>
@@ -2016,7 +2016,9 @@ daptm:eventType : string
       </section>
       <section>
         <h3>Profile Signaling</h3>
-        This section defines how a TTML <a>Document Instance</a> signals that it is a <a>DAPT Document</a>
+        This section defines how a TTML
+        <dfn data-cite="TTML2#terms-document-instance">Document Instance</dfn>
+        signals that it is a <a>DAPT Document</a>
         and how it signals any processing requirements that apply.
         See also <a href="#conformance-of-dapt-documents"></a>, which defines how to
         establish that a <a>DAPT Document</a> conforms to this specification.
@@ -2109,7 +2111,7 @@ daptm:eventType : string
             Those profile-related features are listed within <a href="#profiles"></a> as being optional. 
             They MAY be implemented in processors
             and their associated vocabulary
-            MAY be present in <a>Document Instances</a>.
+            MAY be present in <a>DAPT Documents</a>.
           </p>
           <p class="note">Unless processor support for these features and vocabulary has been
             arranged (using an out-of-band protocol), the vocabulary is not expected to be present.</p>
@@ -2499,7 +2501,7 @@ daptm:eventType : string
 
     <section>
       <h3>Conformance of <a>DAPT Documents</a></h3>
-      <p>Conformant <a>DAPT Documents</a> are [[TTML2]] <a>Document Instances</a> that
+      <p>Conformant <a>DAPT Documents</a> are [[TTML2]] <a>timed text content document instances</a> that
         conform to the normative provisions of this specification.
         Those provisions are expressed using the 
         <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[TTML2]] in the
@@ -2640,7 +2642,7 @@ daptm:eventType : string
       and any extensions or constraints.
     </p>
     <p>
-      A <dfn data-cite="TTML2#terms-document-instance">Document Instance</dfn>
+      A <dfn data-cite="TTML2#terms-timed-text-content-document-instance">timed text content document instance</dfn>
       that conforms to the <a>content profile</a> defined herein:
     </p>
     <ul style="list-style-type:disc">
@@ -2650,8 +2652,8 @@ daptm:eventType : string
       <li>MUST NOT include any vocabulary, syntax or attribute value associated with a <a>feature</a> or <a>extension</a> whose disposition is prohibited in the profile.</li>
     </ul>
     <p class="note">
-      A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]],
-      and hence a <a>Document Instance</a> that conforms to a profile defined herein is also a conforming TTML2 <a>Document Instance</a>.
+      A <a>timed text content document instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]],
+      and hence a <a>timed text content document instance</a> that conforms to a profile defined herein is also a conforming TTML2 <a>Document Instance</a>.
     </p>
     <p>
       A <dfn data-cite="TTML2#terms-presentation-processor">Presentation processor</dfn> that conforms to the <a>processor profile</a> defined in this specification:
@@ -2726,7 +2728,7 @@ daptm:eventType : string
     </p>
     <p class="note">
       This document does not specify <a>presentation processor</a> or <a>transformation processor</a> behavior
-      when processing or transforming a non-conformant <a>Document Instance</a>.
+      when processing or transforming a non-conformant <a>timed text content document instance</a>.
     </p>
     <p class="note">
       The permitted and prohibited dispositions do not refer to the specification of
@@ -3242,7 +3244,7 @@ daptm:eventType : string
           using the profile mechanism of [[TTML2]].
           It can be used by a validating processor that supports the DAPT Processor Profile
           to validate a <a>DAPT Document</a>.</p>
-        <p>There is no requirement to include the DAPT Content Profile within a <a>Document Instance</a>.</p>
+        <p>There is no requirement to include the DAPT Content Profile within a <a>DAPT Document</a>.</p>
         <pre class="xml" data-include="profiles/dapt-content-profile.xml" data-include-format="text"></pre>
       </section>
 
@@ -3252,7 +3254,7 @@ daptm:eventType : string
           using the profile mechanism of [[TTML2]].
           A processor that supports the required features and extensions of the DAPT Processor Profile
           can, minimally, process all permitted features within a <a>DAPT Document</a>.</p>
-        <p>There is no requirement to include the DAPT Processor Profile within a <a>Document Instance</a>.</p>
+        <p>There is no requirement to include the DAPT Processor Profile within a <a>DAPT Document</a>.</p>
         <pre class="xml" data-include="profiles/dapt-processor-profile.xml" data-include-format="text"></pre>
     </section>
 
@@ -3346,7 +3348,7 @@ daptm:eventType : string
 
         <p>An example of a <a>transformation processor</a> that supports this extension is
           a validating processor that reports an error if the extension is required by a
-          <a>content profile</a> but the <a>Document Instance</a> claiming
+          <a>content profile</a> but the <a>timed text content document instance</a> claiming
           conformance to that profile either does not have a
           <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element
           or has one whose value is not conformant with the requirements defined herein.</p>
@@ -3380,7 +3382,7 @@ daptm:eventType : string
           when the SHOULD requirements defined in <a href="#script-type"></a> for a
           <a>DAPT Document</a>'s <a><code>daptm:scriptType</code></a> are not met,
           and that reports an error if the extension is required by a
-          <a>content profile</a> but the <a>Document Instance</a> claiming
+          <a>content profile</a> but the <a>timed text content document instance</a> claiming
           conformance to that profile either does not have a
           <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element
           or has one whose value is not defined herein.</p>
