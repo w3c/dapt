@@ -822,12 +822,24 @@
 
         <section>
           <h4>Script Events</h4>
-          <p>A <a>DAPT Script</a> MAY contain zero or more <a>Script Event</a> objects, each corresponding to dialogue, on screen text, or descriptions for a given time interval.</p>
+          <p>A <a>DAPT Script</a> MAY contain zero or more <a>Script Event</a> objects,
+            each corresponding to dialogue, on screen text, or descriptions for a given time interval.</p>
+
+          <p>If any <a>Script Events</a> are present, the <a>DAPT Document</a> MUST have
+            one <code>&lt;body&gt;</code> element child of the <code>&lt;tt&gt;</code> element.</p>
         </section>
 
         <section>
           <h4>Characters</h4>
           <p>A <a>DAPT Script</a> MAY contain zero or more <a>Character</a> objects, each describing a character that can be referenced by a <a>Script Event</a>.</p>
+
+          <p>If any <a>Character</a> objects are present, the <a>DAPT Document</a> MUST have
+            one <code>&lt;head&gt;</code> element child of the <code>&lt;tt&gt;</code> element,
+            and that <code>&lt;head&gt;</code> element MUST have
+            at least one <code>&lt;metadata&gt;</code> element child.</p>
+
+          <p class="note">It is good practice to locate all the <a>Character</a> objects within
+            a single <code>&lt;metadata&gt;</code> element parent.</p>
         </section>
 
         <section>
@@ -978,7 +990,9 @@
           <li>A mandatory <dfn>Script Event Identifier</dfn> which is unique in the <a>script</a></li>
           <li>An optional <a>Begin</a> property and an optional <a>End</a> and an optional <a>Duration</a> property
             that together define the <a>Script Event</a>'s time interval in the programme timeline
-            <p class="note">Typically <a>Script Events</a> do not overlap in time. However, there can be cases where they do, e.g. in <a>Dubbing Scripts</a> when different <a>Characters</a> speak different text at the same time.</p>
+            <p class="note">Typically <a>Script Events</a> do not overlap in time.
+              However, there can be cases where they do,
+              e.g. in <a>Dubbing Scripts</a> when different <a>Characters</a> speak different text at the same time.</p>
           </li>
           <li>An optional <a>Script Event Type</a> used to identify the type of event (e.g. dialogue, on screen text) in <a>Dubbing Scripts</a>.</li>
           <li>Zero or more <a>Character Identifiers</a> indicating the <a>Characters</a> involved in this <a>Script Event</a>.
@@ -1005,16 +1019,17 @@
           <li>Zero or more <a>Mixing Instruction</a> objects used to adjust playback of the programme audio during the <a>Script Event</a>.</li>
         </ul>
         
-        <p>A <a>Script Event</a> is represented in a <a>DAPT Document</a> by the following structure and constraints:</p>
+        <p>A <a>Script Event</a> is represented in a <a>DAPT Document</a> at the path
+        <code>/tt/head/body//div</code>,
+        with the following structure and constraints:</p>
 
         <p class="issue" data-number="233"></p>
 
-        <p>There MAY be any number of nested <code>&lt;div&gt;</code> element ancestors
+        <ul>
+          <li>There MAY be any number of nested <code>&lt;div&gt;</code> element ancestors
           in the path between the <code>&lt;body&gt;</code> element and
           the <code>&lt;div&gt;</code> element corresponding to the <a>Script Event</a>.
-          No further semantic is defined for such elements.</p>
-
-        <ul>
+          No further semantic is defined for such elements.</li>
           <li>There MUST be one <code>&lt;div&gt;</code> element corresponding to the <a>Script Event</a>,
             with the following constraints:
           <ul>
@@ -1072,7 +1087,8 @@
           <p>A <a>Text</a> object may be styled.</p>
           <p>Zero or more <a>Mixing Instruction</a> objects used to modify the programme audio during the <a>Text</a> MAY be present.
           </p>
-          <p>A <a>Text</a> object is represented in a <a>DAPT Document</a> by a <code>&lt;p&gt;</code> element with the following constraints:</p>
+          <p>A <a>Text</a> object is represented in a <a>DAPT Document</a> by a <code>&lt;p&gt;</code> element at the path
+            <code>/tt/head/body//div/p</code>, with the following constraints:</p>
             <ul>
               <li>The <a>Text</a> of the <a>Script Event</a> is represented by the character content
               of the <code>&lt;p&gt;</code> element and of all of its <code>&lt;span&gt;</code> descendant elements,
@@ -1090,8 +1106,9 @@
                   Similarly metadata can be added using attributes or <code>&lt;metadata&gt;</code> elements.</aside>
               </li>
               <li>The <code>&lt;p&gt;</code> element SHOULD have a <a><code>daptm:langSrc</code></a> attribute
-                indicating whether the <a>Text</a> is <a>Original</a> or a <a>Translation</a> and if its
-                source had an inherent language.
+                representing the <a>Text</a> object's <a>Text Language Source</a>,
+                that is, indicating whether the <a>Text</a> is <a>Original</a> or a <a>Translation</a> and
+                if its source had an inherent language.
                 <aside class="note">
                   <p>If a <code>&lt;p&gt;</code> element omits the <a><code>daptm:langSrc</code></a> attribute
                     then its computed value is derived by inheritance from its parent element,
@@ -2319,11 +2336,13 @@ daptm:eventType : string
           those features in the context of that document.</p>
       </section>
       <section>
-        <h3>Handling <code>&lt;div&gt;</code> and  <code>&lt;p&gt;</code> elements</h3>
+        <h3>Handling <code>&lt;div&gt;</code> and <code>&lt;p&gt;</code> elements</h3>
         <p>[[TTML2]] allows <code>&lt;div&gt;</code> elements to contain any combination of
           <code>&lt;div&gt;</code> elements and <code>&lt;p&gt;</code> elements.
-          The DAPT data model only describes the case where the <code>&lt;body&gt;</code> element
-          contains a <code>&lt;div&gt;</code> element that contains zero or more <code>&lt;p&gt;</code> elements.
+          The DAPT data model describes how each <a>Script Event</a> is represented by
+          a <code>&lt;div&gt;</code> element that contains zero or more <code>&lt;p&gt;</code> elements.
+          It also permits other intermediate <code>&lt;div&gt;</code> elements in the path between
+          the <code>&lt;body&gt;</code> element and those <a>Script Event</a> <code>&lt;div&gt;</code> elements.
           In addition, attributes not corresponding to properties in the DAPT data model are permitted.</p>
         <p>This gives rise to possibilities such as:</p>
         <ul>
