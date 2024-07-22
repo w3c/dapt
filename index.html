@@ -599,10 +599,15 @@
           It has properties and objects defined in the following sections:
           <a>Represents</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Text Language Source</a>, <a>Script Events</a>
           and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
-        <p>A <dfn>DAPT Document</dfn> is a TTML <a>timed text content document instance</a> representing a <a>DAPT Script</a>.
+        <p>A <dfn>DAPT Document</dfn> is a [[TTML2]] <a>timed text content document instance</a> representing a <a>DAPT Script</a>.
           A <a>DAPT Document</a> has the structure and constraints defined in this and the following sections.</p>
+        <p class="note">
+          A [[TTML2]] <a>timed text content document instance</a> has
+          a root <code>&lt;tt&gt;</code> element
+          in the TT namespace.
+        </p>
 
-          <section>
+        <section>
           <h4>Represents</h4>
           <p>The <dfn>Represents</dfn> property is a mandatory property of a <a>DAPT Script</a> which
             indicates which components of the <a>related media object</a>
