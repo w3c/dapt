@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="color-scheme" content="light dark">
     <title>Dubbing and Audio description Profiles of TTML2</title>
     <script defer src="https://www.w3.org/Tools/respec/respec-w3c" class="remove"></script>
     <script class="remove">
@@ -68,20 +69,86 @@
     };
     </script>
   <style>
-table.coldividers td + td { border-left:1px solid gray; }
+    @media (prefers-color-scheme: dark) {
+      .data tr:nth-child(even) {
+        background: #444444;
+      }
+      span.label.required::before, span.label.required::after {
+        color: black;
+      }
+      span.optional {
+        color: black;
+        background-color: #FFFF50;
+        border-color: #f0f6ff;
+      }
+      span.permitted {
+        color: black;
+        background-color: #50FF50;
+      }
+      span.prohibited {
+        color: black;
+        background-color: #FF5F5F;
+      }
+      span.permitted-deprecated {
+        color: black;
+        background-color: #FFC000;
+      }
+      span.required {
+        color: black;
+        background-color: white;
+      }
+      img.fingerprint, svg {
+        filter: invert(100%);
+      }
+      div.exampleInner {
+        background-color: #282c34;
+      }
+    }
+    @media (prefers-color-scheme: light) {
+      .data tr:nth-child(even) {
+        background: #f0f6ff;
+      }
+      span.label.required::before, span.label.required::after {
+        color: white;
+      }
+      span.optional {
+        color: black;
+        background-color: #FFFF50;
+        border-color: #444444;
+      }
+      span.permitted {
+        color: black;
+        background-color: #50FF50;
+      }
+      span.prohibited {
+        color: black;
+        background-color: #FF5F5F;
+      }
+      span.permitted-deprecated {
+        color: black;
+        background-color: #FFC000;
+      }
+      span.required {
+        color: white;
+        background-color: black;
+      }
+      div.exampleInner {
+        background-color: #fafafa;
+      }
+    }
+  table.coldividers td + td { border-left:1px solid gray; }
   table.syntax { border: 0px solid black; width: 85%; border-collapse: collapse }
   table.syntax caption { font-weight: bold; text-align: left; padding-bottom: 0.5em }
   table.syntax th { border: 0px solid black; text-align: left }
   table.syntax td { border: 0px solid black }
   table.syntax div { background-color: #ffffc8 }
   table#table-features-and-extensions tbody tr td:nth-child(2) { text-align: center;}
-  div.exampleInner { background-color: #fafafa;
-                   border-top-width: 4px;
+  div.exampleInner { border-top-width: 4px;
                    border-top-style: double;
                    border-top-color: #d3d3d3;
+                   border-bottom-color: #d3d3d3;
                    border-bottom-width: 4px;
                    border-bottom-style: double;
-                   border-bottom-color: #d3d3d3;
                    padding: 4px; margin: 0em }
   ul.short-list { margin: 0; padding-left: 0; list-style-position: inside;}
   .equation {text-indent: 10%;}
@@ -117,34 +184,14 @@ table.coldividers td + td { border-left:1px solid gray; }
   }
   span.label.required::before, span.label.required::after {
     font-weight: bold;
-    color: white;
     content: "\00A0!!\00A0";
   }
   span.label::after {
     content: "\00A0";
   }
   span.optional {
-    color: black;
-    background-color: #FFFF50;
-    border-color: #444444;
     border-style: solid;
     border-width: 1px;
-  }
-  span.permitted {
-    color: black;
-    background-color: #50FF50;
-  }
-  span.prohibited {
-    color: black;
-    background-color: #FF5F5F;
-  }
-  span.permitted-deprecated {
-    color: black;
-    background-color: #FFC000;
-  }
-  span.required {
-    color: white;
-    background-color: black;
   }
   figure svg {
     max-width: max-content !important;
@@ -537,10 +584,10 @@ table.coldividers td + td { border-left:1px solid gray; }
       <a>Shared properties</a> are shown in italics.
       All other conventions in the diagram are as per [[?uml]].
     </p>
-    <figure id="fig-class-diagram">
+    <figure id="fig-class-diagram" class="informative">
       <div data-include="figures/class-diagram.svg"></div>
       <figcaption>
-          Class diagram showing main entities in the DAPT data model.
+          (Informative) Class diagram showing main entities in the DAPT data model.
       </figcaption>
     </figure>
     <p class="issue" data-number="116"></p>
@@ -552,10 +599,15 @@ table.coldividers td + td { border-left:1px solid gray; }
           It has properties and objects defined in the following sections:
           <a>Represents</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Text Language Source</a>, <a>Script Events</a>
           and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
-        <p>A <dfn>DAPT Document</dfn> is a TTML <a>Document Instance</a> representing a <a>DAPT Script</a>.
-          A <a>DAPT Document</a> has the structure and constraints defined in the following sections.</p>
+        <p>A <dfn>DAPT Document</dfn> is a [[TTML2]] <a>timed text content document instance</a> representing a <a>DAPT Script</a>.
+          A <a>DAPT Document</a> has the structure and constraints defined in this and the following sections.</p>
+        <p class="note">
+          A [[TTML2]] <a>timed text content document instance</a> has
+          a root <code>&lt;tt&gt;</code> element
+          in the TT namespace.
+        </p>
 
-          <section>
+        <section>
           <h4>Represents</h4>
           <p>The <dfn>Represents</dfn> property is a mandatory property of a <a>DAPT Script</a> which
             indicates which components of the <a>related media object</a>
@@ -770,12 +822,24 @@ table.coldividers td + td { border-left:1px solid gray; }
 
         <section>
           <h4>Script Events</h4>
-          <p>A <a>DAPT Script</a> MAY contain zero or more <a>Script Event</a> objects, each corresponding to dialogue, on screen text, or descriptions for a given time interval.</p>
+          <p>A <a>DAPT Script</a> MAY contain zero or more <a>Script Event</a> objects,
+            each corresponding to dialogue, on screen text, or descriptions for a given time interval.</p>
+
+          <p>If any <a>Script Events</a> are present, the <a>DAPT Document</a> MUST have
+            one <code>&lt;body&gt;</code> element child of the <code>&lt;tt&gt;</code> element.</p>
         </section>
 
         <section>
           <h4>Characters</h4>
           <p>A <a>DAPT Script</a> MAY contain zero or more <a>Character</a> objects, each describing a character that can be referenced by a <a>Script Event</a>.</p>
+
+          <p>If any <a>Character</a> objects are present, the <a>DAPT Document</a> MUST have
+            one <code>&lt;head&gt;</code> element child of the <code>&lt;tt&gt;</code> element,
+            and that <code>&lt;head&gt;</code> element MUST have
+            at least one <code>&lt;metadata&gt;</code> element child.</p>
+
+          <p class="note">It is good practice to locate all the <a>Character</a> objects within
+            a single <code>&lt;metadata&gt;</code> element parent.</p>
         </section>
 
         <section>
@@ -901,7 +965,7 @@ table.coldividers td + td { border-left:1px solid gray; }
 
           <li>All <code>&lt;ttm:agent&gt;</code> elements SHOULD be contained in the first <code>&lt;metadata&gt;</code> element in the <code>&lt;head&gt;</code> element.
             <div class="note">There can be multiple <code>&lt;metadata&gt;</code> elements in the <code>&lt;head&gt;</code> element,
-            for example to include <a href="#proprietary-metadata">proprietary metadata</a>
+            for example to include <a href="#proprietary-metadata-and-foreign-vocabulary">proprietary metadata</a>
             but the above recommends that only one is used to define the characters.</div>
             <aside class="ednote">The group is considering updating the rule(s) around which metadata element
             is used to carry DAPT information. The group would like to balance simplicity of implementation
@@ -912,7 +976,7 @@ table.coldividers td + td { border-left:1px solid gray; }
             The group welcomes feedback from implementers and users."</aside>
           </li>
         </ul>
-        <aside class="note">As indicated in [[[#foreign-elements-and-attributes]]], <code>ttm:agent</code>
+        <aside class="note">As indicated in [[[#unrecognised-elements-and-attributes]]], <code>ttm:agent</code>
         elements can have foreign attributes and elements. This can be used to provide additional, proprietary
         character information.</aside>
 
@@ -921,54 +985,65 @@ table.coldividers td + td { border-left:1px solid gray; }
 
       <section>
         <h3>Script Event</h3>
-        <p>A <dfn>Script Event</dfn> object represents dialogue, on screen text or audio descriptions to be spoken and has the following properties:
-          <ul>
-            <li>A mandatory <dfn>Script Event Identifier</dfn> which is unique in the <a>script</a></li>
-            <li>An optional <a>Begin</a> property and an optional <a>End</a> and an optional <a>Duration</a> property
-              that together define the <a>Script Event</a>'s time interval in the programme timeline
-              <p class="note">Typically <a>Script Events</a> do not overlap in time. However, there can be cases where they do, e.g. in <a>Dubbing Scripts</a> when different <a>Characters</a> speak different text at the same time.</p>
-            </li>
-            <li>An optional <a>Script Event Type</a> used to identify the type of event (e.g. dialogue, on screen text) in <a>Dubbing Scripts</a>.</li>
-            <li>Zero or more <a>Character Identifiers</a> indicating the <a>Characters</a> involved in this <a>Script Event</a>.
-              <p class="note">While typically, a <a>Script Event</a> corresponds to one single <a>Character</a>,
-                there are cases where multiple <a>characters</a> can be associated with a <a>Script Event</a>.
-                This is when all <a>Characters</a> speak the same text at the same time.</p>
-              <p class="note">In a <a>transcript</a>, when the event corresponds to in-image content,
-                for example an <a>audio description</a>, no <a>Character Identifier</a> is needed.
-                However it may be helpful in a <a>Pre-recording Script</a> or an <a>As-recorded Script</a> context
-                to indicate a <a>Character</a> signifying who voices the recording.</p>
-            </li>
-            <li><p>Zero or more <a>Text</a> objects, each being either <a>Original</a> or <a>Translation</a>.</p>
-              <p class="note">A <a>Script Event</a> with no <a>Text</a> objects can be created as part
-                of an initial phase of authoring, in workflows where it is helpful
-                to block out the time intervals during which some content could be present.
-                For example, an empty <a>Script Event</a> with <a>timing properties</a>
-                can be created to identify an opportunity for creating an audio description.
-                See also <a data-cite="DAPT-REQS#identify-key-times-in-programme-dialog-mark-gaps-process-step-1">[DAPT-REQS] Process Step 1</a>.</p>
-              <p class="note">Empty <a>Text</a> objects, i.e. ones that have no text content,
-                can be used to indicate explicitly that there is no text content.
-                It is recommended that empty <a>Text</a> objects are not used as a workflow placeholder to indicate incomplete work.</p></li>
-            <li>zero or more <a>Script Event Description</a> objects, each being a human-readable description of the <a>Script Event</a>.</li>
-            <li>an optional <a>On Screen</a> property, which is an annotation indicating the position of the subject (e.g. a <a>character</a>) of the <a>Script Event</a></li>
-            <li>Zero or more <a>Mixing Instruction</a> objects used to adjust playback of the programme audio during the <a>Script Event</a>.</li>
-          </ul>
-        </p>
+        <p>A <dfn>Script Event</dfn> object represents dialogue, on screen text or audio descriptions to be spoken and has the following properties:</p>
+        <ul>
+          <li>A mandatory <dfn>Script Event Identifier</dfn> which is unique in the <a>script</a></li>
+          <li>An optional <a>Begin</a> property and an optional <a>End</a> and an optional <a>Duration</a> property
+            that together define the <a>Script Event</a>'s time interval in the programme timeline
+            <p class="note">Typically <a>Script Events</a> do not overlap in time.
+              However, there can be cases where they do,
+              e.g. in <a>Dubbing Scripts</a> when different <a>Characters</a> speak different text at the same time.</p>
+          </li>
+          <li>An optional <a>Script Event Type</a> used to identify the type of event (e.g. dialogue, on screen text) in <a>Dubbing Scripts</a>.</li>
+          <li>Zero or more <a>Character Identifiers</a> indicating the <a>Characters</a> involved in this <a>Script Event</a>.
+            <p class="note">While typically, a <a>Script Event</a> corresponds to one single <a>Character</a>,
+              there are cases where multiple <a>characters</a> can be associated with a <a>Script Event</a>.
+              This is when all <a>Characters</a> speak the same text at the same time.</p>
+            <p class="note">In a <a>transcript</a>, when the event corresponds to in-image content,
+              for example an <a>audio description</a>, no <a>Character Identifier</a> is needed.
+              However it may be helpful in a <a>Pre-recording Script</a> or an <a>As-recorded Script</a> context
+              to indicate a <a>Character</a> signifying who voices the recording.</p>
+          </li>
+          <li><p>Zero or more <a>Text</a> objects, each being either <a>Original</a> or <a>Translation</a>.</p>
+            <p class="note">A <a>Script Event</a> with no <a>Text</a> objects can be created as part
+              of an initial phase of authoring, in workflows where it is helpful
+              to block out the time intervals during which some content could be present.
+              For example, an empty <a>Script Event</a> with <a>timing properties</a>
+              can be created to identify an opportunity for creating an audio description.
+              See also <a data-cite="DAPT-REQS#identify-key-times-in-programme-dialog-mark-gaps-process-step-1">[DAPT-REQS] Process Step 1</a>.</p>
+            <p class="note">Empty <a>Text</a> objects, i.e. ones that have no text content,
+              can be used to indicate explicitly that there is no text content.
+              It is recommended that empty <a>Text</a> objects are not used as a workflow placeholder to indicate incomplete work.</p></li>
+          <li>zero or more <a>Script Event Description</a> objects, each being a human-readable description of the <a>Script Event</a>.</li>
+          <li>an optional <a>On Screen</a> property, which is an annotation indicating the position of the subject (e.g. a <a>character</a>) of the <a>Script Event</a></li>
+          <li>Zero or more <a>Mixing Instruction</a> objects used to adjust playback of the programme audio during the <a>Script Event</a>.</li>
+        </ul>
+        
+        <p>A <a>Script Event</a> is represented in a <a>DAPT Document</a> at the path
+        <code>/tt/head/body//div</code>,
+        with the following structure and constraints:</p>
 
-        <p>A <a>Script Event</a> is represented in a <a>DAPT Document</a> by the following structure and constraints:
+        <p class="issue" data-number="233"></p>
+
+        <ul>
+          <li>There MAY be any number of nested <code>&lt;div&gt;</code> element ancestors
+          in the path between the <code>&lt;body&gt;</code> element and
+          the <code>&lt;div&gt;</code> element corresponding to the <a>Script Event</a>.
+          No further semantic is defined for such elements.</li>
+          <li>There MUST be one <code>&lt;div&gt;</code> element corresponding to the <a>Script Event</a>,
+            with the following constraints:
           <ul>
-            <li>There MUST be one <code>&lt;div&gt;</code> element, with the following constraints:
-            <ul>
-              <li>The <code>xml:id</code> attribute MUST be present containing the <a>Script Event Identifier</a>.</li>
-              <li>
-                <p>The <code>begin</code>, <code>end</code> and <code>dur</code> attributes represent respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> of the <a>Script Event</a>.</p>
-                <p>The <code>begin</code> and <code>end</code> attributes SHOULD be present.
-                  The <code>dur</code> attribute MAY be present.</p>
-                <p class="note">See <a href="#timing-properties"></a> for additional notes on timing properties.</p>
-              </li>
-              <li>The <code>ttm:agent</code> attribute MAY be present and if present,
-                MUST contain a reference to each <code>ttm:agent</code> attribute that represents an associated <a>Character</a>.
+            <li>The <code>xml:id</code> attribute MUST be present containing the <a>Script Event Identifier</a>.</li>
+            <li>
+              <p>The <code>begin</code>, <code>end</code> and <code>dur</code> attributes represent respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> of the <a>Script Event</a>.</p>
+              <p>The <code>begin</code> and <code>end</code> attributes SHOULD be present.
+                The <code>dur</code> attribute MAY be present.</p>
+              <p class="note">See <a href="#timing-properties"></a> for additional notes on timing properties.</p>
+            </li>
+            <li>The <code>ttm:agent</code> attribute MAY be present and if present,
+              MUST contain a reference to each <code>ttm:agent</code> attribute that represents an associated <a>Character</a>.
               <aside class="note">Multiple references are specified using a space-separated list.</aside>
-          <pre class="example">
+              <pre class="example">
 ...
 &lt;div xml:id=&quot;event_1&quot;
      begin=&quot;9663f&quot; end=&quot;9682f&quot; 
@@ -976,14 +1051,15 @@ table.coldividers td + td { border-left:1px solid gray; }
 ...
 &lt;/div&gt;
 ...
-          </pre>
-              </li>
-              <li>It MAY contain zero or more <code>&lt;p&gt;</code> elements representing each <a>Text</a> object.</li>
-              <li>It MAY contain a <code>&lt;metadata&gt;</code> element representing the <a>On Screen</a> property.</li>
-            </ul>
+              </pre>
             </li>
+            <li>It MAY contain zero or more <code>&lt;p&gt;</code> elements representing each <a>Text</a> object.</li>
+            <li>It MAY contain a <code>&lt;metadata&gt;</code> element representing the <a>On Screen</a> property.</li>
+            <li>It MUST NOT contain any <code>&lt;div&gt;</code> element children.</li>
           </ul>
-        </p>
+          </li>
+        </ul>
+        
         </section>
 
         <section>
@@ -1011,7 +1087,8 @@ table.coldividers td + td { border-left:1px solid gray; }
           <p>A <a>Text</a> object may be styled.</p>
           <p>Zero or more <a>Mixing Instruction</a> objects used to modify the programme audio during the <a>Text</a> MAY be present.
           </p>
-          <p>A <a>Text</a> object is represented in a <a>DAPT Document</a> by a <code>&lt;p&gt;</code> element with the following constraints:</p>
+          <p>A <a>Text</a> object is represented in a <a>DAPT Document</a> by a <code>&lt;p&gt;</code> element at the path
+            <code>/tt/head/body//div/p</code>, with the following constraints:</p>
             <ul>
               <li>The <a>Text</a> of the <a>Script Event</a> is represented by the character content
               of the <code>&lt;p&gt;</code> element and of all of its <code>&lt;span&gt;</code> descendant elements,
@@ -1029,8 +1106,9 @@ table.coldividers td + td { border-left:1px solid gray; }
                   Similarly metadata can be added using attributes or <code>&lt;metadata&gt;</code> elements.</aside>
               </li>
               <li>The <code>&lt;p&gt;</code> element SHOULD have a <a><code>daptm:langSrc</code></a> attribute
-                indicating whether the <a>Text</a> is <a>Original</a> or a <a>Translation</a> and if its
-                source had an inherent language.
+                representing the <a>Text</a> object's <a>Text Language Source</a>,
+                that is, indicating whether the <a>Text</a> is <a>Original</a> or a <a>Translation</a> and
+                if its source had an inherent language.
                 <aside class="note">
                   <p>If a <code>&lt;p&gt;</code> element omits the <a><code>daptm:langSrc</code></a> attribute
                     then its computed value is derived by inheritance from its parent element,
@@ -1168,7 +1246,7 @@ daptm:langSrc
           </ul>
           <p class="note">An example of the usage of <a>Text Language Source</a> in a document is present in the <a>Text</a> section.</p>
           <aside class="example">
-            <table class="simple">
+            <table class="data">
               <caption>Table enumerating example values of the <code>xml:lang</code> and
                 <a><code>daptm:langSrc</code></a> attributes for different <a>Original</a> transcript sources and
                 their inherent languages.
@@ -1734,39 +1812,113 @@ daptm:eventType : string
             for processing, in which case the serialisation requirements do not apply.</p>
       </section>
       <section>
-        <h3>Foreign Elements and Attributes</h3>
-        <p>
-          A <a>DAPT Document</a> MAY contain elements and attributes that are neither specifically permitted nor forbidden by a profile.
+        <h3>Processing of unrecognised or foreign elements and attributes</h3>
+        <p>The requirements in this section are intended to facilitate forwards and backwards compatibility,
+          specifically to permit:
         </p>
-        <p class ="note">
-          <a>DAPT Documents</a> remain subject to the content conformance requirements specified at Section 3.1 of [[TTML2]].
-          In particular, a <a>DAPT Document</a> can contain elements and attributes not in any TT namespace, i.e. in foreign namespaces, since such elements and attributes are pruned by the algorithm at Section 4 of [[TTML2]] prior to evaluating content conformance.
-        </p>
-        <p class ="note">
-          For validation purposes it is good practice to define and use a content specification for all foreign namespace elements and attributes used within a <a>DAPT Document</a>.
-        </p>
-        <p>
-          A <a>transformation processor</a> SHOULD preserve such elements or attributes whenever possible.
-        </p>
-        <p class="ednote">Do we need to say that a <a>presentation processor</a> may ignore foreign vocab?</p>
+        <ul>
+          <li>DAPT processors targeted at one version of the specification to process <a>DAPT documents</a> that
+            include vocabulary or semantics defined in future versions,
+            albeit without supporting the later features;</li>
+          <li>DAPT processors targeted at one version of the specification to process <a>DAPT documents</a>
+            authored for an earlier version with similar or identical behaviour to a DAPT processor
+            targeted at that earlier version.</li>
+        </ul>
+        <p>A <a>DAPT document</a> that conforms to more than one version of
+          the specification could specify conformance to multiple DAPT <a>content profiles</a>.</p>
+        <section id="unrecognised-elements-and-attributes">
+          <h4>Unrecognised vocabulary</h4>
+          <p><dfn>Unrecognised vocabulary</dfn> is the set of elements and attributes that are
+            not associated with <a href="#disposition-of-features-and-extensions">features</a> that the processor supports.</p>
+          <p>A <a>transformation processor</a> MUST prune <a>unrecognised vocabulary</a> that is
+            neither an attribute nor a descendant of
+            a <code>&lt;metadata&gt;</code> element.</p>
+          <p>A <a>transformation processor</a> SHOULD preserve <a>unrecognised vocabulary</a> that is
+            either an attribute or a descendant of
+            a <code>&lt;metadata&gt;</code> element.</p>
+          <p class="note">See also <a href="#ttp-contentprofiles"></a> which prohibits the signalling of profile
+          conformance to profiles that the <a>transformation processor</a> does not support.</p>
+          <p>
+            After <a href="#using-computed-attribute-values">attribute value computation</a>,
+            a <a>presentation processor</a> SHOULD ignore <a>unrecognised vocabulary</a>.
+          </p>
+          <p class="note">
+            The above constraint is specified as being after attribute value computation because it is possible
+            that an implementation recognises and supports attributes present only on particular elements,
+            for example those corresponding to the DAPT data model.
+            As described in <a href="#using-computed-attribute-values"></a> it is important that processor implementations
+            do not ignore such attributes when present on other elements.
+          </p>
+        </section>
+        <section>
+          <h4>Special considerations for foreign vocabulary</h4>
+          <p><dfn>Foreign vocabulary</dfn> is the subset of <a>unrecognised vocabulary</a> that consists of
+            those elements and attributes whose namespace
+            is not one of the namespaces listed in <a href="#namespaces"></a> and
+            those attributes in the global namespace that are not otherwise defined in DAPT or in [[TTML2]].</p>
+          <p>
+            A <a>DAPT Document</a> MAY contain <a>foreign vocabulary</a> that is neither specifically permitted nor forbidden
+            by the profiles signalled in <a>ttp:contentProfiles</a>.
+          </p>
+          <p class ="note">
+            For validation purposes it is good practice to define and use
+            a specification for all <a>foreign vocabulary</a> used within a <a>DAPT Document</a>,
+            for example a <a>content profile</a>.
+          </p>
+        </section>
 
         <section>
-          <h4>Proprietary Metadata</h4>
+          <h4>Proprietary Metadata and Foreign Vocabulary</h4>
           <p>Many dubbing and <a>audio description</a> workflows permit annotation of <a>Script Events</a> or documents with proprietary metadata.
             Metadata vocabulary defined in this specification or in [[TTML2]] MAY be included.
-            Additional vocabulary in other namespaces MAY also be included.</p>
-          <p class="note">It is possible to add information such as the title of the programme using [[TTML2]] constructs.</p>
-          <pre class="example"
-            data-include="examples/metadata-TTML2.xml"
-            data-include-format="text">
-          </pre>
-          <p class="note">It is possible to add workflow-specific information using a foreign namespace.
-            In the following example, a fictitious namespace <code>vendorm</code> from an "example vendor" is used
-            to provide document-level information not defined by DAPT.</p>
-          <pre class="example"
-            data-include="examples/metadata-proprietary.xml"
-            data-include-format="text">
-          </pre>
+            <a>Foreign vocabulary</a> MAY also be included,
+            either as attributes of <code>&lt;metadata&gt;</code> elements or
+            as descendant elements of <code>&lt;metadata&gt;</code> elements.</p>
+          <div class="note">
+            <p>It is possible to add information such as the title of the programme using [[TTML2]] constructs.</p>
+            <pre class="example"
+              data-include="examples/metadata-TTML2.xml"
+              data-include-format="text">
+            </pre>
+          </div>
+          <div class="note">
+            <p>It is possible to add workflow-specific information using a foreign namespace.
+              In the following example, a fictitious namespace <code>vendorm</code> from an "example vendor" is used
+              to provide document-level information not defined by DAPT.</p>
+            <pre class="example"
+              data-include="examples/metadata-proprietary.xml"
+              data-include-format="text">
+            </pre>
+          </div>
+          
+          <div class="advisement">
+            <strong>It is strongly recommended not to place data
+            whose semantics depend on the contents of the document
+            within <code>&lt;metadata&gt;</code> elements.</strong>
+            <p>Such data can be invalidated by <a>transformation processors</a> that
+            modify the contents of the document but preserve metadata
+            while being unaware of their semantics.
+            </p>
+          </div>
+
+          <section class="informative">
+            <h5>Defining and using foreign vocabulary that is not metadata</h5>
+            <p>If <a>foreign vocabulary</a> is included in locations other than <code>&lt;metadata&gt;</code> elements
+              it will be pruned by <a>transformation processors</a> that do not support features associated with that vocabulary,
+              as required in <a href="#unrecognised-elements-and-attributes"></a>.</p>
+            <p>A mechanism is provided to prevent such pruning, and to define semantics for such <a>foreign vocabulary</a>,
+              allowing it to be located outside a <code>&lt;metadata&gt;</code> element without being pruned,
+              and to indicate content and processor conformance:</p>
+            <ol>
+              <li>Define a profile including a feature definition for that semantic and vocabulary,
+            with a profile designator.</li>
+              <li>Signal document conformance to that profile using the <a href="#ttp-contentprofiles"></a></li>
+            </ol>
+            <p>This allows processors that support the feature to process the vocabulary
+              in whatever way is appropriate, to avoid pruning it,
+              and allows processors that do not support the feature to take
+              appropriate action, for example warning users that some functionality may be lost.</p>
+            </section>
         </section> <!-- Proprietary Metadata -->
   
       </section>
@@ -1775,7 +1927,7 @@ daptm:eventType : string
         <p>
           The following namespaces (see [[xml-names]]) are used in this specification:
         </p>
-        <table class="simple">
+        <table class="data">
           <thead>
             <tr>
               <th>Name</th>
@@ -1833,7 +1985,8 @@ daptm:eventType : string
           The namespace prefix values defined above are for convenience and <a>DAPT Documents</a> MAY use any prefix value that conforms to [[xml-names]].
         </p>
         <p>
-          The namespaces defined by this proposal document are mutable [[namespaceState]]; all undefined names in these namespaces are reserved for future standardization by the W3C.
+          The namespaces defined by this specification are mutable as described in [[namespaceState]];
+          all undefined names in these namespaces are reserved for future standardization by the W3C.
         </p>
       </section>
       <section>
@@ -1844,11 +1997,11 @@ daptm:eventType : string
           provides the media timeline and is the source of the <a>main programme audio</a>,
           and any visual timing references needed when adjusting timings relevant to the video image,
           such as for lip synchronization.</p>
-          <div class="example note">
-          <p>A <a>DAPT document</a> can identify the programme acting
-          as the <a>Related Media Object</a> using metadata. For example, it is possible
-          to use the <code>&lt;ebuttm:sourceMediaIdentifier&gt;</code> element defined in [[EBU-TT-3390]].</p>
-          <pre class="xml" data-include="examples/sourceMediaIdentifier.xml" data-include-format="text"></pre>
+          <div class="note">
+            <p>A <a>DAPT document</a> can identify the programme acting
+            as the <a>Related Media Object</a> using metadata. For example, it is possible
+            to use the <code>&lt;ebuttm:sourceMediaIdentifier&gt;</code> element defined in [[EBU-TT-3390]].</p>
+            <pre class="xml example" data-include="examples/sourceMediaIdentifier.xml" data-include-format="text"></pre>
           </div>
 
       </section>
@@ -1885,30 +2038,34 @@ daptm:eventType : string
       </section>
       <section>
         <h3>Profile Signaling</h3>
-        This section defines how a TTML <a>Document Instance</a> signals that it is a <a>DAPT Document</a>
+        This section defines how a TTML
+        <dfn data-cite="TTML2#terms-document-instance">Document Instance</dfn>
+        signals that it is a <a>DAPT Document</a>
         and how it signals any processing requirements that apply.
         See also <a href="#conformance-of-dapt-documents"></a>, which defines how to
         establish that a <a>DAPT Document</a> conforms to this specification.
 
         <section>
-          <h4>Profile Designator</h4>
+          <h4>Profile Designators</h4>
           <p>This profile is associated with the following profile designators:</p>
-          <table class="simple">
+          <table class="data">
             <thead>
               <tr>
                 <th>Profile Name</th>
-    
+                <th>Profile type</th>
                 <th>Profile Designator</th>
               </tr>
             </thead>
     
             <tbody>
               <tr>
-                <td><dfn data-dfn-type="dfn">DAPT 1.0 Content Profile</dfn></td>
+                <td><dfn data-dfn-type="dfn" class="export">DAPT 1.0 Content Profile</dfn></td>
+                <td><a>content profile</a></td>
                 <td><code>http://www.w3.org/ns/ttml/profile/dapt1.0/content</code></td>
               </tr>
               <tr>
-                <td><dfn data-dfn-type="dfn">DAPT 1.0 Processor Profile</dfn></td>
+                <td><dfn data-dfn-type="dfn" class="export">DAPT 1.0 Processor Profile</dfn></td>
+                <td><a>processor profile</a></td>
                 <td><code>http://www.w3.org/ns/ttml/profile/dapt1.0/processor</code></td>
               </tr>
             </tbody>
@@ -1919,11 +2076,17 @@ daptm:eventType : string
           <h4><code>ttp:contentProfiles</code></h4>
           <p>The <dfn data-cite="TTML2#profile-attribute-contentProfiles"><code>ttp:contentProfiles</code></dfn> attribute
             is used to declare the [[TTML2]] profiles to which the document conforms.</p>
-          <p>TTML documents representing DAPT Scripts MUST specify a <a><code>ttp:contentProfiles</code></a> attribute
-            on the <code>&lt;tt&gt;</code> element including one value equal to the
-            <a>DAPT 1.0 Content Profile</a> designator.
+          <p><a>DAPT Documents</a> MUST specify a <a><code>ttp:contentProfiles</code></a> attribute
+            on the <code>&lt;tt&gt;</code> element including at least one value equal to a
+            <a>content profile</a> designator specified at <a href="#profile-designators"></a>.
             Other values MAY be present to declare conformance to other profiles of [[TTML2]],
             and MAY include profile designators in proprietary namespaces.</p>
+          <p>It is an error for a <a>DAPT Document</a> to signal conformance to a
+            <a>content profile</a> to which it does not conform.</p>
+          <p><a>Transformation processors</a> MUST NOT include values within the
+            <a><code>ttp:contentProfiles</code></a> attribute
+            associated with profiles that they (the processors) do not support;
+            by definition they cannot verify conformance of the content to those profiles.</p>
         </section>
 
         <section>
@@ -1931,7 +2094,7 @@ daptm:eventType : string
           <p>The <dfn data-cite="TTML2#profile-attribute-profile"><code>ttp:profile</code></dfn> attribute
             is a mechanism within [[?TTML1]] for declaring the processing requirements for a <a>Document Instance</a>.
             It has effectively been superceded in [[TTML2]] by <a><code>ttp:processorProfiles</code></a>.</p>
-          <p>TTML documents representing DAPT Scripts MUST NOT specify a <code>ttp:profile</code> attribute
+          <p><a>DAPT Documents</a> MUST NOT specify a <code>ttp:profile</code> attribute
             on the <code>&lt;tt&gt;</code> element.</p>
         </section>
 
@@ -1939,10 +2102,10 @@ daptm:eventType : string
           <h4><code>ttp:processorProfiles</code></h4>
           <p>The <dfn data-cite="TTML2#profile-attribute-processorProfiles"><code>ttp:processorProfiles</code></dfn> attribute
             is used to declare the processing requirements for a <a>Document Instance</a>.</p>
-          <p>TTML documents representing DAPT Scripts MAY specify a <a><code>ttp:processorProfiles</code></a> attribute
+          <p><a>DAPT Documents</a> MAY specify a <a><code>ttp:processorProfiles</code></a> attribute
             on the <code>&lt;tt&gt;</code> element.
-            If present, the <a><code>ttp:processorProfiles</code></a> attribute MUST include one value equal to
-            the designator of the <a>DAPT 1.0 Processor Profile</a>.
+            If present, the <a><code>ttp:processorProfiles</code></a> attribute MUST include at least one value equal to a
+            <a>processor profile</a> designator specified at <a href="#profile-designators"></a>.
             Other values MAY be present to declare additional processing constraints, 
             and MAY include profile designators in proprietary namespaces.</p>
           <p class="note">The <a><code>ttp:processorProfiles</code></a> attribute can be used
@@ -1970,7 +2133,7 @@ daptm:eventType : string
             Those profile-related features are listed within <a href="#profiles"></a> as being optional. 
             They MAY be implemented in processors
             and their associated vocabulary
-            MAY be present in <a>Document Instances</a>.
+            MAY be present in <a>DAPT Documents</a>.
           </p>
           <p class="note">Unless processor support for these features and vocabulary has been
             arranged (using an out-of-band protocol), the vocabulary is not expected to be present.</p>
@@ -2128,6 +2291,220 @@ daptm:eventType : string
 
     </section> <!-- Profile Constraints -->
 
+    <section id="ttml-to-data-model">
+      <h2>Mapping from TTML to the DAPT Data Model</h2>
+      <p><a href="#data-model"></a> defines how objects and properties of the DAPT data model are represented in [[TTML2]], i.e. in a <a>DAPT Document</a>.
+        However, a DAPT data model instance can be represented by multiple [[TTML2]] <a>document instances</a>.</p>
+      <p>For example, <a href="#data-model"></a> does not mandate that a <code>&lt;div&gt;</code> element representing a <a>Script Event</a> be
+        a direct child of the <code>&lt;body&gt;</code> element.
+        That <code>&lt;div&gt;</code> element could be nested in another <code>&lt;div&gt;</code> element.
+        Therefore, it is possible to serialize the objects and properties of a <a>DAPT Script</a> into various <a>DAPT Documents</a>.
+        This section defines how to interoperably and unambiguously reconstruct a DAPT model instance from a <a>DAPT Document</a>.</p>
+      <p class="note">DAPT does not define a complete serialization of the DAPT data model for extensibility reasons,
+        to allow future versions to do so if needed.
+        Additionally, a <a>DAPT Document</a> can contain elements or attributes that
+        are not mentioned in the representations of DAPT objects or properties.
+        This could be because it has been generated by a processor conformant to some future version of DAPT,
+        or through a generic [[TTML2]] process,
+        or because it uses optional features, for example to add styling or layout.
+        This section defines how to process those elements or attributes.</p>
+      <p class="note">It is also possible to process <a>DAPT Documents</a> using generic [[TTML2]] processors,
+        which do not necessarily map the documents to the DAPT data model.
+        For example a generic TTML2 <a>presentation processor</a> could render an audio mix
+        based on a DAPT document without needing to model Script Events <i>per se</i>.
+        In that case, this section can be ignored.</p>
+      <section class="informative">
+        <h3>Early identification of non-conformant documents</h3>
+        <p><em>Normative provisions relating to this section are defined in [[TTML2]].</em></p>
+        <p>Since it is a requirement of DAPT that <a>DAPT Documents</a> include a
+        <code>ttp:contentProfiles</code> attribute on the root element,
+        and that the attribute includes a DAPT <a>content profile</a> designator,
+        as specified at <a href="#ttp-contentprofiles"></a>,
+        it follows that any TTML document that does not include such an attribute,
+        or does not include such a profile designator,
+        can be considered not to be a <a>DAPT Document</a>;
+        therefore a processor requiring strict adherence to DAPT could stop processing
+        such a document.</p>
+      </section>
+
+      <section>
+        <h3>Not supporting features excluded by the content profile</h3>
+        <p>A processor that takes as its input a <a>DAPT document</a> that
+          contains vocabulary relating to features that it does support,
+          but where support for those features is excluded from the content profiles
+          to which the document claims conformance, SHOULD NOT implement
+          those features in the context of that document.</p>
+      </section>
+      <section>
+        <h3>Handling <code>&lt;div&gt;</code> and <code>&lt;p&gt;</code> elements</h3>
+        <p>[[TTML2]] allows <code>&lt;div&gt;</code> elements to contain any combination of
+          <code>&lt;div&gt;</code> elements and <code>&lt;p&gt;</code> elements.
+          The DAPT data model describes how each <a>Script Event</a> is represented by
+          a <code>&lt;div&gt;</code> element that contains zero or more <code>&lt;p&gt;</code> elements.
+          It also permits other intermediate <code>&lt;div&gt;</code> elements in the path between
+          the <code>&lt;body&gt;</code> element and those <a>Script Event</a> <code>&lt;div&gt;</code> elements.
+          In addition, attributes not corresponding to properties in the DAPT data model are permitted.</p>
+        <p>This gives rise to possibilities such as:</p>
+        <ul>
+          <li><code>&lt;div&gt;</code> elements that contain children that are not <a>Text</a> objects,
+            for example other <code>&lt;div&gt;</code> elements or <code>&lt;metadata&gt;</code> elements;</li>
+          <li><code>&lt;div&gt;</code> elements that do not have attributes required for <a>Script Events</a>, like <code>xml:id</code>;</li>
+          <li><code>&lt;div&gt;</code> elements that have attributes absent from the DAPT data model for <a>Script Events</a>,
+            like <code>xml:space</code>;</li>
+          <li><code>&lt;p&gt;</code> elements whose parent <code>&lt;div&gt;</code> element does not appear to be a <a>Script Event</a>.</li>
+        </ul>
+
+        <p>The following processing rules resolve these cases.</p>
+        <p>Rules for identifying <a>Script Events</a>:</p>
+        <ol>
+          <li>A <code>&lt;div&gt;</code> element that has no <code>&lt;div&gt;</code> element children
+            and includes the TTML representations of all the mandatory properties of a <a>Script Event</a>
+            MUST be mapped to a <a>Script Event</a>,
+            such as having a valid <code>xml:id</code>
+            representing the <a>Script Event Identifier</a>,
+            even if it also contains additional <a>unrecognised vocabulary</a>;</li>
+          <li>A <code>&lt;div&gt;</code> element that contains any <code>&lt;div&gt;</code> element children
+            MUST NOT be mapped to a <a>Script Event</a>;
+            the processor instead MUST iterate through those <code>&lt;div&gt;</code> element children
+            (recursively, in a depth-first traversal) and consider if each one meets the requirements of a <a>Script Event</a>;</li>
+          <li>Any remaining unmapped <code>&lt;div&gt;</code> elements MUST NOT be mapped to a <a>Script Event</a>.</li>
+        </ol>
+        
+        <p>Rules for identifying <a>Text</a> objects:</p>
+        <ol>
+          <li>A <code>&lt;p&gt;</code> element that is a child of a <code>&lt;div&gt;</code> element
+            that maps to a <a>Script Event</a> MUST be mapped to a <a>Text</a> object.</li>
+          <li>A <code>&lt;p&gt;</code> element that is not a child of a <code>&lt;div&gt;</code> element
+            that maps to a <a>Script Event</a> MUST NOT be mapped to a <a>Text</a> object.</li>
+        </ol>
+
+        <p class="note">Future versions of DAPT could include features that use these
+          structural possibilities differently,
+          and therefore define other processing rules that are mutually exclusive
+          with the rules defined here.
+        </p>
+
+        <aside class="example">This example demonstrates the above possibilities,
+          and the application of the rules:
+          <pre
+            data-include="examples/non-dapt-divs.xml"
+            data-include-format="text">
+          </pre>
+
+          <p>The result of applying the above rules to this example is:</p>
+          <ul>
+            <li><code>d1</code> is a <a>Script Event</a> and its child <code>&lt;p&gt;</code> element is a <a>Text</a> object;</li>
+            <li>The <code>&lt;div&gt;</code> element between <code>d1</code> and
+              <code>d2</code>'s parent <code>&lt;div&gt;</code> element is not a <a>Script Event</a>
+              and its child <code>&lt;p&gt;</code> element is not a <a>Text</a> object;</li>
+            <li><code>d2</code> is a <a>Script Event</a> and its parent <code>&lt;div&gt;</code> element is not;</li>
+            <li><code>d3</code> is a <a>Script Event</a> and its parent and its grandparent <code>&lt;div&gt;</code> elements are not;</li>
+            <li><code>d4_1</code> is not a <a>Script Event</a> and its child <code>&lt;p&gt;</code> element is not a <a>Text</a> object;</li>
+            <li><code>d4_2</code> is a <a>Script Event</a>.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="informative">
+        <h3>Using computed attribute values</h3>
+        <p><em>Some normative provisions relating to this section are defined in [[TTML2]].</em></p>
+        <p>Some attributes have semantics for computing their value that depend on the computed value of
+          the attribute on some other element.
+          For example if the <code>xml:lang</code> attribute is not specified on an element then its computed
+          value is the computed value of the same attribute on the element's parent.</p>
+        <p>Or, for another example, the computed times of an element in a DAPT document are relative
+          to the begin time of its parent element. If a <code>&lt;div&gt;</code> element specifies a <code>begin</code>
+          attribute, and that element does not correspond to a <a>Script Event</a>, then the computed times
+          of its descendant <code>&lt;div&gt;</code> elements that do correspond to <a>Script Events</a>
+          are different to what they would be if that intermediate <code>&lt;div&gt;</code> element's <code>begin</code>
+          time were ignored.</p>
+        <p class="ednote">MAYBE REMOVE Or, also for example, if styling is used in a TTML document, the computed value of the <code>tts:fontSize</code>
+          attribute when expressed as a percentage is relative to the computed value of the same attribute
+          on the element's parent.
+          Furthermore, in this example, the algorithm for generating ISDs (Intermediate Synchronic Documents)
+          involves reparenting some elements. The computed value that applies is the one <em>before</em>
+          rehoming has taken place.</p>
+        <p>Considering this situation more generally,
+          it is possible that, within a DAPT document, there can be TTML elements that
+          do not directly correspond to objects in the DAPT data model,
+          and those elements can specify attributes
+          that affect the computation of attribute values that apply to elements that do correspond to
+          objects in the DAPT data model.</p>
+        <p>The semantics defined by [[TTML2]] or, for vocabulary defined herein, this specification, take precedence in this scenario.
+          Implementations MUST compute attribute values based on the contents of the <a>document instance</a> <em>before</em>
+          applying those computed values to DAPT data model objects.
+        </p>
+        <aside class="example">
+          <p>This example demonstrates these possibilities,
+            which a processor might need to handle:</p>
+          <pre
+            data-include="examples/non-dapt-div-with-begin-and-lang.xml"
+            data-include-format="text">
+          </pre>
+          <p>Here, the <code>&lt;div&gt;</code> elements that correspond to <a>Script Events</a>,
+            which have ids <code>d1</code> and <code>d2</code>,
+            are otherwise (apart from their identifiers) identical,
+            yet their language and <a>Begin</a> properties have different computed values,
+            due to the attributes specified on the <code>&lt;div&gt;</code> element parent of <code>d2</code>.</p>
+        </aside>
+        <!-- deliberate duplication of the statement before the example follows, for emphasis: -->
+        <p>If an implementation internally creates DAPT data model objects,
+          such as the <a>Script Events</a> shown in the example above,
+          it is important for interoperability that they use the computed values.</p>
+      </section>
+
+      <section class="informative">
+        <h3>Considerations for transformation and validation processors</h3>
+
+        <section>
+          <h3>Retaining unrecognised vocabulary</h3>
+          <p>As per <a href="#unrecognised-elements-and-attributes"></a>,
+            implementers of DAPT processors are encouraged to maintain <a>unrecognised vocabulary</a>
+            within <code>&lt;metadata&gt;</code> elements in <a>DAPT Documents</a>.
+            In practice it is possible that an implementation which both inputs DAPT documents
+            and outputs DAPT documents might modify the input
+            document structure and contents, and while doing so,
+            effectively prune those entities with <a>unrecognised vocabulary</a> from the output document.</p>
+        </section>
+
+        <section>
+          <h3>Validation warnings and errors</h3>
+          <p><em>Normative provisions relating to this section are defined in [[TTML2]].</em></p>
+          <p>[[TTML2]] defines a <dfn data-cite="TTML2#terms-validation-processor">validation processor</dfn>,
+            a class of implementation whose purpose is
+            to assess a <a>document instance</a> and decide if it is valid or not.
+            Typically this would be used within a processing workflow
+            to check that documents are acceptable for onward usage.
+            A real world example would likely not return simply "good" or "bad",
+            but also output informational, warning and error messages
+            describing unusual, unexpected or problematic contents in the input document.
+          </p>
+          <p>When implementing a <a>validation processor</a> for a <a>DAPT document</a>,
+            strict [[TTML2]] validation processing rules can be applied.
+            Doing this involves checking for the presence and semantic validity of
+            syntax and content associated with required or optional features defined in the
+            profile, and checking for the absence of syntax associated with prohibited features.
+          </p>
+          <p>The [[TTML2]] mechanism for dealing with vocabulary in unrecognised namespaces is
+            to prune it prior to validation.
+            This approach can be used; additionally it could be reasonable for
+            an implementation to report as information those attributes and elements
+            that have been pruned.
+          </p>
+          <p class="note">The term "vocabulary" here refers to XML elements and attributes.</p>
+          <p>Validation warnings could be issued when unsupported or deprecated
+            vocabulary in recognised namespaces is encountered after pruning,
+            or when supported vocabulary contains unexpected but not invalid content,
+            but in these scenarios errors are not expected.
+          </p>
+          <p>Validation errors are expected when prohibited vocabulary is present,
+            or when semantically invalid content within permitted vocabulary
+            is encountered.
+          </p>
+        </section>
+      </section>
+  </section> <!-- #ttml-to-data-model -->
+
   <section id="conformance"><!-- keep section id, not use h2 -->
     <p>[[TTML2]] specifies a formal language for expressing document and processor requirements,
       within the <a href="https://www.w3.org/TR/ttml2/#vocabulary-profiling">Profiling</a> sub-system.
@@ -2145,15 +2522,22 @@ daptm:eventType : string
       profile processing semantics can use the TTML2 profiles defined in <a href="#profiles"></a>
       directly to determine if it is capable of processing a <a>DAPT document</a>.
     </p>
+
     <section>
       <h3>Conformance of <a>DAPT Documents</a></h3>
-      <p>Conformant <a>DAPT Documents</a> are [[TTML2]] <a>Document Instances</a> that
+      <p>Conformant <a>DAPT Documents</a> are [[TTML2]] <a>timed text content document instances</a> that
         conform to the normative provisions of this specification.
         Those provisions are expressed using the 
         <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[TTML2]] in the
         <dfn data-cite="ttml2#terms-content-profile">content profile</dfn> defined
         in <a href="#profiles"></a>.</p>
+      <p class="note">
+        <a>DAPT Documents</a> remain subject to the content conformance requirements specified at Section 3.1 of [[TTML2]].
+        In particular, a <a>DAPT Document</a> can contain <a>foreign vocabulary</a>,
+        since such elements and attributes are pruned by the algorithm at Section 4 of [[TTML2]] prior to evaluating content conformance.
+      </p>
     </section> <!-- content-profile-conformance-section -->
+
     <section>
       <h3>Conformance of DAPT Processors</h3>
       <p>Conformant DAPT Processors are [[TTML2]]
@@ -2282,7 +2666,7 @@ daptm:eventType : string
       and any extensions or constraints.
     </p>
     <p>
-      A <dfn data-cite="TTML2#terms-document-instance">Document Instance</dfn>
+      A <dfn data-cite="TTML2#terms-timed-text-content-document-instance">timed text content document instance</dfn>
       that conforms to the <a>content profile</a> defined herein:
     </p>
     <ul style="list-style-type:disc">
@@ -2292,8 +2676,8 @@ daptm:eventType : string
       <li>MUST NOT include any vocabulary, syntax or attribute value associated with a <a>feature</a> or <a>extension</a> whose disposition is prohibited in the profile.</li>
     </ul>
     <p class="note">
-      A <a>Document Instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]],
-      and hence a <a>Document Instance</a> that conforms to a profile defined herein is also a conforming TTML2 <a>Document Instance</a>.
+      A <a>timed text content document instance</a>, by definition, satisfies the requirements of Section 3.1 at [[TTML2]],
+      and hence a <a>timed text content document instance</a> that conforms to a profile defined herein is also a conforming TTML2 <a>Document Instance</a>.
     </p>
     <p>
       A <dfn data-cite="TTML2#terms-presentation-processor">Presentation processor</dfn> that conforms to the <a>processor profile</a> defined in this specification:
@@ -2368,7 +2752,7 @@ daptm:eventType : string
     </p>
     <p class="note">
       This document does not specify <a>presentation processor</a> or <a>transformation processor</a> behavior
-      when processing or transforming a non-conformant <a>Document Instance</a>.
+      when processing or transforming a non-conformant <a>timed text content document instance</a>.
     </p>
     <p class="note">
       The permitted and prohibited dispositions do not refer to the specification of
@@ -2392,7 +2776,7 @@ daptm:eventType : string
       </p>
       <p class="ednote">Editorial task: go through this list of <a>features</a> and check the disposition of each.
         There should be no prohibited features that are permitted in IMSC.</p>
-      <table class="simple" id="table-features-and-extensions">
+      <table class="data" id="table-features-and-extensions">
         <thead>
           <tr>
             <th style="width:20%; text-align:center;">Feature or Extension</th>
@@ -2813,6 +3197,13 @@ daptm:eventType : string
             </td>
           </tr>
           <tr>
+            <td><a href="#scripteventmapping"><code>#scriptEventMapping</code></a></td>
+            <td><span class="optional label">optional</span></td>
+            <td>
+              This is the profile expression of <a href="#handling-div-and-p-elements"></a>.
+            </td>
+          </tr>
+          <tr>
             <td><a href="#scripttype-root"><code>#scriptType-root</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
@@ -2877,7 +3268,7 @@ daptm:eventType : string
           using the profile mechanism of [[TTML2]].
           It can be used by a validating processor that supports the DAPT Processor Profile
           to validate a <a>DAPT Document</a>.</p>
-        <p>There is no requirement to include the DAPT Content Profile within a <a>Document Instance</a>.</p>
+        <p>There is no requirement to include the DAPT Content Profile within a <a>DAPT Document</a>.</p>
         <pre class="xml" data-include="profiles/dapt-content-profile.xml" data-include-format="text"></pre>
       </section>
 
@@ -2887,7 +3278,7 @@ daptm:eventType : string
           using the profile mechanism of [[TTML2]].
           A processor that supports the required features and extensions of the DAPT Processor Profile
           can, minimally, process all permitted features within a <a>DAPT Document</a>.</p>
-        <p>There is no requirement to include the DAPT Processor Profile within a <a>Document Instance</a>.</p>
+        <p>There is no requirement to include the DAPT Processor Profile within a <a>DAPT Document</a>.</p>
         <pre class="xml" data-include="profiles/dapt-processor-profile.xml" data-include-format="text"></pre>
     </section>
 
@@ -2981,11 +3372,23 @@ daptm:eventType : string
 
         <p>An example of a <a>transformation processor</a> that supports this extension is
           a validating processor that reports an error if the extension is required by a
-          <a>content profile</a> but the <a>Document Instance</a> claiming
+          <a>content profile</a> but the <a>timed text content document instance</a> claiming
           conformance to that profile either does not have a
           <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element
           or has one whose value is not conformant with the requirements defined herein.</p>
+      </section>
 
+      <section>
+        <h3>#scriptEventMapping</h3>
+        <p>A <a>transformation processor</a> supports the <code>#scriptEventMapping</code> extension
+          if, when mapping a <a>DAPT document</a> into an internal representation of the DAPT data model,
+          it implements the processing requirements specified at <a href="#handling-div-and-p-elements"></a>.</p>
+
+        <p class="note">No support for the <code>#scriptEventMapping</code> extension is
+          required for <a>presentation processors</a> because there are no presentation semantics that
+          either require, or depend upon, mapping a <a>DAPT document</a> into an internal representation
+          of the DAPT data model. A presentation processor that does perform such a mapping can also be
+          considered to be a <a>transformation processor</a> for the purpose of this extension.</p>
       </section>
 
       <section>
@@ -3003,7 +3406,7 @@ daptm:eventType : string
           when the SHOULD requirements defined in <a href="#script-type"></a> for a
           <a>DAPT Document</a>'s <a><code>daptm:scriptType</code></a> are not met,
           and that reports an error if the extension is required by a
-          <a>content profile</a> but the <a>Document Instance</a> claiming
+          <a>content profile</a> but the <a>timed text content document instance</a> claiming
           conformance to that profile either does not have a
           <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element
           or has one whose value is not defined herein.</p>
