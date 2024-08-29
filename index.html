@@ -1824,12 +1824,12 @@ daptm:eventType : string
             authored for an earlier version with similar or identical behaviour to a DAPT processor
             targeted at that earlier version.</li>
         </ul>
-        <p>A <a>DAPT document</a> that conforms to a future version of the specification could specify
-          conformance to multiple DAPT <a>content profiles</a>.</p>
+        <p>A <a>DAPT document</a> that conforms to more than one version of
+          the specification could specify conformance to multiple DAPT <a>content profiles</a>.</p>
         <section id="unrecognised-elements-and-attributes">
           <h4>Unrecognised vocabulary</h4>
           <p><dfn>Unrecognised vocabulary</dfn> is the set of elements and attributes that are
-            not associated with <a>features</a> that the processor supports.</p>
+            not associated with <a href="#disposition-of-features-and-extensions">features</a> that the processor supports.</p>
           <p>A <a>transformation processor</a> MUST prune <a>unrecognised vocabulary</a> that is
             neither an attribute nor a descendant of
             a <code>&lt;metadata&gt;</code> element.</p>
@@ -2293,13 +2293,13 @@ daptm:eventType : string
 
     <section id="ttml-to-data-model">
       <h2>Mapping from TTML to the DAPT Data Model</h2>
-      <p><a href="#data-model"></a> defines how objects and properties of the DAPT data model are represented in TTML, i.e. in a <a>DAPT Document</a>.
-        However, the set of possible representations is not fully specified.</p>
+      <p><a href="#data-model"></a> defines how objects and properties of the DAPT data model are represented in [[TTML2]], i.e. in a <a>DAPT Document</a>.
+        However, a DAPT data model instance can be represented by multiple [[TTML2]] <a>document instances</a>.</p>
       <p>For example, <a href="#data-model"></a> does not mandate that a <code>&lt;div&gt;</code> element representing a <a>Script Event</a> be
         a direct child of the <code>&lt;body&gt;</code> element.
         That <code>&lt;div&gt;</code> element could be nested in another <code>&lt;div&gt;</code> element.
         Therefore, it is possible to serialize the objects and properties of a <a>DAPT Script</a> into various <a>DAPT Documents</a>.
-        This section defines how to interoperably and unambiguously reconstruct a DAPT model from a <a>DAPT Document</a>.</p>
+        This section defines how to interoperably and unambiguously reconstruct a DAPT model instance from a <a>DAPT Document</a>.</p>
       <p class="note">DAPT does not define a complete serialization of the DAPT data model for extensibility reasons,
         to allow future versions to do so if needed.
         Additionally, a <a>DAPT Document</a> can contain elements or attributes that
@@ -2366,7 +2366,7 @@ daptm:eventType : string
           <li>A <code>&lt;div&gt;</code> element that contains any <code>&lt;div&gt;</code> element children
             MUST NOT be mapped to a <a>Script Event</a>;
             the processor instead MUST iterate through those <code>&lt;div&gt;</code> element children
-            (recursively) and consider if each one meets the requirements of a <a>Script Event</a>;</li>
+            (recursively, in a depth-first traversal) and consider if each one meets the requirements of a <a>Script Event</a>;</li>
           <li>Any remaining unmapped <code>&lt;div&gt;</code> elements MUST NOT be mapped to a <a>Script Event</a>.</li>
         </ol>
         
