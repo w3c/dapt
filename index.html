@@ -3197,6 +3197,14 @@ daptm:eventType : string
             </td>
           </tr>
           <tr>
+            <td><a href="#scripteventgrouping"><code>#scriptEventGrouping</code></a></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td>
+              This is the profile expression of the permission to nest
+              <code>&lt;div&gt;</code> elements described in <a href="#script-event"></a>.
+            </td>
+          </tr>
+          <tr>
             <td><a href="#scripteventmapping"><code>#scriptEventMapping</code></a></td>
             <td><span class="optional label">optional</span></td>
             <td>
@@ -3376,6 +3384,20 @@ daptm:eventType : string
           conformance to that profile either does not have a
           <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element
           or has one whose value is not conformant with the requirements defined herein.</p>
+      </section>
+
+      <section>
+        <h3>#scriptEventGrouping</h3>
+        <p>A <a>transformation processor</a> supports the <code>#scriptEventGrouping</code> extension if
+          it recognises and is capable of transforming <code>&lt;div&gt;</code> elements
+          that contain <code>&lt;div&gt;</code> elements.</p>
+  
+        <p class="note">Support for the <code>#scriptEventGrouping</code> extension does not imply
+          support for the <code>#scriptEventMapping</code> extension.</p>
+
+        <p>A <a>presentation processor</a> supports the <code>#scriptEventGrouping</code> extension if
+          it implements presentation semantic support for <code>&lt;div&gt;</code> elements
+          that contain <code>&lt;div&gt;</code> elements.</p>
       </section>
 
       <section>
