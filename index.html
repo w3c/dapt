@@ -1092,8 +1092,40 @@
   &lt;/div&gt;
 &lt;/body&gt;
 ...
-
             </pre>
+            <div class="note">
+              <p>When converting legacy formats that store the equivalent of each Script Event,
+                for example a <a>description</a>, with SMPTE timecodes,
+                but where the timecode corresponding to the beginning of the related media is
+                not stored, and is not immediately available, the <a>Media Zero Timecode</a>
+                can be used to defer synchronisation with the media until
+                that media begin timecode is known.
+              </p>
+              <p>One approach to resolving this conundrum using <a>Media Zero Timecode</a>
+                is as follows, assuming that a legacy source file is being converted
+                to a <a>DAPT Document</a> and relates to media with continuous timecode:
+              </p>
+              <ul>
+                <li>Find the earliest begin timecode for an item in the source file
+                  that will be mapped to a <a>Script Event</a>;</li>
+                <li>Create a <a>DAPT Document</a> with
+                  a <a>Media Zero Timecode</a> set to that earliest begin timecode;</li>
+                <li>For each relevant item in the source file,
+                  create a <a>Script Event</a> with appropriate
+                  <a>Begin</a> and <a>End</a> times obtained by converting
+                  the source file's begin and end timecodes to media time,
+                  relative to that <a>Media Zero Timecode</a>,
+                  basing elapsed time on the applicable frame rate;</li>
+                <li>If using frame-based media time expressions,
+                  set the <code>ttp:frameRate</code> attribute of
+                  the <code>&lt;tt&gt;</code> element to the applicable frame rate;
+                </li>
+              </ul>
+              <p>When the related media's timecode is later dicovered,
+                the times of the <a>Script Events</a> can be adjusted so that
+                the zero points are coincident.
+              </p>
+            </div>
           </section>
         </section>
       </section>
