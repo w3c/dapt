@@ -1066,7 +1066,7 @@
               zero seconds on the media timeline.</p>
             <p>A <a>Legacy Metadata</a> MAY contain zero or one <a>Media Zero Timecode</a> objects.</p>
             <p>The <a>Media Zero Timecode</a> object is represented in a <a>DAPT Document</a> by
-              a <code>&lt;daptm:mediaZeroTimecode&gt;</code> element present at the path
+              a <code>&lt;</code><dfn><code>daptm:mediaZeroTimecode</code></dfn><code>&gt;</code> element present at the path
               <code>/tt/head/metadata/daptm:legacy/daptm:mediaZeroTimecode</code>,
               with the following constraints:</p>
             <ul>
@@ -3376,6 +3376,13 @@ daptm:descType : string
             </td>
           </tr>
           <tr>
+            <td><a href="#mediazerotimecode"><code>#mediaZeroTimecode</code></a></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td>
+              This is the profile expression of <a href="#media-zero-timecode"></a>.
+            </td>
+          </tr>
+          <tr>
             <td><a href="#onscreen"><code>#onScreen</code></a></td>
             <td><span class="permitted label">permitted</span></td>
             <td>
@@ -3552,6 +3559,15 @@ daptm:descType : string
         the <a><code>ttp:profile</code></a> attribute and
         processor profile inference semantics.
       </aside>
+      </section>
+
+      <section>
+        <h3>#mediaZeroTimecode</h3>
+        <p>A <a>transformation processor</a> supports the <code>#mediaZeroTimecode</code> extension if
+          it recognizes and is capable of transforming values of the
+          <code>&lt;</code><a><code>daptm:mediaZeroTimecode</code></a><code>&gt;</code> element.</p>
+  
+        <p>No <a>presentation processor</a> behaviour is defined for the <code>#mediaZeroTimecode</code> extension.</p>
       </section>
 
       <section>
