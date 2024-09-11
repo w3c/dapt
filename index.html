@@ -1034,6 +1034,68 @@
               </div>
             </section>
         </section>
+
+        <section>
+          <h4>Legacy Metadata</h4>
+          <p>In workflows that create <a>DAPT documents</a> by conversion from legacy formats,
+            there can be cases where data needs to be retained,
+            relating to the conversion process,
+            or parts of the conversion process that cannot easily be completed without
+            additional later steps.
+          </p>
+          <p>The optional <dfn>Legacy Metadata</dfn> object provides a location within
+            the <a>DAPT document</a> in which such data can be stored.
+            Those items of data can be those defined in this specification,
+            or proprietary extensions;
+            see also <a href="#proprietary-metadata-and-foreign-vocabulary"></a>.
+          </p>
+          <p>A <a>DAPT Script</a> MAY contain zero or one <a>Legacy Metadata</a> objects.</p>
+          <p>If a <a>Legacy Metadata</a> object is present, the <a>DAPT Document</a> MUST have
+            one <code>&lt;head&gt;</code> element child of the <code>&lt;tt&gt;</code> element,
+            and that <code>&lt;head&gt;</code> element MUST have
+            at least one <code>&lt;metadata&gt;</code> element child.</p>
+          <p>The <a>Legacy Metadata</a> is represented in a <a>DAPT Document</a> by
+            a <code>&lt;daptm:legacy&gt;</code> element present at the path
+            <code>/tt/head/metadata/daptm:legacy</code>.</p>
+
+          <section>
+            <h5>Media Zero Timecode</h5>
+            <p>The optional <dfn>Media Zero Timecode</dfn> allows a timecode value to be declared
+              that corresponds to the zero point on the media timeline,
+              that is, the time of a <a>Script Event</a> whose <a>Begin</a> is
+              zero seconds on the media timeline.</p>
+            <p>A <a>Legacy Metadata</a> MAY contain zero or one <a>Media Zero Timecode</a> objects.</p>
+            <p>The <a>Media Zero Timecode</a> object is represented in a <a>DAPT Document</a> by
+              a <code>&lt;daptm:mediaZeroTimecode&gt;</code> element present at the path
+              <code>/tt/head/metadata/daptm:legacy/daptm:mediaZeroTimecode</code>,
+              with the following constraints:</p>
+            <ul>
+              <li>The character content of the element must conform to a <code>clock-time</code>
+                with a <code>frames</code> component, as defined in <dfn data-cite="ttml2#timing-value-time-expression">&lt;time-expression&gt;</dfn>.</li>
+            </ul>
+            <p class="note">See also <a href="#ttp-framerate"></a>.
+              No mechanism is defined here for declaring a different frame rate for the <a>Media Zero Timecode</a>
+              than is used for other frame-based time expressions.
+            </p>
+            <pre class="example">
+...
+&lt;head&gt;
+  &lt;metadata&gt;
+    &lt;daptm:legacy&gt;
+      &lt;daptm:mediaZeroTimecode&gt;10:01:20:12&lt;/daptm:mediaZeroTimecode&gt;
+    &lt;/daptm:legacy&gt;
+  &lt;/metadata&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div xml:id="se1" begin="0s" end="1.8s"&gt;
+    &lt;!-- This script event was generated from a source whose begin timecode was 10:01:20:12 --&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+...
+
+            </pre>
+          </section>
+        </section>
       </section>
       <section>
         <h3>Character</h3>
