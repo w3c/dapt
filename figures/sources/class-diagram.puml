@@ -31,7 +31,7 @@ together {
         {field} {abstract} (optional) Begin [[[#dfn-begin]]]
         {field} {abstract} (optional) End [[[#dfn-end]]]
         {field} {abstract} (optional) Duration [[[#dfn-duration]]]
-        {field} (optional) Script Event Type [[[#dfn-script-event-type]]]
+        {field} {abstract} (optional) Represents [[[#sharedprop-represents]]]
         {field} (optional) On Screen [[[#on-screen]]]
     }
 
