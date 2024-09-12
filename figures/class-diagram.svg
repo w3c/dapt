@@ -75,7 +75,7 @@
                 xlink:title="#dfn-duration" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
                     font-size="16" font-style="italic" lengthAdjust="spacing" textLength="149" x="644" y="432.4538"
                     >(optional) Duration</text></a>
-            <a href="#sharedprop-represents" target="_top" title="#sharedprop-represents" xlink:actuate="onRequest"
+            <a href="#sharedprop-represents" target="_top" xlink:actuate="onRequest"
                 xlink:href="#sharedprop-represents" xlink:show="new" xlink:title="#sharedprop-represents" xlink:type="simple"><text
                     fill="#000000" font-family="sans-serif" font-size="16" font-style="italic" lengthAdjust="spacing"
                     textLength="166" x="644" y="459.2975">(optional) Represents</text></a>
