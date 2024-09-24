@@ -1,380 +1,390 @@
 <?xml version="1.0" encoding="us-ascii" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="1223px"
-    preserveAspectRatio="none" style="width:1211px;height:1223px;background:#FFFFFF;" version="1.1"
-    viewBox="0 0 1211 1223" width="1211px" zoomAndPan="magnify">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    height="1056px" preserveAspectRatio="none" style="width:1070px;height:1056px;background:#FFFFFF;" version="1.1"
+    viewBox="0 0 1070 1056" width="1070px" zoomAndPan="magnify">
     <defs/>
     <g>
         <!--class DAPTScript-->
         <g id="elem_DAPTScript">
-            <rect fill="#FFFFFF" height="152.2188" id="DAPTScript" rx="2.5" ry="2.5"
-                style="stroke:#000000;stroke-width:1.0;" width="274" x="438" y="12"/>
-            <a href="#dapt-script" target="_top" xlink:actuate="onRequest" xlink:href="#dapt-script" xlink:show="new"
-                xlink:title="#dapt-script" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="98" x="526" y="36.4688">DAPT
-                    Script</text></a>
-            <line style="stroke:#000000;stroke-width:1.0;" x1="439" x2="711" y1="48.8438" y2="48.8438"/>
-            <a href="#represents" target="_top" xlink:actuate="onRequest" xlink:href="#represents" xlink:show="new"
-                xlink:title="#represents" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" lengthAdjust="spacing" textLength="86" x="448" y="72.3125">Represents</text></a>
-            <a href="#script-type" target="_top" xlink:actuate="onRequest" xlink:href="#script-type" xlink:show="new"
-                xlink:title="#script-type" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" lengthAdjust="spacing" textLength="87" x="448" y="99.1563">Script Type</text></a>
-            <a href="#default-language" target="_top" xlink:actuate="onRequest" xlink:href="#default-language"
-                xlink:show="new" xlink:title="#default-language" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="138" x="448" y="126"
-                    >Default Language</text></a>
-            <a href="#text-language-source" target="_top" xlink:actuate="onRequest" xlink:href="#text-language-source"
-                xlink:show="new" xlink:title="#text-language-source" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="254" x="448" y="152.8438"
-                    >(optional) Text Language Source</text></a>
-        </g>
+                <rect codeLine="14" fill="#FFFFFF" height="152.2188" id="DAPTScript" rx="2.5" ry="2.5"
+                    style="stroke:#000000;stroke-width:1.0;" width="274" x="367" y="12"/>
+            <a href="#dapt-script" target="_top" xlink:actuate="onRequest" xlink:href="#dapt-script"
+                xlink:show="new" xlink:title="#dapt-script" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
+                    textLength="98" x="455" y="36.4688">DAPT Script</text></a>
+                <line style="stroke:#000000;stroke-width:1.0;" x1="368" x2="640" y1="48.8438" y2="48.8438"/>
+                <a href="#script-represents" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#script-represents" xlink:show="new" xlink:title="#script-represents"
+                    xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
+                        lengthAdjust="spacing" textLength="136" x="377" y="72.3125">Script Represents</text></a>
+                <a href="#script-type" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#script-type" xlink:show="new" xlink:title="#script-type" xlink:type="simple"><text
+                        fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="87"
+                        x="377" y="99.1563">Script Type</text></a>
+                <a href="#default-language" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#default-language" xlink:show="new" xlink:title="#default-language" xlink:type="simple"
+                        ><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing"
+                        textLength="138" x="377" y="126">Default Language</text></a>
+                <a href="#text-language-source" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#text-language-source" xlink:show="new" xlink:title="#text-language-source"
+                    xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
+                        lengthAdjust="spacing" textLength="254" x="377" y="152.8438">(optional) Text Language
+                        Source</text></a>
+            </g>
         <!--class Character-->
         <g id="elem_Character">
-            <rect fill="#FFFFFF" height="125.375" id="Character" rx="2.5" ry="2.5"
-                style="stroke:#000000;stroke-width:1.0;" width="220" x="296" y="331.61"/>
-            <a href="#character" target="_top" xlink:actuate="onRequest" xlink:href="#character" xlink:show="new"
-                xlink:title="#character" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="78" x="367" y="356.0788"
-                    >Character</text></a>
-            <line style="stroke:#000000;stroke-width:1.0;" x1="297" x2="515" y1="368.4538" y2="368.4538"/>
-            <a href="#dfn-character-identifier" target="_top" xlink:actuate="onRequest"
-                xlink:href="#dfn-character-identifier" xlink:show="new" xlink:title="#dfn-character-identifier"
-                xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing"
-                    textLength="153" x="306" y="391.9225">Character Identifier</text></a>
-            <a href="#dfn-character-name" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-character-name"
-                xlink:show="new" xlink:title="#dfn-character-name" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="45" x="306" y="418.7663"
-                    >Name</text></a>
-            <a href="#dfn-character-talent-name" target="_top" xlink:actuate="onRequest"
-                xlink:href="#dfn-character-talent-name" xlink:show="new" xlink:title="#dfn-character-talent-name"
-                xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing"
-                    textLength="179" x="306" y="445.61">(optional) Talent Name</text></a>
-        </g>
+                <rect codeLine="22" fill="#FFFFFF" height="125.375" id="Character" rx="2.5" ry="2.5"
+                    style="stroke:#000000;stroke-width:1.0;" width="220" x="248" y="284.42"/>
+            <a href="#character" target="_top" xlink:actuate="onRequest" xlink:href="#character"
+                xlink:show="new" xlink:title="#character" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
+                    textLength="78" x="319" y="308.8887">Character</text></a>
+                <line style="stroke:#000000;stroke-width:1.0;" x1="249" x2="467" y1="321.2637" y2="321.2637"/>
+                <a href="#dfn-character-identifier" target="_top"
+                    xlink:actuate="onRequest" xlink:href="#dfn-character-identifier" xlink:show="new"
+                    xlink:title="#dfn-character-identifier" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="153" x="258"
+                        y="344.7325">Character Identifier</text></a>
+                <a href="#dfn-character-name" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#dfn-character-name" xlink:show="new" xlink:title="#dfn-character-name"
+                    xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
+                        lengthAdjust="spacing" textLength="45" x="258" y="371.5762">Name</text></a>
+                <a href="#dfn-character-talent-name" target="_top"
+                    xlink:actuate="onRequest" xlink:href="#dfn-character-talent-name" xlink:show="new"
+                    xlink:title="#dfn-character-talent-name" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="179" x="258"
+                        y="398.42">(optional) Talent Name</text></a>
+            </g>
         <!--class ScriptEvent-->
         <g id="elem_ScriptEvent">
-            <rect fill="#FFFFFF" height="205.9063" id="ScriptEvent" rx="2.5" ry="2.5"
-                style="stroke:#000000;stroke-width:1.0;" width="220" x="634" y="291.61"/>
-            <a href="#script-event" target="_top" xlink:actuate="onRequest" xlink:href="#script-event" xlink:show="new"
-                xlink:title="#script-event" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="97" x="695.5" y="316.0788"
-                    >Script Event</text></a>
-            <line style="stroke:#000000;stroke-width:1.0;" x1="635" x2="853" y1="328.4538" y2="328.4538"/>
-            <a href="#dfn-script-event-identifier" target="_top" xlink:actuate="onRequest"
-                xlink:href="#dfn-script-event-identifier" xlink:show="new" xlink:title="#dfn-script-event-identifier"
-                xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing"
-                    textLength="169" x="644" y="351.9225">Script Event Identifier</text></a>
-            <a href="#dfn-begin" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-begin" xlink:show="new"
-                xlink:title="#dfn-begin" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" font-style="italic" lengthAdjust="spacing" textLength="123" x="644" y="378.7663"
-                    >(optional) Begin</text></a>
-            <a href="#dfn-end" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-end" xlink:show="new"
-                xlink:title="#dfn-end" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    font-style="italic" lengthAdjust="spacing" textLength="109" x="644" y="405.61">(optional)
-                End</text></a>
-            <a href="#dfn-duration" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-duration" xlink:show="new"
-                xlink:title="#dfn-duration" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" font-style="italic" lengthAdjust="spacing" textLength="149" x="644" y="432.4538"
-                    >(optional) Duration</text></a>
-            <a href="#sharedprop-represents" target="_top" xlink:actuate="onRequest"
-                xlink:href="#sharedprop-represents" xlink:show="new" xlink:title="#sharedprop-represents" xlink:type="simple"><text
-                    fill="#000000" font-family="sans-serif" font-size="16" font-style="italic" lengthAdjust="spacing"
-                    textLength="166" x="644" y="459.2975">(optional) Represents</text></a>
-            <a href="#on-screen" target="_top" xlink:actuate="onRequest" xlink:href="#on-screen" xlink:show="new"
-                xlink:title="#on-screen" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" lengthAdjust="spacing" textLength="159" x="644" y="486.1413">(optional) On
-                    Screen</text></a>
-        </g>
+                <rect codeLine="28" fill="#FFFFFF" height="205.9063" id="ScriptEvent" rx="2.5" ry="2.5"
+                    style="stroke:#000000;stroke-width:1.0;" width="220" x="540" y="244.16"/>
+            <a href="#script-event" target="_top" xlink:actuate="onRequest" xlink:href="#script-event"
+                xlink:show="new" xlink:title="#script-event" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
+                    textLength="97" x="601.5" y="268.6287">Script Event</text></a>
+                <line style="stroke:#000000;stroke-width:1.0;" x1="541" x2="759" y1="281.0037" y2="281.0037"/>
+                <a href="#dfn-script-event-identifier" target="_top"
+                    xlink:actuate="onRequest" xlink:href="#dfn-script-event-identifier" xlink:show="new"
+                    xlink:title="#dfn-script-event-identifier" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="169" x="550"
+                        y="304.4725">Script Event Identifier</text></a>
+                <a href="#represents" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#represents" xlink:show="new" xlink:title="#represents" xlink:type="simple"><text
+                        fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="86"
+                        x="550" y="331.3162">Represents</text></a>
+                <a href="#dfn-begin" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-begin"
+                    xlink:show="new" xlink:title="#dfn-begin" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" font-style="italic" lengthAdjust="spacing"
+                        textLength="123" x="550" y="358.16">(optional) Begin</text></a>
+                <a href="#dfn-end" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-end"
+                    xlink:show="new" xlink:title="#dfn-end" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" font-style="italic" lengthAdjust="spacing"
+                        textLength="109" x="550" y="385.0037">(optional) End</text></a>
+                <a href="#dfn-duration" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#dfn-duration" xlink:show="new" xlink:title="#dfn-duration" xlink:type="simple"><text
+                        fill="#000000" font-family="sans-serif" font-size="16" font-style="italic"
+                        lengthAdjust="spacing" textLength="149" x="550" y="411.8475">(optional) Duration</text></a>
+                <a href="#on-screen" target="_top" xlink:actuate="onRequest" xlink:href="#on-screen"
+                    xlink:show="new" xlink:title="#on-screen" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="159" x="550"
+                        y="438.6912">(optional) On Screen</text></a>
+            </g>
         <!--class ScriptEventDescription-->
         <g id="elem_ScriptEventDescription">
-            <rect fill="#FFFFFF" height="125.375" id="ScriptEventDescription" rx="2.5" ry="2.5"
-                style="stroke:#000000;stroke-width:1.0;" width="232" x="972" y="331.61"/>
-            <a href="#dfn-script-event-description" target="_top" xlink:actuate="onRequest"
-                xlink:href="#dfn-script-event-description" xlink:show="new" xlink:title="#dfn-script-event-description"
-                xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold"
-                    lengthAdjust="spacing" textLength="197" x="989.5" y="356.0788">Script Event Description</text></a>
-            <line style="stroke:#000000;stroke-width:1.0;" x1="973" x2="1203" y1="368.4538" y2="368.4538"/>
-            <text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="90" x="982"
-                y="391.9225">Description</text>
-            <a href="#dfn-description-type" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-description-type"
-                xlink:show="new" xlink:title="#dfn-description-type" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="212" x="982" y="418.7663"
-                    >(optional) Description Type</text></a>
-            <text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="156" x="982"
-                y="445.61">(optional) Language</text>
-        </g>
+                <rect codeLine="37" fill="#FFFFFF" height="125.375" id="ScriptEventDescription" rx="2.5" ry="2.5"
+                    style="stroke:#000000;stroke-width:1.0;" width="232" x="831" y="284.42"/>
+            <a href="#dfn-script-event-description" target="_top"
+                xlink:actuate="onRequest" xlink:href="#dfn-script-event-description" xlink:show="new"
+                xlink:title="#dfn-script-event-description" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
+                    textLength="197" x="848.5" y="308.8887">Script Event Description</text></a>
+                <line style="stroke:#000000;stroke-width:1.0;" x1="832" x2="1062" y1="321.2637" y2="321.2637"/>
+                <text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="90"
+                    x="841" y="344.7325">Description</text>
+                <a href="#dfn-description-type" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#dfn-description-type" xlink:show="new" xlink:title="#dfn-description-type"
+                    xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
+                        lengthAdjust="spacing" textLength="212" x="841" y="371.5762">(optional) Description
+                    Type</text></a>
+                <text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="156"
+                    x="841" y="398.42">(optional) Language</text>
+            </g>
         <!--class Text-->
         <g id="elem_Text">
-            <rect fill="#FFFFFF" height="125.375" id="Text" rx="2.5" ry="2.5"
-                style="stroke:#000000;stroke-width:1.0;" width="274" x="550" y="687.42"/>
+                <rect codeLine="43" fill="#FFFFFF" height="125.375" id="Text" rx="2.5" ry="2.5"
+                    style="stroke:#000000;stroke-width:1.0;" width="274" x="431" y="570.42"/>
             <a href="#text" target="_top" xlink:actuate="onRequest" xlink:href="#text" xlink:show="new"
-                xlink:title="#text" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    font-weight="bold" lengthAdjust="spacing" textLength="35" x="669.5" y="711.8888">Text</text></a>
-            <line style="stroke:#000000;stroke-width:1.0;" x1="551" x2="823" y1="724.2638" y2="724.2638"/>
-            <a href="#dfn-text" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-text" xlink:show="new"
-                xlink:title="#dfn-text" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    lengthAdjust="spacing" textLength="99" x="560" y="747.7325">Text content</text></a>
-            <a href="#text-language-source" target="_top" xlink:actuate="onRequest" xlink:href="#text-language-source"
-                xlink:show="new" xlink:title="#text-language-source" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="254" x="560" y="774.5763"
-                    >(optional) Text Language Source</text></a>
-            <text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="156" x="560"
-                y="801.42">(optional) Language</text>
-        </g>
+                xlink:title="#text" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
+                    textLength="35" x="550.5" y="594.8887">Text</text></a>
+                <line style="stroke:#000000;stroke-width:1.0;" x1="432" x2="704" y1="607.2637" y2="607.2637"/>
+                <a href="#dfn-text" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-text"
+                    xlink:show="new" xlink:title="#dfn-text" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="99" x="441"
+                        y="630.7325">Text content</text></a>
+                <a href="#text-language-source" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#text-language-source" xlink:show="new" xlink:title="#text-language-source"
+                    xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
+                        lengthAdjust="spacing" textLength="254" x="441" y="657.5762">(optional) Text Language
+                        Source</text></a>
+                <text fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="156"
+                    x="441" y="684.42">(optional) Language</text>
+            </g>
         <!--class Audio-->
         <g id="elem_Audio">
-            <rect fill="#FFFFFF" height="36.8438" id="Audio" rx="2.5" ry="2.5"
-                style="stroke:#000000;stroke-width:1.0;" width="220" x="918" y="732.11"/>
-            <a href="#dfn-audio" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-audio" xlink:show="new"
-                xlink:title="#dfn-audio" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" font-style="italic" font-weight="bold" lengthAdjust="spacing" textLength="49"
-                    x="1003.5" y="756.5788">Audio</text></a>
-        </g>
+                <rect codeLine="52" fill="#FFFFFF" height="36.8438" id="Audio" rx="2.5" ry="2.5"
+                    style="stroke:#000000;stroke-width:1.0;" width="220" x="776" y="614.69"/>
+            <a href="#dfn-audio" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-audio"
+                xlink:show="new" xlink:title="#dfn-audio" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-style="italic" font-weight="bold"
+                    lengthAdjust="spacing" textLength="49" x="861.5" y="639.1587">Audio</text></a>
+            </g>
         <!--class SynthesizedAudio-->
         <g id="elem_SynthesizedAudio">
-            <rect fill="#FFFFFF" height="98.5313" id="SynthesizedAudio" rx="2.5" ry="2.5"
-                style="stroke:#000000;stroke-width:1.0;" width="220" x="918" y="1050.84"/>
-            <a href="#dfn-synthesized-audio" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-synthesized-audio"
-                xlink:show="new" xlink:title="#dfn-synthesized-audio" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="152"
-                    x="952" y="1075.3088">Synthesized Audio</text></a>
-            <line style="stroke:#000000;stroke-width:1.0;" x1="919" x2="1137" y1="1087.6838" y2="1087.6838"/>
-            <a href="#dfn-rate" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-rate" xlink:show="new"
-                xlink:title="#dfn-rate" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    lengthAdjust="spacing" textLength="34" x="928" y="1111.1525">Rate</text></a>
-            <a href="#dfn-pitch" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-pitch" xlink:show="new"
-                xlink:title="#dfn-pitch" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" lengthAdjust="spacing" textLength="118" x="928" y="1137.9963">(optional)
-                Pitch</text></a>
-        </g>
+                <rect codeLine="55" fill="#FFFFFF" height="98.5313" id="SynthesizedAudio" rx="2.5" ry="2.5"
+                    style="stroke:#000000;stroke-width:1.0;" width="220" x="776" y="883.84"/>
+            <a href="#dfn-synthesized-audio" target="_top" xlink:actuate="onRequest"
+                xlink:href="#dfn-synthesized-audio" xlink:show="new" xlink:title="#dfn-synthesized-audio"
+                xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
+                    textLength="152" x="810" y="908.3087">Synthesized Audio</text></a>
+                <line style="stroke:#000000;stroke-width:1.0;" x1="777" x2="995" y1="920.6837" y2="920.6837"/>
+                <a href="#dfn-rate" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-rate"
+                    xlink:show="new" xlink:title="#dfn-rate" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="34" x="786"
+                        y="944.1525">Rate</text></a>
+                <a href="#dfn-pitch" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-pitch"
+                    xlink:show="new" xlink:title="#dfn-pitch" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="118" x="786"
+                        y="970.9962">(optional) Pitch</text></a>
+            </g>
         <!--class AudioRecording-->
-        <g id="elem_AudioRecording">
-            <rect fill="#FFFFFF" height="232.75" id="AudioRecording" rx="2.5" ry="2.5"
-                style="stroke:#000000;stroke-width:1.0;" width="220" x="628" y="983.73"/>
-            <a href="#dfn-audio-recording" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-audio-recording"
-                xlink:show="new" xlink:title="#dfn-audio-recording" xlink:type="simple"><text fill="#000000"
-                    font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing" textLength="138"
-                    x="669" y="1008.1988">Audio Recording</text></a>
-            <line style="stroke:#000000;stroke-width:1.0;" x1="629" x2="847" y1="1020.5738" y2="1020.5738"/>
-            <a href="#dfn-source" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-source" xlink:show="new"
-                xlink:title="#dfn-source" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" lengthAdjust="spacing" textLength="73" x="638" y="1044.0425">Source [ ]</text></a>
-            <a href="#dfn-type" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-type" xlink:show="new"
-                xlink:title="#dfn-type" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    lengthAdjust="spacing" textLength="57" x="638" y="1070.8863">Type [ ]</text></a>
-            <a href="#dfn-begin" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-begin" xlink:show="new"
-                xlink:title="#dfn-begin" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" font-style="italic" lengthAdjust="spacing" textLength="123" x="638" y="1097.73"
-                    >(optional) Begin</text></a>
-            <a href="#dfn-end" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-end" xlink:show="new"
-                xlink:title="#dfn-end" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    font-style="italic" lengthAdjust="spacing" textLength="109" x="638" y="1124.5738">(optional)
-                    End</text></a>
-            <a href="#dfn-duration" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-duration" xlink:show="new"
-                xlink:title="#dfn-duration" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" font-style="italic" lengthAdjust="spacing" textLength="149" x="638" y="1151.4175"
-                    >(optional) Duration</text></a>
-            <a href="#dfn-in-time" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-in-time" xlink:show="new"
-                xlink:title="#dfn-in-time" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" lengthAdjust="spacing" textLength="139" x="638" y="1178.2613">(optional) In
-                    Time</text></a>
-            <a href="#dfn-out-time" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-out-time" xlink:show="new"
-                xlink:title="#dfn-out-time" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" lengthAdjust="spacing" textLength="152" x="638" y="1205.105">(optional) Out
-                    Time</text></a>
-        </g>
+        <g
+                id="elem_AudioRecording">
+                <rect codeLine="60" fill="#FFFFFF" height="232.75" id="AudioRecording" rx="2.5" ry="2.5"
+                    style="stroke:#000000;stroke-width:1.0;" width="220" x="485" y="816.73"/>
+            <a href="#dfn-audio-recording" target="_top" xlink:actuate="onRequest"
+                xlink:href="#dfn-audio-recording" xlink:show="new" xlink:title="#dfn-audio-recording" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
+                    textLength="138" x="526" y="841.1987">Audio Recording</text></a>
+                <line style="stroke:#000000;stroke-width:1.0;" x1="486" x2="704" y1="853.5737" y2="853.5737"/>
+                <a href="#dfn-source" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#dfn-source" xlink:show="new" xlink:title="#dfn-source" xlink:type="simple"><text
+                        fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="73"
+                        x="495" y="877.0425">Source [ ]</text></a>
+                <a href="#dfn-type" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-type"
+                    xlink:show="new" xlink:title="#dfn-type" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="57" x="495"
+                        y="903.8862">Type [ ]</text></a>
+                <a href="#dfn-begin" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-begin"
+                    xlink:show="new" xlink:title="#dfn-begin" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" font-style="italic" lengthAdjust="spacing"
+                        textLength="123" x="495" y="930.73">(optional) Begin</text></a>
+                <a href="#dfn-end" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-end"
+                    xlink:show="new" xlink:title="#dfn-end" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" font-style="italic" lengthAdjust="spacing"
+                        textLength="109" x="495" y="957.5737">(optional) End</text></a>
+                <a href="#dfn-duration" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#dfn-duration" xlink:show="new" xlink:title="#dfn-duration" xlink:type="simple"><text
+                        fill="#000000" font-family="sans-serif" font-size="16" font-style="italic"
+                        lengthAdjust="spacing" textLength="149" x="495" y="984.4175">(optional) Duration</text></a>
+                <a href="#dfn-in-time" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#dfn-in-time" xlink:show="new" xlink:title="#dfn-in-time" xlink:type="simple"><text
+                        fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="139"
+                        x="495" y="1011.2612">(optional) In Time</text></a>
+                <a href="#dfn-out-time" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#dfn-out-time" xlink:show="new" xlink:title="#dfn-out-time" xlink:type="simple"><text
+                        fill="#000000" font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="152"
+                        x="495" y="1038.105">(optional) Out Time</text></a>
+            </g>
         <!--class MixingInstruction-->
         <g id="elem_MixingInstruction">
-            <rect fill="#FFFFFF" height="205.9063" id="MixingInstruction" rx="2.5" ry="2.5"
-                style="stroke:#000000;stroke-width:1.0;" width="220" x="12" y="647.61"/>
+                <rect codeLine="72" fill="#FFFFFF" height="205.9063" id="MixingInstruction" rx="2.5" ry="2.5"
+                    style="stroke:#000000;stroke-width:1.0;" width="220" x="12" y="530.16"/>
             <a href="#dfn-mixing-instruction" target="_top" xlink:actuate="onRequest"
                 xlink:href="#dfn-mixing-instruction" xlink:show="new" xlink:title="#dfn-mixing-instruction"
-                xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold"
-                    lengthAdjust="spacing" textLength="151" x="46.5" y="672.0788">Mixing Instruction</text></a>
-            <line style="stroke:#000000;stroke-width:1.0;" x1="13" x2="231" y1="684.4538" y2="684.4538"/>
-            <a href="#dfn-gain" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-gain" xlink:show="new"
-                xlink:title="#dfn-gain" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    lengthAdjust="spacing" textLength="116" x="22" y="707.9225">(optional) Gain</text></a>
-            <a href="#dfn-pan" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-pan" xlink:show="new"
-                xlink:title="#dfn-pan" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    lengthAdjust="spacing" textLength="108" x="22" y="734.7663">(optional) Pan</text></a>
-            <a href="#dfn-begin" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-begin" xlink:show="new"
-                xlink:title="#dfn-begin" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" font-style="italic" lengthAdjust="spacing" textLength="123" x="22" y="761.61"
-                    >(optional) Begin</text></a>
-            <a href="#dfn-end" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-end" xlink:show="new"
-                xlink:title="#dfn-end" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    font-style="italic" lengthAdjust="spacing" textLength="109" x="22" y="788.4538">(optional)
-                    End</text></a>
-            <a href="#dfn-duration" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-duration" xlink:show="new"
-                xlink:title="#dfn-duration" xlink:type="simple"><text fill="#000000" font-family="sans-serif"
-                    font-size="16" font-style="italic" lengthAdjust="spacing" textLength="149" x="22" y="815.2975"
-                    >(optional) Duration</text></a>
-            <a href="#dfn-fill" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-fill" xlink:show="new"
-                xlink:title="#dfn-fill" xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16"
-                    lengthAdjust="spacing" textLength="104" x="22" y="842.1413">(optional) Fill</text></a>
-        </g>
+                xlink:type="simple"><text fill="#000000" font-family="sans-serif" font-size="16" font-weight="bold" lengthAdjust="spacing"
+                    textLength="151" x="46.5" y="554.6287">Mixing Instruction</text></a>
+                <line style="stroke:#000000;stroke-width:1.0;" x1="13" x2="231" y1="567.0037" y2="567.0037"/>
+                <a href="#dfn-gain" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-gain"
+                    xlink:show="new" xlink:title="#dfn-gain" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="116" x="22"
+                        y="590.4725">(optional) Gain</text></a>
+                <a href="#dfn-pan" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-pan"
+                    xlink:show="new" xlink:title="#dfn-pan" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="108" x="22"
+                        y="617.3162">(optional) Pan</text></a>
+                <a href="#dfn-begin" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-begin"
+                    xlink:show="new" xlink:title="#dfn-begin" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" font-style="italic" lengthAdjust="spacing"
+                        textLength="123" x="22" y="644.16">(optional) Begin</text></a>
+                <a href="#dfn-end" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-end"
+                    xlink:show="new" xlink:title="#dfn-end" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" font-style="italic" lengthAdjust="spacing"
+                        textLength="109" x="22" y="671.0037">(optional) End</text></a>
+                <a href="#dfn-duration" target="_top" xlink:actuate="onRequest"
+                    xlink:href="#dfn-duration" xlink:show="new" xlink:title="#dfn-duration" xlink:type="simple"><text
+                        fill="#000000" font-family="sans-serif" font-size="16" font-style="italic"
+                        lengthAdjust="spacing" textLength="149" x="22" y="697.8475">(optional) Duration</text></a>
+                <a href="#dfn-fill" target="_top" xlink:actuate="onRequest" xlink:href="#dfn-fill"
+                    xlink:show="new" xlink:title="#dfn-fill" xlink:type="simple"><text fill="#000000"
+                        font-family="sans-serif" font-size="16" lengthAdjust="spacing" textLength="104" x="22"
+                        y="724.6912">(optional) Fill</text></a>
+            </g>
         <!--reverse link DAPTScript to ScriptEvent-->
         <g id="link_DAPTScript_ScriptEvent">
-            <path d="M661,179.05 C661,179.05 661,291.84 661,291.84 " fill="none"
+            <path codeLine="84" d="M590.5,176.42 C590.5,201.34 590.5,217.44 590.5,243.99 " fill="none"
                 id="DAPTScript-backto-ScriptEvent" style="stroke:#000000;stroke-width:1.0;"/>
-            <polygon fill="#000000" points="661,166.05,657,172.05,661,178.05,665,172.05,661,166.05"
+            <polygon fill="#000000" points="590.5,164.42,586.5,170.42,590.5,176.42,594.5,170.42,590.5,164.42"
                 style="stroke:#000000;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54" x="602"
-                y="205.0084">contains</text>
-            <polygon fill="#000000" points="621.5,228.4058,624.4389,219.3607,618.5611,219.3607,621.5,228.4058"
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54"
+                x="595.5" y="173.7684">contains</text>
+            <polygon fill="#000000" points="615,197.1658,617.9389,188.1207,612.0611,188.1207,615,197.1658"
                 style="stroke:#000000;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="633.5"
-                y="228.3189">&#160;</text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="627"
+                y="197.0789">&#160;</text>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22"
-                x="623.6563" y="277.0315">0..*</text>
+                x="555.1211" y="229.5098">0..*</text>
         </g>
         <!--reverse link DAPTScript to Character-->
         <g id="link_DAPTScript_Character">
-            <path d="M489,179.05 C489,179.05 489,332.01 489,332.01 " fill="none"
+            <path codeLine="85" d="M417.5,176.42 C417.5,214.47 417.5,247.93 417.5,283.99 " fill="none"
                 id="DAPTScript-backto-Character" style="stroke:#000000;stroke-width:1.0;"/>
-            <polygon fill="#000000" points="489,166.05,485,172.05,489,178.05,493,172.05,489,166.05"
+            <polygon fill="#000000" points="417.5,164.42,413.5,170.42,417.5,176.42,421.5,170.42,417.5,164.42"
                 style="stroke:#000000;stroke-width:1.0;"/>
-            <polygon fill="#000000" points="417,248.1853,419.9389,239.1402,414.0611,239.1402,417,248.1853"
+            <polygon fill="#000000" points="345.5,216.8553,348.4389,207.8102,342.5611,207.8102,345.5,216.8553"
                 style="stroke:#000000;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54" x="430"
-                y="248.0984">contains</text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54"
+                x="358.5" y="216.7684">contains</text>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22"
-                x="470.8625" y="317.0646">0..*</text>
+                x="396.0891" y="269.8794">0..*</text>
         </g>
         <!--reverse link ScriptEvent to MixingInstruction-->
         <g id="link_ScriptEvent_MixingInstruction">
-            <path
-                d="M681.33,511.07 C681.33,511.07 681.33,658.11 681.33,658.11 C681.33,658.11 394.73,658.11 231.84,658.11 "
-                fill="none" id="ScriptEvent-backto-MixingInstruction" style="stroke:#000000;stroke-width:1.0;"/>
-            <polygon fill="#000000" points="681.33,498.07,677.33,504.07,681.33,510.07,685.33,504.07,681.33,498.07"
+            <path codeLine="86"
+                d="M595,462.51 C595,510.08 595,544.11 595,544.11 C595,544.11 372.07,544.11 232.3,544.11 " fill="none"
+                id="ScriptEvent-backto-MixingInstruction" style="stroke:#000000;stroke-width:1.0;"/>
+            <polygon fill="#000000" points="595,450.51,591,456.51,595,462.51,599,456.51,595,450.51"
                 style="stroke:#000000;stroke-width:1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54"
-                x="471.11" y="627.6784">contains</text>
-            <polygon fill="#000000" points="485.8578,647.6304,495.3684,647.6114,493.5409,642.0249,485.8578,647.6304"
+                x="401.45" y="513.6784">contains</text>
+            <polygon fill="#000000" points="416.0719,533.1733,425.5415,534.0552,424.2514,528.3207,416.0719,533.1733"
                 style="stroke:#000000;stroke-width:1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4"
-                x="502.61" y="650.9889">&#160;</text>
+                x="432.95" y="536.9889">&#160;</text>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22"
-                x="243.8376" y="645.0288">0..*</text>
+                x="243.9355" y="531.5634">0..*</text>
         </g>
         <!--link Audio to Text-->
         <g id="link_Audio_Text">
-            <path d="M918.23,750.11 C918.23,750.11 838.9,750.11 838.9,750.11 " fill="none"
+            <path codeLine="87" d="M775.67,633.11 C752.98,633.11 740.82,633.11 717.31,633.11 " fill="none"
                 id="Audio-to-Text" style="stroke:#000000;stroke-width:1.0;"/>
-            <polygon fill="#000000" points="825.9,750.11,831.9,754.11,837.9,750.11,831.9,746.11,825.9,750.11"
+            <polygon fill="#000000" points="705.31,633.11,711.31,637.11,717.31,633.11,711.31,629.11,705.31,633.11"
                 style="stroke:#000000;stroke-width:1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54"
-                x="835.56" y="767.6784">contains</text>
-            <polygon fill="#000000" points="860.06,786.0758,851.0149,783.1369,851.0149,789.0147,860.06,786.0758"
+                x="713.49" y="650.6784">contains</text>
+            <polygon fill="#000000" points="737.99,669.0758,728.9449,666.1369,728.9449,672.0147,737.99,669.0758"
                 style="stroke:#000000;stroke-width:1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4"
-                x="867.06" y="790.9889">&#160;</text>
+                x="744.99" y="673.9889">&#160;</text>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22"
-                x="880.1088" y="742.9246">0..*</text>
+                x="737.9108" y="625.9869">0..*</text>
         </g>
         <!--reverse link Text to MixingInstruction-->
         <g id="link_Text_MixingInstruction">
-            <path d="M534.99,750.11 C534.99,750.11 231.7,750.11 231.7,750.11 " fill="none"
+            <path codeLine="88" d="M418.55,633.11 C354.81,633.11 292.1,633.11 232.15,633.11 " fill="none"
                 id="Text-backto-MixingInstruction" style="stroke:#000000;stroke-width:1.0;"/>
-            <polygon fill="#000000" points="547.99,750.11,541.99,746.11,535.99,750.11,541.99,754.11,547.99,750.11"
+            <polygon fill="#000000" points="430.55,633.11,424.55,629.11,418.55,633.11,424.55,637.11,430.55,633.11"
                 style="stroke:#000000;stroke-width:1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54"
-                x="324.34" y="719.6784">contains</text>
-            <polygon fill="#000000" points="338.84,738.0758,347.8851,741.0147,347.8851,735.1369,338.84,738.0758"
+                x="272.35" y="602.6784">contains</text>
+            <polygon fill="#000000" points="286.85,621.0758,295.8951,624.0147,295.8951,618.1369,286.85,621.0758"
                 style="stroke:#000000;stroke-width:1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4"
-                x="355.84" y="742.9889">&#160;</text>
+                x="303.85" y="625.9889">&#160;</text>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22"
-                x="243.8167" y="742.9226">0..*</text>
+                x="243.8982" y="625.9868">0..*</text>
         </g>
         <!--reverse link Character to ScriptEvent-->
         <g id="link_Character_ScriptEvent">
-            <path d="M522.25,394.11 C522.25,394.11 634.23,394.11 634.23,394.11 " fill="none"
+            <path codeLine="89" d="M474.39,347.11 C497.81,347.11 516.53,347.11 539.94,347.11 " fill="none"
                 id="Character-backto-ScriptEvent" style="stroke:#000000;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/>
-            <polygon fill="#000000" points="517.25,394.11,526.25,398.11,522.25,394.11,526.25,390.11,517.25,394.11"
+            <polygon fill="#000000" points="468.39,347.11,477.39,351.11,473.39,347.11,477.39,343.11,468.39,347.11"
                 style="stroke:#000000;stroke-width:1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22"
-                x="528.121" y="386.9035">0..*</text>
+                x="480.031" y="339.9872">0..*</text>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22"
-                x="599.847" y="386.8857">0..*</text>
+                x="505.9283" y="339.9514">0..*</text>
         </g>
         <!--link ScriptEventDescription to ScriptEvent-->
         <g id="link_ScriptEventDescription_ScriptEvent">
-            <path d="M957.5,394.11 C957.5,394.11 868.47,394.11 868.47,394.11 " fill="none"
+            <path codeLine="90" d="M824.9,347.11 C801.63,347.11 795.25,347.11 772.19,347.11 " fill="none"
                 id="ScriptEventDescription-ScriptEvent" style="stroke:#000000;stroke-width:1.0;"/>
-            <polygon fill="#000000" points="970.5,394.11,961.5,390.11,965.5,394.11,961.5,398.11,970.5,394.11"
+            <polygon fill="#000000" points="830.9,347.11,821.9,343.11,825.9,347.11,821.9,351.11,830.9,347.11"
                 style="stroke:#000000;stroke-width:1.0;"/>
-            <line style="stroke:#000000;stroke-width:1.0;" x1="965.5" x2="957.5" y1="394.11" y2="394.11"/>
-            <polygon fill="#000000" points="855.47,394.11,861.47,398.11,867.47,394.11,861.47,390.11,855.47,394.11"
+            <polygon fill="#000000" points="760.19,347.11,766.19,351.11,772.19,347.11,766.19,343.11,760.19,347.11"
                 style="stroke:#000000;stroke-width:1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54"
-                x="885.99" y="411.6784">contains</text>
-            <polygon fill="#000000" points="910.49,430.0758,901.4449,427.1369,901.4449,433.0147,910.49,430.0758"
+                x="768.54" y="364.6784">contains</text>
+            <polygon fill="#000000" points="793.04,383.0758,783.9949,380.1369,783.9949,386.0147,793.04,383.0758"
                 style="stroke:#000000;stroke-width:1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4"
-                x="917.49" y="434.9889">&#160;</text>
+                x="800.04" y="387.9889">&#160;</text>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22"
-                x="938.0384" y="386.9756">0..*</text>
+                x="796.9111" y="339.9872">0..*</text>
         </g>
         <!--reverse link ScriptEvent to Text-->
         <g id="link_ScriptEvent_Text">
-            <path d="M752.67,511.11 C752.67,511.11 752.67,687.14 752.67,687.14 " fill="none"
+            <path codeLine="91" d="M650,462.36 C650,502.36 650,534.87 650,569.95 " fill="none"
                 id="ScriptEvent-backto-Text" style="stroke:#000000;stroke-width:1.0;"/>
-            <polygon fill="#000000" points="752.67,498.11,748.67,504.11,752.67,510.11,756.67,504.11,752.67,498.11"
+            <polygon fill="#000000" points="650,450.36,646,456.36,650,462.36,654,456.36,650,450.36"
                 style="stroke:#000000;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54"
-                x="693.67" y="568.6984">contains</text>
-            <polygon fill="#000000" points="713.17,592.0958,716.1089,583.0507,710.2311,583.0507,713.17,592.0958"
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54" x="591"
+                y="479.7284">contains</text>
+            <polygon fill="#000000" points="610.5,503.1258,613.4389,494.0807,607.5611,494.0807,610.5,503.1258"
                 style="stroke:#000000;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4"
-                x="725.17" y="592.0089">&#160;</text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="622.5"
+                y="503.0389">&#160;</text>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22"
-                x="732.212" y="672.5805">0..*</text>
+                x="630.9094" y="555.8353">0..*</text>
         </g>
         <!--reverse link AudioRecording to MixingInstruction-->
         <g id="link_AudioRecording_MixingInstruction">
-            <path
-                d="M726,968.97 C726,968.97 726,853.11 726,853.11 C726,853.11 131.4,853.11 122.11,853.11 " fill="none"
+            <path codeLine="92"
+                d="M595,804.35 C595,752.99 595,716.11 595,716.11 C595,716.11 372.07,716.11 232.3,716.11 " fill="none"
                 id="AudioRecording-backto-MixingInstruction" style="stroke:#000000;stroke-width:1.0;"/>
-            <polygon fill="#000000" points="726,981.97,730,975.97,726,969.97,722,975.97,726,981.97"
+            <polygon fill="#000000" points="595,816.35,599,810.35,595,804.35,591,810.35,595,816.35"
                 style="stroke:#000000;stroke-width:1.0;"/>
-            <polygon fill="#000000" points="405.0696,839.8232,413.3989,844.4137,414.5064,838.6412,405.0696,839.8232"
+            <polygon fill="#000000" points="386.9117,727.5833,395.0057,732.5771,396.3952,726.8659,386.9117,727.5833"
                 style="stroke:#000000;stroke-width:1.0;"/>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54"
-                x="422.98" y="845.6784">contains</text>
+                x="404.77" y="733.6784">contains</text>
             <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22"
-                x="90.8696" y="878.0651">0..*</text>
+                x="244.0573" y="714.0447">0..*</text>
         </g>
         <!--reverse link Audio to SynthesizedAudio-->
         <g id="link_Audio_SynthesizedAudio">
-            <path d="M1028,789.46 C1028,789.46 1028,1050.49 1028,1050.49 " fill="none"
+            <path codeLine="93" d="M922.67,669.88 C922.67,715.54 922.67,815.67 922.67,883.41 " fill="none"
                 id="Audio-backto-SynthesizedAudio" style="stroke:#000000;stroke-width:1.0;"/>
-            <polygon fill="none" points="1021,789.46,1028,769.46,1035,789.46,1021,789.46"
+            <polygon fill="none" points="922.67,651.88,916.67,669.88,928.67,669.88,922.67,651.88"
                 style="stroke:#000000;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="11" x="1009"
-                y="889.5384">is</text>
-            <polygon fill="#000000" points="1007,902.9358,1004.0611,911.9809,1009.9389,911.9809,1007,902.9358"
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="11"
+                x="903.67" y="737.2084">is</text>
+            <polygon fill="#000000" points="901.67,750.6058,898.7311,759.6509,904.6089,759.6509,901.67,750.6058"
                 style="stroke:#000000;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="1019"
-                y="912.8489">&#160;</text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4"
+                x="913.67" y="760.5189">&#160;</text>
         </g>
         <!--reverse link Audio to AudioRecording-->
         <g id="link_Audio_AudioRecording">
-            <path
-                d="M910,771.67 C910,771.67 910,1018.11 910,1018.11 C910,1018.11 881.89,1018.11 848.39,1018.11 "
+            <path codeLine="94"
+                d="M849.33,669.7 C849.33,722.42 849.33,851.11 849.33,851.11 C849.33,851.11 774.08,851.11 705.44,851.11 "
                 fill="none" id="Audio-backto-AudioRecording" style="stroke:#000000;stroke-width:1.0;"/>
-            <polygon fill="none" points="903,771.67,910,751.67,917,771.67,903,771.67"
+            <polygon fill="none" points="849.33,651.7,843.33,669.7,855.33,669.7,849.33,651.7"
                 style="stroke:#000000;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="11" x="891"
-                y="895.2684">is</text>
-            <polygon fill="#000000" points="890.2127,908.8151,885.1677,916.8773,890.8701,918.3029,890.2127,908.8151"
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="11"
+                x="830.33" y="792.9184">is</text>
+            <polygon fill="#000000" points="831.4371,807.3985,823.5137,812.6587,828.1188,816.3114,831.4371,807.3985"
                 style="stroke:#000000;stroke-width:1.0;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4" x="901"
-                y="918.5789">&#160;</text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="4"
+                x="840.33" y="816.2289">&#160;</text>
         </g>
         <!--link SynthesizedAudio to AudioRecording-->
         <!--link SynthesizedAudio to AudioRecording-->
         <!--link MixingInstruction to Audio-->
-        <!--SRC=[rLVVRzis47xNNt5r7x8PK91cmpOKGG6lQRS0Inia0VQG-e4HQPc8J0aajTRB-h_l-4CKHScnspxLo8Dvzztn- -x8e_DChzc6GLCHBh9dZIJbXe0acjVm8Zi2zS15GoJPG2dhjhaGQoQv9g9WS9hrpeeBfhSDWrhgTHqvpjcAj9L-MmlzZk0-YWYLAyoncWRTy7yPlFWbSYwah3_shfzIroLJYfHiKV5IR9ZGGBba1V8N4VAAKCf52Jz7jdSrPOeryEj9PBmcui4OVukDbroyheXIVtEgrt1wUf9bTWtdYwlRcqBoHWDHC9lFZG6SPJwVmTtTSqeQdIjhMIxXCGFyNBD6ujP2AqJSFPTXkLmkBS3dl3KLDGWNdviATn1VC_YBYB95_HP7dJ6llB43Fwuug-Xd-A5kJ658zIFSiazHy4tToiBbqEW82N9b7IRFvopJTSdmk4WlmzNWzHfhL6YqkXA4jIz0qQs3V1iReYueAkT8K3e9Av67a9m7PoV5VEn96eC5ccFOb6fIcIEo8u6sta4ULDrBTMrvyuz9uSJwHbcJr-jxnOnf83d6JgcE0tS8xnGzadkb3Uc1kDzPoKL8TszMXmU_4JI4Ca4F3pnlxRJeDwRUS7YAdVSXFzdJp_V2b9KnjtjjYuYhVTqxPwxOXlQuaH2vkrkSzeVsa46JEuvHYgVunqJ2RRT5x1s3QxyZJtUHnwhjFNSQpLUlnrpo0MyBAt3A6lqT2OTw-a9zwHWvL8Jv74sXBeHvRE16Roi62wqblsyrKrxvU4fr9yxNOz5IVDfSGUptgCF4h4DPXeTdAp2dmYU8nXaYCwJPLEzBCjitWEY-stXXzXNdYkjY7G8QiveyvPR5DIjgQH-yI2W4QoevbvrdEB1yDs7PpwXH7zsfZI2xJkjtExC6PmzkUVHqS9JBzpuwxriz3AjRFOZ31k9VOVjtoJzX7ou4icwBQ40vEqIEg8iRwqGwmHaQES7d3nALl2HznQUE7UcX3HaXlxYfNzNGRspcXAotlAe2VeKB_mldQAB- -TsQKtoEbp8VNguiow8VWFESrXz53hEJu-Cvp0O_5bxQqOgLLXy4l1f6-OXPz9EeXoCupZFOOpR1DTd8JkTvNh6LxecvOJ10ddN87hKtTq_NipaxbhnSw-Dk7H5FH1W-hoPWyMkOy7kY2fPwGYwPWeSAwoBXx3-_nsZklmJk62N0PCS0oqOPelC4wO4wWZ-jp_n3zQ10rz0mgLf26M0IgCWMPuSnLtNz088NJ3vzPbthJOaGPoiLN17lj5v9U2eXIuGur8W5xhYZkGc7SMI6VWPiq-WjRDZc7elWJ0MNHSN-1m00]-->
+        <!--SRC=[tLVVRzis47xNNt5r7x8PK91cmpOKGG6lQJS3Inia0VQG-e4HQPc8J0aajTRB-h_l-4CKHSbnshxLo8Dvzztnlk-EfFDCRzYMGLCHBh9dZIJbbe0acjVm8Zi2TSz5GoJPGYdhjbcA3PDS4r4mECrwPyK5qxk6GItrfeuSvsnDsag_hOL-Ht0VHOJA5UPOJuEk-RyCNlmIEHTIrXzxrq-fwu8fHKgsg7Wfjanee5oo0kiN4VAIKCf52Jz7jdSrPOeryEj9PBmYujuOVukD5royheXIVtEgDt1wUf9bTWtdYykRwqBoHWDHC9lFZG6SPJwVmUtjSqeQdIjhMQtW8GFy-90hraYiG6Y5mDld3fJBO5sjLZ7ynkWR0OtU7SGh27yHKRQeXiLHPymhR-p03slEAlePVgWR8nEfVeGRzYaAlgvRMRWS6XqXGQwim-Jvd6MwBXaEZ_Iad2AlDwXOeT7g10bhBqVHhOCODZP4BIaovrYWT1JM8WyXEG_EZehvsBaQWmMQOzWKQrAPWTcJG5ll80-oxgcwjhpvnwHmP7sZhCdpzRrYnZIW76EdMCU1UuXtZ98v6WzG37uWTqeRXWCbVcSb5s7lExDwUl0RGKCe4_JfWUUjlMZwZQat7EZRUs7aOym5rbOiN1tgqZbpefeTnms3oDsTtRGFj8SCcjdL6ALuhFwua72gBV_UCJZUU_9q1tRCsfvdnz5yzNpCOHxKRM45tgs6VrU4Gpr-SBxqkdWg2VCvca8jXNbYu5hlAWOBhIM_QpLJdlduDkhcpUknQ2a-Q4uG-ptgC37h8CjmU7O2SofyU6YS8J93catrlYIp-LmHtNSRP_sGE9TS5viGq9ZLv9JRAgvOKKlxp4L48LXJolZIUC_mOlBTX5L_5utwwAOsWkoRrk_XkbdYAUNH4y6HBZ_ukBnlzJ2iRlKW3Xk8VuNjtmN_X7rO2gowBQ8BojaXSaHTt5edbXESeP4JzVn18ibBqYi-DNQaXpPaXFpYfdvLGx-ncHEqtlAg2lWrBlmlcQC9_VFR3QVuxAvaFZnSMPP5F_lcEQq_YXnc9yV7SvWDVXIyj5ShAgq-27WrZF8Hi-YdJmz7S9ndiCTiejPa8tixp_EAhNLVcBiC1iYp3jcZ3kRko_NLd1rBNcxqSRUE2az8c7fUJS3Yrp2fxn4LREb9SSaj-5HYNIIS_UVt6DtxBu6xYX9WicE0PQCCqJn1Eb17yAVrcN-ZxXNe6XecLKie0qm25TdXtM7CLLtVW-05au_Fh6kzaGXnLgdWYkfEzKh2KmfPGiIXHbNWZdkQczGmZipGpu1j6xs3BTlUeGZEL71PLEn_]-->
     </g>
 </svg>

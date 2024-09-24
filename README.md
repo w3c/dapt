@@ -50,7 +50,7 @@ Unfortunately the SVG that PlantUML generates from our source files has some str
 The following steps can be taken to fix them. It'd be neat to automate this somehow, one day...
 1. delete `contentStyleType="text/css"`
 2. delete text matching the regexp ` title="[#a-zA-Z\-]+"`
-3. delete text matching the regexp = ` codeline="[0-9]+"`
+3. delete text matching the regexp = ` codeline="[#a-zA-Z0-9\-]+"`
 4. deduplicate id values, e.g. id="link_Text_Style" in more than one place - a specific problem with the two links from Text to Style in the class diagram. E.g. change the "other" link with `id="link_Text_Style"` to `id="link_Text_Style_other"`
 5. Move <a> wrappers from around boxes which contain other <a> elements, which therefore get nested, so the link is not on the box but is on the top text.
    * Specifically, where there is `/svg/a/g/text` move the `<a>` wrappers to being around the `<text>` that includes the text that's relevant.
