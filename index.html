@@ -740,13 +740,15 @@
                 <p>When the <code>daptm:scriptType</code> attribute value is <code>originalTranscript</code>,
                 the document is a literal transcription of the dialogue and/or on-screen text in their inherent spoken/written language(s),
                 or of non-dialogue sounds and non-linguistic visual content.</p>
-                <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain
-                  <a>Original</a> <a>Text</a> objects
-                  and SHOULD NOT contain <a>Translation</a> <a>Text</a> objects.</p>
-              <aside class="example">If a programme contains dialogue in English and Hebrew,
-                the <a>Original Language Transcript</a> will contain some <a>Script Events</a> in English and some in Hebrew,
-                all containing <a>Original</a> <a>Text</a> objects.
-                The document contains no <a>Translation</a> <a>Text</a> objects.</aside>
+                <p><a>Script Events</a> in this type of <a>transcript</a>:</p>
+                <ul>
+                  <li>SHOULD contain <a>Original</a> <a>Text</a> objects;</li>
+                  <li>SHOULD NOT contain <a>Translation</a> <a>Text</a> objects.</li>
+                </ul> 
+                <aside class="example">If a programme contains dialogue in English and Hebrew,
+                  the <a>Original Language Transcript</a> will contain some <a>Script Events</a> in English and some in Hebrew,
+                  all containing <a>Original</a> <a>Text</a> objects.
+                  The document contains no <a>Translation</a> <a>Text</a> objects.</aside>
               </li>
               <li>
                 <dfn>Translated Transcript</dfn>:
@@ -754,9 +756,12 @@
                 the document represents a translation of the <a>Original Language Transcript</a> in a common language.</p>
                 <p>It can be adapted to produce a <a>Pre-Recording Script</a>,
                   and/or used as the basis for a further translation into the <a>Target Recording Language</a>.</p> 
-                <p><a>Script Events</a> in this type of <a>transcript</a> SHOULD contain
-                  <a>Translation </a><a>Text</a> objects.
-                  They MAY also contain <a>Original</a> <a>Text</a> objects.</p>
+                <p><a>Script Events</a> in this type of <a>transcript</a>:</p>
+                <ul>
+                  <li>SHOULD contain <a>Translation </a><a>Text</a> objects;</li>
+                  <li>MAY also contain <a>Original</a> <a>Text</a> objects.</li>
+                </ul>
+
                 <aside class="example">If a programme contains dialogue in English and Hebrew,
                   the French <a>Translated Transcript</a> will contain at least the translation in French of all <a>Script Events</a>.
                   It may still retain text content in Hebrew and English to assist further processing.</aside>
@@ -776,11 +781,15 @@
                 the document represents the result of the adaptation of an <a>Original Language Transcript</a> or
                 a <a>Translated Transcript</a> for recording, e.g. for better lip-sync in a dubbing workflow,
                 or to ensure that the words can fit within the time available in an audio description workflow.</p>
-                <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Text</a> objects
-                  in the <a>Target Recording Language</a>.
-                  They MAY also contain <a>Original</a> <a>Text</a> objects from the <a>Original Language Transcript</a>
-                  in the case that their language is not the <a>Target Recording Language</a>, 
-                  for context, to assist further processing.</p>
+                <p><a>Script Events</a> in this type of <a>script</a>:</p>
+                <ul>
+                  <li>SHOULD contain <a>Text</a> objects
+                    in the <a>Target Recording Language</a>;</li>
+                  <li>MAY also contain <a>Original</a> <a>Text</a> objects from the <a>Original Language Transcript</a>
+                    in the case that their language is not the <a>Target Recording Language</a>, 
+                    for context, to assist further processing;</li>
+                  <li>SHOULD NOT contain <a>Audio</a> objects.</li>
+                </ul> 
 
                 <aside class="note">The <a>Script Type</a> of a <a>DAPT Script</a> cannot necessarily be detected
                   by inspecting the text content of the document.
@@ -803,11 +812,20 @@
                 <dfn>As-recorded Script</dfn>:
                 <p>When the <code>daptm:scriptType</code> attribute value is <code>asRecorded</code>, 
                 the document represents the actual audio recording.</p>
-                <p><a>Script Events</a> in this type of <a>script</a> SHOULD contain <a>Text</a> objects
-                  in the <a>Target Recording Language</a>
-                  and MAY also contain <a>Original</a> <a>Text</a> objects from the <a>Original Language Transcript</a>
-                  or <a>Translation</a> <a>Text</a> objects in other languages for context and quality verification.
-                  They MAY also contain links to audio and mixing instructions for the purpose of producing an audio track incorporating the recordings.</p>
+                <p><a>Script Events</a> in this type of <a>script</a>:</p>
+                <ul>
+                  <li>SHOULD contain <a>Text</a> objects
+                  in the <a>Target Recording Language</a>;</li>
+                  <li>MAY also contain <a>Original</a> <a>Text</a> objects from
+                    the <a>Original Language Transcript</a>
+                    or <a>Translation</a> <a>Text</a> objects in other languages 
+                    for context and quality verification;</li>
+                  <li>MAY also contain links to audio and mixing instructions
+                    for the purpose of producing an audio track incorporating the recordings;</li>
+                  <li>SHOULD contain <a>Audio Recording</a> objects;</li>
+                  <li>SHOULD NOT contain <a>Synthesized Audio</a> objects.</li>
+                </ul> 
+
                 <aside class="note"><a>Translation</a> <a>Text</a> objects within <a>As-recorded Scripts</a> retain their <a>Text Language Source</a>,
                   so that the source language from which they were translated remains available.</aside>
               </li>
