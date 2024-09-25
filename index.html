@@ -1036,38 +1036,42 @@
         </section>
 
         <section>
-          <h4>Legacy Metadata</h4>
-          <p>In workflows that create <a>DAPT documents</a> by conversion from legacy formats,
-            there can be cases where data needs to be retained,
-            relating to the conversion process,
-            or parts of the conversion process that cannot easily be completed without
-            additional later steps.
+          <h4>Deferred resolution of timecode-based synchronisation</h4>
+          <p>In workflows that create <a>DAPT documents</a> by conversion from formats
+            that synchronise content using timecode to match time stamps
+            in the <a>related media object</a>,
+            a common issue occurs if the timecode of
+            the beginning of the media is not known at the time of conversion.
           </p>
-          <p>The optional <dfn>Legacy Metadata</dfn> object provides a location within
-            the <a>DAPT document</a> in which such data can be stored.
-            Those items of data can be those defined in this specification,
-            or proprietary extensions;
-            see also <a href="#proprietary-metadata-and-foreign-vocabulary"></a>.
+          <p>The optional <a>Media Zero Timecode</a> and
+            <a>Start of Programme Timecode</a> properties can be used to
+            identify when there is a possible synchronisation error,
+            and to resynchronise the document when all
+            the required information is known.</p>
+          <p>These properties are provided as metadata only and
+            are not intended to be used to perform direct synchronisation offsets
+            during presentation.
           </p>
-          <p>A <a>DAPT Script</a> MAY contain zero or one <a>Legacy Metadata</a> objects.</p>
-          <p>If a <a>Legacy Metadata</a> object is present, the <a>DAPT Document</a> MUST have
+
+          <p>A <a>DAPT Script</a> MAY contain zero or one <a>Media Zero Timecode</a> objects.</p>
+          <p>A <a>DAPT Script</a> MAY contain zero or one <a>Start of Programme Timecode</a> objects.</p>
+          <p>If either a <a>Media Zero Timecode</a> object
+            or a <a>Start of Programme Timecode</a> object is present,
+            the <a>DAPT Document</a> MUST have
             one <code>&lt;head&gt;</code> element child of the <code>&lt;tt&gt;</code> element,
             and that <code>&lt;head&gt;</code> element MUST have
             at least one <code>&lt;metadata&gt;</code> element child.</p>
-          <p>The <a>Legacy Metadata</a> is represented in a <a>DAPT Document</a> by
-            a <code>&lt;daptm:legacy&gt;</code> element present at the path
-            <code>/tt/head/metadata/daptm:legacy</code>.</p>
 
           <section>
             <h5>Media Zero Timecode</h5>
             <p>The optional <dfn>Media Zero Timecode</dfn> allows a timecode value to be declared
               that corresponds to the zero point on the media timeline,
-              that is, the time of a <a>Script Event</a> whose <a>Begin</a> is
+              that is, the time of a hypothetical <a>Script Event</a> whose <a>Begin</a> is
               zero seconds on the media timeline.</p>
-            <p>A <a>Legacy Metadata</a> MAY contain zero or one <a>Media Zero Timecode</a> objects.</p>
+            <p>A <a>DAPT Script</a> MAY contain zero or one <a>Media Zero Timecode</a> objects.</p>
             <p>The <a>Media Zero Timecode</a> object is represented in a <a>DAPT Document</a> by
               a <code>&lt;</code><dfn><code>daptm:mediaZeroTimecode</code></dfn><code>&gt;</code> element present at the path
-              <code>/tt/head/metadata/daptm:legacy/daptm:mediaZeroTimecode</code>,
+              <code>/tt/head/metadata/daptm:mediaZeroTimecode</code>,
               with the following constraints:</p>
             <ul>
               <li>The character content of the element must conform to a <code>clock-time</code>
@@ -1081,9 +1085,7 @@
 ...
 &lt;head&gt;
   &lt;metadata&gt;
-    &lt;daptm:legacy&gt;
-      &lt;daptm:mediaZeroTimecode&gt;10:01:20:12&lt;/daptm:mediaZeroTimecode&gt;
-    &lt;/daptm:legacy&gt;
+    &lt;daptm:mediaZeroTimecode&gt;10:01:20:12&lt;/daptm:mediaZeroTimecode&gt;
   &lt;/metadata&gt;
 &lt;/head&gt;
 &lt;body&gt;
@@ -1093,15 +1095,15 @@
 &lt;/body&gt;
 ...
             </pre>
-            <div class="note">
+            <aside class="example">
               <p>When converting legacy formats that store the equivalent of each Script Event,
                 for example a <a>description</a>, with SMPTE timecodes,
-                but where the timecode corresponding to the beginning of the related media is
+                but where the <a>Start of Programme Timecode</a> is
                 not stored, and is not immediately available, the <a>Media Zero Timecode</a>
                 can be used to defer synchronisation with the media until
                 that media begin timecode is known.
               </p>
-              <p>One approach to resolving this conundrum using <a>Media Zero Timecode</a>
+              <p>One approach to deferring synchronisation using <a>Media Zero Timecode</a>
                 is as follows, assuming that a legacy source file is being converted
                 to a <a>DAPT Document</a> and relates to media with continuous timecode:
               </p>
@@ -1123,12 +1125,60 @@
               </ul>
               <p>When the related media's timecode is later dicovered,
                 the times of the <a>Script Events</a> can be adjusted so that
-                media time zero is coincident with the beginning of the
-                related media, and the <a>Media Zero Timecode</a> can be
+                media time zero is coincident with the <a>Start of Programme Timecode</a>,
+                and the <a>Media Zero Timecode</a> can be
                 removed or set to the now-known value.
               </p>
-            </div>
+              <p class="note">The above algorithm can be used to align the begin times
+                of the <a>DAPT Script</a> and the <a>related media object</a>.
+                It does not address progressive synchronisation errors caused by incorrect frame rates or
+                differing playback rates.
+              </p>
+            </aside>
           </section>
+
+          <section>
+            <h5>Start of Programme Timecode</h5>
+            <p>The optional <dfn>Start of Programme Timecode</dfn> allows a timecode value to be declared
+              that corresponds to the beginning of the related media object's programme content.</p>
+            <p >In combination with <a>Media Zero Timecode</a>,
+              the value of <a>Start of Programme Timecode</a> can be used to infer whether or not
+              the media times in the <a>DAPT Script</a> are likely to be correctly synchronised with
+              the <a>Related Media Object</a>.</p>
+            <p>If both <a>Media Zero Timecode</a> and <a>Start of Programme Timecode</a> are present,
+              but their values are different, it is likely that the media times are not
+              synchronised with the <a>Related Media Object</a>, since this implies that
+              the equivalent time code to zero seconds in media time is not the start of the programme,
+              which is the requirement for correctly synchronised media time.</p>
+            <p>A <a>DAPT Script</a> MAY contain zero or one <a>Start of Programme Timecode</a> objects.</p>
+            <p>The <a>Start of Programme Timecode</a> object is represented in a <a>DAPT Document</a> by
+              a <code>&lt;ebuttm:documentStartOfProgramme&gt;</code> element present at the path
+              <code>/tt/head/metadata/ebuttm:documentStartOfProgramme</code>,
+              with the syntactic constraints as defined in [[EBU-TT-3390]].</p>
+            <pre class="example">
+...
+&lt;head&gt;
+  &lt;metadata&gt;
+    &lt;daptm:mediaZeroTimecode&gt;10:01:20:12&lt;/daptm:mediaZeroTimecode&gt;
+    &lt;ebuttm:documentStartOfProgramme&gt;10:00:00:00&lt;ebuttm:documentStartOfProgramme&gt;
+    &lt;!-- It is likely that this document is 1 minute, 20 seconds and 12 frames too early,
+        compared to the related media --&gt;
+  &lt;/metadata&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div xml:id="se1" begin="0s" end="1.8s"&gt;
+    &lt;!-- This script event was generated from a source whose begin timecode was 10:01:20:12 --&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+...
+            </pre>
+            <p>If the times of the <a>Script Events</a> are adjusted to bring
+              the media time into synchronisation with the <a>Related Media Object</a>,
+              as noted in <a>Media Zero Timecode</a>, the <a>Start of Programme Timecode</a>
+              SHOULD NOT be changed, since it is an invariant feature of the <a>Related Media Object</a>,
+              and does not describe the times in the <a>DAPT Document</a>.</p>
+          </section>
+
         </section>
       </section>
       <section>
@@ -2197,6 +2247,12 @@ daptm:descType : string
               <td><code>http://www.w3.org/ns/ttml/profile/dapt/extension/</code></td>
               <td><em>This specification</em></td>
             </tr>
+            <tr>
+              <td>EBU-TT Metadata</td>
+              <td><code>ebuttm</code></td>
+              <td><code>urn:ebu:tt:metadata</code></td>
+              <td>[[EBU-TT-3390]]</td>
+            </tr>
           </tbody>
         </table>
         <p>
@@ -2207,6 +2263,7 @@ daptm:descType : string
           all undefined names in these namespaces are reserved for future standardization by the W3C.
         </p>
       </section>
+
       <section>
         <h3>Related Media Object (TTML)</h3>
         <p>Within DAPT, the common language terms audio and video are used in the context of a programme.
@@ -2215,14 +2272,14 @@ daptm:descType : string
           provides the media timeline and is the source of the <a>main programme audio</a>,
           and any visual timing references needed when adjusting timings relevant to the video image,
           such as for lip synchronization.</p>
-          <div class="note">
-            <p>A <a>DAPT document</a> can identify the programme acting
-            as the <a>Related Media Object</a> using metadata. For example, it is possible
-            to use the <code>&lt;ebuttm:sourceMediaIdentifier&gt;</code> element defined in [[EBU-TT-3390]].</p>
-            <pre class="xml example" data-include="examples/sourceMediaIdentifier.xml" data-include-format="text"></pre>
-          </div>
-
+        <div class="note">
+          <p>A <a>DAPT document</a> can identify the programme acting
+          as the <a>Related Media Object</a> using metadata. For example, it is possible
+          to use the <code>&lt;ebuttm:sourceMediaIdentifier&gt;</code> element defined in [[EBU-TT-3390]].</p>
+          <pre class="xml example" data-include="examples/sourceMediaIdentifier.xml" data-include-format="text"></pre>
+        </div>
       </section>
+
       <section>
         <h3>Synchronization</h3>
         <p>
@@ -2254,6 +2311,7 @@ daptm:descType : string
           no more than 35ms before the time specified in the <a>DAPT document</a>
           and no more than 45ms after the time specified.</p>
       </section>
+
       <section>
         <h3>Profile Signaling</h3>
         This section defines how a TTML
