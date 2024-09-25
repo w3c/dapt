@@ -632,7 +632,7 @@
           <div class="exampleInner">
             <pre class="language-abnf">
   daptm:scriptRepresents
-  : <a>&lt;content-descriptor&gt;</a> ( &lt;lwsp&gt;+ &lt;content-descriptor&gt;)*
+  : &lt;<a>content-descriptor</a>&gt; ( &lt;lwsp&gt;+ &lt;content-descriptor&gt;)*
 
   &lt;content-descriptor&gt;  # see &lt;content-descriptor&gt; values
 
@@ -882,10 +882,10 @@
               the contents of the relevant object represent.
             </p>
             <p>The values permitted in those properties depend on the
-              <dfn><code>&lt;content-descriptor&gt;</code></dfn> syntactic definition
+              <code>&lt;<dfn>content-descriptor</dfn>&gt;</code> syntactic definition
               and its associated registry table.
             </p>
-            <p><a><code>&lt;content-descriptor&gt;</code></a> has a value conforming to the following syntax:</p>
+            <p><code>&lt;<a>content-descriptor</a>&gt;</code> has a value conforming to the following syntax:</p>
             <div class="exampleInner">
               <pre class="language-abnf nohighlight">
     &lt;content-descriptor&gt;  # see registry table below
@@ -898,15 +898,15 @@
     : ;  # SEMI-COLON U+003B
               </pre>
             </div>
-            <p><a><code>&lt;content-descriptor&gt;</code></a> has values that are delimiter separated ordered lists
+            <p><code>&lt;<a>content-descriptor</a>&gt;</code> has values that are delimiter separated ordered lists
               of tokens.</p>
-            <p>A <a><code>&lt;content-descriptor&gt;</code></a> value <em>A</em> is a <dfn data-abbr="sub-type">content descriptor sub-type</dfn>
+            <p>A <code>&lt;<a>content-descriptor</a>&gt;</code> value <em>A</em> is a <dfn data-abbr="sub-type">content descriptor sub-type</dfn>
               of another <code>&lt;content-descriptor&gt;</code> value <em>B</em> if B's ordered list of tokens is
               present at the beginning of A's ordered list of tokens.
             </p>
             <aside class="example">
               <table class="data">
-                <caption>Table demonstrating example values of <a><code>&lt;content-descriptor&gt;</code></a>
+                <caption>Table demonstrating example values of <code>&lt;<a>content-descriptor</a>&gt;</code>
                   and whether each is a  <a>sub-type</a> of the other.
                 </caption>
                 <thead>
@@ -937,14 +937,14 @@
               <p>For example, in this table A could be one of the values listed in <a>Script Represents</a> property,
                 and B could be the value of a <a>Represents</a> property.</p>
             </aside>
-            <p>The permitted values for <a><code>&lt;content-descriptor&gt;</code></a>
+            <p>The permitted values for <code>&lt;<a>content-descriptor</a>&gt;</code>
               are either those listed in the following <a>registry table</a>, or can be user-defined:</p>
               <div class="registry-table-section">
                 <table class="data">
-                  <caption><a>Registry table</a> for the <a><code>&lt;content-descriptor&gt;</code></a> component
+                  <caption><a>Registry table</a> for the <code>&lt;<a>content-descriptor</a>&gt;</code> component
                     whose Registry Definition is at <a href="#registry-table-content-descriptor"></a></caption>
                   <thead>
-                    <th><a><code>&lt;content-descriptor&gt;</code></a></th>
+                    <th><code>&lt;<a>content-descriptor</a>&gt;</code></th>
                     <th>Status</th>
                     <th>Description</th>
                     <th>Example usage</th>
@@ -1498,7 +1498,7 @@ daptm:onScreen
            the <a>Script Event</a> represents.</p>
           <p>The <a>Represents</a> property is represented in a <a>DAPT Document</a> by
             a <dfn><code>daptm:represents</code></dfn> attribute,
-            whose value MUST be a single <a><code>&lt;content-descriptor&gt;</code></a>.
+            whose value MUST be a single <code>&lt;<a>content-descriptor</a>&gt;</code>.
           </p>
           <p>The <a>Represents</a> property is inheritable.
             If it is absent from an element then its computed value is the computed value of
