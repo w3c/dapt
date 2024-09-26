@@ -2764,7 +2764,7 @@ daptm:descType : string
       a common issue occurs if the timecode of
       the beginning of the media is not known at the time of conversion.
     </p>
-    <p>The optional <a>Media Zero Timecode</a> and
+    <p>The optional <a>DAPT Origin Timecode</a> and
       <a>Start of Programme Timecode</a> properties can be used to
       identify when there is a possible synchronisation error,
       and to resynchronise the document when all
@@ -2774,9 +2774,9 @@ daptm:descType : string
       during presentation.
     </p>
 
-    <p>A <a>DAPT Script</a> MAY contain zero or one <a>Media Zero Timecode</a> objects.</p>
+    <p>A <a>DAPT Script</a> MAY contain zero or one <a>DAPT Origin Timecode</a> objects.</p>
     <p>A <a>DAPT Script</a> MAY contain zero or one <a>Start of Programme Timecode</a> objects.</p>
-    <p>If either a <a>Media Zero Timecode</a> object
+    <p>If either a <a>DAPT Origin Timecode</a> object
       or a <a>Start of Programme Timecode</a> object is present,
       the <a>DAPT Document</a> MUST have
       one <code>&lt;head&gt;</code> element child of the <code>&lt;tt&gt;</code> element,
@@ -2784,29 +2784,29 @@ daptm:descType : string
       at least one <code>&lt;metadata&gt;</code> element child.</p>
 
     <section>
-      <h5>Media Zero Timecode</h5>
-      <p>The optional <dfn>Media Zero Timecode</dfn> allows a timecode value to be declared
+      <h5>DAPT Origin Timecode</h5>
+      <p>The optional <dfn>DAPT Origin Timecode</dfn> allows a timecode value to be declared
         that corresponds to the zero point on the media timeline,
         that is, the time of a hypothetical <a>Script Event</a> whose <a>Begin</a> is
         zero seconds on the media timeline.</p>
-      <p>A <a>DAPT Script</a> MAY contain zero or one <a>Media Zero Timecode</a> objects.</p>
-      <p>The <a>Media Zero Timecode</a> object is represented in a <a>DAPT Document</a> by
-        a <code>&lt;</code><dfn><code>daptm:mediaZeroTimecode</code></dfn><code>&gt;</code> element present at the path
-        <code>/tt/head/metadata/daptm:mediaZeroTimecode</code>,
+      <p>A <a>DAPT Script</a> MAY contain zero or one <a>DAPT Origin Timecode</a> objects.</p>
+      <p>The <a>DAPT Origin Timecode</a> object is represented in a <a>DAPT Document</a> by
+        a <code>&lt;</code><dfn><code>daptm:daptOriginTimecode</code></dfn><code>&gt;</code> element present at the path
+        <code>/tt/head/metadata/daptm:daptOriginTimecode</code>,
         with the following constraints:</p>
       <ul>
         <li>The character content of the element must conform to a <code>clock-time</code>
           with a <code>frames</code> component, as defined in <dfn data-cite="ttml2#timing-value-time-expression">&lt;time-expression&gt;</dfn>.</li>
       </ul>
       <p class="note">See also <a href="#ttp-framerate"></a>.
-        No mechanism is defined here for declaring a different frame rate for the <a>Media Zero Timecode</a>
+        No mechanism is defined here for declaring a different frame rate for the <a>DAPT Origin Timecode</a>
         than is used for other frame-based time expressions.
       </p>
       <pre class="example">
 ...
 &lt;head&gt;
 &lt;metadata&gt;
-&lt;daptm:mediaZeroTimecode&gt;10:01:20:12&lt;/daptm:mediaZeroTimecode&gt;
+&lt;daptm:daptOriginTimecode&gt;10:01:20:12&lt;/daptm:daptOriginTimecode&gt;
 &lt;/metadata&gt;
 &lt;/head&gt;
 &lt;body&gt;
@@ -2820,11 +2820,11 @@ daptm:descType : string
         <p>When converting legacy formats that store the equivalent of each Script Event,
           for example a <a>description</a>, with SMPTE timecodes,
           but where the <a>Start of Programme Timecode</a> is
-          not stored, and is not immediately available, the <a>Media Zero Timecode</a>
+          not stored, and is not immediately available, the <a>DAPT Origin Timecode</a>
           can be used to defer synchronisation with the media until
           that media begin timecode is known.
         </p>
-        <p>One approach to deferring synchronisation using <a>Media Zero Timecode</a>
+        <p>One approach to deferring synchronisation using <a>DAPT Origin Timecode</a>
           is as follows, assuming that a legacy source file is being converted
           to a <a>DAPT Document</a> and relates to media with continuous timecode:
         </p>
@@ -2832,12 +2832,12 @@ daptm:descType : string
           <li>Find the earliest begin timecode for an item in the source file
             that will be mapped to a <a>Script Event</a>;</li>
           <li>Create a <a>DAPT Document</a> with
-            a <a>Media Zero Timecode</a> set to that earliest begin timecode;</li>
+            a <a>DAPT Origin Timecode</a> set to that earliest begin timecode;</li>
           <li>For each relevant item in the source file,
             create a <a>Script Event</a> with appropriate
             <a>Begin</a> and <a>End</a> times obtained by converting
             the source file's begin and end timecodes to media time,
-            relative to that <a>Media Zero Timecode</a>,
+            relative to that <a>DAPT Origin Timecode</a>,
             basing elapsed time on the applicable frame rate;</li>
           <li>If using frame-based media time expressions,
             set the <code>ttp:frameRate</code> attribute of
@@ -2847,7 +2847,7 @@ daptm:descType : string
         <p>When the related media's timecode is later dicovered,
           the times of the <a>Script Events</a> can be adjusted so that
           media time zero is coincident with the <a>Start of Programme Timecode</a>,
-          and the <a>Media Zero Timecode</a> can be
+          and the <a>DAPT Origin Timecode</a> can be
           removed or set to the now-known value.
         </p>
         <p class="note">The above algorithm can be used to align the begin times
@@ -2862,11 +2862,11 @@ daptm:descType : string
       <h5>Start of Programme Timecode</h5>
       <p>The optional <dfn>Start of Programme Timecode</dfn> allows a timecode value to be declared
         that corresponds to the beginning of the related media object's programme content.</p>
-      <p >In combination with <a>Media Zero Timecode</a>,
+      <p >In combination with <a>DAPT Origin Timecode</a>,
         the value of <a>Start of Programme Timecode</a> can be used to infer whether or not
         the media times in the <a>DAPT Script</a> are likely to be correctly synchronised with
         the <a>Related Media Object</a>.</p>
-      <p>If both <a>Media Zero Timecode</a> and <a>Start of Programme Timecode</a> are present,
+      <p>If both <a>DAPT Origin Timecode</a> and <a>Start of Programme Timecode</a> are present,
         but their values are different, it is likely that the media times are not
         synchronised with the <a>Related Media Object</a>, since this implies that
         the equivalent time code to zero seconds in media time is not the start of the programme,
@@ -2880,7 +2880,7 @@ daptm:descType : string
 ...
 &lt;head&gt;
 &lt;metadata&gt;
-&lt;daptm:mediaZeroTimecode&gt;10:01:20:12&lt;/daptm:mediaZeroTimecode&gt;
+&lt;daptm:daptOriginTimecode&gt;10:01:20:12&lt;/daptm:daptOriginTimecode&gt;
 &lt;ebuttm:documentStartOfProgramme&gt;10:00:00:00&lt;ebuttm:documentStartOfProgramme&gt;
 &lt;!-- It is likely that this document is 1 minute, 20 seconds and 12 frames too early,
   compared to the related media --&gt;
@@ -2895,7 +2895,7 @@ daptm:descType : string
       </pre>
       <p>If the times of the <a>Script Events</a> are adjusted to bring
         the media time into synchronisation with the <a>Related Media Object</a>,
-        as noted in <a>Media Zero Timecode</a>, the <a>Start of Programme Timecode</a>
+        as noted in <a>DAPT Origin Timecode</a>, the <a>Start of Programme Timecode</a>
         SHOULD NOT be changed, since it is an invariant feature of the <a>Related Media Object</a>,
         and does not describe the times in the <a>DAPT Document</a>.</p>
     </section>
@@ -3469,10 +3469,10 @@ daptm:descType : string
             </td>
           </tr>
           <tr>
-            <td><a href="#mediazerotimecode"><code>#mediaZeroTimecode</code></a></td>
+            <td><a href="#daptorigintimecode"><code>#daptOriginTimecode</code></a></td>
             <td><span class="permitted label">permitted</span></td>
             <td>
-              This is the profile expression of <a href="#media-zero-timecode"></a>.
+              This is the profile expression of <a href="#dapt-origin-timecode"></a>.
             </td>
           </tr>
           <tr>
@@ -3655,12 +3655,12 @@ daptm:descType : string
       </section>
 
       <section>
-        <h3>#mediaZeroTimecode</h3>
-        <p>A <a>transformation processor</a> supports the <code>#mediaZeroTimecode</code> extension if
+        <h3>#daptOriginTimecode</h3>
+        <p>A <a>transformation processor</a> supports the <code>#daptOriginTimecode</code> extension if
           it recognizes and is capable of transforming values of the
-          <code>&lt;</code><a><code>daptm:mediaZeroTimecode</code></a><code>&gt;</code> element.</p>
+          <code>&lt;</code><a><code>daptm:daptOriginTimecode</code></a><code>&gt;</code> element.</p>
   
-        <p>No <a>presentation processor</a> behaviour is defined for the <code>#mediaZeroTimecode</code> extension.</p>
+        <p>No <a>presentation processor</a> behaviour is defined for the <code>#daptOriginTimecode</code> extension.</p>
       </section>
 
       <section>
