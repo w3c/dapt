@@ -2532,6 +2532,22 @@ daptm:eventType : string
         <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[TTML2]] in the
         <dfn data-cite="ttml2#terms-content-profile">content profile</dfn> defined
         in <a href="#profiles"></a>.</p>
+      <aside class="note">The provisions in this specification are expressed in terms of TTML2 processor types,
+      using terms like "content processors", "presentation processors", "validation processors",
+      "transformation processor" ... They may be understood with the mapping below:
+      <ul>
+        <li>A DAPT tool that would display the content of a DAPT document, in any form:
+          for example, just rendering the text, event by event; or rendering the text of all the events
+          all at once along a timeline; or one doing the audio mixing, would be considered
+          a Presentation Processor. A Presentation Processor can also support additional rendering features
+          from TTML2, such as styles for DAPT documents that use that.</li>
+        <li>A DAPT authoring tool, producing DAPT documents from scratch or from an other document,
+          would be considered a transformation processor. It may also be considered as
+          a presentation processor if it does any form of rendering of the text or the audio.</li>
+        <li>A DAPT tool that would indicate if a DAPT document is compliant to this specification
+          would correspond to a validation processor.</li>
+      </ul>
+      </aside>
       <p class="note">
         <a>DAPT Documents</a> remain subject to the content conformance requirements specified at Section 3.1 of [[TTML2]].
         In particular, a <a>DAPT Document</a> can contain <a>foreign vocabulary</a>,
