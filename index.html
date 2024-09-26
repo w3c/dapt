@@ -898,10 +898,13 @@
     : &lt;descriptor-token&gt; ( &lt;descriptor-delimiter&gt; &lt;descriptor-token&gt; )*
   
     &lt;descriptor-token&gt;
-    : <a data-cite="xmlschema-2#NMTOKEN">xsd:NMtoken</a>
+    : (descriptorTokenChar)+
+
+    descriptorTokenChar  # <a data-cite="xmlschema-2#NMTOKEN">xsd:NMtoken</a> without the "."
+    : <a data-cite="xml#NT-NameStartChar">NameStartChar</a> | "-" | [0-9] | #xB7 | [#x0300-#x036F] | [#x203F-#x2040]
 
     &lt;descriptor-delimiter&gt;
-    : ;  # SEMI-COLON U+003B
+    : "."  # FULL STOP U+002E
               </pre>
             </div>
             <p><code>&lt;<a>content-descriptor</a>&gt;</code> has values that are delimiter separated ordered lists
@@ -944,7 +947,11 @@
                 and B could be the value of a <a>Represents</a> property.</p>
             </aside>
             <p>The permitted values for <code>&lt;<a>content-descriptor</a>&gt;</code>
-              are either those listed in the following <a>registry table</a>, or can be user-defined:</p>
+              are either those listed in the following <a>registry table</a>, or can be user-defined.</p>
+            <p>Valid user-defined values MUST begin with <code>x-</code> or be <a>sub-types</a> of
+              values in the <code>content-descriptor</code> registry table, where the
+              first additional <code>&lt;descriptor-token&gt;</code> component begins with <code>x-</code>.</p>
+
               <div class="registry-table-section">
                 <table class="data">
                   <caption><a>Registry table</a> for the <code>&lt;<a>content-descriptor</a>&gt;</code> component
@@ -1005,8 +1012,8 @@
                     <tr>
                       <td><code>visual;text</code></td>
                       <td>Provisional</td>
-                      <td>>Indicates that the DAPT content represents textual
-                        parts of the visual image of the programme</td>
+                      <td>Indicates that the DAPT content represents textual
+                        content in the visual image of the programme</td>
                       <td>Audio Description</td>
                       <td>For example, a signpost, a clock, a newspaper headline, an instant message etc.</td>
                     </tr>
@@ -1034,7 +1041,6 @@
                   </tbody>
                 </table>
               </div>
-              <p>User-defined values MUST begin with <code>x-</code>.</p>
             </section>
         </section>
       </section>

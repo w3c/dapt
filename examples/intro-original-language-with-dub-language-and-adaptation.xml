@@ -5,7 +5,7 @@
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
     xml:lang="en"
     daptm:langSrc="fr"
-    daptm:scriptRepresents="audio;dialogue"
+    daptm:scriptRepresents="audio.dialogue"
     daptm:scriptType="preRecording">
   <head>
     <metadata>
@@ -15,7 +15,7 @@
     </metadata>
   </head>
   <body>
-    <div begin="10s" end="13s" ttm:agent="character_1" daptm:onScreen="ON_OFF" daptm:represents="audio;dialogue">
+    <div begin="10s" end="13s" ttm:agent="character_1" daptm:onScreen="ON_OFF" daptm:represents="audio.dialogue">
       <p xml:lang="fr" daptm:langSrc="fr">
         <span>Et c'est grâce à ça qu'on va devenir riches.</span>
       </p>
