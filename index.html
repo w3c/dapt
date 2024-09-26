@@ -418,7 +418,7 @@
           <ul>
           <li>The <code>&lt;tt&gt;</code> root element in the namespace <code>http://www.w3.org/ns/ttml</code> indicates that this is a TTML document
           and the <a><code>ttp:contentProfiles</code></a> attribute indicates that it adheres to the DAPT <a>content profile</a> defined in this specification.</li>
-          <li>The <code>daptm:represents</code> attribute indicates what the contents of the document are an alternative for,
+          <li>The <code>daptm:scriptRepresents</code> attribute indicates what the contents of the document are an alternative for,
             within the original programme.</li>
           <li>The <code>daptm:scriptType</code> attribute indicates the type of <a>transcript</a> or <a>script</a>
           but in this empty example, it is not relevant, since only the structure of the document is shown.</li>
@@ -436,7 +436,10 @@
         <p>The following examples correspond to the timed text <a>transcripts</a> and <a>scripts</a> produced
           at each stage of the workflow described in [[DAPT-REQS]].</p>
         <p>The first example shows an early stage <a>transcript</a> in which timed opportunities for descriptions
-          or transcriptions have been identified but no text has been written:</p>
+          or transcriptions have been identified but no text has been written;
+          the <code>daptm:represents</code> attribute present on the <code>&lt;body&gt;</code>
+          element here is inherited by the <code>&lt;div&gt;</code> elements since
+          they do not specify a different value:</p>
         <pre class="example"
           data-include="examples/intro-times-only.xml"
           data-include-format="text">
@@ -464,6 +467,11 @@
           data-include="examples/intro-script-with-gain.xml"
           data-include-format="text">
         </pre>
+        <p>At the document level, the <code>daptm:scriptRepresents</code> attribute indicates
+          that the document represents both visual text and visual non-text content in the
+          related media.
+          It is possible that there are no Script Events that actually represent visual text,
+          for example because there is no text in the video image.</p>
         <p>In the above example, the <code>&lt;div&gt;</code> element's
           <code>begin</code> attribute defines the time that is the "syncbase" for its child, 
           so the times on the <code>&lt;animate&gt;</code> and <code>&lt;span&gt;</code>
@@ -605,7 +613,7 @@
           that corresponds to a document processed within an authoring workflow or processed by a client,
           and conforms to the constraints of this specification.
           It has properties and objects defined in the following sections:
-          <a>Represents</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Text Language Source</a>, <a>Script Events</a>
+          <a>Script Represents</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Text Language Source</a>, <a>Script Events</a>
           and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
         <p>A <dfn>DAPT Document</dfn> is a [[TTML2]] <a>timed text content document instance</a> representing a <a>DAPT Script</a>.
           A <a>DAPT Document</a> has the structure and constraints defined in this and the following sections.</p>
@@ -634,9 +642,7 @@
   daptm:scriptRepresents
   : &lt;<a>content-descriptor</a>&gt; ( &lt;lwsp&gt;+ &lt;content-descriptor&gt;)*
 
-  &lt;content-descriptor&gt;  # see &lt;content-descriptor&gt; values
-
-  &lt;lwsp&gt;                # as TTML2
+  <a data-cite="TTML2#style-value-lwsp">&lt;lwsp&gt;</a>                # as TTML2
             </pre>
           </div>
           <aside class="example">
@@ -892,7 +898,7 @@
     : &lt;descriptor-token&gt; ( &lt;descriptor-delimiter&gt; &lt;descriptor-token&gt; )*
   
     &lt;descriptor-token&gt;
-    : <a href="https://www.w3.org/TR/xmlschema-2/#NMTOKEN">xsd:NMtoken</a>
+    : <a data-cite="xmlschema-2#NMTOKEN">xsd:NMtoken</a>
 
     &lt;descriptor-delimiter&gt;
     : ;  # SEMI-COLON U+003B
@@ -954,49 +960,53 @@
                     <tr>
                       <td><code>audio</code></td>
                       <td>Provisional</td>
-                      <td>Audio content</td>
+                      <td>Indicates that the DAPT content represents any part of the audio programme</td>
                       <td>Dubbing, translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
                       <td>See sub-types.</td>
                     </tr>
                     <tr>
                       <td><code>audio;dialogue</code></td>
                       <td>Provisional</td>
-                      <td>Verbal communication, in audio</td>
+                      <td>Indicates that the DAPT content represents verbal communication in the audio programme</td>
                       <td>Dubbing, translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
                       <td>For example, a spoken conversation.</td>
                     </tr>
                     <tr>
                       <td><code>audio;nonDialogueSounds</code></td>
                       <td>Provisional</td>
-                      <td>Sounds that are not verbal communication, in audio</td>
+                      <td>Indicates that the DAPT content represents a part of
+                        the audio programme corresponding to sounds that are not verbal communication</td>
                       <td>Translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
                       <td>For example, significant sounds, such as a door being slammed in anger.</td>
                     </tr>
                     <tr>
                       <td><code>visual</code></td>
                       <td>Provisional</td>
-                      <td>Parts of the visual image</td>
+                      <td>Indicates that the DAPT content represents any part of the visual image of the programme</td>
                       <td>Audio Description</td>
                       <td>See sub-types.</td>
                     </tr>
                     <tr>
                       <td><code>visual;dialogue</code></td>
                       <td>Provisional</td>
-                      <td>Verbal communication, in sign language</td>
+                      <td>Indicates that the DAPT content represents verbal communication,
+                        in sign language, within the visual image of the programme</td>
                       <td>Dubbing or Audio Description, translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
                       <td>For example, a spoken conversation.</td>
                     </tr>
                     <tr>
                       <td><code>visual;nonText</code></td>
                       <td>Provisional</td>
-                      <td>Parts of the visual image that are not textual</td>
+                      <td>Indicates that the DAPT content represents non-textual
+                        parts of the visual image of the programme</td>
                       <td>Audio Description</td>
                       <td>For example, a significant object in the scene</td>
                     </tr>
                     <tr>
                       <td><code>visual;text</code></td>
                       <td>Provisional</td>
-                      <td>Textual parts of the visual image</td>
+                      <td>>Indicates that the DAPT content represents textual
+                        parts of the visual image of the programme</td>
                       <td>Audio Description</td>
                       <td>For example, a signpost, a clock, a newspaper headline, an instant message etc.</td>
                     </tr>
@@ -1139,7 +1149,7 @@
           <li>A <a>Represents</a> property
             used to identify what content the event represents (e.g. dialogue, on screen text, etc.).
             Every <a>Script Event</a> MUST have a valid <a>Represents</a> property.
-          <aside class="note">The <a>Represents</a> property is inherited,
+          <aside class="note">The <a>Represents</a> property is inheritable,
             so the value does not need to be specified on every <a>Script Event</a> explicitly.</aside></li>
           <li>Zero or more <a>Character Identifiers</a> indicating the <a>Characters</a> involved in this <a>Script Event</a>.
             <p class="note">While typically, a <a>Script Event</a> corresponds to one single <a>Character</a>,
