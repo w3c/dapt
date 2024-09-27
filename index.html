@@ -883,11 +883,7 @@
 
           <section id="contentDescriptor">
             <h5><code>&lt;content-descriptor&gt;</code> values</h5>
-            <p>The <a>Script Represents</a> and <a>Represents</a> properties
-              indicate which components of the <a>related media object</a>
-              the contents of the relevant object represent.
-            </p>
-            <p>The values permitted in those properties depend on the
+            <p>The values permitted in the <a>Script Represents</a> and <a>Represents</a> properties depend on the
               <code>&lt;<dfn>content-descriptor</dfn>&gt;</code> syntactic definition
               and its associated registry table.
             </p>
@@ -897,7 +893,7 @@
     &lt;content-descriptor&gt;  # see registry table below
     : &lt;descriptor-token&gt; ( &lt;descriptor-delimiter&gt; &lt;descriptor-token&gt; )*
   
-    &lt;descriptor-token&gt;
+    &lt;<dfn>descriptor-token</dfn>&gt;
     : (descriptorTokenChar)+
 
     descriptorTokenChar  # <a data-cite="xmlschema-2#NMTOKEN">xsd:NMtoken</a> without the "."
@@ -910,8 +906,8 @@
             <p><code>&lt;<a>content-descriptor</a>&gt;</code> has values that are delimiter separated ordered lists
               of tokens.</p>
             <p>A <code>&lt;<a>content-descriptor</a>&gt;</code> value <em>A</em> is a <dfn data-abbr="sub-type">content descriptor sub-type</dfn>
-              of another <code>&lt;content-descriptor&gt;</code> value <em>B</em> if B's ordered list of tokens is
-              present at the beginning of A's ordered list of tokens.
+              of another <code>&lt;content-descriptor&gt;</code> value <em>B</em> if B's ordered list of <a>descriptor-tokens</a> is
+              present at the beginning of A's ordered list of <a>descriptor-tokens</a>.
             </p>
             <aside class="example">
               <table class="data">
@@ -927,30 +923,30 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><code>visual;text</code></td>
+                    <td><code>visual.text</code></td>
                     <td><code>visual</code></td>
                     <td>No</td>
                   </tr>
                   <tr>
-                    <td><code>visual;text</code></td>
-                    <td><code>visual;text</code></td>
+                    <td><code>visual.text</code></td>
+                    <td><code>visual.text</code></td>
                     <td>Yes</td>
                   </tr>
                   <tr>
-                    <td><code>visual;text</code></td>
-                    <td><code>visual;text;location</code></td>
+                    <td><code>visual.text</code></td>
+                    <td><code>visual.text.location</code></td>
                     <td>yes</td>
                   </tr>
                 </tbody>
               </table>
-              <p>For example, in this table A could be one of the values listed in <a>Script Represents</a> property,
+              <p>For example, in this table, A could be one of the values listed in <a>Script Represents</a> property,
                 and B could be the value of a <a>Represents</a> property.</p>
             </aside>
             <p>The permitted values for <code>&lt;<a>content-descriptor</a>&gt;</code>
               are either those listed in the following <a>registry table</a>, or can be user-defined.</p>
             <p>Valid user-defined values MUST begin with <code>x-</code> or be <a>sub-types</a> of
               values in the <code>content-descriptor</code> registry table, where the
-              first additional <code>&lt;descriptor-token&gt;</code> component begins with <code>x-</code>.</p>
+              first additional <code>&lt;<a>descriptor-token</a>&gt;</code> component begins with <code>x-</code>.</p>
 
               <div class="registry-table-section">
                 <table class="data">
@@ -961,82 +957,77 @@
                     <th>Status</th>
                     <th>Description</th>
                     <th>Example usage</th>
-                    <th>Notes</th>
                   </thead>
                   <tbody>
                     <tr>
                       <td><code>audio</code></td>
                       <td>Provisional</td>
-                      <td>Indicates that the DAPT content represents any part of the audio programme</td>
+                      <td>Indicates that the DAPT content represents any part of the audio programme.</td>
                       <td>Dubbing, translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
-                      <td>See sub-types.</td>
                     </tr>
                     <tr>
                       <td><code>audio;dialogue</code></td>
                       <td>Provisional</td>
-                      <td>Indicates that the DAPT content represents verbal communication in the audio programme</td>
+                      <td>Indicates that the DAPT content represents verbal communication in the audio programme,
+                        for example, a spoken conversation.</td>
                       <td>Dubbing, translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
-                      <td>For example, a spoken conversation.</td>
                     </tr>
                     <tr>
                       <td><code>audio;nonDialogueSounds</code></td>
                       <td>Provisional</td>
                       <td>Indicates that the DAPT content represents a part of
-                        the audio programme corresponding to sounds that are not verbal communication</td>
+                        the audio programme corresponding to sounds that are not verbal communication,
+                        for example, significant sounds, such as a door being slammed in anger.
+                      </td>
                       <td>Translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
-                      <td>For example, significant sounds, such as a door being slammed in anger.</td>
                     </tr>
                     <tr>
                       <td><code>visual</code></td>
                       <td>Provisional</td>
-                      <td>Indicates that the DAPT content represents any part of the visual image of the programme</td>
+                      <td>Indicates that the DAPT content represents any part of the visual image of the programme.</td>
                       <td>Audio Description</td>
-                      <td>See sub-types.</td>
                     </tr>
                     <tr>
                       <td><code>visual;dialogue</code></td>
                       <td>Provisional</td>
                       <td>Indicates that the DAPT content represents verbal communication,
-                        in sign language, within the visual image of the programme</td>
+                        within the visual image of the programme,
+                        for example, a signed conversation.</td>
                       <td>Dubbing or Audio Description, translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
-                      <td>For example, a spoken conversation.</td>
                     </tr>
                     <tr>
                       <td><code>visual;nonText</code></td>
                       <td>Provisional</td>
                       <td>Indicates that the DAPT content represents non-textual
-                        parts of the visual image of the programme</td>
+                        parts of the visual image of the programme,
+                        for example, a significant object in the scene.</td>
                       <td>Audio Description</td>
-                      <td>For example, a significant object in the scene</td>
                     </tr>
                     <tr>
                       <td><code>visual;text</code></td>
                       <td>Provisional</td>
                       <td>Indicates that the DAPT content represents textual
-                        content in the visual image of the programme</td>
+                        content in the visual image of the programme,
+                        for example, a signpost, a clock, a newspaper headline, an instant message etc.</td>
                       <td>Audio Description</td>
-                      <td>For example, a signpost, a clock, a newspaper headline, an instant message etc.</td>
                     </tr>
                     <tr>
                       <td><code>visual;text;title</code></td>
                       <td>Provisional</td>
                       <td>A <a>sub-type</a> of <code>visual;text</code> where the text is the title of the related media.</td>
                       <td>Audio Description</td>
-                      <td></td>
                     </tr>
                     <tr>
                       <td><code>visual;text;credit</code></td>
                       <td>Provisional</td>
                       <td>A <a>sub-type</a> of <code>visual;text</code> where the text is a credit, e.g. the name of an actor.</td>
                       <td>Audio Description</td>
-                      <td></td>
                     </tr>
                     <tr>
                       <td><code>visual;text;location</code></td>
                       <td>Provisional</td>
                       <td>A <a>sub-type</a> of <code>visual;text</code> where the text indicates the location where the content is occurring.</td>
-                      <td></td>
-                      <td></td>
+                      <td>Audio Description</td>
                     </tr>
                   </tbody>
                 </table>
@@ -1518,11 +1509,19 @@ daptm:onScreen
           </p>
           <p>The <a>Represents</a> property is inheritable.
             If it is absent from an element then its computed value is the computed value of
-            the <a>Represents</a> property on its parent element.
+            the <a>Represents</a> property on its parent element,
+            or, if it has no parent element, it is the empty string.
             If it is present on an element then its computed value is the value specified.</p>
+          <p class="note">Since there is no empty &lt;<a>content-descriptor</a>&gt;,
+            this implies that an empty computed <a>Represents</a>
+            property can never be valid; one way to construct
+            a valid <a>DAPT Document</a> is to specify a <a>Represents</a>
+            property on the <a>DAPT Script</a> so that it is
+            inherited by all descendants that do not have a <a>Represents</a>
+            property.</p>
           <p>It is an error for a <a>Represents</a> property value not to be a
             <a>content descriptor sub-type</a> of at least one of the values in the <a>Script Represents</a> property.</p>
-        </section>
+          </section>
 
         <section>
           <h4>Script Event Description</h4>
