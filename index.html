@@ -2758,12 +2758,24 @@ daptm:descType : string
 
   <section class="appendix">
     <h4>Timecode-related metadata</h4>
-    <p>In workflows that create <a>DAPT documents</a> by conversion from formats
-      that synchronise content using timecode to match time stamps
-      in the <a>related media object</a>,
-      a common issue occurs if the timecode of
-      the beginning of the media is not known at the time of conversion.
+    <p><a>DAPT Documents</a> express time as <em>media time</em>,
+      which assumes that there is a reference start time (zero) on a media
+      timeline, and a fixed playrate.
+      An alternative scheme that is used in some workflows is to
+      synchronise media components using timecode,
+      time stamps that are applied, for example to each frame of video.
     </p>
+    <p>Workflows that create <a>DAPT documents</a> from
+      resources that use timecode need to map the timecode
+      values onto the <a>DAPT document</a>'s timeline.</p>
+    <p>If this mapping is not correct, presentation of the
+      <a>DAPT Document</a> will not be synchronised with the <a>related media object</a>.
+      In order to achieve correct synchronisation in this scenario,
+      the timecode corresponding to the start of the programme needs to be known.</p>
+    <p>If the start of programme timecode is not known,
+      but timecodes corresponding to <a>Script Events</a> are known,
+      it is still possible to construct a <a>DAPT Document</a>,
+      albeit one whose synchronisation with the related media is uncertain.</p>
     <p>The optional <a>DAPT Origin Timecode</a> and
       <a>Start of Programme Timecode</a> properties can be used to
       identify when there is a possible synchronisation error,
@@ -2771,8 +2783,7 @@ daptm:descType : string
       the required information is known.</p>
     <p>These properties are provided as metadata only and
       are not intended to be used to perform direct synchronisation offsets
-      during presentation.
-    </p>
+      during presentation.</p>
 
     <p>If either a <a>DAPT Origin Timecode</a> object
       or a <a>Start of Programme Timecode</a> object is present,
