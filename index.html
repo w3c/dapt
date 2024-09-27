@@ -2761,21 +2761,26 @@ daptm:descType : string
     <p><a>DAPT Documents</a> express time as <em>media time</em>,
       which assumes that there is a reference start time (zero) on a media
       timeline, and a fixed playrate.
-      An alternative scheme that is used in some workflows is to
+      An alternative scheme that is used in some other script formats is to
       synchronise media components using timecode,
-      time stamps that are applied, for example to each frame of video.
+      that match time stamps that are applied,
+      for example to each frame of video.
     </p>
     <p>Workflows that create <a>DAPT documents</a> from
-      resources that use timecode need to map the timecode
+      such timecode-based non-DAPT script formats
+      need to map those timecode
       values onto the <a>DAPT document</a>'s timeline.</p>
     <p>If this mapping is not correct, presentation of the
       <a>DAPT Document</a> will not be synchronised with the <a>related media object</a>.
-      In order to achieve correct synchronisation in this scenario,
-      the timecode corresponding to the start of the programme needs to be known.</p>
-    <p>If the start of programme timecode is not known,
+      A reference timecode that matches a known
+      point on the DAPT document timeline can be used
+      to achieve correct synchronisation, for example
+      the timecode corresponding to the start of the programme,
+      which should match DAPT time zero.</p>
+    <p>In this scenario, if such a reference point is not known,
       but timecodes corresponding to <a>Script Events</a> are known,
       it is still possible to construct a <a>DAPT Document</a>,
-      albeit one whose synchronisation with the related media is uncertain.</p>
+      albeit one whose synchronisation with the related media has not yet been resolved.</p>
     <p>The optional <a>DAPT Origin Timecode</a> and
       <a>Start of Programme Timecode</a> properties can be used to
       identify when there is a possible synchronisation error,
@@ -2783,7 +2788,11 @@ daptm:descType : string
       the required information is known.</p>
     <p>These properties are provided as metadata only and
       are not intended to be used to perform direct synchronisation offsets
-      during presentation.</p>
+      during presentation.
+      In particular, when the related media object uses timecode,
+      the presence of the timecode properties does not mean that
+      the player needs to relate these timecode values with
+      any timecode value embedded in the related media resource.</p>
 
     <p>If either a <a>DAPT Origin Timecode</a> object
       or a <a>Start of Programme Timecode</a> object is present,
@@ -2795,9 +2804,25 @@ daptm:descType : string
     <section>
       <h5>DAPT Origin Timecode</h5>
       <p>The optional <dfn>DAPT Origin Timecode</dfn> allows a timecode value to be declared
-        that corresponds to the zero point on the media timeline,
+        that corresponds to the zero point of the DAPT document timeline,
         that is, the time of a hypothetical <a>Script Event</a> whose <a>Begin</a> is
-        zero seconds on the media timeline.</p>
+        zero seconds.</p>
+      <p>The properties can be used to provide timecodes from
+        the related media object or from any other script format used to produce the DAPT document,
+        and are informational.
+        However, when they are both provided and differ,
+        it is an indication that the DAPT document is not synchronized with
+        the related media object and that processing of the script event begins is needed.
+        To achieve synchronization, the following needs to be done:</p>
+      <ol>
+        <li>The difference
+          <a>DAPT Origin Timecode</a> minus the <a>Start of Programme Timecode</a>
+          is computed as "delta".
+          It may be positive or negative.</li>
+        <li>Each <a>Script Event</a>'s <a>Begin</a> and <a>End</a> value X shall be changed to X + delta.</li>
+        <li>The <a>DAPT Origin Timecode</a> shall be removed or changed to the <a>Start of Programme timecode</a> value
+          so that if this algorithm is run again it will result in delta that is zero.</li>
+      </ol>
       <p>A <a>DAPT Script</a> MAY contain zero or one <a>DAPT Origin Timecode</a> objects.</p>
       <p>The <a>DAPT Origin Timecode</a> object is represented in a <a>DAPT Document</a> by
         a <code>&lt;</code><dfn><code>daptm:daptOriginTimecode</code></dfn><code>&gt;</code> element present at the path
@@ -2810,6 +2835,10 @@ daptm:descType : string
       <p class="note">See also <a href="#ttp-framerate"></a>.
         No mechanism is defined here for declaring a different frame rate for the <a>DAPT Origin Timecode</a>
         than is used for other frame-based time expressions.
+      </p>
+      <p>If the related media object contains a timecode for the video frame
+        synchronized to the origin of the DAPT document timeline,
+        the DAPT origin timecode is equal that timecode. 
       </p>
       <pre class="example">
 ...
