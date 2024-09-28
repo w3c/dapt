@@ -314,6 +314,13 @@
           and to be used as part of the solution for meeting user needs
           involving <a>transcripts</a>, including accessibility needs described in [[media-accessibility-reqs]],
           as well as supporting users who need dialogue translated into a different language via dubbing.</p>
+        <p>Every part of the <a>DAPT script</a> content is required
+          to be marked up with some indication of what it represents in the related media,
+          via the <a>Represents</a> property; likewise the <a>DAPT Script</a> as a whole
+          is required to list all the types of content that it represents,
+          for example if it represents audio content or visual content,
+          and if visual, then if it represents text or non-text etc.
+          A registry of hierarchical content descriptors is provided.</p>
         <p>The authoring workflow for both dubbing and audio description involves similar stages,
           that share common requirements as described in [[DAPT-REQS]].
           In both cases, the author reviews the content and
@@ -411,7 +418,7 @@
           <ul>
           <li>The <code>&lt;tt&gt;</code> root element in the namespace <code>http://www.w3.org/ns/ttml</code> indicates that this is a TTML document
           and the <a><code>ttp:contentProfiles</code></a> attribute indicates that it adheres to the DAPT <a>content profile</a> defined in this specification.</li>
-          <li>The <code>daptm:represents</code> attribute indicates what the contents of the document are an alternative for,
+          <li>The <code>daptm:scriptRepresents</code> attribute indicates what the contents of the document are an alternative for,
             within the original programme.</li>
           <li>The <code>daptm:scriptType</code> attribute indicates the type of <a>transcript</a> or <a>script</a>
           but in this empty example, it is not relevant, since only the structure of the document is shown.</li>
@@ -429,7 +436,10 @@
         <p>The following examples correspond to the timed text <a>transcripts</a> and <a>scripts</a> produced
           at each stage of the workflow described in [[DAPT-REQS]].</p>
         <p>The first example shows an early stage <a>transcript</a> in which timed opportunities for descriptions
-          or transcriptions have been identified but no text has been written:</p>
+          or transcriptions have been identified but no text has been written;
+          the <code>daptm:represents</code> attribute present on the <code>&lt;body&gt;</code>
+          element here is inherited by the <code>&lt;div&gt;</code> elements since
+          they do not specify a different value:</p>
         <pre class="example"
           data-include="examples/intro-times-only.xml"
           data-include-format="text">
@@ -457,6 +467,11 @@
           data-include="examples/intro-script-with-gain.xml"
           data-include-format="text">
         </pre>
+        <p>At the document level, the <code>daptm:scriptRepresents</code> attribute indicates
+          that the document represents both visual text and visual non-text content in the
+          related media.
+          It is possible that there are no Script Events that actually represent visual text,
+          for example because there is no text in the video image.</p>
         <p>In the above example, the <code>&lt;div&gt;</code> element's
           <code>begin</code> attribute defines the time that is the "syncbase" for its child, 
           so the times on the <code>&lt;animate&gt;</code> and <code>&lt;span&gt;</code>
@@ -598,7 +613,7 @@
           that corresponds to a document processed within an authoring workflow or processed by a client,
           and conforms to the constraints of this specification.
           It has properties and objects defined in the following sections:
-          <a>Represents</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Text Language Source</a>, <a>Script Events</a>
+          <a>Script Represents</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Text Language Source</a>, <a>Script Events</a>
           and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
         <p>A <dfn>DAPT Document</dfn> is a [[TTML2]] <a>timed text content document instance</a> representing a <a>DAPT Script</a>.
           A <a>DAPT Document</a> has the structure and constraints defined in this and the following sections.</p>
@@ -609,75 +624,33 @@
         </p>
 
         <section>
-          <h4>Represents</h4>
-          <p>The <dfn>Represents</dfn> property is a mandatory property of a <a>DAPT Script</a> which
+          <h4>Script Represents</h4>
+          <p>The <dfn>Script Represents</dfn> property is a mandatory property of a <a>DAPT Script</a> which
             indicates which components of the <a>related media object</a>
             the contents of the document represent.
             The contents of the document could be used as part of a mechanism
             to provide an accessible alternative for those components.
           </p>
-          <p>To represent this property, the <dfn><code>daptm:represents</code></dfn> attribute MUST be present on the <code>&lt;tt&gt;</code> element:</p>
+          <p class="note"><a>Script Events</a> have a related property, <a>Represents</a>,
+            and there are constraints about the permitted values of that property that
+            are dependent on the values of <a>Script Represents</a>.</p>
+          <p>To represent this property, the <dfn><code>daptm:scriptRepresents</code></dfn> attribute
+            MUST be present on the <code>&lt;tt&gt;</code> element,
+            with a value conforming to the following syntax:</p>
           <div class="exampleInner">
             <pre class="language-abnf">
-  daptm:represents
-  : &lt;content-descriptor&gt; ( &lt;lwsp&gt;? "," &lt;lwsp&gt;? &lt;content-descriptor&gt;)*
+  daptm:scriptRepresents
+  : &lt;<a>content-descriptor</a>&gt; ( &lt;lwsp&gt;+ &lt;content-descriptor&gt;)*
 
-  &lt;content-descriptor&gt;  # see registry table below
-
-  &lt;lwsp&gt;                # as TTML2
+  <a data-cite="TTML2#style-value-lwsp">&lt;lwsp&gt;</a>                # as TTML2
             </pre>
           </div>
-          <p>The permitted values for <code>&lt;content-descriptor&gt;</code>
-            are listed in the following <a>registry table</a>:</p>
-            <div class="registry-table-section">
-              <table class="data">
-                <caption><a>Registry table</a> for the <code>&lt;content-descriptor&gt;</code> component
-                  whose Registry Definition is at <a href="#registry-table-content-descriptor"></a></caption>
-                <thead>
-                  <th><code>&lt;content-descriptor&gt;</code></th>
-                  <th>Status</th>
-                  <th>Description</th>
-                  <th>Used in</th>
-                  <th>Notes</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><code>dialogue</code></td>
-                    <td>Provisional</td>
-                    <td>Verbal communication, in audio</td>
-                    <td>Dubbing, translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
-                    <td>For example, a spoken conversation.</td>
-                  </tr>
-                  <tr>
-                    <td><code>nonDialogueSounds</code></td>
-                    <td>Provisional</td>
-                    <td>Sounds that are not verbal communication, in audio</td>
-                    <td>Translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
-                    <td>For example, significant sounds, such as a door being slammed in anger.</td>
-                  </tr>
-                  <tr>
-                    <td><code>visualNonText</code></td>
-                    <td>Provisional</td>
-                    <td>Parts of the visual image that are not textual</td>
-                    <td>Audio Description</td>
-                    <td>For example, a significant object in the scene</td>
-                  </tr>
-                  <tr>
-                    <td><code>visualText</code></td>
-                    <td>Provisional</td>
-                    <td>Textual parts of the visual image</td>
-                    <td>Audio Description</td>
-                    <td>For example, a signpost, a clock, a newspaper headline, an instant message etc.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <aside class="example">
-              <p>A dubbing script might have <code>daptm:represents=&quot;dialogue&quot;</code>;</p>
-              <p>An audio description script might have <code>daptm:represents=&quot;visualNonText, visualText&quot;</code>;</p>
-              <p>A post-production script that could be the precursor to a hard of hearing subtitle document
-                might have <code>daptm:represents=&quot;dialogue, nonDialogueSounds&quot;</code>.</p>
-            </aside>
+          <aside class="example">
+            <p>A dubbing script might have <code>daptm:scriptRepresents=&quot;audio.dialogue&quot;</code>.</p>
+            <p>An audio description script might have <code>daptm:scriptRepresents=&quot;visual.nonText visual.text visual.dialogue&quot;</code>.</p>
+            <p>A post-production script that could be the precursor to a hard of hearing subtitle document
+              might have <code>daptm:scriptRepresents=&quot;audio.dialogue audio.nonDialogueSounds&quot;</code>.</p>
+          </aside>
         </section>
 
         <section>
@@ -862,10 +835,14 @@
         </section>
 
         <section>
-          <h4>Shared properties</h4>
+          <h4>Shared properties and Value Sets</h4>
           <p>Some of the properties in the DAPT data model are common within more than one object type,
             and carry the same semantic everywhere they occur.
             These <dfn>shared properties</dfn> are listed in this section.
+          </p>
+          <p>Some of the value sets in DAPT are reused across more than one property,
+            and have the same constraints everywhere they occur.
+            These shared value sets are also listed in this section.
           </p>
           <p class="ednote">Would it be better to make a "Timed Object" class and subclass Script Event,
             Mixing Instruction and Audio Recording from it?
@@ -903,6 +880,159 @@
               The end time of a <a>DAPT Script</a> is for practical purposes the end of the <a>Related Media Object</a>.
             </p>
           </section>
+
+          <section id="contentDescriptor">
+            <h5><code>&lt;content-descriptor&gt;</code> values</h5>
+            <p>The values permitted in the <a>Script Represents</a> and <a>Represents</a> properties depend on the
+              <code>&lt;<dfn>content-descriptor</dfn>&gt;</code> syntactic definition
+              and its associated registry table.
+            </p>
+            <p><code>&lt;<a>content-descriptor</a>&gt;</code> has a value conforming to the following syntax:</p>
+            <div class="exampleInner">
+              <pre class="language-abnf nohighlight">
+    &lt;content-descriptor&gt;  # see registry table below
+    : &lt;descriptor-token&gt; ( &lt;descriptor-delimiter&gt; &lt;descriptor-token&gt; )*
+  
+    &lt;<dfn>descriptor-token</dfn>&gt;
+    : (descriptorTokenChar)+
+
+    descriptorTokenChar  # <a data-cite="xmlschema-2#NMTOKEN">xsd:NMtoken</a> without the "."
+    : <a data-cite="xml#NT-NameStartChar">NameStartChar</a> | "-" | [0-9] | #xB7 | [#x0300-#x036F] | [#x203F-#x2040]
+
+    &lt;descriptor-delimiter&gt;
+    : "."  # FULL STOP U+002E
+              </pre>
+            </div>
+            <p><code>&lt;<a>content-descriptor</a>&gt;</code> has values that are delimiter separated ordered lists
+              of tokens.</p>
+            <p>A <code>&lt;<a>content-descriptor</a>&gt;</code> value <em>A</em> is a <dfn data-abbr="sub-type">content descriptor sub-type</dfn>
+              of another <code>&lt;content-descriptor&gt;</code> value <em>B</em> if B's ordered list of <a>descriptor-tokens</a> is
+              present at the beginning of A's ordered list of <a>descriptor-tokens</a>.
+            </p>
+            <aside class="example">
+              <table class="data">
+                <caption>Table demonstrating example values of <code>&lt;<a>content-descriptor</a>&gt;</code>
+                  and whether each is a  <a>sub-type</a> of the other.
+                </caption>
+                <thead>
+                  <tr>
+                    <th><code>&lt;content-descriptor&gt;</code> A</th>
+                    <th><code>&lt;content-descriptor&gt;</code> B</th>
+                    <th>Is B a <a>sub-type</a> of A?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><code>visual.text</code></td>
+                    <td><code>visual</code></td>
+                    <td>No</td>
+                  </tr>
+                  <tr>
+                    <td><code>visual.text</code></td>
+                    <td><code>visual.text</code></td>
+                    <td>Yes</td>
+                  </tr>
+                  <tr>
+                    <td><code>visual.text</code></td>
+                    <td><code>visual.text.location</code></td>
+                    <td>yes</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p>For example, in this table, A could be one of the values listed in <a>Script Represents</a> property,
+                and B could be the value of a <a>Represents</a> property.</p>
+            </aside>
+            <p>The permitted values for <code>&lt;<a>content-descriptor</a>&gt;</code>
+              are either those listed in the following <a>registry table</a>, or can be user-defined.</p>
+            <p>Valid user-defined values MUST begin with <code>x-</code> or be <a>sub-types</a> of
+              values in the <code>content-descriptor</code> registry table, where the
+              first additional <code>&lt;<a>descriptor-token</a>&gt;</code> component begins with <code>x-</code>.</p>
+
+              <div class="registry-table-section">
+                <table class="data">
+                  <caption><a>Registry table</a> for the <code>&lt;<a>content-descriptor</a>&gt;</code> component
+                    whose Registry Definition is at <a href="#registry-table-content-descriptor"></a></caption>
+                  <thead>
+                    <th><code>&lt;<a>content-descriptor</a>&gt;</code></th>
+                    <th>Status</th>
+                    <th>Description</th>
+                    <th>Example usage</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>audio</code></td>
+                      <td>Provisional</td>
+                      <td>Indicates that the DAPT content represents any part of the audio programme.</td>
+                      <td>Dubbing, translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
+                    </tr>
+                    <tr>
+                      <td><code>audio.dialogue</code></td>
+                      <td>Provisional</td>
+                      <td>Indicates that the DAPT content represents verbal communication in the audio programme,
+                        for example, a spoken conversation.</td>
+                      <td>Dubbing, translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
+                    </tr>
+                    <tr>
+                      <td><code>audio.nonDialogueSounds</code></td>
+                      <td>Provisional</td>
+                      <td>Indicates that the DAPT content represents a part of
+                        the audio programme corresponding to sounds that are not verbal communication,
+                        for example, significant sounds, such as a door being slammed in anger.
+                      </td>
+                      <td>Translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
+                    </tr>
+                    <tr>
+                      <td><code>visual</code></td>
+                      <td>Provisional</td>
+                      <td>Indicates that the DAPT content represents any part of the visual image of the programme.</td>
+                      <td>Audio Description</td>
+                    </tr>
+                    <tr>
+                      <td><code>visual.dialogue</code></td>
+                      <td>Provisional</td>
+                      <td>Indicates that the DAPT content represents verbal communication,
+                        within the visual image of the programme,
+                        for example, a signed conversation.</td>
+                      <td>Dubbing or Audio Description, translation and hard of hearing subtitles and captions, pre- and post- production scripts</td>
+                    </tr>
+                    <tr>
+                      <td><code>visual.nonText</code></td>
+                      <td>Provisional</td>
+                      <td>Indicates that the DAPT content represents non-textual
+                        parts of the visual image of the programme,
+                        for example, a significant object in the scene.</td>
+                      <td>Audio Description</td>
+                    </tr>
+                    <tr>
+                      <td><code>visual.text</code></td>
+                      <td>Provisional</td>
+                      <td>Indicates that the DAPT content represents textual
+                        content in the visual image of the programme,
+                        for example, a signpost, a clock, a newspaper headline, an instant message etc.</td>
+                      <td>Audio Description</td>
+                    </tr>
+                    <tr>
+                      <td><code>visual.text.title</code></td>
+                      <td>Provisional</td>
+                      <td>A <a>sub-type</a> of <code>visual.text</code> where the text is the title of the related media.</td>
+                      <td>Audio Description</td>
+                    </tr>
+                    <tr>
+                      <td><code>visual.text.credit</code></td>
+                      <td>Provisional</td>
+                      <td>A <a>sub-type</a> of <code>visual.text</code> where the text is a credit, e.g. the name of an actor.</td>
+                      <td>Audio Description</td>
+                    </tr>
+                    <tr>
+                      <td><code>visual.text.location</code></td>
+                      <td>Provisional</td>
+                      <td>A <a>sub-type</a> of <code>visual.text</code> where the text indicates the location where the content is occurring.</td>
+                      <td>Audio Description</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </section>
         </section>
       </section>
       <section>
@@ -1013,7 +1143,11 @@
               However, there can be cases where they do,
               e.g. in <a>Dubbing Scripts</a> when different <a>Characters</a> speak different text at the same time.</p>
           </li>
-          <li>An optional <a>Script Event Type</a> used to identify the type of event (e.g. dialogue, on screen text) in <a>Dubbing Scripts</a>.</li>
+          <li>A <a>Represents</a> property
+            used to identify what content the event represents (e.g. dialogue, on screen text, etc.).
+            Every <a>Script Event</a> MUST have a valid <a>Represents</a> property.
+          <aside class="note">The <a>Represents</a> property is inheritable,
+            so the value does not need to be specified on every <a>Script Event</a> explicitly.</aside></li>
           <li>Zero or more <a>Character Identifiers</a> indicating the <a>Characters</a> involved in this <a>Script Event</a>.
             <p class="note">While typically, a <a>Script Event</a> corresponds to one single <a>Character</a>,
               there are cases where multiple <a>characters</a> can be associated with a <a>Script Event</a>.
@@ -1072,6 +1206,21 @@
 ...
               </pre>
             </li>
+            <li>The <a><code>daptm:represents</code></a> attribute MAY be present
+              representing the <a>Represents</a> property.
+              <pre class="example">
+                ...
+                &lt;div xml:id=&quot;event_1&quot;
+                     begin=&quot;9663f&quot; end=&quot;9682f&quot; 
+                     daptm:represents=&quot;audio.dialogue&quot;&gt;
+                ...
+                &lt;/div&gt;
+                ...
+              </pre>
+            </li>
+            <li>The computed value of the the <a><code>daptm:represents</code></a> attribute MUST be a valid non-empty value.
+              <aside class="note">It is possible to specify the <a><code>daptm:represents</code></a>
+                attribute on an ancestor element, since <a>Represents</a> is an inheritable property.</aside></li>
             <li>It MAY contain zero or more <code>&lt;p&gt;</code> elements representing each <a>Text</a> object.</li>
             <li>It MAY contain a <code>&lt;metadata&gt;</code> element representing the <a>On Screen</a> property.</li>
             <li>It MUST NOT contain any <code>&lt;div&gt;</code> element children.</li>
@@ -1326,8 +1475,8 @@ daptm:langSrc
             <li>OFF_ON - the <a>Script Event</a>'s subject starts off screen, but goes on screen at some point</li>
           </ul>
           <p>If omitted, the default value is "ON".</p>
-          <aside class="note">When the <a>daptm:represents</a> attribute value includes
-            <code>visualNonText</code> or <code>visualText</code> the subject of each
+          <aside class="note">When the <a>daptm:represents</a> attribute value begins with
+            <code>visual</code> the subject of each
             <a>Script Event</a>, i.e. what is being described,
             is expected to be in the video image, therefore the default of "ON" allows
             the property to be omitted in those cases without distortion of meaning.</aside>
@@ -1349,15 +1498,41 @@ daptm:onScreen
             </ul>
           </p>
         </section>
+
+        <section>
+          <h4>Represents</h4>
+          <p>The <dfn>Represents</dfn> property indicates which component of the <a>related media object</a>
+           the <a>Script Event</a> represents.</p>
+          <p>The <a>Represents</a> property is represented in a <a>DAPT Document</a> by
+            a <dfn><code>daptm:represents</code></dfn> attribute,
+            whose value MUST be a single <code>&lt;<a>content-descriptor</a>&gt;</code>.
+          </p>
+          <p>The <a>Represents</a> property is inheritable.
+            If it is absent from an element then its computed value is the computed value of
+            the <a>Represents</a> property on its parent element,
+            or, if it has no parent element, it is the empty string.
+            If it is present on an element then its computed value is the value specified.</p>
+          <p class="note">Since there is no empty &lt;<a>content-descriptor</a>&gt;,
+            this implies that an empty computed <a>Represents</a>
+            property can never be valid; one way to construct
+            a valid <a>DAPT Document</a> is to specify a <a>Represents</a>
+            property on the <a>DAPT Script</a> so that it is
+            inherited by all descendants that do not have a <a>Represents</a>
+            property.</p>
+          <p>It is an error for a <a>Represents</a> property value not to be a
+            <a>content descriptor sub-type</a> of at least one of the values in the <a>Script Represents</a> property.</p>
+          </section>
+
         <section>
           <h4>Script Event Description</h4>
           <p>The <dfn>Script Event Description</dfn> object is
-            an annotation providing a human-readable description of a <a>Script Event</a>.
+            an annotation providing a human-readable description of some aspect of the content of a <a>Script Event</a>.
             Script Event Descriptions can themselves be classified with
             a <a>Description Type</a>.</p>
           <p>A <a>Script Event Description</a> object is represented in a <a>DAPT Document</a> by
             a <code>&lt;ttm:desc&gt;</code> element at the <code>&lt;div&gt;</code> element level.</p>
           <p>Zero or more <code>&lt;ttm:desc&gt;</code> elements MAY be present.</p>
+          <p><a>Script Event Descriptions</a> SHOULD NOT be empty.</p>
           <p class="note">The <a>Script Event Description</a> does not need to be unique,
             i.e. it does not need to have a different value for each <a>Script Event</a>. 
             For example a particular value could be re-used to identify in a human-readable way
@@ -1430,79 +1605,7 @@ daptm:descType : string
             data-include-format="text">
           </pre>
         </section>
-        <section>
-          <h4>Script Event Type</h4>
-          <p>The <dfn>Script Event Type</dfn> property provides one or more space-separated keywords representing the type of the <a>Script Event</a>,
-            i.e. spoken text, or on-screen text,
-            and in the latter case, the type of on-screen text (title, credit, location, ...).</p>
-          <p>The <a>Script Event Type</a> is represented in a <a>DAPT Document</a> by the following attribute:</p>
-          <div class="exampleInner">
-            <pre class="language-abnf">
-daptm:eventType : string
-            </pre>
-          </div>
-          <p>Its permitted values are as listed in the following <a>registry table</a>:</p>
-          <div class="registry-table-section">
-            <table class="data">
-              <caption><a>Registry table</a> for the <code>daptm:eventType</code> attribute
-                whose Registry Definition is at <a href="#registry-table-eventType"></a></caption>
-              <thead>
-                <th><code>daptm:eventType</code></th>
-                <th>Status</th>
-                <th>Description</th>
-                <th>Notes</th>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>dialogue</td>
-                  <td>Provisional</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>spokenText</td>
-                  <td>Provisional</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>onScreenText</td>
-                  <td>Provisional</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>title</td>
-                  <td>Provisional</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>credit</td>
-                  <td>Provisional</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>location</td>
-                  <td>Provisional</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <pre class="example">
-            ...
-            &lt;div xml:id=&quot;event_1&quot;
-                 begin=&quot;9663f&quot; end=&quot;9682f&quot; 
-                 ttm:agent=&quot;character_4&quot;
-                 daptm:eventType=&quot;dialogue&quot;&gt;
-            ...
-            &lt;/div&gt;
-            ...
-                      </pre>
-        </section>
+
       <section>
         <h3>Audio</h3>
         <p>An <dfn>Audio</dfn> object is used to specify an audio rendering of a <a>Text</a>.
@@ -3225,10 +3328,11 @@ daptm:eventType : string
             </td>
           </tr>
           <tr>
-            <td><a href="#represents-root"><code>#represents-root</code></a></td>
-            <td><span class="required label">required</span></td>
+            <td><a href="#represents"><code>#represents</code></a></td>
+            <td><span class="permitted label">permitted</span></td>
             <td>
-              This is the profile expression of <a href="#represents"></a>.
+              This is the profile expression of <a>Represents</a>
+              as applied to <a>Script Event</a>.
             </td>
           </tr>
           <tr>
@@ -3244,6 +3348,13 @@ daptm:eventType : string
             <td><span class="optional label">optional</span></td>
             <td>
               This is the profile expression of <a href="#handling-div-and-p-elements"></a>.
+            </td>
+          </tr>
+          <tr>
+            <td><a href="#scriptRepresents"><code>#scriptRepresents</code></a></td>
+            <td><span class="required label">required</span></td>
+            <td>
+              This is the profile expression of <a>Script Represents</a>.
             </td>
           </tr>
           <tr>
@@ -3404,21 +3515,21 @@ daptm:eventType : string
       </section>
 
       <section>
-        <h3>#represents-root</h3>
-        <p>A <a>transformation processor</a> supports the <code>#represents-root</code> extension if
+        <h3>#represents</h3>
+        <p>A <a>transformation processor</a> supports the <code>#represents</code> extension if
           it recognizes and is capable of transforming values of the
-          <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+          <a><code>daptm:represents</code></a> attribute.</p>
   
-        <p>A <a>presentation processor</a> supports the <code>#represents-root</code> extension if
+        <p>A <a>presentation processor</a> supports the <code>#represents</code> extension if
           it implements presentation semantic support of the
-          <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+          <a><code>daptm:represents</code></a> attribute.</p>
 
         <p>An example of a <a>transformation processor</a> that supports this extension is
-          a validating processor that reports an error if the extension is required by a
+          a validating processor that reports an error if the extension is permitted by a
           <a>content profile</a> but the <a>timed text content document instance</a> claiming
-          conformance to that profile either does not have a
-          <a><code>daptm:represents</code></a> attribute on the <code>&lt;tt&gt;</code> element
-          or has one whose value is not conformant with the requirements defined herein.</p>
+          conformance to that profile has a
+          <code>&lt;div&gt;</code> element with a <a><code>daptm:represents</code></a> attribute
+          whose value is not conformant with the requirements defined herein.</p>
       </section>
 
       <section>
@@ -3446,6 +3557,24 @@ daptm:eventType : string
           either require, or depend upon, mapping a <a>DAPT document</a> into an internal representation
           of the DAPT data model. A presentation processor that does perform such a mapping can also be
           considered to be a <a>transformation processor</a> for the purpose of this extension.</p>
+      </section>
+
+      <section id="scriptRepresents">
+        <h3>#scriptRepresents</h3>
+        <p>A <a>transformation processor</a> supports the <code>#scriptRepresents</code> extension if
+          it recognizes and is capable of transforming values of the
+          <a><code>daptm:scriptRepresents</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#scriptRepresents</code> extension if
+          it implements presentation semantic support of the
+          <a><code>daptm:scriptRepresents</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+
+        <p>An example of a <a>transformation processor</a> that supports this extension is
+          a validating processor that reports an error if the extension is required by a
+          <a>content profile</a> but the <a>timed text content document instance</a> claiming
+          conformance to that profile either does not have a
+          <a><code>daptm:scriptRepresents</code></a> attribute on the <code>&lt;tt&gt;</code> element
+          or has one whose value is not conformant with the requirements defined herein.</p>
       </section>
 
       <section>
@@ -3721,6 +3850,7 @@ daptm:eventType : string
     <section id="registry-table-definitions">
       <h2>Registry Table Definitions</h2>
       <p>This section defines <a>registry tables</a> and locates their <a>registry entries</a>.</p>
+
       <section id="registry-table-descType">
         <h3><code>daptm:descType</code> registry table definition</h3>
         <p>The <a>registry table</a> for <code>daptm:descType</code> defines a set of values that can be
@@ -3729,23 +3859,17 @@ daptm:eventType : string
         The &quot;description&quot; field describes the intended purpose of each value.</p> 
         <p>The <a>registry entries</a> for this <a>registry table</a> are located in <a href="#script-event-description"></a>.</p>
       </section>
-      <section id="registry-table-eventType">
-        <h3><code>daptm:eventType</code> registry table definition</h3>
-        <p>The <a>registry table</a> for <code>daptm:eventType</code> defines a set of values that can be
-          used in the <code>daptm:eventType</code> attribute.</p>
-          <p>The <a>key</a> is the &quot;<code>daptm:eventType</code>&quot; field.
-          The &quot;description&quot; field describes the intended purpose of each value.</p> 
-          <p>The <a>registry entries</a> for this <a>registry table</a> are located in <a href="#script-event-type"></a>.</p>
-      </section>
+
       <section id="registry-table-content-descriptor">
         <h3><code>&lt;content-descriptor&gt;</code> registry table definition</h3>
         <p>The <a>registry table</a> for <code>&lt;content-descriptor&gt;</code> defines a set of values that can be
           used in the <code>daptm:represents</code> attribute.</p>
           <p>The <a>key</a> is the &quot;<code>&lt;content-descriptor&gt;</code>&quot; field.
           The &quot;Description&quot; field describes the type of media content represented by each value.
-          The &quot;Used in&quot; field describes the type of script in which the content type
+          The &quot;Example usage&quot; field describes the type of script in which the content type
           described are commonly found.</p> 
-          <p>The <a>registry entries</a> for this <a>registry table</a> are located in <a href="#represents"></a>.</p>
+          <p>The <a>registry entries</a> for this <a>registry table</a> are located in <a href="#contentDescriptor"></a>.</p>
+          <p>The <a>key</a> values for this <a>registry table</a> MUST NOT begin with <code>x-</code> which is reserved for user extensions.</p>
         </section>
       </section>
   </section>

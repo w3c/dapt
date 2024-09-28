@@ -1,5 +1,5 @@
 ...
-  <body>
+  <body daptm:represents="...">
     <div xml:id="d1" begin="10s" end="13s">
     </div>
     <div xml:id="d2" begin="18s" end="20s">
