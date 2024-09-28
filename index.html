@@ -1034,6 +1034,7 @@
               </div>
             </section>
         </section>
+
       </section>
       <section>
         <h3>Character</h3>
@@ -2101,6 +2102,12 @@ daptm:descType : string
               <td><code>http://www.w3.org/ns/ttml/profile/dapt/extension/</code></td>
               <td><em>This specification</em></td>
             </tr>
+            <tr>
+              <td>EBU-TT Metadata</td>
+              <td><code>ebuttm</code></td>
+              <td><code>urn:ebu:tt:metadata</code></td>
+              <td>[[EBU-TT-3390]]</td>
+            </tr>
           </tbody>
         </table>
         <p>
@@ -2111,22 +2118,23 @@ daptm:descType : string
           all undefined names in these namespaces are reserved for future standardization by the W3C.
         </p>
       </section>
+
       <section>
-        <h3>Related Media Object (TTML)</h3>
+        <h3>Related Media Object</h3>
         <p>Within DAPT, the common language terms audio and video are used in the context of a programme.
           The audio and video are each a part of what is defined in [[TTML2]] as the
           <dfn data-cite="TTML2#terms-related-media-object">Related Media Object</dfn> that
           provides the media timeline and is the source of the <a>main programme audio</a>,
           and any visual timing references needed when adjusting timings relevant to the video image,
           such as for lip synchronization.</p>
-          <div class="note">
-            <p>A <a>DAPT document</a> can identify the programme acting
-            as the <a>Related Media Object</a> using metadata. For example, it is possible
-            to use the <code>&lt;ebuttm:sourceMediaIdentifier&gt;</code> element defined in [[EBU-TT-3390]].</p>
-            <pre class="xml example" data-include="examples/sourceMediaIdentifier.xml" data-include-format="text"></pre>
-          </div>
-
+        <div class="note">
+          <p>A <a>DAPT document</a> can identify the programme acting
+          as the <a>Related Media Object</a> using metadata. For example, it is possible
+          to use the <code>&lt;ebuttm:sourceMediaIdentifier&gt;</code> element defined in [[EBU-TT-3390]].</p>
+          <pre class="xml example" data-include="examples/sourceMediaIdentifier.xml" data-include-format="text"></pre>
+        </div>
       </section>
+
       <section>
         <h3>Synchronization</h3>
         <p>
@@ -2158,6 +2166,7 @@ daptm:descType : string
           no more than 35ms before the time specified in the <a>DAPT document</a>
           and no more than 45ms after the time specified.</p>
       </section>
+
       <section>
         <h3>Profile Signaling</h3>
         This section defines how a TTML
@@ -2747,6 +2756,190 @@ daptm:descType : string
 
   </section>
 
+  <section class="appendix">
+    <h4>Timecode-related metadata</h4>
+    <p><a>DAPT Documents</a> express time as <em>media time</em>,
+      which assumes that there is a reference start time (zero) on a media
+      timeline, and a fixed playrate.
+      An alternative scheme that is used in some other script formats is to
+      synchronise media components using timecode,
+      that match time stamps that are applied,
+      for example to each frame of video.
+    </p>
+    <p>Workflows that create <a>DAPT documents</a> from
+      such timecode-based non-DAPT script formats
+      need to map those timecode
+      values onto the <a>DAPT document</a>'s timeline.</p>
+    <p>If this mapping is not correct, presentation of the
+      <a>DAPT Document</a> will not be synchronised with the <a>related media object</a>.
+      A reference timecode that matches a known
+      point on the DAPT document timeline can be used
+      to achieve correct synchronisation, for example
+      the timecode corresponding to the start of the programme,
+      which should match DAPT time zero.</p>
+    <p>In this scenario, if such a reference point is not known,
+      but timecodes corresponding to <a>Script Events</a> are known,
+      it is still possible to construct a <a>DAPT Document</a>,
+      albeit one whose synchronisation with the related media has not yet been resolved.</p>
+    <p>The optional <a>DAPT Origin Timecode</a> and
+      <a>Start of Programme Timecode</a> properties can be used to
+      identify when there is a possible synchronisation error,
+      and to resynchronise the document when all
+      the required information is known.</p>
+    <p>These properties are provided as metadata only and
+      are not intended to be used to perform direct synchronisation offsets
+      during presentation.
+      In particular, when the related media object uses timecode,
+      the presence of the timecode properties does not mean that
+      the player needs to relate these timecode values with
+      any timecode value embedded in the related media resource.</p>
+
+    <p>If either a <a>DAPT Origin Timecode</a> object
+      or a <a>Start of Programme Timecode</a> object is present,
+      the <a>DAPT Document</a> MUST have
+      one <code>&lt;head&gt;</code> element child of the <code>&lt;tt&gt;</code> element,
+      and that <code>&lt;head&gt;</code> element MUST have
+      at least one <code>&lt;metadata&gt;</code> element child.</p>
+
+    <section>
+      <h5>DAPT Origin Timecode</h5>
+      <p>The optional <dfn>DAPT Origin Timecode</dfn> allows a timecode value to be declared
+        that corresponds to the zero point of the DAPT document timeline,
+        that is, the time of a hypothetical <a>Script Event</a> whose <a>Begin</a> is
+        zero seconds.</p>
+      <p>The properties can be used to provide timecodes from
+        the related media object or from any other script format used to produce the DAPT document,
+        and are informational.
+        However, when they are both provided and differ,
+        it is an indication that the DAPT document is not synchronized with
+        the related media object and that processing of the script event begins is needed.
+        To achieve synchronization, the following needs to be done:</p>
+      <ol>
+        <li>The difference
+          <a>DAPT Origin Timecode</a> minus the <a>Start of Programme Timecode</a>
+          is computed as "delta".
+          It may be positive or negative.</li>
+        <li>Each <a>Script Event</a>'s <a>Begin</a> and <a>End</a> value X shall be changed to X + delta.</li>
+        <li>The <a>DAPT Origin Timecode</a> shall be removed or changed to the <a>Start of Programme timecode</a> value
+          so that if this algorithm is run again it will result in delta that is zero.</li>
+      </ol>
+      <p>A <a>DAPT Script</a> MAY contain zero or one <a>DAPT Origin Timecode</a> objects.</p>
+      <p>The <a>DAPT Origin Timecode</a> object is represented in a <a>DAPT Document</a> by
+        a <code>&lt;</code><dfn><code>daptm:daptOriginTimecode</code></dfn><code>&gt;</code> element present at the path
+        <code>/tt/head/metadata/daptm:daptOriginTimecode</code>,
+        with the following constraints:</p>
+      <ul>
+        <li>The character content of the element must conform to a <code>clock-time</code>
+          with a <code>frames</code> component, as defined in <dfn data-cite="ttml2#timing-value-time-expression">&lt;time-expression&gt;</dfn>.</li>
+      </ul>
+      <p class="note">See also <a href="#ttp-framerate"></a>.
+        No mechanism is defined here for declaring a different frame rate for the <a>DAPT Origin Timecode</a>
+        than is used for other frame-based time expressions.
+      </p>
+      <p>If the related media object contains a timecode for the video frame
+        synchronized to the origin of the DAPT document timeline,
+        the DAPT origin timecode is equal that timecode. 
+      </p>
+      <pre class="example">
+...
+&lt;head&gt;
+&lt;metadata&gt;
+&lt;daptm:daptOriginTimecode&gt;10:01:20:12&lt;/daptm:daptOriginTimecode&gt;
+&lt;/metadata&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div xml:id="se1" begin="0s" end="1.8s"&gt;
+&lt;!-- This script event was generated from a source whose begin timecode was 10:01:20:12 --&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+...
+      </pre>
+      <aside class="example">
+        <p>When converting legacy formats that store the equivalent of each Script Event,
+          for example a <a>description</a>, with SMPTE timecodes,
+          but where the <a>Start of Programme Timecode</a> is
+          not stored, and is not immediately available, the <a>DAPT Origin Timecode</a>
+          can be used to defer synchronisation with the media until
+          that media begin timecode is known.
+        </p>
+        <p>One approach to deferring synchronisation using <a>DAPT Origin Timecode</a>
+          is as follows, assuming that a legacy source file is being converted
+          to a <a>DAPT Document</a> and relates to media with continuous timecode:
+        </p>
+        <ul>
+          <li>Find the earliest begin timecode for an item in the source file
+            that will be mapped to a <a>Script Event</a>;</li>
+          <li>Create a <a>DAPT Document</a> with
+            a <a>DAPT Origin Timecode</a> set to that earliest begin timecode;</li>
+          <li>For each relevant item in the source file,
+            create a <a>Script Event</a> with appropriate
+            <a>Begin</a> and <a>End</a> times obtained by converting
+            the source file's begin and end timecodes to media time,
+            relative to that <a>DAPT Origin Timecode</a>,
+            basing elapsed time on the applicable frame rate;</li>
+          <li>If using frame-based media time expressions,
+            set the <code>ttp:frameRate</code> attribute of
+            the <code>&lt;tt&gt;</code> element to the applicable frame rate;
+          </li>
+        </ul>
+        <p>When the related media's timecode is later dicovered,
+          the times of the <a>Script Events</a> can be adjusted so that
+          media time zero is coincident with the <a>Start of Programme Timecode</a>,
+          and the <a>DAPT Origin Timecode</a> can be
+          removed or set to the now-known value.
+        </p>
+        <p class="note">The above algorithm can be used to align the begin times
+          of the <a>DAPT Script</a> and the <a>related media object</a>.
+          It does not address progressive synchronisation errors caused by incorrect frame rates or
+          differing playback rates.
+        </p>
+      </aside>
+    </section>
+
+    <section>
+      <h5>Start of Programme Timecode</h5>
+      <p>The optional <dfn>Start of Programme Timecode</dfn> allows a timecode value to be declared
+        that corresponds to the beginning of the related media object's programme content.</p>
+      <p >In combination with <a>DAPT Origin Timecode</a>,
+        the value of <a>Start of Programme Timecode</a> can be used to infer whether or not
+        the media times in the <a>DAPT Script</a> are likely to be correctly synchronised with
+        the <a>Related Media Object</a>.</p>
+      <p>If both <a>DAPT Origin Timecode</a> and <a>Start of Programme Timecode</a> are present,
+        but their values are different, it is likely that the media times are not
+        synchronised with the <a>Related Media Object</a>, since this implies that
+        the equivalent time code to zero seconds in media time is not the start of the programme,
+        which is the requirement for correctly synchronised media time.</p>
+      <p>A <a>DAPT Script</a> MAY contain zero or one <a>Start of Programme Timecode</a> objects.</p>
+      <p>The <a>Start of Programme Timecode</a> object is represented in a <a>DAPT Document</a> by
+        a <code>&lt;ebuttm:documentStartOfProgramme&gt;</code> element present at the path
+        <code>/tt/head/metadata/ebuttm:documentStartOfProgramme</code>,
+        with the syntactic constraints as defined in [[EBU-TT-3390]].</p>
+      <pre class="example">
+...
+&lt;head&gt;
+&lt;metadata&gt;
+&lt;daptm:daptOriginTimecode&gt;10:01:20:12&lt;/daptm:daptOriginTimecode&gt;
+&lt;ebuttm:documentStartOfProgramme&gt;10:00:00:00&lt;ebuttm:documentStartOfProgramme&gt;
+&lt;!-- It is likely that this document is 1 minute, 20 seconds and 12 frames too early,
+  compared to the related media --&gt;
+&lt;/metadata&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div xml:id="se1" begin="0s" end="1.8s"&gt;
+&lt;!-- This script event was generated from a source whose begin timecode was 10:01:20:12 --&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+...
+      </pre>
+      <p>If the times of the <a>Script Events</a> are adjusted to bring
+        the media time into synchronisation with the <a>Related Media Object</a>,
+        as noted in <a>DAPT Origin Timecode</a>, the <a>Start of Programme Timecode</a>
+        SHOULD NOT be changed, since it is an invariant feature of the <a>Related Media Object</a>,
+        and does not describe the times in the <a>DAPT Document</a>.</p>
+    </section>
+
+  </section>
+
   <section class="informative appendix">
     <h2>Audio Mixing</h2>
 
@@ -3314,6 +3507,13 @@ daptm:descType : string
             </td>
           </tr>
           <tr>
+            <td><a href="#daptorigintimecode"><code>#daptOriginTimecode</code></a></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td>
+              This is the profile expression of <a href="#dapt-origin-timecode"></a>.
+            </td>
+          </tr>
+          <tr>
             <td><a href="#onscreen"><code>#onScreen</code></a></td>
             <td><span class="permitted label">permitted</span></td>
             <td>
@@ -3490,6 +3690,15 @@ daptm:descType : string
         the <a><code>ttp:profile</code></a> attribute and
         processor profile inference semantics.
       </aside>
+      </section>
+
+      <section>
+        <h3>#daptOriginTimecode</h3>
+        <p>A <a>transformation processor</a> supports the <code>#daptOriginTimecode</code> extension if
+          it recognizes and is capable of transforming values of the
+          <code>&lt;</code><a><code>daptm:daptOriginTimecode</code></a><code>&gt;</code> element.</p>
+  
+        <p>No <a>presentation processor</a> behaviour is defined for the <code>#daptOriginTimecode</code> extension.</p>
       </section>
 
       <section>
