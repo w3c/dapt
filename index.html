@@ -554,8 +554,10 @@
           is not namespace qualified, then the TT namespace applies (see <a href="#namespaces">Namespaces</a>).</li>
         <li>When referring to an [[XML]] attribute in the prose,
           the attribute name is given with its prefix,
-          or without a prefix if the attribute is in the global namespace.
-          Attributes are styled as follows: <code>attributePrefix:attributeName</code>.
+          if its namespace has a value,
+          or without a prefix if its namespace has no value.
+          Attributes with prefixes are styled as <code>attributePrefix:attributeName</code>
+          and those without prefixes are styled as <code>attributeName</code>.
           The entity is also described as an attribute in the prose.</li>
         <li>When defining new [[XML]] attributes, this specification uses the conventions used for
         "value syntax expressions" in [[TTML2]]. For example, the following would define a new attribute
