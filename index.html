@@ -2548,9 +2548,8 @@ daptm:descType : string
         </aside>
       </section>
 
-      <section class="informative">
+      <section>
         <h3>Using computed attribute values</h3>
-        <p><em>Some normative provisions relating to this section are defined in [[TTML2]].</em></p>
         <p>Some attributes have semantics for computing their value that depend on the computed value of
           the attribute on some other element.
           For example if the <code>xml:lang</code> attribute is not specified on an element then its computed
@@ -2561,12 +2560,13 @@ daptm:descType : string
           of its descendant <code>&lt;div&gt;</code> elements that do correspond to <a>Script Events</a>
           are different to what they would be if that intermediate <code>&lt;div&gt;</code> element's <code>begin</code>
           time were ignored.</p>
-        <p class="ednote">MAYBE REMOVE Or, also for example, if styling is used in a TTML document, the computed value of the <code>tts:fontSize</code>
+        <aside class="example">An example of this relating to functionality not required by DAPT is styling.
+          If styling is used in a TTML document, the computed value of the <code>tts:fontSize</code>
           attribute when expressed as a percentage is relative to the computed value of the same attribute
           on the element's parent.
           Furthermore, in this example, the algorithm for generating ISDs (Intermediate Synchronic Documents)
           involves reparenting some elements. The computed value that applies is the one <em>before</em>
-          rehoming has taken place.</p>
+          rehoming has taken place.</aside>
         <p>Considering this situation more generally,
           it is possible that, within a DAPT document, there can be TTML elements that
           do not directly correspond to objects in the DAPT data model,
