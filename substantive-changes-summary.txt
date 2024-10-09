@@ -16,7 +16,7 @@ NOTE 3: The publication history of this specification is at https://www.w3.org/s
 From FPWD (20230425)
 ====================
 
-* Introduce applicationType and restructure scriptType values (#11)
+* Introduce workflowType and restructure scriptType values (#11) (note that workflowType was later removed)
 
 * Add trailing / to DAPT Extension namespace (#141) 
 
