@@ -88,7 +88,7 @@ ScriptEvent *-down- "0..*" MixingInstruction : contains\n >
 Text *-left- "0..* " Audio : contains\n <
 Text *-- "0..* " MixingInstruction : contains\n >
 Character "0..*" <.right. "0..*" ScriptEvent
-ScriptEvent *-left> "0..*" ScriptEventDescription : contains\n <
+ScriptEvent *-left- "0..*" ScriptEventDescription : contains\n <
 ScriptEvent *-down- "0..*" Text : contains\n >
 AudioRecording *-- "0..* " MixingInstruction : contains >
 Audio <|-down- SynthesizedAudio : is\n <
