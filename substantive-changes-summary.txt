@@ -1,0 +1,63 @@
+**********************************
+*                                *
+* Summary of substantive changes *
+*                                *
+**********************************
+
+
+NOTE 1: This summary is provided for illustration only. For an exhaustive list of changes, please
+refer to the changesets at https://github.com/w3c/dapt or use the W3C diff tool at
+http://services.w3.org/htmldiff across published versions of the specification.
+
+NOTE 2: Issues and their dispositions are documented at https://github.com/w3c/dapt/issues
+
+NOTE 3: The publication history of this specification is at https://www.w3.org/standards/history/dapt/ 
+
+From FPWD (20230425)
+====================
+
+* Introduce workflowType and restructure scriptType values (#11) (note that workflowType was later removed)
+
+* Add trailing / to DAPT Extension namespace (#141) 
+
+* Clarify that Script Events, not Texts, are associated with a Character (#149)
+
+* Define the TTML representation of Text content (#17)
+
+* Write a Privacy and Security section (#166)
+
+* Identify the original language on top of the current language #148  (introduce daptm:langSrc) (#148, #173)
+
+* Script Event Description should be an object (#174)
+
+* Remove Character Style (#124, #162)
+
+* Create inline Registry Tables and Registry Definition (#195)
+
+* Discuss extensibility and backwards compatible behavior; add section about mapping TTML to the DAPT data model (#110, #214, #234)
+
+* Replace workflowType with represents; support within workflowType for generic script origination (#169, #194)
+
+* Add nested div feature and mark as permitted, at risk (#237)
+
+* Required metadata field for earliest SMPTE time code to allow conversion between DAPT and ESEF (#232)
+
+* Remove Script Event Type, use Represents instead (#227)
+
+* Defining restrictions per Script Type (#75)
+
+* At-risk: support for `src` attribute in `<audio>` for external resource PR-must-have (#218)
+
+* At-risk: support for `<source>` element child of `<audio>` for external resource PR-must-have (#219)
+
+* At-risk: support for `src` attribute of `<audio>` element pointing to embedded resource PR-must-have (#220)
+
+* At-risk: support for `<source>` child of `<audio>` element pointing to embedded resource PR-must-have (#221)
+
+* At-risk: support for inline audio resources PR-must-have (#222)
+
+* At-risk: each of the potential values of `encoding` in `<data>` PR-must-have (#223)
+
+* At-risk: support for the `length` attribute on `<data>` PR-must-have (#224)
+
+* At-risk: Script Event Grouping and Script Event Mapping PR-must-have (#239)
