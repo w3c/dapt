@@ -559,8 +559,10 @@
           is not namespace qualified, then the TT namespace applies (see <a href="#namespaces">Namespaces</a>).</li>
         <li>When referring to an [[XML]] attribute in the prose,
           the attribute name is given with its prefix,
-          or without a prefix if the attribute is in the global namespace.
-          Attributes are styled as follows: <code>attributePrefix:attributeName</code>.
+          if its namespace has a value,
+          or without a prefix if its namespace has no value.
+          Attributes with prefixes are styled as <code>attributePrefix:attributeName</code>
+          and those without prefixes are styled as <code>attributeName</code>.
           The entity is also described as an attribute in the prose.</li>
         <li>When defining new [[XML]] attributes, this specification uses the conventions used for
         "value syntax expressions" in [[TTML2]]. For example, the following would define a new attribute
@@ -1988,7 +1990,7 @@ daptm:descType : string
           <p><dfn>Foreign vocabulary</dfn> is the subset of <a>unrecognised vocabulary</a> that consists of
             those elements and attributes whose namespace
             is not one of the namespaces listed in <a href="#namespaces"></a> and
-            those attributes in the global namespace that are not otherwise defined in DAPT or in [[TTML2]].</p>
+            those attributes whose namespace has no value that are not otherwise defined in DAPT or in [[TTML2]].</p>
           <p>
             A <a>DAPT Document</a> MAY contain <a>foreign vocabulary</a> that is neither specifically permitted nor forbidden
             by the profiles signalled in <a>ttp:contentProfiles</a>.
