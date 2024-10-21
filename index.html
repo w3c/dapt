@@ -2560,13 +2560,6 @@ daptm:descType : string
           of its descendant <code>&lt;div&gt;</code> elements that do correspond to <a>Script Events</a>
           are different to what they would be if that intermediate <code>&lt;div&gt;</code> element's <code>begin</code>
           time were ignored.</p>
-        <aside class="example">An example of this relating to functionality not required by DAPT is styling.
-          If styling is used in a TTML document, the computed value of the <code>tts:fontSize</code>
-          attribute when expressed as a percentage is relative to the computed value of the same attribute
-          on the element's parent.
-          Furthermore, in this example, the algorithm for generating ISDs (Intermediate Synchronic Documents)
-          involves reparenting some elements. The computed value that applies is the one <em>before</em>
-          rehoming has taken place.</aside>
         <p>Considering this situation more generally,
           it is possible that, within a DAPT document, there can be TTML elements that
           do not directly correspond to objects in the DAPT data model,
@@ -2576,6 +2569,9 @@ daptm:descType : string
         <p>The semantics defined by [[TTML2]] or, for vocabulary defined herein, this specification, take precedence in this scenario.
           Implementations MUST compute attribute values based on the contents of the <a>document instance</a> <em>before</em>
           applying those computed values to DAPT data model objects.
+          For example a processor that supports TTML2 styling features would need
+          to implement the TTML2 semantics for inheritance and computing relative values
+          of attributes like <code>tts:fontSize</code>.
         </p>
         <aside class="example">
           <p>This example demonstrates these possibilities,
