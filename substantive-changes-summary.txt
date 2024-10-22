@@ -61,3 +61,5 @@ From FPWD (20230425)
 * At-risk: support for the `length` attribute on `<data>` PR-must-have (#224)
 
 * At-risk: Script Event Grouping and Script Event Mapping PR-must-have (#239)
+
+* Make "Using computed attribute values" normative (#249)
