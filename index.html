@@ -149,6 +149,7 @@
   table.syntax td { border: 0px solid black }
   table.syntax div { background-color: #ffffc8 }
   table#table-features-and-extensions tbody tr td:nth-child(2) { text-align: center;}
+  td.table-row-header {text-align:center; font-style: italic; font-weight: bold; padding-top: 1.5rem !important;}
   div.exampleInner { border-top-width: 4px;
                    border-top-style: double;
                    border-top-color: #d3d3d3;
@@ -3136,7 +3137,7 @@ daptm:descType : string
         </thead>
         <tbody>
           <tr>
-            <td colspan="3" style="text-align:center"><em>Relative to the TT Feature namespace</em></td>
+            <td colspan="3" class="table-row-header">Relative to the TT Feature namespace</td>
           </tr>
           <tr>
             <td><dfn data-cite="TTML2#feature-animate-fill"><code>#animate-fill</code></dfn></td>
@@ -3529,7 +3530,7 @@ daptm:descType : string
             <td></td>
           </tr>
           <tr>
-            <td colspan="3" style="text-align:center"><em>Relative to the <a>DAPT Extension</a> namespace</em></td>
+            <td colspan="3" class="table-row-header">Relative to the <a>DAPT Extension</a> namespace</td>
           </tr>
           <tr>
             <td><a href="#extension-agent"><code>#agent</code></a></td>
@@ -3563,7 +3564,9 @@ daptm:descType : string
             <td><a href="#extension-profile-root"><code>#profile-root</code></a></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td>
-              This is the profile expression of <a href="#ttp-profile"></a>.
+              This is the profile expression of the prohibition of
+              the <code>ttp:profile</code> attribute on the <code>&lt;tt&gt;</code> element
+              as specified in <a href="#ttp-profile"></a>.
             </td>
           </tr>
           <tr>
