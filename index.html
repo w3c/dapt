@@ -2548,25 +2548,23 @@ daptm:descType : string
         </aside>
       </section>
 
-      <section class="informative">
+      <section>
         <h3>Using computed attribute values</h3>
-        <p><em>Some normative provisions relating to this section are defined in [[TTML2]].</em></p>
         <p>Some attributes have semantics for computing their value that depend on the computed value of
           the attribute on some other element.
           For example if the <code>xml:lang</code> attribute is not specified on an element then its computed
           value is the computed value of the same attribute on the element's parent.</p>
         <p>Or, for another example, the computed times of an element in a DAPT document are relative
-          to the begin time of its parent element. If a <code>&lt;div&gt;</code> element specifies a <code>begin</code>
-          attribute, and that element does not correspond to a <a>Script Event</a>, then the computed times
-          of its descendant <code>&lt;div&gt;</code> elements that do correspond to <a>Script Events</a>
-          are different to what they would be if that intermediate <code>&lt;div&gt;</code> element's <code>begin</code>
-          time were ignored.</p>
-        <p class="ednote">MAYBE REMOVE Or, also for example, if styling is used in a TTML document, the computed value of the <code>tts:fontSize</code>
-          attribute when expressed as a percentage is relative to the computed value of the same attribute
-          on the element's parent.
-          Furthermore, in this example, the algorithm for generating ISDs (Intermediate Synchronic Documents)
-          involves reparenting some elements. The computed value that applies is the one <em>before</em>
-          rehoming has taken place.</p>
+          to the begin time of the element's parent.
+          If a <code>&lt;div&gt;</code> element specifies a <code>begin</code> attribute,
+          then the computed times of its child <code>&lt;div&gt;</code> elements
+          are relative to that parent <code>&lt;div&gt;</code> element's begin time,
+          and so on down the hierarchy.
+          It is important to include those &quot;intermediate&quot; <code>&lt;div&gt;</code> elements'
+          times in the computation even if the processing target is
+          an instance of the DAPT data model in which they have no direct equivalent;
+          otherwise the <a>Script Event</a> <a>Begin</a> and <a>End</a> times would be wrong.
+        </p>
         <p>Considering this situation more generally,
           it is possible that, within a DAPT document, there can be TTML elements that
           do not directly correspond to objects in the DAPT data model,
@@ -2576,6 +2574,9 @@ daptm:descType : string
         <p>The semantics defined by [[TTML2]] or, for vocabulary defined herein, this specification, take precedence in this scenario.
           Implementations MUST compute attribute values based on the contents of the <a>document instance</a> <em>before</em>
           applying those computed values to DAPT data model objects.
+          For example a processor that supports TTML2 styling features would need
+          to implement the TTML2 semantics for inheritance and computing relative values
+          of attributes like <code>tts:fontSize</code>.
         </p>
         <aside class="example">
           <p>This example demonstrates these possibilities,
