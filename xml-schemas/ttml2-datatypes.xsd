@@ -73,6 +73,13 @@
       <xs:pattern value="\p{Nd}+\s+\p{Nd}+"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="clockMode">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="local"/>
+      <xs:enumeration value="gps"/>
+      <xs:enumeration value="utc"/>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="color">
     <xs:restriction base="xs:string"/>
   </xs:simpleType>
@@ -145,6 +152,13 @@
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:pattern value="\p{Nd}+\s+\p{Nd}+"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="dropMode">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="dropNTSC"/>
+      <xs:enumeration value="dropPAL"/>
+      <xs:enumeration value="nonDrop"/>
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="extends">
@@ -358,6 +372,12 @@
       <xs:documentation>string</xs:documentation>
     </xs:annotation>
     <xs:restriction base="xs:string"/>
+  </xs:simpleType>
+  <xs:simpleType name="markerMode">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="continuous"/>
+      <xs:enumeration value="discontinuous"/>
+    </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="measure">
     <xs:restriction base="xs:string"/>
@@ -595,6 +615,14 @@
       <xs:enumeration value="slow"/>
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="subFrameRate">
+    <xs:annotation>
+      <xs:documentation>non-negative-integer</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:pattern value="\p{Nd}+"/>
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="textAlign">
     <xs:restriction base="xs:token">
       <xs:enumeration value="left"/>
@@ -725,6 +753,14 @@
   <xs:simpleType name="timeBase">
     <xs:restriction base="xs:token">
       <xs:enumeration value="media"/>
+      <!-- <xs:enumeration value="smpte"/> smpte and clock are prohibited in DAPT
+      <xs:enumeration value="clock"/> -->
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="timeContainer">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="par"/>
+      <!-- <xs:enumeration value="seq"/> timeContainer is prohibited in DAPT, default par value effectively the only one permitted -->
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="timeCoordinate">

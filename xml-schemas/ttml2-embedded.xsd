@@ -87,7 +87,7 @@
       <xs:group ref="tt:Metadata.class" minOccurs="0" maxOccurs="unbounded"/>
       <xs:choice minOccurs="0" maxOccurs="1">
         <xs:element ref="tt:chunk" minOccurs="1" maxOccurs="unbounded"/>
-        <xs:element ref="tt:source" minOccurs="1" maxOccurs="unbounded"/>
+        <!-- <xs:element ref="tt:source" minOccurs="1" maxOccurs="unbounded"/> source element child of data is prohibited in DAPT -->
       </xs:choice>
     </xs:sequence>
     <xs:attributeGroup ref="tt:data.attlist"/>

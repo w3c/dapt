@@ -34,8 +34,24 @@
             <xs:element ref="tt:body" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
         <xs:attributeGroup ref="tt:tt.attlist"/>
-        <xs:attribute ref="daptm:scriptRepresents" use="required"/>
-        <xs:attribute ref="daptm:scriptType" use="required"/>
     </xs:complexType>
-    <xs:element name="tt" type="tt:tt.eltype"/>
+    <xs:complexType name="dapt_tt.eltype">
+        <xs:complexContent>
+            <xs:restriction base="tt:tt.eltype">
+                <xs:sequence>
+                    <xs:element ref="tt:head" minOccurs="0" maxOccurs="1"/>
+                    <xs:element ref="tt:body" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+                <xs:attribute ref="ttp:clockMode" use="prohibited"/>
+                <xs:attribute ref="ttp:contentProfiles" use="required"/>
+                <xs:attribute ref="ttp:dropMode" use="prohibited"/>
+                <xs:attribute ref="ttp:markerMode" use="prohibited"/>
+                <xs:attribute ref="ttp:profile" use="prohibited"/>
+                <xs:attribute ref="ttp:subFrameRate" use="prohibited"/>
+                <xs:attribute ref="daptm:scriptRepresents" use="required"/>
+                <xs:attribute ref="daptm:scriptType" use="required"/>
+            </xs:restriction>
+        </xs:complexContent>
+    </xs:complexType>
+    <xs:element name="tt" type="tt:dapt_tt.eltype"/>
 </xs:schema>
