@@ -48,6 +48,8 @@
                 <xs:attribute ref="ttp:markerMode" use="prohibited"/>
                 <xs:attribute ref="ttp:profile" use="prohibited"/>
                 <xs:attribute ref="ttp:subFrameRate" use="prohibited"/>
+                <xs:attribute ref="daptm:langSrc"/>
+                <xs:attribute ref="daptm:represents"/>
                 <xs:attribute ref="daptm:scriptRepresents" use="required"/>
                 <xs:attribute ref="daptm:scriptType" use="required"/>
             </xs:restriction>
