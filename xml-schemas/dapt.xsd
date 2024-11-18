@@ -4,6 +4,7 @@
     xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning"
     xmlns:xs="http://www.w3.org/2001/XMLSchema"
     xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
+    xmlns:ebuttm="urn:ebu:tt:metadata"
     xmlns:tt="http://www.w3.org/ns/ttml"
     xmlns:ttm="http://www.w3.org/ns/ttml#metadata"
     xmlns:ttp="http://www.w3.org/ns/ttml#parameter"
@@ -14,6 +15,8 @@
         schemaLocation="ttml2-metadata-items.xsd"/>
     <xs:import namespace="http://www.w3.org/ns/ttml/profile/dapt#metadata"
         schemaLocation="dapt-metadata.xsd"/>
+    <xs:import namespace="urn:ebu:tt:metadata"
+        schemaLocation="ebu-tt-m-xsd/ebu-tt-metadata.xsd"/>
     <xs:import namespace="http://www.w3.org/ns/ttml#parameter"
         schemaLocation="ttml2-parameter-items.xsd"/>
     <xs:import namespace="http://www.w3.org/ns/ttml#styling"

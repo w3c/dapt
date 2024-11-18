@@ -12,9 +12,10 @@ schema document.
 
 ## Design
 
-The DAPT XSD is designed to be inclusive, rather than defining attributes and elements from the DAPT specification
+The DAPT XSD is designed to be inclusive of all content predicted from the DAPT specification,
+rather than defining attributes and elements from the DAPT specification
 and relying on external XSDs for other namespace vocabulary.
-This is so that DAPT-specific constraints, such as the prohibition of the `<animation>` element,
+This also permits DAPT-specific constraints, such as the prohibition of the `<animation>` element,
 or the requirement for the `daptm:scriptRepresents` attribute on the root `<tt>` element,
 can be applied.
 
@@ -26,6 +27,9 @@ This means that if the TTML2 XSD changes, there could be a maintenance task to u
 However it also simplifies usage.
 
 Additionally, DAPT namespaces and DAPT-specific data types are defined in imported files whose name is prefixed `dapt-`.
+
+EBU-TT Metadata is imported via a git submodule pointed at the XSD 1 version of the
+[EBU-TT Metadata schema](https://github.com/ebu/ebu-tt-m-xsd/tree/issue-0030-schema-v1).
 
 ### Implicit (namespace-based) references to dependent XSDs
 
