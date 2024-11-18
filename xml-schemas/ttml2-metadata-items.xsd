@@ -62,7 +62,7 @@
     <xs:complexContent>
       <xs:restriction base="ttm:agent.eltype">
         <xs:sequence>
-          <xs:element ref="ttm:name" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="ttm:name" minOccurs="1" maxOccurs="unbounded"/>
           <xs:element ref="ttm:actor" minOccurs="0" maxOccurs="1"/>
         </xs:sequence>
         <xs:attribute ref="xml:id" use="required"/>
