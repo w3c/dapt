@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema targetNamespace="http://www.w3.org/ns/ttml#metadata"
   xml:lang="en" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  xmlns:xml="http://www.w3.org/XML/1998/namespace"
   xmlns:tt="http://www.w3.org/ns/ttml"
   xmlns:ttd="http://www.w3.org/ns/ttml#datatype"
   xmlns:ttm="http://www.w3.org/ns/ttml#metadata"
@@ -11,6 +12,8 @@
     schemaLocation="ttml2-core-attribs.xsd"/>
   <xs:import namespace="http://www.w3.org/ns/ttml/profile/dapt#metadata"
     schemaLocation="dapt-metadata.xsd"/>
+  <xs:import namespace="http://www.w3.org/XML/1998/namespace"
+    schemaLocation="xml.xsd"/>
   <xs:include schemaLocation="ttml2-metadata-attribs.xsd"/>
   <xs:attributeGroup name="actor.attlist">
     <xs:attributeGroup ref="tt:Core.attrib.class"/>
@@ -55,6 +58,17 @@
     </xs:sequence>
     <xs:attributeGroup ref="ttm:agent.attlist"/>
   </xs:complexType>
+  <xs:complexType name="dapt_agent.eltype">
+    <xs:complexContent>
+      <xs:restriction base="ttm:agent.eltype">
+        <xs:sequence>
+          <xs:element ref="ttm:name" minOccurs="0" maxOccurs="unbounded"/>
+          <xs:element ref="ttm:actor" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute ref="xml:id" use="required"/>
+      </xs:restriction>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="copyright.eltype" mixed="true">
     <xs:attributeGroup ref="ttm:copyright.attlist"/>
   </xs:complexType>
@@ -74,7 +88,7 @@
     <xs:attributeGroup ref="ttm:title.attlist"/>
   </xs:complexType>
   <xs:element name="actor" type="ttm:actor.eltype"/>
-  <xs:element name="agent" type="ttm:agent.eltype"/>
+  <xs:element name="agent" type="ttm:dapt_agent.eltype"/>
   <xs:element name="copyright" type="ttm:copyright.eltype"/>
   <xs:element name="desc" type="ttm:desc.eltype"/>
   <xs:element name="item" type="ttm:item.eltype"/>
