@@ -56,6 +56,7 @@
     <feature value="optional">#time-offset-with-frames</feature>
     <feature value="optional">#time-offset-with-ticks</feature>
     <feature value="optional">#timing</feature>
+    <feature value="optional">#transformation</feature>
     <feature value="optional">#unicodeBidi</feature>
     <feature value="optional">#unicodeBidi-isolate</feature>
     <feature value="optional" extends="#unicodeBidi">#unicodeBidi-version-2</feature>

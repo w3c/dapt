@@ -60,7 +60,13 @@
             publisher: "W3C",
             status: "2021-06-25",
             href: "https://www.w3.org/International/articles/inline-bidi-markup"
-          }
+          },
+          "TTML2": {
+            title: "Timed Text Markup Language 2 (TTML2) (2nd Edition)",
+            publisher: "W3C",
+            status: "2021-03-09",
+            href: "https://www.w3.org/TR/2021/CR-ttml2-20210309"
+          },
       },
 
       postProcess: [
@@ -143,6 +149,7 @@
   table.syntax td { border: 0px solid black }
   table.syntax div { background-color: #ffffc8 }
   table#table-features-and-extensions tbody tr td:nth-child(2) { text-align: center;}
+  td.table-row-header {text-align:center; font-style: italic; font-weight: bold; padding-top: 1.5rem !important;}
   div.exampleInner { border-top-width: 4px;
                    border-top-style: double;
                    border-top-color: #d3d3d3;
@@ -3130,349 +3137,349 @@ daptm:descType : string
         </thead>
         <tbody>
           <tr>
-            <td colspan="3" style="text-align:center"><em>Relative to the TT Feature namespace</em></td>
+            <td colspan="3" class="table-row-header">Relative to the TT Feature namespace</td>
           </tr>
           <tr>
-            <td><code>#animate-minimal</code></td>
+            <td><dfn data-cite="TTML2#feature-animate-fill"><code>#animate-fill</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#animate-fill</code></td>
+            <td><dfn data-cite="TTML2#feature-animate-minimal"><code>#animate-minimal</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#animation-out-of-line</code></td>
+            <td><dfn data-cite="TTML2#feature-animation-out-of-line"><code>#animation-out-of-line</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td>See <a href="#mixing-instruction"></a>.</td>
           </tr>
           <tr>
-            <td><code>#audio</code></td>
+            <td><dfn data-cite="TTML2#feature-audio"><code>#audio</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#audio-description</code></td>
+            <td><dfn data-cite="TTML2#feature-audio-description"><code>#audio-description</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#audio-speech</code></td>
+            <td><dfn data-cite="TTML2#feature-audio-speech"><code>#audio-speech</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#bidi</code></td>
+            <td><dfn data-cite="TTML2#feature-bidi"><code>#bidi</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#bidi-version-2</code></td>
+            <td><dfn data-cite="TTML2#feature-bidi-version-2"><code>#bidi-version-2</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#chunk</code></td>
+            <td><dfn data-cite="TTML2#feature-chunk"><code>#chunk</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#clockMode</code></td>
+            <td><dfn data-cite="TTML2#feature-clockMode"><code>#clockMode</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#clockMode-gps</code></td>
+            <td><dfn data-cite="TTML2#feature-clockMode-gps"><code>#clockMode-gps</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#clockMode-local</code></td>
+            <td><dfn data-cite="TTML2#feature-clockMode-local"><code>#clockMode-local</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#clockMode-utc</code></td>
+            <td><dfn data-cite="TTML2#feature-clockMode-utc"><code>#clockMode-utc</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#content</code></td>
+            <td><dfn data-cite="TTML2#feature-content"><code>#content</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
             <td> <dfn data-cite="TTML2#feature-contentProfiles"><code>#contentProfiles</code></dfn></td>
-            <td><span class="optional label">optional</span></td>
+            <td><span class="permitted label">permitted</span></td>
             <td>See <a href="#ttp-contentprofiles"></a>
               and <a href="#extension-contentProfiles-root"></a>.</td>
           </tr>
           <tr>
-            <td><code>#contentProfiles-combined</code></td>
+            <td><dfn data-cite="TTML2#feature-contentProfiles-combined"><code>#contentProfiles-combined</code></dfn></td>
             <td><span class="optional label">optional</span></td>
             <td>See <a href="#other-ttml2-profile-vocabulary"></a>.</td>
           </tr>
           <tr>
-            <td><code>#core</code></td>
+            <td><dfn data-cite="TTML2#feature-core"><code>#core</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#data</code></td>
+            <td><dfn data-cite="TTML2#feature-data"><code>#data</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#direction</code></td>
+            <td><dfn data-cite="TTML2#feature-direction"><code>#direction</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#dropMode</code></td>
+            <td><dfn data-cite="TTML2#feature-dropMode"><code>#dropMode</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#dropMode-dropNTSC</code></td>
+            <td><dfn data-cite="TTML2#feature-dropMode-dropNTSC"><code>#dropMode-dropNTSC</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#dropMode-dropPAL</code></td>
+            <td><dfn data-cite="TTML2#feature-dropMode-dropPAL"><code>#dropMode-dropPAL</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#dropMode-nonDrop</code></td>
+            <td><dfn data-cite="TTML2#feature-dropMode-nonDrop"><code>#dropMode-nonDrop</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#embedded-audio</code></td>
+            <td><dfn data-cite="TTML2#feature-embedded-audio"><code>#embedded-audio</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#embedded-data</code></td>
+            <td><dfn data-cite="TTML2#feature-embedded-data"><code>#embedded-data</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#frameRate</code></td>
+            <td><dfn data-cite="TTML2#feature-frameRate"><code>#frameRate</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td>
               See [[[#ttp-framerate]]].
             </td>
           </tr>
           <tr>
-            <td><code>#frameRateMultiplier</code></td>
+            <td><dfn data-cite="TTML2#feature-frameRateMultiplier"><code>#frameRateMultiplier</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#gain</code></td>
+            <td><dfn data-cite="TTML2#feature-gain"><code>#gain</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#markerMode</code></td>
+            <td><dfn data-cite="TTML2#feature-markerMode"><code>#markerMode</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#markerMode-continuous</code></td>
+            <td><dfn data-cite="TTML2#feature-markerMode-continuous"><code>#markerMode-continuous</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#markerMode-discontinuous</code></td>
+            <td><dfn data-cite="TTML2#feature-markerMode-discontinuous"><code>#markerMode-discontinuous</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#metadata</code></td>
+            <td><dfn data-cite="TTML2#feature-metadata"><code>#metadata</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#metadata-item</code></td>
+            <td><dfn data-cite="TTML2#feature-metadata-item"><code>#metadata-item</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#metadata-version-2</code></td>
+            <td><dfn data-cite="TTML2#feature-metadata-version-2"><code>#metadata-version-2</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#pan</code></td>
+            <td><dfn data-cite="TTML2#feature-pan"><code>#pan</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#permitFeatureNarrowing</code></td>
+            <td><dfn data-cite="TTML2#feature-permitFeatureNarrowing"><code>#permitFeatureNarrowing</code></dfn></td>
             <td><span class="optional label">optional</span></td>
             <td>See <a href="#other-ttml2-profile-vocabulary"></a>.</td>
           </tr>
           <tr>
-            <td><code>#permitFeatureWidening</code></td>
+            <td><dfn data-cite="TTML2#feature-permitFeatureWidening"><code>#permitFeatureWidening</code></dfn></td>
             <td><span class="optional label">optional</span></td>
             <td>See <a href="#other-ttml2-profile-vocabulary"></a>.</td>
           </tr>
           <tr>
-            <td><code>#pitch</code></td>
+            <td><dfn data-cite="TTML2#feature-pitch"><code>#pitch</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#presentation-audio</code></td>
+            <td><dfn data-cite="TTML2#feature-presentation-audio"><code>#presentation-audio</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#processorProfiles</code></td>
+            <td><dfn data-cite="TTML2#feature-processorProfiles"><code>#processorProfiles</code></dfn></td>
             <td><span class="optional label">optional</span></td>
             <td>See <a href="#ttp-processorprofiles"></a>.</td>
           </tr>
           <tr>
-            <td><code>#processorProfiles-combined</code></td>
+            <td><dfn data-cite="TTML2#feature-processorProfiles-combined"><code>#processorProfiles-combined</code></dfn></td>
             <td><span class="optional label">optional</span></td>
             <td>See <a href="#other-ttml2-profile-vocabulary"></a>.</td>
           </tr>
           <tr>
-            <td><code>#profile</code></td>
+            <td><dfn data-cite="TTML2#feature-profile"><code>#profile</code></dfn></td>
             <td>partially permitted</td>
             <td>
               See <a href="#ttp-profile"></a>.
             </td>
           </tr>
           <tr>
-            <td><code>#profile-full-version-2</code></td>
+            <td><dfn data-cite="TTML2#feature-profile-full-version-2"><code>#profile-full-version-2</code></dfn></td>
             <td>partially permitted</td>
             <td>
               See <a href="#other-ttml2-profile-vocabulary"></a>.
             </td>
           </tr>
           <tr>
-            <td><code>#profile-version-2</code></td>
+            <td><dfn data-cite="TTML2#feature-profile-version-2"><code>#profile-version-2</code></dfn></td>
             <td>partially permitted</td>
             <td>
               See <a href="#other-ttml2-profile-vocabulary"></a>.
             </td>
           </tr>
           <tr>
-            <td><code>#resources</code></td>
+            <td><dfn data-cite="TTML2#feature-resources"><code>#resources</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#set</code></td>
+            <td><dfn data-cite="TTML2#feature-set"><code>#set</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#set-fill</code></td>
+            <td><dfn data-cite="TTML2#feature-set-fill"><code>#set-fill</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#set-multiple-styles</code></td>
+            <td><dfn data-cite="TTML2#feature-set-multiple-styles"><code>#set-multiple-styles</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#source</code></td>
+            <td><dfn data-cite="TTML2#feature-source"><code>#source</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#speak</code></td>
+            <td><dfn data-cite="TTML2#feature-speak"><code>#speak</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#speech</code></td>
+            <td><dfn data-cite="TTML2#feature-speech"><code>#speech</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#structure</code></td>
+            <td><dfn data-cite="TTML2#feature-structure"><code>#structure</code></dfn></td>
             <td><span class="required label">required</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#styling</code></td>
+            <td><dfn data-cite="TTML2#feature-styling"><code>#styling</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#styling-chained</code></td>
+            <td><dfn data-cite="TTML2#feature-styling-chained"><code>#styling-chained</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#styling-inheritance-content</code></td>
+            <td><dfn data-cite="TTML2#feature-styling-inheritance-content"><code>#styling-inheritance-content</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#styling-inline</code></td>
+            <td><dfn data-cite="TTML2#feature-styling-inline"><code>#styling-inline</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#styling-referential</code></td>
+            <td><dfn data-cite="TTML2#feature-styling-referential"><code>#styling-referential</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#subFrameRate</code></td>
+            <td><dfn data-cite="TTML2#feature-subFrameRate"><code>#subFrameRate</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#tickRate</code></td>
+            <td><dfn data-cite="TTML2#feature-tickRate"><code>#tickRate</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td>See [[[#ttp-tickrate]]].</td>
           </tr>
           <tr>
-            <td><code>#time-clock</code></td>
+            <td><dfn data-cite="TTML2#feature-time-clock"><code>#time-clock</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#time-clock-with-frames</code></td>
+            <td><dfn data-cite="TTML2#feature-time-clock-with-frames"><code>#time-clock-with-frames</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#time-offset-with-frames</code></td>
+            <td><dfn data-cite="TTML2#feature-time-offset-with-frames"><code>#time-offset-with-frames</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td>See [[[#ttp-framerate]]].</td>
           </tr>
           <tr>
-            <td><code>#time-offset-with-ticks</code></td>
+            <td><dfn data-cite="TTML2#feature-time-offset-with-ticks"><code>#time-offset-with-ticks</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td>See [[[#ttp-tickrate]]].</td>
           </tr>
           <tr>
-            <td><code>#time-offset</code></td>
+            <td><dfn data-cite="TTML2#feature-time-offset"><code>#time-offset</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#time-wall-clock</code></td>
+            <td><dfn data-cite="TTML2#feature-time-wall-clock"><code>#time-wall-clock</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#timeBase-clock</code></td>
+            <td><dfn data-cite="TTML2#feature-timeBase-clock"><code>#timeBase-clock</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#timeBase-media</code></td>
+            <td><dfn data-cite="TTML2#feature-timeBase-media"><code>#timeBase-media</code></dfn></td>
             <td><span class="required label">required</span></td>
             <td>
               <p>See [[[#ttp-timebase]]].</p>
@@ -3481,29 +3488,49 @@ daptm:descType : string
             </td>
           </tr>
           <tr>
-            <td><code>#timeBase-smpte</code></td>
+            <td><dfn data-cite="TTML2#feature-timeBase-smpte"><code>#timeBase-smpte</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td></td>
           </tr>
           <tr>
-            <td><code>#timeContainer</code></td>
+            <td><dfn data-cite="TTML2#feature-timeContainer"><code>#timeContainer</code></dfn></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td>See [[[#timecontainer]]].</td>
           </tr>
           <tr>
-            <td><code>#timing</code></td>
+            <td><dfn data-cite="TTML2#feature-timing"><code>#timing</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td>See [[[#time-expressions]]].</td>
           </tr>
           <tr>
-            <td><code>#transformation</code></td>
+            <td><dfn data-cite="TTML2#feature-transformation"><code>#transformation</code></dfn></td>
             <td><span class="permitted label">permitted</span></td>
             <td>
               See constraints at <a href="#profile-constraints">#profile</a>.
             </td>
           </tr>
           <tr>
-            <td colspan="3" style="text-align:center"><em>Relative to the <a>DAPT Extension</a> namespace</em></td>
+            <td><dfn data-cite="TTML2#feature-unicodeBidi"><code>#unicodeBidi</code></dfn></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><dfn data-cite="TTML2#feature-unicodeBidi-isolate"><code>#unicodeBidi-isolate</code></dfn></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><dfn data-cite="TTML2#feature-unicodeBidi-version-2"><code>#unicodeBidi-version-2</code></dfn></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><dfn data-cite="TTML2#feature-xlink"><code>#xlink</code></dfn></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td colspan="3" class="table-row-header">Relative to the <a>DAPT Extension</a> namespace</td>
           </tr>
           <tr>
             <td><a href="#extension-agent"><code>#agent</code></a></td>
@@ -3537,12 +3564,14 @@ daptm:descType : string
             <td><a href="#extension-profile-root"><code>#profile-root</code></a></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td>
-              This is the profile expression of <a href="#ttp-profile"></a>.
+              This is the profile expression of the prohibition of
+              the <code>ttp:profile</code> attribute on the <code>&lt;tt&gt;</code> element
+              as specified in <a href="#ttp-profile"></a>.
             </td>
           </tr>
           <tr>
             <td><a href="#extension-represents"><code>#represents</code></a></td>
-            <td><span class="permitted label">permitted</span></td>
+            <td><span class="required label">required</span></td>
             <td>
               This is the profile expression of <a>Represents</a>
               as applied to <a>Script Event</a>.
