@@ -8,12 +8,12 @@
   daptm:scriptRepresents="visual.nonText visual.text"
   daptm:scriptType="preRecording">
   <body>
-    <div begin="10s" end="13s" daptm:represents="visual.nonText">
+    <div begin="10s" end="13s" xml:id="a1" daptm:represents="visual.nonText">
       <p>
         A woman climbs into a small sailing boat.
       </p>
     </div>
-    <div begin="18s" end="20s" daptm:represents="visual.nonText">
+    <div begin="18s" end="20s" xml:id="a2" daptm:represents="visual.nonText">
       <p>
         The woman pulls the tiller and the boat turns.
       </p>
