@@ -1,5 +1,5 @@
 ...
-    <div begin="25s" end="28s">
+    <div begin="25s" end="28s" xml:id="a3">
       <p>
         <animate begin="0.0s" end="0.3s" tta:gain="1;0.39" fill="freeze"/>
         <animate begin="2.7s" end="3s" tta:gain="0.39;1"/>

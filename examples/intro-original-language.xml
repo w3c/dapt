@@ -15,7 +15,7 @@
     </metadata>
   </head>
   <body>
-    <div begin="10s" end="13s" daptm:represents="audio.dialogue">
+    <div begin="10s" end="13s" xml:id="d1" daptm:represents="audio.dialogue">
       <p ttm:agent="character_1">
         <span>Et c'est grâce à ça qu'on va devenir riches.</span>
       </p>

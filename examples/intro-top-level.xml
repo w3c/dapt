@@ -19,6 +19,14 @@
     </layout>
   </head>
   <body>
-    <!-- Content goes here -->
+    <!-- Content goes here and consists of a div for each Script Event -->
+    <div xml:id="d1" begin="..." end="..." daptm:represents="audio.dialogue">
+      <p>
+        <!-- Text blocks are contained in p elements -->
+      </p>
+      <p xml:lang="fr" daptm:langSrc="en">
+        <!-- Translation text is related to the source language for the translation -->
+      </p>
+    </div>
   </body>
 </tt>
