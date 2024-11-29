@@ -859,6 +859,7 @@
           <p class="ednote">Would it be better to make a "Timed Object" class and subclass Script Event,
             Mixing Instruction and Audio Recording from it?
           </p>
+
           <section>
             <h5>Timing Properties</h5>
             <p>The following <dfn data-lt="timing property|timing properties">timing properties</dfn>
@@ -1045,6 +1046,40 @@
                 </table>
               </div>
             </section>
+
+            <section>
+              <h5>Unique identifiers</h5>
+              <p>Some entities in the data model include unique identifiers.
+                A <dfn>Unique Identifier</dfn> has the following requirements:</p>
+              <ul>
+                <li><p>it is unique within the <a>DAPT Script</a>,
+                  i.e. the value of a <a>Unique Identifier</a> can only
+                  be used one time within the document,
+                  regardless of which specific kind of identifier it is.</p>
+                  <p class="example">If a <a>Character Identifier</a> has the value <code>&quot;abc&quot;</code>
+                    and a <a>Script Event Identifier</a> in the same document has the same value,
+                    that is an error.</p>
+                </li>
+                <li><p>its value has to conform to the requirements of
+                  <code><a data-cite="XML#NT-Name">Name</a></code> as defined by [[XML]]</p>
+                  <div class="note"><p>It cannot begin with
+                    a digit,
+                    a combining diacritical mark (an accent),
+                    or any of the following characters:</p>
+                    <pre><code>    .
+    -
+    &#xB7;  // #xB7
+    &#x203F;  // #x203F
+    &#x2040;  // #x2040</code></pre>
+                  <p>but those characters can be used elsewhere.
+                  </p></div>
+                </li>
+              </ul>
+              <p>A <a>Unique Identifier</a> for an entity is expressed in a <a>DAPT Document</a>
+                by an <code>xml:id</code> attribute on the corresponding element.</p>
+              <p class="note">The formal requirements for the semantics and processing of <code>xml:id</code>
+                are defined in [[xml-id]].</p>
+            </section>
         </section>
 
       </section>
@@ -1054,8 +1089,8 @@
         <p><em>This section is mainly relevant to <a>Dubbing</a> workflows.</em></p>
         <p>A character in the programme can be described using a <dfn>Character</dfn> object which has the following properties: 
           <ul>
-            <li>a mandatory <dfn data-lt="Character Identifier">Identifier</dfn>
-            which is a unique identifier used to reference the character from elsewhere in the document,
+            <li>a mandatory <dfn data-lt="Character Identifier">Character Identifier</dfn>
+            which is a <a>Unique Identifier</a> used to reference the character from elsewhere in the document,
             for example to indicate when a <a>Character</a> participates in a <a>Script Event</a>.</li>
             <li>a mandatory <dfn data-lt="Character Name">Name</dfn> which is the name of the <a>Character</a> in the programme</li>
             <li>an optional <dfn data-lt="Character Talent Name">Talent Name</dfn>, which is the name of the actor speaking dialogue for this <a>Character</a>.</li>
@@ -1149,7 +1184,7 @@
         <h3>Script Event</h3>
         <p>A <dfn>Script Event</dfn> object represents dialogue, on screen text or audio descriptions to be spoken and has the following properties:</p>
         <ul>
-          <li>A mandatory <dfn>Script Event Identifier</dfn> which is unique in the <a>script</a></li>
+          <li>A mandatory <dfn>Script Event Identifier</dfn> which is a <a>Unique Identifier</a>.</li>
           <li>An optional <a>Begin</a> property and an optional <a>End</a> and an optional <a>Duration</a> property
             that together define the <a>Script Event</a>'s time interval in the programme timeline
             <p class="note">Typically <a>Script Events</a> do not overlap in time.
