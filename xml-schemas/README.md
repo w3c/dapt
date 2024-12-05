@@ -31,11 +31,6 @@ Additionally, DAPT namespaces and DAPT-specific data types are defined in import
 EBU-TT Metadata is imported via a git submodule pointed at the XSD 1 version of the
 [EBU-TT Metadata schema](https://github.com/ebu/ebu-tt-m-xsd/tree/issue-0030-schema-v1).
 
-### Implicit (namespace-based) references to dependent XSDs
-
-A [`dapt-all.xsd`](dapt-all.xsd) is provided for XSD tools that allow for implicit references to schema documents
-based on namespace, but this is not tested and may generate naming clash errors.
-
 ### Type restrictions
 
 Two mechanisms are used to enforce DAPT-specific type restrictions:
