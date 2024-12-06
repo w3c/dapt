@@ -1627,13 +1627,15 @@ daptm:onScreen
           <p>Each <a>Description Type</a> is represented in a <a>DAPT Document</a> by
             a <code>daptm:descType</code> attribute on the <code>&lt;ttm:desc&gt;</code> element.</p>
           <p>The <code>&lt;ttm:desc&gt;</code> element MAY have zero or one <code>daptm:descType</code> attributes.
-            The <code>daptm:descType</code> attribute is defined below.</p>
+            The <dfn><code>daptm:descType</code></dfn> attribute is defined below.</p>
           <div class="exampleInner">
             <pre class="language-abnf">
 daptm:descType : string
             </pre>
           </div>
-          <p>Its permitted values are listed in the following <a>registry table</a>:</p>
+          <p>The permitted values for <code>daptm:descType</code> are either
+            those listed in the following <a>registry table</a>,
+            or can be user-defined:</p>
           <div class="registry-table-section">
             <table class="data">
               <caption><a>Registry table</a> for the <code>daptm:descType</code> attribute
@@ -1666,6 +1668,7 @@ daptm:descType : string
               </tbody>
             </table>
           </div>
+          <p>Valid user-defined values MUST begin with <code>x-</code>.</p>
           <pre class="example"
             data-include="examples/event-desc-descType.xml"
             data-include-format="text">
@@ -2138,6 +2141,7 @@ daptm:descType : string
               <td><code>http://www.w3.org/XML/1998/namespace</code></td>
               <td>[[xml-names]]</td>
             </tr>
+            <!-- TTML Namespaces are ordered the same as in the TTML2 Specification -->
             <tr>
               <td>TT</td>
               <td><code>tt</code></td>
@@ -2151,15 +2155,21 @@ daptm:descType : string
               <td>[[TTML2]]</td>
             </tr>
             <tr>
-              <td>TT Feature</td>
-              <td>none</td>
-              <td><code>http://www.w3.org/ns/ttml/feature/</code></td>
-              <td>[[TTML2]]</td>
-            </tr>
-            <tr>
               <td>TT Audio Style</td>
               <td><code>tta</code></td>
               <td><code>http://www.w3.org/ns/ttml#audio</code></td>
+              <td>[[TTML2]]</td>
+            </tr>
+            <tr>
+              <td>TT Metadata</td>
+              <td><code>ttm</code></td>
+              <td><code>http://www.w3.org/ns/ttml#metadata</code></td>
+              <td>[[TTML2]]</td>
+            </tr>
+            <tr>
+              <td>TT Feature</td>
+              <td>none</td>
+              <td><code>http://www.w3.org/ns/ttml/feature/</code></td>
               <td>[[TTML2]]</td>
             </tr>
             <tr>
@@ -3607,6 +3617,13 @@ daptm:descType : string
             </td>
           </tr>
           <tr>
+            <td><a href="#extension-descType"><code>#descType</code></a></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td>
+              This is the profile expression of <a><code>daptm:descType</code></a>.
+            </td>
+          </tr>
+          <tr>
             <td><a href="#extension-onScreen"><code>#onScreen</code></a></td>
             <td><span class="permitted label">permitted</span></td>
             <td>
@@ -3794,6 +3811,18 @@ daptm:descType : string
           <code>&lt;</code><a><code>daptm:daptOriginTimecode</code></a><code>&gt;</code> element.</p>
   
         <p>No <a>presentation processor</a> behaviour is defined for the <code>#daptOriginTimecode</code> extension.</p>
+      </section>
+
+      <section>
+        <h3 id="extension-descType">#descType</h3>
+        <p>A <a>transformation processor</a> supports the <code>#descType</code> extension if
+          it recognizes and is capable of transforming values of the
+          <a><code>daptm:descType</code></a> attribute
+          on the <code>&lt;ttm:desc&gt;</code> element.</p>
+  
+        <p>A <a>presentation processor</a> supports the <code>#descType</code> extension if
+          it implements presentation semantic support of the
+          <a><code>daptm:descType</code></a> attribute on the <code>&lt;ttm:desc&gt;</code> element.</p>
       </section>
 
       <section>
@@ -4162,6 +4191,7 @@ daptm:descType : string
         <p>The <a>key</a> is the &quot;<code>daptm:descType</code>&quot; field.
         The &quot;description&quot; field describes the intended purpose of each value.</p> 
         <p>The <a>registry entries</a> for this <a>registry table</a> are located in <a href="#script-event-description"></a>.</p>
+        <p>The <a>key</a> values for this <a>registry table</a> MUST NOT begin with <code>x-</code> which is reserved for user extensions.</p>
       </section>
 
       <section id="registry-table-content-descriptor">
