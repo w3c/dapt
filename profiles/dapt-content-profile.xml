@@ -93,6 +93,7 @@
     <!-- optional (voluntary) extension support -->
     <extension value="optional">#agent</extension>
     <extension value="optional">#daptOriginTimecode</extension>
+    <extension value="optional">#descType</extension>
     <extension value="optional">#onScreen</extension>
     <extension value="optional">#scriptEventGrouping</extension>
     <extension value="optional">#scriptEventMapping</extension>
