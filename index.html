@@ -470,6 +470,24 @@
           data-include="examples/intro-times-and-text.xml"
           data-include-format="text">
         </pre>
+        <p>Audio description content often includes text present in the visual image,
+          for example if the image contains a written sign, a location, etc.
+          The following example demonstrates such a case:
+          <a>Script Represents</a> is extended
+          to show that the <a>script</a>'s contents represent textual visual information
+          in addition to non-textual visual information.
+          Here a more precise value of <a>Represents</a>
+          is specified on the <a>Script Event</a>
+          to reflect that the text is in fact a location,
+          which is allowed because the more precise value is a <a>sub-type</a>
+          of the new value in <a>Script Represents</a>.
+          Finally, since the text has an inherent language, the <a>Text Language Source</a>
+          is set to reflect that language. 
+        </p>
+        <pre class="example"
+          data-include="examples/intro-times-and-text-with-visual-text.xml"
+          data-include-format="text">
+        </pre>
         <p>After creating audio recordings, if not using text to speech, instructions for playback
           mixing can be inserted. For example, The gain of "received" audio can be changed before mixing in
           the audio played from inside the <code>&lt;span&gt;</code> element, smoothly
