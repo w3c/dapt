@@ -1,0 +1,3 @@
+[submodule "xml-schemas/ebu-tt-m-xsd"]
+	path = xml-schemas/ebu-tt-m-xsd
+	url = https://github.com/ebu/ebu-tt-m-xsd.git
