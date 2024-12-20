@@ -85,6 +85,7 @@
     <extension value="required">#agent</extension>
     <extension value="required">#contentProfiles-root</extension>
     <extension value="required">#daptOriginTimecode</extension>
+    <extension value="required">#descType</extension>
     <extension value="required">#onScreen</extension>
     <extension value="required">#represents</extension>
     <extension value="required">#scriptEventGrouping</extension>
