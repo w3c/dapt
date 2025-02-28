@@ -2,7 +2,7 @@
 <xs:schema targetNamespace="http://www.w3.org/ns/ttml" xml:lang="en"
   xmlns:xs="http://www.w3.org/2001/XMLSchema"
   xmlns:tt="http://www.w3.org/ns/ttml"
-  xmlns:ttm="http://www.w3.org/ns/ttml#metadata">
+  xmlns:ttm="http://www.w3.org/ns/ttml#metadata" elementFormDefault="qualified">
   <xs:include schemaLocation="ttml2-core-attribs.xsd"/>
   <xs:import namespace="http://www.w3.org/ns/ttml#metadata"
     schemaLocation="ttml2-metadata-items.xsd"/>
