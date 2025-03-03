@@ -40,7 +40,11 @@ def validate_dapt(args):
         logging.error('Document is not valid.')
         return -1
 
-    logging.info('Document is valid')
+    logging.info(
+        'Document is syntactically valid with respect to the '
+        'DAPT XML Schema Definition; '
+        'this does not check all semantic requirements of the '
+        'DAPT specification.')
     return 0
 
 
