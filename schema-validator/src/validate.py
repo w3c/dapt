@@ -2,6 +2,9 @@ import os
 import sys
 import argparse
 import xmlschema
+import logging
+
+logging.getLogger().setLevel(logging.INFO)
 
 
 schema_path = os.path.normpath(
@@ -19,15 +22,25 @@ metadata_items_schema_path = os.path.normpath(
 def validate_dapt(args):
     # xmlschema gets baffled following the import of metadata_items,
     # so make it load it explicitly instead, which seems to work.
-    schema = xmlschema.XMLSchema([schema_path, metadata_items_schema_path])
+    schema_paths = [schema_path, metadata_items_schema_path]
+    logging.info('Creating schema from XSDs at {}'.format(schema_paths))
+    schema = xmlschema.XMLSchema(schema_paths)
     schema.build()
-
-    try:
-        schema.validate(args.dapt_in)
-    except xmlschema.XMLSchemaValidationError as valex:
-        print(str(valex))
+    if schema.validity:
+        logging.info('Schemas are valid')
+    else:
+        logging.error('Schemas are not valid, exiting early')
         return -1
 
+    try:
+        logging.info('Validating document at {}'.format(args.dapt_in.name))
+        schema.validate(args.dapt_in)
+    except xmlschema.XMLSchemaValidationError as valex:
+        logging.error(str(valex))
+        logging.error('Document is not valid.')
+        return -1
+
+    logging.info('Document is valid')
     return 0
 
 
