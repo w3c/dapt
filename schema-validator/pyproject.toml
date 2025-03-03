@@ -12,7 +12,6 @@ packages = [
 [tool.poetry.dependencies]
 python = ">=3.11"
 xmlschema = "^3.4.3"
-xsd-validator = "^0.0.3"
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.1.2"

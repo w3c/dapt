@@ -10,6 +10,9 @@ The XML Schema is provided as an [XSD 1](https://www.w3.org/TR/xmlschema-1/) (XM
 An XSD 1 conformant XML validator should be able to validate a DAPT document against the top level [`dapt.xsd`](dapt.xsd)
 schema document.
 
+As a convenience, a Python script is provided to allow use of the XSDs to validate
+a DAPT document using only open source libraries.
+
 ## Design
 
 The DAPT XSD is designed to be inclusive of all content predicted from the DAPT specification,
