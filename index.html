@@ -77,6 +77,37 @@
     };
     </script>
   <style>
+    /* Light mode settings, even if prefers darkmode is set */
+    body:not(.darkmode) .data tr:nth-child(even) {
+      background: #f0f6ff;
+    }
+    body:not(.darkmode) span.label.required::before, span.label.required::after {
+      color: white;
+    }
+    body:not(.darkmode) span.optional {
+      color: black;
+      background-color: #FFFF50;
+      border-color: #444444;
+    }
+    body:not(.darkmode) span.permitted {
+      color: black;
+      background-color: #50FF50;
+    }
+    body:not(.darkmode) span.prohibited {
+      color: black;
+      background-color: #FF5F5F;
+    }
+    body:not(.darkmode) span.permitted-deprecated {
+      color: black;
+      background-color: #FFC000;
+    }
+    body:not(.darkmode) span.required {
+      color: white;
+      background-color: black;
+    }
+    body:not(.darkmode) div.exampleInner {
+      background-color: #fafafa;
+    }
     @media (prefers-color-scheme: dark) {
       .data tr:nth-child(even) {
         background: #444444;
