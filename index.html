@@ -112,6 +112,41 @@
         background-color: #282c34;
       }
     }
+    body.darkmode {
+      & .data tr:nth-child(even) {
+        background: #444444;
+      }
+      & span.label.required::before, span.label.required::after {
+        color: black;
+      }
+      & span.optional {
+        color: black;
+        background-color: #FFFF50;
+        border-color: #f0f6ff;
+      }
+      & span.permitted {
+        color: black;
+        background-color: #50FF50;
+      }
+      & span.prohibited {
+        color: black;
+        background-color: #FF5F5F;
+      }
+      & span.permitted-deprecated {
+        color: black;
+        background-color: #FFC000;
+      }
+      & span.required {
+        color: black;
+        background-color: white;
+      }
+      & img.fingerprint, svg {
+        filter: invert(100%);
+      }
+      & div.exampleInner {
+        background-color: #282c34;
+      }
+    }
     @media (prefers-color-scheme: light) {
       .data tr:nth-child(even) {
         background: #f0f6ff;
