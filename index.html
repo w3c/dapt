@@ -112,40 +112,39 @@
         background-color: #282c34;
       }
     }
-    body.darkmode {
-      & .data tr:nth-child(even) {
-        background: #444444;
-      }
-      & span.label.required::before, span.label.required::after {
-        color: black;
-      }
-      & span.optional {
-        color: black;
-        background-color: #FFFF50;
-        border-color: #f0f6ff;
-      }
-      & span.permitted {
-        color: black;
-        background-color: #50FF50;
-      }
-      & span.prohibited {
-        color: black;
-        background-color: #FF5F5F;
-      }
-      & span.permitted-deprecated {
-        color: black;
-        background-color: #FFC000;
-      }
-      & span.required {
-        color: black;
-        background-color: white;
-      }
-      & img.fingerprint, svg {
-        filter: invert(100%);
-      }
-      & div.exampleInner {
-        background-color: #282c34;
-      }
+    /* Hack for when the media query fails, but we want darkmode to work */
+    body.darkmode .data tr:nth-child(even) {
+      background: #444444;
+    }
+    body.darkmode span.label.required::before, span.label.required::after {
+      color: black;
+    }
+    body.darkmode span.optional {
+      color: black;
+      background-color: #FFFF50;
+      border-color: #f0f6ff;
+    }
+    body.darkmode span.permitted {
+      color: black;
+      background-color: #50FF50;
+    }
+    body.darkmode span.prohibited {
+      color: black;
+      background-color: #FF5F5F;
+    }
+    body.darkmode span.permitted-deprecated {
+      color: black;
+      background-color: #FFC000;
+    }
+    body.darkmode span.required {
+      color: black;
+      background-color: white;
+    }
+    body.darkmode img.fingerprint, svg {
+      filter: invert(100%);
+    }
+    body.darkmode div.exampleInner {
+      background-color: #282c34;
     }
     @media (prefers-color-scheme: light) {
       .data tr:nth-child(even) {
