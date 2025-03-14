@@ -28,6 +28,15 @@ or pass the document for validating in via stdin, e.g.:
 poetry run validate < path/to/dapt_file.ttml
 ```
 
+### Validating without pruning unrecognised vocabulary
+
+By default this script prunes unrecognised vocabulary before
+XSD validation, as required by
+[DAPT §5.2.1 Unrecognised vocabulary](https://www.w3.org/TR/dapt/#unrecognised-elements-and-attributes);
+this behaviour can be disabled via the command line parameter
+`-noprune`.
+
+
 ## Tests
 
 ```sh
