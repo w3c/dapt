@@ -11,14 +11,17 @@
     daptm:scriptType="originalTranscript"
     xml:lang="en">
     <head>
-        <metadata>
-            <ttm:agent  type="person" xml:id="actor_A">
+        <metadata xmlns:otherns="urn:some:other:namespace">
+            <ttm:agent xmlns:nttm="http://www.netflix.com/ns/ttml#metadata" 
+                nttm:voice="en-US-Wavenet-B" foo="bar" otherns:test="x" type="person" xml:id="actor_A" id="huh">
                 <ttm:name type="full">Matthias Schoenaerts</ttm:name>
             </ttm:agent>
             <ttm:agent type="character" xml:id="character_2">
                 <ttm:name type="alias">BOOKER</ttm:name>
                 <ttm:actor agent="actor_A"/>
             </ttm:agent>
+            <otherns:x/>
+            <otherns:y/>
         </metadata>
     </head>
     <body>

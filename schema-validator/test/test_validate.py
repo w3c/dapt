@@ -12,10 +12,26 @@ fixture_dur = \
 class testValidate(unittest.TestCase):
     maxDiff = None
 
-    def testValidFile(self):
+    def testValidFileAfterPruning(self):
         with open(
-            os.path.join(fixture_dur, 'valid_dapt.ttml'), newline='') \
+            os.path.join(fixture_dur, 'valid_dapt.ttml'),
+            mode='rb') \
                 as dapt_file:
-            result = validate_dapt(args=Namespace(dapt_in=dapt_file))
+            result = validate_dapt(
+                args=Namespace(
+                    dapt_in=dapt_file,
+                    noprune=False))
 
         self.assertEqual(result, 0)
+
+    def testInvalidFileBeforePruning(self):
+        with open(
+            os.path.join(fixture_dur, 'valid_dapt.ttml'),
+            mode='rb') \
+                as dapt_file:
+            result = validate_dapt(
+                args=Namespace(
+                    dapt_in=dapt_file,
+                    noprune=True))
+
+        self.assertEqual(result, -1)
