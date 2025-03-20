@@ -5,11 +5,11 @@
     <div> <!-- This cannot be a Script Event because it has no xml:id -->
         <p> <!-- Would be a Text if its parent were a Script Event --> </p>
     </div>
-    <div> <!-- div parent of another div -->
+    <div xml:id="d2_1"> <!-- div parent of another div -->
         <div xml:id="d2"> <!-- Possibly a Script Event --></div>
     </div>
-    <div> <!-- double layer of nesting -->
-        <div>
+    <div xml:id="d3_1"> <!-- double layer of nesting -->
+        <div xml:id="d3_1_1">
             <div xml:id="d3" begin="..." end="..." xml:lang="ja" foo:bar="baz">
                 <!-- A Script Event with possibly unexpected attributes -->
             </div>
