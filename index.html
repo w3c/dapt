@@ -77,6 +77,37 @@
     };
     </script>
   <style>
+    /* Light mode settings, even if prefers darkmode is set */
+    body:not(.darkmode) .data tr:nth-child(even) {
+      background: #f0f6ff;
+    }
+    body:not(.darkmode) span.label.required::before, span.label.required::after {
+      color: white;
+    }
+    body:not(.darkmode) span.optional {
+      color: black;
+      background-color: #FFFF50;
+      border-color: #444444;
+    }
+    body:not(.darkmode) span.permitted {
+      color: black;
+      background-color: #50FF50;
+    }
+    body:not(.darkmode) span.prohibited {
+      color: black;
+      background-color: #FF5F5F;
+    }
+    body:not(.darkmode) span.permitted-deprecated {
+      color: black;
+      background-color: #FFC000;
+    }
+    body:not(.darkmode) span.required {
+      color: white;
+      background-color: black;
+    }
+    body:not(.darkmode) div.exampleInner {
+      background-color: #fafafa;
+    }
     @media (prefers-color-scheme: dark) {
       .data tr:nth-child(even) {
         background: #444444;
@@ -111,6 +142,40 @@
       div.exampleInner {
         background-color: #282c34;
       }
+    }
+    /* Hack for when the media query fails, but we want darkmode to work */
+    body.darkmode .data tr:nth-child(even) {
+      background: #444444;
+    }
+    body.darkmode span.label.required::before, span.label.required::after {
+      color: black;
+    }
+    body.darkmode span.optional {
+      color: black;
+      background-color: #FFFF50;
+      border-color: #f0f6ff;
+    }
+    body.darkmode span.permitted {
+      color: black;
+      background-color: #50FF50;
+    }
+    body.darkmode span.prohibited {
+      color: black;
+      background-color: #FF5F5F;
+    }
+    body.darkmode span.permitted-deprecated {
+      color: black;
+      background-color: #FFC000;
+    }
+    body.darkmode span.required {
+      color: black;
+      background-color: white;
+    }
+    body.darkmode img.fingerprint, svg {
+      filter: invert(100%);
+    }
+    body.darkmode div.exampleInner {
+      background-color: #282c34;
     }
     @media (prefers-color-scheme: light) {
       .data tr:nth-child(even) {
