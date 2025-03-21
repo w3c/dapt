@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "dapt-xsd-val"
+version = "0.1.0"
+description = "Thin wrapper around xmlschema to support XSD validation using the supplied DAPT XSD"
+authors = ["Nigel Megitt <nigel.megitt@bbc.co.uk>"]
+readme = "README.md"
+packages = [
+    { include = "src" },
+    { include = "test" },
+]
+
+[tool.poetry.dependencies]
+python = ">=3.11"
+xmlschema = "^3.4.3"
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^7.1.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+validate = "src.validate:main"
