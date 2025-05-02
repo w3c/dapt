@@ -3837,7 +3837,7 @@ daptm:descType : string
       </p>
     </section>
 
-      <section>
+    <section>
       <h3 id="extension-agent">#agent</h3>
       <p>A <a>transformation processor</a> supports the <code>#agent</code> extension if
         it recognizes and is capable of transforming values of the following
@@ -3855,10 +3855,8 @@ daptm:descType : string
             and child <code>&lt;ttm:name&gt;</code> element with <code>type="alias"</code>;</li>
         </ul>
 
-      <p>A <a>presentation processor</a> supports the <code>#agent</code> extension if
-        it implements presentation semantic support of the above listed
-        elements, attributes and value combinations.</p>
-      </section>
+      <p>No <a>presentation processor</a> behaviour is defined for the <code>#agent</code> extension.</p>
+    </section>
 
     <section>
       <h3 id="extension-contentProfiles-root">#contentProfiles-root</h3>
@@ -3870,55 +3868,69 @@ daptm:descType : string
         it implements presentation semantic support of the
         <a><code>ttp:contentProfiles</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
 
+      <p>The <code>#contentProfiles-root</code> extension is a syntactic and semantic subset
+        of the <code><a>#contentProfiles</a></code> feature.</p>
+  
       <aside class="note">This extension is defined as a subset of
         <code><a>#contentProfiles</a></code>
-        to avoid requiring processor support for
+        so that, by requiring it, in combination with the prohibition of
+        <a href="#extension-profile-root"><code>#profile-root</code></a>, processor support for
         the <a><code>ttp:profile</code></a> attribute and
-        processor profile inference semantics.
+        processor profile inference semantics can be avoided.
+        Specifically, step 1 of
+        <a href="https://www.w3.org/TR/ttml2/#semantics-procedure-construct-inferred-processor-profile">[construct inferred processor profile]</a>
+        returns a non-null effective content profile, which is then used as the
+        inferred processor profile.
       </aside>
-      </section>
+    </section>
 
-      <section>
-        <h3 id="extension-daptOriginTimecode">#daptOriginTimecode</h3>
-        <p>A <a>transformation processor</a> supports the <code>#daptOriginTimecode</code> extension if
-          it recognizes and is capable of transforming values of the
-          <code>&lt;</code><a><code>daptm:daptOriginTimecode</code></a><code>&gt;</code> element.</p>
-  
-        <p>No <a>presentation processor</a> behaviour is defined for the <code>#daptOriginTimecode</code> extension.</p>
-      </section>
+    <section>
+      <h3 id="extension-daptOriginTimecode">#daptOriginTimecode</h3>
+      <p>A <a>transformation processor</a> supports the <code>#daptOriginTimecode</code> extension if
+        it recognizes and is capable of transforming values of the
+        <code>&lt;</code><a><code>daptm:daptOriginTimecode</code></a><code>&gt;</code> element.</p>
 
-      <section>
-        <h3 id="extension-descType">#descType</h3>
-        <p>A <a>transformation processor</a> supports the <code>#descType</code> extension if
-          it recognizes and is capable of transforming values of the
-          <a><code>daptm:descType</code></a> attribute
-          on the <code>&lt;ttm:desc&gt;</code> element.</p>
-  
-        <p>A <a>presentation processor</a> supports the <code>#descType</code> extension if
-          it implements presentation semantic support of the
-          <a><code>daptm:descType</code></a> attribute on the <code>&lt;ttm:desc&gt;</code> element.</p>
-      </section>
+      <p>No <a>presentation processor</a> behaviour is defined for the <code>#daptOriginTimecode</code> extension.</p>
+    </section>
 
-      <section>
-        <h3 id="extension-onScreen">#onScreen</h3>
-        <p>A <a>transformation processor</a> supports the <code>#onScreen</code> extension if
-          it recognizes and is capable of transforming values of the
-          <a><code>daptm:onScreen</code></a> attribute on the <code>&lt;div&gt;</code> element.</p>
-  
-        <p>A <a>presentation processor</a> supports the <code>#onScreen</code> extension if
-          it implements presentation semantic support of the
-          <a><code>daptm:onScreen</code></a> attribute on the <code>&lt;div&gt;</code> element.</p>
-      </section>
+    <section>
+      <h3 id="extension-descType">#descType</h3>
+      <p>A <a>transformation processor</a> supports the <code>#descType</code> extension if
+        it recognizes and is capable of transforming values of the
+        <a><code>daptm:descType</code></a> attribute
+        on the <code>&lt;ttm:desc&gt;</code> element.</p>
 
-      <section>
-        <h3 id="extension-profile-root">#profile-root</h3>
-        <p>A <a>transformation processor</a> supports the <code>#profile-root</code> extension if
-          it recognizes and is capable of transforming values of the
-          <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-  
-        <p>A <a>presentation processor</a> supports the <code>#profile-root</code> extension if
-          it implements presentation semantic support of the
-          <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+      <p>No <a>presentation processor</a> behaviour is defined for the <code>#descType</code> extension.</p>
+    </section>
+
+    <section>
+      <h3 id="extension-onScreen">#onScreen</h3>
+      <p>A <a>transformation processor</a> supports the <code>#onScreen</code> extension if
+        it recognizes and is capable of transforming values of the
+        <a><code>daptm:onScreen</code></a> attribute on the <code>&lt;div&gt;</code> element.</p>
+
+      <p>No <a>presentation processor</a> behaviour is defined for the <code>#onScreen</code> extension.</p>
+    </section>
+
+    <section>
+      <h3 id="extension-profile-root">#profile-root</h3>
+      <p>A <a>transformation processor</a> supports the <code>#profile-root</code> extension if
+        it recognizes and is capable of transforming values of the
+        <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+
+      <p>A <a>presentation processor</a> supports the <code>#profile-root</code> extension if
+        it implements presentation semantic support of the
+        <a><code>ttp:profile</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+
+      <p>The <code>#profile-root</code> extension is a syntactic and semantic subset
+        of the <code><a>#profile</a></code> feature.</p>
+
+      <aside class="note">This extension is defined as a subset of
+        <code><a>#profile</a></code>
+        so that, by its prohibition, the requirement for processor support for
+        the <a><code>ttp:profile</code></a> attribute can be avoided,
+        and that attribute can be prohibited within documents.
+      </aside>
       </section>
 
       <section>
@@ -3927,16 +3939,14 @@ daptm:descType : string
           it recognizes and is capable of transforming values of the
           <a><code>daptm:represents</code></a> attribute.</p>
   
-        <p>A <a>presentation processor</a> supports the <code>#represents</code> extension if
-          it implements presentation semantic support of the
-          <a><code>daptm:represents</code></a> attribute.</p>
-
-        <p>An example of a <a>transformation processor</a> that supports this extension is
+        <aside class="example">An example of a <a>transformation processor</a> that supports this extension is
           a validating processor that reports an error if the extension is permitted by a
           <a>content profile</a> but the <a>timed text content document instance</a> claiming
           conformance to that profile has a
           <code>&lt;div&gt;</code> element with a <a><code>daptm:represents</code></a> attribute
-          whose value is not conformant with the requirements defined herein.</p>
+          whose value is not conformant with the requirements defined herein.</aside>
+  
+        <p>No <a>presentation processor</a> behaviour is defined for the <code>#represents</code> extension.</p>
       </section>
 
       <section>
@@ -3959,6 +3969,8 @@ daptm:descType : string
           if, when mapping a <a>DAPT document</a> into an internal representation of the DAPT data model,
           it implements the processing requirements specified at <a href="#handling-div-and-p-elements"></a>.</p>
 
+        <p>No <a>presentation processor</a> behaviour is defined for the <code>#scriptEventMapping</code> extension.</p>
+
         <p class="note">No support for the <code>#scriptEventMapping</code> extension is
           required for <a>presentation processors</a> because there are no presentation semantics that
           either require, or depend upon, mapping a <a>DAPT document</a> into an internal representation
@@ -3972,16 +3984,16 @@ daptm:descType : string
           it recognizes and is capable of transforming values of the
           <a><code>daptm:scriptRepresents</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
   
-        <p>A <a>presentation processor</a> supports the <code>#scriptRepresents</code> extension if
-          it implements presentation semantic support of the
-          <a><code>daptm:scriptRepresents</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
+        <p>No <a>presentation processor</a> behaviour is defined for the <code>#scriptRepresents</code> extension.</p>
 
-        <p>An example of a <a>transformation processor</a> that supports this extension is
+        <aside class="example">An example of a <a>transformation processor</a> that supports this extension is
           a validating processor that reports an error if the extension is required by a
           <a>content profile</a> but the <a>timed text content document instance</a> claiming
           conformance to that profile either does not have a
           <a><code>daptm:scriptRepresents</code></a> attribute on the <code>&lt;tt&gt;</code> element
-          or has one whose value is not conformant with the requirements defined herein.</p>
+          or has one whose value is not conformant with the requirements defined herein.</aside>
+  
+        <p>No <a>presentation processor</a> behaviour is defined for the <code>#scriptRepresents</code> extension.</p>
       </section>
 
       <section>
@@ -3989,12 +4001,8 @@ daptm:descType : string
         <p>A <a>transformation processor</a> supports the <code>#scriptType-root</code> extension if
           it recognizes and is capable of transforming values of the
           <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-  
-        <p>A <a>presentation processor</a> supports the <code>#scriptType-root</code> extension if
-          it implements presentation semantic support of the
-          <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
 
-        <p>An example of a <a>transformation processor</a> that supports this extension is
+        <aside class="example">An example of a <a>transformation processor</a> that supports this extension is
           a validating processor that provides appropriate feedback, for example warnings,
           when the SHOULD requirements defined in <a href="#script-type"></a> for a
           <a>DAPT Document</a>'s <a><code>daptm:scriptType</code></a> are not met,
@@ -4002,8 +4010,9 @@ daptm:descType : string
           <a>content profile</a> but the <a>timed text content document instance</a> claiming
           conformance to that profile either does not have a
           <a><code>daptm:scriptType</code></a> attribute on the <code>&lt;tt&gt;</code> element
-          or has one whose value is not defined herein.</p>
+          or has one whose value is not defined herein.</aside>
 
+        <p>No <a>presentation processor</a> behaviour is defined for the <code>#scriptType-root</code> extension.</p>
       </section>
 
       <section>
@@ -4045,9 +4054,7 @@ daptm:descType : string
           it recognizes and is capable of transforming values of the
           <a><code>daptm:langSrc</code></a> attribute.</p>
   
-        <p>A <a>presentation processor</a> supports the <code>#textLanguageSource</code> extension if
-          it implements presentation semantic support of the
-          <a><code>daptm:langSrc</code></a> attribute.</p>
+        <p>No <a>presentation processor</a> behaviour is defined for the <code>#textLanguageSource</code> extension.</p>
       </section>
 
       <section>
@@ -4056,10 +4063,8 @@ daptm:descType : string
           it recognizes and is capable of transforming values of the
           <code>xml:id</code> attribute on the <code>&lt;div&gt;</code> element.</p>
   
-        <p>A <a>presentation processor</a> supports the <code>#xmlId-div</code> extension if
-          it implements presentation semantic support of the
-          <code>xml:id</code> attribute on the <code>&lt;div&gt;</code> element.</p>
-        </section>
+        <p>No <a>presentation processor</a> behaviour is defined for the <code>#xmlId-div</code> extension.</p>
+      </section>
 
       <section>
         <h3 id="extension-xmlLang-audio-nonMatching">#xmlLang-audio-nonMatching</h3>
