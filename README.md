@@ -56,3 +56,4 @@ The following steps can be taken to fix them. It'd be neat to automate this some
    * Specifically, where there is `/svg/a/g/text` move the `<a>` wrappers to being around the `<text>` that includes the text that's relevant.
    * It then becomes `/svg/g/a/text` (where the `a` has is the second child of the `g`, the first being a `rect`)
    * Atsushi also moved the `<rect>` at `/svg/a/g/rect` out of the `<g>` so there is `/svg/rect` followed by `/svg/g/a/text` but why? Seems okay without doing that.
+6. Remove the `stroke-width:1.0;` property from all `rect`, `line`, `path` and `polygon` elements' `style` children. (they override the CSS styling that highlights links on hover or focus)
