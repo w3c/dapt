@@ -309,6 +309,32 @@
     left: -1.1em;
     position: relative;
   }
+
+  /*for the SVG - navigation highlighting */
+
+  :focus path,
+  :focus polygon,
+  :focus ellipse,
+  :focus rect {
+    stroke-width: 2px;
+  }
+  g g:hover:has(a) line,
+  g g:hover:has(a) path,
+  g g:hover:has(a) polygon,
+  g g:hover:has(a) ellipse,
+  g g:hover:has(a) rect {
+    stroke-width: 2px;
+  }
+  :focus text,
+  g g:hover a text,
+  g g:hover text tspan a {
+    stroke: black;
+    stroke-width: .5px;
+  }
+  g g a:hover text,
+  g g a:focus text {
+    text-decoration: underline;
+  }
   </style>
   </head>
   <body>
