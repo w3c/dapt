@@ -112,7 +112,6 @@
     <xs:complexContent>
       <xs:extension base="tt:p.eltype">
         <xs:attribute ref="daptm:langSrc"/>
-        <xs:attribute ref="daptm:represents"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
@@ -128,7 +127,6 @@
     <xs:complexContent>
       <xs:extension base="tt:span.eltype">
         <xs:attribute ref="daptm:langSrc"/>
-        <xs:attribute ref="daptm:represents"/>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
