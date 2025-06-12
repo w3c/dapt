@@ -11,21 +11,25 @@ being considered a _code example_.
 
 ## Build
 
-1. Install poetry - [installation instructions](https://python-poetry.org/docs/#installing-with-the-official-installer)
+1. Install a python build and launch tool such as:
+  1. poetry - [installation instructions](https://python-poetry.org/docs/#installing-with-the-official-installer) or
+  2. uv - [installation instructions](https://docs.astral.sh/uv/getting-started/installation/)
 2. Ensure you have a version of Python greater than or equal to 3.11 available
-for example with the command `poetry env use 3.11`
-3. Install the dependencies by running `poetry install`
+for example with the command `poetry env use 3.11` or `uv python install 3.11 && uv python pin 3.11.13` (check current available versions first)
+3. Install the dependencies by running `poetry install` or `uv build`
 
 ## Usage
 
+Replacing `$launchtool` with `poetry` or `uv` according to your environment:
+
 ```sh
-poetry run validate -dapt_in path/to/dapt_file.ttml
+$launchtool run validate -dapt_in path/to/dapt_file.ttml
 ```
 
 or pass the document for validating in via stdin, e.g.:
 
 ```sh
-poetry run validate < path/to/dapt_file.ttml
+$launchtool run validate < path/to/dapt_file.ttml
 ```
 
 ### Validating without pruning unrecognised vocabulary
@@ -40,5 +44,5 @@ this behaviour can be disabled via the command line parameter
 ## Tests
 
 ```sh
-poetry run python -m unittest
+$launchtool run python -m unittest
 ```
