@@ -1557,7 +1557,12 @@ daptm:langSrc
             <li>The value MUST be an empty string or a language identifier as defined by [[BCP47]].</li>
             <li>The default value is the empty string.</li>
             <li>It <em>applies</em> to <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> elements.</li>
-            <li>It MAY be specified on the following elements: <code>&lt;tt&gt;</code>, <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code>.</li>
+            <li>It MAY be specified on the following elements:
+              <code>&lt;tt&gt;</code>,
+              <code>&lt;body&gt;</code>,
+              <code>&lt;div&gt;</code>,
+              <code>&lt;p&gt;</code> and
+              <code>&lt;span&gt;</code>.</li>
             <li>The inheritance model of the <a><code>daptm:langSrc</code></a> attribute is as follows:
               <ul>
                 <li>If it is present on an element,
@@ -1683,6 +1688,12 @@ daptm:onScreen
           <p>The <a>Represents</a> property is represented in a <a>DAPT Document</a> by
             a <dfn><code>daptm:represents</code></dfn> attribute,
             whose value MUST be a single <code>&lt;<a>content-descriptor</a>&gt;</code>.
+          </p>
+          <p>The <a><code>daptm:represents</code></a> attribute MAY be present on
+            any of the elements
+            <code>&lt;tt&gt;</code>,
+            <code>&lt;body&gt;</code> and
+            <code>&lt;div&gt;</code>.
           </p>
           <p>The <a>Represents</a> property is inheritable.
             If it is absent from an element then its computed value is the computed value of
