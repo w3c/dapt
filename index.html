@@ -2748,6 +2748,93 @@ daptm:descType : string
           the attribute on some other element.
           For example if the <code>xml:lang</code> attribute is not specified on an element then its computed
           value is the computed value of the same attribute on the element's parent.</p>
+        <table class="data">
+          <caption>Table of attributes that can be specified on elements
+            other than those corresponding to DAPT data model entities
+            on which they are defined.
+            Note that additional permitted attributes,
+            such as styling attributes
+            (including <code>fill</code>, <code>tta:gain</code> and <code>tta:pan</code>),
+            are not listed here.
+          </caption>
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>DAPT data model entity</th>
+              <th>May be specified on</th>
+              <th>Effect on children or descendant elements</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>xml:lang</code></td>
+              <td><a>Default Language</a>, Language</td>
+              <td>Any element</td>
+              <td>Inherited</td>
+            </tr>
+            <tr>
+              <td><code>xml:id</code></td>
+              <td><a>Unique Identifier</a></td>
+              <td>Any element</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td><code>begin</code></td>
+              <td><a>Begin</a></td>
+              <td><code>&lt;body</code>,
+                <code>&lt;div&gt;</code>,
+                <code>&lt;p&gt;</code>,
+                <code>&lt;span&gt;</code>,
+                <code>&lt;audio&gt;</code>,
+                <code>&lt;animate&gt;</code></td>
+              <td>Sets the epoch for <a>timing properties</a> on its children</td>
+            </tr>
+            <tr>
+              <td><code>end</code></td>
+              <td><a>End</a></td>
+              <td><code>&lt;body&gt;</code>,
+                <code>&lt;div&gt;</code>,
+                <code>&lt;p&gt;</code>,
+                <code>&lt;span&gt;</code>,
+                <code>&lt;audio&gt;</code>,
+                <code>&lt;animate&gt;</code></td>
+              <td>Constrains the computed end time of its descendants</td>
+            </tr>
+            <tr>
+              <td><code>dur</code></td>
+              <td><a>Duration</a></td>
+              <td><code>&lt;body&gt;</code>,
+                <code>&lt;div&gt;</code>,
+                <code>&lt;p&gt;</code>,
+                <code>&lt;span&gt;</code>,
+                <code>&lt;audio&gt;</code>,
+                <code>&lt;animate&gt;</code></td>
+              <td>Constrains the computed end time of its descendants</td>
+            </tr>
+            <tr>
+              <td><code>daptm:langSrc</code></td>
+              <td><a>Text Language Source</a></td>
+              <td><code>&lt;tt&gt;</code>,
+                <code>&lt;body&gt;</code>,
+                <code>&lt;div&gt;</code>,
+                <code>&lt;p&gt;</code>,
+                <code>&lt;span&gt;</code></td>
+              <td>Inherited</td>
+            </tr>
+            <tr>
+              <td><code>daptm:represents</code></td>
+              <td><a>Represents</a></td>
+              <td><code>&lt;tt&gt;</code>,
+                <code>&lt;body&gt;</code>,
+                <code>&lt;div&gt;</code></td>
+              <td>Inherited</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The <a><code>daptm:scriptRepresents</code></a>,
+          <a><code>daptm:onScreen</code></a> and
+          <a><code>daptm:descType</code></a> attributes
+          are defined only when specified on a particular element.</p>
         <p>Or, for another example, the computed times of an element in a DAPT document are relative
           to the begin time of the element's parent.
           If a <code>&lt;div&gt;</code> element specifies a <code>begin</code> attribute,
