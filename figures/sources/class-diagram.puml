@@ -45,6 +45,7 @@ together {
         Text content [[[#dfn-text]]]
         {field} (optional) Text Language Source [[[#text-language-source]]]
         {field} (optional) Language
+        {field} (optional) Represents [[[#represents]]]
         ' {field} (optional) Inline Style Attributes
     }
 }

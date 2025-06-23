@@ -65,3 +65,5 @@ From FPWD (20230425)
 * Make "Using computed attribute values" normative (#249)
 
 * Rename `#scriptRepresents` to `#scriptRepresents-root` for consistency (#296)
+
+* Allow Represents to apply to Text (#295)
