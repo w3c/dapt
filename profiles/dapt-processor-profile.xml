@@ -89,7 +89,7 @@
     <extension value="required">#onScreen</extension>
     <extension value="required">#represents</extension>
     <extension value="required">#scriptEventGrouping</extension>
-    <extension value="required">#scriptRepresents</extension>
+    <extension value="required">#scriptRepresents-root</extension>
     <extension value="required">#scriptType-root</extension>
     <extension value="required">#serialization</extension>
     <extension value="required">#textLanguageSource</extension>

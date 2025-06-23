@@ -63,3 +63,5 @@ From FPWD (20230425)
 * At-risk: Script Event Grouping and Script Event Mapping PR-must-have (#239)
 
 * Make "Using computed attribute values" normative (#249)
+
+* Rename `#scriptRepresents` to `#scriptRepresents-root` for consistency (#296)
