@@ -1436,6 +1436,27 @@
           <p>The source language of <a>Translation</a> <a>Text</a> objects and, where applicable,
             <a>Original</a> <a>Text</a> objects
             is indicated using the <a>Text Language Source</a> property.</p>
+          <p>If the <a>Text</a> object, or part of it, represents something more specific, or different,
+            to its parent <a>Script Event</a>, it can have a different <a>Represents</a> property.</p>
+          <aside class="note">
+            <p>Where possible, text representing
+            different parts of the <a>related media object</a> should be put into
+            <a>Text</a> objects in different <a>Script Events</a> each with their own <a>Represents</a> property.
+            The option to assign <a>Represents</a> directly to <a>Text</a> objects or parts of <a>Text</a> objects
+            is provided in case this is impractical.</p>
+            <p>For example, consider a <a>Script Event</a> authored to describe both
+              non-textual parts of the video image and
+              visual text content, that is intended to be voiced in a single pass.
+              If this were split into two or more <a>Script Events</a> then it would be necessary
+              to predict with audio sample accuracy when the recording will switch between
+              the each <a>Script Event</a>, in order to get correct times.
+              Doing would likely lead to timing errors, though the times could be adjusted after the recording. 
+            </p>
+            <p>In this case the <a>Text</a> could be split instead, either into separate <a>Text</a>
+              objects, or into sub-parts, each having their own distinct <a>Represents</a> property,
+              thus maintaining accuracy.
+            </p>
+          </aside>
           <p>A <a>Text</a> object may be styled.</p>
           <p>Zero or more <a>Mixing Instruction</a> objects used to modify the programme audio during the <a>Text</a> MAY be present.
           </p>
@@ -1523,6 +1544,9 @@
                 of the relevant section of text. Per [[TTML2]], timing of the <code>&lt;span&gt;</code>
                 element is relative to the parent element's computed begin time.</p>
               </li>
+              <li>The <a><code>daptm:represents</code></a> attribute MAY be present on the
+                <code>&lt;p&gt;</code> element or any of its descendant <code>&lt;span&gt;</code> elements,
+                representing the <a>Represents</a> property.</li>
               <li>It MAY contain zero or more <code>&lt;audio&gt;</code> elements representing each <a>Audio Recording</a> object.</li>
               <li>It MAY contain zero or more <code>&lt;animate&gt;</code> elements representing each <a>Mixing Instruction</a> object.</li>
             </ul>
@@ -1690,8 +1714,9 @@ daptm:onScreen
 
         <section>
           <h4>Represents</h4>
-          <p>The <dfn>Represents</dfn> property indicates which component of the <a>related media object</a>
-           the <a>Script Event</a> represents.</p>
+          <p>The <dfn>Represents</dfn> property indicates which component of
+            the <a>related media object</a>
+            the <a>Script Event</a> or part of a <a>Text</a> represents.</p>
           <p>The <a>Represents</a> property is represented in a <a>DAPT Document</a> by
             a <dfn><code>daptm:represents</code></dfn> attribute,
             whose value MUST be a single <code>&lt;<a>content-descriptor</a>&gt;</code>.
