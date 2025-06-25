@@ -3298,6 +3298,48 @@ daptm:descType : string
         [[webaudio]] API calls to achieve the equivalent effect.</li>
     </ul>
 
+    <section class="informative"> <!-- the parent section is already informative so this is a deliberate repetition -->
+      <h4>Practical considerations for audio mixing</h4>
+
+      <section>
+        <h5>Pop prevention</h5>
+
+        <p>If an <a>Audio Recording</a> begins or ends with audible sound,
+          i.e. the first sample at the <a>In Time</a> or the last sample
+          at the <a>Out Time</a> is non-zero, then it is possible that
+          the audio transducer is induced to make an undesirable 
+          &quot;pop&quot; noise at the beginning or end of playback.</p>
+
+        <p>Multiple potential strategies exist to avoid this pop effect,
+          for example:
+        </p>
+
+        <ul>
+          <li>The <a>Audio recordings</a> can be conditioned to be silent
+            at the <a>In Times</a> and <a>Out Times</a>;</li>
+
+          <li>The document author can apply an animated
+            <a>Mixing Instruction</a> to instruct the mixing implementation
+            or player to vary the <a>Gain</a> at the beginning or end
+            of the <a>Audio Recording</a>;</li>
+
+          <li><p>The <a>presentation processor</a>
+            i.e. the mixing implementation or player, can apply a steep
+            gain curve at the beginning and end of playback,
+            possibly based on operational parameters,
+            or detection of non-zero edge samples.</p>
+            <p>If this approach is used, it is recommended that the
+              <a>Audio Recordings</a> also do not contain samples
+              at the beginning or end that, if rendered inaudible,
+              would change the meaning. For example omitting a percussive
+              speech sound such as the &quot;c&quot; at the beginning
+              of the word &quot;cat&quot; would result in the word
+              sounding like &quot;at&quot;.
+            </p>
+          </li>
+        </ul>
+      </section>
+    </section>
   </section> <!-- #audio-mixing -->
 
 <section class="appendix">
