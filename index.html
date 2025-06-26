@@ -1363,7 +1363,14 @@
           <li>There MUST be one <code>&lt;div&gt;</code> element corresponding to the <a>Script Event</a>,
             with the following constraints:
           <ul>
-            <li>The <code>xml:id</code> attribute MUST be present containing the <a>Script Event Identifier</a>.</li>
+            <li>
+              <p>The <code>xml:id</code> attribute MUST be present containing the
+                <a>Script Event Identifier</a>.</p>
+              <p class="note">See <a href="#handling-div-and-p-elements"></a>
+                for details of how processors deal with <code>&lt;div&gt;</code> elements
+                that do not have an <code>xml:id</code> attribute and are therefore
+                not considered to be <a>Script Events</a>.</p>
+            </li>
             <li>
               <p>The <code>begin</code>, <code>end</code> and <code>dur</code> attributes represent respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> of the <a>Script Event</a>.</p>
               <p>The <code>begin</code> and <code>end</code> attributes SHOULD be present.
@@ -3804,13 +3811,6 @@ daptm:descType : string
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-xmlId-div"><code>#xmlId-div</code></a></td>
-            <td><span class="required label">required</span></td>
-            <td>
-              This is the profile expression of <a href="#script-event"></a>.
-            </td>
-          </tr>
-          <tr>
             <td><a href="#extension-xmlLang-audio-nonMatching"><code>#xmlLang-audio-nonMatching</code></a></td>
             <td><span class="prohibited label">prohibited</span></td>
             <td>
@@ -4087,15 +4087,6 @@ daptm:descType : string
           <a><code>daptm:langSrc</code></a> attribute.</p>
   
         <p>No <a>presentation processor</a> behaviour is defined for the <code>#textLanguageSource</code> extension.</p>
-      </section>
-
-      <section>
-        <h3 id="extension-xmlId-div">#xmlId-div</h3>
-        <p>A <a>transformation processor</a> supports the <code>#xmlId-div</code> extension if
-          it recognizes and is capable of transforming values of the
-          <code>xml:id</code> attribute on the <code>&lt;div&gt;</code> element.</p>
-  
-        <p>No <a>presentation processor</a> behaviour is defined for the <code>#xmlId-div</code> extension.</p>
       </section>
 
       <section>

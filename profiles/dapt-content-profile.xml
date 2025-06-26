@@ -88,7 +88,6 @@
     <extension value="required">#scriptRepresents-root</extension>
     <extension value="required">#scriptType-root</extension>
     <extension value="required">#serialization</extension>
-    <extension value="required">#xmlId-div</extension>
     <extension value="required">#xmlLang-root</extension>
     <!-- optional (voluntary) extension support -->
     <extension value="optional">#agent</extension>

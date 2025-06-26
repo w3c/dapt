@@ -65,3 +65,5 @@ From FPWD (20230425)
 * Make "Using computed attribute values" normative (#249)
 
 * Rename `#scriptRepresents` to `#scriptRepresents-root` for consistency (#296)
+
+* Remove the `#xmlId-div` feature (#297)
