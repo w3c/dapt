@@ -1447,10 +1447,9 @@
             <p>For example, consider a <a>Script Event</a> authored to describe both
               non-textual parts of the video image and
               visual text content, that is intended to be voiced in a single pass.
-              If this were split into two or more <a>Script Events</a> then it would be necessary
-              to predict with audio sample accuracy when the recording will switch between
-              the each <a>Script Event</a>, in order to get correct times.
-              Doing would likely lead to timing errors, though the times could be adjusted after the recording. 
+             If this were split into two or more <a>Script Events</a> then it would be necessary
+             to assign an end time to the first one and a start time to the second one, 
+             which may not be simple.
             </p>
             <p>In this case the <a>Text</a> could be split instead, either into separate <a>Text</a>
               objects, or into sub-parts, each having their own distinct <a>Represents</a> property,
