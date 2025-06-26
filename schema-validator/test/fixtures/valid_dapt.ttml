@@ -7,8 +7,9 @@
     xmlns:daptm="http://www.w3.org/ns/ttml/profile/dapt#metadata"
     xmlns:ebuttm="urn:ebu:tt:metadata"
     ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
-    daptm:scriptRepresents="audio"
+    daptm:scriptRepresents="audio visual"
     daptm:scriptType="originalTranscript"
+    daptm:represents="audio.dialogue"
     xml:lang="en">
     <head>
         <metadata xmlns:otherns="urn:some:other:namespace">
@@ -24,11 +25,15 @@
             <otherns:y/>
         </metadata>
     </head>
-    <body>
+    <body daptm:represents="visual.nonText">
         <div xml:id="se1" begin="3s" end="10s" ttm:agent="character_2" daptm:represents="audio.dialogue" daptm:onScreen="ON">
             <ttm:desc daptm:descType="scene">high mountain valley</ttm:desc>
             <metadata></metadata>
             <p daptm:langSrc="en"><span>Look at this beautiful valley.</span></p>
+        </div>
+        <div xml:id="se2" begin="13s" end="20s" daptm:represents="visual.nonText">
+            <metadata></metadata>
+            <p daptm:langSrc="en" daptm:represents="visual.text"><span daptm:represents="visual.text.title">The Old Guard</span><br/><span daptm:represents="visual.text.location">Afghanistan</span></p>
         </div>
     </body>
 </tt>
