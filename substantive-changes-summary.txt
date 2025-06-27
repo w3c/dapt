@@ -65,3 +65,5 @@ From FPWD (20230425)
 * Make "Using computed attribute values" normative (#249)
 
 * Rename `#scriptRepresents` to `#scriptRepresents-root` for consistency (#296)
+
+* Replace the `#scriptEventGrouping` extension feature with the TTML1 feature `#nested-div` (#303)

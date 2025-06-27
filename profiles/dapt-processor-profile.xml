@@ -26,6 +26,7 @@
     <feature value="required">#gain</feature>
     <feature value="required">#metadata</feature>
     <feature value="required">#metadata-item</feature>
+    <feature value="required">#nested-div</feature>
     <feature value="required" extends="#metadata">#metadata-version-2</feature>
     <feature value="required">#pan</feature>
     <feature value="required">#pitch</feature>
@@ -88,7 +89,6 @@
     <extension value="required">#descType</extension>
     <extension value="required">#onScreen</extension>
     <extension value="required">#represents</extension>
-    <extension value="required">#scriptEventGrouping</extension>
     <extension value="required">#scriptRepresents-root</extension>
     <extension value="required">#scriptType-root</extension>
     <extension value="required">#serialization</extension>
