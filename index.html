@@ -3675,6 +3675,14 @@ daptm:descType : string
             <td>See <a href="#other-ttml2-profile-vocabulary"></a>.</td>
           </tr>
           <tr>
+            <td><dfn data-cite="TTML2#feature-nested-div"><code>#nested-div</code></dfn></td>
+            <td><span class="permitted label">permitted</span></td>
+            <td>
+              This is the profile expression of the permission to nest
+              <code>&lt;div&gt;</code> elements described in <a href="#script-event"></a>.
+            </td>
+          </tr>
+          <tr>
             <td><dfn data-cite="TTML2#feature-permitFeatureWidening"><code>#permitFeatureWidening</code></dfn></td>
             <td><span class="optional label">optional</span></td>
             <td>See <a href="#other-ttml2-profile-vocabulary"></a>.</td>
@@ -3937,14 +3945,6 @@ daptm:descType : string
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-scriptEventGrouping"><code>#scriptEventGrouping</code></a></td>
-            <td><span class="permitted label">permitted</span></td>
-            <td>
-              This is the profile expression of the permission to nest
-              <code>&lt;div&gt;</code> elements described in <a href="#script-event"></a>.
-            </td>
-          </tr>
-          <tr>
             <td><a href="#extension-scriptEventMapping"><code>#scriptEventMapping</code></a></td>
             <td><span class="optional label">optional</span></td>
             <td>
@@ -4155,20 +4155,6 @@ daptm:descType : string
           whose value is not conformant with the requirements defined herein.</aside>
   
         <p>No <a>presentation processor</a> behaviour is defined for the <code>#represents</code> extension.</p>
-      </section>
-
-      <section>
-        <h3 id="extension-scriptEventGrouping">#scriptEventGrouping</h3>
-        <p>A <a>transformation processor</a> supports the <code>#scriptEventGrouping</code> extension if
-          it recognises and is capable of transforming <code>&lt;div&gt;</code> elements
-          that contain <code>&lt;div&gt;</code> elements.</p>
-  
-        <p class="note">Support for the <code>#scriptEventGrouping</code> extension does not imply
-          support for the <a href="#extension-scriptEventMapping"><code>#scriptEventMapping</code></a> extension.</p>
-
-        <p>A <a>presentation processor</a> supports the <code>#scriptEventGrouping</code> extension if
-          it implements presentation semantic support for <code>&lt;div&gt;</code> elements
-          that contain <code>&lt;div&gt;</code> elements.</p>
       </section>
 
       <section>

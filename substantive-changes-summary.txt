@@ -69,3 +69,5 @@ From FPWD (20230425)
 * Remove the `#xmlId-div` feature (#297)
 
 * Allow Represents to apply to Text (#295)
+
+* Replace the `#scriptEventGrouping` extension feature with the TTML1 feature `#nested-div` (#303)
