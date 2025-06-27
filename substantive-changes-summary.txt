@@ -73,3 +73,5 @@ From FPWD (20230425)
 * Replace the `#scriptEventGrouping` extension feature with the TTML1 feature `#nested-div` (#303)
 
 * Remove the `#xmlId-div` feature (#297)
+
+* Replace the `#scriptEventGrouping` extension feature with the TTML1 feature `#nested-div` (#303)
