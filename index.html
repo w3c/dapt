@@ -1436,6 +1436,26 @@
           <p>The source language of <a>Translation</a> <a>Text</a> objects and, where applicable,
             <a>Original</a> <a>Text</a> objects
             is indicated using the <a>Text Language Source</a> property.</p>
+          <p>If the <a>Text</a> object, or part of it, represents something more specific, or different,
+            to its parent <a>Script Event</a>, it can have a different <a>Represents</a> property.</p>
+          <aside class="note">
+            <p>Where possible, text representing
+            different parts of the <a>related media object</a> should be put into
+            <a>Text</a> objects in different <a>Script Events</a> each with their own <a>Represents</a> property.
+            The option to assign <a>Represents</a> directly to <a>Text</a> objects or parts of <a>Text</a> objects
+            is provided in case this is impractical.</p>
+            <p>For example, consider a <a>Script Event</a> authored to describe both
+              non-textual parts of the video image and
+              visual text content, that is intended to be voiced in a single pass.
+             If this were split into two or more <a>Script Events</a> then it would be necessary
+             to assign an end time to the first one and a start time to the second one, 
+             which may not be simple.
+            </p>
+            <p>In this case the <a>Text</a> could be split instead, either into separate <a>Text</a>
+              objects, or into sub-parts, each having their own distinct <a>Represents</a> property,
+              thus maintaining accuracy.
+            </p>
+          </aside>
           <p>A <a>Text</a> object may be styled.</p>
           <p>Zero or more <a>Mixing Instruction</a> objects used to modify the programme audio during the <a>Text</a> MAY be present.
           </p>
@@ -1523,6 +1543,9 @@
                 of the relevant section of text. Per [[TTML2]], timing of the <code>&lt;span&gt;</code>
                 element is relative to the parent element's computed begin time.</p>
               </li>
+              <li>The <a><code>daptm:represents</code></a> attribute MAY be present on the
+                <code>&lt;p&gt;</code> element or any of its descendant <code>&lt;span&gt;</code> elements,
+                representing the <a>Represents</a> property.</li>
               <li>It MAY contain zero or more <code>&lt;audio&gt;</code> elements representing each <a>Audio Recording</a> object.</li>
               <li>It MAY contain zero or more <code>&lt;animate&gt;</code> elements representing each <a>Mixing Instruction</a> object.</li>
             </ul>
@@ -1564,7 +1587,12 @@ daptm:langSrc
             <li>The value MUST be an empty string or a language identifier as defined by [[BCP47]].</li>
             <li>The default value is the empty string.</li>
             <li>It <em>applies</em> to <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> elements.</li>
-            <li>It MAY be specified on the following elements: <code>&lt;tt&gt;</code>, <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code>.</li>
+            <li>It MAY be specified on the following elements:
+              <code>&lt;tt&gt;</code>,
+              <code>&lt;body&gt;</code>,
+              <code>&lt;div&gt;</code>,
+              <code>&lt;p&gt;</code> and
+              <code>&lt;span&gt;</code>.</li>
             <li>The inheritance model of the <a><code>daptm:langSrc</code></a> attribute is as follows:
               <ul>
                 <li>If it is present on an element,
@@ -1685,11 +1713,20 @@ daptm:onScreen
 
         <section>
           <h4>Represents</h4>
-          <p>The <dfn>Represents</dfn> property indicates which component of the <a>related media object</a>
-           the <a>Script Event</a> represents.</p>
+          <p>The <dfn>Represents</dfn> property indicates which component of
+            the <a>related media object</a>
+            the <a>Script Event</a> or a <a>Text</a> (or a part of) represents.</p>
           <p>The <a>Represents</a> property is represented in a <a>DAPT Document</a> by
             a <dfn><code>daptm:represents</code></dfn> attribute,
             whose value MUST be a single <code>&lt;<a>content-descriptor</a>&gt;</code>.
+          </p>
+          <p>The <a><code>daptm:represents</code></a> attribute MAY be present on
+            any of the elements
+            <code>&lt;tt&gt;</code>,
+            <code>&lt;body&gt;</code>,
+            <code>&lt;div&gt;</code>,
+            <code>&lt;p&gt;</code> and
+            <code>&lt;span&gt;</code>.
           </p>
           <p>The <a>Represents</a> property is inheritable.
             If it is absent from an element then its computed value is the computed value of
@@ -2735,6 +2772,95 @@ daptm:descType : string
           the attribute on some other element.
           For example if the <code>xml:lang</code> attribute is not specified on an element then its computed
           value is the computed value of the same attribute on the element's parent.</p>
+        <table class="data">
+          <caption>Table of attributes that can be specified on elements
+            other than those corresponding to DAPT data model entities
+            on which they are defined.
+            Note that additional permitted attributes,
+            such as styling attributes
+            (including <code>fill</code>, <code>tta:gain</code> and <code>tta:pan</code>),
+            are not listed here.
+          </caption>
+          <thead>
+            <tr>
+              <th>Attribute</th>
+              <th>DAPT data model entity</th>
+              <th>May be specified on</th>
+              <th>Effect on children or descendant elements</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>xml:lang</code></td>
+              <td><a>Default Language</a>, Language</td>
+              <td>Any element</td>
+              <td>Inherited, as defined in [[XML]]</td>
+            </tr>
+            <tr>
+              <td><code>xml:id</code></td>
+              <td><a>Unique Identifier</a></td>
+              <td>Any element</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td><code>begin</code></td>
+              <td><a>Begin</a></td>
+              <td><code>&lt;body</code>,
+                <code>&lt;div&gt;</code>,
+                <code>&lt;p&gt;</code>,
+                <code>&lt;span&gt;</code>,
+                <code>&lt;audio&gt;</code>,
+                <code>&lt;animate&gt;</code></td>
+              <td>Sets the epoch for <a>timing properties</a> on its children, as defined in [[TTML2]]</td>
+            </tr>
+            <tr>
+              <td><code>end</code></td>
+              <td><a>End</a></td>
+              <td><code>&lt;body&gt;</code>,
+                <code>&lt;div&gt;</code>,
+                <code>&lt;p&gt;</code>,
+                <code>&lt;span&gt;</code>,
+                <code>&lt;audio&gt;</code>,
+                <code>&lt;animate&gt;</code></td>
+              <td>Constrains the computed end time of its descendants, as defined in [[TTML2]]</td>
+            </tr>
+            <tr>
+              <td><code>dur</code></td>
+              <td><a>Duration</a></td>
+              <td><code>&lt;body&gt;</code>,
+                <code>&lt;div&gt;</code>,
+                <code>&lt;p&gt;</code>,
+                <code>&lt;span&gt;</code>,
+                <code>&lt;audio&gt;</code>,
+                <code>&lt;animate&gt;</code></td>
+              <td>Constrains the computed end time of its descendants, as defined in [[TTML2]]</td>
+            </tr>
+            <tr>
+              <td><code>daptm:langSrc</code></td>
+              <td><a>Text Language Source</a></td>
+              <td><code>&lt;tt&gt;</code>,
+                <code>&lt;body&gt;</code>,
+                <code>&lt;div&gt;</code>,
+                <code>&lt;p&gt;</code>,
+                <code>&lt;span&gt;</code></td>
+              <td>Inherited, as defined in this section</td>
+            </tr>
+            <tr>
+              <td><code>daptm:represents</code></td>
+              <td><a>Represents</a></td>
+              <td><code>&lt;tt&gt;</code>,
+                <code>&lt;body&gt;</code>,
+                <code>&lt;div&gt;</code>,
+                <code>&lt;p&gt;</code>,
+                <code>&lt;span&gt;</code></td>
+              <td>Inherited, as defined in this section</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>The <a><code>daptm:scriptRepresents</code></a>,
+          <a><code>daptm:onScreen</code></a> and
+          <a><code>daptm:descType</code></a> attributes
+          are defined only when specified on a particular element.</p>
         <p>Or, for another example, the computed times of an element in a DAPT document are relative
           to the begin time of the element's parent.
           If a <code>&lt;div&gt;</code> element specifies a <code>begin</code> attribute,
