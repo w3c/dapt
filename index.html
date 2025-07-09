@@ -3263,41 +3263,93 @@ daptm:descType : string
   <section class="informative appendix">
     <h2>Audio Mixing</h2>
 
-    <p>Applying the <a>Mixing Instructions</a> can be implemented using [[webaudio]].
-      <a href="#audio-mixing-figure"></a> shows the flow of programme audio,
-      and how, when audio-generating elements are active,
-      the pan and gain (if set) on the <a>Script Event</a> are applied,
-      then the output is passed to the <a>Text</a>,
-      which mixes in the audio from any active <a>Audio Recording</a>,
-      itself subject to its own <a>Mixing Instructions</a>,
-      then the result has the <a>Text</a>'s <a>Mixing Instructions</a>
-      applied, prior to the output being mixed on to the master bus.
+    <p>This section contains additional information about audio mixing,
+      intended for implementers.
     </p>
 
-    <figure id="audio-mixing-figure">
-      <div data-include="figures/audio-mixing.svg"></div>
-      <figcaption>Example simple audio routing between objects</figcaption>
-    </figure>
+    <section>
+      <h3>Web Audio</h3>
 
-    <p>This example is shown as [[webaudio]] nodes in <a href="#webaudio-nodes-figure"></a>.</p>
+      <p>Applying the <a>Mixing Instructions</a> can be implemented using [[webaudio]].
+        <a href="#audio-mixing-figure"></a> shows the flow of programme audio,
+        and how, when audio-generating elements are active,
+        the pan and gain (if set) on the <a>Script Event</a> are applied,
+        then the output is passed to the <a>Text</a>,
+        which mixes in the audio from any active <a>Audio Recording</a>,
+        itself subject to its own <a>Mixing Instructions</a>,
+        then the result has the <a>Text</a>'s <a>Mixing Instructions</a>
+        applied, prior to the output being mixed on to the master bus.
+      </p>
 
-    <figure id="webaudio-nodes-figure">
-      <div data-include="figures/webaudio-nodes.svg"></div>
-      <figcaption>Web audio nodes representing the audio processing needed.</figcaption>
-    </figure>
+      <figure id="audio-mixing-figure">
+        <div data-include="figures/audio-mixing.svg"></div>
+        <figcaption>Example simple audio routing between objects</figcaption>
+      </figure>
 
-    <p>The above examples are simplified in at least two ways:</p>
-    <ul>
-      <li>if a <a>Text</a> contains
-        <code>&lt;span&gt;</code> elements that themselves have <a>Mixing Instructions</a>
-        applied, then additional nodes would be needed;</li>
-      <li>the application of <em>animated</em> <a>Mixing Instructions</a> is not
-        shown explicitly. [[webaudio]] supports the timed variation of
-        input parameters to its nodes: it is possible to translate the
-        TTML <code>&lt;animate&gt;</code> element semantics directly into
-        [[webaudio]] API calls to achieve the equivalent effect.</li>
-    </ul>
+      <p>This example is shown as [[webaudio]] nodes in <a href="#webaudio-nodes-figure"></a>.</p>
 
+      <figure id="webaudio-nodes-figure">
+        <div data-include="figures/webaudio-nodes.svg"></div>
+        <figcaption>Web audio nodes representing the audio processing needed.</figcaption>
+      </figure>
+
+      <p>The above examples are simplified in at least two ways:</p>
+      <ul>
+        <li>if a <a>Text</a> contains
+          <code>&lt;span&gt;</code> elements that themselves have <a>Mixing Instructions</a>
+          applied, then additional nodes would be needed;</li>
+        <li>the application of <em>animated</em> <a>Mixing Instructions</a> is not
+          shown explicitly. [[webaudio]] supports the timed variation of
+          input parameters to its nodes: it is possible to translate the
+          TTML <code>&lt;animate&gt;</code> element semantics directly into
+          [[webaudio]] API calls to achieve the equivalent effect.</li>
+      </ul>
+    </section>
+    <section>
+      <h3>Pop prevention</h5>
+
+      <p>If an <a>Audio Recording</a> begins or ends with audible sound,
+        i.e. the first sample at the <a>In Time</a> or the last sample
+        at the <a>Out Time</a> is non-zero, then it is possible that
+        the audio transducer is induced to make an undesirable 
+        &quot;pop&quot; noise at the beginning or end of playback.</p>
+
+      <p>Multiple potential strategies exist to avoid this pop effect,
+        for example:
+      </p>
+
+      <ul>
+        <li>The <a>Audio recordings</a> can be conditioned to be silent
+          at the <a>In Times</a> and <a>Out Times</a>,
+          with "silence guard" periods, of some reasonable duration,
+          for example 200ms;</li>
+
+        <li>The document author can apply an animated
+          <a>Mixing Instruction</a> to instruct the mixing implementation
+          or player to vary the <a>Gain</a> at the beginning or end
+          of the <a>Audio Recording</a>;</li>
+
+        <li>The <a>presentation processor</a>
+            i.e. the mixing implementation or player, can apply a steep
+            gain curve at the beginning and end of playback,
+            possibly based on operational parameters,
+            or detection of non-zero edge samples,
+            for example a linear ramp over 10ms has been used
+            in one implementation.
+        </li>
+      </ul>
+      <p>In case the last of these approaches is used,
+        and if there is no other external control over the
+        <a>presentation processor</a>'s behaviour in this
+        respect, it is recommended that the
+        <a>Audio Recordings</a> also do not contain samples
+        at the beginning or end that, if rendered inaudible,
+        would change the meaning. For example omitting a percussive
+        speech sound such as the &quot;c&quot; at the beginning
+        of the word &quot;cat&quot; would result in the word
+        sounding like &quot;at&quot;.
+      </p>
+    </section>
   </section> <!-- #audio-mixing -->
 
 <section class="appendix">
