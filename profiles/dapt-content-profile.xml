@@ -30,6 +30,7 @@
     <feature value="optional">#gain</feature>
     <feature value="optional">#metadata</feature>
     <feature value="optional">#metadata-item</feature>
+    <feature value="optional">#nested-div</feature>
     <feature value="optional" extends="#metadata">#metadata-version-2</feature>
     <feature value="optional">#pan</feature>
     <feature value="optional">#permitFeatureNarrowing</feature>
@@ -94,7 +95,6 @@
     <extension value="optional">#daptOriginTimecode</extension>
     <extension value="optional">#descType</extension>
     <extension value="optional">#onScreen</extension>
-    <extension value="optional">#scriptEventGrouping</extension>
     <extension value="optional">#scriptEventMapping</extension>
     <extension value="optional">#textLanguageSource</extension>
     <!-- prohibited extension support -->
