@@ -71,6 +71,8 @@ From CRS (20250311)
 
 * Remove the `#xmlId-div` feature (#297)
 
+* Clarify usage of Represents and Script Represents (#262)
+
 * Allow Represents to apply to Text (#295)
 
 * Replace the `#scriptEventGrouping` extension feature with the TTML1 feature `#nested-div` (#303)
