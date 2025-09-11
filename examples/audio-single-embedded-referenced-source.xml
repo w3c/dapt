@@ -1,9 +1,9 @@
 <tt>
   <head>
     <resources>
-      <data type="audio/wave" xml:id="audio1">
-        [base64-encoded WAV audio resource]
-      </data>
+      <audio type="audio/wave" xml:id="audio1">
+        <source><data>[base64-encoded WAV audio resource]</data></source>
+      </audio>
     </resources>
   </head>
   <body>
