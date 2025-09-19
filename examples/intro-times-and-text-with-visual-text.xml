@@ -4,7 +4,7 @@
   xmlns:xml="http://www.w3.org/XML/1998/namespace"
   ttp:contentProfiles="http://www.w3.org/ns/ttml/profile/dapt1.0/content"
   xml:lang="en"
-  daptm:langSrc=""
+  daptm:langSrc="zxx"
   daptm:scriptRepresents="visual.nonText visual.text"
   daptm:scriptType="preRecording">
   <body>
