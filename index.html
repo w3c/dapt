@@ -1953,13 +1953,12 @@ daptm:descType : string
               <p class="issue" data-number="218"></p>
               <p class="issue" data-number="219"></p>
             </li>
-            <li>If the <a>Source</a> is an embedded audio resource,
+            <li>For each <a>Source</a>, if it is an embedded audio resource,
               the <a>Source</a> and <a>Type</a> properties are represented together by exactly one of:
               <ol>
                 <li>A <code>src</code> attribute that is a fragment identifier
-                  that references either
-                  an <a data-cite="TTML2#embedded-content-vocabulary-audio"><code>&lt;audio&gt;</code></a> element
-                  or a <a data-cite="TTML2#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element,
+                  that references 
+                  an <a data-cite="TTML2#embedded-content-vocabulary-audio"><code>&lt;audio&gt;</code></a> element,
                   where the referenced element is a
                   child of <code>/tt/head/resources</code>
                   and specifies a <code>type</code> attribute
@@ -1972,9 +1971,8 @@ daptm:descType : string
                 </li>
                 <li>A <a data-cite="TTML2#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
                   <code>src</code> attribute that is a fragment identifier
-                  that references either
-                  an <code>&lt;audio&gt;</code> element
-                  or a <a data-cite="TTML2#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element,
+                  that references
+                  a <a data-cite="TTML2#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element,
                   where the referenced element is a
                   child of <code>/tt/head/resources</code>
                   and specifies a <code>type</code> attribute
