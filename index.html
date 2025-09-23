@@ -73,6 +73,10 @@
 
       postProcess: [
         replaceVCS,
+      ],
+
+      xref: [
+        "w3c-process",
       ]
     };
     </script>
@@ -1909,7 +1913,7 @@ daptm:descType : string
             would select the playable or preferred version. 
           </p>
           <p>An <a>Audio Recording</a> is represented in a <a>DAPT Document</a> by an
-            <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-audio"><code>&lt;audio&gt;</code></a>
+            <a data-cite="TTML2#embedded-content-vocabulary-audio"><code>&lt;audio&gt;</code></a>
             element child of a <code>&lt;p&gt;</code> or <code>&lt;span&gt;</code> element
             corresponding to the <a>Text</a> to which it applies.
             The following constraints apply to the <code>&lt;audio&gt;</code> element:</p>
@@ -1930,7 +1934,7 @@ daptm:descType : string
                     data-include-format="text">
                   </pre>
                 </li>
-                <li>A <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
+                <li>A <a data-cite="TTML2#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
                   <code>src</code> attribute that is not a fragment identifier
                   and a <code>type</code> attribute respectively;
                   <pre class="example"
@@ -1954,8 +1958,8 @@ daptm:descType : string
               <ol>
                 <li>A <code>src</code> attribute that is a fragment identifier
                   that references either
-                  an <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-audio"><code>&lt;audio&gt;</code></a> element
-                  or a <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element,
+                  an <a data-cite="TTML2#embedded-content-vocabulary-audio"><code>&lt;audio&gt;</code></a> element
+                  or a <a data-cite="TTML2#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element,
                   where the referenced element is a
                   child of <code>/tt/head/resources</code>
                   and specifies a <code>type</code> attribute
@@ -1966,11 +1970,11 @@ daptm:descType : string
                     data-include-format="text">
                   </pre>
                 </li>
-                <li>A <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
+                <li>A <a data-cite="TTML2#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
                   <code>src</code> attribute that is a fragment identifier
                   that references either
                   an <code>&lt;audio&gt;</code> element
-                  or a <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element,
+                  or a <a data-cite="TTML2#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element,
                   where the referenced element is a
                   child of <code>/tt/head/resources</code>
                   and specifies a <code>type</code> attribute
@@ -1980,8 +1984,8 @@ daptm:descType : string
                     data-include-format="text">
                   </pre>
                 </li>
-                <li>A <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
-                  <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element child
+                <li>A <a data-cite="TTML2#embedded-content-vocabulary-source"><code>&lt;source&gt;</code></a> child element with a
+                  <a data-cite="TTML2#embedded-content-vocabulary-data"><code>&lt;data&gt;</code></a> element child
                   that specifies a <code>type</code> attribute and contains the audio recording data.
                   <pre class="example"
                     data-include="examples/audio-single-embedded-inline-source.xml"
@@ -1994,7 +1998,7 @@ daptm:descType : string
                 to an audio resource that is embedded within the <a>DAPT Script</a></p>
               <p>If <code>&lt;data&gt;</code> elements are defined, each one MUST contain
                 either <code>#PCDATA</code> or
-                <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-chunk"><code>&lt;chunk&gt;</code></a> child elements
+                <a data-cite="TTML2#embedded-content-vocabulary-chunk"><code>&lt;chunk&gt;</code></a> child elements
                 and MUST NOT contain any <code>&lt;source&gt;</code> child elements.</p>
               <p><code>&lt;data&gt;</code> and <code>&lt;source&gt;</code> elements MAY contain a <code>format</code> attribute
                 whose value implementations MAY use in addition to the <code>type</code> attribute value
@@ -2048,13 +2052,13 @@ daptm:descType : string
           </ul>
           <p>A <a>Synthesized Audio</a> is represented in a <a>DAPT Document</a> by
             the application of a
-            <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-speak"><code>tta:speak</code></a>
+            <a data-cite="TTML2#audio-style-attribute-speak"><code>tta:speak</code></a>
             style attribute on the element representing the <a>Text</a> object to be spoken,
             where the computed value of the attribute is
             <code>normal</code>, <code>fast</code> or <code>slow</code>.
             This attribute also represents the <a>Rate</a> Property.
           </p>
-          <p>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-pitch"><code>tta:pitch</code></a>
+          <p>The <a data-cite="TTML2#audio-style-attribute-pitch"><code>tta:pitch</code></a>
             style attribute represents the <a>Pitch</a> property.</p>
           <p>The TTML representation of a <a>Synthesized Audio</a>
             is illustrated by <a href="#example-7"></a>.</p>
@@ -2090,18 +2094,18 @@ daptm:descType : string
           by reference to a <code>&lt;style&gt;</code> element, or in a child (inline)
           <code>&lt;animate&gt;</code> element:</p>
         <ul>
-          <li>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-gain"><code>tta:gain</code></a>
+          <li>The <a data-cite="TTML2#audio-style-attribute-gain"><code>tta:gain</code></a>
             attribute represents the <a>Gain</a> property;</li>
-          <li>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-pan"><code>tta:pan</code></a>
+          <li>The <a data-cite="TTML2#audio-style-attribute-pan"><code>tta:pan</code></a>
             attribute represents the <a>Pan</a> property.</li>
         </ul>
         <p>If the <a>Mixing Instruction</a> is animated, that is,
           if the adjustment properties change during the
           containing object's active time interval, then it is represented by
-          one or more child <a href="https://www.w3.org/TR/ttml2/#animation-vocabulary-animate"><code>&lt;animate&gt;</code></a> elements.
+          one or more child <a data-cite="TTML2#animation-vocabulary-animate"><code>&lt;animate&gt;</code></a> elements.
           This representation is required if more than one <a>Gain</a> or <a>Pan</a> property is needed,
           or if any <a>timing properties</a> are needed.</p>
-        <p>The <a href="https://www.w3.org/TR/ttml2/#animation-vocabulary-animate"><code>&lt;animate&gt;</code></a>
+        <p>The <a data-cite="TTML2#animation-vocabulary-animate"><code>&lt;animate&gt;</code></a>
            element(s) MUST be children of
           the element corresponding to the containing object,
           and have the following constraints:</p>
@@ -2109,13 +2113,13 @@ daptm:descType : string
           <li>The <code>begin</code>, <code>end</code> and <code>dur</code> attributes
             represent respectively the <a>Begin</a>, <a>End</a> and <a>Duration</a> properties;</li>
           <li>The <code>fill</code> attribute represents the <a>Fill</a> property;</li>
-          <li>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-gain"><code>tta:gain</code></a>
+          <li>The <a data-cite="TTML2#audio-style-attribute-gain"><code>tta:gain</code></a>
             attribute represents the <a>Gain</a> property,
-            and uses the <a href="https://www.w3.org/TR/ttml2/#animation-value-animation-value-list"><code>animation-value-list</code></a>
+            and uses the <a data-cite="TTML2#animation-value-animation-value-list"><code>animation-value-list</code></a>
             syntax to express the list of values to be applied during the animation period;</li>
-          <li>The <a href="https://www.w3.org/TR/ttml2/#audio-style-attribute-pan"><code>tta:pan</code></a>
+          <li>The <a data-cite="TTML2#audio-style-attribute-pan"><code>tta:pan</code></a>
             attribute represents the <a>Pan</a> property,
-            and uses the <a href="https://www.w3.org/TR/ttml2/#animation-value-animation-value-list"><code>animation-value-list</code></a>
+            and uses the <a data-cite="TTML2#animation-value-animation-value-list"><code>animation-value-list</code></a>
             syntax to express the list of values to be applied during the animation period.</li>
         </ul>
         <p>The TTML representation of animated <a>Mixing Instructions</a> is
@@ -2485,7 +2489,7 @@ daptm:descType : string
           <h4>Other TTML2 Profile Vocabulary</h4>
           <p>[[TTML2]] specifies a vocabulary and semantics that can be used to define the set of <a>features</a>
             that a <a>document instance</a> can make use of, or that a processor needs to support,
-            known as a <a href="https://www.w3.org/TR/ttml2/#profile">Profile</a>.</p>
+            known as a <a data-cite="TTML2#profile">Profile</a>.</p>
           <p>Except where specified, it is not a requirement of DAPT that this profile vocabulary is supported by
             processors; nevertheless such support is permitted.</p>
           <p>The majority of this profile vocabulary is used to indicate how a processor can compute the set of features
@@ -2501,14 +2505,14 @@ daptm:descType : string
           <p>The additional profile-related vocabulary for which processor support is
             not required (but is permitted) in DAPT is:</p>
           <ul>
-            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-vocabulary-profile"><code>&lt;ttp:profile&gt;</code></a> element;</li>
-            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-vocabulary-feature"><code>&lt;ttp:feature&gt;</code></a>
-              and <a href="https://www.w3.org/TR/ttml2/#profile-vocabulary-extension"><code>&lt;ttp:extension&gt;</code></a> elements;</li>
-            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-attribute-permitFeatureNarrowing"><code>ttp:permitFeatureNarrowing</code></a> attribute;</li>
-            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-attribute-permitFeatureWidening"><code>ttp:permitFeatureWidening</code></a> attribute;</li>
-            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-attribute-contentProfileCombination"><code>ttp:contentProfileCombination</code></a> attribute;</li>
-            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-attribute-inferProcessorProfileSource"><code>ttp:inferProcessorProfileSource</code></a> attribute;</li>
-            <li>the <a href="https://www.w3.org/TR/ttml2/#profile-attribute-processorProfileCombination"><code>ttp:processorProfileCombination</code></a> attribute.</li>
+            <li>the <a data-cite="TTML2#profile-vocabulary-profile"><code>&lt;ttp:profile&gt;</code></a> element;</li>
+            <li>the <a data-cite="TTML2#profile-vocabulary-feature"><code>&lt;ttp:feature&gt;</code></a>
+              and <a data-cite="TTML2#profile-vocabulary-extension"><code>&lt;ttp:extension&gt;</code></a> elements;</li>
+            <li>the <a data-cite="TTML2#profile-attribute-permitFeatureNarrowing"><code>ttp:permitFeatureNarrowing</code></a> attribute;</li>
+            <li>the <a data-cite="TTML2#profile-attribute-permitFeatureWidening"><code>ttp:permitFeatureWidening</code></a> attribute;</li>
+            <li>the <a data-cite="TTML2#profile-attribute-contentProfileCombination"><code>ttp:contentProfileCombination</code></a> attribute;</li>
+            <li>the <a data-cite="TTML2#profile-attribute-inferProcessorProfileSource"><code>ttp:inferProcessorProfileSource</code></a> attribute;</li>
+            <li>the <a data-cite="TTML2#profile-attribute-processorProfileCombination"><code>ttp:processorProfileCombination</code></a> attribute.</li>
           </ul>
         </section>
 
@@ -2520,7 +2524,7 @@ daptm:descType : string
           <h4><code>ttp:timeBase</code></h4>
           <p>The only permitted <code>ttp:timeBase</code> attribute value is <code>media</code>,
             since <a href="#profiles"></a> prohibits all timeBase features
-            other than <a href="https://www.w3.org/TR/ttml2/#feature-timeBase-media"><code>#timeBase-media</code></a>.</p>
+            other than <a data-cite="TTML2#feature-timeBase-media"><code>#timeBase-media</code></a>.</p>
           <p>This means that the beginning of the document timeline,
             i.e. time "zero",
              is the beginning of the <a>Related Media Object</a>.</p>
@@ -2958,7 +2962,7 @@ daptm:descType : string
 
   <section id="conformance"><!-- keep section id, not use h2 -->
     <p>[[TTML2]] specifies a formal language for expressing document and processor requirements,
-      within the <a href="https://www.w3.org/TR/ttml2/#vocabulary-profiling">Profiling</a> sub-system.
+      within the <a data-cite="TTML2#vocabulary-profiling">Profiling</a> sub-system.
       The normative requirements of this specification are defined using the conformance terminology
       described above, and are also defined using this TTML2 profile mechanism.
       Where TTML2 vocabulary is referenced, the syntactic and semantic requirements relating to that
@@ -2979,7 +2983,7 @@ daptm:descType : string
       <p>Conformant <a>DAPT Documents</a> are [[TTML2]] <a>timed text content document instances</a> that
         conform to the normative provisions of this specification.
         Those provisions are expressed using the 
-        <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[TTML2]] in the
+        <a data-cite="TTML2#profile">profile</a> vocabulary of [[TTML2]] in the
         <dfn data-cite="ttml2#terms-content-profile">content profile</dfn> defined
         in <a href="#profiles"></a>.</p>
       <p class="note">
@@ -2995,7 +2999,7 @@ daptm:descType : string
         <dfn data-cite="TTML2#terms-content-processor">content processors</dfn> that
         conform to the normative provisions of this specification.
         Those provisions are expressed using the 
-        <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[TTML2]] in the
+        <a data-cite="TTML2#profile">profile</a> vocabulary of [[TTML2]] in the
         <dfn data-cite="TTML2#terms-processor-profile">processor profile</dfn> defined
         in <a href="#profiles"></a>.</p>
         <aside class="note">The provisions in this specification are expressed in terms of [[TTML2]] <a>content processor</a> types,
@@ -3448,7 +3452,7 @@ daptm:descType : string
       without also conforming to the TTML2 Presentation Profile or the TTML2 Transformation Profile.
     </p>
     <p class="note">
-      The use of the [[TTML2]] <a href="https://www.w3.org/TR/ttml2/#vocabulary-profiling">profiling</a>
+      The use of the [[TTML2]] <a data-cite="TTML2#vocabulary-profiling">profiling</a>
       sub-system to describe DAPT conformance within this specification
       is not intended imply that DAPT processors are required to support any features of that
       system other than those for which support is explicitly required by DAPT.
@@ -4036,7 +4040,7 @@ daptm:descType : string
     <h2>Extensions</h2>
     <section>
       <h3>General</h3>
-      <p>The following sections define <a href="https://www.w3.org/TR/ttml2/#terms-extension">extension</a> designations,
+      <p>The following sections define <a data-cite="TTML2#terms-extension">extension</a> designations,
         expressed as relative URIs (fragment identifiers)
         relative to the <a>DAPT Extension</a> Namespace base URI.
         These extension designations are used in <a href="#profiles"></a>
@@ -4086,7 +4090,7 @@ daptm:descType : string
         the <a><code>ttp:profile</code></a> attribute and
         processor profile inference semantics can be avoided.
         Specifically, step 1 of
-        <a href="https://www.w3.org/TR/ttml2/#semantics-procedure-construct-inferred-processor-profile">[construct inferred processor profile]</a>
+        <a data-cite="TTML2#semantics-procedure-construct-inferred-processor-profile">[construct inferred processor profile]</a>
         returns a non-null effective content profile, which is then used as the
         inferred processor profile.
       </aside>
@@ -4233,15 +4237,15 @@ daptm:descType : string
         <h3 id="extension-source-data">#source-data</h3>
         <p>A <a>transformation processor</a> supports the <code>#source-data</code> extension if
           it recognizes and is capable of transforming values of the
-          <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source">&lt;source&gt;</a> element
+          <a data-cite="TTML2#embedded-content-vocabulary-source">&lt;source&gt;</a> element
           child of a
-          <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data">&lt;data&gt;</a> element.</p>
+          <a data-cite="TTML2#embedded-content-vocabulary-data">&lt;data&gt;</a> element.</p>
   
         <p>A <a>presentation processor</a> supports the <code>#source-data</code> extension if
           it implements presentation semantic support of the
-          <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-source">&lt;source&gt;</a> element
+          <a data-cite="TTML2#embedded-content-vocabulary-source">&lt;source&gt;</a> element
           child of a
-          <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data">&lt;data&gt;</a> element.</p>
+          <a data-cite="TTML2#embedded-content-vocabulary-data">&lt;data&gt;</a> element.</p>
       </section>
 
       <section>
