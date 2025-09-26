@@ -8,7 +8,7 @@
     <script class="remove">
       // Rather than include the version control system (VCS) URL, use the Respec config value
       function replaceVCS(config) {
-        document.querySelectorAll(".pp-vcs").forEach((element) => 
+        document.querySelectorAll(".pp-vcs").forEach((element) =>
           element.href=config.github.repoURL)
       }
 
@@ -299,7 +299,7 @@
     border-left-style: solid;
     page-break-inside: avoid;
     margin: 1em auto;
-    
+
     border-left-width: 0.5em;
     border-left-style: solid;
     border-right-width: 0.5em;
@@ -343,7 +343,7 @@
   </head>
   <body>
     <h1 id="title">Dubbing and Audio description Profiles of TTML2</h1>
-    
+
     <section id="abstract">
       This specification defines <abbr title="Dubbing and Audio description Profiles of TTML2">DAPT</abbr>,
       a <abbr title="Timed Text Markup Language">TTML</abbr>-based file format for the exchange of timed text content
@@ -375,7 +375,7 @@
 
       <p>The Working Group has identified the following
         <dfn data-cite="w3c-process/#at-risk">at risk</dfn> features:</p>
-  
+
         <div class="issue" data-number="218"></div>
         <div class="issue" data-number="219"></div>
         <div class="issue" data-number="220"></div>
@@ -384,7 +384,7 @@
         <div class="issue" data-number="223"></div>
         <div class="issue" data-number="224"></div>
         <div class="issue" data-number="239"></div>
-  
+
         <p><a>At risk</a> features may be removed before advancement to Proposed Recommendation.</p>
     </section>
 
@@ -501,7 +501,7 @@
             <li>writing the description text to explain the important visible parts of the programme at that time,</li>
             <li>creating an audio version of the descriptions, either by recording a human actor or using text to speech,</li>
             <li>defining mixing instructions (applied using [[TTML2]] audio styling) for combining the audio with the programme audio.</li>
-          </ul> 
+          </ul>
           <p>The audio mixing can occur prior to distribution of the media,
             or in the client.
             If the <a>audio description</a> <a>script</a> is delivered to the player,
@@ -544,7 +544,7 @@
           but in this empty example, it is not relevant, since only the structure of the document is shown.</li>
           <li>The <a><code>daptm:langSrc</code></a> attribute indicates the default text language source,
             for example the original language of the content,
-            while the <code>xml:lang</code> attribute indicates the default language 
+            while the <code>xml:lang</code> attribute indicates the default language
             in this script, which in this case is the same.
             Both of these attributes are inherited and can be overridden within the content of the document.</li>
         </ul>
@@ -590,7 +590,7 @@
           which is allowed because the more precise value is a <a>sub-type</a>
           of the new value in <a>Script Represents</a>.
           Finally, since the text has an inherent language, the <a>Text Language Source</a>
-          is set to reflect that language. 
+          is set to reflect that language.
         </p>
         <pre class="example"
           data-include="examples/intro-times-and-text-with-visual-text.xml"
@@ -611,7 +611,7 @@
           It is possible that there are no Script Events that actually represent visual text,
           for example because there is no text in the video image.</p>
         <p>In the above example, the <code>&lt;div&gt;</code> element's
-          <code>begin</code> attribute defines the time that is the "syncbase" for its child, 
+          <code>begin</code> attribute defines the time that is the "syncbase" for its child,
           so the times on the <code>&lt;animate&gt;</code> and <code>&lt;span&gt;</code>
           elements are relative to 25s here.
           The first <code>&lt;animate&gt;</code> element drops the gain from 1
@@ -643,7 +643,7 @@
         </pre>
 
         <h4>Dubbing Examples</h4>
-        <p>From the basic structure of <a href="#example-1"></a>, 
+        <p>From the basic structure of <a href="#example-1"></a>,
           transcribing the audio produces an original language dubbing <a>transcript</a>,
           which can look as follows.
           No specific style or layout is defined, and here the focus is on the transcription of the dialogue.
@@ -857,7 +857,7 @@
                 <ul>
                   <li>SHOULD contain <a>Original</a> <a>Text</a> objects;</li>
                   <li>SHOULD NOT contain <a>Translation</a> <a>Text</a> objects.</li>
-                </ul> 
+                </ul>
                 <aside class="example">If a programme contains dialogue in English and Hebrew,
                   the <a>Original Language Transcript</a> will contain some <a>Script Events</a> in English and some in Hebrew,
                   all containing <a>Original</a> <a>Text</a> objects.
@@ -868,7 +868,7 @@
                 <p>When the <code>daptm:scriptType</code> attribute value is <code>translatedTranscript</code>,
                 the document represents a translation of the <a>Original Language Transcript</a> in a common language.</p>
                 <p>It can be adapted to produce a <a>Pre-Recording Script</a>,
-                  and/or used as the basis for a further translation into the <a>Target Recording Language</a>.</p> 
+                  and/or used as the basis for a further translation into the <a>Target Recording Language</a>.</p>
                 <p><a>Script Events</a> in this type of <a>transcript</a>:</p>
                 <ul>
                   <li>SHOULD contain <a>Translation </a><a>Text</a> objects;</li>
@@ -899,19 +899,19 @@
                   <li>SHOULD contain <a>Text</a> objects
                     in the <a>Target Recording Language</a>;</li>
                   <li>MAY also contain <a>Original</a> <a>Text</a> objects from the <a>Original Language Transcript</a>
-                    in the case that their language is not the <a>Target Recording Language</a>, 
+                    in the case that their language is not the <a>Target Recording Language</a>,
                     for context, to assist further processing;</li>
                   <li>SHOULD NOT contain <a>Audio</a> objects.</li>
-                </ul> 
+                </ul>
 
                 <aside class="note">The <a>Script Type</a> of a <a>DAPT Script</a> cannot necessarily be detected
                   by inspecting the text content of the document.
                   For example, the adaptation of a <a>Translated Transcript</a> into a <a>Pre-recording Script</a>
                   can consist in replacing some words in the text content of a <a>Script Event</a> without altering the rest of the document.
-                  In either case, <a>Translation</a> <a>Text</a> objects 
+                  In either case, <a>Translation</a> <a>Text</a> objects
                   have their <a>Text Language Source</a> properties
                   set to the source language from which they were translated.</aside>
-                
+
                 <aside class="note">The <a>Original</a> <a>Text</a> objects in Audio Description <a>Script Events</a>
                   have an empty <a>Text Language Source</a> property
                   if they represent visual elements of the scene that do not have an inherent language.
@@ -923,7 +923,7 @@
               </li>
               <li>
                 <dfn>As-recorded Script</dfn>:
-                <p>When the <code>daptm:scriptType</code> attribute value is <code>asRecorded</code>, 
+                <p>When the <code>daptm:scriptType</code> attribute value is <code>asRecorded</code>,
                 the document represents the actual audio recording.</p>
                 <p><a>Script Events</a> in this type of <a>script</a>:</p>
                 <ul>
@@ -931,13 +931,13 @@
                   in the <a>Target Recording Language</a>;</li>
                   <li>MAY also contain <a>Original</a> <a>Text</a> objects from
                     the <a>Original Language Transcript</a>
-                    or <a>Translation</a> <a>Text</a> objects in other languages 
+                    or <a>Translation</a> <a>Text</a> objects in other languages
                     for context and quality verification;</li>
                   <li>MAY also contain links to audio and mixing instructions
                     for the purpose of producing an audio track incorporating the recordings;</li>
                   <li>SHOULD contain <a>Audio Recording</a> objects;</li>
                   <li>SHOULD NOT contain <a>Synthesized Audio</a> objects.</li>
-                </ul> 
+                </ul>
 
                 <aside class="note"><a>Translation</a> <a>Text</a> objects within <a>As-recorded Scripts</a> retain their <a>Text Language Source</a>,
                   so that the source language from which they were translated remains available.</aside>
@@ -1038,7 +1038,7 @@
               <pre class="language-abnf nohighlight">
     &lt;content-descriptor&gt;  # see registry table below
     : &lt;descriptor-token&gt; ( &lt;descriptor-delimiter&gt; &lt;descriptor-token&gt; )*
-  
+
     &lt;<dfn>descriptor-token</dfn>&gt;
     : (descriptorTokenChar)+
 
@@ -1220,7 +1220,7 @@
         <h3>Character</h3>
 
         <p><em>This section is mainly relevant to <a>Dubbing</a> workflows.</em></p>
-        <p>A character in the programme can be described using a <dfn>Character</dfn> object which has the following properties: 
+        <p>A character in the programme can be described using a <dfn>Character</dfn> object which has the following properties:
           <ul>
             <li>a mandatory <dfn data-lt="Character Identifier">Character Identifier</dfn>
             which is a <a>Unique Identifier</a> used to reference the character from elsewhere in the document,
@@ -1273,7 +1273,7 @@
 
           <li>If the <a>Character</a> has a <a>Talent Name</a> property:
             <ul>
-              <li>A <code>&lt;ttm:agent&gt;</code> element corresponding to the <a>Talent Name</a> 
+              <li>A <code>&lt;ttm:agent&gt;</code> element corresponding to the <a>Talent Name</a>
                 MUST be present at the path
                 <code>/tt/head/metadata/ttm:agent</code>, with the following constraints:
                 <ul>
@@ -1352,7 +1352,7 @@
           <li>an optional <a>On Screen</a> property, which is an annotation indicating the position of the subject (e.g. a <a>character</a>) of the <a>Script Event</a></li>
           <li>Zero or more <a>Mixing Instruction</a> objects used to adjust playback of the programme audio during the <a>Script Event</a>.</li>
         </ul>
-        
+
         <p>A <a>Script Event</a> is represented in a <a>DAPT Document</a> at the path
         <code>/tt/head/body//div</code>,
         with the following structure and constraints:</p>
@@ -1387,7 +1387,7 @@
               <pre class="example">
 ...
 &lt;div xml:id=&quot;event_1&quot;
-     begin=&quot;9663f&quot; end=&quot;9682f&quot; 
+     begin=&quot;9663f&quot; end=&quot;9682f&quot;
      ttm:agent=&quot;character_4&quot;&gt;
 ...
 &lt;/div&gt;
@@ -1399,7 +1399,7 @@
               <pre class="example">
                 ...
                 &lt;div xml:id=&quot;event_1&quot;
-                     begin=&quot;9663f&quot; end=&quot;9682f&quot; 
+                     begin=&quot;9663f&quot; end=&quot;9682f&quot;
                      daptm:represents=&quot;audio.dialogue&quot;&gt;
                 ...
                 &lt;/div&gt;
@@ -1415,7 +1415,7 @@
           </ul>
           </li>
         </ul>
-        
+
         </section>
 
         <section>
@@ -1452,7 +1452,7 @@
               non-textual parts of the video image and
               visual text content, that is intended to be voiced in a single pass.
              If this were split into two or more <a>Script Events</a> then it would be necessary
-             to assign an end time to the first one and a start time to the second one, 
+             to assign an end time to the first one and a start time to the second one,
              which may not be simple.
             </p>
             <p>In this case the <a>Text</a> could be split instead, either into separate <a>Text</a>
@@ -1530,7 +1530,7 @@
                 </aside>
                 <pre class="example">
 &lt;div xml:id=&quot;event_3&quot;
-     begin=&quot;9663f&quot; end=&quot;9682f&quot; 
+     begin=&quot;9663f&quot; end=&quot;9682f&quot;
      ttm:agent=&quot;character_3&quot;&gt;
   &lt;p xml:lang=&quot;pt-BR&quot;&gt;Voc&#xea; vai ter.&lt;/p&gt;
   &lt;p xml:lang=&quot;fr&quot; daptm:langSrc=&quot;pt-BR&quot;&gt;Bah, il arrive.&lt;/p&gt;
@@ -1759,7 +1759,7 @@ daptm:onScreen
           <p>Zero or more <code>&lt;ttm:desc&gt;</code> elements MAY be present.</p>
           <p><a>Script Event Descriptions</a> SHOULD NOT be empty.</p>
           <p class="note">The <a>Script Event Description</a> does not need to be unique,
-            i.e. it does not need to have a different value for each <a>Script Event</a>. 
+            i.e. it does not need to have a different value for each <a>Script Event</a>.
             For example a particular value could be re-used to identify in a human-readable way
             one or more <a>Script Events</a> that are intended to be processed together,
             e.g. in a batch recording.</p>
@@ -1901,8 +1901,8 @@ daptm:descType : string
             a <a>presentation processor</a> MUST play no more than one of the
             <a>Sources</a> for each <a>Audio Recording</a>.</p>
           <p>
-            <img src="figures/fingerprint.png" 
-            class="fingerprint" 
+            <img src="figures/fingerprint.png"
+            class="fingerprint"
             alt="This feature may contribute to browser fingerprintability.">
             Implementations can use the <a>Type</a>, and if present,
             any relevant additional formatting information,
@@ -1910,7 +1910,7 @@ daptm:descType : string
             For example, given two <a>Sources</a>, one being a WAV file, and the other an MP3,
             an implementation that can play only one of those formats,
             or is configured to have a preference for one or the other,
-            would select the playable or preferred version. 
+            would select the playable or preferred version.
           </p>
           <p>An <a>Audio Recording</a> is represented in a <a>DAPT Document</a> by an
             <a data-cite="TTML2#embedded-content-vocabulary-audio"><code>&lt;audio&gt;</code></a>
@@ -2132,15 +2132,15 @@ daptm:descType : string
         <h3>Document Encoding</h3>
         <p>A <a>DAPT Document</a> MUST be serialised as a well-formed XML 1.0 [[!xml]] document
           encoded using the UTF-8 character encoding as specified in [[UNICODE]].</p>
-    
+
           <p>The resulting [[!xml]] document MUST NOT contain any of the following physical structures:</p>
-    
+
           <ul>
             <li><em>entity declarations</em>; and</li>
-    
+
             <li><em>entity references</em> other than to <em>predefined entities</em>.</li>
           </ul>
-    
+
           <div class="note">
             <p>The resulting [[xml]] document can contain
             <dfn data-cite="xml#dt-charref">character references</dfn>,
@@ -2238,7 +2238,7 @@ daptm:descType : string
               data-include-format="text">
             </pre>
           </div>
-          
+
           <div class="advisement">
             <strong>It is strongly recommended not to place data
             whose semantics depend on the contents of the document
@@ -2268,7 +2268,7 @@ daptm:descType : string
               appropriate action, for example warning users that some functionality may be lost.</p>
             </section>
         </section> <!-- Proprietary Metadata -->
-  
+
       </section>
       <section>
         <h3>Namespaces</h3>
@@ -2390,7 +2390,7 @@ daptm:descType : string
         <p>Likewise, authoring applications SHOULD allow authors to meet the
           requirements of [[EBU-R37]] by defining times with an accuracy
           such that changes to audio are less than 15ms after any associated change in
-          the video image, and less than 5ms before any associated change in the video image.  
+          the video image, and less than 5ms before any associated change in the video image.
         </p>
         <p>Taken together, the above two constraints on overall presentation and
           on <a>DAPT documents</a> intended for real-time playback mean that
@@ -2419,7 +2419,7 @@ daptm:descType : string
                 <th>Profile Designator</th>
               </tr>
             </thead>
-    
+
             <tbody>
               <tr>
                 <td><dfn data-dfn-type="dfn" class="export">DAPT 1.0 Content Profile</dfn></td>
@@ -2469,7 +2469,7 @@ daptm:descType : string
             on the <code>&lt;tt&gt;</code> element.
             If present, the <a><code>ttp:processorProfiles</code></a> attribute MUST include at least one value equal to a
             <a>processor profile</a> designator specified at <a href="#profile-designators"></a>.
-            Other values MAY be present to declare additional processing constraints, 
+            Other values MAY be present to declare additional processing constraints,
             and MAY include profile designators in proprietary namespaces.</p>
           <p class="note">The <a><code>ttp:processorProfiles</code></a> attribute can be used
             to signal that features and extensions in additional profiles
@@ -2493,7 +2493,7 @@ daptm:descType : string
           <p>The majority of this profile vocabulary is used to indicate how a processor can compute the set of features
             that it needs to support in order to process the <a>Document Instance</a> successfully.
             The vocabulary is itself defined in terms of TTML2 features.
-            Those profile-related features are listed within <a href="#profiles"></a> as being optional. 
+            Those profile-related features are listed within <a href="#profiles"></a> as being optional.
             They MAY be implemented in processors
             and their associated vocabulary
             MAY be present in <a>DAPT Documents</a>.
@@ -2603,11 +2603,11 @@ daptm:descType : string
             the <a>content processor</a> SHOULD map M to the frame F with the presentation time
             that is the closest to, but not less, than M.</p>
           <p class="example">
-            A media time expression of 00:00:05.1 corresponds to frame 
+            A media time expression of 00:00:05.1 corresponds to frame
             <code>ceiling( 5.1 × ( 1000 / 1001 × 30) ) = 153</code>
             of a video that has a frame rate of <code>1000 / 1001 × 30 ≈ 29.97</code>.
           </p>
-  
+
         </section> <!-- time-expression-section -->
       </section> <!-- time-constraints-section -->
 
@@ -2617,7 +2617,7 @@ daptm:descType : string
         <div class="note">Layout of the paragraphs may rely on the default TTML region (i.e. if no <code>&lt;layout&gt;</code> element is used in the <code>&lt;head&gt;</code> element) or may be explicit by the use of the <code>region</code> attribute, to refer to a <code>&lt;region&gt;</code> element present at <code>/tt/head/layout/region</code>.</div>
 
         <p>Style references or inline styles MAY be used, using any combination of
-        <code>style</code> attributes, 
+        <code>style</code> attributes,
         <code>&lt;style&gt;</code> elements and
         inline style attributes as defined in [[TTML2]] or [[TTML-IMSC1.2]].</p>
 
@@ -2629,7 +2629,7 @@ daptm:descType : string
           The following metadata elements are permitted in DAPT and specified in [[TTML2]] as containing <code>#PCDATA</code>,
           i.e. text data only with no element content.
           Where bidirectional text is required within the character content within such an element,
-          Unicode control characters can be used to define the base direction within arbitrary ranges of text. 
+          Unicode control characters can be used to define the base direction within arbitrary ranges of text.
         </p>
         <ul>
           <li><code>&lt;ttm:copyright&gt;</code></li>
@@ -2732,7 +2732,7 @@ daptm:descType : string
             (recursively, in a depth-first traversal) and consider if each one meets the requirements of a <a>Script Event</a>;</li>
           <li>Any remaining unmapped <code>&lt;div&gt;</code> elements MUST NOT be mapped to a <a>Script Event</a>.</li>
         </ol>
-        
+
         <p>Rules for identifying <a>Text</a> objects:</p>
         <ol>
           <li>A <code>&lt;p&gt;</code> element that is a child of a <code>&lt;div&gt;</code> element
@@ -2980,8 +2980,13 @@ daptm:descType : string
       <h3>Conformance of <a>DAPT Documents</a></h3>
       <p>Conformant <a>DAPT Documents</a> are [[TTML2]] <a>timed text content document instances</a> that
         conform to the normative provisions of this specification.
+<<<<<<< Updated upstream
         Those provisions are expressed using the 
         <a data-cite="TTML2#profile">profile</a> vocabulary of [[TTML2]] in the
+=======
+        Those provisions are expressed using the
+        <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[TTML2]] in the
+>>>>>>> Stashed changes
         <dfn data-cite="ttml2#terms-content-profile">content profile</dfn> defined
         in <a href="#profiles"></a>.</p>
       <p class="note">
@@ -2996,8 +3001,13 @@ daptm:descType : string
       <p>Conformant DAPT Processors are [[TTML2]]
         <dfn data-cite="TTML2#terms-content-processor">content processors</dfn> that
         conform to the normative provisions of this specification.
+<<<<<<< Updated upstream
         Those provisions are expressed using the 
         <a data-cite="TTML2#profile">profile</a> vocabulary of [[TTML2]] in the
+=======
+        Those provisions are expressed using the
+        <a href="https://www.w3.org/TR/ttml2/#profile">profile</a> vocabulary of [[TTML2]] in the
+>>>>>>> Stashed changes
         <dfn data-cite="TTML2#terms-processor-profile">processor profile</dfn> defined
         in <a href="#profiles"></a>.</p>
         <aside class="note">The provisions in this specification are expressed in terms of [[TTML2]] <a>content processor</a> types,
@@ -3053,8 +3063,8 @@ daptm:descType : string
     <section>
       <h3>Audio format preference</h3>
       <p>
-        <img src="figures/fingerprint.png" 
-        class="fingerprint" 
+        <img src="figures/fingerprint.png"
+        class="fingerprint"
         alt="This feature may contribute to browser fingerprintability.">
         DAPT documents can reference a set of alternate external audio resources for the same fragment of audio,
         where the processor is expected to select one of the alternatives based on features such as format support.
@@ -3063,7 +3073,7 @@ daptm:descType : string
       </p>
       <aside class="note">
         Document authors and content providers can avoid referencing external audio resources by embedding
-        the audio resources within the document. 
+        the audio resources within the document.
         This usage pattern does not expose the processor's choice of audio resource to the origin.
       </aside>
     </section>
@@ -3160,7 +3170,7 @@ daptm:descType : string
       </p>
       <p>If the related media object contains a timecode for the video frame
         synchronized to the origin of the DAPT document timeline,
-        the DAPT origin timecode is equal that timecode. 
+        the DAPT origin timecode is equal that timecode.
       </p>
       <pre class="example">
 ...
@@ -3313,7 +3323,7 @@ daptm:descType : string
       <p>If an <a>Audio Recording</a> begins or ends with audible sound,
         i.e. the first sample at the <a>In Time</a> or the last sample
         at the <a>Out Time</a> is non-zero, then it is possible that
-        the audio transducer is induced to make an undesirable 
+        the audio transducer is induced to make an undesirable
         &quot;pop&quot; noise at the beginning or end of playback.</p>
 
       <p>Multiple potential strategies exist to avoid this pop effect,
@@ -3441,7 +3451,7 @@ daptm:descType : string
       </tbody>
     </table>
     <p class="note">
-      The use of the terms <a>presentation processor</a> 
+      The use of the terms <a>presentation processor</a>
       and <a>transformation processor</a> within this document does not imply conformance
       <i>per se</i> to any of the Standard Profiles defined in [[TTML2]].
       In other words, it is not considered an error for
@@ -4080,7 +4090,7 @@ daptm:descType : string
 
       <p>The <code>#contentProfiles-root</code> extension is a syntactic and semantic subset
         of the <code><a>#contentProfiles</a></code> feature.</p>
-  
+
       <aside class="note">This extension is defined as a subset of
         <code><a>#contentProfiles</a></code>
         so that, by requiring it, in combination with the prohibition of
@@ -4148,14 +4158,14 @@ daptm:descType : string
         <p>A <a>transformation processor</a> supports the <code>#represents</code> extension if
           it recognizes and is capable of transforming values of the
           <a><code>daptm:represents</code></a> attribute.</p>
-  
+
         <aside class="example">An example of a <a>transformation processor</a> that supports this extension is
           a validating processor that reports an error if the extension is permitted by a
           <a>content profile</a> but the <a>timed text content document instance</a> claiming
           conformance to that profile has a
           <code>&lt;div&gt;</code> element with a <a><code>daptm:represents</code></a> attribute
           whose value is not conformant with the requirements defined herein.</aside>
-  
+
         <p>No <a>presentation processor</a> behaviour is defined for the <code>#represents</code> extension.</p>
       </section>
 
@@ -4181,7 +4191,7 @@ daptm:descType : string
         <p>A <a>transformation processor</a> supports the <code>#scriptRepresents-root</code> extension if
           it recognizes and is capable of transforming values of the
           <a><code>daptm:scriptRepresents</code></a> attribute on the <code>&lt;tt&gt;</code> element.</p>
-  
+
         <p>No <a>presentation processor</a> behaviour is defined for the <code>#scriptRepresents-root</code> extension.</p>
 
         <aside class="example">An example of a <a>transformation processor</a> that supports this extension is
@@ -4190,7 +4200,7 @@ daptm:descType : string
           conformance to that profile either does not have a
           <a><code>daptm:scriptRepresents</code></a> attribute on the <code>&lt;tt&gt;</code> element
           or has one whose value is not conformant with the requirements defined herein.</aside>
-  
+
         <p>No <a>presentation processor</a> behaviour is defined for the <code>#scriptRepresents-root</code> extension.</p>
       </section>
 
@@ -4225,7 +4235,7 @@ daptm:descType : string
         <p>A <a>transformation processor</a> or a <a>presentation processor</a> supports
           the <code>#serialization</code> extension if
           it can read a serialized document as defined above.</p>
-  
+
         <p>A <a>transformation processor</a> that writes documents supports
           the <code>#serialization</code> extension if
           it can write a serialized document as defined above.</p>
@@ -4237,8 +4247,13 @@ daptm:descType : string
           it recognizes and is capable of transforming values of the
           <a data-cite="TTML2#embedded-content-vocabulary-source">&lt;source&gt;</a> element
           child of a
+<<<<<<< Updated upstream
           <a data-cite="TTML2#embedded-content-vocabulary-data">&lt;data&gt;</a> element.</p>
   
+=======
+          <a href="https://www.w3.org/TR/ttml2/#embedded-content-vocabulary-data">&lt;data&gt;</a> element.</p>
+
+>>>>>>> Stashed changes
         <p>A <a>presentation processor</a> supports the <code>#source-data</code> extension if
           it implements presentation semantic support of the
           <a data-cite="TTML2#embedded-content-vocabulary-source">&lt;source&gt;</a> element
@@ -4251,7 +4266,7 @@ daptm:descType : string
         <p>A <a>transformation processor</a> supports the <code>#textLanguageSource</code> extension if
           it recognizes and is capable of transforming values of the
           <a><code>daptm:langSrc</code></a> attribute.</p>
-  
+
         <p>No <a>presentation processor</a> behaviour is defined for the <code>#textLanguageSource</code> extension.</p>
       </section>
 
@@ -4264,19 +4279,19 @@ daptm:descType : string
           parent element or any of its descendant or referenced
           <code>&lt;source&gt;</code> or <code>&lt;data&gt;</code> elements,
           known as <dfn>non-matching</dfn> values.</p>
-  
+
         <p>A <a>presentation processor</a> supports the <code>#xmlLang-audio-nonMatching</code> extension if
           it implements presentation semantic support of such <a>non-matching</a>
           <code>xml:lang</code> attribute values.</p>
       </section>
-  
+
       <section>
         <h3 id="extension-xmlLang-root">#xmlLang-root</h3>
         <p>A <a>transformation processor</a> supports the <code>#xmlLang-root</code> extension if
           it recognizes and is capable of transforming values of the
           <code>xml:lang</code> attribute on the <code>&lt;tt&gt;</code> element
           and the additional semantics specified in <a href="#default-language"></a>.</p>
-  
+
         <p>A <a>presentation processor</a> supports the <code>#xmlLang-root</code> extension if
           it implements presentation semantic support of the
           <code>xml:lang</code> attribute on the <code>&lt;tt&gt;</code> element
@@ -4295,7 +4310,7 @@ daptm:descType : string
       <section id="custodianship">
         <h3>Custodianship</h3>
         <p>The <dfn data-cite="w3c-process#custodian">custodian</dfn> of this <a>w3c registry</a> is the
-          <dfn data-abbr="TTWG"><a href="https://www.w3.org/groups/wg/timed-text">Timed Text Working Group</a></dfn>. 
+          <dfn data-abbr="TTWG"><a href="https://www.w3.org/groups/wg/timed-text">Timed Text Working Group</a></dfn>.
           If the <a>TTWG</a> is unable to fulfil the role of <a>custodian</a>,
           for example if it has been <a data-cite="w3c-process#GeneralTermination">closed</a>,
           the <a>custodian</a> in lieu is the <a>W3C Team</a>.
@@ -4457,7 +4472,7 @@ daptm:descType : string
         <p>The <a>registry table</a> for <code>daptm:descType</code> defines a set of values that can be
         used in the <code>daptm:descType</code> attribute.</p>
         <p>The <a>key</a> is the &quot;<code>daptm:descType</code>&quot; field.
-        The &quot;description&quot; field describes the intended purpose of each value.</p> 
+        The &quot;description&quot; field describes the intended purpose of each value.</p>
         <p>The <a>registry entries</a> for this <a>registry table</a> are located in <a href="#script-event-description"></a>.</p>
         <p>The <a>key</a> values for this <a>registry table</a> MUST NOT begin with <code>x-</code> which is reserved for user extensions.</p>
       </section>
@@ -4469,7 +4484,7 @@ daptm:descType : string
           <p>The <a>key</a> is the &quot;<code>&lt;content-descriptor&gt;</code>&quot; field.
           The &quot;Description&quot; field describes the type of media content represented by each value.
           The &quot;Example usage&quot; field describes the type of script in which the content type
-          described are commonly found.</p> 
+          described are commonly found.</p>
           <p>The <a>registry entries</a> for this <a>registry table</a> are located in <a href="#contentDescriptor"></a>.</p>
           <p>The <a>key</a> values for this <a>registry table</a> MUST NOT begin with <code>x-</code> which is reserved for user extensions.</p>
         </section>
