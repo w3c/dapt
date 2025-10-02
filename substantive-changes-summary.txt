@@ -11,14 +11,14 @@ http://services.w3.org/htmldiff across published versions of the specification.
 
 NOTE 2: Issues and their dispositions are documented at https://github.com/w3c/dapt/issues
 
-NOTE 3: The publication history of this specification is at https://www.w3.org/standards/history/dapt/ 
+NOTE 3: The publication history of this specification is at https://www.w3.org/standards/history/dapt/
 
 From FPWD (20230425)
 ====================
 
 * Introduce workflowType and restructure scriptType values (#11) (note that workflowType was later removed)
 
-* Add trailing / to DAPT Extension namespace (#141) 
+* Add trailing / to DAPT Extension namespace (#141)
 
 * Clarify that Script Events, not Texts, are associated with a Character (#149)
 
@@ -78,3 +78,5 @@ From CRS (20250311)
 * Replace the `#scriptEventGrouping` extension feature with the TTML1 feature `#nested-div` (#303)
 
 * Clarify which elements the `src` attribute can reference using a fragment identifier, and align with TTML2 (#312)
+
+* Prohibit empty `daptm:langSrc`, set default to `und` (#320, #321)
