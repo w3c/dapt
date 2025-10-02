@@ -571,7 +571,9 @@
           Note that in this case, to reflect that most of the audio description content
           transcribes the video image where there is no inherent language,
           the <a>Text Language Source</a>, represented by the <a><code>daptm:langSrc</code></a> attribute,
-          is set to <code>zxx</code> at the top level of the document:</p>
+          is set to <code>zxx</code> at the top level of the document,
+          which is a language code defined by [[bcp47]] as
+          identifying content for which a language classification does not apply:</p>
         <pre class="example"
           data-include="examples/intro-times-and-text.xml"
           data-include-format="text">
@@ -1420,15 +1422,17 @@
           <h4>Text</h4>
           <p>The <dfn>Text</dfn> object contains text content typically in a single language.
             This language may be the <a>Original</a> language or a <a>Translation</a> language.</p>
-          <p><a>Text</a> is defined as <dfn>Original</dfn> if it is any of:
-            <ol>
-              <li>the same language as the dialogue that it represents in the original programme audio;</li>
-              <li>a transcription of text visible in the programme video, in the same language as that text;</li>
+          <p><a>Text</a> is defined as <dfn>Original</dfn> if it is any of:</p>
+            <ul>
+              <li>a transcription of dialogue in the programme audio,
+                in the same language as that dialogue;</li>
+              <li>a transcription of text visible in the programme video,
+                in the same language as that text;</li>
               <li>an untranslated representation of non-dialogue sound;</li>
               <li>an untranslated description of the scene in the programme video;</li>
-              <li>an untranslated representation of content whose language has not been determined;</li>
-            </ol>
-          </p>
+              <li>an untranslated representation of content whose language has not been determined
+                (this is <a href="#lang-src-should-not-be-und">not recommended</a>);</li>
+            </ul>
           <aside class="note">The language of an <a>Original</a> <a>Text</a> object
             can be different to the document's <a>Default Language</a>.</aside>
           <p><a>Text</a> is defined as <dfn>Translation</dfn> if it is
@@ -1505,12 +1509,16 @@
                 </aside>
                 <aside class="note">
                   <p>To represent content with no inherent language,
-                    for example audio description where no in-image text is transcribed,
-                    and which has not been translated,
+                    for example an <a>Original</a> audio description
+                    where no in-image text is transcribed,
                     the value <code>zxx</code> can be used.</p>
+                  <p>If that audio description is subsequently translated
+                    then the <a>Translation</a> would have a <a><code>daptm:langSrc</code></a>
+                    set to the <code>xml:lang</code> of the <a>Original</a>.
+                  </p>
                 </aside>
               </li>
-              <li>The computed value of <a><code>daptm:langSrc</code></a> SHOULD NOT be <code>und</code>.
+              <li id="lang-src-should-not-be-und">The computed value of <a><code>daptm:langSrc</code></a> SHOULD NOT be <code>und</code>.
                   <aside class="note">
                     <p>A document that does not specify the <a><code>daptm:langSrc</code></a> attribute at all
                       has the default value <code>und</code> which
@@ -3334,7 +3342,7 @@ daptm:descType : string
       </ul>
     </section>
     <section>
-      <h3>Pop prevention</h5>
+      <h3>Pop prevention</h3>
 
       <p>If an <a>Audio Recording</a> begins or ends with audible sound,
         i.e. the first sample at the <a>In Time</a> or the last sample
@@ -4264,7 +4272,6 @@ daptm:descType : string
           <a data-cite="TTML2#embedded-content-vocabulary-source">&lt;source&gt;</a> element
           child of a
           <a data-cite="TTML2#embedded-content-vocabulary-data">&lt;data&gt;</a> element.</p>
-
         <p>A <a>presentation processor</a> supports the <code>#source-data</code> extension if
           it implements presentation semantic support of the
           <a data-cite="TTML2#embedded-content-vocabulary-source">&lt;source&gt;</a> element
