@@ -571,9 +571,9 @@
           Note that in this case, to reflect that most of the audio description content
           transcribes the video image where there is no inherent language,
           the <a>Text Language Source</a>, represented by the <a><code>daptm:langSrc</code></a> attribute,
-          is set to the empty string at the top level of the document.
-          It would be semantically equivalent to omit the attribute altogether,
-          since the default value is the empty string:</p>
+          is set to <code>zxx</code> at the top level of the document,
+          which is a language code defined by [[bcp47]] as
+          identifying content for which a language classification does not apply:</p>
         <pre class="example"
           data-include="examples/intro-times-and-text.xml"
           data-include-format="text">
@@ -1422,14 +1422,17 @@
           <h4>Text</h4>
           <p>The <dfn>Text</dfn> object contains text content typically in a single language.
             This language may be the <a>Original</a> language or a <a>Translation</a> language.</p>
-          <p><a>Text</a> is defined as <dfn>Original</dfn> if it is any of:
-            <ol>
-              <li>the same language as the dialogue that it represents in the original programme audio;</li>
-              <li>a transcription of text visible in the programme video, in the same language as that text;</li>
-              <li>an untranslated representative of non-dialogue sound;</li>
-              <li>an untranslated description of the scene in the programme video.</li>
-            </ol>
-          </p>
+          <p><a>Text</a> is defined as <dfn>Original</dfn> if it is any of:</p>
+            <ul>
+              <li>a transcription of dialogue in the programme audio,
+                in the same language as that dialogue;</li>
+              <li>a transcription of text visible in the programme video,
+                in the same language as that text;</li>
+              <li>an untranslated representation of non-dialogue sound;</li>
+              <li>an untranslated description of the scene in the programme video;</li>
+              <li>an untranslated representation of content whose language has not been determined
+                (this is <a href="#lang-src-should-not-be-und">not recommended</a>);</li>
+            </ul>
           <aside class="note">The language of an <a>Original</a> <a>Text</a> object
             can be different to the document's <a>Default Language</a>.</aside>
           <p><a>Text</a> is defined as <dfn>Translation</dfn> if it is
@@ -1505,11 +1508,23 @@
                     so that their meaning does not change unintentionally.</p>
                 </aside>
                 <aside class="note">
-                  <p>A document that does not specify the <a><code>daptm:langSrc</code></a> attribute at all
-                    implies that all of the text is a transcript of content with no inherent language,
-                    for example audio description where no in-image text is transcribed,
-                    and which has not been translated.</p>
+                  <p>To represent content with no inherent language,
+                    for example an <a>Original</a> audio description
+                    where no in-image text is transcribed,
+                    the value <code>zxx</code> can be used.</p>
+                  <p>If that audio description is subsequently translated
+                    then the <a>Translation</a> would have a <a><code>daptm:langSrc</code></a>
+                    set to the <code>xml:lang</code> of the <a>Original</a>.
+                  </p>
                 </aside>
+              </li>
+              <li id="lang-src-should-not-be-und">The computed value of <a><code>daptm:langSrc</code></a> SHOULD NOT be <code>und</code>.
+                  <aside class="note">
+                    <p>A document that does not specify the <a><code>daptm:langSrc</code></a> attribute at all
+                      has the default value <code>und</code> which
+                      implies that the language of the content represented by the <a>Text</a>
+                      has not been determined.</p>
+                  </aside>
               </li>
               <li>The <code>&lt;p&gt;</code> element SHOULD have an <code>xml:lang</code> attribute
                 corresponding to the language of the <a>Text</a> object.
@@ -1560,10 +1575,27 @@
           <p>The <dfn>Text Language Source</dfn> property is an annotation indicating the source language of
             a <a>Text</a> object, if applicable, or that the source content had no inherent language:</p>
           <ul>
-            <li>If it is empty, the <a>Text</a> represents content without an inherent language,
-            such as untranslated descriptions of a visual scene or
-            captions representing non-dialogue sounds.</li>
-            <li>Otherwise (if it is not empty):
+            <li>If it has a value that does not represent a language,
+              such as <code>und</code> or <code>zxx</code>,
+              the <a>Text</a> is <a>Original</a>.
+              <aside class="note">
+                The value <code>und</code> represents content whose inherent language has not yet been determined.
+              </aside>
+              <aside class="note">
+                <p>The value <code>zxx</code> represents content without an inherent language,
+                such as untranslated descriptions of a visual scene or
+                captions representing non-dialogue sounds. [[bcp47]] explains its use as follows:</p>
+                <blockquote>The 'zxx' (Non-Linguistic, Not Applicable) primary language
+                  subtag identifies content for which a language classification
+                  is inappropriate or does not apply.  Some examples might
+                  include instrumental or electronic music; sound recordings
+                  consisting of nonverbal sounds; audiovisual materials with no
+                  narration, dialog, printed titles, or subtitles; machine-
+                  readable data files consisting of machine languages or
+                  character codes; or programming source code.</blockquote>
+              </aside>
+            </li>
+            <li>Otherwise (if it has a value that does represent a language):
               <ul>
                 <li>if its value is the same as the language of the <a>Text</a> object,
                   the <a>Text</a> is <a>Original</a>.</li>
@@ -1579,17 +1611,14 @@
           <div class="exampleInner">
             <pre class="language-abnf">
 daptm:langSrc
-: &lt;empty-string&gt; | &lt;language-identifier&gt;
+: &lt;language-identifier&gt;
 
-&lt;empty-string&gt;
-: ""                    # default
-
-&lt;language-identifier&gt;   # valid BCP-47 language tag
+&lt;language-identifier&gt;   # well-formed BCP-47 language tag
             </pre>
           </div>
           <ul>
-            <li>The value MUST be an empty string or a language identifier as defined by [[BCP47]].</li>
-            <li>The default value is the empty string.</li>
+            <li>The value MUST be a well-formed language identifier as defined by [[BCP47]].</li>
+            <li>The default value is <code>und</code>.</li>
             <li>It <em>applies</em> to <code>&lt;p&gt;</code> and <code>&lt;span&gt;</code> elements.</li>
             <li>It MAY be specified on the following elements:
               <code>&lt;tt&gt;</code>,
@@ -1611,10 +1640,15 @@ daptm:langSrc
             </li>
             <li>The semantics of the computed value are as follows:
               <ul>
-                <li>If the computed value is the empty string then it indicates
-                  that the <a>Text</a> is <a>Original</a>
-                  and sourced from content without an inherent language.</li>
-                <li>Otherwise (the computed value is not empty)
+                <li>If the computed value is a value that does not represent
+                  linguistic content then it indicates that the <a>Text</a> is <a>Original</a>.
+                  Example values in this category are:
+                  <ul>
+                    <li><code>und</code> for content whose language has not been determined;</li>
+                    <li><code>zxx</code> for content without an inherent language.</li>
+                  </ul>
+                </li>
+                <li>Otherwise, if the computed value represents linguistic content, then:
                   <ul>
                     <li>if the computed value is the same as the computed value of the <code>xml:lang</code> attribute,
                     then it indicates that the <a>Text</a> is <a>Original</a>
@@ -1654,13 +1688,13 @@ daptm:langSrc
                   <td>Video image (non text)</td>
                   <td><em>none</em></td>
                   <td><code>en</code></td>
-                  <td><em>empty</em></td>
+                  <td><em><code>zxx</code></em></td>
                 </tr>
                 <tr>
                   <td>Sound effect</td>
                   <td><em>none</em></td>
                   <td><code>en</code></td>
-                  <td><em>empty</em></td>
+                  <td><em><code>zxx</code></em></td>
                 </tr>
                 <tr>
                   <td>Dialogue</td>
@@ -3308,7 +3342,7 @@ daptm:descType : string
       </ul>
     </section>
     <section>
-      <h3>Pop prevention</h5>
+      <h3>Pop prevention</h3>
 
       <p>If an <a>Audio Recording</a> begins or ends with audible sound,
         i.e. the first sample at the <a>In Time</a> or the last sample
@@ -4238,7 +4272,6 @@ daptm:descType : string
           <a data-cite="TTML2#embedded-content-vocabulary-source">&lt;source&gt;</a> element
           child of a
           <a data-cite="TTML2#embedded-content-vocabulary-data">&lt;data&gt;</a> element.</p>
-
         <p>A <a>presentation processor</a> supports the <code>#source-data</code> extension if
           it implements presentation semantic support of the
           <a data-cite="TTML2#embedded-content-vocabulary-source">&lt;source&gt;</a> element
