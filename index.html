@@ -1406,6 +1406,12 @@
             is indicated using the <a>Text Language Source</a> property.</p>
           <p>If the <a>Text</a> object, or part of it, represents something more specific, or different,
             to its parent <a>Script Event</a>, it can have a different <a>Represents</a> property.</p>
+          <p>The <a>Text</a> object, and every one of its parts, MUST have a valid <a>Represents</a> property.
+            The presence of the property itself is considered optional
+            because if the <a>Text</a> object omits the
+            property then the property is inherited from the parent <a>Script Event</a>.
+            However it is an error for a <a>Text</a> object to specify an invalid <a>Represents</a> property.
+          </p>
           <aside class="note">
             <p>Where possible, text representing
             different parts of the <a>related media object</a> should be put into
@@ -2275,25 +2281,25 @@ daptm:descType : string
             <!-- TTML Namespaces are ordered the same as in the TTML2 Specification -->
             <tr>
               <td>TT</td>
-              <td><code>tt</code></td>
+              <td><dfn class="lint-ignore"><code>tt</code></dfn></td>
               <td><code>http://www.w3.org/ns/ttml</code></td>
               <td>[[TTML2]]</td>
             </tr>
             <tr>
               <td>TT Parameter</td>
-              <td><code>ttp</code></td>
+              <td><dfn class="lint-ignore"><code>ttp</code></dfn></td>
               <td><code>http://www.w3.org/ns/ttml#parameter</code></td>
               <td>[[TTML2]]</td>
             </tr>
             <tr>
               <td>TT Audio Style</td>
-              <td><code>tta</code></td>
+              <td><dfn class="lint-ignore"><code>tta</code></dfn></td>
               <td><code>http://www.w3.org/ns/ttml#audio</code></td>
               <td>[[TTML2]]</td>
             </tr>
             <tr>
               <td>TT Metadata</td>
-              <td><code>ttm</code></td>
+              <td><dfn><code>ttm</code></dfn></td>
               <td><code>http://www.w3.org/ns/ttml#metadata</code></td>
               <td>[[TTML2]]</td>
             </tr>
@@ -2305,7 +2311,7 @@ daptm:descType : string
             </tr>
             <tr>
               <td>DAPT Metadata</td>
-              <td><code>daptm</code></td>
+              <td><dfn class="export"><code>daptm</code></dfn></td>
               <td><code>http://www.w3.org/ns/ttml/profile/dapt#metadata</code></td>
               <td><em>This specification</em></td>
             </tr>
@@ -2317,7 +2323,7 @@ daptm:descType : string
             </tr>
             <tr>
               <td>EBU-TT Metadata</td>
-              <td><code>ebuttm</code></td>
+              <td><dfn class="lint-ignore"><code>ebuttm</code></dfn></td>
               <td><code>urn:ebu:tt:metadata</code></td>
               <td>[[EBU-TT-3390]]</td>
             </tr>
@@ -2701,12 +2707,18 @@ daptm:descType : string
         <p>The following processing rules resolve these cases.</p>
         <p>Rules for identifying <a>Script Events</a>:</p>
         <ol>
-          <li>A <code>&lt;div&gt;</code> element that has no <code>&lt;div&gt;</code> element children
-            and includes the TTML representations of all the mandatory properties of a <a>Script Event</a>
+          <li>
+            <p>A <code>&lt;div&gt;</code> element that has no <code>&lt;div&gt;</code> element children
+            and includes the TTML representations of all the non-metadata mandatory properties of a <a>Script Event</a>
             MUST be mapped to a <a>Script Event</a>,
             such as having a valid <code>xml:id</code>
             representing the <a>Script Event Identifier</a>,
-            even if it also contains additional <a>unrecognised vocabulary</a>;</li>
+            even if it also contains additional <a>unrecognised vocabulary</a>;</p>
+            <aside>For the purposes of this clause a property is considered to be
+              metadata if its TTML representation is in the <a><code>daptm</code></a> namespace
+              or the <a><code>ttm</code></a> namespace.
+            </aside>
+          </li>
           <li>A <code>&lt;div&gt;</code> element that contains any <code>&lt;div&gt;</code> element children
             MUST NOT be mapped to a <a>Script Event</a>;
             the processor instead MUST iterate through those <code>&lt;div&gt;</code> element children
