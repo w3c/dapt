@@ -3056,7 +3056,7 @@ daptm:descType : string
       <a>DAPT documents</a> are required by the mandatory
       <a href="#extension-serialization"><code>#serialization</code></a>
       extension feature to avoid 
-      referencing DTDs and to avoid using
+      declaring or referencing a Document Type Declaration and to avoid using
       the [[xml]] entity expansion mechanism.
       Therefore implementations can protect against
       potential denial of service attacks or external content
@@ -4224,9 +4224,10 @@ daptm:descType : string
           an XML 1.0 [[xml]] document encoded using
           UTF-8 character encoding as specified in [[UNICODE]],
           that contains no byte order mark (BOM),
-          no DTD reference in the XML Prolog,
-          no entity declarations and
-          no entity references other than to predefined entities.
+          no <a data-cite="xml#dt-doctype">Document Type Declaration</a>,
+          no <a data-cite="xml#dt-entdecl">Entity Declarations</a> and
+          no <a data-cite="xml#dt-entref">entity references</a> other than to
+          <a data-cite="xml#sec-predefined-ent">predefined entities</a>.
         </p>
 
         <p>A <a>transformation processor</a> or a <a>presentation processor</a> supports
