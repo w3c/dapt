@@ -79,4 +79,4 @@ From CRS (20250311)
 
 * Clarify which elements the `src` attribute can reference using a fragment identifier, and align with TTML2 (#312)
 
-* Prohibit empty `daptm:langSrc`, set default to `und` (#320, #321)
+* Allow for non-linguistic language codes in `daptm:langSrc` (#320, #321, #330)
