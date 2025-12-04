@@ -789,7 +789,7 @@
           It has properties and objects defined in the following sections:
           <a>Script Represents</a>, <a>Script Type</a>, <a>Default Language</a>, <a>Text Language Source</a>, <a>Script Events</a>
           and, for <a>Dubbing Scripts</a>, <a>Characters</a>.</p>
-        <p>A <dfn>DAPT Document</dfn> is a [[TTML2]] <a>timed text content document instance</a> representing a <a>DAPT Script</a>.
+        <p>A <dfn class="export">DAPT Document</dfn> is a [[TTML2]] <a>timed text content document instance</a> representing a <a>DAPT Script</a>.
           A <a>DAPT Document</a> has the structure and constraints defined in this and the following sections.</p>
         <p class="note">
           A [[TTML2]] <a>timed text content document instance</a> has
@@ -3072,7 +3072,7 @@ daptm:descType : string
 
     <p>Notwithstanding the XML-related considerations of [[ttml2]],
       <a>DAPT documents</a> are required by the mandatory
-      <a href="#extension-serialization"><code>#serialization</code></a>
+      <a><code>#serialization</code></a>
       extension feature to avoid 
       declaring or referencing a Document Type Declaration and to avoid using
       the [[xml]] entity expansion mechanism.
@@ -3990,7 +3990,7 @@ daptm:descType : string
             </td>
           </tr>
           <tr>
-            <td><a href="#extension-serialization"><code>#serialization</code></a></td>
+            <td><a><code>#serialization</code></a></td>
             <td><span class="required label">required</span></td>
             <td>
               This is the profile expression of <a href="#document-encoding"></a>.
@@ -4237,7 +4237,8 @@ daptm:descType : string
 
       <section>
         <h3 id="extension-serialization">#serialization</h3>
-        <p>A serialized document that is valid with respect to the <code>#serialization</code>
+        <p>A serialized document that is valid with respect to the
+          <dfn class="export" data-lt="#serialization|DAPT#serialization"><code>#serialization</code></dfn>
           extension is
           an XML 1.0 [[xml]] document encoded using
           UTF-8 character encoding as specified in [[UNICODE]],
