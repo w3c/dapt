@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- this file defines the "dapt-processor" profile of ttml -->
+<!-- This file is the TTML Profile Document representing
+  the DAPT 1.0 Processor Profile defined 
+  by DAPT at https://www.w3.org/TR/dapt/ -->
 <profile xmlns="http://www.w3.org/ns/ttml#parameter"
   designator="http://www.w3.org/ns/ttml/profile/dapt1.0/processor"
   combine="mostRestrictive"
